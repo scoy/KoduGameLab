@@ -698,9 +698,6 @@
             <Component Id="cmp8B3E98468BC676FF7A1E7CDF898EE675" Directory="dirDB5EAB964C58EFD8C9BE69A38B4F1F28" Guid="{7913DB29-6039-4096-9AA3-4CD2D144746E}">
                 <File Id="filB414E1C2D689AB67F40A007FAE1A36F4" KeyPath="yes" Source="SourceDir\Content\Textures\MainMenuWidescreen.xnb" />
             </Component>
-            <Component Id="cmp9147855BEE5ECAB3E6CD15E7D8A0AFF3" Directory="dirDB5EAB964C58EFD8C9BE69A38B4F1F28" Guid="{E942ACAE-151A-44DF-A285-930731EFFC76}">
-                <File Id="fil3482824B8BA4E1405B9818CF20BB4D65" KeyPath="yes" Source="SourceDir\Content\Textures\MicrosoftLogo.xnb" />
-            </Component>
             <Component Id="cmpB443DD03FCD37326C2627E1BDAFED448" Directory="dirDB5EAB964C58EFD8C9BE69A38B4F1F28" Guid="{43581D76-9404-4ABF-8FD6-99EB0D11F552}">
                 <File Id="fil325F1526CF64A433DCDC06F3860ECD92" KeyPath="yes" Source="SourceDir\Content\Textures\NasaJPL.xnb" />
             </Component>

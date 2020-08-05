@@ -51,11 +51,9 @@ namespace Boku
 
             // Grab Loading texture and Microsoft logo so we can not have a blank screen.
             Texture2D loadingTexture = ContentManager.Load<Texture2D>(@"Content\Textures\Loading");
-            Texture2D logoTexture = ContentManager.Load<Texture2D>(@"Content\Textures\MicrosoftLogo");
             Device.Clear(Color.Black);
             Vector2 screenSize = new Vector2(Device.Viewport.Width, Device.Viewport.Height);
             Vector2 backgroundSize = new Vector2(loadingTexture.Width, loadingTexture.Height);
-            Vector2 logoSize = new Vector2(logoTexture.Width, logoTexture.Height);
             SpriteBatch batch = new SpriteBatch(Device);
             batch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
             {
@@ -64,12 +62,6 @@ namespace Boku
                 position.X = (int)position.X;
                 position.Y = (int)position.Y;
                 batch.Draw(loadingTexture, position, Color.White);
-
-                position = (screenSize - logoSize) / 2.0f + new Vector2(0, screenSize.Y / 4.0f);
-                // Clamp to pixels.
-                position.X = (int)position.X;
-                position.Y = (int)position.Y;
-                batch.Draw(logoTexture, position, Color.White);
             }
             batch.End();
 
