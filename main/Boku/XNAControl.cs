@@ -62,6 +62,7 @@ namespace Boku
 
             Vector2 screenSize = new Vector2(Device.Viewport.Width, Device.Viewport.Height);
             Vector2 backgroundSize = new Vector2(loadingTexture.Width, loadingTexture.Height);
+
             SpriteBatch batch = KoiLibrary.SpriteBatch;
             batch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
             {
