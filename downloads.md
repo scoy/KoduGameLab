@@ -4,6 +4,8 @@
 
 [KoduSetup_1.5.53.0.msi](https://kodugamelab.file.core.windows.net/files/Builds/KoduSetup_1.5.53.0.msi)
 
-https://kodugamelab.file.core.windows.net/files/Builds/KoduSetup_1.5.53.0.exe
+<div>
+  <a href="https://kodugamelab.file.core.windows.net/files/Builds/KoduSetup_1.5.53.0.exe" download>Exe</a>
+</div>
 
 ##Legacy Versions
