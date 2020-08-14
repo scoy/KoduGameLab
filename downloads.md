@@ -9,3 +9,6 @@
 </div>
 
 ## Legacy Versions
+
+## Support
+For support issues, email <KoduSupport@infiniteinstant.com>.
