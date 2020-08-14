@@ -2,11 +2,11 @@
 
 You do not need to download both files. Regular users should download and install the KoduSetup.EXE file. The KoduSetup.MSI file is for system administrators installing Kodu via SCCM. 
 
-## Latest Version
+## Latest Version : 1.5.53.0
 
-[KoduSetup_1.5.53.0.exe](https://kodugamelab.blob.core.windows.net/blob/Builds/KoduSetup_1.5.53.0.exe)
+[KoduSetup.EXE](https://kodugamelab.blob.core.windows.net/blob/Builds/KoduSetup_1.5.53.0.exe)
 
-[KoduSetup_1.5.53.0.msi](https://kodugamelab.blob.core.windows.net/blob/Builds/KoduSetup_1.5.53.0.msi)
+[KoduSetup.MSI](https://kodugamelab.blob.core.windows.net/blob/Builds/KoduSetup_1.5.53.0.msi)
 
 ## Legacy Versions
 If you need a specific version of Kodu, email <KoduSupport@infiniteinstant.com>.  I have most of the older versions and will make them available as needed.
