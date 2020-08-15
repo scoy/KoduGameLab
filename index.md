@@ -4,7 +4,7 @@ Kodu originated as a project in Microsoft Research. The original target platform
 
 The goal for Kodu has always been to be as easy as possible for new users. Guided by this goal, we've tended to design new features so that they are simple and understandable rather than more complex and complete.
 
-# [Download Kodu](https://scoy.github.io/KoduGameLab/downloads)
+## [Download Kodu](https://scoy.github.io/KoduGameLab/downloads)
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
