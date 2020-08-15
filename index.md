@@ -1,39 +1,10 @@
-## Welcome to GitHub Pages
+Kodu Game Lab is a 3D game development environment that is designed to teach kids basic programming principles. Kodu allows creators to build the world's terrain, populate it with characters and props, and then program their behaviors and games rules in a bespoke visual programming language.
 
-You can use the [editor on GitHub](https://github.com/scoy/KoduGameLab/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Kodu originated as a project in Microsoft Research. The original target platform was the Xbox 360 using C3, XNA, and releasing via the Indie Games Channel. The choice of releasing on the Xbox informed much of the early UI development since everything needed to be done using a game controller. Since porting to the PC, support for keyboard, mouse, and touch have been added.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The goal for Kodu has always been to be as easy as possible for new users. Guided by this goal, we've tended to design new features so that they are simple and understandable rather than more complex and complete.
 
-### Markdown
+# [Download Kodu](https://scoy.github.io/KoduGameLab/downloads)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/scoy/KoduGameLab/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
-
-[Kodu Downloads](https://scoy.github.io/KoduGameLab/downloads)
+## Questions?
+For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
