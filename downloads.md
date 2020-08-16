@@ -9,7 +9,7 @@ You do not need to download both files. Regular users should download and instal
 [KoduSetup.MSI](https://kodugamelab.blob.core.windows.net/blob/Builds/KoduSetup_1.5.53.0.msi)
 
 ## Legacy Versions
-If you need a specific version of Kodu, email <KoduSupport@infiniteinstant.com>.  I have most of the older versions and will make them available as needed.
+If you need a specific version of Kodu, email <KoduSupport@InfiniteInstant.com>.  I have most of the older versions and will make them available as needed.
 
 ## System Requirements
 ### Supported Operating Systems
