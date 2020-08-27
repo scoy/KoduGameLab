@@ -1,3 +1,10 @@
+---
+title: Kodu Game Lab
+subtitle: 3D game programming for kids.
+layout: page
+show_sidebar: false
+---
+
 layout: page
 title: "Kodu Game Lab"
 subtitle: "Something interesting..."
@@ -12,3 +19,10 @@ The goal for Kodu has always been to be as easy as possible for new users. Guide
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
+
+```yml
+title: Kodu Game Lab
+subtitle: 3D game programming for kids.
+layout: page
+show_sidebar: false
+```
