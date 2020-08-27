@@ -1,54 +1,14 @@
----
-title: Bulma Clean Theme
-subtitle: This is the demo site for Bulma Clean Theme
 layout: page
-callouts: home_callouts
-show_sidebar: true
----
+title: "Kodu Game Lab"
+subtitle: "Something interesting..."
 
-# Bulma Clean Theme demo website
+Kodu Game Lab is a 3D game development environment that is designed to teach kids basic programming principles. Kodu allows creators to build the world's terrain, populate it with characters and props, and then program their behaviors and games rules in a bespoke visual programming language.
 
-This website showcases the options for the Bulma Clean theme. The theme is available as a ruby gem or can be used with GitHub pages. 
+Kodu originated as a project in Microsoft Research. The original target platform was the Xbox 360 using C#, XNA, and releasing via the Indie Games Channel. The choice of releasing on the Xbox informed much of the early UI development since everything needed to be done using a game controller. Since porting to the PC, support for keyboard, mouse, and touch have been added.
 
-[![Gem Version](https://badge.fury.io/rb/bulma-clean-theme.svg)](https://badge.fury.io/rb/bulma-clean-theme)
-![Gem](https://img.shields.io/gem/dt/bulma-clean-theme.svg)
+The goal for Kodu has always been to be as easy as possible for new users. Guided by this goal, we've tended to design new features so that they are simple and understandable rather than more complex and complete.
 
-## Ruby Gem
+## [Download Kodu](https://scoy.github.io/KoduGameLab/downloads)
 
-The ruby gem is available on the Ruby Gems website at the following location. [https://rubygems.org/gems/bulma-clean-theme](https://rubygems.org/gems/bulma-clean-theme)
-
-## GitHub Pages
-
-The theme can be used with GitHub Pages bu setting the `remote_theme` in your Jekyll sites `_config.yml`
-
-```yml
-remote_theme: chrisrhymes/bulma-clean-theme
-```
-
-## Instructions
-
-For full instructions, please see the Readme at the GitHub repo:
-[https://github.com/chrisrhymes/bulma-clean-theme/blob/master/README.md](https://github.com/chrisrhymes/bulma-clean-theme/blob/master/README.md)
-
-## Page Layouts
-
-This demo site showcases the available page layout options.
-
-* Page With Sidebar
-* Page Without Sidebar
-* Page With Menubar
-* Page With Tabs
-* Page Without Footer
-* Page Without Hero
-* Page With Contents
-* Landing Page With Callouts
-* Sponsors Page
-* Image Gallery
-* Blog
-* Post
-
-## Supported By JetBrains
-
-JetBrains have kindly provided an Open Source licence to aid in the future development of Bulma Clean Theme.
-
-[![JetBrains](img/jetbrains-variant-4.svg)](https://www.jetbrains.com/?from=bulma-clean-theme)
+## Questions?
+For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
