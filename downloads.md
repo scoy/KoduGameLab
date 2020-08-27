@@ -1,3 +1,10 @@
+---
+title: Kodu Game Lab
+subtitle: 3D game programming for kids.
+layout: page
+show_sidebar: false
+---
+
 # Kodu Downloads
 
 You do not need to download both files. Regular users should download and install the KoduSetup.EXE file. The KoduSetup.MSI file is for system administrators installing Kodu via SCCM. 
