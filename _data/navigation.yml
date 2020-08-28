@@ -1,13 +1,13 @@
 - name: Blog
-  link: /blog/
+  link: /blog
 - name: FAQ
-  link: /faq/
+  link: /faq
 - name: Tips
-  link: /tips/
+  link: /tips
 - name: Resources
-  link: /resources/
+  link: /resources
 - name: Downloads
-  link: /downloads/
+  link: /downloads
 - name: About
-  link: /about/
+  link: /about
     
