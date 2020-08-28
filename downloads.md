@@ -3,8 +3,10 @@ title: Kodu Game Lab
 subtitle: 3D game programming for kids.
 layout: page
 show_sidebar: false
-menubar: main_menu
+menubar: MainMenu
 ---
+
+test 2
 
 # Kodu Downloads
 
