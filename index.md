@@ -6,10 +6,10 @@ show_sidebar: false
 hero_height: is-medium
 hero_link: /downloads
 hero_link_text: Get Kodu
-hero_image: /images/KoduLogoBW.png
+hero_image: images/KoduLogoBW.png
 ---
 
-test 6
+test 7
 
 Kodu Game Lab is a 3D game development environment that is designed to teach kids basic programming principles. Kodu allows creators to build the world's terrain, populate it with characters and props, and then program their behaviors and games rules in a bespoke visual programming language.
 
