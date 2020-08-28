@@ -3,6 +3,7 @@ title: Kodu Game Lab
 subtitle: 3D game programming for kids.
 layout: page
 show_sidebar: false
+menubar: menu
 ---
 
 Kodu Game Lab is a 3D game development environment that is designed to teach kids basic programming principles. Kodu allows creators to build the world's terrain, populate it with characters and props, and then program their behaviors and games rules in a bespoke visual programming language.

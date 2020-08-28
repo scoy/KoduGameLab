@@ -1,0 +1,15 @@
+- label: Menu
+  items:
+    - name: Home
+      link: /
+    - name: Blog
+      link: /blog/
+    - name: FAQ
+      link: /faq/
+    - name: Tips
+      link: /tips/
+    - name: Resources
+      link: /resources/
+    - name: About
+      link: /about/
+    
