@@ -7,7 +7,7 @@ hero_link: /downloads
 hero_text: Get Kodu
 ---
 
-test 12
+test 13
 
 <div id="kodu">
   <h1>
@@ -21,6 +21,10 @@ Kodu lets kids create games on Windows PCs via a simple visual programming langu
 Since Kodu's introduction in 2009, we have visited the White House, teamed up with great groups like NCWIT and DigiGirlz, inspired academic research and been the subject of a book (Kodu for Kids).
 
 Kodu for the PC is available to [download](https://scoy.github.io/KoduGameLab/downloads/) for free.
+
+See other [KoduTeam videos on YouTube](https://www.youtube.com/user/KoduTeam)
+
+[![](../images/YouTubeLogo.png)](https://www.youtube.com/user/KoduTeam)
 
 ## System Requirements
 ### Supported Operating Systems
