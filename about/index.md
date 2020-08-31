@@ -3,11 +3,12 @@ title: Kodu Game Lab
 subtitle: 3D game programming for kids.
 layout: page
 show_sidebar: false
+hero_height: is-medium
 hero_link: /downloads
-hero_text: Get Kodu
+hero_link_text: Get Kodu
 ---
 
-test 13
+test 14
 
 <div id="kodu">
   <h1>
