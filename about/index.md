@@ -7,7 +7,16 @@ hero_link: /downloads
 hero_text: Get Kodu
 ---
 
-test 11
+test 12
+
+```
+  Embed vido link.
+```
+<div id="kodu">
+  <h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3sVnEt96HOA" frameborder="0" allowfullscreen=""></iframe>
+  </h1>
+</div>
 
 ## What is Kodu?
 Kodu lets kids create games on Windows PCs via a simple visual programming language. Kodu can be used to teach creativity, problem solving, storytelling, as well as programming. Anyone can use Kodu to make a game, young children as well as adults with no design or programming skills.
