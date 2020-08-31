@@ -4,6 +4,7 @@ subtitle: 3D game programming for kids.
 layout: page
 show_sidebar: false
 hero_link: /downloads
+hero_text: Get Kodu
 ---
 
 test 11
