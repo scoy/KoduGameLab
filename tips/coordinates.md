@@ -11,7 +11,7 @@ test 18
 [Home](..)/[Tips](../Tips/)/[Coordinates and Snap-to-Grid](.)
 
 
-![Coordinates](snap5.png)
+![Coordinates](tips/snap5.png)
 
 ## Coordinates
 Coordinates numerically represent a cursor's location in a Kodu world. The coordinates are based on a grid where two lines or axes intersect at the origin point. 
