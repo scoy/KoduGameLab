@@ -8,7 +8,7 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 20
+test 26
 
 <div class="columns is-multiline">
         <div class="column is-12">
@@ -20,7 +20,7 @@ test 20
             <div class="card">
                 <div class="card-image">
                     <figure class="image ">
-                        <img src="https://scoy.github.io/KoduGameLab/tips/printkode2.png" alt="Print Kode">
+                        <img src="https://scoy.github.io/KoduGameLab/tips/print_kode_small.png" alt="Print Kode">
                     </figure>
                 </div>
                 <div class="card-content">
@@ -39,7 +39,7 @@ test 20
             <div class="card">
                 <div class="card-image">
                     <figure class="image ">
-                        <img src="https://scoy.github.io/KoduGameLab/tips/Snap5.png" alt="Coordinates and Snap-to-Grid">
+                        <img src="https://scoy.github.io/KoduGameLab/tips/snap_small.png" alt="Coordinates and Snap-to-Grid">
                     </figure>
                 </div>
                 <div class="card-content">
