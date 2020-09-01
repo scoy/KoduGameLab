@@ -1,6 +1,6 @@
 - title: Tips and Tricks
   images:
-    - link: Snap5.png
+    - link: tips/Snap5.png
       alt: Coordinates and Snap-to-Grid
       description: 
         Coordinates and snap-to-grid Kodu allows you to view the cursor's coordinates as well as snap-to-grid terrain.
