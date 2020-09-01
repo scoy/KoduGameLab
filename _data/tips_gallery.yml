@@ -1,12 +1,13 @@
 - title: Tips and Tricks
   images:
-    - link: https://scoy.github.io/KoduGameLab/tips/Snap5.png
-      alt: Coordinates and Snap-to-Grid
-      description: 
-        [Coordinates and Snap-to-Grid](tips/coordinates) Kodu allows you to view the cursor's coordinates as well as snap-to-grid terrain.
       ratio: is-16by9
+    - link: tips/printkode2.png
+      alt: Print Kode
+      description:
+        [Print Kode](tips/coordinates)  Kodu has a feature that allows you to view the game's code written for the entire world. 
     - link: tips/Snap5.png
       alt: Coordinates and Snap-to-Grid
       description:
         [Coordinates and Snap-to-Grid](tips/coordinates) Kodu allows you to view the cursor's coordinates as well as snap-to-grid terrain.
-      ratio: is-16by9
+
+
