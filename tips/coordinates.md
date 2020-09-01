@@ -6,9 +6,9 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 20
+test 21
 
-[Home](..)/[Tips](../Tips/)/[Coordinates and Snap-to-Grid](.)
+[Home](..)/[Tips](.)/Coordinates and Snap-to-Grid
 
 
 ![Coordinates](tips/snap5.png)
