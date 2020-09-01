@@ -11,6 +11,46 @@
     - link: tips/recenter_small.png
       alt: Re-center Camera
       description:
-        Re-Center Camera Kodu allows you to re-center the camera in edit mode when it gets "lost". 
+        Re-Center Camera Kodu allows you to re-center the camera in edit mode when it gets "lost".
+    - link: tips/screenshot_small.jpg
+      alt: Screenshots
+      description:
+        Screenshots Kodu allows you to capture a screenshot in the kode editor with the cursor, helps overlays and remove background.
+    - link: tips/language_small.png
+      alt: Language
+      description:
+        Language Kodu allows you to control which language is used.
+    - link: tips/score_visibility_small.jpg
+      alt: Score Visibility
+      description:
+        Score Visibility Kodu allows you to control how prominent the display will be for scoring events. Score Visibility Loud Labeled allow you to name a scoreboard.
+    - link: tips/glyphs_small.png
+      alt: Secret Glyph Codes
+      description:
+        Secret Glyph Codes Kodu allows you to write world or level descriptions with pictures.
+    - link: tips/sky_small.png
+      alt: Sky
+      description:
+        Sky Kodu allows you to create a mood for your game with Sky settings.
+    - link: tips/lighting_small.png
+      alt: Lighting
+      description:
+        Lighting Kodu allows you to create a mood for your game with Lighting settings.
+    - link: tips/gui_button_small.png
+      alt: GUI Button Visibility
+      description:
+        GUI Button Visibility Kodu allows you to add buttons to your games with optional labels.
+    - link: tips/export_world_small.png
+      alt: Export World
+      description:
+        Export Worlds Kodu allows you to save your Kodu game to your computer's hard drive or a USB stick.
+    - link: tips/creatables_small.png
+      alt: Creatables
+      description:
+        Creatables Kodu allows you to make a creatable objects which can be programmed and spawned in your game as needed.
+    - link: tips/start_small.png
+      alt: Start Game With
+      description:
+        Start Game With Kodu allows you to display the game description and/or a countdown when starting a game.
 
 
