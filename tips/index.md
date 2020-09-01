@@ -25,7 +25,7 @@ test 26
                 </div>
                 <div class="card-content">
                     <div class="content">
-                        <p>Print Kode Kodu has a feature that allows you to view the game’s code written for the entire world.</p>
+                        <p><b>Print Kode</b> Kodu has a feature that allows you to view the game’s code written for the entire world.</p>
 
                     </div>
 
@@ -44,7 +44,7 @@ test 26
                 </div>
                 <div class="card-content">
                     <div class="content">
-                        <p>Coordinates and Snap-to-Grid Kodu allows you to view the cursor’s coordinates as well as snap-to-grid terrain.</p>
+                        <p><b>Coordinates and Snap-to-Grid</b> Kodu allows you to view the cursor’s coordinates as well as snap-to-grid terrain.</p>
 
                     </div>
 
