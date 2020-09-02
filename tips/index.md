@@ -54,7 +54,7 @@ test 27
     </div>
 
     <div class="column is-4-desktop is-6-tablet">
-        <a href="https://scoy.github.io/KoduGameLab/tips/recenter">
+        <a href="https://scoy.github.io/KoduGameLab/tips/center">
         <div class="card">
             <div class="card-image">
                 <figure class="image ">
@@ -77,7 +77,7 @@ test 27
         <div class="card">
             <div class="card-image">
                 <figure class="image ">
-                    <img src="https://scoy.github.io/KoduGameLab/tips/screenshot_small.png" alt="Screenshots">
+                    <img src="https://scoy.github.io/KoduGameLab/tips/screenshot_small.jpg" alt="Screenshots">
                 </figure>
             </div>
             <div class="card-content">
@@ -115,7 +115,7 @@ test 27
         <div class="card">
             <div class="card-image">
                 <figure class="image ">
-                    <img src="https://scoy.github.io/KoduGameLab/tips/score_visibility_small.png" alt="Score Visibility">
+                    <img src="https://scoy.github.io/KoduGameLab/tips/score_visibility_small.jpg" alt="Score Visibility">
                 </figure>
             </div>
             <div class="card-content">
@@ -187,11 +187,11 @@ test 27
     </div>
 
     <div class="column is-4-desktop is-6-tablet">
-        <a href="https://scoy.github.io/KoduGameLab/tips/gui_button">
+        <a href="https://scoy.github.io/KoduGameLab/tips/gui_buttons">
         <div class="card">
             <div class="card-image">
                 <figure class="image ">
-                    <img src="https://scoy.github.io/KoduGameLab/tips/gui_button_small.png" alt="GUI Buttons">
+                    <img src="https://scoy.github.io/KoduGameLab/tips/gui_buttons_small.png" alt="GUI Buttons">
                 </figure>
             </div>
             <div class="card-content">
