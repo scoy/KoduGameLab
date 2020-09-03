@@ -27,7 +27,7 @@ In addition to showing the coordinates, F3 also enables the snap-to-grid functio
 ## See also
 [Re-Center Camera](center), [Print Kode](print_kode), [Screenshots](screenshot) 
 
-Lessons
+## Lessons
 Growing Squares, Surface Area and Volume, Placing and Programming Items, Data
 
 
