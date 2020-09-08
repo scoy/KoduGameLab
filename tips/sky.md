@@ -17,6 +17,8 @@ The sky control is found in the World Settings menu which is on the far right wh
 Scroll down to find the Sky Settings control and set the value you want.<br>
 ![Sky Settings](sky.png)
 
+For the best effect, experiment with combining different lights and sky combinations.
+
 ## See Also
 [Lighting](lighting), [Start Game With](start)
 
