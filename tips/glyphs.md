@@ -67,7 +67,8 @@ You can also display keyboard keys like this:
 ![Key Caps](keycaps.png)<br>
 To display a key, wrap it in brackets.  For the image we used **[A]**, **[D]**, **[W]**, and **[space]**.
 
-
+## See Also
+[Print Kodu](print_kode), [Start Game With](start)
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
