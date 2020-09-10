@@ -8,8 +8,6 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 14
-
 <div id="kodu">
   <h1>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/3sVnEt96HOA" frameborder="0" allowfullscreen=""></iframe>

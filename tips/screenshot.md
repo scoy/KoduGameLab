@@ -8,7 +8,6 @@ hero_height: is-small
 
 [Home](..)/[Tips](.)/Screenshots
 
-
 ![Screenshot](screenshot.jpg)
 
 ## Kode Screenshot

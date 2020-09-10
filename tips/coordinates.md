@@ -6,10 +6,7 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 28
-
 [Home](..)/[Tips](.)/Coordinates and Snap-to-Grid
-
 
 ![Coordinates](snap.png)
 
@@ -29,7 +26,6 @@ In addition to showing the coordinates, F3 also enables the snap-to-grid functio
 
 ## Lessons
 Growing Squares, Surface Area and Volume, Placing and Programming Items, Data
-
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.

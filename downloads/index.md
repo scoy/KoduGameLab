@@ -5,8 +5,6 @@ layout: page
 show_sidebar: false
 ---
 
-test 10
-
 # Kodu Downloads
 
 You do not need to download both files. Regular users should download and install the KoduSetup.EXE file. The KoduSetup.MSI file is for system administrators installing Kodu via SCCM. 

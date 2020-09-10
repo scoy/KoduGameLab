@@ -6,8 +6,6 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 26
-
 [Home](..)/[Tips](.)/Sky
 
 Use the sky settings to control the color of the background of your game.  Use this to set the mood, control day and night, or compliment your game's location.

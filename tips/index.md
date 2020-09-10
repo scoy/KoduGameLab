@@ -8,8 +8,6 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 27
-
 <div class="columns is-multiline">
     <div class="column is-12">
         <p class="title is-3 has-text-centered">Tips and Tricks</p>

@@ -6,8 +6,6 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 26
-
 [Home](..)/[Tips](.)/Lighting
 
 ![Lighitng](lighting.png)
@@ -23,7 +21,6 @@ For the best effect, experiment with combining different lights and sky combinat
 
 ## See Also
 [Sky](sky), [Start Game With](start)
-
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.

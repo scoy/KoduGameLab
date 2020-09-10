@@ -6,8 +6,6 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 26
-
 [Home](..)/[Tips](.)/Secret Glyph Codes
 
 ## Secret Glyph Codes (emoji for Kodu)

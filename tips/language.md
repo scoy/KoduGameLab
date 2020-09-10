@@ -6,8 +6,6 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-27
-
 [Home](..)/[Tips](.)/Language
 
 The languages menu can be found by selecting **Options** from the **Main Menu**.

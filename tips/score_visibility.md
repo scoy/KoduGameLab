@@ -6,10 +6,7 @@ show_sidebar: false
 hero_height: is-small
 ---
 
-test 26
-
 [Home](..)/[Tips](.)/Score Visibility
-
 
 ![Score Visibility](score_visibility.jpg)
 
