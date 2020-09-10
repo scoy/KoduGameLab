@@ -22,7 +22,7 @@ When editing a Kodu world, press F3 to display the coordinates of your cursor. C
 In addition to showing the coordinates, F3 also enables the snap-to-grid functionality for placing objects.  This is even more useful than seeing the coordinates so it should be called out.  It also causes the terrain raising and lowering to happen in 1-unit increments instead of in a smooth, continuous manner.
 
 ## See also
-[Re-Center Camera](center), [Print Kode](print_kode), [Screenshots](screenshot) 
+[Re-Center Camera](center), [Print Kode](print_kode), [Screenshots](screenshots) 
 
 ## Lessons
 Growing Squares, Surface Area and Volume, Placing and Programming Items, Data
