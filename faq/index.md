@@ -6,10 +6,9 @@ show_sidebar: false
 hero_height: is-medium
 hero_link: /downloads
 hero_link_text: Get Kodu
-gallery: tips_gallery
 ---
 
-test 6
+test 7
 
 # FAQ
 
