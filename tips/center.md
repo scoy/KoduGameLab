@@ -44,7 +44,7 @@ Shoulder buttons control zoom.
 
 ## Lessons
 
-Growing Squares
+[Growing Squares](../resources/growing_squares)
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.

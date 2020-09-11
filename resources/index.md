@@ -8,7 +8,7 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 7
+test 8
 
 ## Resources
 
@@ -33,8 +33,8 @@ Kodu lets kids create games on Windows PCs via a simple visual programming langu
 ## Other Resources:
 
 [Tips and Tricks](../tips)<br>
-[Research](research)<br>
-[Videos](videos)
+[Research](#research)<br>
+[Videos](#videos)
 <br><br>
 
 ---
@@ -45,34 +45,34 @@ Kodu lets kids create games on Windows PCs via a simple visual programming langu
 
 Explore mathematical problems and examine relationships among data. Create and interact with objects within a three-dimensional world to study algebraic and geometric concepts.
 
-Lesson 1: Growing Squares
+[Lesson 1: Growing Squares](growing_squares)<br>
 Learn to describe and analyze the pattern using math sentences and relationships when given incremental changes in the area of a square.
 
-Lesson 2: Length, Width, Area, and Perimeter
+[Lesson 2: Length, Width, Area, and Perimeter]()<br>
 Learn to create a three-dimensional object from two-dimensional representations when given the length, width, and height measurements for quadrilaterals.
 
-Lesson 3: Area, Perimeter, and Volume
+[Lesson 3: Area, Perimeter, and Volume]()<br>
 Learn to describe the property with the appropriate standard units when given a measure of length, width, height, surface area, perimeter, and volume. 
 
-Lesson 4: Surface Area and Volume
+[Lesson 4: Surface Area and Volume]()<br>
 Learn to describe the change as a fraction of the original shape when given a change to a shape.
 
-Lesson 5: Obstacle Course
+[Lesson 5: Obstacle Course]()<br>
 Learn represent the situation, analyze the resulting data, and display the data in a table or graph when given a scenario.
 
-Lesson 6: Placing and Programming Items
+[Lesson 6: Placing and Programming Items]()<br>
 Learn to represent an object as a three-dimensional shape in a coordinate plane when given an object’s properties such as length, width, height, surface area, volume, and location. 
 
-Lesson 7: Timing and Winning
+[Lesson 7: Timing and Winning]()<br>
 Learn to plot and model the shortest paths between the locations using a computer simulation when given multiple target locations and obstacles.
 
-Lesson 8: Double the Items
+[Lesson 8: Double the Items]()<br>
 Learn to design an investigation to determine the effect on the time it takes to complete the retrieval of the items when given an increase in target items.
 
-Lesson 9: Data
+[Lesson 9: Data]()<br>
 Learn to sample a population to collect performance data on the task.
 
-Lesson 10: Showcasing Creativity
+[Lesson 10: Showcasing Creativity]()<br>
 Learn to collect data, analyze it, and report your findings.
 
 ---
@@ -144,5 +144,8 @@ Learn to collect data, analyze it, and report your findings.
 <a name="videos"></a>
 ## Videos
 
+---
+
 <a name="research"></a>
 ## Research
+
