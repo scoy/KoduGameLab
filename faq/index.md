@@ -8,7 +8,7 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 8
+test 9
 
 # FAQ
 
@@ -56,7 +56,7 @@ Currently Kodu supports the following languages:  Arabic, Basque, Chinese (simpl
 
 To select the current language, choose “Options” from the Main Menu, scroll down to the “Language” tile, and select the language you want.   Kodu will need to be restarted for the language change to take effect.
 
-See also: [Language Tip](,,/tips/language.html)
+See also: [Language Tip](,,/tips/language)
 
 ## Can you translate Kodu for a new language?
 All the translations for Kodu have been done by volunteers in our community.  Because of this, some of the translations may be incomplete.  If you would like to help fill in missing parts of a translation or take on a new language we’d love your help.  The first step is to download this document explaining the translation process: 
@@ -78,7 +78,7 @@ To transfer games between machines you have 2 options:
 1. Share the game to the community and then download it onto the new PC.
 2. Use the “Export” option.  This will create a file with the extension .Kodu2.  You can save this on a USB drive.  On the target machine, insert the USB drive and double-click the file.  This will launch Kodu and import the file.  
  
-See also: [Export World Tip](,,/tips/export_world.html)
+See also: [Export World Tip](,,/tips/export_world)
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
