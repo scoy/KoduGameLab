@@ -8,7 +8,7 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 6
+test 7
 
 ## Resources
 
@@ -18,17 +18,17 @@ Kodu lets kids create games on Windows PCs via a simple visual programming langu
 
 ## Featured Resources:
 
-[Applied Algebra, Geometry, and Data Collection with Computer Science](applied)<br>
-[BBC micro:bit and Kodu Interact](microbit)<br>
-[Carnegie Mellon University Curriculum](cmu)<br>
-[Design Process and Computer Science for Camps](design_camps)<br>
-[Design process and Computer Science](design_process)<br>
-[Game Design Course](game_design)<br>
-[Life Science and Ecology with Computer Science](life_science)<br>
-[Lynda.com Curriculum, Kodu for Kids Textbook, and connect with Kodu Teachers](lynda)<br>
-[PlanetKodu Classroom Kit](planetkodu)<br>
-[Space Science and Mars with Computer Science](space)<br>
-[Touch Version of Kodu Curriculum](touch)<br>
+[Applied Algebra, Geometry, and Data Collection with Computer Science](#applied)<br>
+[BBC micro:bit and Kodu Interact](#microbit)<br>
+[Carnegie Mellon University Curriculum](#cmu)<br>
+[Design Process and Computer Science for Camps](#design_camps)<br>
+[Design process and Computer Science](#design_process)<br>
+[Game Design Course](#game_design)<br>
+[Life Science and Ecology with Computer Science](#life_science)<br>
+[Lynda.com Curriculum, Kodu for Kids Textbook, and connect with Kodu Teachers](#lynda)<br>
+[PlanetKodu Classroom Kit](#planetkodu)<br>
+[Space Science and Mars with Computer Science](#space)<br>
+[Touch Version of Kodu Curriculum](#touch)<br>
 
 ## Other Resources:
 
