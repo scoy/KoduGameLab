@@ -13,7 +13,7 @@ hero_height: is-small
 ## Growing Squares
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Math](m.png)
 
-* [Lesson 1: Growing Squares](6_Kodu_Curriculum_Math_Module.pdf#page=11>)
+* [Lesson 1: Growing Squares](6_Kodu_Curriculum_Math_Module.pdf#page=11)
 * Student Ages: 8-14 years old
 * Activity Time: 50 minutes
 * Activity Level: Beginner Coder
@@ -21,8 +21,8 @@ hero_height: is-small
 ### Prerequisites
 * Download and Installation of Kodu
 * Lesson 1: Print From Curriculum Guide:  
-* Clock Buddies  (1 per student)
-* 
+  * [Clock Buddies](6_Kodu_Curriculum_Math_Module.pdf#page=13)  (1 per student)
+
 ### Learning Objectives
 * Students will describe and analyze the pattern using math sentences and relationships when given incremental changes in the area of a square.
 * Students will represent conditions and consequences as a When...Do... statement in Kodu
@@ -36,22 +36,22 @@ hero_height: is-small
 
 ### Student Activities
 <a name="activator"></a>
-**Activator**<br>
+[**Activator**](6_Kodu_Curriculum_Math_Module.pdf#page=12)<br>
 Students will fill out their clock buddies sheets in order to have a ready set of partners to work with. In clock buddies, students set up partnerships with a number of students. Student A will go to student B and ask them if they have a 12 o'clock spot open. If student B does, then they will exchange names on their sheets.<br>
 *Subjects: Math, Computer Science, Digital Technology, Engineering, 21st Century Learning*
 
 <a name="nav"></a>
-**Navigating the Main Page and Selecting an Empty World**<br>
+[**Navigating the Main Page and Selecting an Empty World**](6_Kodu_Curriculum_Math_Module.pdf#page=14)<br>
 Students will learn the Main Page of Kodu, how to navigate the menu, and what each option represents. Students will learn to open a new world.
 *Subjects: Subjects: Math, Computer Science, Digital Technology, Engineering, 21st Century Learning*
 
 <a name="adding_land"></a>
-**Adding Land and Growing Squares**<br>
+[**Adding Land and Growing Squares**](6_Kodu_Curriculum_Math_Module.pdf#page=15)<br>
 Students will learn add land in Kodu and have time to practice. Students will choose the paintbrush in the toolbar. Students will select the appropriate landscape material by clicking on the materials icon. Students will change the brush size. Students will learn to orbit the camera to an overhead view. Students will learn to paint larger areas of land. Students will learn to erase land.
 *Subjects: Subjects: Math, Computer Science, Digital Technology, Engineering, 21st Century Learning*
 
 <a name="growing_squares"></a>
-**Growing Squares and Adding Objects**<br>
+[**Growing Squares and Adding Objects**](6_Kodu_Curriculum_Math_Module.pdf#page=15)<br>
 Students will create a square that has two blocks on each side. Students will learn that the space available for placing objects is called area. Students will calculate the area of the 2 x 2 square. Students will record the area in a table. Students will add different objects to the area. Students will add objects to the area. Students will learn to change the brush size to 3 x 3 and predict the size of the next square. Students will record the new area (9). Students create a growing squares pattern up to 10 x 10 by continuing to create larger and larger squares and have students record the area of each square by counting the blocks that make up the square. Students analyze the data in the table and describe the pattern they saw in the growing squares display. Students age 8-10 should be able to predict the next element in a sequence by looking at a specific set of examples. By age 11-14, students should be able to generalize by reasoning about the structure of a pattern, such as "the area of a square with side N is N x N". Students will be able to describe the patterns below and determine the next number in the sequence.
 *Subjects: Subjects: Math, Computer Science, Digital Technology, Engineering, 21st Century Learning*
 
