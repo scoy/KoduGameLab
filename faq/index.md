@@ -8,8 +8,6 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 10
-
 # FAQ
 
 If you have any issues not answered by this FAQ or would like to suggest additional topics please email us directly at <KoduSupport@InfiniteInstant.com>.
@@ -63,7 +61,7 @@ All the translations for Kodu have been done by volunteers in our community.  Be
 [Kodu Localization](KoduLocalization.docx)  If you have any questions about the process or have some work you’d like to submit, email <KoduSupport@InfiniteInstant.com>.
 
 ## Kodu crashed. What should I do?
-The most common cause of issues running Kodu is bad graphics chipset drivers.  Many systems ship with older versions of the drivers which can fail.  So, the first thing to try is to go to your graphics chipset manufacturer’s web site, download and install the latest driver for your system.  If you need any help figuring out how to do this, please email us at KoduSupport@InfiniteInstant.com and we can help.
+The most common cause of issues running Kodu is bad graphics chipset drivers.  Many systems ship with older versions of the drivers which can fail.  So, the first thing to try is to go to your graphics chipset manufacturer’s web site, download and install the latest driver for your system.  If you need any help figuring out how to do this, please email us at <KoduSupport@InfiniteInstant.com> and we can help.
 
 If updating your graphics driver doesn’t solve the problem, then it’s most likely a problem with Kodu.  Please email us with information about the crash.  If possible please include the version of Kodu you have, the version of Windows you are using, and any information in the crash dialog.  For most crashes, Kodu will display a crash dialog with information about the crash.  This information can be cut and paste into the email.
 
