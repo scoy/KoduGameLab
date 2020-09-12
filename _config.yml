@@ -1,1 +1,4 @@
 remote_theme: chrisrhymes/bulma-clean-theme
+
+paginate: 5
+paginate_path: "/blog/page:num"
