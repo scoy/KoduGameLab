@@ -5,5 +5,3 @@ layout: blog
 show_sidebar: true
 ---
 
-test 13
-

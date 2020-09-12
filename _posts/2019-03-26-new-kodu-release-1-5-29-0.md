@@ -1,6 +1,6 @@
 ---
 title: New Kodu Release (1.5.29.0)
-description: New features and bug fixes.
+subtitle: New features and bug fixes.
 layout: post
 published: true
 show_sidebar: true
