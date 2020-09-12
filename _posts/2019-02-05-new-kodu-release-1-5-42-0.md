@@ -1,13 +1,13 @@
 ---
 title: New Kodu Release (1.5.42.0)
-description: New features and bug fixes.
+subtitle: New features and bug fixes.
 layout: post
 published: true
 show_sidebar: true
 author: "scoy"
 ---
 
-test 13
+Kodu now speaks Vietnamese!
 
 ## New features:
 

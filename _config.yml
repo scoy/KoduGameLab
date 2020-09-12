@@ -6,8 +6,9 @@ paginate_path: "/blog/page:num"
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts" # previously `post` in Jekyll 2.2.
+      path: ""
+      type: "posts"
     values:
       author: "scoy"
+      layout: post
       show_sidebar: true
