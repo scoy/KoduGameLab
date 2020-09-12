@@ -1,7 +1,7 @@
 ---
 title: New Kodu Release (1.5.47.0)
 subtitle: Critical fix for micro:bit users
-image: ../images/microbit.png
+image: https://scoy.github.io/KoduGameLab/images/microbit.png
 layout: post
 published: true
 show_sidebar: true
