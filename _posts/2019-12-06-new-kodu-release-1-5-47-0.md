@@ -7,7 +7,7 @@ show_sidebar: true
 author: "scoy"
 ---
 
-test 11
+test 12
 
 I normally wouldn’t put out a release so quickly after the last one, but we’ve got a severe issue to fix.  A change in how Windows reports the hardware devices it detects has completely broken our micro:bit code.  On the latest version of Windows, older versions of Kodu no longer detect any micro:bits.  This release fixes the problem.
 

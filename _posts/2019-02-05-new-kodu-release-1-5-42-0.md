@@ -1,13 +1,13 @@
 ---
 title: New Kodu Release (1.5.42.0)
-subtitle:
+subtitle: New features and bug fixes
 layout: post
 published: true
 show_sidebar: true
 author: "scoy"
 ---
 
-test 11
+test 12
 
 ## New features:
 
