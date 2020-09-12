@@ -5,5 +5,5 @@ layout: blog
 show_sidebar: false
 ---
 
-test 6
+test 7
 
