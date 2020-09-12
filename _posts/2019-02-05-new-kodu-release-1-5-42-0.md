@@ -3,10 +3,9 @@ title: New Kodu Release (1.5.42.0)
 subtitle:
 layout: post
 published: true
-author: scoy
 ---
 
-test 9
+test 10
 
 ## New features:
 

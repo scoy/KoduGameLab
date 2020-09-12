@@ -2,3 +2,12 @@ remote_theme: chrisrhymes/bulma-clean-theme
 
 paginate: 5
 paginate_path: "/blog/page:num"
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      author: "scoy"
+      show_sidebar: true
