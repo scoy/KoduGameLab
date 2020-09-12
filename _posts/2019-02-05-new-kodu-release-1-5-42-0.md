@@ -3,10 +3,10 @@ title: New Kodu Release (1.5.42.0)
 subtitle:
 layout: post
 published: true
-show_sidebar: false
+show_sidebar: true
 ---
 
-test 7
+test 8
 
 ## New features:
 

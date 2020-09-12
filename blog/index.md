@@ -2,8 +2,8 @@
 title: Kodu Game Lab
 subtitle: 3D game programming for kids.
 layout: blog
-show_sidebar: false
+show_sidebar: true
 ---
 
-test 7
+test 8
 
