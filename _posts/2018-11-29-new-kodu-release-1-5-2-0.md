@@ -11,7 +11,8 @@ A few new features and a bunch of bug fixes.  Have fun!
 
 ## New features:
 
-* Completely changed how movement is handled internally.  For the most part I’ve tried to keep the behavior of the characters the same or at least close to the same as they previously were.  Probably the most obvious effect of the changes is that we can now handle more complicated movement scenarios such as “mouse-look”.  Mouse-look is the name given to the control scheme used by most first person shooters.  Typically, the WASD keys are used to control relative movement while the mouse is used to control turning and shooting.  For example:![Mouse Look](https://scoy.github.io/KoduGameLab/images/mouse_look.jpg)
+* Completely changed how movement is handled internally.  For the most part I’ve tried to keep the behavior of the characters the same or at least close to the same as they previously were.  Probably the most obvious effect of the changes is that we can now handle more complicated movement scenarios such as “mouse-look”.  Mouse-look is the name given to the control scheme used by most first person shooters.  Typically, the WASD keys are used to control relative movement while the mouse is used to control turning and shooting.  For example:<br>
+![Mouse Look](https://scoy.github.io/KoduGameLab/images/mouse_look.jpg)
 <br>In this example, line 1 forces the camera to stay in first person mode. 
 <br><br>Line 2 maps the WASD keys to movement.  You could also use the arrow keys. 
 <br><br>Line 3 says that the mouse should control turning.  If you move the mouse to the right, the character will turn right, etc.
