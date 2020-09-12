@@ -7,7 +7,7 @@ show_sidebar: true
 author: "scoy"
 ---
 
-test 13
+Lots of new features and bug fixes.
 
 ## New Features
 
