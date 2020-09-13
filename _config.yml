@@ -32,3 +32,4 @@ defaults:
       author: "scoy"
       layout: post
       show_sidebar: true
+      hero_height: is-small
