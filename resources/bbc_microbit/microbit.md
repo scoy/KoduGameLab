@@ -35,24 +35,30 @@ the reset button again.
 
 ## Ideas to Get You Going
 
-<img src="movement.jpg" align="right"/><br>
-### Control Character Movement
-Kodu can read the micro:bit’s onboard accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
+<p>
+  <img src="movement.jpg" align="right"/><br>
+  <h3>Control Character Movement</h3>
+  Kodu can read the micro:bit’s onboard accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
+  
+  Note: To stop a character controlled by tilt, hold the micro:bit perfectly level.
+</p>
 
-Note: To stop a character controlled by tilt, hold the micro:bit perfectly level.
+<p>
+  <img src="shoot.jpg" align="left"/><br>
+  <h3>Shoot Projectiles</h3>
+  Kodu can read the two buttons on the face of the micro:bit labeled A and B. In this example, we bind the A button to the shoot action. This enables you to shoot a stream of blips when the button is pressed.
+</p>
 
-<img src="shoot.jpg" align="right"/><br>
-### Shoot Projectiles
-Kodu can read the two buttons on the face of the micro:bit labeled A and B. In this example, we bind the A button to the shoot action. This enables you to shoot a stream of blips when the button is pressed.
-
-<div id="kodu" align="right">
-  <h1>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
-  </h1>
-</div>
-
-### Scroll Text on the Screen
-Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.
+<p>
+  <div id="kodu" align="left">
+    <h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
+    </h1>
+  </div>
+  <h3>Scroll Text on the Screen</h3>
+  Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.
+  <img src="scroll_text.jpg" align="right"/><br>
+</p>
 
 ### Multiplayer Games
 In this example we’ve taken the rules from the previous examples and put them onto a single character. Then we made one change to each rule: adding a player tile.
