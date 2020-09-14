@@ -81,6 +81,38 @@ Learn to collect data, analyze it, and report your findings.
 ### BBC micro:bit and Kodu Interact
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Robotics](r.png)
 
+Kodu programming tiles allow interaction with the micro:bit. The user can control character movement using the accelerometer, jump and shoot with a button press, display animations and scrolling text on the screen, and interface with other devices through the IO pin
+
+[Resource. BBC micro:bit and Kodu](bbc_microbit/microbit)<br>
+Learn programming tiles that allows Kodu and the BBC micro:bit to interact.
+
+[Project 1: Capture Love](bbc_microbit/capture_love)<br>
+Create a Kodu World using the BBC micro:bit accelerometer and buttons, wired controller, or keyboard/mouse.
+
+[Project 2: Jump](bbc_microbit/jump)<br>
+Create a multi-player Kodu World using the BBC micro:bit, wired controller, or keyboard/mouse for Player 1 and Player 2.
+
+[Project 3: Reach Castle](bbc_microbit/reach_castle)<br>
+Create a Kodu World with game effects using the BBC micro:bit Show Pattern and Pattern.
+
+[Project 4: Bucket Toss](bbc_microbit/bucket_toss)<br>
+Create a Kodu World with using the BBC micro:bit shake, wired controller, or keyboard/mouse. 
+
+[Project 5: Twinkle](bbc_microbit/twinkle)<br>
+Create a complex Kodu World with game effects using the BBC micro:bit Show Pattern and Pattern.
+
+[Project 6: Underwater Explorer](bbc_microbit/underwater_explorer)<br>
+Create a storytelling Kodu world with using the BBC micro:bit, Say and Hear.
+
+[Project 7: Stoplight](bbc_microbit/stoplight)<br>
+Create a Kodu world to control the Sky in game using the BBC micro:bit PO and P1 on the BBC micro:bit and a photo-resistor.
+
+[Project 8: Finding Sputnik](bbc_microbit/finding_sputnik)<br> 
+Create a storytelling Kodu world using the BBC micro:bit PO and a photo-resistor that effects Kodu Say and Hear.
+
+[Project 9: Air Hockey](bbc_microbit/air_hockey)<br> 
+Create a multi-player Kodu world using the BBC micro:bit, wired controller, or keyboard.
+
 ---
 
 <a name="cmu"></a>
