@@ -72,7 +72,7 @@ Learn to design an investigation to determine the effect on the time it takes to
 [Lesson 9: Data](data)<br>
 Learn to sample a population to collect performance data on the task.
 
-[Lesson 10: Showcasing Creativity](showcasing_creativity)<br>
+[Lesson 10: Showcasing Creativity](showcasing_experience)<br>
 Learn to collect data, analyze it, and report your findings.
 
 ---

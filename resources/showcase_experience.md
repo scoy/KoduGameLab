@@ -50,7 +50,7 @@ Introduce with Big Questions for this Gallery Walk lesson on [Slide 2](8_Slides_
 *Subjects: Computer Science, Design Technology, Digital Literacy, 21st Century Learning
 Skills*
 
-[**Gallery Walk**]()
+[**Gallery Walk**](8_Lesson_Kodu_Makerspace.pdf#page=2)
 Students participate in a Gallery Walk. The teacher can display the Gallery Walk [Slide 4](8_Slides_Kodu_Makerspace.pdf#page=4).<br>
 *Subjects: Computer Science, Design Technology, Digital Literacy, 21st Century Learning Skills*
 
