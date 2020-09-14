@@ -55,14 +55,14 @@ the reset button again.
 <br><br><br><br><br>
 
 <p>
-  <div id="kodu" align="right">
+  <div id="kodu" align="left">
     <h1>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
     </h1>
   </div>
 
   <h3>Scroll Text on the Screen</h3>
-  Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.
+  Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.  See how it's done in the video above.
 </p>
 
 <p>
