@@ -57,13 +57,15 @@ the reset button again.
   </div>
   <h3>Scroll Text on the Screen</h3>
   Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.
-  <img src="scroll_text.jpg" align="right"/><br>
 </p>
 
-### Multiplayer Games
-In this example we’ve taken the rules from the previous examples and put them onto a single character. Then we made one change to each rule: adding a player tile.
-
-Do this for two characters using the Player 1 and Player 2 tiles, and you have a simple multiplayer game! Kodu supports up to four connected micro:bits.
+<p>
+  <img src="scroll_text.jpg" align="right"/><br>
+  <h3>Multiplayer Games</h3>
+  In this example we’ve taken the rules from the previous examples and put them onto a single character. Then we made one change to each rule: adding a player tile.
+  
+  Do this for two characters using the Player 1 and Player 2 tiles, and you have a simple multiplayer game! Kodu supports up to four connected micro:bits.
+</p>
 
 <img src="microbit_interface.jpg" align="right"/><br>
 ### Interface with the Real World
