@@ -35,43 +35,54 @@ the reset button again.
 
 ## Ideas to Get You Going
 
+
 <p>
-  <img src="movement.jpg" align="right"/><br>
+  <img src="movement.jpg" align="right" hspace="20"<br>
   <h3>Control Character Movement</h3>
-  Kodu can read the micro:bit’s onboard accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
+  Kodu can read the micro:bit’s on-board accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
   
   Note: To stop a character controlled by tilt, hold the micro:bit perfectly level.
 </p>
 
+<br><br><br>
+
 <p>
-  <img src="shoot.jpg" align="left"/><br>
+  <img src="shoot.jpg" align="left" hspace="20"/><br>
   <h3>Shoot Projectiles</h3>
   Kodu can read the two buttons on the face of the micro:bit labeled A and B. In this example, we bind the A button to the shoot action. This enables you to shoot a stream of blips when the button is pressed.
 </p>
 
+<br><br><br><br><br>
+
 <p>
-  <div id="kodu" align="left">
+  <div id="kodu" align="right">
     <h1>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
     </h1>
   </div>
+
   <h3>Scroll Text on the Screen</h3>
   Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.
 </p>
 
 <p>
-  <img src="scroll_text.jpg" align="right"/><br>
+  <img src="scroll_text.jpg" align="left" hspace="20"/><br>
   <h3>Multiplayer Games</h3>
   In this example we’ve taken the rules from the previous examples and put them onto a single character. Then we made one change to each rule: adding a player tile.
   
   Do this for two characters using the Player 1 and Player 2 tiles, and you have a simple multiplayer game! Kodu supports up to four connected micro:bits.
 </p>
 
-<img src="microbit_interface.jpg" align="right"/><br>
-### Interface with the Real World
-The micro:bit has three general-purpose connector “pins” located along the bottom edge, labeled 0, 1, and 2. Each of these pins can serve as an input or output. What you do with these pins is up to your imagination and ingenuity.
+<br><br><br><br><br>
 
-<br><br><br>
+<p>
+  <img src="microbit_interface.jpg" align="right" hspace="20"/><br>
+  <h3>Interface with the Real World</h3>
+  The micro:bit has three general-purpose connector “pins” located along the bottom edge, labeled 0, 1, and 2. Each of these pins can serve as an input or output. What you do with these pins is up to your imagination and ingenuity.
+</p>
+
+<br><br><br><br><br><br>
+
 ## Learn More
 * [The BBC micro:bit website](http://microbit.org/)
 * [Microsoft Research micro:bit website](http://research.microsoft.com/microbit)
