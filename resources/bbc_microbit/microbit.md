@@ -35,9 +35,19 @@ the reset button again.
 
 ## Ideas to Get You Going
 
+<p>
+  <div id="kodu" align="left">
+    <h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
+    </h1>
+  </div>
+
+  <h3>Scroll Text on the Screen</h3>
+  Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.  See how it's done in the video above.
+</p>
 
 <p>
-  <img src="movement.jpg" align="right" hspace="20"<br>
+  <img src="movement.jpg" align="right" hspace="20"/><br>
   <h3>Control Character Movement</h3>
   Kodu can read the micro:bit’s on-board accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
   
@@ -53,17 +63,6 @@ the reset button again.
 </p>
 
 <br><br><br><br><br>
-
-<p>
-  <div id="kodu" align="left">
-    <h1>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/4qwnOglsS3A" frameborder="0" allowfullscreen=""></iframe>
-    </h1>
-  </div>
-
-  <h3>Scroll Text on the Screen</h3>
-  Kodu can scroll text across the micro:bit’s LED display. In this example, we scroll the word “SCORE!” whenever one of our shots hits something.  See how it's done in the video above.
-</p>
 
 <p>
   <img src="scroll_text.jpg" align="left" hspace="20"/><br>
