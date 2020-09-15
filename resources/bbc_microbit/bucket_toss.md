@@ -30,7 +30,7 @@ hide_hero: true
   * [Project 1: Capture Love](capture_love)
   * [Project 2: Jump](jump)
   * [Project 3: Reach Castle](reach_castle)
-* 
+
 ![Get Started](connect_microbit.png)
 
 ### Learning Objectives

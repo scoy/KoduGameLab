@@ -37,7 +37,7 @@ hide_hero: true
 
 ### Contents
 * [Completed World: Reach Castle](https://worlds.kodugamelab.com/world/3o1HjffZE0uTTgvL0KCtuQ==)
-* [Completed Kode for Level: Reach Castle](Capture_Castle_Kodue_for_Level.pdf)
+* [Completed Kode for Level: Reach Castle](Capture_Castle_Kode_for_Level.pdf)
 * Project: Reach Castle (micro:bit show pattern, micro:bit pattern)
 
 ### Student Activities
