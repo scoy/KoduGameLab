@@ -47,7 +47,7 @@ the reset button again.
 </p>
 
 <p>
-  <img src="movement.jpg" align="right" hspace="20"/><br>
+  <img src="movement.jpg" align="left" hspace="20"/><br>
   <h3>Control Character Movement</h3>
   Kodu can read the micro:bit’s on-board accelerometer using the tilt tile. In this example, we pass the accelerometer value to the move tile as a directional input, allowing you to drive the character around the world by tilting the micro:bit different directions.
   
@@ -57,7 +57,7 @@ the reset button again.
 <br><br><br>
 
 <p>
-  <img src="shoot.jpg" align="left" hspace="20"/><br>
+  <img src="shoot.jpg" align="right" hspace="20"/><br>
   <h3>Shoot Projectiles</h3>
   Kodu can read the two buttons on the face of the micro:bit labeled A and B. In this example, we bind the A button to the shoot action. This enables you to shoot a stream of blips when the button is pressed.
 </p>
