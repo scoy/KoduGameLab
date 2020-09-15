@@ -116,8 +116,28 @@ Create a multi-player Kodu world using the BBC micro:bit, wired controller, or k
 ---
 
 <a name="cmu"></a>
-### Carnegie Mellon University Curriculum
+### David S. Touretzky of Carnegie Mellon University Curriculum
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
+
+Carnegie Mellon University Kodu Curriculum helps explain the observed program behavior in terms of the code and the “laws” of computation. Also, the curriculum helps predict program behavior from the code. Finally, the curriculum helps construct programs by applying design patterns and computational principles. [See more of David's Kodu Resources for Teachers](https://www.cs.cmu.edu/~dst/Kodu).
+
+[Module 1: Kodu intro; Eating apples in the Kodu world](eating_apples)
+Learn to navigate through a world by learning programming tiles and the rule editor.
+
+[Module 2: Color Filters with Pursue and Consume](color_filters)
+Learn programming tiles using the color filter "see" and "bumped" as well as "grab" actions to pick up an object.
+
+[Module 3: Indentation and scores; Do Two Things and Count Actions idioms](indentation_and_scores)
+Learn programming tiles using "eat" "score" "boom", and "give" actions. 
+
+[Module 4: Rule Ordering and Default Value](rule_ordering)
+Learn how rule order can be used to establish default values for an action.
+
+[Module 5: State machines; Show Page As Color idiom](state_machines) 
+Learn to create programs with multiple pages as well as state machine diagrams to represent complex programs.
+
+[Module 6: Basic paths; Follow the Yellow Brick Road idiom](basic_paths)
+Learn to create multiple paths as well as program characters with the "say" action and to follow a path.
 
 ---
 
