@@ -9,7 +9,7 @@ hero_height: is-small
 
 [![](https://www.kodugamelab.com/API/Thumbnail?world=S1H25ZyicEmv-_KT_DsaIQ==)](https://worlds.kodugamelab.com/world/S1H25ZyicEmv-_KT_DsaIQ==)
 
-## Eating Apples
+## Kodu Introduction; Eating apples in the Kodu world 
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
 Learn to navigate through a world by learning programming tiles and the rule editor.
