@@ -197,11 +197,39 @@ Learn to a Gallery Walk for peers, teachers and other guests as well as reflect 
 ### Game Design Course
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Math](m.png)
 
+Game Design Course is a self-learning, self-paced “Game Design” course, designed to run through five weeks.
+
+[Week 1: Getting Started with Kodu](getting_started_with_kodu)<br>
+Learn about Game Making with Kodu Game Lab and the informal process of game design.
+
+[Week 2: Rapid Prototyping](rapid_prototyping)<br>
+Learn about rapid prototyping by brainstorming, identifying risks, design patterns, and Kodu Game Lab Recipes.
+
+[Week 3: Game Mechanics](game_mechanics)<br>
+Learn about Game Mechanics - designing challenge and engagement.
+
+[Week 4: The Game Experience](game_experience)<br>
+Learn to develop a Game Experience: Theme and Story.
+
+[Week 5: Pushing the Boundaries](pusing_the_boundaries)<br>
+Learn about Pushing the Boundaries - Game of skill and chance using puzzles and probability.
+
 ---
 
 <a name="life_science"></a>
 ### Life Science and Ecology with Computer Science
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Science](s.png)
+
+"Water All Around Us" provides lessons themed around water and designed explore the ways in which water connects humans, animals and weather within ecosystems.
+
+[Lesson 1: Play: Water all around us](water_all_around_us)<br>
+Explore the important role that water plays in underwater animal ecosystems through the lens of the life of a cybersalmon (a Kodu style North American Sockeye Salmon)
+
+[Lesson 2: Remix: Water connects us all](water_connects_us_all)<br>
+Present a game world for players to observe as well as create their own salmon run game.
+
+[Lesson 3: Create: Water Cycle Model](water_cycle_model)<br>
+Construct a model showing the relationship that exists between bodies of water, currents, temperature, and weather patterns.
 
 ---
 
