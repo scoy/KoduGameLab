@@ -237,6 +237,20 @@ Construct a model showing the relationship that exists between bodies of water, 
 ### Lynda.com Curriculum, Kodu for Kids Textbook, and connect with Kodu Teachers
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
+Kodu can be taught by any teacher without any previous coding experience. Outside resources provide training videos, lesson plans, and starter worlds for educators, administrators, and students. |External References Only]
+
+[Lynda.com Kodu Curriculum](https://www.lynda.com/search?q=kodu)
+Learn how to add objects and characters; introduce game logic with Kodu's When/Do menus; and use properties like lighting, water, trees, and movable cameras. Lynn also covers advanced object-programming and property concepts, such as adding sounds, scoring, and titles to your game.
+
+[Kodu for Kids](https://www.amazon.com/Kodu-Kids-Official-Guide-Creating/dp/0789750767) 
+Kodu for Kids teaches you all you need to know to create great Kodu games that you can share with the world! Learn four start-to-finish example games for 1-Player Shooter; 2-Player Competition; Mission Quest; and Side-Scroller Experience.
+
+[Kodu Classroom Curriculum](https://koduclassroom.co.uk/)
+Learn to teach Kodu Basics; build a Mario Kart Kodu; deliver a Kodu Game Design Day; and use Kodu as a storytelling device.
+
+[Microsoft Educator Community](https://education.microsoft.com/#%7B%22TagCategories%22%3A%22%2C1190%2C%22%7D)
+Network with other Kodu Teachers. Learn about additional Kodu resources available written by the teacher, for the teacher.
+
 ---
 
 <a name="planetkodu"></a>
