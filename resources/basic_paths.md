@@ -1,6 +1,6 @@
 ---
 title: Resources
-subtitle: Data
+subtitle: Basic Paths
 show_sidebar: false
 hero_height: is-small
 ---

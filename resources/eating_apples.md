@@ -1,6 +1,6 @@
 ---
 title: Resources
-subtitle: Data
+subtitle: Kodu Introduction; Eating apples in the Kodu world
 show_sidebar: false
 hero_height: is-small
 ---

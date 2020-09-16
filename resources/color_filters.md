@@ -1,6 +1,6 @@
 ---
 title: Resources
-subtitle: Data
+subtitle: Color filters with Pursue and Consume 
 show_sidebar: false
 hero_height: is-small
 ---

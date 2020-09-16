@@ -1,6 +1,6 @@
 ---
 title: Resources
-subtitle: Data
+subtitle: Indentation and Scores
 show_sidebar: false
 hero_height: is-small
 ---
