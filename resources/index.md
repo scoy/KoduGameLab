@@ -121,22 +121,22 @@ Create a multi-player Kodu world using the BBC micro:bit, wired controller, or k
 
 Carnegie Mellon University Kodu Curriculum helps explain the observed program behavior in terms of the code and the “laws” of computation. Also, the curriculum helps predict program behavior from the code. Finally, the curriculum helps construct programs by applying design patterns and computational principles. [See more of David's Kodu Resources for Teachers](https://www.cs.cmu.edu/~dst/Kodu).
 
-[Module 1: Kodu intro; Eating apples in the Kodu world](eating_apples)
+[Module 1: Kodu intro; Eating apples in the Kodu world](eating_apples)<br>
 Learn to navigate through a world by learning programming tiles and the rule editor.
 
-[Module 2: Color Filters with Pursue and Consume](color_filters)
+[Module 2: Color Filters with Pursue and Consume](color_filters)<br>
 Learn programming tiles using the color filter "see" and "bumped" as well as "grab" actions to pick up an object.
 
-[Module 3: Indentation and scores; Do Two Things and Count Actions idioms](indentation_and_scores)
+[Module 3: Indentation and scores; Do Two Things and Count Actions idioms](indentation_and_scores)<br>
 Learn programming tiles using "eat" "score" "boom", and "give" actions. 
 
-[Module 4: Rule Ordering and Default Value](rule_ordering)
+[Module 4: Rule Ordering and Default Value](rule_ordering)<br>
 Learn how rule order can be used to establish default values for an action.
 
-[Module 5: State machines; Show Page As Color idiom](state_machines) 
+[Module 5: State machines; Show Page As Color idiom](state_machines)<br> 
 Learn to create programs with multiple pages as well as state machine diagrams to represent complex programs.
 
-[Module 6: Basic paths; Follow the Yellow Brick Road idiom](basic_paths)
+[Module 6: Basic paths; Follow the Yellow Brick Road idiom](basic_paths)<br>
 Learn to create multiple paths as well as program characters with the "say" action and to follow a path.
 
 ---
@@ -145,11 +145,51 @@ Learn to create multiple paths as well as program characters with the "say" acti
 ### Design Process and Computer Science for Camps
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
+Kodu Makerspace is a four-day camp of two hours per day. The camp series will explore the design process and cover skills needed to create worlds and games with Kodu Game Lab.
+
+[Session 1: Exploring Kodu Characters](exploring_kodu_characters)<br>
+This is a two-hour camp in which students will explore Kodu Game Lab by playing and then examining the character and action sequences of two games.
+
+[Session 2: Exploration and Modifying](exploration_and_modifying)<br>
+This is a two-hour camp in which students will take their first steps in creating game action with When… Do… programming constructs in a tutorial to create a more complex game.
+
+[Session 3: Collaborative Game Development](collaborative_game_development)<br>
+This is a two-hour camp in which students will begin transforming their game plans into a working game using the techniques they learned in Sessions 1 and 2.
+
+[Session 4: Presentation of Game Development](presentaion_of_game_development)<br>
+This is a two-hour camp in which students will finalize their games by incorporating ideas from the feedback session and adding directions for the user.
+
 ---
 
 <a name="design_process"></a>
 ### Design process and Computer Science
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
+
+Kodu Makerspace is a unit of eight, 50-minute lessons. The unit will explore the design process and computer science skills needed to create worlds and games.
+
+[Lesson 1: Managed Test Drive](managed_test_drive)<br>
+Learn to load and play a Kodu game as well as navigate the menus associated with characters.
+
+[Lesson 2: Guided Investigation](guided_investigation)<br>
+Learn coding and game development with a focus on character action and introductory programming concepts.
+
+[Lesson 3: Exploring Developer Experience, part 1](exploring_developer_experience_part_1)<br>
+Learn to play a more complex game and follow along with a demonstration to modify the characters and the action.
+
+[Lesson 4: Exploring Developer Experience, part 2](exploring_developer_experience_part_2)<br>
+Learn to develop a collaborative project to revise one of the Kodu games students have worked with during the past three lessons.
+
+[Lesson 5: Creative Collaboration](creative_collaboration)<br>
+Learn to transform game plans into a working game using the techniques they learned in lessons 1 through 4.
+
+[Lesson 6: Open-ended Developer Experience, part 1](open_ended_developer_experience_part_1)<br>
+Learn to share the first draft of a game, gather feedback, and assess the feedback for consideration in the next draft of the game.
+
+[Lesson 7: Open-ended Developer Experience, part 2](open_ended_developer_experience_part_2)<br>
+Learn to finalize a game by incorporating ideas from the feedback session and adding directions for the user.
+
+[Lesson 8: Showcase Experience](showcase_experience)<br>
+Learn to a Gallery Walk for peers, teachers and other guests as well as reflect on the coding experience.
 
 ---
 
