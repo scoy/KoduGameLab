@@ -237,7 +237,7 @@ Construct a model showing the relationship that exists between bodies of water, 
 ### Lynda.com Curriculum, Kodu for Kids Textbook, and connect with Kodu Teachers
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
-Kodu can be taught by any teacher without any previous coding experience. Outside resources provide training videos, lesson plans, and starter worlds for educators, administrators, and students. |External References Only]
+Kodu can be taught by any teacher without any previous coding experience. Outside resources provide training videos, lesson plans, and starter worlds for educators, administrators, and students. *External References Only*
 
 [Lynda.com Kodu Curriculum](https://www.lynda.com/search?q=kodu)
 Learn how to add objects and characters; introduce game logic with Kodu's When/Do menus; and use properties like lighting, water, trees, and movable cameras. Lynn also covers advanced object-programming and property concepts, such as adding sounds, scoring, and titles to your game.
@@ -280,23 +280,114 @@ This module provides nine (9) sessions: Intro to programming, adding objects, An
 ### Space Science and Mars with Computer Science
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Science](s.png)
 
+Kodu: Mars Edition shows what it is like to explore the surface of Mars, how to program an autonomous vehicle to scan and inspect unique features in the terrain, and allows students to recreate and simulate their experiences after researching a Mars landscape.
+
+[Resource. NASA and Kodu](bbc_microbit/microbit)<br>
+Learn programming tiles designed in partnership with NASA and Kodu Game Lab.
+
+[Lesson 1: Search and Explore Mars](search_and_explore_mars)<br> 
+Learn to determine the most effective set of commands to navigate a Rover across terrain to collect scientific data.
+
+[Lesson 2: Programming a Rover](programming_a_rover)<br>
+Learn to determine the most effective set of commands to program a Rover to move autonomously across terrain to collect scientific data.
+
+[Lesson 3: Mars Mission Simulation](mars_mission_simulation)<br>
+Learn to design a simulated Martian environment and program a Rover to explore Mars autonomously.
+
 ---
 
 <a name="touch"></a>
 ### Touch Version of Kodu Curriculum
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
+Kodu Touch Primer consisting of five, one hour experiences with Kodu Game Lab and targeted to those interested in learning about programing a Touch version of Kodu.
+
+[Lesson 1: Introduction to Touch Interface with Kodu](introduction_to_kodu_touch)
+Learn to navigate the Kodu world by using fingers to zoom in/out, orbit, drag, and pitch the camera.
+
+[Lesson 2: Placing and Customizing Objects](placing_and_customizing_objects)
+Learn to choose the appropriate tool for a task by selecting to either paint terrain or place an object.
+
+[Lesson 3: Koding Kodu](koding_kodu)
+Learn to instruct an object to perform a task based on an event-driven paradigm by using a When...Do... statement.
+
+[Lesson 4: Kodu Konundrum](kodu_konundrum)
+Learn to add tiles to a When… section to differentiate behavior based on an object’s characteristics.
+
+[Lesson 5: Kodu says “Yuck!”](kodu_says_yuck) 
+Learn to copy and modify a pre-existing algorithm to create a new behavior.
+
 ---
-
-
-
-
 
 <a name="videos"></a>
 ## Videos
+
+Use Kodu for the classroom. Browse through our featured Kodu video tutorials to make learning fun and easy.
+*External References Only*
+
+### Videos Getting Started
+* [Get Kodu](<https://www.youtube.com/watch?v=QmwxyL9Kw1s>), install Kodu
+* [Camera Controls](<https://www.youtube.com/watch?v=hDy6lEgb5Kk>), control the camera with gamepad
+* [Touch Interface](<https://www.youtube.com/watch?v=gUGXnEJwl08>), navigate a world using the touch interface 
+* [Save](<https://www.youtube.com/watch?v=E0l9i5aOEkc>), save a world 
+* [Descriptions](<https://www.youtube.com/watch?v=8npFqvzgAMU>), add a description and game instructions<sup>1</sup>
+* [Export](<https://www.youtube.com/watch?v=46Sp2siA5us&index=10&list=PLDBB610D8324D9C73>), export a world as a .kodu file
+
+### Videos Beginner
+* [Add / Paint Terrain](<https://www.youtube.com/watch?v=BdgmWcs9QdQ>), design a world with touch interface 
+* [Add / Paint Terrain](<https://www.youtube.com/watch?v=HLQ8Y9Edgto>), design a world with gamepad
+* [Add / Paint Terrain](<https://www.youtube.com/watch?v=mvWVnOJpDG4>), design a world with keyboard, mouse
+* [Add / Paint Terrain](<https://www.youtube.com/watch?v=YpO281wd9T4>), change the color, move the texture by scrolling, scale the size<sup>1</sup>
+* [Add Objects](<https://www.youtube.com/watch?v=vrC6DpueYpQ>), insert various characters 
+* [Basic Movement](<https://www.youtube.com/watch?v=swra4sLvVbk>), control character movement with a keyboard or gamepad<sup>1</sup>
+* [Random Movement](<https://www.youtube.com/watch?v=EGXE6L0_91w>), random movement with a character<sup>1</sup>
+* [Path Movement](<https://www.youtube.com/watch?v=I4Fnjk3YrOc>), follow a path with a character<sup>2</sup>
+* [Consume objects](<https://www.youtube.com/watch?v=GIw58uLvpk4>), eat apples 
+* [Filters](<https://www.youtube.com/watch?v=GIw58uLvpk4>), eat only green apples 
+* [Points](<https://www.youtube.com/watch?v=3G7bQxV6QAM>), increase the score by collecting objects
+* [Music](<https://www.youtube.com/watch?v=YpPBINUC9Ig>), add sound effects and background noise<sup>1</sup>  
+* [Speaking](<https://www.youtube.com/watch?v=h21T7jbVDsk>), create talking characters  
+* [Shoot Objects](<https://www.youtube.com/watch?v=pAaSuV09CXU>), launch a missile with a character  
+* [Timers](<https://www.youtube.com/watch?v=M6UCVk8Lpy0>), add and use timers 
+
+### Videos Intermediate
+* [Creatables](<https://www.youtube.com/watch?v=UEYa14zSFOA>), create and program clones
+* [Pages](<https://www.youtube.com/watch?v=C12dQoS14PE>), change character behaviors<sup>1</sup>
+* [Pages](<https://www.youtube.com/watch?v=-87g-mDfS7g>), add pages and cut scenes
+
+### Videos Advanced
+* [Racing Game](<https://www.youtube.com/watch?v=eRJuEm0-vSA>), design and program a racing game<sup>3</sup>
+* [Kodu and BBC micro:bit](<https://www.youtube.com/watch?v=8TvOjSVJfqY>) interact with the BBC micro:bit
+
+### Videos Hebrew
+* [A full series of tutorials in Hebrew](<https://www.youtube.com/watch?v=dEsgU-4c-S8>)
 
 ---
 
 <a name="research"></a>
 ## Research
+
+Research by a variety of faculty including David S. Touretzky of Carnegie Mellon University, Senior Lecturer in Game Design at the Waiariki Institute of Technology (Rotorua, New Zealand) and Allan Fowler. | External References Only
+
+* [Accelerating computational thinking using scaffolding, staging, and abstraction.](<https://www.cs.cmu.edu/~dst/pubs/Touretzky-SIGCSE-2013.pdf>)
+* [Designing and refining of questions to assess students' ability to mentally simulate programs and predict program behavior.](<https://www.cs.cmu.edu/~dst/Kodu/pubs/SIGCSE-2016-Poster.pdf>)
+* [Enhancing Introductory Programming with Kodu Game Lab](week1.pdf). An Exploratory Study
+* [Enhancing Introductory Programming](GLS8.0-proceedings-2012-web.pdf). Kodu Game Lab in a High School classroom
+* [Enriching Student Learning](2012CITRENZ_Fowler01-Kodu.pdf). Programming Through Using Kodu
+* [Evaluating the effect of using physical manipulatives to foster computational thinking in elementary school.
+Kodu Game Lab. a programming environment.](<https://www.cs.cmu.edu/~dst/Kodu/pubs/Aggarwal-SIGCSE-Manipulatives-2017.pdf>)
+* [Semantic reasoning in young programmers.](<https://www.cs.cmu.edu/~dst/pubs/Touretzky-SIGCSE-Semantics-2017.pdf>)
+* [Teaching 'lawfulness' with Kodu.](<https://www.cs.cmu.edu/~dst/pubs/Touretzky-SIGCSE-Lawfulness-2016.pdf>)
+* [Teaching Kodu with physical manipulatives.](<https://www.cs.cmu.edu/~dst/pubs/Touretzky-Inroads-Manipulatives-2014.pdf>)
+* [The Laws of Kodu.](<https://www.cs.cmu.edu/~dst/Kodu/Laws/index.html>) Explain how the rule interpreter works, and are crucial to students' understanding of Kodu!
+* [Using Kodu to teach reasoning about programs.](<https://www.cs.cmu.edu/~dst/Kodu/pubs/Touretzky-Kodu-webinar-2016-10-19.pdf>)
+
+
+<sup>1</sup>Resource provided by Nicki Cooper<br>
+<sup>2</sup>Resource provided by Matt Britland<br>
+<sup>3</sup>Resource provided by North Tyneside City Learning Centre<br>
+
+
+
+
 
