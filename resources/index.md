@@ -257,6 +257,23 @@ Network with other Kodu Teachers. Learn about additional Kodu resources availabl
 ### PlanetKodu Classroom Kit
 ![Digital Technology](dt.png) ![Computer Science](cs.png) ![Humanities](h.png)
 
+The Kodu classroom kit is a set of lesson plans and activities for educators, after-school instructors, parents, peer mentors and administrators.
+
+[Module 1: Getting Started with Keyboard and Mouse](getting_started_with_keyboard_and_mouse)<br>
+Learn to create a new world, terrain and characters.
+
+[Module 2: Getting Started with Xbox Controller](getting_started_with_xbox_controller)<br>
+Learn to create a new world, terrain and characters
+
+[Module 3: Single Session Introduction for PC and Xbox Controller](single_session_introduction_for_pc_and_xbox_controller)<br>
+Learn about objects and simple programming concepts.
+
+[Module 4: Kodu Curriculum with Keyboard and Mouse](kodu_curriculum_with_keyboard_and_mouse)<br>
+This module provides nine (9) sessions: Navigating, Intro to Programming Concepts, Adding Objects; Creating a Landscape; Using Controller to Move Characters, Create Paths, and Set Behaviors; Making clones and Creatables; Starting Unique Stories and Characters; Strategy, Mood, and Tone; Changing Behaviors Using Pages, Establishing and Shifting Perspectives; Power Ups, Health, Timer; and More on Scoring--Basics to Communication
+
+[Module 5: Kodu Curriculum with Xbox Controller](kodu_curriculum_with_xbox_controller)<br>
+This module provides nine (9) sessions: Intro to programming, adding objects, Animating characters, creating landscape; Creating Landscape; Using the controller to move characters, creating paths, setting behaviors; Making clones and creatables and establishing a second player; Changing behaviors using pages, establishing and shifting perspectives; Power ups, health, timer; Scoring basics and to communicate; Starting unique stories and characters; and Presenting your game
+
 ---
 
 <a name="space"></a>

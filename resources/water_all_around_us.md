@@ -10,7 +10,7 @@ hero_height: is-small
 [![](https://www.kodugamelab.com/API/Thumbnail?world=PsRcFpC7NkizkBigOlk7lQ==)](https://worlds.kodugamelab.com/world/PsRcFpC7NkizkBigOlk7lQ==)
 
 ## Water All Around Us
-![Digital Technology](dt.png) ![Computer Science](cs.png)  ![Science](s.png)
+![Digital Technology](dt.png) ![Computer Science](cs.png) ![Science](s.png)
 
 * [Lesson 1: Play Water Connects Us All](water_all_around_us.pdf#page=4)
 * Student Ages: 10-14 years old

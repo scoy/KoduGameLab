@@ -10,7 +10,7 @@ hero_height: is-small
 [![](https://www.kodugamelab.com/API/Thumbnail?world=fbdyJ64suEmzMmNMo8cg2g==)](https://worlds.kodugamelab.com/world/fbdyJ64suEmzMmNMo8cg2g==)
 
 ## Water Connects Us All
-![Digital Technology](dt.png) ![Computer Science](cs.png)  ![Science](s.png)
+![Digital Technology](dt.png) ![Computer Science](cs.png) ![Science](s.png)
 
 * [Lesson 2: Remix: Water connects us all](water_all_around_us.pdf#page=4)
 * Student Ages: 10-14 years old
