@@ -8,8 +8,6 @@ hero_link: /downloads
 hero_link_text: Get Kodu
 ---
 
-test 11
-
 ## Resources
 
 Kodu lets kids create games on Windows PCs via a simple visual programming language. We've compiled some key resources — including training videos, sample lessons, starter worlds, and connections to other Kodu educators, to make your on-ramp as smooth as possible.
