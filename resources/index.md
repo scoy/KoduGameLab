@@ -237,7 +237,8 @@ Construct a model showing the relationship that exists between bodies of water, 
 ### Lynda.com Curriculum, Kodu for Kids Textbook, and connect with Kodu Teachers
 ![Digital Technology](dt.png) ![Computer Science](cs.png)
 
-Kodu can be taught by any teacher without any previous coding experience. Outside resources provide training videos, lesson plans, and starter worlds for educators, administrators, and students. *External References Only*
+Kodu can be taught by any teacher without any previous coding experience. Outside resources provide training videos, lesson plans, and starter worlds for educators, administrators, and students.<br>
+*External References Only*
 
 [Lynda.com Kodu Curriculum](https://www.lynda.com/search?q=kodu)
 Learn how to add objects and characters; introduce game logic with Kodu's When/Do menus; and use properties like lighting, water, trees, and movable cameras. Lynn also covers advanced object-programming and property concepts, such as adding sounds, scoring, and titles to your game.
@@ -322,7 +323,7 @@ Learn to copy and modify a pre-existing algorithm to create a new behavior.
 <a name="videos"></a>
 ## Videos
 
-Use Kodu for the classroom. Browse through our featured Kodu video tutorials to make learning fun and easy.
+Use Kodu for the classroom. Browse through our featured Kodu video tutorials to make learning fun and easy.<br>
 *External References Only*
 
 ### Videos Getting Started
@@ -367,7 +368,8 @@ Use Kodu for the classroom. Browse through our featured Kodu video tutorials to 
 <a name="research"></a>
 ## Research
 
-Research by a variety of faculty including David S. Touretzky of Carnegie Mellon University, Senior Lecturer in Game Design at the Waiariki Institute of Technology (Rotorua, New Zealand) and Allan Fowler. | External References Only
+Research by a variety of faculty including David S. Touretzky of Carnegie Mellon University, Senior Lecturer in Game Design at the Waiariki Institute of Technology (Rotorua, New Zealand) and Allan Fowler.<br>
+*External References Only*
 
 * [Accelerating computational thinking using scaffolding, staging, and abstraction.](<https://www.cs.cmu.edu/~dst/pubs/Touretzky-SIGCSE-2013.pdf>)
 * [Designing and refining of questions to assess students' ability to mentally simulate programs and predict program behavior.](<https://www.cs.cmu.edu/~dst/Kodu/pubs/SIGCSE-2016-Poster.pdf>)
