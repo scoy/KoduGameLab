@@ -22,7 +22,7 @@ The heart of Kodu is the tile-based programming language. The language is high l
 
 ![Kode Sample](images/kode_sample.png)
 
-Having the tiles represent real-world events, actions, and objects helps bridge the gap between a new user's real-world experience and the often abstract nature of computer programming. 
+Having the tiles represent real-world events, actions, and objects helps bridge the gap between a new user's real-world experience and the often abstract nature of computer programming.
 
 ## [Download Kodu](https://scoy.github.io/KoduGameLab/downloads/)
 
@@ -32,3 +32,5 @@ Having the tiles represent real-world events, actions, and objects helps bridge 
 
 ## Questions?
 For questions or any support issues, email <KoduSupport@InfiniteInstant.com>.
+
+![Kodu Game Lab](images/footer.png)
