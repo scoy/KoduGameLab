@@ -36,11 +36,6 @@ namespace Boku
         protected class Shared
         {
             public Camera camera = null;
-
-#if !NETFX_CORE
-            public Video video = null;
-            public VideoPlayer player = null;
-#endif
         }
 
         protected class UpdateObj : UpdateObject
@@ -70,61 +65,8 @@ namespace Boku
 
                 if (done && !parent.logonDialog.Active)
                 {
-                    // Done loading, should we show the intro video?
-                    if (XmlOptionsData.ShowIntroVideo)
-                    {
-                        try
-                        {
-#if NETFX_CORE
-                            // Switch to MainMenu.
-                            parent.DismissAndShowMain(null, null);
-#else
-                            if (shared.video == null)
-                            {
-                                // Start video.
-                                shared.video = BokuGame.Load<Video>(BokuGame.Settings.MediaPath + @"Video\Intro");
-                                shared.player = new VideoPlayer();
-                                shared.player.IsLooped = false;
-                                shared.player.Play(shared.video);
-                            }
-
-                            // Check if we're done with the video or the user hit escape to skip.
-                            if (shared.player.State != MediaState.Playing || 
-                                Actions.Cancel.WasPressed ||
-                                TouchInput.WasLastReleased)
-                            {
-                                Actions.Cancel.ClearAllWasPressedState();
-                                shared.player.Stop();
-
-                                shared.player.Dispose();
-                                shared.video = null;
-
-                                XmlOptionsData.ShowIntroVideo = false;
-
-                                // Switch to MainMenu.
-                                parent.DismissAndShowMain(null, null);
-                            }
-#endif
-                        }
-                        catch (Exception e)
-                        {
-                            if (e != null)
-                            {
-                            }
-
-                            // Something failed with the video so just pretend
-                            // we never intended to go there anyway.
-                            XmlOptionsData.ShowIntroVideo = false;
-
-                            // Switch to MainMenu.
-                            parent.DismissAndShowMain(null, null);
-                        }
-                    }
-                    else
-                    {
-                        // Switch to MainMenu.
-                        parent.DismissAndShowMain(null, null);
-                    }
+                    // Switch to MainMenu.
+                    parent.DismissAndShowMain(null, null);
                 }
 
                 if (parent.progress != null && parent.progressMessage != null)
@@ -163,35 +105,10 @@ namespace Boku
             public override void Render(Camera camera)
             {
                 // Render the parent's list of objects using our local camera.
-#if !NETFX_CORE
-                if (shared.player == null)
-#endif
-                {
                 foreach (RenderObject obj in renderList)
-                    {
-                        obj.Render(shared.camera);
-                    }
-                }
-
-#if !NETFX_CORE
-                if (shared.player != null && !shared.player.IsDisposed && shared.player.State == MediaState.Playing)
                 {
-                    GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
-
-                    device.Clear(Color.Black);
-                    ScreenSpaceQuad ssquad = ScreenSpaceQuad.GetInstance();
-
-                    Texture2D vid = shared.player.GetTexture();
-                    int w = device.Viewport.Width;
-                    int h = device.Viewport.Height;
-                    float scale = (float)w / vid.Width;
-
-                    Vector2 size = new Vector2(w, vid.Height * scale);
-                    Vector2 pos = new Vector2(0, (h - size.Y) / 2.0f);
-
-                    ssquad.Render(vid, pos, size, "TexturedNoAlpha");
+                    obj.Render(shared.camera);
                 }
-#endif
 
             }   // end of RenderObj Render()
             public override void Activate()
