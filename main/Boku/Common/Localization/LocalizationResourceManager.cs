@@ -28,13 +28,16 @@ namespace Boku.Common.Localization
     public class LocalizationResourceManager
     {
         #region Constants
+
         public const string LanguageDir = @"Content\Xml\Localizable";
         public const string DefaultLanguage = "EN"; //The English ISO 639-1 language code
         public const string DefaultLanguageDir = LanguageDir + @"\" + DefaultLanguage;
         private const string LocalesFileName = @"Locales.xml";
         private const string LocalesFilePath = LanguageDir + @"\" + LocalesFileName;
-        private static readonly string LocalesUrl = Program2.SiteOptions.KGLUrl + "/API/Locales";
+        private static readonly string LocalesUrl = Program2.SiteOptions.KGLUrl + "/API/Languages";             // URL to locales file with current languages and update times.
+        private static readonly string LocalizationsUrl = Program2.SiteOptions.KGLUrl + "/API/Localizations";   // URL root to individual language folders.
         private const int Timeout = 5000;
+
         #endregion
 
         /// <summary>
@@ -202,7 +205,7 @@ namespace Boku.Common.Localization
                 bool persist = true;
                 // If disk version is newer than online version, don't persist.  This
                 // should only happen when a user is adding a new language.  In this 
-                // case we want ehm to be able to modify their local copy.
+                // case we want them to be able to modify their local copy.
                 DateTime lastModTime = Storage4.GetLastWriteTimeUtc(LocalesFilePath, StorageSource.UserSpace);
 #if NETFX_CORE
                 // For WindowsStore build .LastModified is not supported so just always persist file.
@@ -278,15 +281,17 @@ namespace Boku.Common.Localization
 
 
         /// <summary>
-        /// Attempts to get the locale for a specific resource from the remote server
+        /// Attempts to get the locale for a specific resource from the remote server.
         /// </summary>
         private static void GetLocaleFromServer(Resource resource, Locale languageLocale)
         {
             // DebugLog.WriteLine("GetLocaleFromServer()");
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create(new Uri(string.Format("{0}?file={1}&dir={2}", LocalesUrl, resource.Name, languageLocale.Directory)));
-                var state = new LocaleAsyncState { Request = request, Resource = resource, LanguageLocale = languageLocale};
+                //var request = (HttpWebRequest)WebRequest.Create(new Uri(string.Format("{0}?file={1}&dir={2}", LocalesUrl, resource.Name, languageLocale.Directory)));
+                string path = string.Format("{0}/{1}/{2}", LocalizationsUrl, languageLocale.Directory, resource.Name);
+                var request = (HttpWebRequest)WebRequest.Create(new Uri(path));
+                var state = new LocaleAsyncState { Request = request, Resource = resource, LanguageLocale = languageLocale };
                 var result = request.BeginGetResponse(GetLocaleCallBack, state);
                 
 #if !NETFX_CORE
