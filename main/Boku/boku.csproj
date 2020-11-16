@@ -453,7 +453,6 @@
     <Compile Include="KoiX\Scenes\HelpMenuScene.cs" />
     <Compile Include="KoiX\Scenes\HelpPageScene.cs" />
     <Compile Include="KoiX\Scenes\HomeMenuScene.cs" />
-    <Compile Include="KoiX\Scenes\IntroVideoScene.cs" />
     <Compile Include="KoiX\Scenes\LoadLevelScene.cs" />
     <Compile Include="KoiX\Scenes\MainMenuScene.cs" />
     <Compile Include="KoiX\Scenes\ObjectSettingsMenuScene.cs" />

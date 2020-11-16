@@ -78,7 +78,7 @@ namespace Boku.Common.Xml
         public bool sendInstrumentation = false;
         public bool sendInstrumentationWasSet = false;
 
-        public bool showIntroVideo = true;
+        public bool showIntroVideo = true;  // Deprecated, we no longer have an intro video.
 
         public bool oldStoreLevelsCopied = false;
 
@@ -401,6 +401,7 @@ namespace Boku.Common.Xml
             }
         }
 
+        // Deprecated, we no longer have an intro video.
         public static bool ShowIntroVideo
         {
             get { return Instance.showIntroVideo; }

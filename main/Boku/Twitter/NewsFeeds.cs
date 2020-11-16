@@ -226,9 +226,12 @@ namespace Boku
                     //getFeedComplete = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                currentState = OpState.Failed;
+                if (ex != null)
+                {
+                    currentState = OpState.Failed;
+                }
             }
 
         }

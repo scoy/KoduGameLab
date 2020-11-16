@@ -66,7 +66,6 @@ namespace KoiX.Scenes
 
         CheckBoxLabelHelp checkForUpdates;
         CheckBoxLabelHelp sendInstrumentation;
-        CheckBoxLabelHelp showIntroVideo;
         CheckBoxLabelHelp showTutorialDebug;
         
         SliderLabelHelp terrainSpeed;
@@ -210,13 +209,6 @@ namespace KoiX.Scenes
                 sendInstrumentation = new CheckBoxLabelHelp(fullScreenContentDialog, Font, "optionsParams.sendInstrumentation", "SendInstrumentation", column2.Size.X, onChange, theme);
                 sendInstrumentation.Checked = XmlOptionsData.SendInstrumentation;
                 column1.AddWidget(sendInstrumentation);
-            }
-            {
-                // Show Intro Video
-                BaseWidget.Callback onChange = delegate(BaseWidget w) { CheckBox cb = w as CheckBox; if (cb != null) { XmlOptionsData.ShowIntroVideo = cb.Checked; } };
-                showIntroVideo = new CheckBoxLabelHelp(fullScreenContentDialog, Font, "optionsParams.showIntroVideo", "ShowIntroVideo", column2.Size.X, onChange, theme);
-                showIntroVideo.Checked = XmlOptionsData.ShowIntroVideo;
-                column1.AddWidget(showIntroVideo);
             }
             {
                 // Show Tutorial Debug

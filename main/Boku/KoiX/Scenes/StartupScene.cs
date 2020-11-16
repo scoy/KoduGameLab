@@ -98,16 +98,7 @@ namespace KoiX.Scenes
                         Program2.StartupWorldFilename = null;
                     }
 
-                    if (XmlOptionsData.ShowIntroVideo)
-                    {
-                        // Show the video and tell it to go to the MainMenu when done.
-                        object[] args = { "MainMenuScene" };
-                        SceneManager.SwitchToScene("IntroVideoScene", args: args);
-                    }
-                    else
-                    {
-                        SceneManager.SwitchToScene("MainMenuScene");
-                    }
+                    SceneManager.SwitchToScene("MainMenuScene");
 
                 }   // end of if doneLoading
 

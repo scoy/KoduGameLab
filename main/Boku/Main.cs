@@ -39,7 +39,6 @@ namespace Boku
 
         // Real Scenes.
         StartupScene startupScene;          // Shown during initial loading.
-        IntroVideoScene introVideoScene;
         MainMenuScene mainMenuScene;
         HomeMenuScene homeMenuScene;
 
@@ -79,7 +78,6 @@ namespace Boku
             nullScene = new NullScene();
 
             startupScene = new StartupScene();
-            introVideoScene = new IntroVideoScene();
             mainMenuScene = new MainMenuScene();
             homeMenuScene = new HomeMenuScene();
 
