@@ -525,10 +525,10 @@ namespace Boku.Common
         static private Texture2D TextureLoadPNG(Stream stream)
         {
             GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
-            Debug.Assert(false);
-            // TODO (****) FromFile no longer works, must read via ContentManager.Load<>()
-            //return Texture2D.FromFile(device, stream);
-            return null;
+
+            Texture2D tex = Texture2D.FromStream(device, stream);
+
+            return tex;
         }
 
         /// <summary>
