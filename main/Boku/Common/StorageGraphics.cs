@@ -523,11 +523,11 @@ namespace Boku.Common
         /// <returns></returns>
         static private Texture2D TextureLoadPNG(Stream stream)
         {
-            GraphicsDevice device = KoiLibrary.GraphicsDevice;
-            Debug.Assert(false);
-            // TODO (****) FromFile no longer works, must read via ContentManager.Load<>()
-            //return Texture2D.FromFile(device, stream);
-            return null;
+            GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
+
+            Texture2D tex = Texture2D.FromStream(device, stream);
+
+            return tex;
         }
 
         /// <summary>
