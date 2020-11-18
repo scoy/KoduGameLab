@@ -949,7 +949,6 @@
     <Compile Include="Web\Trans\GetSearchWorldPage.cs" />
     <Compile Include="Web\Trans\DelWorldData.cs" />
     <Compile Include="Web\Trans\FlagLevel.cs" />
-    <Compile Include="Web\Trans\GetCurrentVersion.cs" />
     <Compile Include="Web\Trans\GetKoduWebUser.cs" />
     <Compile Include="Web\Trans\GetThumbnail.cs" />
     <Compile Include="Web\Trans\GetWorldData.cs" />
