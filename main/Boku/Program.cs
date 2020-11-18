@@ -526,7 +526,7 @@ namespace Boku
 
 #if !UPDATE_CHECK
                     // Internal builds override this.  Why?
-                    SiteOptions.CheckForUpdates = false;
+                    //SiteOptions.CheckForUpdates = false;
 #endif
 
                     if (XmlOptionsData.SendInstrumentationWasSet)
