@@ -869,58 +869,61 @@ namespace Boku
     /// version number from the server to determine whether an update is available.
     static partial class Program2
     {
-        static bool getCurrentVersionComplete = false;
         private static void FetchLatestVersionFromServer(string productName)
         {
-#if !NETFX_CORE
-            StartupForm.EnableCancelButton(false);
-            StartupForm.SetProgressStyle(System.Windows.Forms.ProgressBarStyle.Marquee);
-            StartupForm.SetStatusText("Checking for updates...");
-#endif
+            const int timeout = 50000;
 
             try
             {
-                Web.Trans.GetCurrentVersion trans = new Boku.Web.Trans.GetCurrentVersion(productName, GetCurrentVersionCallback, null);
-
-                if (trans.Send())
+                string url = Program2.SiteOptions.KGLUrl + "/API/LatestVersion.xml";
+                Uri uri = new Uri(url);
+                var request = (HttpWebRequest)WebRequest.Create(uri);
+                var result = request.BeginGetResponse(GetLatestVersionCallback, request);
+                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
+            }
+            catch (Exception e)
+            {
+                if (e != null)
                 {
-                    int timeSpent = 0;
-                    while (!getCurrentVersionComplete && timeSpent < 30 * 1000)
-                    {
-                        // Pump web request callbacks.
-                        Web.Trans.Request.Update();
-#if NETFX_CORE
-                        {
-                            System.Threading.Tasks.Task delayTask = System.Threading.Tasks.Task.Delay(10);
-                            delayTask.ConfigureAwait(false);
-                            delayTask.Wait();
-                        }
-#else
-                        System.Threading.Thread.Sleep(10);
-#endif
-                        timeSpent += 10;
-                    }
                 }
             }
-            catch
-            {
-                updateInfo = null;
-                getCurrentVersionComplete = true;
-            }
-        }
-        static void GetCurrentVersionCallback(object param)
+
+        }   // end of FetchLatestVersionFromServer()
+
+        private static void GetLatestVersionCallback(IAsyncResult asyncResult)
         {
-            Web.Trans.GetCurrentVersion.Result result = (Web.Trans.GetCurrentVersion.Result)param;
-
-            if (result.success)
+            try
             {
-                updateInfo = new UpdateInfo(result.version);
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                var responseStream = response.GetResponseStream();
+
+                Message_Version messageVersion = Message_Version.Load(responseStream);
+
+                updateInfo = new UpdateInfo(messageVersion);
             }
+            catch (Exception e)
+            {
+                if (e != null)
+                {
+                }
+            }
+        }   // end of GetLatestVersionCallback()
 
-            getCurrentVersionComplete = true;
-        }
-    }
+        // Abort the request if the timer fires. 
+        private static void TimeoutCallback(object state, bool timedOut)
+        {
+            if (timedOut)
+            {
+                var request = state as HttpWebRequest;
+                if (request != null)
+                {
+                    request.Abort();
+                }
+            }
+        }   // end of TimeoutCallback()
 
+    }   // end of class Program2
 
 
     /// This chunk of the Program class manages the task of sending crash reports and instrumentation.
