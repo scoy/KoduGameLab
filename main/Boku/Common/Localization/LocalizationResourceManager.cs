@@ -37,7 +37,7 @@ namespace Boku.Common.Localization
         public const string DefaultLanguageDir = LanguageDir + @"\" + DefaultLanguage;
         private const string LocalesFileName = @"Locales.xml";
         private const string LocalesFilePath = LanguageDir + @"\" + LocalesFileName;
-        private static readonly string LocalesUrl = Program2.SiteOptions.KGLUrl + "/API/Languages.xml";           // URL to locales file with current languages and update times.
+        private static readonly string LocalesUrl = Program2.SiteOptions.KGLUrl + "/API/Languages.xml";         // URL to locales file with current languages and update times.
         private static readonly string LocalizationsUrl = Program2.SiteOptions.KGLUrl + "/API/Localizations";   // URL root to individual language folders.
         private const int Timeout = 5000;
 
