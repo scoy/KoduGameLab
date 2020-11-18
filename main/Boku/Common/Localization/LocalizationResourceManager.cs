@@ -442,12 +442,13 @@ namespace Boku.Common.Localization
 
                 // DebugLog.WriteLine("    filtering, count = " + locales.Count.ToString());
                 // If the localized version of the language name isn't supported by
-                // out current font set then remove it from the list.  This will
+                // our current font set then remove it from the list.  This will
                 // prevent people with older versions of Kodu from trying to select
                 // languages that can't be displayed (eg with Asian fonts).
                 //
                 // Loop over the list backwards so we safely remove elements without
                 // losing our place.
+                /*
                 for (int i = locales.Count - 1; i >= 0; i--)
                 {
                     if (!TextHelper.StringIsValid(locales[i].Native))
@@ -455,6 +456,7 @@ namespace Boku.Common.Localization
                         locales.RemoveAt(i);
                     }
                 }
+                */
 
                 Debug.Assert(locales.Count > 0, "Why aren't we seeing files from the localization server?");
 
