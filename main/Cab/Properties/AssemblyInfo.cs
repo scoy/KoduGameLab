@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Cab")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft Research")]
+[assembly: AssemblyCompany("InfiniteInstant")]
 [assembly: AssemblyProduct("Cab")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009-2011")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2009-2020, InfiniteInstant 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
