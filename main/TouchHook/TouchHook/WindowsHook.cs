@@ -117,7 +117,9 @@ namespace TouchHook
         }
 
 #if !NETFX_CORE
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        // Not sure why this was here.  Doesn't seem to make any difference 
+        // and really bothers the Microsoft Store checks.
+        //[PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
 #endif
         protected int CoreHookProc(int nCode, IntPtr wParam, IntPtr lParam)
         {
