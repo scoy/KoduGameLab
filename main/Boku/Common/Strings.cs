@@ -285,7 +285,11 @@ namespace Boku.Common
             if (nonLocalizedName == "PipeCross")
                 return Localize("actorNames.pipecross");
 
-            return "";
+            // If we don't have a localized name, just return the non localized version.
+            // This happens for missiles.  
+            // Returning an empty string breaks things.
+
+            return nonLocalizedName;
         }
         /// <summary>
         /// Given a classification color, returns the localized string for that color.
