@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Kodu Game Lab")]
 [assembly: AssemblyProduct("Kodu Game Lab")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("Microsoft Research")]
+[assembly: AssemblyCompany("InfiniteInstant")]
 
-[assembly: AssemblyCopyright("Copyright © Microsoft 2008-2011")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2008-2020, InfiniteInstant 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -38,5 +38,5 @@ using System.Runtime.InteropServices;
 //      Revision
 //
 // This build number is auto-incremented by BokuBuildTool.exe
-[assembly: AssemblyVersion("1.5.68.0")]
+[assembly: AssemblyVersion("1.5.72.0")]
  

@@ -3,7 +3,7 @@
 AppName=Kodu Game Lab
 AppVersion={#ApplicationVersion}
 AppId = 055B31F9-07F8-479b-875F-F03279DF595E
-AppPublisher=Microsoft Research
+AppPublisher=InfiniteInstant
 DefaultDirName={pf}\Microsoft Research\Kodu Game Lab
 DefaultGroupName=\Microsoft Research\Kodu Game Lab
 UninstallDisplayIcon={app}\Boku.exe
@@ -60,13 +60,13 @@ Filename: {app}\Boku.exe; Description: {cm:LaunchProgram,{cm:AppName}}; Flags: n
 AppName=Kodu
 
 ar.CheckUpdatesResponse       =Kodu يجب التحقق من وجود تحديثات عند بدء التشغيل.
-ar.SendUsageReponse           =Kodu قد ترسل معلومات الاستخدام إلى Microsoft.
+ar.SendUsageReponse           =Kodu قد ترسل معلومات الاستخدام إلى InfiniteInstant.
 ar.PrivacyStatementTitle      =بيان الخصوصية
 ar.ViewPrivacyStatementMessage=بيان رأي الخصوصية
 ar.NewerVersionMessage        =وهناك نسخة أحدث من Kodu في تثبيت بالفعل. يرجى إلغاء تثبيت قبل تثبيت هذا الإصدار.
 
 cs.CheckUpdatesResponse       =Kodu kontrolovat aktualizace při spuštění.
-cs.SendUsageReponse           =Kodu může poslat informace o použití společnosti Microsoft.
+cs.SendUsageReponse           =Kodu může poslat informace o použití společnosti InfiniteInstant.
 cs.PrivacyStatementTitle      =Prohlášení o ochraně soukromí
 cs.ViewPrivacyStatementMessage=Zobrazit Prohlášení o ochraně soukromí
 cs.NewerVersionMessage        =Novější verze kodu v již nainstalována. Prosím, odinstalujte před instalací této verze.
@@ -84,19 +84,19 @@ ja.ViewPrivacyStatementMessage=ビューのプライバシーステートメン�
 ja.NewerVersionMessage        =中Koduの新しいバージョンがすでにインストールされています。このバージョンをインストールする前にアンインストールしてください。
 
 ko.CheckUpdatesResponse       =Kodu 시작할 때 업데이트를 확인해야한다.
-ko.SendUsageReponse           =Kodu는 Microsoft에 사용 정보를 보낼 수 있습니다.
+ko.SendUsageReponse           =Kodu는 InfiniteInstant에 사용 정보를 보낼 수 있습니다.
 ko.PrivacyStatementTitle      =개인 정보 보호 정책
 ko.ViewPrivacyStatementMessage=보기 개인 정보 보호 정책
 ko.NewerVersionMessage        =에 Kodu의 최신 버전이 이미 설치되어 있습니다. 이 버전을 설치하기 전에 제거하십시오.
 
 lt.CheckUpdatesResponse       =Kodu turi tikrinti dėl atnaujinimų paleidžiant.
-lt.SendUsageReponse           =Kodu gali siųsti naudojimo informaciją "Microsoft".
+lt.SendUsageReponse           =Kodu gali siųsti naudojimo informaciją "InfiniteInstant".
 lt.PrivacyStatementTitle      =Privatumo patvirtinimas
 lt.ViewPrivacyStatementMessage=Peržiūrėti Privatumo patvirtinimas
 lt.NewerVersionMessage        =Naujesnis versija Kodu į jau įdiegtas (%1). Prašome pašalinti prieš diegiant šią versiją (%2).
 
 pl.CheckUpdatesResponse       =Kodu należy sprawdzić dostępność aktualizacji przy starcie.
-pl.SendUsageReponse           =Kodu może wysyłać informacje o użytkowaniu do firmy Microsoft.
+pl.SendUsageReponse           =Kodu może wysyłać informacje o użytkowaniu do firmy InfiniteInstant.
 pl.PrivacyStatementTitle      =Polityka prywatności
 pl.ViewPrivacyStatementMessage=Oświadczenie Zobacz prywatności
 pl.NewerVersionMessage        =Nowsza wersja Kodu w już zainstalowany (%1). Proszę odinstalować przed zainstalowaniem tej wersji (%2).
@@ -108,7 +108,7 @@ ru.ViewPrivacyStatementMessage=Посмотреть Заявление о кон
 ru.NewerVersionMessage        =Вышла новая версия Kodu в уже установлен (%1). Пожалуйста, удалите перед установкой этой версии (%2).
 
 tr.CheckUpdatesResponse       =Kodu başlangıçta güncellemeleri kontrol etmelidir.
-tr.SendUsageReponse           =Kodu Microsoft'a kullanım bilgilerini gönderebilir.
+tr.SendUsageReponse           =Kodu InfiniteInstant'a kullanım bilgilerini gönderebilir.
 tr.PrivacyStatementTitle      =Gizlilik Beyanı
 tr.ViewPrivacyStatementMessage=Görünüm Gizlilik
 tr.NewerVersionMessage        =Içinde Kodu yeni bir sürümü zaten (%1) yüklü. Bu sürümü (%2) yüklemeden önce kaldırın.

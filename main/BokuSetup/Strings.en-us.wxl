@@ -3,7 +3,7 @@
 
   <String Id="ProductName">Kodu Game Lab</String>
   <String Id="ProductShortName">Kodu</String>
-  <String Id="CompanyName">Microsoft Research</String>
+  <String Id="CompanyName">InfiniteInstant</String>
   <String Id="LanguageId">1033</String>
   
   <String Id="LaunchCondition_LaterVersion">A newer version of [ProductName] is already installed.</String>
@@ -20,7 +20,7 @@
   <String Id="ConsentDlg_OptInForUpdatesLabel">Would you like Kodu to check for updates at startup?</String>
   <String Id="ConsentDlg_OptInForUpdatesCheckBox">Yes, Kodu should check for updates.</String>
   <String Id="ConsentDlg_OptInForInstrumentationLabel">Would you like to help improve Kodu by allowing us to gather usage information?</String>
-  <String Id="ConsentDlg_OptInForInstrumentationCheckBox">Yes, Kodu may send usage information to Microsoft.</String>
+  <String Id="ConsentDlg_OptInForInstrumentationCheckBox">Yes, Kodu may send usage information to InfiniteInstant.</String>
   <String Id="ConsentDlg_ViewPrivacyStatement">View Privacy Statement</String>
 
   <String Id="PrivacyStatementDlg_DlgTitle">[ProductName] Setup ([ProductVersion].0)</String>

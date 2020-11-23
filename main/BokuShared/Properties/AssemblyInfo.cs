@@ -11,9 +11,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BokuShared")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft Research")]
+[assembly: AssemblyCompany("InfiniteInstant")]
 [assembly: AssemblyProduct("BokuShared")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2008-2011")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2008-2020, InfiniteInstant 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
