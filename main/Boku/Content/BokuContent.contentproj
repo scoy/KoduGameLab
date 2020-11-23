@@ -2905,15 +2905,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\MainMenuWidescreen.png">
-      <Name>MainMenuWidescreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <ProcessorParameters_ColorKeyEnabled>False</ProcessorParameters_ColorKeyEnabled>
-      <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\Terrain\GroundTextures\rocktop_no_bevel.png">
       <Name>rocktop_no_bevel</Name>
       <Importer>TextureImporter</Importer>
