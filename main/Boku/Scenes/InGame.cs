@@ -1777,7 +1777,7 @@ namespace Boku
                     smallRenderTarget0 = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     smallNoEffect = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     smallEffectThumb = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
-                    thumbRenderTarget = new RenderTarget2D(device, 128, 128, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
+                    thumbRenderTarget = new RenderTarget2D(device, 256, 256, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
 
                     SetRenderTarget(smallEffectThumb);
                     Clear(Color.Black);
