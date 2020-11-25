@@ -331,14 +331,16 @@ namespace Boku.Common
 
         static public Stream TextureFileOpenRead(string nameNoExt, StorageSource sources)
         {
-            if (FileExists(nameNoExt + ".jpg", sources))
-            {
-                return OpenRead(nameNoExt + ".jpg", sources);
-            }
-
+            // Try DDS before jpg.  This way, for older levels we get the thumbnail
+            // instead of grabbing the fullscreen image and treating that as the thumbnail.
             if (FileExists(nameNoExt + ".dds", sources))
             {
                 return OpenRead(nameNoExt + ".dds", sources);
+            }
+
+            if (FileExists(nameNoExt + ".jpg", sources))
+            {
+                return OpenRead(nameNoExt + ".jpg", sources);
             }
 
             if (FileExists(nameNoExt + ".png", sources))
