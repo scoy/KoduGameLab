@@ -871,7 +871,7 @@ namespace Boku
     {
         private static void FetchLatestVersionFromServer(string productName)
         {
-            const int timeout = 50000;
+            const int timeout = 5000;
 
             try
             {

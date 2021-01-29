@@ -58,7 +58,8 @@ namespace Boku
                 webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(NewsCallback);
                 try
                 {
-                    Uri uri = new Uri(CommunityRequest.NewsFeed);
+                    string url = Program2.SiteOptions.KGLUrl + "/API/GetLatestNews";
+                    Uri uri = new Uri(url);
                     webClient.OpenReadAsync(uri);
                 }
                 catch (Exception e)

@@ -38,15 +38,6 @@ namespace Boku.Web.Trans
         //public static string CommunityUrl = @"http://koduclientapi-int.cloudapp.net/Community2.asmx"; //Internal
         //public static string CommunityUrl = @"http://localhost:27855/Community2.asmx"; //Local
 
-
-        //
-        // URLs for Web Site.
-        //
-        public static string NewsFeed = @"http://www.KoduGameLab.com/API/GetLatestNews";
-        public static string Languages = @"http://www.KoduGameLab.com/API/Languages.Xml";
-        public static string LatestVersion = @"http://www.KoduGameLab.com/API/LatestVersion";
-
-
         #region Public Methods
 
         public CommunityRequest(bool needsCryptoKey, SendOrPostCallback callback, object userState)
