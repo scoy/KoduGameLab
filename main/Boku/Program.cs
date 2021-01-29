@@ -366,6 +366,7 @@ namespace Boku
 
                 {
                     // DebugLog.NewRun();
+                    //Community2.GetWorlds(10, 22);
 
                     // Initialize Localization Resources.
                     Unicode.Init(); // Needed for loading localizations.

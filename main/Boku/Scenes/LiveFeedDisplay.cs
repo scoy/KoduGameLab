@@ -259,7 +259,6 @@ namespace Boku
             FeedMs item = new FeedMs(FeedSize, "Getting News feed...", TitleFont, DateFont, BodyFont);
             newsScroller.AddItem(item);
 
-            //Twitter.GetTweets();
             msNewsFeed.BeginFetchNews();
             
             gettingFeeds = true;
@@ -270,7 +269,6 @@ namespace Boku
         {
             if (gettingFeeds)
             {
-                msNewsFeed.Update();
                 if (msNewsFeed.CurrentState == NewsFeeds.OpState.Failed)
                 {
                     newsScroller.Clear();
