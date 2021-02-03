@@ -100,7 +100,7 @@ namespace Boku
             public ModularMenu menu = null;
 
             public OptionsMenu optionsMenu = null;
-            public LiveFeedDisplay liveFeed=null;
+            public LiveFeedDisplay liveFeed = null;
 
             public bool waitingForStorage = false;  // Used w/ trial mode to not display menu.
 
@@ -352,8 +352,8 @@ namespace Boku
                 // Update the options menu.  Do this first so that if it is active it can steal input.
                 shared.optionsMenu.Update();
 
-                // Set the menu's active state to always be the opposite of the feed's.  Only one should be active at a time.
-                shared.menu.Active = !shared.liveFeed.Active;
+                // Main menu should always be active.
+                shared.menu.Active = true;
 
                 // If OptionsMenu is active, don't look at input.  This is a problem for touch input
                 // which doesn't support any kind of "ClearAllWasPressedState" functionality.
@@ -455,25 +455,19 @@ namespace Boku
 
                     StartupWorldFilename = null;
                 }
-                if (GamePadInput.ActiveMode == GamePadInput.InputMode.GamePad)
+
+                // Set news feed state to opposite of options menu.  This allows the 
+                // News Feed to "hide" when the Options Menu is active.
+                if (shared.optionsMenu.Active)
                 {
-                    GamePadInput pad = GamePadInput.GetGamePad0();
-                    if (Actions.ComboLeft.WasPressed)
-                    {
-                        if (!shared.liveFeed.Active && (!shared.optionsMenu.Active))
-                        {                       
-                            shared.liveFeed.Activate();
-                            shared.liveFeed.UpdateFeed();
-                        }
-                    }
+                    shared.liveFeed.Deactivate();
                 }
-                else if (GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse )
+                else
                 {
-                    if (Actions.ComboLeft.WasPressed && !shared.liveFeed.Active && (!shared.optionsMenu.Active))
-                    {
-                        shared.liveFeed.Activate();
-                    }
+                    shared.liveFeed.Activate();
+                    shared.liveFeed.UpdateFeed();
                 }
+
             }   // end of Update()
 
             private bool UpdateNonMenuItems()
@@ -502,32 +496,6 @@ namespace Boku
 #endif
                         MouseInput.Left.ClearAllWasPressedState();
                         inputHandled = true;
-                    }
-
-                    //check for touch over scroll window (doesn't need to be released)
-                    if (!inputHandled  && GamePadInput.ActiveMode == GamePadInput.InputMode.Touch)
-                    {
-                        if (TouchInput.WasTouched && touch != null && shared.liveFeed.IsInScrollwindow(touch.position))
-                        {
-                            //touch in window? if so, activate the live feed
-                            shared.liveFeed.Activate();
-                            inputHandled = true;
-                        }
-                        else
-                        {
-                            //deactivate the feed and don't consider the input handled
-                            shared.liveFeed.Deactivate();
-                        }
-                    }
-                }
-                else if (GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse)
-                {
-                    Vector2 pureMouseHit = new Vector2(MouseInput.Position.X, MouseInput.Position.Y);
-                  //  mouseHit = new Vector2(MouseInput.Position.X, MouseInput.Position.Y);
-
-                    if (shared.liveFeed.IsInScrollwindow(pureMouseHit)) // mouseHit))
-                    {
-                        shared.liveFeed.Activate();
                     }
                 }
 
