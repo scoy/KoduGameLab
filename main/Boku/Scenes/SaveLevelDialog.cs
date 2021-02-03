@@ -39,6 +39,9 @@ namespace Boku
     /// </summary>
     public class SaveLevelDialog : GameObject, INeedsDeviceReset
     {
+        public const int MaxDescriptionLength = 4000;
+        public const int MaxWorldNameLength = 260;
+
         protected class Shared : INeedsDeviceReset
         {
 
@@ -1229,7 +1232,7 @@ namespace Boku
 
                             int labelWidth = (int)Font().MeasureString(Strings.Localize("saveLevelDialog.name")).X;
                             int width = (int)Font().MeasureString(shared.curString).X;
-                            if (width + labelWidth > shared.nameWidth)
+                            if (width + labelWidth > shared.nameWidth || shared.curString.Length > MaxWorldNameLength)
                             {
                                 // Bzzzt!
                                 Foley.PlayNoBudget();
@@ -1267,16 +1270,14 @@ namespace Boku
                             // the lines up and then scroll if we need to in order to
                             // keep the current line within the window.
                             shared.descBlob.InsertString(str);
-                            if (shared.descBlob.NumLines > shared.descMaxVisibleLines)
+
+                            // Limit length
+                            if (shared.descBlob.RawText.Length > MaxDescriptionLength)
                             {
                                 // Bzzzt!
                                 Foley.PlayNoBudget();
-                                //shared.curString = shared.curString.Remove(shared.cursorPosition - 1, 1);
-                                //shared.cursorPosition--;
-                            }
-                            else
-                            {
-                                Foley.PlayClickDown();
+                                // Remove the character we just tried to add.
+                                shared.descBlob.Backspace();
                             }
                         }
                     }
