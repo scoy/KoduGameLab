@@ -32,7 +32,7 @@ namespace Boku
 {
     public class FeedMs : ScrollContainer
     {
-        private static Color defaultColor = Color.Cyan;
+        private static Color defaultColor = Color.Blue;
         private static Color hoverColor = Color.YellowGreen;
         private static Color clickColor = Color.Orange;
         private static Color bodyTextColor = new Color(0.2f, 0.2f, 0.2f, 1.0f);
