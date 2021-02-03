@@ -52,9 +52,6 @@ namespace Boku.UI2D
         private AABB2D scrollBoxHit = null;
         private Viewport originalDeviceViewport;
 
-        private CommandMap commandMap = new CommandMap("ModularScrollboxList");
-
-
         GetTexture getTexture = null;       // Texture2D for button icon.
         string label;                       // Label to be rendered next to icon.
         AABB2D box = null;                  // Hit box for mouse testing.
@@ -230,7 +227,6 @@ namespace Boku.UI2D
             {
                 active = true;
                 scrollBoxHit = new AABB2D(GetBoxPos() + FixedSize, ScrollBoxSize);
-                CommandStack.Push(commandMap);
                 OnEnterFocus();
 
                 dirty = true;
@@ -240,7 +236,6 @@ namespace Boku.UI2D
         public void Deactivate()
         {
             active = false;
-            CommandStack.Pop(commandMap);
             OnExitFocus();
         }
 
@@ -403,7 +398,7 @@ namespace Boku.UI2D
             batch.Begin(SpriteSortMode.Deferred, BlendState.Opaque);
             {
                 Rectangle srcRect = new Rectangle(0, 0, (int)FixedSize.X, (int)FixedSize.Y);
-                Rectangle dstRect = new Rectangle(0, 0, (int)FixedSize.X, (int)FixedSize.Y);
+                Rectangle dstRect = new Rectangle(20, 20, (int)FixedSize.X, (int)FixedSize.Y);
                 batch.Draw(rt, dstRect, srcRect, Color.White);
             }
             batch.End();
@@ -415,6 +410,8 @@ namespace Boku.UI2D
         public void RefreshRT()
         {
             RenderTarget2D rt = UI2D.Shared.RenderTarget1024_768;
+
+            dirty = true;
 
             if (dirty || hackFrame == Time.FrameCounter || rt.IsContentLost)
             {
@@ -442,10 +439,12 @@ namespace Boku.UI2D
                 SpriteBatch batch = UI2D.Shared.SpriteBatch;
                 Vector2 baseSize = FixedSize;
 
-
-
                 Vector4 drawColor = GetDrawColor();
                 Texture2D buttonTexture = UI2D.Shared.BlackButtonTexture;
+
+                // Force the background to be full white.  Not sure what the
+                // partial grey / transparent was for.
+                color_bgCurr = new Vector4(1, 1, 1, 1);
 
                 // Render rectangular baseplate of scroller (maybe a transparent texture...).
                 ssquad.Render(color_bgCurr, pos, baseSize - new Vector2(ScrollBoxSize.X, 0.0f));
