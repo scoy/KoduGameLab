@@ -33,6 +33,8 @@ namespace Boku.UI2D
     {
         #region Members
 
+        public const int MaxCreatorNameLength = 50;
+
         private const int margin = 16;
         private const int desiredCreatorNameSpace = 353;    // In English results in a 512 pixle wide dialog.
 
@@ -601,7 +603,7 @@ namespace Boku.UI2D
                         creatorBlob.InsertString(str);
 
                         int width = creatorBlob.GetLineWidth(0);
-                        if (width >= creatorBox.Width)
+                        if (width >= creatorBox.Width || creatorBlob.RawText.Length > MaxCreatorNameLength)
                         {
                             // Bzzzt!
                             Foley.PlayNoBudget();
