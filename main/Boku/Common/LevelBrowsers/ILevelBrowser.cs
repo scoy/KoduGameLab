@@ -12,7 +12,7 @@ namespace Boku.Common
     {
         Local,
         Community,
-        Sharing,
+        //Sharing,
     }
 
     /// <summary>

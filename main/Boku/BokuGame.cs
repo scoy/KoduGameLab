@@ -116,7 +116,6 @@ namespace Boku
         public InGame inGame;
         public LoadLevelMenu loadLevelMenu;      // The menu formerly known as BigBin.
         public LoadLevelMenu community;
-        public LoadLevelMenu sharingScreen;
         public MiniHub miniHub;
         public ProgressScreen progressScreen;
 
@@ -995,9 +994,6 @@ namespace Boku
                 miniHub = new MiniHub();
                 BokuGame.gameListManager.AddObject(miniHub);
 
-                sharingScreen = new LoadLevelMenu(LevelBrowserType.Sharing);
-                BokuGame.gameListManager.AddObject(sharingScreen);
-
                 // Activate the title sceen. It will display progress while
                 // additional assets are loaded in the background.
                 shaderGlobals.Activate();
@@ -1031,7 +1027,6 @@ namespace Boku
             BokuGame.Load(mainMenu);
             BokuGame.Load(videoOutput);
             BokuGame.Load(helpScreens);
-            BokuGame.Load(sharingScreen);
             BokuGame.Load(community);
             BokuGame.Load(loadLevelMenu);
             BokuGame.Load(inGame);
@@ -1071,7 +1066,6 @@ namespace Boku
             BokuGame.Unload(helpScreens);
             BokuGame.Unload(community);
             BokuGame.Unload(loadLevelMenu);
-            BokuGame.Unload(sharingScreen);
             BokuGame.Unload(inGame);
             BokuGame.Unload(miniHub);
 
@@ -1114,7 +1108,6 @@ namespace Boku
             BokuGame.DeviceResetIfLoaded(mainMenu);
             BokuGame.DeviceResetIfLoaded(videoOutput);
             BokuGame.DeviceResetIfLoaded(helpScreens);
-            BokuGame.DeviceResetIfLoaded(sharingScreen);
             BokuGame.DeviceResetIfLoaded(community);
             BokuGame.DeviceResetIfLoaded(loadLevelMenu);
             BokuGame.DeviceResetIfLoaded(inGame);

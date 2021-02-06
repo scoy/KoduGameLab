@@ -124,36 +124,6 @@
       <targetMode>HelpScreens</targetMode>
     </Crumb>
 
-    <Crumb id="SharingHub0">
-      <curModes>
-        <mode>MainMenu</mode>
-      </curModes>
-      <targetMode>SharingHub</targetMode>
-    </Crumb>
-
-    <!--  From SharingHub DEPRICATED: XBOX ONLY -->
-    <Crumb id="SharingSession0">
-      <curModes>
-        <mode>SharingHub</mode>
-      </curModes>
-      <targetMode>SharingSession</targetMode>
-    </Crumb>
-
-    <Crumb id="MainMenu0">
-      <curModes>
-        <mode>SharingHub</mode>
-      </curModes>
-      <targetMode>MainMenu</targetMode>
-    </Crumb>
-
-    <!--  From SharingSession DEPRICATED: XBOX ONLY -->
-    <Crumb id="SharingHub1">
-      <curModes>
-        <mode>SharingSession</mode>
-      </curModes>
-      <targetMode>SharingHub</targetMode>
-    </Crumb>
-
     <!--  From OptionsMenu  -->
     <Crumb id="MainMenu1">
       <curModes>
@@ -1114,13 +1084,6 @@
         <mode>HomeMenu</mode>
       </curModes>
       <targetMode>LoadLevelMenu</targetMode>
-    </Crumb>
-
-    <Crumb id="SharingHub2">
-      <curModes>
-        <mode>HomeMenu</mode>
-      </curModes>
-      <targetMode>SharingHub</targetMode>
     </Crumb>
 
     <!-- Into Add Item -->

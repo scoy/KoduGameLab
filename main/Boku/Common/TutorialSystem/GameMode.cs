@@ -41,8 +41,6 @@ namespace Boku.Common.TutorialSystem
             HelpScreens,
             LoadLevelMenu,
             CommunityMenu,
-            SharingHub,
-            SharingSession,
 
             HomeMenu,
 
@@ -180,12 +178,6 @@ namespace Boku.Common.TutorialSystem
             if (BokuGame.bokuGame.community.Active)
             {
                 curGameMode = GameMode.CommunityMenu;
-            }
-
-            if (BokuGame.bokuGame.sharingScreen.Active)
-            {
-                curGameMode = GameMode.SharingSession;
-                return;
             }
 
             if (InGame.inGame.Editor.Active)
