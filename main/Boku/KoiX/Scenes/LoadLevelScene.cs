@@ -302,7 +302,7 @@ namespace KoiX.Scenes
             }
 
             //
-            // Bumpers for selecting catagories.
+            // Bumpers for selecting categories.
             //
             {
                 leftBumper = new GraphicButton(fullScreenContentDialog, new RectangleF(0, 0, 128, 128), @"Textures\LoadLevel\L_bumper", OnLeftBumper, autorepeat: true);
