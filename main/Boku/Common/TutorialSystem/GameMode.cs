@@ -44,8 +44,6 @@ namespace Boku.Common.TutorialSystem
             HelpScreens,
             LoadLevelMenu,
             CommunityMenu,
-            SharingHub,
-            SharingSession,
 
             HomeMenu,
 

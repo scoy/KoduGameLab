@@ -63,9 +63,8 @@ namespace KoiX.Scenes
 
         WidgetSet categoryButtonsSet;   // Contains category buttons.
         Button myWorldsButton;
-        Button downloadsButton;
-        Button lessonsButton;
-        Button samplesButton;
+        Button downloadsButton;         // Local browser only.
+        Button lessonsButton;           // Local browser only.
         Button allButton;
 
         WidgetSet searchSortSet;        // Contains search and sort UI.
@@ -223,17 +222,15 @@ namespace KoiX.Scenes
                 myWorldsButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showMyWorlds", OnChange: OnMyWorlds, theme: theme);
                 categoryButtonsSet.AddWidget(myWorldsButton);
 
+                // Don't show Downloads or Lessons buttons in Community browser.
                 if (browserType != LevelBrowserType.Community)
                 {
                     downloadsButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showDownloads", OnChange: OnDownloads, theme: theme);
                     categoryButtonsSet.AddWidget(downloadsButton);
+
+                    lessonsButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showLessons", OnChange: OnLessons, theme: theme);
+                    categoryButtonsSet.AddWidget(lessonsButton);
                 }
-
-                lessonsButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showLessons", OnChange: OnLessons, theme: theme);
-                categoryButtonsSet.AddWidget(lessonsButton);
-
-                samplesButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showsamples", OnChange: OnSamples, theme: theme);
-                categoryButtonsSet.AddWidget(samplesButton);
 
                 allButton = new Button(fullScreenContentDialog, RectangleF.EmptyRect, labelId: "loadLevelMenu.showAll", OnChange: OnAll, theme: theme);
                 categoryButtonsSet.AddWidget(allButton);
@@ -2142,13 +2139,13 @@ namespace KoiX.Scenes
             {
                 cur = (Genres)((int)cur | (int)Genres.Downloads);
             }
-            if (lessonsButton.Selected)
+            // Community browser doesn't have a Lessons button.
+            if (browserType != LevelBrowserType.Community)
             {
-                cur = (Genres)((int)cur | (int)Genres.Lessons);
-            }
-            if (samplesButton.Selected)
-            {
-                cur = (Genres)((int)cur | (int)Genres.SampleWorlds);
+                if (lessonsButton.Selected)
+                {
+                    cur = (Genres)((int)cur | (int)Genres.Lessons);
+                }
             }
 
             levelFilter.FilterGenres = cur;
