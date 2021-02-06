@@ -64,13 +64,9 @@ namespace Boku
         private ItemScroller newsScroller = null;
         private Vector2 scrollBoxPos = new Vector2(24.0f, 116.0f);
 
-        private CommandMap commandMap = new CommandMap("LiveFeedDisplay");
-
         private bool useBackgroundThumbnail = true;
         private bool expanded = false; 
        
-      //  private Texture2D Header_bg  = null;
-
         private Texture2D cloudTR = null;
         private Texture2D cloudBR = null;
         private Texture2D cloudTL = null;
@@ -403,7 +399,9 @@ namespace Boku
                 }
                 else if (KoiLibrary.LastTouchedDeviceIsGamepad)
                 {
-                    HandleGamepadInput();
+                    // Ignore game pad input for news feed.  This allows it to stay open
+                    // even while the main menu is active.
+                    // HandleGamepadInput();
                 }
             }   // end if active.
 
@@ -418,10 +416,10 @@ namespace Boku
 
         public bool IsInScrollwindow(Vector2 pos)
         {
-
             return hitBox.Contains(pos);// - scrollBoxPos);
         }
 
+        /*
         private void HandleGamepadInput()
         {
             if (!KoiLibrary.LastTouchedDeviceIsGamepad) { return; }
@@ -448,14 +446,15 @@ namespace Boku
                     newsScroller.PressFocus();
             }
         }
+        */
 
         public void Render()
         {
-            if ( true ) //Active)
-            {
-                RenderFeedBasePlate();
-                newsScroller.Render();  
-            }
+            // Render the cloud surround.
+            RenderFeedBasePlate();
+
+            // Render the text content.
+            newsScroller.Render();  
         }   // end of LiveFeedDisplay Render()
 
         #endregion
@@ -734,9 +733,7 @@ namespace Boku
                     newsScroller = new ItemScroller(scrollBoxPos, FeedSize, new Color(0.0f, 0.0f, 0.0f, 0.0f), null, null);
                     hitBox = new AABB2D(scrollBoxPos, FeedSize);
                 }
-                // Do stack handling here.  If we do it in the update object we have no
-                // clue which order things get pushed and popped and madness ensues.
-                 CommandStack.Push(commandMap);
+
                 // FeedSize = ResetScrollBoxSize;
                 newsScroller.Activate();
                 state = States.Active;
@@ -749,9 +746,6 @@ namespace Boku
         {
             if (state != States.Inactive)
             {
-                // Do stack handling here.  If we do it in the update object we have no
-                // clue which order things get pushed and popped and madness ensues.
-                CommandStack.Pop(commandMap);
                 newsScroller.Deactivate();
 
                 state = States.Inactive;

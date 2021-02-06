@@ -187,6 +187,7 @@ namespace Boku
                         "  /PIESIZE <int> \t- pie menu maximum size.\r\n" +
                         "  /NOMICROBIT \t- Do not scan for attached BBC micro:bits\r\n" +
                         "  /MICROBIT \"COM3 E:\"\t- Try to enable micro:bit with given com port and drive letter.  The quotes are required.\r\n" +
+                        "  /COMMUNITY <URL>\r\n" +
                         "");
 
                     return;
@@ -361,6 +362,12 @@ namespace Boku
                         //Console.WriteLine("Begin Analytics");
                         //ObjectAnalysis oa = new ObjectAnalysis();
                         //oa.beginAnalysis(MainMenu.StartupWorldFilename.ToString());
+                    }
+
+                    // Override path to community.
+                    if (CmdLine.Exists("COMMUNITY"))
+                    {
+                        Boku.Web.Trans.CommunityRequest.CommunityUrl = CmdLine.GetString("COMMUNITY", @"https://kodu.cloudapp.net/Community2.asmx");
                     }
 
                 }
