@@ -116,10 +116,13 @@ namespace KoiX.Input
 
         /// <summary>
         /// Change in scroll wheel value since last Update().
+        /// Note that we allow this to be set externally.  This is because GetState doesn't 
+        /// work correctly and we need to set this from WinKeyboard.
         /// </summary>
         public static int DeltaScrollWheel
         {
             get { return deltaScrollWheel; }
+            set { deltaScrollWheel = value; }
         }
 
         /// <summary>
@@ -265,7 +268,8 @@ namespace KoiX.Input
                 {
                     deltaPosition.X = curState.X - prevState.X;
                     deltaPosition.Y = curState.Y - prevState.Y;
-                    deltaScrollWheel = curState.ScrollWheelValue - prevState.ScrollWheelValue;
+                    // Set externally from WinKeyboard.
+                    //deltaScrollWheel = curState.ScrollWheelValue - prevState.ScrollWheelValue;
                 }
 
                 // Notify InputManager of the changes.
@@ -342,6 +346,8 @@ namespace KoiX.Input
                         e = new MouseEventArgs(MouseButtons.None, 1, curState.X, curState.Y, DeltaScrollWheel);
                         input = new MouseInput(Time.WallClockTotalSeconds, MouseInput.MouseAction.Wheel, e);
                         KoiLibrary.InputEventManager.ProcessMouseWheelEvent(input);
+                        // Clear for next frame.
+                        DeltaScrollWheel = 0;
                     }
 
                     // TODO Hover???

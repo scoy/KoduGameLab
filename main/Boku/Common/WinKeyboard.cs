@@ -14,6 +14,8 @@ using System.Text;
 
 using System.Runtime.InteropServices;
 
+using KoiX.Input;
+
 namespace Boku.Common
 {
 #if !NETFX_CORE
@@ -349,6 +351,7 @@ namespace Boku.Common
                         // pass along the into to MouseInput.
                         short ticks = (short)(message.WParam.ToInt32() >> 16);
                         //MouseInputOld.ExternalScrollValue += ticks;
+                        LowLevelMouseInput.DeltaScrollWheel += ticks;
                         break;
                     }
 
