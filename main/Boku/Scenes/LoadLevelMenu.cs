@@ -851,17 +851,8 @@ namespace Boku
 
             private string GenerateDefaultFileName(LevelMetadata level, bool withExtension)
             {
-                string fileName = "";
-                if (level.PreviousLink()==null && level.NextLink()==null)
-                {
-                    fileName = LevelPackage.CreateExportFilenameWithoutExtension(level.Name, level.Creator);
-                }
-                else
-                {
-                    // TODO (****) I hate having [Package] prepended to the file names.  Why bother?
-                    string packageName = Strings.Localize("loadLevelMenu.exportPackageString") + level.Name;
-                    fileName = LevelPackage.CreateExportFilenameWithoutExtension(packageName, level.Creator);
-                }
+                // Create friendly file name.
+                string fileName = LevelPackage.CreateExportFilenameWithoutExtension(level.Name, level.Creator);
 
                 if (withExtension)
                 {
