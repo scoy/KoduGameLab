@@ -743,18 +743,16 @@ namespace Boku
             }
 
             // Save the thumbnail.
-            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
+            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".png";
             if (thumbnail != null)
             {
-                Storage4.TextureSaveAsJpeg(thumbnail, thumbFilename);
+                Storage4.TextureSaveAsPng(thumbnail, thumbFilename);
             }
 
-
             // Save full size image.
-            // MG doesn't implement SaveAsJpeg right now, so wrap with try/catch.  We can safely not save this file.
             try
             {
-                string rt0Filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + "_full.jpg";
+                string rt0Filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
                 if (InGame.inGame.FullRenderTarget0 != null)
                 {
                     Storage4.TextureSaveAsJpeg(InGame.inGame.FullRenderTarget0, rt0Filename);
