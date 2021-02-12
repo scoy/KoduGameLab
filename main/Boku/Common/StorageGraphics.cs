@@ -331,6 +331,12 @@ namespace Boku.Common
 
         static public Stream TextureFileOpenRead(string nameNoExt, StorageSource sources)
         {
+            // PNG is the default now so check for it first.
+            if (FileExists(nameNoExt + ".png", sources))
+            {
+                return OpenRead(nameNoExt + ".png", sources);
+            }
+
             // Try DDS before jpg.  This way, for older levels we get the thumbnail
             // instead of grabbing the fullscreen image and treating that as the thumbnail.
             if (FileExists(nameNoExt + ".dds", sources))
@@ -338,14 +344,10 @@ namespace Boku.Common
                 return OpenRead(nameNoExt + ".dds", sources);
             }
 
+            // Finally, try to use the full screen image.  I expect we'll never actually get to this point.
             if (FileExists(nameNoExt + ".jpg", sources))
             {
                 return OpenRead(nameNoExt + ".jpg", sources);
-            }
-
-            if (FileExists(nameNoExt + ".png", sources))
-            {
-                return OpenRead(nameNoExt + ".png", sources);
             }
 
             throw new FileNotFoundException(String.Format("Texture2D file not found in {0}: {1}", sources, nameNoExt));
