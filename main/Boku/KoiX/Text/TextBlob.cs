@@ -540,7 +540,8 @@ namespace KoiX.Text
                 return index;
             }
 
-            cursorPosition = (int)MathHelper.Min(cursorPosition, fatChars.Count - 1);
+            // Don't allow cursor to be beyond end of last character.
+            cursorPosition = (int)MathHelper.Min(cursorPosition, fatChars.Count);
 
             // Get character in front of cursor.
             FatChar fc = fatChars[cursorPosition - 1];
