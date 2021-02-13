@@ -78,12 +78,13 @@ namespace Boku
         private static string kOptInForInstrumentationFilename = @"Options\C90D3C0E-D0B4-4aa6-B35D-0A1D9931FB38.opt";
 
         public static Version ThisVersion;
-        public static string CurrentKCodeVersion="9";   // Version of the KCode.
+        public static string CurrentKCodeVersion="10";  // Version of the KCode.
                                                         // 4 -> 5 : Add local variables and Squash.
                                                         // 5 -> 6 : New movement code.  Make missiles targetable.
                                                         // 6 -> 7 : Add Settings slider tiles as well as some settings as scores.
                                                         // 7 -> 8 : Add naming of characters and the ability to sense named characters.
                                                         // 8 -> 9 : Move linked level target from XmlWorldData to ReflexData.
+                                                        // 9 -> 10 : New client version.  We want to keep old clients from seeing any new levels.
         
         public static string UpdateCode;
 
