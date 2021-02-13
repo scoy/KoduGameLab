@@ -90,7 +90,7 @@ namespace KoiX.UI.Dialogs
 
                 creatorLabel = new Label(this, font, theme.LightTextColor, labelId: "auth.creator");
                 creatorLabel.Size = creatorLabel.CalcMinSize();
-                creatorTextEditBox = new SingleLineTextEditBox(this, Font, 400, Auth.DefaultCreatorName, "", theme: theme);
+                creatorTextEditBox = new SingleLineTextEditBox(this, Font, 400, Auth.DefaultCreatorName, "", theme: theme, maxCharacters: 50);
                 bodySet.AddWidget(creatorLabel);
                 bodySet.AddWidget(creatorTextEditBox);
 

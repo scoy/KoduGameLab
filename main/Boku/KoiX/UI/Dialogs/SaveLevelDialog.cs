@@ -107,7 +107,7 @@ namespace KoiX.UI.Dialogs
                 nameVersionSet.Margin = new Padding(32, 0, 0, 0);
                 bodySet.AddWidget(nameVersionSet);
 
-                nameTextBox = new SingleLineTextEditBox(this, Font, fullWidth - 160, "Level Name", "EmptyWorld", theme: theme);
+                nameTextBox = new SingleLineTextEditBox(this, Font, fullWidth - 160, "Level Name", "EmptyWorld", theme: theme, maxCharacters: 260);
                 nameTextBox.Size = new Vector2(nameTextBox.Size.X, 40);
                 nameTextBox.Margin = new Padding(0, 32, 0, 16);
                 nameVersionSet.AddWidget(nameTextBox);
