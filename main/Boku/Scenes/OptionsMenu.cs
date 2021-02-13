@@ -852,11 +852,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-                    Stream stream = Storage4.OpenRead(BokuGame.Settings.MediaPath + @"Text\Kodu_Game_Lab_Code_of_Conduct.txt", StorageSource.TitleSpace);
-                    StreamReader reader = new StreamReader(stream);
-                    string content = reader.ReadToEnd();
-                    reader.Close();
-                    InGame.inGame.shared.scrollableTextDisplay.Activate(null, content, UIGridElement.Justification.Left, false, false, false);
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#code_of_conduct");
                 };
 
                 showCodeOfConduct = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewCodeOfConduct"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);
@@ -866,11 +862,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-#if NETFX_CORE
-                    Launcher.LaunchUriAsync(new Uri(Program2.SiteOptions.KGLUrl + @"/Link/PrivacyStatement"));
-#else
-                    Process.Start(Program2.SiteOptions.KGLUrl + @"/Link/PrivacyStatement");
-#endif
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/privacy");
                 };
 
                 showPrivacyStatement = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewPrivacyStatement"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);
@@ -880,11 +872,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-                    Stream stream = Storage4.OpenRead(BokuGame.Settings.MediaPath + @"Text\Kodu_Game_Lab_EULA.txt", StorageSource.TitleSpace);
-                    StreamReader reader = new StreamReader(stream);
-                    string content = reader.ReadToEnd();
-                    reader.Close();
-                    InGame.inGame.shared.scrollableTextDisplay.Activate(null, content, UIGridElement.Justification.Left, false, false, false);
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#eula");
                 };
 
                 showEULA = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewEULA"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);
