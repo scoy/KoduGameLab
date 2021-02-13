@@ -256,18 +256,7 @@ namespace KoiX.Scenes
                 // Show Code of Conduct
                 BaseWidget.Callback onChange = delegate(BaseWidget w) 
                 {
-                    Stream stream = Storage4.OpenRead(BokuGame.Settings.MediaPath + @"Text\Kodu_Game_Lab_Code_of_Conduct.txt", StorageSource.TitleSpace);
-                    StreamReader reader = new StreamReader(stream);
-                    string content = reader.ReadToEnd();
-                    reader.Close();
-
-                    TextDialog textDialog = SharedX.TextDialog;
-
-                    Debug.Assert(textDialog.Active == false);
-
-                    textDialog.TitleId = "optionsParams.viewCodeOfConduct";
-                    textDialog.BodyText = content;
-                    DialogManagerX.ShowDialog(textDialog);
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#code_of_conduct");
                 };
                 showCodeOfConduct = new ButtonLabelHelp(fullScreenContentDialog, Font, "optionsParams.viewCodeOfConduct", null, column1.Size.X, onChange);
 
@@ -282,7 +271,7 @@ namespace KoiX.Scenes
                 // Show Privacy Statement
                 BaseWidget.Callback onChange = delegate(BaseWidget w)
                 {
-                    Process.Start(Program2.SiteOptions.KGLUrl + @"/Link/PrivacyStatement");
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/privacy");
                 };
                 showPrivacyStatement = new ButtonLabelHelp(fullScreenContentDialog, Font, "optionsParams.viewPrivacyStatement", null, column1.Size.X, onChange);
                 column2.AddWidget(showPrivacyStatement);
@@ -291,18 +280,7 @@ namespace KoiX.Scenes
                 // Show EULA
                 BaseWidget.Callback onChange = delegate(BaseWidget w)
                 {
-                    Stream stream = Storage4.OpenRead(BokuGame.Settings.MediaPath + @"Text\Kodu_Game_Lab_EULA.txt", StorageSource.TitleSpace);
-                    StreamReader reader = new StreamReader(stream);
-                    string content = reader.ReadToEnd();
-                    reader.Close();
-
-                    TextDialog textDialog = SharedX.TextDialog;
-
-                    Debug.Assert(textDialog.Active == false);
-
-                    textDialog.TitleId = "optionsParams.viewEULA";
-                    textDialog.BodyText = content;
-                    DialogManagerX.ShowDialog(textDialog);
+                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#eula");
                 };
                 showEULA = new ButtonLabelHelp(fullScreenContentDialog, Font, "optionsParams.viewEULA", null, column1.Size.X, onChange);
                 column2.AddWidget(showEULA);

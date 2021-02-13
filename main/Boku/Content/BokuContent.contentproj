@@ -11578,15 +11578,12 @@
   <ItemGroup>
     <None Include="Text\Kodu_Game_Lab_Code_of_Conduct.txt">
       <Name>Kodu_Game_Lab_Code_of_Conduct</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Text\Kodu_Game_Lab_EULA.txt">
       <Name>Kodu_Game_Lab_EULA</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Text\Kodu_Game_Lab_Privacy_Statement.txt">
       <Name>Kodu_Game_Lab_Privacy_Statement</Name>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
