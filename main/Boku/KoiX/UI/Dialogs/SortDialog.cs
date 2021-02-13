@@ -21,6 +21,7 @@ using KoiX.Text;
 using KoiX.UI;
 
 using BokuShared;
+using Boku.Common;
 
 namespace KoiX.UI.Dialogs
 {
@@ -33,6 +34,7 @@ namespace KoiX.UI.Dialogs
         RadioButtonLabelHelp dateButton;
         RadioButtonLabelHelp creatorButton;
         RadioButtonLabelHelp titleButton;
+        RadioButtonLabelHelp downloadsButton;
 
         List<RadioButton> buttons;
 
@@ -62,7 +64,7 @@ namespace KoiX.UI.Dialogs
 
         #region Public
 
-        public SortDialog(RectangleF rect, string titleId, ThemeSet theme = null)
+        public SortDialog(RectangleF rect, string titleId, LevelBrowserType browserType, ThemeSet theme = null)
             : base(rect, titleId, theme: theme)
         {
 #if DEBUG
@@ -82,8 +84,15 @@ namespace KoiX.UI.Dialogs
 
             dateButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.sortDate", OnChange: OnDate, theme: theme);
             dateButton.Selected = true;
-            creatorButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.sortCreator", OnChange: OnCreator, theme: theme);
-            titleButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.sortTitle", OnChange: OnTitle, theme: theme);
+            if (browserType == LevelBrowserType.Local)
+            {
+                creatorButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.sortCreator", OnChange: OnCreator, theme: theme);
+                titleButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.sortTitle", OnChange: OnTitle, theme: theme);
+            }
+            else if (browserType == LevelBrowserType.Community)
+            {
+                downloadsButton = new RadioButtonLabelHelp(this, Font, null, rect.Width - 9 * margin, buttons, labelId: "loadLevelMenu.showDownloads", OnChange: OnDownloads, theme: theme);
+            }
 
             bodySet.Orientation = Orientation.Vertical;
             bodySet.VerticalJustification = Justification.Top;
@@ -91,8 +100,15 @@ namespace KoiX.UI.Dialogs
             bodySet.Padding = new Padding(4 * margin, 0, 0, 0);
 
             bodySet.AddWidget(dateButton);
-            bodySet.AddWidget(creatorButton);
-            bodySet.AddWidget(titleButton);
+            if (browserType == LevelBrowserType.Local)
+            {
+                bodySet.AddWidget(creatorButton);
+                bodySet.AddWidget(titleButton);
+            }
+            else if (browserType == LevelBrowserType.Community)
+            {
+                bodySet.AddWidget(downloadsButton);
+            }
 
             // Call Recalc for force all the button positions and sizes to be calculated.
             // We need this in order to properly calc the links.
@@ -149,6 +165,18 @@ namespace KoiX.UI.Dialogs
             }
         }   // end of OnTitle()
 
+        void OnDownloads(BaseWidget w)
+        {
+            sortBy = SortBy.Rank;
+            cancelled = false;
+            // Need to check is active here since we might 
+            // just be setting the state during Activate.
+            if (Active)
+            {
+                DialogManagerX.KillDialog(this);
+            }
+        }   // end of OnDownloads()
+
         public override void Activate(params object[] args)
         {
             Debug.Assert(!Active, "Why are we activating something that's already active?");
@@ -168,6 +196,10 @@ namespace KoiX.UI.Dialogs
                 case BokuShared.SortBy.Name:
                     titleButton.Selected = true;
                     titleButton.SetFocus(overrrideInactive: true);
+                    break;
+                case BokuShared.SortBy.Rank:
+                    downloadsButton.Selected = true;
+                    downloadsButton.SetFocus(overrrideInactive: true);
                     break;
             }
 

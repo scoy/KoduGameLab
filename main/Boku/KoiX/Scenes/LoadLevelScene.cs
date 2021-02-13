@@ -277,7 +277,9 @@ namespace KoiX.Scenes
                 // Set size of sort button to max possible size.
                 sortButton.Label.LabelText = Strings.Localize("loadLevelMenu.sortBy") + Strings.Localize("loadLevelMenu.sortCreator");
                 sortButton.Size = sortButton.CalcMinSize();
-                sortButton.Label.LabelText = Strings.Localize("loadLevelMenu.sortBy") + Strings.Localize("loadLevelMenu.sortCreator");
+                sortButton.Label.LabelText = Strings.Localize("loadLevelMenu.sortBy") + Strings.Localize("loadLevelMenu.sortTitle");
+                sortButton.Size = MyMath.Max(sortButton.Size, sortButton.CalcMinSize());
+                sortButton.Label.LabelText = Strings.Localize("loadLevelMenu.sortBy") + Strings.Localize("loadLevelMenu.showDownloads");
                 sortButton.Size = MyMath.Max(sortButton.Size, sortButton.CalcMinSize());
                 sortButton.Label.LabelText = Strings.Localize("loadLevelMenu.sortBy") + Strings.Localize("loadLevelMenu.sortDate");
                 sortButton.Size = MyMath.Max(sortButton.Size, sortButton.CalcMinSize());
@@ -285,7 +287,13 @@ namespace KoiX.Scenes
                 searchSortSet.AddWidget(sortButton);
 
                 RectangleF rect = new RectangleF(new Vector2(-100, -300), new Vector2(360, 260));
-                sortDialog = new SortDialog(rect, "loadLevelMenu.sortBy", theme: theme);
+                // Community only has 2 options for sorting so make it smaller.
+                if (browserType == LevelBrowserType.Community)
+                {
+                    rect.Height -= 56;
+                }
+
+                sortDialog = new SortDialog(rect, "loadLevelMenu.sortBy", browserType, theme: theme);
                 sortDialog.OnDeactivate = OnSortDeactivate;
             }
 
