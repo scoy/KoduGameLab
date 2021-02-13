@@ -79,7 +79,7 @@ namespace BokuShared
         Creator,
         Rating,
         Name,
-        Rank,
+        Rank,   // Actually means number of downloads.
     }
 
     /// <summary>

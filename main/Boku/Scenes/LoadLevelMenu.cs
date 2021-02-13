@@ -321,20 +321,23 @@ namespace Boku
                     sortList.CurIndex = i;
                 }
 
-                i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortCreator"));
-                sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Creator;
-                if (sortList.GetItem(i).Check)
+                if (parent.OriginalBrowserType == LevelBrowserType.Local)
                 {
-                    sortListDisplay = sortList.GetItem(i).Text;
-                    sortList.CurIndex = i;
-                }
+                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortCreator"));
+                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Creator;
+                    if (sortList.GetItem(i).Check)
+                    {
+                        sortListDisplay = sortList.GetItem(i).Text;
+                        sortList.CurIndex = i;
+                    }
 
-                i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortTitle"));
-                sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Name;
-                if (sortList.GetItem(i).Check)
-                {
-                    sortListDisplay = sortList.GetItem(i).Text;
-                    sortList.CurIndex = i;
+                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortTitle"));
+                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Name;
+                    if (sortList.GetItem(i).Check)
+                    {
+                        sortListDisplay = sortList.GetItem(i).Text;
+                        sortList.CurIndex = i;
+                    }
                 }
 
                 // If we're on the community browser, also allow sorting by rating.
@@ -377,9 +380,12 @@ namespace Boku
                 sortList.WorldMatrix = Matrix.CreateTranslation(1.25f, 2.0f, 0.0f);
 
                 sortList.AddItem(Strings.Localize("loadLevelMenu.sortDate"), true);
-                sortList.AddItem(Strings.Localize("loadLevelMenu.sortCreator"), false);
-                sortList.AddItem(Strings.Localize("loadLevelMenu.sortTitle"), false);
-                if (parent.OriginalBrowserType == LevelBrowserType.Community)
+                if (parent.OriginalBrowserType == LevelBrowserType.Local)
+                {
+                    sortList.AddItem(Strings.Localize("loadLevelMenu.sortCreator"), false);
+                    sortList.AddItem(Strings.Localize("loadLevelMenu.sortTitle"), false);
+                }
+                else
                 {
                     sortList.AddItem(Strings.Localize("loadLevelMenu.sortRank"), false);
                 }
