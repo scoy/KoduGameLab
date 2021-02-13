@@ -1006,9 +1006,7 @@
     </None>
     <Compile Include="Common\SysFont.BatchEntry.cs" />
     <None Include="app.manifest" />
-    <None Include="Kodu_Game_Lab_Privacy_Statement.rtf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Kodu_Game_Lab_Privacy_Statement.rtf" />
     <None Include="Options\1F2B5B79-6EB0-45c4-A8BD-0EBDF4EE10C3.opt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
