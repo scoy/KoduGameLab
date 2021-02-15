@@ -4072,17 +4072,19 @@ namespace Boku.Base
             float mass0 = actor0.Chassis.Mass;
             float mass1 = actor1.Chassis.Mass;
 
-            // If a bot is user controlled, act like it has a large amount of mass.
+            // If a bot is user controlled, act like it has a double the mass.
             // This lets the user retain a decent amount of control rather than
-            // getting pushed around a lot.
+            // getting pushed around a lot but still let's kode controlled bots
+            // eventually push user bots out of the way rather than have them
+            // act like immobile obstacles.
             if (actor0.Brain.ActiveTask != null && actor0.Brain.ActiveTask.IsUserControlled)
             {
-                mass0 *= 100000.0f;
+                mass0 *= 2.0f;
             }
 
             if (actor1.Brain.ActiveTask != null && actor1.Brain.ActiveTask.IsUserControlled)
             {
-                mass1 *= 100000.0f;
+                mass1 *= 2.0f;
             }
 
             float totalMass = mass0 + mass1;
