@@ -2028,26 +2028,81 @@ namespace Boku.Base
                     }
                 }
 
-                // Clamp to max speed but only in 2d so falling still works.
+
+                if (desiredMovement.DesiredVelocity.HasValue)
+                {
+                    float t = tics * 1.0f;
+                    t = Math.Min(t, 1.0f);
+                    float speed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+                    velocity.X = MyMath.Lerp(velocity.X, speed * desiredMovement.DesiredVelocity.Value.X, t);
+                    velocity.Y = MyMath.Lerp(velocity.Y, speed * desiredMovement.DesiredVelocity.Value.Y, t);
+
+                    // Restore speed.
+                    float newSpeed = (float)Math.Sqrt(velocity.X * velocity.X + velocity.Y * velocity.Y);
+                    velocity.X *= speed / newSpeed;
+                    velocity.Y *= speed / newSpeed;
+
+                    // Clamp to max speed.
+                    if (speed > desiredMovement.MaxSpeed)
+                    {
+                        velocity.X *= desiredMovement.MaxSpeed / speed;
+                        velocity.Y *= desiredMovement.MaxSpeed / speed;
+                    }
+                }
+
+                /*
+                // If over max speed, quckly decelerate.  Raw clamping looks too abrupt.
+                // Bias the deceleration to apply more to the 'right' vector than to the
+                // 'forward' vector.  This helps keep the movement from feeling too floaty.
+                // Only do this in 2d so falling still looks right.
                 {
                     Vector2 velocity2D = new Vector2(velocity.X, velocity.Y);
                     float speed = velocity2D.Length();
                     if (speed > desiredMovement.MaxSpeed)
                     {
-                        // Instead of hard clamping, we just decelerate 
-                        // very fast.  This ends up looking smoother.
-                        // Lerp toward target velocity.
-                        Vector2 targetVelocity = velocity2D * (desiredMovement.MaxSpeed / speed);
+                        // Calc both zero bias and full bias results and lerp between them to get actual result.
 
-                        // This depends on Time never allowing frame time to be longer than 0.2 seconds.
-                        // If this throws, that means that the max frame time has been increased and
-                        // we need to change the equation for t since it should always be in the 0..1 range.
-                        Debug.Assert(tics <= 0.2f);
-                        float t = tics * 4.0f;
-                        
-                        velocity2D = MyMath.Lerp(velocity2D, targetVelocity, t);
+                        // For zero bias case, "normalize" current velocity to length equal to MaxSpeed.
+                        Vector2 zeroBiasTargetVelocity = velocity2D * (desiredMovement.MaxSpeed / speed);
+
+                        // For full bias case, split into forward and right vectors and remove length as
+                        // needed from right first and then from forward if still needed.
+                        Vector2 fullBiasTargetVelocity = velocity2D;    // Initial value will get replaced.
+                        Vector2 forward = HasFacingDirection ? new Vector2(movement.Facing.X, movement.Facing.Y) : new Vector2(movement.Heading.X, movement.Heading.Y);
+                        forward.Normalize();
+                        Vector2 right = new Vector2(forward.Y, -forward.X);
+                        float forwardSpeed = Vector2.Dot(forward, velocity2D);
+                        if (forwardSpeed > desiredMovement.MaxSpeed)
+                        {
+                            // Simple case, zero out right component and scale forward to MaxSpeed.
+                            fullBiasTargetVelocity = forward * desiredMovement.MaxSpeed;
+                        }
+                        else
+                        {
+                            // More complicated case, we need to figure out how much to reduce the
+                            // right component in order to make the combined result equal MaxSpeed.
+                            float rightSpeed = Vector2.Dot(right, velocity2D);
+                            float desiredRightSpeed = (float)Math.Sqrt(Math.Abs(desiredMovement.MaxSpeed * desiredMovement.MaxSpeed - forwardSpeed * forwardSpeed));
+                            fullBiasTargetVelocity = forward * forwardSpeed + right * desiredRightSpeed;
+                        }
+
+                        // Now that we have the two target vectors, lerp between them to find the final result.
+                        float turningBias = 0.7f;   // 0 = floaty, 1 = tight  TODO(scoy) turn this into a chassis param that's user controllable?
+
+                        Vector2 targetVelocity2D = MyMath.Lerp(zeroBiasTargetVelocity, fullBiasTargetVelocity, turningBias);
+
+                        // Now lerp toward target Velocity instead of just clamping.
+                        // t should always be in the 0..1 range.
+                        float t = tics * 20.0f;
+                        t = Math.Min(t, 1.0f);
+                        velocity2D = MyMath.Lerp(velocity2D, targetVelocity2D, t);
+
+                        // Apply result to velocity.
+                        velocity.X = velocity2D.X;
+                        velocity.Y = velocity2D.Y;
                     }
                 }
+                */
 
                 movement.Velocity = velocity;
             }   // end if changing velocity.
@@ -2260,7 +2315,7 @@ namespace Boku.Base
                     // we need to be able to handle bots with no facing direction.
                     // In this case, just pretent that the bot is facing the 
                     // direction it is currently moving.  This will cause it to
-                    // slow in a stright line instead of curving.
+                    // slow in a straight line instead of curving.
                     Vector3 facing = movement.Facing;
                     if (!HasFacingDirection)
                     {
@@ -2268,43 +2323,6 @@ namespace Boku.Base
                         if (facing != Vector3.Zero)
                         {
                             facing.Normalize();
-                        }
-                    }
-
-                    // Do additional damping to velocity perpendicular to facing direction.
-                    // This stops bots from feeling to slippery when going sideways.
-                    // We do this by splitting the velocity into orthogonal components using
-                    // the facing direction and a right vector.  The damping is only applied
-                    // to the contribution from the right vector.
-                    Vector3 right = new Vector3(facing.Y, -facing.X, 0);
-
-                    float facingDot = Vector3.Dot(velocity, facing);
-                    float rightDot = Vector3.Dot(velocity, right);
-
-                    Vector3 vFacing = facingDot * facing;
-                    Vector3 vRight = rightDot * right;
-
-                    velocity.X = vFacing.X + damping * damping * vRight.X;
-                    velocity.Y = vFacing.Y + damping * damping * vRight.Y;
-
-                    // If trying to go backwards, damp even further.
-                    if (facingDot < 0)
-                    {
-                        velocity.X = damping * damping * vFacing.X + damping * damping * vRight.X;
-                        velocity.Y = damping * damping * vFacing.Y + damping * damping * vRight.Y;
-                    }
-                }
-                else
-                {
-                    if (!applyVertical && desiredMovement.MaxSpeed > 0)
-                    {
-                        // Special case hack here.  If we're moving fast and we now have
-                        // a slower top speed, apply some friction.
-                        if (movement.Speed > desiredMovement.MaxSpeed)
-                        {
-                            // Apply friction to horizontal movement.
-                            velocity.X *= damping;
-                            velocity.Y *= damping;
                         }
                     }
                 }
