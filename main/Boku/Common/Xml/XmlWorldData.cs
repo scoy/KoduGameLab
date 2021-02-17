@@ -46,9 +46,16 @@ namespace Boku.Common.Xml
     public class XmlWorldData : BokuShared.XmlData<XmlWorldData>
     {
         #region Members
+
         public Guid id = Guid.Empty;
         public string name;             // The level name as displayed to the user.
+        public XmlSerializableDictionary<string, string> localizedNameDict = null;
+        string originalName;            // Name originally found in file.
+        string localizedName;           // Name after localization.
         public string description;
+        public XmlSerializableDictionary<string, string> localizedDescriptionDict = null;
+        string originalDescription;     // Description originally found in file.
+        string localizedDescription;    // Description after localization.
         public UI2D.UIGridElement.Justification descJustification = Boku.UI2D.UIGridElement.Justification.Left;
         public string creator;
 
@@ -296,7 +303,30 @@ namespace Boku.Common.Xml
             // Since we're saving as the signed in person, use the current Auth info.
             creator = Auth.CreatorName;
             checksum = Auth.CreateChecksumHash(lastWriteTime);
-        }
+
+            // Manipulate localized strings.
+            BeforeSaveLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
+            BeforeSaveLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
+
+            /*
+            // Fake some data so we can see what it looks like in the Xml and do some testing.
+            if (localizedNameDict == null)
+            {
+                localizedNameDict = new XmlSerializableDictionary<string, string>();
+            }
+            localizedNameDict.Add("EN", "English Title");
+            localizedNameDict.Add("ES", "Spanish Title");
+            */
+        
+        }   // end of OnBeforeSave()
+
+        public override void OnAfterSave()
+        {
+            // For saving, we used the original versions of the strings but if this class
+            // is still being used in memory we need to restore the localized versions.
+            name = localizedName;
+            description = localizedDescription;
+        }   // end of OnAfterSave()
 
         protected override bool OnLoad()
         {
@@ -331,8 +361,13 @@ namespace Boku.Common.Xml
             if (stuffFilename != null && stuffFilename != String.Empty && !stuffFilename.Contains(@"\"))
                 stuffFilename = @"Xml\Levels\Stuff\" + stuffFilename;
 
+
+            // Check for localizations.
+            OnLoadLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
+            OnLoadLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
+
             return true;
-        }
+        }   // end of OnLoad()
 
         /// <summary>
         /// We occasionally run across a file that as written with NaNs.  Find them
@@ -457,7 +492,8 @@ namespace Boku.Common.Xml
                 }
 #endif
             }
-        }
+
+        }   // end of OnBeforeSaveToFile()
 
         public string GetImageFilenameWithoutExtension()
         {
@@ -472,6 +508,67 @@ namespace Boku.Common.Xml
             {
                 return Path.GetFileNameWithoutExtension(Filename);
             }
-        }
-    }
+        }   // end of GetImageFilenameWithoutExtension()
+
+        //
+        // Helper functions for working with localizable strings in the world data.
+        //
+
+        /// <summary>
+        /// Before we save we need to check if the user has changed the string.
+        /// If the user has changed the string then all the translations are invalid and should be removed.
+        /// If the user didn't change the string then we need to restore the original string so it gets properly saved.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="originalStr"></param>
+        /// <param name="localizedStr"></param>
+        /// <param name="dict"></param>
+        public static void BeforeSaveLocalizedString(ref string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        {
+            // If the user has changed the strings, then keep the new strings and remove the localized versions.
+            if (str != localizedStr)
+            {
+                // Reset everything to reflect the fact that we have a new string.
+                dict = null;
+                originalStr = str;
+                localizedStr = str;
+            }
+            else
+            {
+                // No change so restore original so it's the one that gets saved out.
+                str = originalStr;
+            }
+        }   // end of BeforeSaveLocalizedString()
+
+        /// <summary>
+        /// On load we want to see if there any localizations for the strings.  
+        /// If there are then we look for one that matches the current language.  
+        /// If not we just set all the strings to match each other.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="originalStr"></param>
+        /// <param name="localizedStr"></param>
+        /// <param name="dict"></param>
+        public static void OnLoadLocalizedString(ref string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        {
+            string curLang = Boku.Common.Localization.Localizer.LocalLanguage;
+
+            originalStr = str;
+            if (dict == null)
+            {
+                // If localized dictionary is null, must be an old level so do nothing.    
+            }
+            else
+            {
+                // If localized dictionary is not null, see if we have a string from current language to use.
+                string locStr;
+                if (dict.TryGetValue(curLang, out locStr))
+                {
+                    str = locStr;
+                }
+            }
+            localizedStr = str;
+        }   // end of OnLoadLocalizedString()
+
+    }   // end of class XmlWorldData
 }
