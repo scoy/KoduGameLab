@@ -59,25 +59,28 @@ namespace Boku.Common.TutorialSystem
         /// this comment string.  It's not used for anything internally.  It's just 
         /// there to help out people creating tutorials.
         /// </summary>
-        private string comment = null;
+        string comment = null;
 
-        private Display displayMode = Display.None;
-        private Exclusions exclusion = Exclusions.None;
+        Display displayMode = Display.None;
+        Exclusions exclusion = Exclusions.None;
 
-        private TutorialManager.GameMode targetModeGamepad = TutorialManager.GameMode.MainMenu;
-        private TutorialManager.GameMode targetModeMouse = TutorialManager.GameMode.MainMenu;
-        private TutorialManager.GameMode targetModeTouch = TutorialManager.GameMode.MainMenu;
+        TutorialManager.GameMode targetModeGamepad = TutorialManager.GameMode.MainMenu;
+        TutorialManager.GameMode targetModeMouse = TutorialManager.GameMode.MainMenu;
+        TutorialManager.GameMode targetModeTouch = TutorialManager.GameMode.MainMenu;
 
-        private string goalText = null;
-        private string gamepadText = null;
-        private string mouseText = null;
-        private string touchText = null;
+        /// <summary>
+        /// This is the text displayed on the first line of the non-modal dialog.
+        /// </summary>
+        public string GoalText = null;
+        public string GamepadText = null;
+        public string MouseText = null;
+        public string TouchText = null;
 
         // Completion tests for non-modal steps.
-        private CompletionTest completionTest = null;
+        CompletionTest completionTest = null;
 
         // Actor name to put an arrow over.
-        private string targetCharacter = null;
+        string targetCharacter = null;
 
         // TODO Need to add some completion criteria for non-modal steps.
 
@@ -147,31 +150,19 @@ namespace Boku.Common.TutorialSystem
             }
         }
 
-        /// <summary>
-        /// This is the text displayed on the first line of the non-modal dialog.
-        /// </summary>
-        public string GoalText
-        {
-            get { return goalText; }
-            set { goalText = value; }
-        }
-
-        public string GamepadText
-        {
-            get { return gamepadText; }
-            set { gamepadText = value; }
-        }
-        public string MouseText
-        {
-            get { return mouseText; }
-            set { mouseText = value; }
-        }
-        public string TouchText
-        {
-            get { return touchText; }
-            set { touchText = value; }
-        }
-
+        // Support for localization of text strings.
+        public XmlSerializableDictionary<string, string> LocalizedGoalTextDict = null;
+        public string OriginalGoalText;
+        public string LocalizedGoalText;
+        public XmlSerializableDictionary<string, string> LocalizedGamepadTextDict = null;
+        public string OriginalGamepadText;
+        public string LocalizedGamepadText;
+        public XmlSerializableDictionary<string, string> LocalizedMouseTextDict = null;
+        public string OriginalMouseText;
+        public string LocalizedMouseText;
+        public XmlSerializableDictionary<string, string> LocalizedTouchTextDict = null;
+        public string OriginalTouchText;
+        public string LocalizedTouchText;
         
         /// <summary>
         /// Test used for non-modal steps to determine when they've completed.

@@ -15,9 +15,7 @@ using Boku.Base;
 using BokuShared;
 using Boku.Programming;
 
-#if !ADDIN
 using Boku.Common.TutorialSystem;
-#endif
 
 namespace Boku.Common.Xml
 {
@@ -177,9 +175,7 @@ namespace Boku.Common.Xml
                                                          //Note it should usually be the same as lastWriteTime but not the same as Modified.
 
 
-#if !ADDIN
         public List<Step> tutorialSteps = new List<Step>();
-#endif
 
         #endregion
 
@@ -308,6 +304,17 @@ namespace Boku.Common.Xml
             BeforeSaveLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
             BeforeSaveLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
 
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    BeforeSaveLocalizedString(ref step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    BeforeSaveLocalizedString(ref step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    BeforeSaveLocalizedString(ref step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    BeforeSaveLocalizedString(ref step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                }
+            }
+
             /*
             // Fake some data so we can see what it looks like in the Xml and do some testing.
             if (localizedNameDict == null)
@@ -326,6 +333,18 @@ namespace Boku.Common.Xml
             // is still being used in memory we need to restore the localized versions.
             name = localizedName;
             description = localizedDescription;
+
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    step.GoalText = step.LocalizedGoalText;
+                    step.GamepadText = step.LocalizedGamepadText;
+                    step.MouseText = step.LocalizedMouseText;
+                    step.TouchText = step.LocalizedTouchText;
+                }
+            }
+
         }   // end of OnAfterSave()
 
         protected override bool OnLoad()
@@ -365,6 +384,17 @@ namespace Boku.Common.Xml
             // Check for localizations.
             OnLoadLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
             OnLoadLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
+
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    OnLoadLocalizedString(ref step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    OnLoadLocalizedString(ref step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    OnLoadLocalizedString(ref step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    OnLoadLocalizedString(ref step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                }
+            }
 
             return true;
         }   // end of OnLoad()
