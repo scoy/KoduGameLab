@@ -152,16 +152,24 @@ namespace Boku.Common.TutorialSystem
 
         // Support for localization of text strings.
         public XmlSerializableDictionary<string, string> LocalizedGoalTextDict = null;
+        [XmlIgnore]
         public string OriginalGoalText;
+        [XmlIgnore]
         public string LocalizedGoalText;
         public XmlSerializableDictionary<string, string> LocalizedGamepadTextDict = null;
+        [XmlIgnore]
         public string OriginalGamepadText;
+        [XmlIgnore]
         public string LocalizedGamepadText;
         public XmlSerializableDictionary<string, string> LocalizedMouseTextDict = null;
+        [XmlIgnore]
         public string OriginalMouseText;
+        [XmlIgnore]
         public string LocalizedMouseText;
         public XmlSerializableDictionary<string, string> LocalizedTouchTextDict = null;
+        [XmlIgnore]
         public string OriginalTouchText;
+        [XmlIgnore]
         public string LocalizedTouchText;
         
         /// <summary>
