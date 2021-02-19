@@ -329,7 +329,7 @@ namespace Boku.Common.Xml
 
         public override void OnAfterSave()
         {
-            // For saving, we used the original versions of the strings but if this class
+            // For saving, we used the original versions of the strings but if this class instance
             // is still being used in memory we need to restore the localized versions.
             name = localizedName;
             description = localizedDescription;

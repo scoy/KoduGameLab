@@ -158,9 +158,25 @@ namespace Boku.Programming
         [XmlAttribute]
         public int SetWaterTypeIndex = -1;
 
-        //
-        private string _sayString;
-        private List<string> _sayStrings = new List<string>();                      // Strings for "say" verb.
+        /// <summary>
+        /// This shouldn't be public but we need it to
+        /// be so we can access it to do localization.
+        /// </summary>
+        [XmlIgnore]
+        public string _sayString;
+
+        // Localized version of sayString plus support for making it work.
+        public XmlSerializableDictionary<string, string> LocalizedSayStringDict = null;
+        [XmlIgnore]
+        public string OriginalSayString;
+        [XmlIgnore]
+        public string LocalizedSayString;
+        /// <summary>
+        /// This shouldn't be public but we need it to
+        /// be so we can access it to do localization.
+        /// </summary>
+        [XmlIgnore]
+        public List<string> _sayStrings = new List<string>();                       // Strings for "say" verb.
 
         public string sayString                                                     // Text associated with 'say' verb.
         {

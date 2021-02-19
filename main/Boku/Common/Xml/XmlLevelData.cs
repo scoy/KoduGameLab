@@ -408,6 +408,81 @@ namespace Boku.Common.Xml
             return success;
         }   // end of XmlLevelData ReadFromXml()
 
+        public override void OnBeforeSave()
+        {
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        // If the user has changed the strings, then keep the new strings and remove the localized versions.
+                        ReflexData rd = reflex.Data;
+                        if (rd._sayString != rd.LocalizedSayString)
+                        {
+                            // Reset everything to reflect the fact that we have a new string.
+                            rd.LocalizedSayStringDict = null;
+                            rd.OriginalSayString = rd._sayString;
+                            rd.LocalizedSayString = rd._sayString;
+                        }
+                        else
+                        {
+                            // No change so restore original so it's the one that gets saved out.
+                            rd._sayString = rd.OriginalSayString;
+                            // Fix up sayStrings.
+                            TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                        }
+                    }
+                }
+            }
+
+            base.OnBeforeSave();
+        }   // end of OnBeforeSave()
+
+        public override void OnAfterSave()
+        {
+            // For saving, we used the original versions of the strings but if this class instance
+            // is still being used in memory we need to restore the localized versions.
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        ReflexData rd = reflex.Data;
+                        rd._sayString = rd.LocalizedSayString;
+                        // Fix up sayStrings.
+                        TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                    }
+                }
+            }
+
+            base.OnAfterSave();
+        }   // end of OnAfterSave()
+
+        protected override bool OnLoad()
+        {
+            // Need to check for localization of any SayStrings in each reflex of each actor's brains.
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        ReflexData rd = reflex.Data;
+                        XmlWorldData.OnLoadLocalizedString(ref rd._sayString, ref rd.OriginalSayString, ref rd.LocalizedSayString, ref rd.LocalizedSayStringDict);
+                        // Fix up sayStrings.
+                        TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                    }
+                }
+            }
+
+            return base.OnLoad();
+        }   // end of OnLoad()
+
     }   // end of class XmlLevelData
 
 }   // end of namespace Boku.SimWorld
