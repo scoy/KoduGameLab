@@ -419,19 +419,17 @@ namespace Boku.Common.Xml
                     {
                         // If the user has changed the strings, then keep the new strings and remove the localized versions.
                         ReflexData rd = reflex.Data;
-                        if (rd._sayString != rd.LocalizedSayString)
+                        if (rd.sayString != rd.LocalizedSayString)
                         {
                             // Reset everything to reflect the fact that we have a new string.
                             rd.LocalizedSayStringDict = null;
-                            rd.OriginalSayString = rd._sayString;
-                            rd.LocalizedSayString = rd._sayString;
+                            rd.OriginalSayString = rd.sayString;
+                            rd.LocalizedSayString = rd.sayString;
                         }
                         else
                         {
                             // No change so restore original so it's the one that gets saved out.
-                            rd._sayString = rd.OriginalSayString;
-                            // Fix up sayStrings.
-                            TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                            rd.sayString = rd.OriginalSayString;
                         }
                     }
                 }
@@ -452,9 +450,7 @@ namespace Boku.Common.Xml
                     foreach (Reflex reflex in task.reflexes)
                     {
                         ReflexData rd = reflex.Data;
-                        rd._sayString = rd.LocalizedSayString;
-                        // Fix up sayStrings.
-                        TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                        rd.sayString = rd.LocalizedSayString;
                     }
                 }
             }
@@ -473,9 +469,7 @@ namespace Boku.Common.Xml
                     foreach (Reflex reflex in task.reflexes)
                     {
                         ReflexData rd = reflex.Data;
-                        XmlWorldData.OnLoadLocalizedString(ref rd._sayString, ref rd.OriginalSayString, ref rd.LocalizedSayString, ref rd.LocalizedSayStringDict);
-                        // Fix up sayStrings.
-                        TextHelper.SplitMessage(rd._sayString, 10000, UI2D.Shared.GetGameFont20, true, rd._sayStrings);
+                        rd.sayString = XmlWorldData.OnLoadLocalizedString(rd.sayString, ref rd.OriginalSayString, ref rd.LocalizedSayString, ref rd.LocalizedSayStringDict);
                     }
                 }
             }

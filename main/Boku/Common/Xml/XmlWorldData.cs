@@ -46,14 +46,17 @@ namespace Boku.Common.Xml
         #region Members
 
         public Guid id = Guid.Empty;
+
         public string name;             // The level name as displayed to the user.
-        public XmlSerializableDictionary<string, string> localizedNameDict = null;
+        public XmlSerializableDictionary<string, string> LocalizedNameDict = null;
         string originalName;            // Name originally found in file.
         string localizedName;           // Name after localization.
+
         public string description;
-        public XmlSerializableDictionary<string, string> localizedDescriptionDict = null;
+        public XmlSerializableDictionary<string, string> LocalizedDescriptionDict = null;
         string originalDescription;     // Description originally found in file.
         string localizedDescription;    // Description after localization.
+
         public UI2D.UIGridElement.Justification descJustification = Boku.UI2D.UIGridElement.Justification.Left;
         public string creator;
 
@@ -301,17 +304,17 @@ namespace Boku.Common.Xml
             checksum = Auth.CreateChecksumHash(lastWriteTime);
 
             // Manipulate localized strings.
-            BeforeSaveLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
-            BeforeSaveLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
+            name = BeforeSaveLocalizedString(name, ref originalName, ref localizedName, ref LocalizedNameDict);
+            description = BeforeSaveLocalizedString(description, ref originalDescription, ref localizedDescription, ref LocalizedDescriptionDict);
 
             if (tutorialSteps != null)
             {
                 foreach (Step step in tutorialSteps)
                 {
-                    BeforeSaveLocalizedString(ref step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
-                    BeforeSaveLocalizedString(ref step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
-                    BeforeSaveLocalizedString(ref step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
-                    BeforeSaveLocalizedString(ref step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                    step.GoalText = BeforeSaveLocalizedString(step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    step.GamepadText = BeforeSaveLocalizedString(step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    step.MouseText = BeforeSaveLocalizedString(step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    step.TouchText = BeforeSaveLocalizedString(step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
                 }
             }
 
@@ -382,17 +385,17 @@ namespace Boku.Common.Xml
 
 
             // Check for localizations.
-            OnLoadLocalizedString(ref name, ref originalName, ref localizedName, ref localizedNameDict);
-            OnLoadLocalizedString(ref description, ref originalDescription, ref localizedDescription, ref localizedDescriptionDict);
+            name = OnLoadLocalizedString(name, ref originalName, ref localizedName, ref LocalizedNameDict);
+            description = OnLoadLocalizedString(description, ref originalDescription, ref localizedDescription, ref LocalizedDescriptionDict);
 
             if (tutorialSteps != null)
             {
                 foreach (Step step in tutorialSteps)
                 {
-                    OnLoadLocalizedString(ref step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
-                    OnLoadLocalizedString(ref step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
-                    OnLoadLocalizedString(ref step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
-                    OnLoadLocalizedString(ref step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                    step.GoalText = OnLoadLocalizedString(step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    step.GamepadText = OnLoadLocalizedString(step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    step.MouseText = OnLoadLocalizedString(step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    step.TouchText = OnLoadLocalizedString(step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
                 }
             }
 
@@ -548,12 +551,16 @@ namespace Boku.Common.Xml
         /// Before we save we need to check if the user has changed the string.
         /// If the user has changed the string then all the translations are invalid and should be removed.
         /// If the user didn't change the string then we need to restore the original string so it gets properly saved.
+        /// 
+        /// We return the main str so this can be used like Str = OnLoadLocalizedString(Str, ... 
+        /// even if Str is an accessor which doesn't work with ref.
         /// </summary>
         /// <param name="str"></param>
         /// <param name="originalStr"></param>
         /// <param name="localizedStr"></param>
         /// <param name="dict"></param>
-        public static void BeforeSaveLocalizedString(ref string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        /// <returns>The new version of the in use string, str.</returns>
+        public static string BeforeSaveLocalizedString(string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
         {
             // If the user has changed the strings, then keep the new strings and remove the localized versions.
             if (str != localizedStr)
@@ -568,18 +575,24 @@ namespace Boku.Common.Xml
                 // No change so restore original so it's the one that gets saved out.
                 str = originalStr;
             }
+
+            return str;
         }   // end of BeforeSaveLocalizedString()
 
         /// <summary>
         /// On load we want to see if there any localizations for the strings.  
         /// If there are then we look for one that matches the current language.  
         /// If not we just set all the strings to match each other.
+        /// 
+        /// We return the main str so this can be used like Str = OnLoadLocalizedString(Str, ... 
+        /// even if Str is an accessor which doesn't work with ref.
         /// </summary>
         /// <param name="str"></param>
         /// <param name="originalStr"></param>
         /// <param name="localizedStr"></param>
         /// <param name="dict"></param>
-        public static void OnLoadLocalizedString(ref string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        /// <returns>The new version of the in use string, str.</returns>
+        public static string OnLoadLocalizedString(string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
         {
             string curLang = Boku.Common.Localization.Localizer.LocalLanguage;
 
@@ -598,6 +611,8 @@ namespace Boku.Common.Xml
                 }
             }
             localizedStr = str;
+
+            return str;
         }   // end of OnLoadLocalizedString()
 
     }   // end of class XmlWorldData

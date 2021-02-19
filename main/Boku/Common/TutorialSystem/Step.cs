@@ -72,9 +72,13 @@ namespace Boku.Common.TutorialSystem
         /// This is the text displayed on the first line of the non-modal dialog.
         /// </summary>
         public string GoalText = null;
+        public XmlSerializableDictionary<string, string> LocalizedGoalTextDict = null;
         public string GamepadText = null;
+        public XmlSerializableDictionary<string, string> LocalizedGamepadTextDict = null;
         public string MouseText = null;
+        public XmlSerializableDictionary<string, string> LocalizedMouseTextDict = null;
         public string TouchText = null;
+        public XmlSerializableDictionary<string, string> LocalizedTouchTextDict = null;
 
         // Completion tests for non-modal steps.
         CompletionTest completionTest = null;
@@ -151,22 +155,18 @@ namespace Boku.Common.TutorialSystem
         }
 
         // Support for localization of text strings.
-        public XmlSerializableDictionary<string, string> LocalizedGoalTextDict = null;
         [XmlIgnore]
         public string OriginalGoalText;
         [XmlIgnore]
         public string LocalizedGoalText;
-        public XmlSerializableDictionary<string, string> LocalizedGamepadTextDict = null;
         [XmlIgnore]
         public string OriginalGamepadText;
         [XmlIgnore]
         public string LocalizedGamepadText;
-        public XmlSerializableDictionary<string, string> LocalizedMouseTextDict = null;
         [XmlIgnore]
         public string OriginalMouseText;
         [XmlIgnore]
         public string LocalizedMouseText;
-        public XmlSerializableDictionary<string, string> LocalizedTouchTextDict = null;
         [XmlIgnore]
         public string OriginalTouchText;
         [XmlIgnore]
