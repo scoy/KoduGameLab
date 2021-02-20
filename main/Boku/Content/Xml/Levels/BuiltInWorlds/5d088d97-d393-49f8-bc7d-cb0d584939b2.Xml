@@ -171,6 +171,19 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
         Welcome to the first Kodu Game Lab tutorial.
         During the tutorial you will see a bar at the top of the screen with instructions for you to follow.  These instructions will guide you through the actions needed to complete the tutorial.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добро пожаловать в первый урок Лаборатории Игр Kodu.
+              Во время урока ты увидишь сверху экрана панель с инструкциями, которым ты должен следовать.  Эти инструкции подскажут тебе действия, которые надо будет выполнить, чтобы пройти урок.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Welcome to the first Kodu Game Lab tutorial.
         During the tutorial you will see a bar at the top of the screen with instructions for you to follow.  These instructions will guide you through the actions needed to complete the tutorial.
@@ -199,6 +212,22 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
 
         First, let's start by adding the Kodu &lt;kodu&gt; to the world.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В этом уроке ты научишься:
+              :1) Добавлять Kodu &lt;kodu&gt; в твой мир.
+              :2) Программировать Kodu, чтобы его движение управлялось пользователем.
+
+              Давай начнем с добавления Kodu &lt;kodu&gt; в твой мир.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         This tutorial will teach you how to:
         :1) Add a Kodu &lt;kodu&gt; to your world.
@@ -216,8 +245,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>AddItem</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Adding Kodu &lt;kodu&gt; (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добавление Kodu &lt;kodu&gt; (Шаг 1/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Select the Kodu  &lt;kodu&gt; and press &lt;A&gt;</GamepadText>
       <MouseText>Left click &lt;leftmouse&gt; on the Kodu &lt;kodu&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни левой кнопкой мыши &lt;leftmouse&gt; на Kodu &lt;kodu&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the Kodu &lt;kodu&gt;</TouchText>
       <CompletionTest Name="BotCount" Args="Boku 1" />
     </Step>
@@ -230,6 +281,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Adding Kodu &lt;kodu&gt; (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добавление Kodu &lt;kodu&gt; (Шаг 1/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -243,8 +306,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Adding a Kodu &lt;kodu&gt; (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добавление Kodu &lt;kodu&gt; (Шаг 1/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Great! Okay, now we can play the game and see what happens.</GamepadText>
       <MouseText>Great! Okay, now we can play the game and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Здорово! Теперь можно запустить игру и посмотреть, что произойдет.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Great! Okay, now we can play the game and see what happens.</TouchText>
     </Step>
     
@@ -256,8 +341,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 2/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск игры (Шаг 2/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Running...</GamepadText>
       <MouseText>Running...</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запускается...</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Running...</TouchText>
       <CompletionTest Name="Timer" Args="5" />
     </Step>
@@ -268,6 +375,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeGamepad>InGame</TargetModeGamepad>
       <TargetModeMouse>InGame</TargetModeMouse>
       <GoalText>Running the Game</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск игры
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Hmm, nothing is happening.  To make something happen, we need to program Kodu.
 
@@ -278,6 +397,20 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
 
         Let's go back to Edit mode to give Kodu some programming.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Хмм, ничего не происходит.  Чтобы что-то произошло, нужно запрограммировать Kodu.
+
+              Давай вернемся в режим редактирования, чтобы запрограммировать Kodu.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Hmm, nothing is happening.  To make something happen, we need to program Kodu.
 
@@ -306,6 +439,21 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
         In this case when the character sees an apple the character will move toward it.
         For now, let's program Kodu &lt;kodu&gt; to move under your control.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программы для персонажей Лаборатории Игр Kodu состоят из последовательности пронумерованных строчек.  У каждой строчки есть часть КОГДА  и часть ДЕЛАТЬ.  Когда условие части КОГДА выполняется, то выполняются действия из части ДЕЛАТЬ.  Например:
+              :КОГДА &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  ДЕЛАТЬ &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+              В этом случае, когда персонаж видит яблоко, то он движется к нему.
+              Теперь давай запрограммируем Kodu &lt;kodu&gt;, чтобы он управлялся с клавиатуры.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Programs for the Kodu Game Lab characters are created as a sequence of numbered rows.  Each row has a WHEN part and a DO part.  When the WHEN side is true, then the action on the DO side is done.  For example:
         :WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -321,8 +469,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the first row move the pencil cursor to the plus sign next to WHEN then press &lt;a&gt; to add &lt;sensor.gamepad&gt;</GamepadText>
       <MouseText>On the first row click on the plus sign next to WHEN and select &lt;sensor.keyboard&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>В первой строчке программного кода щелкни на знаке ПЛЮС, который идет за словом КОГДА и выбери &lt;sensor.keyboard&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>On the first row tap on the plus sign next to WHEN and select &lt;sensor.touch&gt;</TouchText>
       <CompletionTest Name="Kode" Args="(sensor.gamepad,sensor.keyboard,sensor.touch)" />
     </Step>
@@ -333,8 +503,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the plus sign next to the gamepad &lt;sensor.gamepad&gt; press &lt;a&gt; to add &lt;filter.leftstick&gt;</GamepadText>
       <MouseText>Click on the plus sign next to the keyboard &lt;sensor.keyboard&gt; and select &lt;filter.ArrowKeys&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкните на знаке ПЛЮС, который идет после клавиатуры &lt;sensor.keyboard&gt; и выберите &lt;filter.ArrowKeys&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the plus sign next to touch &lt;sensor.touch&gt; and select &lt;filter.touch.gesture.tap&gt;</TouchText>
       <CompletionTest Name="Kode" Args="(sensor.gamepad,sensor.keyboard,sensor.touch) (filter.leftstick,filter.ArrowKeys,filter.touch.gesture.tap)" />
     </Step>
@@ -345,6 +537,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Now move the pencil cursor to the right of DO on the first row and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.gamepad&gt; &lt;filter.leftstick&gt;  do &lt;actuator.movement&gt;
@@ -353,6 +557,19 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
         Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.keyboard&gt;&lt;filter.ArrowKeys&gt;  do &lt;actuator.movement&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь щелкните по знаку ПЛЮС справа от ДЕЛАТЬ и добавьте &lt;actuator.movement&gt;
+              У вас должно получиться КОГДА &lt;sensor.keyboard&gt;&lt;filter.ArrowKeys&gt;  ДЕЛАТЬ &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Now tap on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.touch&gt;&lt;filter.touch.gesture.tap&gt;  do &lt;actuator.movement&gt;
@@ -367,6 +584,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText></GamepadText>
       <MouseText></MouseText>
       <TouchText>
@@ -384,6 +613,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -396,8 +637,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu (Шаг 3/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</GamepadText>
       <MouseText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Ура! Ты сделал это!  Самое время снова запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</TouchText>
     </Step>
     <Step>
@@ -407,8 +670,30 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running Your Program (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск твоей программы (Шаг 4/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the left stick &lt;leftstick&gt; to move Kodu.</GamepadText>
       <MouseText>Use the arrow keys [leftarrow][uparrow][rightarrow] to move Kodu.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Используй стрелки с клавиатуры [leftarrow][uparrow][rightarrow][downarrow] для перемещения Kodu.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the ground to move Kodu.</TouchText>
       <CompletionTest Name="Timer" Args="10" />
     </Step>
@@ -419,6 +704,18 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running Your Program (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск твоей программы (Шаг 4/4)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Congratulations!  In this tutorial you've learned how to add a Kodu to your world and then program the Kodu to move under your control.
         You can use this same idea to add and program other characters now.
@@ -429,6 +726,19 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
         You can use this same idea to add and program other characters now.
         Have fun!
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Поздравляем! В этом уроке ты научился добавлять Kodu в свой мир и управлять движением Kodu с клавиатуры.
+              Теперь ты можешь по аналогии добавлять и программировать других персонажей.      Развлекайся!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Congratulations!  In this tutorial you've learned how to add a Kodu to your world and then program the Kodu to move under your control.
         You can use this same idea to add and program other characters now.

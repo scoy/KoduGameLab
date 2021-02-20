@@ -8,7 +8,19 @@ Choose your route, avoid hazards, and explore the terrain.
 
 How high can you score in 90 seconds?
   </description>
-  <descJustification>Left</descJustification>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Миссия: искать камни осадочных пород &lt;filter.rockHighValueUnknown&gt; и бурить их, вулканические камни &lt;filter.rockLowValue&gt; просвечивать лазером! Разные баллы за разную работу. Надо набрать как можно больше очков за 90 сек.
+          Выбирайте маршрут, избегайте опасностей и исследуйте местность.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>mblackmore</creator>
   <lastWriteTime>2012-08-05T23:00:08</lastWriteTime>
   <BokuVersion>1.2.56.0</BokuVersion>

@@ -3,6 +3,16 @@
   <id>65a8ab8b-2a43-413f-85eb-ea480e32d1f8</id>
   <name>Score Tutorial</name>
   <description>This tutorial will show you how to use scores.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Этот урок покажет тебе, как вести счет в игре.</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <creator>scoy</creator>
   <lastWriteTime>2014-11-13T02:10:00.2Z</lastWriteTime>
   <BokuVersion>1.0.84.0</BokuVersion>
@@ -157,6 +167,16 @@
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Score Tutorial (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Начисление очков (Шаг 1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         This tutorial will teach you how to use scores in your game.
         The world we're starting with has a cycle &lt;cycle&gt;, a tree &lt;tree&gt; and several apples &lt;apple&gt;.
@@ -175,6 +195,24 @@
         :when &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  do &lt;actuator.eat&gt;
         We're going to add a row that makes the cycle &lt;cycle&gt; use a score to keep track of how many apples &lt;apple&gt; are eaten.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              На этом уроке ты научишься начислять очки в своей игре.
+              В мире, с которого мы начнем, находится Байкер &lt;cycle&gt;, дерево &lt;tree&gt; и несколько яблок &lt;apple&gt;.
+              Байкер &lt;cycle&gt; запрограммирован, чтобы находить все яблоки &lt;apple&gt; и есть их.
+              Программа Байкера &lt;cycle&gt;  выглядит так:
+              :Когда &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  Делать &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+              :Когда &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  Делать &lt;actuator.eat&gt;
+              Мы собираемся добавить строчку кода, которая заставит Байкера &lt;cycle&gt; считать, сколько яблок &lt;apple&gt; съедено.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         This tutorial will teach you how to use scores in your game.
         The world we're starting with has a cycle &lt;cycle&gt;, a tree &lt;tree&gt; and several apples &lt;apple&gt;.
@@ -193,6 +231,16 @@
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Score Tutorial (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Начисление очков (Шаг 1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Right now when the cycle bumps an apple &lt;apple&gt;, the cycle eats it.  What we want is to also add a point to the score each time an apple is eaten.
 
@@ -203,6 +251,20 @@
 
         :when &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  do &lt;actuator.score&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.001point&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Как только Байкер врезается в яблоко &lt;apple&gt;, он есть его.  Мы хотим добавлять 1 балл к счету каждый раз, когда яблоко съедено.
+
+              :Когда &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  Делать &lt;actuator.score&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.001point&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Right now when the cycle bumps an apple &lt;apple&gt;, the cycle eats it.  What we want is to also add a point to the score each time an apple is eaten.
 
@@ -216,6 +278,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Scores (Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программируем Байкера (начисляем очки) (Шаг 1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Move to row 3 and add &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  do &lt;actuator.score&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.001point&gt;
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
@@ -226,6 +298,19 @@
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
         red &lt;modifier.scorebucket.color.red&gt; is in the scores group &lt;group.scorebucketmodifiers&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запиши в 3-ю строчку кода:  Когда &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  Делать &lt;actuator.score&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.001point&gt;
+              Очки &lt;actuator.score&gt; находятся в группе &lt;group.game&gt;. Баллы - группе Баллы.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Move to row 3 and add &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;  do &lt;actuator.score&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.001point&gt;
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
@@ -240,8 +325,28 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Running the Game (Step 2/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, now we can play the game and see what happens.</GamepadText>
       <MouseText>Okay, now we can play the game and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Oкей, теперь можно запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, now we can play the game and see what happens.</TouchText>
     </Step>
     <Step>
@@ -252,6 +357,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 2/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -265,6 +380,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Score Tutorial (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Начисление очков (Шаг 3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Okay, the cycle &lt;cycle&gt; ate all the apples &lt;apple&gt; and we kept a count using the red score &lt;filter.scorebucket.color.red&gt;.
 
@@ -275,6 +400,20 @@
 
         Characters can also look at the score values and act on those.  Let's program the tree &lt;tree&gt; to end the game when 5 apples &lt;apple&gt; are eaten.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Байкер &lt;cycle&gt; съел все яблоки &lt;apple&gt;, и мы начислили очки, используя красный счетчик &lt;filter.scorebucket.color.red&gt;.
+
+              Персонажи могут также следить за счетом и вести себя в соответствии с его значением.  Давайте запрограммируем дерево &lt;tree&gt;, чтобы игра заканчивалась, когда будет съедено 5 яблок &lt;apple&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Okay, the cycle &lt;cycle&gt; ate all the apples &lt;apple&gt; and we kept a count using the red score &lt;filter.scorebucket.color.red&gt;.
 
@@ -288,6 +427,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming the tree &lt;tree&gt; (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование дерева &lt;tree&gt; (Шаг 3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         The program should look like this:
         :when &lt;sensor.scored&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.scoreequals&gt;&lt;filter.005points&gt;  do &lt;actuator.gameover&gt;
@@ -298,6 +447,20 @@
         :when &lt;sensor.scored&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.scoreequals&gt;&lt;filter.005points&gt;  do &lt;actuator.gameover&gt;
         The game over tile &lt;actuator.gameover&gt; can be found in the game group &lt;group.game&gt;.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программа должна выглядеть так:      
+              :Когда &lt;sensor.scored&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.scoreequals&gt;&lt;filter.005points&gt;  Делать &lt;actuator.gameover&gt;
+              Карточку &lt;actuator.gameover&gt; можно найти в группе Игра &lt;group.game&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         The program should look like this:
         :when &lt;sensor.scored&gt;&lt;filter.scorebucket.color.red&gt;&lt;filter.scoreequals&gt;&lt;filter.005points&gt;  do &lt;actuator.gameover&gt;
@@ -313,6 +476,16 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Ending the Game (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Завершение игры (Шаг 3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -325,8 +498,28 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Ending the Game (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Завершение игры (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, now we can play the game again and see what happens.</GamepadText>
       <MouseText>Okay, now we can play the game again and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Oкей, теперь можно запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, now we can play the game again and see what happens.</TouchText>
     </Step>
     <Step>
@@ -337,6 +530,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -350,6 +553,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -363,6 +576,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Done (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Готово (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Good job!  In this tutorial we've learned to use scores to count apples &lt;apple&gt; and then use that count to end the game.
         This is just the beginning of what scores can be used for.  What ideas can you come up with?
@@ -371,6 +594,19 @@
         Good job!  In this tutorial we've learned to use scores to count apples &lt;apple&gt; and then use that count to end the game.
         This is just the beginning of what scores can be used for.  What ideas can you come up with?
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Отличная работа!  В этом уроке мы научились добавлять баллы, чтобы считать съеденные яблоки &lt;apple&gt;, и затем использовать количество очков для завершения игры.
+              Это только один вариант, как использовать начисленные баллы.  А у тебя какие идеи, для чего еще можно использовать начисление баллов?
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Good job!  In this tutorial we've learned to use scores to count apples &lt;apple&gt; and then use that count to end the game.
         This is just the beginning of what scores can be used for.  What ideas can you come up with?

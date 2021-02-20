@@ -2364,7 +2364,7 @@
               <modifierUpids>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2378,7 +2378,7 @@
               <modifierUpids>
                 <upid>modifier.green</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2392,7 +2392,7 @@
               <modifierUpids>
                 <upid>modifier.event.musical.gong.any</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2477,7 +2477,7 @@
               <modifierUpids>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2493,7 +2493,7 @@
                 <upid>modifier.orange</upid>
                 <upid>modifier.trackingnone</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2507,7 +2507,7 @@
               <modifierUpids>
                 <upid>modifier.event.musical.gong.any</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2712,7 +2712,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2724,7 +2724,7 @@
               <modifierUpids>
                 <upid>modifier.slowly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2738,7 +2738,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2753,7 +2753,7 @@
                 <upid>modifier.050points</upid>
                 <upid>modifier.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2767,7 +2767,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2778,7 +2778,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2789,7 +2789,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2804,7 +2804,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2817,7 +2817,7 @@
                 <upid>filter.green</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2834,7 +2834,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2849,7 +2849,7 @@
               <modifierUpids>
                 <upid>modifier.event.musical.saw.any</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2864,7 +2864,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.010points</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2878,7 +2878,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2904,7 +2904,7 @@
               <modifierUpids>
                 <upid>modifier.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2915,7 +2915,7 @@
               <modifierUpids>
                 <upid>modifier.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -3029,7 +3029,7 @@
               <modifierUpids>
                 <upid>modifier.white</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3043,7 +3043,7 @@
               <modifierUpids>
                 <upid>modifier.creatable.84cdd3b8-934c-4362-aa1b-b0ed0f626cea</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3058,7 +3058,7 @@
               <modifierUpids>
                 <upid>modifier.creatable.569f0dec-184b-4cf6-9854-51271335cfd0</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -3174,7 +3174,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3186,7 +3186,7 @@
               <modifierUpids>
                 <upid>modifier.slowly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3200,7 +3200,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3215,7 +3215,7 @@
                 <upid>modifier.050points</upid>
                 <upid>modifier.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3229,7 +3229,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3240,7 +3240,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3251,7 +3251,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3274,7 +3274,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3287,7 +3287,7 @@
                 <upid>filter.green</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3304,7 +3304,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3319,7 +3319,7 @@
               <modifierUpids>
                 <upid>modifier.event.musical.saw.any</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3334,7 +3334,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.010points</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3348,7 +3348,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3374,7 +3374,7 @@
               <modifierUpids>
                 <upid>modifier.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3385,7 +3385,7 @@
               <modifierUpids>
                 <upid>modifier.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3506,7 +3506,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3518,7 +3518,7 @@
               <modifierUpids>
                 <upid>modifier.slowly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3532,7 +3532,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3547,7 +3547,7 @@
                 <upid>modifier.050points</upid>
                 <upid>modifier.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3561,7 +3561,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3572,7 +3572,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3583,7 +3583,7 @@
               <modifierUpids>
                 <upid>modifier.pink</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3606,7 +3606,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3619,7 +3619,7 @@
                 <upid>filter.green</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3636,7 +3636,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3651,7 +3651,7 @@
               <modifierUpids>
                 <upid>modifier.event.musical.saw.any</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3666,7 +3666,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.010points</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3680,7 +3680,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3706,7 +3706,7 @@
               <modifierUpids>
                 <upid>modifier.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3717,7 +3717,7 @@
               <modifierUpids>
                 <upid>modifier.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3841,7 +3841,7 @@
               <modifierUpids>
                 <upid>modifier.it</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3856,7 +3856,7 @@
                 <upid>modifier.100points</upid>
                 <upid>modifier.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3871,7 +3871,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.black</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3899,7 +3899,7 @@ Go for 50 to win!</SayString>
                 <upid>filter.closeby</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4031,7 +4031,7 @@ Go for 50 to win!</SayString>
                 <upid>filter.closeby</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4046,7 +4046,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.distance.near</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4057,7 +4057,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -4075,7 +4075,7 @@ Go for 50 to win!</SayString>
                 <upid>filter.closeby</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4090,7 +4090,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.distance.near</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4101,7 +4101,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -4120,7 +4120,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4131,7 +4131,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4145,7 +4145,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -4464,7 +4464,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.white</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4478,7 +4478,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.creatable.84cdd3b8-934c-4362-aa1b-b0ed0f626cea</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4493,7 +4493,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.creatable.569f0dec-184b-4cf6-9854-51271335cfd0</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -4610,7 +4610,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.white</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4624,7 +4624,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.creatable.84cdd3b8-934c-4362-aa1b-b0ed0f626cea</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4639,7 +4639,7 @@ Go for 50 to win!</SayString>
               <modifierUpids>
                 <upid>modifier.creatable.569f0dec-184b-4cf6-9854-51271335cfd0</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -4758,6 +4758,21 @@ Go for 50 to win!</SayString>
               <SayString>Tow &lt;saucer&gt; to the &lt;factory&gt;
 Avoid &lt;mine&gt;
 &lt;ls&gt;move &lt;rs&gt;shoot</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Отбуксируй &lt;saucer&gt; на &lt;factory&gt;
+                      Избегай &lt;mine&gt;
+                      &lt;ls&gt; для перемещения, &lt;rs&gt; для стрельбы
+                      Добавь в код управление с клавиатуры
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
           </reflexes>

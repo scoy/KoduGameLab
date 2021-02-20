@@ -1987,5 +1987,92 @@ namespace Boku.Common
             return str;
         }   // end of FilterEmail()
 
+        /// <summary>
+        /// Take the text input, breaks it into seperate lines, 
+        /// trims those lines, converts any leading colons into
+        /// spaces (1 colon == 4 spaces), and then recombines 
+        /// the lines and returns the new string.
+        /// Also takes null and returns an empty string.
+        /// Leading and trailing blank lines are removed.
+        /// 
+        /// Primarily designed to clean up text from Xml which
+        /// can get oddly reformatted.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        static public string CleanUpString(string str)
+        {
+            if (str == null)
+            {
+                return string.Empty;
+            }
+
+            // Split into seperate lines.
+            string[] strings = str.Split('\n');
+
+            // Trim ends.
+            for (int i = 0; i < strings.Length; i++)
+            {
+                strings[i] = strings[i].Trim();
+            }
+
+            // Expand colons.
+            for (int i = 0; i < strings.Length; i++)
+            {
+                // Allow up to 3 levels of indent.
+                if (strings[i].StartsWith(":::"))
+                {
+                    strings[i] = strings[i].Replace(":::", "            ");
+                }
+                else if (strings[i].StartsWith("::"))
+                {
+                    strings[i] = strings[i].Replace("::", "        ");
+                }
+                else if (strings[i].StartsWith(":"))
+                {
+                    strings[i] = strings[i].Replace(":", "    ");
+                }
+            }
+
+            // Recombine result.
+            // We want to skip empty strings at the beginning and end.
+            int first = 0;
+            while (first < strings.Length - 1)
+            {
+                if (string.IsNullOrWhiteSpace(strings[first]))
+                {
+                    ++first;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            int last = strings.Length - 1;
+            while (last > first)
+            {
+                if (string.IsNullOrWhiteSpace(strings[last]))
+                {
+                    --last;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            str = "";
+            for (int i = first; i <= last; i++)
+            {
+                str += strings[i];
+                if (i < last)
+                {
+                    str += '\n';
+                }
+            }
+
+            return str;
+        }   // end of CleanUpString()
+
+
     }   // end of class TextHelper
 }   // end of namespace Boku.Common

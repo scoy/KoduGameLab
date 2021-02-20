@@ -5,6 +5,19 @@
   <description>Kodu Maze Tutorial, part 2, created for the 2014 Hour of Code.
 Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tutorial.
   </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Лабиринт, Часть 2, создан для Hour of Code 2014.
+          Посмотри видео https://www.youtube.com/user/KoduTeam по уроку.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <descJustification>Left</descJustification>
   <creator>KoduTeam</creator>
   <LinkedFromLevel xsi:nil="true" />
@@ -270,6 +283,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Maze 2</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование лабиринта 2</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Welcome back! This is Maze Tutorial 2!
 	  
 	 This time Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is lost AND HUNGRY.
@@ -284,6 +307,24 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	 To find the entrance and exit of the maze look for &lt;filter.castle&gt;&lt;filter.castle&gt;
 	 Look in the maze for 3 &lt;filter.fruit&gt; 
 	 Find Bro-du and lead him &lt;filter.hut&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              С возвращением! Это второй урок по программированию лабиринта!
+
+              Сейчас Bro-du&lt;filter.blue&gt;&lt;kodu&gt; потерялся и ГОЛОДЕН.
+
+              Чтобы отыскать выход и выйти из лабиринта, ищи &lt;filter.castle&gt;&lt;filter.castle&gt;.
+              Найди в лабиринте 3 &lt;filter.fruit&gt;.
+              Найди Bro-du и отведи его к &lt;filter.hut&gt;!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Welcome back! This is Maze Tutorial 2!
 	  
 	 This time Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is lost AND HUNGRY.
@@ -300,6 +341,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Maze 2</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование лабиринта 2</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Before we go hunting for &lt;filter.fruit&gt; let's look at what have to do first:
 	  (1) Program Kodu&lt;filter.white&gt;&lt;kodu&gt; to pick up &lt;filter.fruit&gt;
 	  (2) Program scoring 1 point per &lt;filter.fruit&gt;
@@ -310,6 +361,22 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  (2) Program scoring 1 point per &lt;filter.fruit&gt;
 	  (3) Program Bro-du&lt;filter.blue&gt;&lt;kodu&gt; to follow Kodu once 3 points have been scored.
 	  Let's get started!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Прежде, чем мы начнем охотиться за &lt;filter.fruit&gt;, давай опеределимся, что нужно сделать в первую очередь:
+              :1) Запрограммировать Kodu&lt;filter.white&gt;&lt;kodu&gt;, чтобы он подбирал &lt;filter.fruit&gt;.
+              :2) Запрограммировать начисление 1 балла за &lt;filter.fruit&gt;.
+              :3) Запрограммировать Bro-du&lt;filter.blue&gt;&lt;kodu&gt;, чтобы он следовал за Kodu только если набрано 3 балла.
+              Давай начнем!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Before we go hunting for &lt;filter.fruit&gt; let's look at what have to do first:
 	  (1) Program Kodu&lt;filter.white&gt;&lt;kodu&gt; to pick up &lt;filter.fruit&gt;
 	  (2) Program scoring 1 point per &lt;filter.fruit&gt;
@@ -323,10 +390,35 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Picking up &lt;filter.fruit&gt; with Kodu&lt;filter.white&gt;&lt;kodu&gt;(Step 1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Kodu&lt;filter.white&gt;&lt;kodu&gt; подбирает &lt;filter.fruit&gt; (Шаг 1/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>In row 4 Add WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
 	  You can find &lt;filter.fruit&gt; in &lt;group.objects&gt;</GamepadText>
       <MouseText>In row 4 Add WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
 	  You can find &lt;filter.fruit&gt; in &lt;group.objects&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В 4 строчку добавь КОГДА &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
+              &lt;filter.fruit&gt; находится в &lt;group.objects&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>In row 4 Add WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
 	  You can find &lt;filter.fruit&gt; in &lt;group.objects&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 4 sensor.bumpers filter.fruit" />
@@ -338,11 +430,37 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Picking up &lt;filter.fruit&gt; with Kodu&lt;filter.white&gt;&lt;kodu&gt;(Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Kodu&lt;filter.white&gt;&lt;kodu&gt; подбирает &lt;filter.fruit&gt; (Шаг 2/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>In row 4 Add WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
 	  You can find &lt;filter.fruit&gt; in &lt;group.objects&gt;</GamepadText>
       <MouseText>Row 4 add DO &lt;actuator.vanish&gt; &lt;modifier.it&gt;
 	  You can find &lt;actuator.vanish&gt; in the &lt;group.combat&gt; option
 	  When done it should look like WHEN &lt;sensor.bumpers&gt; &lt;filter.fruit&gt; DO &lt;actuator.vanish&gt; &lt;modifier.it&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В 4 строчку добавь ДЕЛАТЬ &lt;actuator.vanish&gt; &lt;modifier.it&gt;
+              Ты можешь найти &lt;actuator.vanish&gt; в группе &lt;group.combat&gt;
+              У тебя должно получиться Когда &lt;sensor.bumpers&gt; &lt;filter.fruit&gt; Делать &lt;actuator.vanish&gt; &lt;modifier.it&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>In row 4 Add WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt;
 	  You can find &lt;filter.fruit&gt; in &lt;group.objects&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 4 sensor.bumpers filter.fruit actuator.vanish modifier.it" />
@@ -354,10 +472,35 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt; (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt; (Шаг 3/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Super!
 	  Now that you've programmed Kodu&lt;filter.white&gt;&lt;kodu&gt; to collect &lt;filter.fruit&gt; it's time to run the game again and see your work in action.</GamepadText>
       <MouseText>Super!
 	  Now that you've programmed Kodu&lt;filter.white&gt;&lt;kodu&gt; to collect &lt;filter.fruit&gt; it's time to run the game again and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Супер!
+              Теперь ты запрограммировал Kodu&lt;filter.white&gt;&lt;kodu&gt;, чтобы он собирал &lt;filter.fruit&gt;. Пора снова запустить игру на выполнение и посмотреть на результат.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Super!
 	  Now that you've programmed Kodu&lt;filter.white&gt;&lt;kodu&gt; to collect &lt;filter.fruit&gt; it's time to run the game again and see your work in action.</TouchText>
     </Step>
@@ -368,8 +511,32 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск программы (Шаг 3/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the left stick &lt;leftstick&gt; to move Kodu and bump the apple&lt;filter.fruit&gt;.</GamepadText>
       <MouseText>Use the &lt;filter.arrowkeys&gt; to move Kodu and bump the apple&lt;filter.fruit&gt;.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Используй &lt;filter.arrowkeys&gt;, чтобы перемещать Kodu и врезаться в яблоки&lt;filter.fruit&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap the screen to move Kodu and bump the apple&lt;filter.fruit&gt;.</TouchText>
       <CompletionTest Name="BotCount" Args="Fruit 2" />
     </Step>
@@ -381,6 +548,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск программы (Шаг 3/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -394,6 +573,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Scoring Points for &lt;filter.fruit&gt;(1/2)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Начисление баллов за &lt;filter.fruit&gt;(1/2)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Got it!
 	  This next WHEN DO statement we program will give us one point for every apple Kodu collects.
 	  The programming statement looks like this WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
@@ -402,6 +593,20 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  This next WHEN DO statement we program will give us one point for every apple Kodu collects.
 	  The programming statement looks like this WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
 	  Let's get programming!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В следующей команде КОГДА ДЕЛАТЬ надо запрограммировать начисление 1 балла за каждое собранное Kodu яблоко.
+              Команда будет выглядеть так: Когда &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; Делать &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
+              Начинай программировать!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Got it!
 	  This next WHEN DO statement we program will give us one point for every apple Kodu collects.
 	  The programming statement looks like this WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
@@ -414,12 +619,37 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Scoring Points for &lt;filter.fruit&gt;(1/2)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Начисление баллов за &lt;filter.fruit&gt;(Шаг 1/2)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Move to row 5 and program WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
         white &lt;modifier.scorebucket.color.white&gt; is in the scores group &lt;group.scorebucketmodifiers&gt;</GamepadText>
       <MouseText>Move to row 5 and program WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
         white &lt;modifier.scorebucket.color.white&gt; is in the scores group &lt;group.scorebucketmodifiers&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Перейди на 5 строчку и запрограммируй Когда &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; Делать &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
+              &lt;actuator.score&gt; находится в группе &lt;group.game&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Move to row 5 and program WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.score&gt;&lt;filter.scorebucket.color.white&gt;&lt;modifier.001point&gt;
         The score tile &lt;actuator.score&gt; is in the game group &lt;group.game&gt;
         white &lt;modifier.scorebucket.color.white&gt; is in the scores group &lt;group.scorebucketmodifiers&gt;</TouchText>
@@ -433,6 +663,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Scoring Points for &lt;filter.fruit&gt;(2/2)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Начисление баллов за &lt;filter.fruit&gt;(Шаг 2/2)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -446,6 +688,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>If we have 3 &lt;filter.fruit&gt; Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will follow Kodu&lt;filter.white&gt;&lt;kodu&gt;(1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если у нас есть 3 &lt;filter.fruit&gt;, Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;(1/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Great work, we're almost done!
 	  The last statement we need will be on Bro-du&lt;filter.blue&gt;&lt;kodu&gt;
 	  We are going to use the &lt;modifier.scorebucket.color.white&gt; to tell Bro-du to follow Kodu ONLY WHEN 3 &lt;filter.fruit&gt; have been collected.
@@ -454,6 +708,22 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  The last statement we need will be on Bro-du&lt;filter.blue&gt;&lt;kodu&gt;
 	  We are going to use the &lt;modifier.scorebucket.color.white&gt; to tell Bro-du to follow Kodu ONLY WHEN 3 &lt;filter.fruit&gt; have been collected.
 	  Let's find out how!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Отлично, почти все сделано!
+              И наконец, добавим еще одну команду в программу Bro-du&lt;filter.blue&gt;&lt;kodu&gt;.
+              :1) Нам понадобится использовать фильтр &lt;modifier.scorebucket.color.white&gt;
+              :2) Cообщить Bro-du, что он должен следовать за Kodu ТОЛЬКО КОГДА 3 &lt;filter.fruit&gt; будет собрано.
+              Подумай, как это сделать!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Great work, we're almost done!
 	  The last statement we need will be on Bro-du&lt;filter.blue&gt;&lt;kodu&gt;
 	  We are going to use the &lt;modifier.scorebucket.color.white&gt; to tell Bro-du to follow Kodu ONLY WHEN 3 &lt;filter.fruit&gt; have been collected.
@@ -466,6 +736,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>If we have 3 &lt;filter.fruit&gt; Bro-du&lt;filter.blue&gt;&lt;kodu&gt;will follow Kodu&lt;filter.white&gt;&lt;kodu&gt;(0/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если у нас есть 3 &lt;filter.fruit&gt;, Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;(0/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -478,8 +760,32 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>If we have 3 &lt;filter.fruit&gt; Bro-du&lt;filter.blue&gt;&lt;kodu&gt;will follow Kodu&lt;filter.white&gt;&lt;kodu&gt;(1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если у нас есть 3 &lt;filter.fruit&gt;, Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;(1/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>In row 1 add WHEN &lt;sensor.scored&gt;&lt;modifier.003points&gt;&lt;modifier.scorebucket.color.white&gt;</GamepadText>
       <MouseText>In row 1 add WHEN &lt;sensor.scored&gt;&lt;modifier.003points&gt;&lt;modifier.scorebucket.color.white&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В 1 строчку добавь КОГДА &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;&lt;filter.scoreequals&gt;&lt;modifier.003points&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>In row 1 add WHEN &lt;sensor.scored&gt;&lt;modifier.003points&gt;&lt;modifier.scorebucket.color.white&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 1 sensor.scored filter.003points filter.scorebucket.color.white" />
     </Step>
@@ -490,10 +796,35 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>If we have 3 &lt;filter.fruit&gt; Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will follow Kodu&lt;filter.white&gt;&lt;kodu&gt;(2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если у нас есть 3 &lt;filter.fruit&gt;, Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;(2/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Indent Row 2 so that it's under row 1 &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;&lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;&lt;modifier.quickly&gt;
 	  Do this by pressing and holding A then flicking to the right with your left joystick.</GamepadText>
       <MouseText>Indent Row 2 so that it's under row 1 &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;&lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;&lt;modifier.quickly&gt;
 	  Do this by clicking and dragging the row to the right.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Сдвинь 2 строчку так, чтобы она начиналась под 1 строкой &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;&lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;&lt;modifier.quickly&gt;
+              Это можно сделать, щелкнув по 2 строке и потянув ее вправо.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Indent Row 2 so that it's under row 1 &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;&lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;&lt;modifier.quickly&gt;
 	  Do this by tapping the row 2 icon and then dragging your finger to the right.</TouchText>
       <CompletionTest Name="Kode" Args="reflex 2 indent 1 sensor.eyes filter.bokubot filter.white filter.lineofsight actuator.movement selector.towardclosest modifier.quickly" />
@@ -506,6 +837,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>If we have 3 &lt;filter.fruit&gt; Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will follow Kodu&lt;filter.white&gt;&lt;kodu&gt;(2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если у нас есть 3 &lt;filter.fruit&gt;, Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;(2/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -519,6 +862,18 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск программы (Шаг 3/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Way to go! In this tutorial we've learned:
 		(1) how to make an object vanish when bumped
 		(2)	to use scores to count &lt;filter.fruit&gt; collected and
@@ -527,6 +882,21 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 		(1) how to make an object vanish when bumped
 		(2)	to use scores to count &lt;filter.fruit&gt; collected and
 		(3) how to use that count to trigger Bro-du to follow Kodu home.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Так держать! В этом уроке мы узнали:
+              :1) как сделать объект невидимым, когда в него врезаются
+              :2) как использовать баллы для подсчета собранных &lt;filter.fruit&gt; и
+              :3) как использовать набранные очки, чтобы дать Bro-du понять, что можно идти домой за Kodu.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Way to go! In this tutorial we've learned:
 		(1) how to make an object vanish when bumped
 		(2)	to use scores to count &lt;filter.fruit&gt; collected and
@@ -550,6 +920,22 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  1)Adding in new objects &lt;group.objects&gt;into the scene?
 	  2)Program &lt;kodu&gt; to pick them up with &lt;sensor.bumpers&gt; and &lt;actuator.vanish&gt;? 
 	  3)Program &lt;kodu&gt; to gain &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt; when &lt;kodu&gt;&lt;sensor.bumpers&gt;&lt;group.objects&gt;?</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Пройдя лабиринт ты можешь попробовать:
+
+              :1) Добавить новые объекты &lt;group.objects&gt; в сцену.
+              :2) Запрограммировать &lt;kodu&gt;, чтобы он собирал их, используя &lt;sensor.bumpers&gt; и &lt;actuator.vanish&gt;.
+              :3) Запрограммировать &lt;kodu&gt; увеличивать счет &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;, когда &lt;kodu&gt;&lt;sensor.bumpers&gt;&lt;group.objects&gt;?
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>After playing the maze can you try:
 	  
 	  1)Adding in new objects &lt;group.objects&gt;into the scene?
@@ -563,8 +949,32 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Запуск программы (Шаг 3/3)
+            </string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the left stick &lt;leftstick&gt; to move Kodu, find all 3 &lt;filter.fruit&gt; , and finally take Bro-du out of the maze.</GamepadText>
       <MouseText>Use the &lt;filter.arrowkeys&gt; to move Kodu, find all 3 &lt;filter.fruit&gt; , and finally take Bro-du out of the maze.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Используй &lt;filter.arrowkeys&gt;, чтобы перемещать Kodu, найди 3 &lt;filter.fruit&gt;, и наконец выведи Bro-du из лабиринта.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap the screen to move Kodu, find all 3 &lt;filter.fruit&gt; , and finally take Bro-du out of the maze.</TouchText>
       <CompletionTest Name="Timer" Args="3" />
     </Step>

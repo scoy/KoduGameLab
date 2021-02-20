@@ -5,6 +5,20 @@
   <description>Bots follow paths - select &lt;kodu&gt; and press &lt;y&gt; or&lt;rightmouse&gt;-&gt;Program to see the program.
 &lt;a&gt;/[A], &lt;b&gt;/[B] and &lt;x&gt;/[X] switch viewpoints
 &lt;a&gt;/[A] also launches a ball</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Боты следуют по путям. Выбери &lt;kodu&gt;, нажми &lt;rightmouse&gt; -&gt; Программа, чтобы увидеть программу.
+          [A], [B] и [X] переключают вид камеры.
+          [A] также запускает мяч.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <creator>eanders</creator>
   <lastWriteTime>2010-06-25T11:00:00</lastWriteTime>
   <BokuVersion>1.0.33.0</BokuVersion>
