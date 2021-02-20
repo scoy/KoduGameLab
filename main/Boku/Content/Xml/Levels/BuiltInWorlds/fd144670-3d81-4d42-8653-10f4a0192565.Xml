@@ -3,6 +3,16 @@
   <id>fd144670-3d81-4d42-8653-10f4a0192565</id>
   <name>Tutorial 01 v06</name>
   <description>Can you program Kodu to move towards the castle?</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Можешь запрограммировать Kodu, чтобы он двигался к замку?</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>scoy</creator>
   <lastWriteTime>2010-06-27T10:31:25</lastWriteTime>
   <BokuVersion>1.0.94.0</BokuVersion>
@@ -173,6 +183,16 @@
       <TargetModeGamepad>MainMenu</TargetModeGamepad>
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <GoalText>Welcome (Step 1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добро пожаловать (Шаг 1/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Welcome to your first tutorial.  This tutorial will teach you how to program Kodu &lt;Kodu&gt; to move to the Castle &lt;castle&gt;.
 
 During the tutorial you will see instructions at the top of the screen explaining what to do.
@@ -183,6 +203,22 @@ Let's get started.  Our first step will be to go into Edit mode so we can make c
 During the tutorial you will see instructions at the top of the screen explaining what to do.
 
 Let's get started.  Our first step will be to go into Edit mode so we can make changes to the game.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              На этом уроке ты научишься составлять программу, чтобы Kodu &lt;Kodu&gt; двигался к замку &lt;castle&gt;.
+
+              Следи за инструкциями, которые будут появляться вверху экрана. Там будет написано, что нужно делать.
+
+              Давай начнем.  На первом этапе нужно перейти в режим редактирования, чтобы там внести изменения в игру.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
     </Step>
     <Step>
       <DisplayMode>NonModal</DisplayMode>
@@ -190,8 +226,28 @@ Let's get started.  Our first step will be to go into Edit mode so we can make c
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Programming Kodu. (Step 1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 1/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On row 2 move the pencil cursor to the plus sign next to WHEN then press &lt;a&gt; to add &lt;sensor.eyes&gt;</GamepadText>
       <MouseText>On row 2 click on the plus sign next to WHEN and add &lt;sensor.eyes&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Во 2 строчке щелкни на ПЛЮС справа от КОГДА и добавь &lt;sensor.eyes&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <CompletionTest Name="Kode" Args="reflex 2 sensor.eyes" />
     </Step>
     <Step>
@@ -200,10 +256,33 @@ Let's get started.  Our first step will be to go into Edit mode so we can make c
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Programming Kodu. (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>At the plus sign still on the WHEN side add &lt;filter.castle&gt;  The castle can be found in the objects group &lt;group.objects&gt;.
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;</GamepadText>
       <MouseText>At the plus sign still on the WHEN side add &lt;filter.castle&gt;  The castle can be found in the objects group &lt;group.objects&gt;.
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни на следующем ПЛЮСе в части КОГДА и добавь &lt;filter.castle&gt;.  Замок можно найти в группе &lt;group.objects&gt;.
+              When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <CompletionTest Name="Kode" Args="reflex 2 sensor.eyes filter.castle" />
     </Step>
     <Step>
@@ -212,10 +291,33 @@ When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;</MouseTex
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Programming Kodu. (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Now move the pencil cursor to the right of DO and add &lt;actuator.movement&gt;
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;actuator.movement&gt;</GamepadText>
       <MouseText>Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;actuator.movement&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь щелкни на ПЛЮСе справа от ДЕЛАТЬ и добавь &lt;actuator.movement&gt;
+              When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <CompletionTest Name="Kode" Args="reflex 2 sensor.eyes filter.castle actuator.movement" />
     </Step>
     <Step>
@@ -224,10 +326,33 @@ When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Programming Kodu. (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;</GamepadText>
       <MouseText>At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
 When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Следом за &lt;actuator.movement&gt; добавь &lt;selector.towardclosest&gt;
+              Должно получиться так: КОГДА &lt;sensor.eyes&gt;&lt;filter.castle&gt;  ДЕЛАТЬ &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <CompletionTest Name="Kode" Args="reflex 2 sensor.eyes filter.castle actuator.movement selector.towardclosest" />
     </Step>
     <Step>
@@ -236,6 +361,16 @@ When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Programming Kodu (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <CompletionTest Name="Timer" Args="1" />
@@ -246,8 +381,28 @@ When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;
       <TargetModeGamepad>Programming</TargetModeGamepad>
       <TargetModeMouse>Programming</TargetModeMouse>
       <GoalText>Running your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск программы (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Hey you're done!  Now that you've programmed Kodu it's time to run the game and see your work in action.</GamepadText>
       <MouseText>Hey you're done!  Now that you've programmed Kodu it's time to run the game and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Хэй, ты все сделал! Теперь запусти программу на выполнение и  посмотри, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
     </Step>
     <Step>
       <DisplayMode>NonModal</DisplayMode>
@@ -255,10 +410,33 @@ When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.castle&gt;  DO &lt;
       <TargetModeGamepad>InGame</TargetModeGamepad>
       <TargetModeMouse>InGame</TargetModeMouse>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск программы (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the &lt;leftstick&gt; to move the cursor to follow Kodu.
 Use the &lt;rightstick&gt; to orbit the camera.</GamepadText>
       <MouseText>Left click &lt;leftmouse&gt; and drag on the ground to follow Kodu.
 Right click &lt;rightmouse&gt; to orbit the camera.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              С зажатой &lt;leftmouse&gt; перемещай мир, чтобы следовать за Kodu.
+              С зажатой &lt;rightmouse&gt; поворачивай камеру.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <CompletionTest Name="Timer" Args="20" />
     </Step>
     <Step>
@@ -267,12 +445,35 @@ Right click &lt;rightmouse&gt; to orbit the camera.</MouseText>
       <TargetModeGamepad>InGame</TargetModeGamepad>
       <TargetModeMouse>InGame</TargetModeMouse>
       <GoalText>Running Your Program (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск программы (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Congratulations!  In this tutorial you've programmed Kodu to see and move to the castle.
 You can use this same idea to program other characters now.  Try looking at the programming for the castle or maybe play one of the other tutorials.
 Have fun!</GamepadText>
       <MouseText>Congratulations!  In this tutorial you've programmed Kodu to see and move to the castle.
 You can use this same idea to program other characters now.  Try looking at the programming for the castle or maybe play one of the other tutorials.
 Have fun!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Поздравляем!  В этом уроке Kodu видит замок и движется к нему.
+              Сейчас ты можешь запрограммировать, чтобы другие объекты вели себя аналогично.  Кстати, посмотри, как выглядит программа для замка.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
     </Step>
   </tutorialSteps>
 

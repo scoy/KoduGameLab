@@ -440,6 +440,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>I am now going to use my last drill bit.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Я собираюсь использовать последее сверло.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1037,6 +1047,23 @@
 It will now take photos of the surrounding area for tomorrow's planning.
 
 Photos are saved on your hard drive here: My Documents\SavedGames\Boku\</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      У марсохода почти сел аккумулятор.
+
+                      Он теперь сделает фото окружающей территории, чтобы спланировать маршрут на завтра.
+
+                      Фото сохраняются на твоем жестком диске здесь:
+                      My Documents\SavedGames\Boku\
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1223,6 +1250,20 @@ Photos are saved on your hard drive here: My Documents\SavedGames\Boku\</SayStri
               <SayString>Today's Autonomous Search and Explore is over.
 
 The Rover has now run out of power for the day.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      На сегодня автономный поиск и исследование завершены.
+
+                      У марсохода закончилось питание.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>

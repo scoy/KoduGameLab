@@ -8,6 +8,22 @@ Set the Rover’s path to search so you can control where it investigates, and w
 
 Use the onboard power system wisely. Using science tools will drain your power source.
   </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Управляй Ровером с помощью собственных компьютерных команд.
+
+          Установи маршрут марсохода в режим поиска, чтобы ты могли выбирать, где ему нужно проводить исследования и какие камни изучать.
+
+          Используй бортовую систему питания с умом. Использование научных инструментов истощит ваш источник питания.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <descJustification>Left</descJustification>
   <creator>mblackmore</creator>
  <lastWriteTime>2012-08-05T23:00:06</lastWriteTime>

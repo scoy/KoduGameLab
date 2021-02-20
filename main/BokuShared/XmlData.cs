@@ -54,6 +54,12 @@ namespace BokuShared
             // the save-to-file codepath calls the save-to-stream codepath.
         }
 
+        public virtual void OnAfterSave()
+        {
+            // Called after save to stream. Also called after save to file, since
+            // the save-to-file codepath calls the save-to-stream codepath.
+        }
+
         public void Save(Stream stream, bool isDownload)
         {
             if (!isDownload)
@@ -62,6 +68,10 @@ namespace BokuShared
             }
             XmlSerializer serializer = new XmlSerializer(typeof(XmlDataClass));
             serializer.Serialize(stream, this);
+            if (!isDownload)
+            {
+                OnAfterSave();
+            }
         }
 
         public void Save(BinaryWriter writer)
@@ -155,5 +165,6 @@ namespace BokuShared
                 data = null;
             return data;
         }
-    }
-}
+
+    }   // end of class XmlData<XmlDataClass>
+}   // end of namespace BokuShared

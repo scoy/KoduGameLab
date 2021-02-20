@@ -3,6 +3,16 @@
   <id>4ae80201-b3ff-46d4-aa21-9de754a5f1d7</id>
   <name>Glass Walls Tutorial</name>
   <description>This tutorial will teach you about "glass walls" which can keep characters from falling off the edge of the world.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Этот урок расскажет тебе о "стеклянных стенах", которые не дают персонажам упасть за границы мира.</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>scoy</creator>
   <lastWriteTime>2014-11-13T02:10:00.1Z</lastWriteTime>
   <BokuVersion>1.0.84.0</BokuVersion>

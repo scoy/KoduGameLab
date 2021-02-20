@@ -162,15 +162,24 @@ namespace Boku.Programming
         [XmlAttribute]
         public int SetWaterTypeIndex = -1;
 
-        //
-        private string _sayString;
-        private List<string> _sayStrings = new List<string>();                      // Strings for "say" verb.
+        string _sayString;
+
+        // Localized version of sayString plus support for making it work.
+        [XmlIgnore]
+        public string OriginalSayString;
+        [XmlIgnore]
+        public string LocalizedSayString;
+        
+        List<string> _sayStrings = new List<string>();                              // Strings for "say" verb.
 
         public string sayString                                                     // Text associated with 'say' verb.
         {
             get { return _sayString; }
             set { _sayString = value; TextHelper.SplitMessage(value, 10000, SharedX.GetGameFont20, true, _sayStrings); }
         }    
+        // Localized version of sayString plus support for making it work.
+        public XmlSerializableDictionary<string, string> LocalizedSayStringDict = null;
+
         public int sayMode = 1;                                                     // Display mode.  0==fullscreen, 1==thought balloon sequential, 2==thought balloon random
         public TextHelper.Justification sayJustification = TextHelper.Justification.Left;
         [XmlIgnore]
@@ -188,6 +197,13 @@ namespace Boku.Programming
 
 
         private string _saidString;
+
+        // Localized version of saidString plus support for making it work.
+        [XmlIgnore]
+        public string OriginalSaidString;
+        [XmlIgnore]
+        public string LocalizedSaidString;
+
         private List<string> _saidStrings = new List<string>();                      // Strings for "said" filter.
 
         public string saidString                                                     // Text associated with 'said' filter.
@@ -203,6 +219,8 @@ namespace Boku.Programming
                 }
             }
         }
+        // Localized version of sayString plus support for making it work.
+        public XmlSerializableDictionary<string, string> LocalizedSaidStringDict = null;
         public int saidMode = 1;                                                    // Trigger on text said at beginning (0) or end (1) of thought balloon life time.
         public TextHelper.Justification saidJustification = TextHelper.Justification.Left;
 
@@ -563,6 +581,16 @@ namespace Boku.Programming
             return true;
         }
 
+        public bool HasFilter(string upid)
+        {
+            foreach (Filter filter in Filters)
+            {
+                if (filter.upid == upid)
+                    return true;
+            }
+            return false;
+        }
+
         public bool HasModifier(string upid)
         {
             foreach (Modifier modifier in Modifiers)
@@ -770,10 +798,16 @@ namespace Boku.Programming
             dstData.sayJustification = srcData.sayJustification;
             dstData._sayString = srcData._sayString;
             dstData._sayStrings = new List<string>(srcData._sayStrings);
+            dstData.LocalizedSayStringDict = srcData.LocalizedSayStringDict;
+            dstData.OriginalSayString = srcData.OriginalSayString;
+            dstData.LocalizedSayString = srcData.LocalizedSayString;
             dstData.saidMode = srcData.saidMode;
             dstData.saidJustification = srcData.saidJustification;
             dstData._saidString = srcData._saidString;
             dstData._saidStrings = new List<string>(srcData._saidStrings);
+            dstData.LocalizedSaidStringDict = srcData.LocalizedSaidStringDict;
+            dstData.OriginalSaidString = srcData.OriginalSaidString;
+            dstData.LocalizedSaidString = srcData.LocalizedSaidString;
             dstData.Indentation = srcData.Indentation;
             dstData.ReScaleEnabled = srcData.ReScaleEnabled;
             dstData.ReScale = srcData.ReScale;
@@ -1035,6 +1069,12 @@ namespace Boku.Programming
             set { data.sayString = value; }
         }
 
+        public XmlSerializableDictionary<string, string> LocalizedSayStringDict
+        {
+            get { return data.LocalizedSayStringDict; }
+            set { data.LocalizedSayStringDict = value; }
+        }
+
         public int SayMode
         {
             get { return data.sayMode; }
@@ -1051,6 +1091,12 @@ namespace Boku.Programming
         {
             get { return data.saidString; }
             set { data.saidString = value; }
+        }
+
+        public XmlSerializableDictionary<string, string> LocalizedSaidStringDict
+        {
+            get { return data.LocalizedSaidStringDict; }
+            set { data.LocalizedSaidStringDict = value; }
         }
 
         public int SaidMode
@@ -1264,6 +1310,13 @@ namespace Boku.Programming
             clip.saidString = SaidString;
             clip.saidMode = SaidMode;
             clip.Indentation = Indentation;
+
+            clip.LocalizedSayStringDict = Data.LocalizedSayStringDict;
+            clip.OriginalSayString = Data.OriginalSayString;
+            clip.LocalizedSayString = Data.LocalizedSayString;
+            clip.LocalizedSaidStringDict = Data.LocalizedSaidStringDict;
+            clip.OriginalSaidString = Data.OriginalSaidString;
+            clip.LocalizedSaidString = Data.LocalizedSaidString;
 
             clip.ParamInt = Data.ParamInt;
             clip.ParamFloat = Data.ParamFloat;

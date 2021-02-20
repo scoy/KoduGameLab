@@ -410,6 +410,132 @@ namespace Boku.Common.Xml
             return success;
         }   // end of XmlLevelData ReadFromXml()
 
+        /// <summary>
+        /// Stuff we have to fix up before saving.  Currently this is where we
+        /// resotre the orginal strings for any strings that have been localized.
+        /// </summary>
+        public override void OnBeforeSave()
+        {
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        // If the user has changed the strings, then keep the new strings and remove the localized versions.
+                        ReflexData rd = reflex.Data;
+                        if (rd.actuatorUpid != "actuator.say")
+                        {
+                            // This reflex doesn't have a 'say' actuator so it shouldn't have a sayString.  This
+                            // generally only happens when a 'say' tile once existed in the reflex and was then
+                            // removed.
+                            rd.sayString = null;
+                            rd.LocalizedSayString = null;
+                            rd.OriginalSayString = null;
+                            rd.LocalizedSayStringDict = null;
+                        }
+                        else
+                        {
+
+                            if (rd.sayString != rd.LocalizedSayString)
+                            {
+                                // Reset everything to reflect the fact that we have a new string.
+                                rd.LocalizedSayStringDict = null;
+                                rd.OriginalSayString = rd.sayString;
+                                rd.LocalizedSayString = rd.sayString;
+                            }
+                            else
+                            {
+                                // No change so restore original so it's the one that gets saved out.
+                                rd.sayString = rd.OriginalSayString;
+                            }
+                        }
+
+
+                        if (rd.sensorUpid != "sensor.ears" && rd.HasFilter("filter.said"))
+                        {
+                            // This reflex doesn't have 'hear said' so it shouldn't have a saidString.  This
+                            // generally only happens when a 'said' tile once existed in the reflex and was then
+                            // removed.
+                            rd.saidString = null;
+                            rd.LocalizedSaidString = null;
+                            rd.OriginalSaidString = null;
+                            rd.LocalizedSaidStringDict = null;
+                        }
+                        else
+                        {
+
+                            if (rd.saidString != rd.LocalizedSaidString)
+                            {
+                                // Reset everything to reflect the fact that we have a new string.
+                                rd.LocalizedSaidStringDict = null;
+                                rd.OriginalSaidString = rd.saidString;
+                                rd.LocalizedSaidString = rd.saidString;
+                            }
+                            else
+                            {
+                                // No change so restore original so it's the one that gets saved out.
+                                rd.saidString = rd.OriginalSaidString;
+                            }
+                        }
+
+                    }   // end of loop over reflexes
+                }   // end of loop over tasks
+            }   // end of loop over actors
+
+            base.OnBeforeSave();
+        }   // end of OnBeforeSave()
+
+        /// <summary>
+        /// In OnBeforeSave() we shifted the localized strings back into the configuration they
+        /// need to have on disc.  Once saved we need to restore the in-memory (localized) state.
+        /// </summary>
+        public override void OnAfterSave()
+        {
+            // For saving, we used the original versions of the strings but if this class instance
+            // is still being used in memory we need to restore the localized versions.
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        ReflexData rd = reflex.Data;
+                        rd.sayString = rd.LocalizedSayString;
+                        rd.saidString = rd.LocalizedSaidString;
+                    }
+                }
+            }
+
+            base.OnAfterSave();
+        }   // end of OnAfterSave()
+
+        protected override bool OnLoad()
+        {
+            // Need to check for localization of any SayStrings in each reflex of each actor's brains.
+            foreach (XmlData.Actor a in actor)
+            {
+                var brain = a.brain;
+                foreach (Task task in brain.tasks)
+                {
+                    foreach (Reflex reflex in task.reflexes)
+                    {
+                        ReflexData rd = reflex.Data;
+                        
+                        rd.sayString = TextHelper.CleanUpString(rd.sayString);
+                        rd.sayString = XmlWorldData.OnLoadLocalizedString(rd.sayString, ref rd.OriginalSayString, ref rd.LocalizedSayString, ref rd.LocalizedSayStringDict);
+
+                        rd.saidString = TextHelper.CleanUpString(rd.saidString);
+                        rd.saidString = XmlWorldData.OnLoadLocalizedString(rd.saidString, ref rd.OriginalSaidString, ref rd.LocalizedSaidString, ref rd.LocalizedSaidStringDict);
+                    }
+                }
+            }
+
+            return base.OnLoad();
+        }   // end of OnLoad()
+
     }   // end of class XmlLevelData
 
 }   // end of namespace Boku.SimWorld

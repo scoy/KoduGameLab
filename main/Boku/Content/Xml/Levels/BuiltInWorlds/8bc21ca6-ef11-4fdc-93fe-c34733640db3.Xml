@@ -3,6 +3,16 @@
   <id>8bc21ca6-ef11-4fdc-93fe-c34733640db3</id>
   <name>Tutorial 02</name>
   <description>Teach &lt;cycle&gt; to jump!</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Научи &lt;cycle&gt; прыгать!</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>eanders</creator>
   <lastWriteTime>2010-06-25T12:00:01</lastWriteTime>
   <BokuVersion>1.0.9.0</BokuVersion>

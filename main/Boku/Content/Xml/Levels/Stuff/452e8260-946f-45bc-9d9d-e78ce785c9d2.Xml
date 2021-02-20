@@ -365,7 +365,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -381,7 +381,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -397,7 +397,7 @@
               <modifierUpids>
                 <upid>modifier.event.arcade.coinsound</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -519,7 +519,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -535,7 +535,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -651,7 +651,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -670,7 +670,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -686,7 +686,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -750,7 +750,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -766,7 +766,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -782,7 +782,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -798,7 +798,7 @@
               <modifierUpids>
                 <upid>modifier.taskf</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -812,7 +812,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -826,7 +826,7 @@
                 <upid>modifier.glowoff</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -839,7 +839,7 @@
               <modifierUpids>
                 <upid>modifier.mu_brightguitar</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -854,7 +854,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -873,7 +873,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -889,7 +889,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -953,7 +953,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -967,7 +967,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -981,7 +981,7 @@
                 <upid>modifier.glowoff</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -994,7 +994,7 @@
               <modifierUpids>
                 <upid>modifier.mu_brightguitar</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -1009,7 +1009,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1028,7 +1028,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1044,7 +1044,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1124,7 +1124,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1140,7 +1140,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1154,7 +1154,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1168,7 +1168,7 @@
                 <upid>modifier.glowoff</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1181,7 +1181,7 @@
               <modifierUpids>
                 <upid>modifier.mu_brightguitar</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -1196,7 +1196,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1215,7 +1215,7 @@
                 <upid>modifier.quickly</upid>
                 <upid>modifier.quickly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1231,7 +1231,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1295,7 +1295,7 @@
               <modifierUpids>
                 <upid>modifier.taskf</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1309,7 +1309,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1323,7 +1323,7 @@
                 <upid>modifier.glowoff</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1336,7 +1336,7 @@
               <modifierUpids>
                 <upid>modifier.mu_ambientlight</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -1351,7 +1351,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1366,7 +1366,7 @@
                 <upid>modifier.scorebucket.color.black</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1379,7 +1379,7 @@
               <modifierUpids>
                 <upid>modifier.white</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1393,7 +1393,7 @@
                 <upid>filter.leftstick</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1409,7 +1409,7 @@
               <modifierUpids>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1475,7 +1475,7 @@
                 <upid>modifier.scorebucket.color.black</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1493,7 +1493,7 @@
                 <upid>modifier.scorebucket.color.black</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1509,7 +1509,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1525,7 +1525,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1542,7 +1542,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.grey</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1559,7 +1559,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.green</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1576,7 +1576,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.blue</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1593,7 +1593,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1610,7 +1610,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.purple</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1624,7 +1624,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1637,7 +1637,7 @@
               <modifierUpids>
                 <upid>modifier.mu_brightguitar</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -1652,7 +1652,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1665,7 +1665,7 @@
               <modifierUpids>
                 <upid>modifier.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1679,7 +1679,7 @@
                 <upid>filter.000point</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -1692,7 +1692,7 @@
               <modifierUpids>
                 <upid>modifier.mu_ambientlight</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2318,6 +2318,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Do you hear the B's at the Castle?</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ты слышишь B's в замке?</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2647,7 +2657,7 @@
               <modifierUpids>
                 <upid>modifier.creatable.fa7b5124-82bc-4807-b99d-86444ab310da</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2663,7 +2673,7 @@
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2681,7 +2691,7 @@
                 <upid>modifier.red</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2698,7 +2708,7 @@
               <modifierUpids>
                 <upid>modifier.creatable.fa7b5124-82bc-4807-b99d-86444ab310da</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2714,7 +2724,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2732,7 +2742,7 @@
                 <upid>modifier.event.misc.pop</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2746,7 +2756,7 @@
                 <upid>modifier.black</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2757,7 +2767,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -2873,7 +2883,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -2889,7 +2899,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3021,7 +3031,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3037,7 +3047,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3169,7 +3179,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3185,7 +3195,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3317,7 +3327,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3333,7 +3343,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3465,7 +3475,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3481,7 +3491,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3613,7 +3623,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3629,7 +3639,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3761,7 +3771,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3777,7 +3787,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3909,7 +3919,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -3925,7 +3935,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4057,7 +4067,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4073,7 +4083,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4205,7 +4215,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4221,7 +4231,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4353,7 +4363,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4369,7 +4379,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4501,7 +4511,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4517,7 +4527,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4649,7 +4659,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4665,7 +4675,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4797,7 +4807,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4813,7 +4823,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4945,7 +4955,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -4961,7 +4971,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5093,7 +5103,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5109,7 +5119,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5241,7 +5251,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5257,7 +5267,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5389,7 +5399,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5405,7 +5415,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5537,7 +5547,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.red</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5553,7 +5563,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5569,7 +5579,7 @@
               <modifierUpids>
                 <upid>modifier.event.arcade.coinsound</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5721,7 +5731,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5741,7 +5751,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5778,6 +5788,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Bring me, oh let's say 15 coins and then maybe I'll let you pass or something...</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Принеси мне, ну, скажем, 15 монет, а потом, может быть, я тебя пропущу или еще что-нибудь...</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>
@@ -5797,7 +5817,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -5818,7 +5838,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -5836,6 +5856,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Wow, you broght 15 coins, but I'm still not gonna let you pass... Oh no I forgot to speak in pseudo-early-modern English!!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ух ты, ты принес 15 монет, но я все равно тебя не отпущу... О нет, я забыл говорить на псевдо-раннем современном английском языке!!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>
@@ -5846,7 +5876,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -5956,7 +5986,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -5972,7 +6002,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6104,7 +6134,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6120,7 +6150,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6252,7 +6282,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6268,7 +6298,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6400,7 +6430,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6416,7 +6446,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6548,7 +6578,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6564,7 +6594,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6821,7 +6851,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -6838,7 +6868,7 @@
               <modifierUpids>
                 <upid>modifier.event.arcade.win</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6853,7 +6883,7 @@
                 <upid>modifier.scorebucket.color.yellow</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6867,6 +6897,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Hail and well met Lord Mobiko, I am Koduwan.  I shall bequeth unto ye the ability to summon Wisps.  To be continued</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Приветствую, о Лорд Мобико. Я Кодуван. Я завещаю вам способность вызывать огоньки. Продолжение следует</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>
@@ -6879,7 +6919,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -6896,7 +6936,7 @@
               <modifierUpids>
                 <upid>modifier.event.arcade.win</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6917,7 +6957,7 @@
                 <upid>modifier.angle.low</upid>
                 <upid>modifier.angle.low</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -6933,7 +6973,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -6948,7 +6988,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -7052,7 +7092,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7070,7 +7110,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7107,7 +7147,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7135,7 +7175,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7153,7 +7193,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7171,7 +7211,7 @@
                 <upid>modifier.scorebucket.color.white</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7187,7 +7227,7 @@
               <modifierUpids>
                 <upid>modifier.expressswear</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7203,7 +7243,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -7218,7 +7258,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7234,7 +7274,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -7249,7 +7289,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -7353,7 +7393,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7371,7 +7411,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7418,7 +7458,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7456,7 +7496,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7474,7 +7514,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7492,7 +7532,7 @@
                 <upid>modifier.scorebucket.color.white</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7508,7 +7548,7 @@
               <modifierUpids>
                 <upid>modifier.expressswear</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7524,7 +7564,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7549,7 +7589,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7565,7 +7605,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7590,7 +7630,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7715,7 +7755,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7733,7 +7773,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7780,7 +7820,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7818,7 +7858,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7836,7 +7876,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7854,7 +7894,7 @@
                 <upid>modifier.scorebucket.color.white</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7870,7 +7910,7 @@
               <modifierUpids>
                 <upid>modifier.expressswear</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7886,7 +7926,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7911,7 +7951,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7927,7 +7967,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -7952,7 +7992,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8077,7 +8117,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8095,7 +8135,7 @@
               <modifierUpids>
                 <upid>modifier.taske</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8142,7 +8182,7 @@
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8180,7 +8220,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8198,7 +8238,7 @@
                 <upid>modifier.it</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8216,7 +8256,7 @@
                 <upid>modifier.scorebucket.color.white</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8232,7 +8272,7 @@
               <modifierUpids>
                 <upid>modifier.expressswear</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8248,7 +8288,7 @@
               <modifierUpids>
                 <upid>modifier.taskd</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8273,7 +8313,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8289,7 +8329,7 @@
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8314,7 +8354,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8445,7 +8485,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8461,7 +8501,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8593,7 +8633,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8609,7 +8649,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8741,7 +8781,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8757,7 +8797,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8889,7 +8929,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -8905,7 +8945,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9037,7 +9077,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9053,7 +9093,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9185,7 +9225,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9201,7 +9241,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9333,7 +9373,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9349,7 +9389,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9481,7 +9521,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9497,7 +9537,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9629,7 +9669,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9645,7 +9685,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9777,7 +9817,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9793,7 +9833,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9925,7 +9965,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -9941,7 +9981,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10073,7 +10113,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10089,7 +10129,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10221,7 +10261,7 @@
                 <upid>modifier.001point</upid>
                 <upid>modifier.scorebucket.color.yellow</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10237,7 +10277,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10470,7 +10510,7 @@
                 <upid>modifier.colorrandom</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10487,7 +10527,7 @@
                 <upid>modifier.005points</upid>
                 <upid>modifier.it</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10505,7 +10545,7 @@
                 <upid>modifier.once</upid>
                 <upid>modifier.scorebucket.color.white</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10521,7 +10561,7 @@
               <modifierUpids>
                 <upid>modifier.me</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10535,7 +10575,7 @@
                 <upid>filter.terrain</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10547,7 +10587,7 @@
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -10666,7 +10706,7 @@
                 <upid>modifier.colorrandom</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10680,7 +10720,7 @@
                 <upid>modifier.colorrandom</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10694,7 +10734,7 @@
                 <upid>modifier.south</upid>
                 <upid>modifier.slowly</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -10708,7 +10748,7 @@
                 <upid>filter.quartersecond</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11036,7 +11076,7 @@
                 <upid>modifier.scorebucket.color.red</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11051,7 +11091,7 @@
                 <upid>modifier.scorebucket.color.white</upid>
                 <upid>modifier.once</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11067,6 +11107,20 @@
               <SayString>Lord Mobiko, We've reached the Wood of Bokuheim; be careful for the Bokish Warriors speak of an Ancient Drüümian Terror on Mt. Parallaxis!!
 
 Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space] keys to move and jump.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Лорд Мобико, мы добрались до леса Бокухейма; будьте осторожны, потому что Бокийские воины говорят о Древнем Дрюмийском ужасе на горе Параллакс!!
+
+                      Используй [left] [right] и [space] для перемещения и прыжка.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>
@@ -11079,7 +11133,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11096,7 +11150,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.north</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11110,7 +11164,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>filter.05seconds</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11223,7 +11277,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11240,7 +11294,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11255,7 +11309,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11269,6 +11323,16 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>It's as I feared, the Drüümwight is awake.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Как я и боялся, Дрюмвайт проснулся.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>
@@ -11281,7 +11345,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.north</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11295,7 +11359,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>filter.05seconds</upid>
               </filterUpids>
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11408,7 +11472,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11425,7 +11489,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11440,7 +11504,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11458,7 +11522,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11473,7 +11537,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11487,7 +11551,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.grey</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11504,7 +11568,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11522,7 +11586,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11540,7 +11604,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11558,7 +11622,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11576,7 +11640,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11686,7 +11750,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11703,7 +11767,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11718,7 +11782,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11736,7 +11800,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11751,7 +11815,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11765,7 +11829,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.green</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11782,7 +11846,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11800,7 +11864,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11818,7 +11882,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11836,7 +11900,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11854,7 +11918,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11964,7 +12028,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -11981,7 +12045,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -11996,7 +12060,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12014,7 +12078,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12029,7 +12093,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12043,7 +12107,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.blue</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12060,7 +12124,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12078,7 +12142,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12096,7 +12160,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12114,7 +12178,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12132,7 +12196,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12242,7 +12306,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12259,7 +12323,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12274,7 +12338,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12292,7 +12356,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12307,7 +12371,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12321,7 +12385,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.orange</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12338,7 +12402,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12356,7 +12420,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12374,7 +12438,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12392,7 +12456,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12410,7 +12474,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12520,7 +12584,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12537,7 +12601,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12552,7 +12616,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12570,7 +12634,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskc</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12585,7 +12649,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12599,7 +12663,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.purple</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12616,7 +12680,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12634,7 +12698,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12652,7 +12716,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12670,7 +12734,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12688,7 +12752,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>
@@ -12703,7 +12767,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <Indentation>0</Indentation>
               <filterUpids />
               <modifierUpids />
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12717,7 +12781,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
                 <upid>modifier.reset.score</upid>
                 <upid>modifier.scorebucket.color.purple</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12734,7 +12798,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taska</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12752,7 +12816,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12770,7 +12834,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12788,7 +12852,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -12806,7 +12870,7 @@ Use the gamepad left stick and &lt;a&gt; button or the [left] [right] and [space
               <modifierUpids>
                 <upid>modifier.taskb</upid>
               </modifierUpids>
-              <SayString>hola!</SayString>
+              
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>

@@ -592,6 +592,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Press &lt;X&gt; to Inspect and &lt;B&gt; to Beam.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми &lt;X&gt; для сверления и &lt;B&gt; для прожигания лазером.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -609,6 +619,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Press &lt;X&gt; to Inspect and &lt;B&gt; to Beam.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми &lt;X&gt; для сверления и &lt;B&gt; для прожигания лазером.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -626,6 +646,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Use &lt;LS&gt; to steer.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Используй &lt;LS&gt; для управления.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -674,6 +704,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Watch out! Sand makes me go slow.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Осторожнее! Песок замедляет меня.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -762,6 +802,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>You did it! INCREDIBLE score!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ты сделал это! НЕВЕРОЯТНЫЙ счет!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -811,6 +861,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>You did it! Amazing score!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ты сделал это! Потрясающий счет!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -855,6 +915,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>You did it! Good score!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ты сделал это! Хороший счет!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -894,6 +964,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>You did it! Nice score!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Ты сделал это! Приличный счет!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -931,6 +1011,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>Game over. Thanks for playing!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Игра окончена. Спасибо за игру!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1026,6 +1116,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>GO!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Начали!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1356,6 +1456,19 @@
               <modifierUpids />
               <SayString>I've run out of Drill bits.
 Press &lt;B&gt; to Beam instead.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      У меня закончились свёрла.
+                      Жми &lt;B&gt; вместо лазерного луча.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1374,6 +1487,19 @@ Press &lt;B&gt; to Beam instead.</SayString>
               <modifierUpids />
               <SayString>I've run out of Drill bits.
 Press &lt;B&gt; to Beam instead.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      У меня закончились свёрла.
+                      Жми &lt;B&gt; вместо лазерного луча.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1726,6 +1852,16 @@ Press &lt;B&gt; to Beam instead.</SayString>
               </filterUpids>
               <modifierUpids />
               <SayString>Press &lt;X&gt; to Inspect and &lt;B&gt; to Beam.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми &lt;X&gt; для сверления и &lt;B&gt; для прожигания лазером.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1743,6 +1879,16 @@ Press &lt;B&gt; to Beam instead.</SayString>
               </filterUpids>
               <modifierUpids />
               <SayString>Press &lt;X&gt; to Inspect and &lt;B&gt; to Beam.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми &lt;X&gt; для сверления и &lt;B&gt; для прожигания лазером.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1760,6 +1906,16 @@ Press &lt;B&gt; to Beam instead.</SayString>
               </filterUpids>
               <modifierUpids />
               <SayString>Use &lt;LS&gt; to steer.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Используй &lt;LS&gt; для управления.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1860,6 +2016,16 @@ Press &lt;B&gt; to Beam instead.</SayString>
               <modifierUpids />
               <SayString>Bump into me and press &lt;X&gt;
 to drill for samples</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Коснись меня и нажми &lt;X&gt; для высверливания образца</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2376,6 +2542,16 @@ to drill for samples</SayString>
               <filterUpids />
               <modifierUpids />
               <SayString>Scanning terrain...</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Сканирую территорию...</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3193,6 +3369,16 @@ to drill for samples</SayString>
               </filterUpids>
               <modifierUpids />
               <SayString>Laser Me! Press &lt;B&gt;</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Направь на меня лазер! Жми &lt;B&gt;</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3328,6 +3514,16 @@ to drill for samples</SayString>
               </filterUpids>
               <modifierUpids />
               <SayString>Press &lt;B&gt; to Beam the laser at me</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми &lt;B&gt; для прожигания меня лазером</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>

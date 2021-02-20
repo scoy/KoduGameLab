@@ -18,9 +18,7 @@ using Boku.Base;
 using BokuShared;
 using Boku.Programming;
 
-#if !ADDIN
 using Boku.Common.TutorialSystem;
-#endif
 
 namespace Boku.Common.Xml
 {
@@ -49,10 +47,21 @@ namespace Boku.Common.Xml
     public class XmlWorldData : BokuShared.XmlData<XmlWorldData>
     {
         #region Members
+
         public Guid id = Guid.Empty;
+
         public string name;             // The level name as displayed to the user.
+        public XmlSerializableDictionary<string, string> LocalizedNameDict = null;
+        string originalName;            // Name originally found in file.
+        string localizedName;           // Name after localization.
+
         public string description;
+        public XmlSerializableDictionary<string, string> LocalizedDescriptionDict = null;
+        string originalDescription;     // Description originally found in file.
+        string localizedDescription;    // Description after localization.
+
         public TextHelper.Justification descJustification = TextHelper.Justification.Left;
+
         public string creator;
 
         /// <summary>
@@ -173,9 +182,7 @@ namespace Boku.Common.Xml
                                                          //Note it should usually be the same as lastWriteTime but not the same as Modified.
 
 
-#if !ADDIN
         public List<Step> tutorialSteps = new List<Step>();
-#endif
 
         #endregion
 
@@ -299,7 +306,53 @@ namespace Boku.Common.Xml
             // Since we're saving as the signed in person, use the current Auth info.
             creator = Auth.CreatorName;
             checksum = Auth.CreateChecksumHash(lastWriteTime);
-        }
+
+            // Manipulate localized strings.
+            name = BeforeSaveLocalizedString(name, ref originalName, ref localizedName, ref LocalizedNameDict);
+            description = BeforeSaveLocalizedString(description, ref originalDescription, ref localizedDescription, ref LocalizedDescriptionDict);
+
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    step.GoalText = BeforeSaveLocalizedString(step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    step.GamepadText = BeforeSaveLocalizedString(step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    step.MouseText = BeforeSaveLocalizedString(step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    step.TouchText = BeforeSaveLocalizedString(step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                }
+            }
+
+            /*
+            // Fake some data so we can see what it looks like in the Xml and do some testing.
+            if (localizedNameDict == null)
+            {
+                localizedNameDict = new XmlSerializableDictionary<string, string>();
+            }
+            localizedNameDict.Add("EN", "English Title");
+            localizedNameDict.Add("ES", "Spanish Title");
+            */
+        
+        }   // end of OnBeforeSave()
+
+        public override void OnAfterSave()
+        {
+            // For saving, we used the original versions of the strings but if this class instance
+            // is still being used in memory we need to restore the localized versions.
+            name = localizedName;
+            description = localizedDescription;
+
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    step.GoalText = step.LocalizedGoalText;
+                    step.GamepadText = step.LocalizedGamepadText;
+                    step.MouseText = step.LocalizedMouseText;
+                    step.TouchText = step.LocalizedTouchText;
+                }
+            }
+
+        }   // end of OnAfterSave()
 
         protected override bool OnLoad()
         {
@@ -334,8 +387,24 @@ namespace Boku.Common.Xml
             if (stuffFilename != null && stuffFilename != String.Empty && !stuffFilename.Contains(@"\"))
                 stuffFilename = @"Xml\Levels\Stuff\" + stuffFilename;
 
+
+            // Check for localizations.
+            name = OnLoadLocalizedString(name, ref originalName, ref localizedName, ref LocalizedNameDict);
+            description = OnLoadLocalizedString(description, ref originalDescription, ref localizedDescription, ref LocalizedDescriptionDict);
+
+            if (tutorialSteps != null)
+            {
+                foreach (Step step in tutorialSteps)
+                {
+                    step.GoalText = OnLoadLocalizedString(step.GoalText, ref step.OriginalGoalText, ref step.LocalizedGoalText, ref step.LocalizedGoalTextDict);
+                    step.GamepadText = OnLoadLocalizedString(step.GamepadText, ref step.OriginalGamepadText, ref step.LocalizedGamepadText, ref step.LocalizedGamepadTextDict);
+                    step.MouseText = OnLoadLocalizedString(step.MouseText, ref step.OriginalMouseText, ref step.LocalizedMouseText, ref step.LocalizedMouseTextDict);
+                    step.TouchText = OnLoadLocalizedString(step.TouchText, ref step.OriginalTouchText, ref step.LocalizedTouchText, ref step.LocalizedTouchTextDict);
+                }
+            }
+
             return true;
-        }
+        }   // end of OnLoad()
 
         /// <summary>
         /// We occasionally run across a file that as written with NaNs.  Find them
@@ -460,7 +529,8 @@ namespace Boku.Common.Xml
                 }
 #endif
             }
-        }
+
+        }   // end of OnBeforeSaveToFile()
 
         public string GetImageFilenameWithoutExtension()
         {
@@ -475,8 +545,80 @@ namespace Boku.Common.Xml
             {
                 return Path.GetFileNameWithoutExtension(Filename);
             }
-        }
+        }   // end of GetImageFilenameWithoutExtension()
+
+        //
+        // Helper functions for working with localizable strings in the world data.
+        //
+
+        /// <summary>
+        /// Before we save we need to check if the user has changed the string.
+        /// If the user has changed the string then all the translations are invalid and should be removed.
+        /// If the user didn't change the string then we need to restore the original string so it gets properly saved.
+        /// 
+        /// We return the main str so this can be used like Str = OnLoadLocalizedString(Str, ... 
+        /// even if Str is an accessor which doesn't work with ref.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="originalStr"></param>
+        /// <param name="localizedStr"></param>
+        /// <param name="dict"></param>
+        /// <returns>The new version of the in use string, str.</returns>
+        public static string BeforeSaveLocalizedString(string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        {
+            // If the user has changed the strings, then keep the new strings and remove the localized versions.
+            if (str != localizedStr)
+            {
+                // Reset everything to reflect the fact that we have a new string.
+                dict = null;
+                originalStr = str;
+                localizedStr = str;
+            }
+            else
+            {
+                // No change so restore original so it's the one that gets saved out.
+                str = originalStr;
+            }
+
+            return str;
+        }   // end of BeforeSaveLocalizedString()
+
+        /// <summary>
+        /// On load we want to see if there any localizations for the strings.  
+        /// If there are then we look for one that matches the current language.  
+        /// If not we just set all the strings to match each other.
+        /// 
+        /// We return the main str so this can be used like Str = OnLoadLocalizedString(Str, ... 
+        /// even if Str is an accessor which doesn't work with ref.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="originalStr"></param>
+        /// <param name="localizedStr"></param>
+        /// <param name="dict"></param>
+        /// <returns>The new version of the in use string, str.</returns>
+        public static string OnLoadLocalizedString(string str, ref string originalStr, ref string localizedStr, ref XmlSerializableDictionary<string, string> dict)
+        {
+            string curLang = Boku.Common.Localization.Localizer.LocalLanguage;
+
+            originalStr = str;
+            if (dict == null)
+            {
+                // If localized dictionary is null, must be an old level so do nothing.    
+            }
+            else
+            {
+                // If localized dictionary is not null, see if we have a string from current language to use.
+                string locStr;
+                if (dict.TryGetValue(curLang, out locStr))
+                {
+                    str = TextHelper.CleanUpString(locStr);
+                }
+            }
+            localizedStr = str;
+
+            return str;
+        }   // end of OnLoadLocalizedString()
 
     }   // end of class XmlWorldData
+}	// end of namespace Boku.Common.Xml
 
-}   // end of namespace Boku.Common.Xml

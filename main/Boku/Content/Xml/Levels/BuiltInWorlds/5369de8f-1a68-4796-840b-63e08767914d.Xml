@@ -3,6 +3,16 @@
   <id>5369de8f-1a68-4796-840b-63e08767914d</id>
   <name>Sputterville Ultra v13</name>
   <description>Collect saucers and bring to the factory. Avoid mines - unless you catch them from behind.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Собери летающие тарелки и принеси их на фабрику. Избегай мин, разве только ты сможешь поймать их сзади.</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>mattmac</creator>
   <lastWriteTime>2009-06-27T23:59:58</lastWriteTime>
   <rating>1</rating>

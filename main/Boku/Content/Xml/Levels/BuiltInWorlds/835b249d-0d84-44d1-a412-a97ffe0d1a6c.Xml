@@ -5,6 +5,20 @@
   <description>Concentrate on jumping. Try not to hit the walls!
 
 &lt;a&gt; or [space] to jump.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Сконцентрируйся на прыжках. Старайся не ударяться о стены!
+
+          Жми [space] для прыжка.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>scoy</creator>
   <lastWriteTime>2010-06-24T13:15:49</lastWriteTime>
   <BokuVersion>1.0.60.0</BokuVersion>
