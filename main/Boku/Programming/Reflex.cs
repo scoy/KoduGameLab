@@ -773,6 +773,9 @@ namespace Boku.Programming
             dstData.sayJustification = srcData.sayJustification;
             dstData._sayString = srcData._sayString;
             dstData._sayStrings = new List<string>(srcData._sayStrings);
+            dstData.LocalizedSayStringDict = srcData.LocalizedSayStringDict;
+            dstData.OriginalSayString = srcData.OriginalSayString;
+            dstData.LocalizedSayString = srcData.LocalizedSayString;
             dstData.saidMode = srcData.saidMode;
             dstData.saidJustification = srcData.saidJustification;
             dstData._saidString = srcData._saidString;
@@ -1038,6 +1041,12 @@ namespace Boku.Programming
             set { data.sayString = value; }
         }
 
+        public XmlSerializableDictionary<string, string> LocalizedSayStringDict
+        {
+            get { return data.LocalizedSayStringDict; }
+            set { data.LocalizedSayStringDict = value; }
+        }
+
         public int SayMode
         {
             get { return data.sayMode; }
@@ -1267,6 +1276,9 @@ namespace Boku.Programming
             clip.saidString = SaidString;
             clip.saidMode = SaidMode;
             clip.Indentation = Indentation;
+            clip.LocalizedSayStringDict = Data.LocalizedSayStringDict;
+            clip.OriginalSayString = Data.OriginalSayString;
+            clip.LocalizedSayString = Data.LocalizedSayString;
 
             clip.ParamInt = Data.ParamInt;
             clip.ParamFloat = Data.ParamFloat;
