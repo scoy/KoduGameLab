@@ -3,6 +3,16 @@
   <id>3e76bf1f-224e-4f78-9c93-807fad467b7a</id>
   <name>3D Flare Paths</name>
   <description>Flares fly along complex paths. Pretty!</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Факелы летят по сложным траекториям. Миленько!</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>mattmac</creator>
   <lastWriteTime>2009-06-27T19:04:54</lastWriteTime>
   <rating>1</rating>

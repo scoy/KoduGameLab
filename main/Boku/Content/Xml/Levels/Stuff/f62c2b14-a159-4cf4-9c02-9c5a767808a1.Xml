@@ -1328,6 +1328,19 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Kodu! I was so scared! Let's go home.  </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Kodu! Мне было так страшно!
+                      Пойдем домой.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -1415,6 +1428,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Home sweet home, here I come! </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Дом, милый дом, вот и я!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2459,6 +2482,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Hi Kodu, so nice to see you!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Привет Kodu, так приятно тебя видеть!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2514,6 +2547,19 @@
               <modifierUpids />
               <SayString>Bro-du is lost in the maze! 
 Can you find him and take him home?</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Bro-du потерялся в лабиринте!
+                      Можешь отыскать его и отвести домой?
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3019,6 +3065,16 @@ Can you find him and take him home?</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Hi Kodu, I think I saw Bro-du in the middle of the Maze!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Привет Kodu, мне кажется, я видел Bro-du в середине лабиринта!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3138,6 +3194,16 @@ Can you find him and take him home?</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Hi Kodu, I think I saw Bro-du in the middle of the Maze!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Привет Kodu, мне кажется, я видел Bro-du в середине лабиринта!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -4756,6 +4822,16 @@ Can you find him and take him home?</SayString>
               </modifierUpids>
               <SayString>Thanks for your help Kodu!!! 
   </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Спасибо за помощь, Kodu!!! </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -4810,6 +4886,16 @@ Can you find him and take him home?</SayString>
               <filterUpids />
               <modifierUpids />
               <SayString>See you next time!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Увидимся в следующий раз!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>

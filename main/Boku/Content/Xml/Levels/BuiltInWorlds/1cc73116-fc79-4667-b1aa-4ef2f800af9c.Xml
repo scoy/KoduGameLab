@@ -5,6 +5,20 @@
   <description>Scripting example - no gameplay, but you can move camera.
 &lt;kodu&gt; eats green &lt;apple&gt;'s but avoids red.
 When green are gone, &lt;cloud&gt; makes a &lt;star&gt; which makes more &lt;apple&gt;'s.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Вы можете перемещать камеру.
+          &lt;kodu&gt; ест зеленые &lt;apple&gt;, и не ест красные.
+          Когда съест все зеленые, из &lt;cloud&gt; падает &lt;star&gt;, из которой высыпаются новые зеленые &lt;apple&gt;.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <creator>eanders</creator>
   <lastWriteTime>2010-06-25T11:00:00</lastWriteTime>
   <BokuVersion>1.0.33.0</BokuVersion>

@@ -198,6 +198,23 @@ And drives with &lt;ls&gt;, or arrow keys
 Can you make &lt;a&gt; or [space] jump instead?
 Press &lt;back&gt; or [esc] to get started
 Thanks!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      &lt;cycle&gt; хочет перепрыгнуть через реку
+                      Но он не умеет прыгать
+                      Он стреляет при нажатии на &lt;a&gt; или [space]
+                      И управляется стрелками
+                      Сделай, чтобы он не стрелял, а прыгал при нажатии на [space]
+                      Жми [esc], чтобы начать
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
             </Reflex>
             <Reflex>
@@ -861,6 +878,26 @@ Now that you know how to make a character jump, try some other stuff:
 - make a character throw apples
 - score a point each time you bump an apple
 - win when you've scored five points</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Поздравляем!
+                      Теперь попробуй сделать некоторые другие вещи:
+                      - заставь персонажей гоняться друг за другом (т.е. запрограммируй Kodu)
+                      - заставь персонажей собирать яблоки
+                      - заставь персонажей бросать яблоки
+                      - начислять баллы каждый раз, когда персонаж касается яблока
+                      - выигрывать, когда набрали пять очков.
+
+                      Скоро ты этому научишься.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
             </Reflex>
             <Reflex>

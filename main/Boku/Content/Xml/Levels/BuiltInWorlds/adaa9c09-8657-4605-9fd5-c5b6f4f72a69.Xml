@@ -4,6 +4,16 @@
   <name>Programming Kodu to Find Apples Tutorial</name>
   <description>Test of new tutorial mode.
 This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt; to the world and then program the Kodu to find and eat the apples. </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Этот урок научит тебя добавлять яблоки &lt;fruit&gt; и Kodu &lt;Kodu&gt; в твой мир и затем запрограммировать Kodu, чтобы он находил и ел яблоки.</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <creator>scoy</creator>
   <lastWriteTime>2014-11-13T02:10:00.5Z</lastWriteTime>
   <BokuVersion>1.0.84.0</BokuVersion>
@@ -162,6 +172,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Adding Apples (Step 1/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление яблок (Шаг 1/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         This tutorial will teach you how to:
         :1) Add apples and a Kodu to your world.
@@ -176,6 +196,22 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
 
         First, let's start by adding 3 apples to the world.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              На этом уроке ты научишься:
+              :1) Добавлять в свой мир яблоки и Kodu.
+              :2) Писать код программы для Kodu, чтобы он находил и ел яблоки.
+
+              Давай начнем с добавления 3-х яблок в твой мир.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         This tutorial will teach you how to:
         :1) Add apples and a Kodu to your world.
@@ -191,8 +227,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>AddItem</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Adding your first Apple. (Step 1/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление первого яблока. (Шаг 1/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Select the apple and press &lt;A&gt;</GamepadText>
       <MouseText>Left click &lt;leftmouse&gt; on the apple menu item.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни ЛКМ &lt;leftmouse&gt; на яблоке.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the apple menu item.</TouchText>
       <CompletionTest Name="BotCount" Args="Fruit 1" />
     </Step>
@@ -203,8 +259,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>AddItem</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Adding a couple more Apples (Step 2/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление еще пары яблок (Шаг 2/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Select the apple and press &lt;A&gt; to add another.</GamepadText>
       <MouseText>Left click &lt;leftmouse&gt; on the apple to add another.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни ЛКМ &lt;leftmouse&gt; на яблоке, чтобы добавить еще одно.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the apple to add another.</TouchText>
       <CompletionTest Name="BotCount" Args="Fruit 3" />
     </Step>
@@ -215,6 +291,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Adding Apples (Step 2/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление яблок (Шаг 2/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -227,8 +313,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Adding a Kodu (Step 3/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление Kodu (Шаг 3/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Great job!  Now we can add a Kodu the same way.</GamepadText>
       <MouseText>Great job!  Now we can add a Kodu the same way.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Отличная работа!  Теперь ты можешь добавить Kodu таким же способом.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Great job!  Now we can add a Kodu the same way.</TouchText>
     </Step>
     <Step>
@@ -238,8 +344,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>AddItem</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Adding a Kodu. (Step 3/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление Kodu. (Шаг 3/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Select the Kodu &lt;Kodu&gt; and press &lt;A&gt;</GamepadText>
       <MouseText>Left click &lt;leftmouse&gt; on the Kodu &lt;Kodu&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни ЛКМ  &lt;leftmouse&gt; на Kodu &lt;Kodu&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the Kodu &lt;Kodu&gt;</TouchText>
       <CompletionTest Name="BotCount" Args="Boku 1" />
     </Step>
@@ -250,8 +376,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Programming Kodu (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>All right!  Next step is to program the Kodu to find and eat the apples.</GamepadText>
       <MouseText>All right!  Next step is to program the Kodu to find and eat the apples.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Все верно!  Следующий шаг - запрограммировать Kodu, чтобы он находил и ел яблоки.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>All right!  Next step is to program the Kodu to find and eat the apples.</TouchText>
     </Step>
     <Step>
@@ -261,8 +407,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the first row move the pencil cursor to the plus sign next to WHEN then press &lt;a&gt; to add &lt;sensor.eyes&gt;</GamepadText>
       <MouseText>On the first row click on the plus sign next to WHEN and add &lt;sensor.eyes&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>В первой строчке кода щелкни на знаке ПЛЮС рядом с КОГДА и добавь &lt;sensor.eyes&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>On the first row tap on the plus sign next to WHEN and add &lt;sensor.eyes&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes" />
     </Step>
@@ -273,6 +439,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         At the plus sign still on the WHEN side add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;
@@ -281,6 +457,19 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
         At the plus sign still on the WHEN side add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни на знаке ПЛЮС внутри части КОГДА и добавь &lt;filter.fruit&gt;  Яблоко можно найти в группе Объекты &lt;group.objects&gt;.
+              У тебя должно получиться КОГДА &lt;sensor.eyes&gt;&lt;filter.fruit&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         At the plus sign still on the WHEN side add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;
@@ -294,6 +483,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Now move the pencil cursor to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;
@@ -302,6 +501,19 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
         Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь щелкни на знаке ПЛЮС справа от ДЕЛАТЬ и добавь &lt;actuator.movement&gt;
+              У тебя должно получиться КОГДА &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  ДЕЛАТЬ &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Now tap on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;
@@ -315,6 +527,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -323,6 +545,19 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              На знаке ПЛЮС, следующем за &lt;actuator.movement&gt;, добавь &lt;selector.towardclosest&gt;
+              У тебя должно получиться КОГДА &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  ДЕЛАТЬ &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -336,8 +571,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Programming Kodu (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, you.ve got the first row.  Let's get the rest.</GamepadText>
       <MouseText>Okay, you.ve got the first row.  Let's get the rest.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>OK, ты сделал первую строчку.  Давай сделаем перерыв. Сделай упражнение для глаз и рук.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, you.ve got the first row.  Let's get the rest.</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes" />
     </Step>
@@ -348,8 +603,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu. (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the second row add : WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.eat&gt;</GamepadText>
       <MouseText>On the second row add : WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.eat&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Во второй сточке добавь : КОГДА &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; ДЕЛАТЬ &lt;actuator.eat&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>On the second row add : WHEN &lt;sensor.bumpers&gt;&lt;filter.fruit&gt; DO &lt;actuator.eat&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 2 sensor.bumpers filter.fruit actuator.eat" />
     </Step>
@@ -360,6 +635,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu (Step 4/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu (Шаг 4/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -372,8 +657,28 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Running your Program (Step 5/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск твоей программы (Шаг 5/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Hey you're done!  Now that you've programmed Kodu it's time to run the game and see your work in action.</GamepadText>
       <MouseText>Hey you're done!  Now that you've programmed Kodu it's time to run the game and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Эге-гей!!  Теперь, раз ты запрограммировал Kodu, самое время запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Hey you're done!  Now that you've programmed Kodu it's time to run the game and see your work in action.</TouchText>
     </Step>
     <Step>
@@ -383,6 +688,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running Your Program (Step 5/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Выполнение программы (Шаг 5/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -395,6 +710,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running Your Program (Step 5/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Выполнение программы (Шаг 5/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -407,6 +732,16 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running Your Program (Step 5/5)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Выполнение программы (Шаг 5/5)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Congratulations!  In this tutorial you've programmed Kodu to find and eat apples.
         You can use this same idea to add and program other characters now.
@@ -417,6 +752,20 @@ This tutorial teaches you how to add apples &lt;fruit&gt; and a Kodu &lt;Kodu&gt
         You can use this same idea to add and program other characters now.
         Have fun!
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Поздравляем!  В этом уроке ты научил Kodu находить и есть яблоки.
+              Теперь можешь то же самое проделать для других персонажей.  Например, Байкер может взрывать мячики. Взрыв &lt;boom&gt; находится в группе Сражение &lt;group.combat&gt;.
+              Повеселись в волю!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Congratulations!  In this tutorial you've programmed Kodu to find and eat apples.
         You can use this same idea to add and program other characters now.

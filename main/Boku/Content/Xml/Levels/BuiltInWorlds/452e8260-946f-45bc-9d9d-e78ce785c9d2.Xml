@@ -4,6 +4,19 @@
   <name>Coins: Episode 2 v05</name>
   <description>&lt;lstick&gt; Moves
 &lt;a&gt; Jumps</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          [uparrow][downarrow][leftarrow][rightarrow] для управления движением
+          [space] для прыжка
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict> 
   <creator>scoy</creator>
   <lastWriteTime>2010-06-20T14:58:59</lastWriteTime>
   <BokuVersion>1.0.61.0</BokuVersion>
