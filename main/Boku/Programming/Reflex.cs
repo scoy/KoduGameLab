@@ -161,7 +161,6 @@ namespace Boku.Programming
         string _sayString;
 
         // Localized version of sayString plus support for making it work.
-        public XmlSerializableDictionary<string, string> LocalizedSayStringDict = null;
         [XmlIgnore]
         public string OriginalSayString;
         [XmlIgnore]
@@ -172,7 +171,9 @@ namespace Boku.Programming
         {
             get { return _sayString; }
             set { _sayString = value; TextHelper.SplitMessage(value, 10000, UI2D.Shared.GetGameFont20, true, _sayStrings); }
-        }    
+        }
+        // Localized version of sayString plus support for making it work.
+        public XmlSerializableDictionary<string, string> LocalizedSayStringDict = null;
         public int sayMode = 1;                                                     // Display mode.  0==fullscreen, 1==thought balloon sequential, 2==thought balloon random
         public UI2D.UIGridElement.Justification sayJustification = Boku.UI2D.UIGridElement.Justification.Left;
         [XmlIgnore]
