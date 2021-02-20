@@ -419,17 +419,31 @@ namespace Boku.Common.Xml
                     {
                         // If the user has changed the strings, then keep the new strings and remove the localized versions.
                         ReflexData rd = reflex.Data;
-                        if (rd.sayString != rd.LocalizedSayString)
+                        if (rd.actuatorUpid != "actuator.say")
                         {
-                            // Reset everything to reflect the fact that we have a new string.
+                            // This reflex doesn't have a 'say' actuator so it shouldn't have a sayString.  This
+                            // generally only happens when a 'say' tile once existed in the reflex and was then
+                            // removed.
+                            rd.sayString = null;
+                            rd.LocalizedSayString = null;
+                            rd.OriginalSayString = null;
                             rd.LocalizedSayStringDict = null;
-                            rd.OriginalSayString = rd.sayString;
-                            rd.LocalizedSayString = rd.sayString;
                         }
                         else
                         {
-                            // No change so restore original so it's the one that gets saved out.
-                            rd.sayString = rd.OriginalSayString;
+
+                            if (rd.sayString != rd.LocalizedSayString)
+                            {
+                                // Reset everything to reflect the fact that we have a new string.
+                                rd.LocalizedSayStringDict = null;
+                                rd.OriginalSayString = rd.sayString;
+                                rd.LocalizedSayString = rd.sayString;
+                            }
+                            else
+                            {
+                                // No change so restore original so it's the one that gets saved out.
+                                rd.sayString = rd.OriginalSayString;
+                            }
                         }
                     }
                 }
