@@ -664,10 +664,13 @@ namespace Boku.Common.TutorialSystem
         /// spaces (1 colon == 4 spaces), and then recombines 
         /// the lines and returns the new string.
         /// Also takes null and returns an empty string.
+        /// 
+        /// TODO (scoy) This is a good candidate to be moved 
+        /// to TextHelper and used everywhere.
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        static string CleanUpString(string str)
+        static public string CleanUpString(string str)
         {
             if (str == null)
             {
@@ -702,11 +705,36 @@ namespace Boku.Common.TutorialSystem
             }
 
             // Recombine result.
+            // We want to skip empty strings at the beginning and end.
+            int first = 0;
+            while (first < strings.Length - 1)
+            {
+                if (string.IsNullOrWhiteSpace(strings[first]))
+                {
+                    ++first;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            int last = strings.Length - 1;
+            while (last > first)
+            {
+                if (string.IsNullOrWhiteSpace(strings[last]))
+                {
+                    --last;
+                }
+                else
+                {
+                    break;
+                }
+            }
             str = "";
-            for (int i = 0; i < strings.Length; i++)
+            for (int i = first; i <= last; i++)
             {
                 str += strings[i];
-                if (i < strings.Length - 1)
+                if (i < last)
                 {
                     str += '\n';
                 }

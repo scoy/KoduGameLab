@@ -607,7 +607,7 @@ namespace Boku.Common.Xml
                 string locStr;
                 if (dict.TryGetValue(curLang, out locStr))
                 {
-                    str = locStr;
+                    str = TutorialManager.CleanUpString(locStr);
                 }
             }
             localizedStr = str;
