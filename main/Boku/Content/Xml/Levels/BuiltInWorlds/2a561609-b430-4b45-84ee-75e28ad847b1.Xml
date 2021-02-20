@@ -3,6 +3,16 @@
   <id>2a561609-b430-4b45-84ee-75e28ad847b1</id>
   <name>Mars Rover - Terrain Map C</name>
   <description>An empty Mars terrain, waiting to be expanded and filled with characters and objects. Create a realistic Martian landscape!</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Пустой ландшафт Марса ожидает расширения и наполнения персонажами и объектами. Создайте реалистичный марсианский пейзаж!</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>
   <descJustification>Left</descJustification>
   <creator>ddubord</creator>
   <lastWriteTime>2012-08-05T23:00:03</lastWriteTime>

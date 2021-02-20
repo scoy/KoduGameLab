@@ -3,6 +3,16 @@
   <id>bb4a8337-e09d-49e7-ac68-43c1ca84cfd3</id>
   <name>Filter Tutorial</name>
   <description>This tutorial will show you how to use filters.</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Этот урок научит тебя использовать фильтры.</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>scoy</creator>
   <lastWriteTime>2014-11-13T02:10:00.3Z</lastWriteTime>
   <BokuVersion>1.0.84.0</BokuVersion>
@@ -169,6 +179,21 @@
 
         Let's start with a simple case.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Этот урок научит тебя использовать фильтры в твоих программах.
+              Фильтры позволят тебе конкретизировать действия персонажа.
+
+              Давай начнем с простого случая.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         This tutorial will teach you how to use Filters in your programming.
         Filters allow you to be more specific about the things that your character senses.
@@ -183,6 +208,16 @@
       <TargetModeGamepad>MainMenu</TargetModeGamepad>
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <GoalText>First Tutorial (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Фильтры (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         We will start with a world that already has some objects in it.  The world contains a Kodu &lt;kodu&gt; and several apples &lt;apple&gt; and rocks &lt;rock&gt;.
 
@@ -193,6 +228,20 @@
 
         We're going to program Kodu &lt;kodu&gt; to move toward anything he sees.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Начнем с мира, на котором уже размещено несколько объектов.  В мире находится Kodu &lt;kodu&gt;, а также несколько яблок &lt;apple&gt; и камней &lt;rock&gt;.
+
+              Нужно запрограммировать Kodu &lt;kodu&gt;, чтобы он двигался ко всему, что видит.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         We will start with a world that already has some objects in it.  The world contains a Kodu &lt;kodu&gt; and several apples &lt;apple&gt; and rocks &lt;rock&gt;.
 
@@ -206,8 +255,28 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu. (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu &lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the first row move the pencil cursor to the plus sign next to WHEN then press &lt;a&gt; to add &lt;sensor.eyes&gt;</GamepadText>
       <MouseText>On the first row click on the plus sign next to WHEN and add &lt;sensor.eyes&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>В первой строчке щелкни на знак ПЛЮС после КОГДА, и добавь &lt;sensor.eyes&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>On the first row tap on the plus sign next to WHEN and add &lt;sensor.eyes&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes" />
     </Step>
@@ -218,6 +287,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu &lt;kodu&gt; (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu &lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Now move the pencil cursor to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;
@@ -226,6 +305,19 @@
         Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь щелкни на знак ПЛЮС справа от ДЕЛАТЬ и добавь &lt;actuator.movement&gt;
+              У тебя должно получиться Когда &lt;sensor.eyes&gt; Делать &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Now tap on the plus sign to the right of DO and add &lt;actuator.movement&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;
@@ -239,6 +331,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Kodu &lt;kodu&gt; (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu &lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -247,6 +349,19 @@
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни на ПЛЮС после &lt;actuator.movement&gt;, добавь &lt;selector.towardclosest&gt;
+              У тебя должно получиться Когда &lt;sensor.eyes&gt;  Делать &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         At the plus next to &lt;actuator.movement&gt; add &lt;selector.towardclosest&gt;
         When done you should have WHEN &lt;sensor.eyes&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -261,6 +376,16 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Running the Game (Step 2/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -273,8 +398,28 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>MouseEditObject</TargetModeTouch>
       <GoalText>Running the Game (Step 2/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, now we can play the game and see what happens.</GamepadText>
       <MouseText>Okay, now we can play the game and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Oкей, теперь запусти игру и посмотри, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, now we can play the game and see what happens.</TouchText>
     </Step>
     <Step>
@@ -285,6 +430,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 2/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -298,6 +453,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 2/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 2/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Okay, Kodu &lt;kodu&gt; did just what we told him.  He went to the nearest object which happens to be a rock &lt;rock&gt;.
         But what if we want him to go to an apple &lt;apple&gt; instead?  This is where we can use a Filter to specify what we want him to look for.
@@ -310,6 +475,21 @@
 
         Let's go back to the editor and add an apple filter to Kodu's programming so he just looks for apples &lt;apple&gt;.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Kodu &lt;kodu&gt; сделал именно то, что ты ему сказал.  Он переместился к ближайшему объекту, который оказался камнем &lt;rock&gt;.
+              Но что если мы хотим, чтобы Kodu двигался к яблоку &lt;apple&gt;?  Этот тот случай, когда можно использовать фильтр, чтобы уточнить, что именно должен искать Kodu.
+
+              Давай вернемся в режим редактирования и добавим фильтр, чтобы Kodu искал только яблоки &lt;apple&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Okay, Kodu &lt;kodu&gt; did just what we told him.  He went to the nearest object which happens to be a rock &lt;rock&gt;.
         But what if we want him to go to an apple &lt;apple&gt; instead?  This is where we can use a Filter to specify what we want him to look for.
@@ -324,6 +504,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Adding the apple filter &lt;filter.fruit&gt; (Step 3/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление фильтра для яблока &lt;filter.fruit&gt; (Шаг 3/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         In the space next to the sight sensor &lt;sensor.eyes&gt; add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -332,6 +522,19 @@
         In the space next to the sight sensor &lt;sensor.eyes&gt; add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни на ПЛЮСе после &lt;sensor.eyes&gt; и добавь &lt;filter.fruit&gt;.  Яблоко можно найти в группе Объекты &lt;group.objects&gt;.
+              У тебя должно получиться Когда &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  Делать &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         In the space next to the sight sensor &lt;sensor.eyes&gt; add &lt;filter.fruit&gt;  The apple can be found in the objects group &lt;group.objects&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -346,6 +549,16 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Running the Game (Step 4/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -358,8 +571,28 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Running the game (Step 4/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, now we can play the game again and see what happens.</GamepadText>
       <MouseText>Okay, now we can play the game again and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Теперь можно запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, now we can play the game again and see what happens.</TouchText>
     </Step>
     <Step>
@@ -370,6 +603,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 4/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -383,6 +626,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 4/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 4/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Yeah! Kodu &lt;kodu&gt; found the apple &lt;apple&gt;.
         Using filters we can be even more specific than that.  Notice that the apple &lt;apple&gt; Kodu &lt;kodu&gt;went to was green.
@@ -395,6 +648,21 @@
 
         Let's add another filter so Kodu &lt;kodu&gt; only looks for red apples &lt;apple&gt;.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Ух ты! Kodu &lt;kodu&gt; действительно нашел яблоко &lt;apple&gt;.
+              Можно использовать фильтры, чтобы сузить круг поиска.  Обрати внимание, что яблоко &lt;apple&gt;, к которому двигался Kodu &lt;kodu&gt;, было зеленым.
+
+              Давай добавим другой фильтр, чтобы Kodu &lt;kodu&gt; искал только красные яблоки &lt;apple&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Yeah! Kodu &lt;kodu&gt; found the apple &lt;apple&gt;.
         Using filters we can be even more specific than that.  Notice that the apple &lt;apple&gt; Kodu &lt;kodu&gt;went to was green.
@@ -409,6 +677,16 @@
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Adding the red filter &lt;filter.red&gt; (Step 5/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Добавление фильтра &lt;filter.red&gt; (Шаг 5/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         In the space next to the apple filter &lt;filter.fruit&gt; add &lt;filter.red&gt;.  The red filter &lt;filter.red&gt; can be found in the colors group &lt;group.colors&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;&lt;filter.red&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -417,6 +695,19 @@
         In the space next to the apple filter &lt;filter.fruit&gt; add &lt;filter.red&gt;.  The red filter &lt;filter.red&gt; can be found in the colors group &lt;group.colors&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;&lt;filter.red&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни по ПЛЮСу справа от яблока &lt;filter.fruit&gt; и добавь &lt;filter.red&gt;.  Фильтр &lt;filter.red&gt; можно найти в группе &lt;group.colors&gt;.
+              У тебя должно получиться Когда &lt;sensor.eyes&gt;&lt;filter.fruit&gt;&lt;filter.red&gt;  Делать &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         In the space next to the apple filter &lt;filter.fruit&gt; add &lt;filter.red&gt;.  The red filter &lt;filter.red&gt; can be found in the colors group &lt;group.colors&gt;.
         When done you should have WHEN &lt;sensor.eyes&gt;&lt;filter.fruit&gt;&lt;filter.red&gt;  DO &lt;actuator.movement&gt;&lt;selector.towardclosest&gt;
@@ -431,6 +722,16 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Rumming the Game (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -443,8 +744,28 @@
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>TouchEditObject</TargetModeTouch>
       <GoalText>Running the Game (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Okay, now we can play the game once again and see what happens.</GamepadText>
       <MouseText>Okay, now we can play the game once again and see what happens.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Теперь можно снова запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Okay, now we can play the game once again and see what happens.</TouchText>
     </Step>
     <Step>
@@ -455,6 +776,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Running the Game (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -468,6 +799,16 @@
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Done (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Готово (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Hey we're done.  Kodu &lt;kodu&gt; found the red apple &lt;apple&gt; and now you know how to use filters when programming your characters.
         Explore the menus to see what other useful filters you can find.
@@ -476,6 +817,19 @@
         Hey we're done.  Kodu &lt;kodu&gt; found the red apple &lt;apple&gt; and now you know how to use filters when programming your characters.
         Explore the menus to see what other useful filters you can find.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Эй, мы закончили.  Kodu &lt;kodu&gt; нашел красное яблоко &lt;apple&gt;, и теперь ты знаешь, как использовать фильтры при программировании персонажей.
+              Поброди по меню, поищи другие полезные фильтры, попробуй их использовать.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Hey we're done.  Kodu &lt;kodu&gt; found the red apple &lt;apple&gt; and now you know how to use filters when programming your characters.
         Explore the menus to see what other useful filters you can find.

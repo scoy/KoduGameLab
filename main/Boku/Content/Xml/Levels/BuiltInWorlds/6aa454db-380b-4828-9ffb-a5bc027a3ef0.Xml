@@ -8,6 +8,19 @@ To score BIG points, choose the laser or drill bits to find rocks with the highe
 
 Choose your path carefully;  time is limited.
   </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Используй сканирующую систему марсохода для определения типа камней.
+          Чтобы заработать БОЛЬШЕ очков, выбирай лазер или дрель, в зависимости от научной ценности камней. Выбирай дорогу осторожно, время ограничено.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <descJustification>Left</descJustification>
   <creator>ddubord</creator>
   <lastWriteTime>2012-08-05T23:00:07</lastWriteTime>

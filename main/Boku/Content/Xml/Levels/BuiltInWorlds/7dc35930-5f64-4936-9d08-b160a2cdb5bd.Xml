@@ -6,6 +6,20 @@
 If he can't see one he'll turn until he does
 Each time he eats one, he'll change colors
 </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          &lt;kodu&gt; есть все &lt;apple&gt;, которые может найти.
+          Если он не видит ни одного, он поворачивается, пока не найдет.
+          Каждый раз, когда он съедает яблоко, он меняет цвет.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>eanders</creator>
   <lastWriteTime>2010-06-25T11:00:00</lastWriteTime>
   <BokuVersion>1.0.33.0</BokuVersion>

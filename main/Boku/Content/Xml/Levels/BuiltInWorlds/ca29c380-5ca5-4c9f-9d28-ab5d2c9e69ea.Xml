@@ -5,6 +5,20 @@
   <description>The &lt;apple&gt; is marked "creatable" on the tweak screen.
 (Select the &lt;apple&gt; and press &lt;x&gt; to view the tweak screen, keyboard: &lt;rightmouse&gt;-&gt;Change Settings.)
 The &lt;kodu&gt;launches an &lt;apple&gt; each time you press &lt;a&gt; or [space]. (Select the &lt;kodu&gt; and press &lt;y&gt; to see it's program. keyboard: &lt;rightmouse&gt;-&gt;Program.)</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Яблоко &lt;apple&gt; помечено, как "родитель" в настройках объекта.
+          (Чтобы увидеть настройки, выбери объект &lt;apple&gt; и щелкни &lt;rightmouse&gt;. Затем выбери Изменить установки.)
+          &lt;kodu&gt;запускает &lt;apple&gt; каждый раз, когда ты нажимаешь [space]. (Выбери &lt;kodu&gt; и нажми &lt;rightmouse&gt;-&gt; Программа, чтобы увидеть код программы).
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>eanders</creator>
   <lastWriteTime>2010-06-25T11:00:00</lastWriteTime>
   <BokuVersion>1.0.33.0</BokuVersion>

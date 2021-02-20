@@ -5,6 +5,19 @@
   <description>Kodu Maze Tutorial, part 1, created for the 2014 Hour of Code.
 Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tutorial.
   </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Лабиринт, часть 1, урок создан для Часа кода 2014.
+          Здесь https://www.youtube.com/user/KoduTeam видео по этому уроку.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <descJustification>Left</descJustification>
   <creator>KoduTeam</creator>
   <LinkedFromLevel xsi:nil="true" />
@@ -274,6 +287,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming the Maze</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование лабиринта</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Welcome to Maze Tutorial 1!
 	  
 	  Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is LOST in the maze and it's up to Kodu&lt;filter.white&gt;&lt;kodu&gt; to rescue him! 
@@ -284,6 +307,22 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is LOST in the maze and it's up to Kodu&lt;filter.white&gt;&lt;kodu&gt; to rescue him! 
 	  To find the entrance and exit of the maze look for &lt;filter.castle&gt;&lt;filter.castle&gt;
 	  Once you find Bro-du&lt;filter.blue&gt;&lt;kodu&gt; lead him home&lt;filter.hut&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добро пожаловать в первый урок по программированию лабиринта!
+
+              Bro-do&lt;filter.blue&gt;&lt;kodu&gt; потерялся в лабиринте и задача Kodu &lt;filter.white&gt;&lt;kodu&gt; - спасти его!
+              Чтобы найти выход и выбраться из лабиринта, ищи &lt;filter.castle&gt;&lt;filter.castle&gt;
+              Как только ты найдешь Bro-du&lt;filter.blue&gt;&lt;kodu&gt;, отведи его домой&lt;filter.hut&gt;!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Welcome to Maze Tutorial 1!
 	  
 	  Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is LOST in the maze and it's up to Kodu&lt;filter.white&gt;&lt;kodu&gt; to rescue him! 
@@ -298,6 +337,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming the Maze</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование лабиринта</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Before we can rescue Bro-du&lt;filter.blue&gt;&lt;kodu&gt; we'll need to learn a few things first.
 	  
 	  Today we will be programming:
@@ -312,6 +361,24 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  (2) Bro-du&lt;filter.blue&gt;&lt;kodu&gt; to follow Kodu&lt;filter.white&gt;&lt;kodu&gt; once he has been found in the maze.
 	  
 	  Let's get started!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Прежде чем спасать Bro-du&lt;filter.blue&gt;&lt;kodu&gt; нам надо научиться нескольким вещам.
+
+              Сегодня мы будем программировать:
+              (1) Kodu&lt;filter.white&gt;&lt;kodu&gt;, чтобы он двигался под управлением игрока.
+              (2) Bro-du&lt;filter.blue&gt;&lt;kodu&gt;, чтобы он следовал за Kodu&lt;filter.white&gt;&lt;kodu&gt; как только будет найден в лабиринте.
+
+              Давай начнем!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Before we can rescue Bro-du&lt;filter.blue&gt;&lt;kodu&gt; we'll need to learn a few things first. 
 	  
 	  Today we will be programming:
@@ -327,8 +394,28 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt;(Step 1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt;(Шаг 1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the third row move the pencil cursor to the plus sign next to WHEN then press &lt;a&gt; to add &lt;sensor.keyboard&gt;</GamepadText>
       <MouseText>On the third row click on the plus sign next to WHEN and select &lt;sensor.keyboard&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>В 3-й строке щелкни на ПЛЮС после КОГДА и выбери &lt;sensor.keyboard&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>On the third row click on the plus sign next to WHEN and select &lt;sensor.keyboard&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.keyboard" />
     </Step>
@@ -339,8 +426,28 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt;(Step 2/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt;(Шаг 2/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>On the plus sign next to the &lt;sensor.keyboard&gt; press &lt;a&gt; to add &lt;filter.arrowkeys&gt;</GamepadText>
       <MouseText>Click On the plus sign next to the keyboard &lt;sensor.keyboard&gt; and select &lt;filter.arrowkeys&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни на ПЛЮСе после клавиатуры &lt;sensor.keyboard&gt; и выбери &lt;filter.arrowkeys&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Click On the plus sign next to the keyboard &lt;sensor.keyboard&gt; and select &lt;filter.arrowkeys&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.keyboard (filter.WASDKeys,filter.ArrowKeys)" />
     </Step>
@@ -351,10 +458,33 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt; (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt; (Шаг 3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Now move the pencil cursor to the right of DO on the first row and add &lt;actuator.movement&gt;
 When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; do &lt;actuator.movement&gt;</GamepadText>
       <MouseText>Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
 When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; do &lt;actuator.movement&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь щелкни на ПЛЮСе справа от ДЕЛАТЬ и добавь &lt;actuator.movement&gt;
+              У тебя должно пролучиться Когда &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; Делать &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Now click on the plus sign to the right of DO and add &lt;actuator.movement&gt;
 When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt;  do &lt;actuator.movement&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.keyboard actuator.movement" />
@@ -367,6 +497,16 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt; (Step 3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt; (Шаг 3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -379,8 +519,28 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Kodu&lt;filter.white&gt;&lt;kodu&gt; (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Kodu&lt;filter.white&gt;&lt;kodu&gt; (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</GamepadText>
       <MouseText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Эгей, ты сделал это!  Теперь, когда ты запрограммировал Kodu, самое время снова запустить игру и посмотреть, что получилось.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Hey you're done!  Now that you've programmed Kodu it's time to run the game again and see your work in action.</TouchText>
     </Step>
     <Step>
@@ -390,8 +550,28 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск твоей программы (Шаг 4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the left stick &lt;leftstick&gt; to move Kodu.</GamepadText>
       <MouseText>Use the &lt;filter.arrowkeys&gt; to move Kodu.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Используй &lt;filter.arrowkeys&gt;, чтобы управлять движением Kodu.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap the screen where you want Kodu to go!.</TouchText>
       <CompletionTest Name="Timer" Args="6" />
     </Step>
@@ -403,6 +583,16 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Nice Moves! 
 	  
 	  The next step is program Bro-du to follow Kodu out of the Maze. 
@@ -410,6 +600,20 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <MouseText>Nice Moves!
 	  
 	  The next step is program Bro-du to follow Kodu out of the Maze. Bro-du is the blue Kodu object&lt;filter.blue&gt;&lt;kodu&gt;in the center of the maze.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Хороший ход!
+
+              Следующий шаг - запрограммировать, чтобы Bro-du следовал за Kodu до выхода из лабиринта. Bro-du (это синий Kodu &lt;filter.blue&gt;&lt;kodu&gt;) находится в центре лабиринта.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Nice Moves!
 	  
 	  The next step is program Bro-du to follow Kodu out of the Maze. Bro-du is the blue Kodu object&lt;filter.blue&gt;&lt;kodu&gt;in the center of the maze.</TouchText>
@@ -421,6 +625,16 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>MouseCameraMove</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -433,8 +647,28 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 1/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 1/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>When ready program in row 1 When &lt;sensor.eyes&gt;&lt;kodu&gt;</GamepadText>
       <MouseText>When ready program in row 1 When &lt;sensor.eyes&gt;&lt;kodu&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запрограммируйте 1 строчку: Когда &lt;sensor.eyes&gt;&lt;kodu&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>When ready program in row 1 When &lt;sensor.eyes&gt;&lt;kodu&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes filter.bokubot" />
     </Step>
@@ -445,12 +679,36 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 2/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 2/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Let's get more specific.
 	  Click on the Plus sign next to the Kodu and click colors and then &lt;filter.white&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;</GamepadText>
       <MouseText>Let's get more specific.
 	  Click on the Plus sign next to the Kodu and click colors and then &lt;filter.white&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Давай уточним, о каком Kodu идет речь. Ведь у нас в мире три разноцветных Kodu.
+              Щелкни на ПЛЮСе после Kodu, щелкни на Цвета и затем &lt;filter.white&gt;
+              У тебя должно получиться    Когда &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Let's get more specific.
 	  Click on the Plus sign next to the Kodu and click colors and then &lt;filter.white&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt;</TouchText>
@@ -463,10 +721,33 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 3/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 3/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Let's add one last filter:
 	  Press the plus next to &lt;filter.white&gt;, click on &lt;group.options&gt;, then click on &lt;filter.lineofsight&gt;</GamepadText>
       <MouseText>Let's add one last filter:
 	  Press the plus next to &lt;filter.white&gt;, click on &lt;group.options&gt;, then click on &lt;filter.lineofsight&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Давай добавим еще один (последний) фильтр:
+              Щелкни ПЛЮС справа от &lt;filter.white&gt;, выбери &lt;group.options&gt;, затем щелкни на &lt;filter.lineofsight&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Let's add one last filter:
 	  Press the plus next to &lt;filter.white&gt;, click on &lt;group.options&gt;, then click on &lt;filter.lineofsight&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes filter.bokubot filter.white filter.lineofsight" />
@@ -478,10 +759,33 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 4/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 4/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Click the plus next to Do and add &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt; &lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;</GamepadText>
       <MouseText>Click the plus next to Do and add &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt; &lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни ПЛЮС после ДЕЛАТЬ и добавь &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;
+              У тебя должно порлучитьсмя  Когда &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt; &lt;filter.lineofsight&gt;  Делать &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Click the plus next to Do and add &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;
 	  When done you should have when &lt;sensor.eyes&gt;&lt;kodu&gt;&lt;filter.white&gt; &lt;filter.lineofsight&gt; DO &lt;actuator.movement&gt; &lt;selector.towardclosest&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes filter.bokubot filter.white filter.lineofsight actuator.movement selector.towardclosest" />
@@ -493,10 +797,33 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 5/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программиирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 5/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Let's make Bro-du move faster so he doesn't fall behind:
 	  Click on the plus next to &lt;selector.towardclosest&gt; and add a &lt;modifier.quickly&gt;</GamepadText>
       <MouseText>Let's make Bro-du move faster so he doesn't fall behind:
 	  Click on the plus next to &lt;selector.towardclosest&gt; and add a &lt;modifier.quickly&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Давай заставим Bro-du двигаться быстрее, чтобы он не отставал:
+              Щелкни на ПЛЮСе после &lt;selector.towardclosest&gt; и добавь &lt;modifier.quickly&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Let's make Bro-du move faster so he doesn't fall behind:
 	  Click on the plus next to &lt;selector.towardclosest&gt; and add a &lt;modifier.quickly&gt;</TouchText>
       <CompletionTest Name="Kode" Args="sensor.eyes filter.bokubot filter.white filter.lineofsight actuator.movement selector.towardclosest modifier.quickly" />
@@ -508,10 +835,33 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Great Work! &lt;filter.expresshappy&gt; 
 	  Now that you've programmed Kodu and Bro-du it's time to run the maze again and see your work in action.</GamepadText>
       <MouseText>Great Work! &lt;filter.expresshappy&gt; 
 	  Now that you've programmed Kodu and Bro-du it's time to run the maze again and see your work in action.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Ты здорово поработал! &lt;filter.expresshappy&gt;
+              Теперь, когда ты запрограммировал Kodu и Bro-du, время снова запустить игру и посмотреть, как работает твоя программа.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Great Work! &lt;filter.expresshappy&gt; 
 	  Now that you've programmed Kodu and Bro-du it's time to run the maze again and see your work in action.</TouchText>
     </Step>
@@ -531,6 +881,21 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
 	  
 	  1) Programming other ways to control &lt;kodu&gt;, like making him &lt;actuator.jump&gt; using the Space Key.
 	  2) Programming &lt;kodu&gt; to move &lt;modifier.quickly&gt; by adding a Modifier Tile after the &lt;actuator.movement&gt;?</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              После прохождения лабиринта ты можешь:
+
+              1) Запрограммировать другие способы управления &lt;kodu&gt;, например, пусть он прыгает &lt;actuator.jump&gt; при нажатии на клавишу Пробел.
+              2) Научить &lt;kodu&gt; двигаться быстро &lt;modifier.quickly&gt;, добавив дополнительный фильтр после &lt;actuator.movement&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>After playing the maze can you try:
 	  
 	  1) Programming other ways to control &lt;kodu&gt;, like making him &lt;actuator.jump&gt; using the Space Key.
@@ -543,10 +908,33 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Running Your Program (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск программы (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the left stick &lt;leftstick&gt; to move Kodu.
 	  Find Bro-du&lt;filter.blue&gt;&lt;kodu&gt; in the maze and take him &lt;filter.hut&gt;!</GamepadText>
       <MouseText>Use the &lt;filter.arrowkeys&gt;to move Kodu.
 	  Find Bro-du&lt;filter.blue&gt;&lt;kodu&gt; in the maze and take him &lt;filter.hut&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Используй &lt;filter.arrowkeys&gt; для управления Kodu.
+              Найди Bro-du&lt;filter.blue&gt;&lt;kodu&gt; в лабиринте и приведи его домой &lt;filter.hut&gt;!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the screen where you want Kodu to go!
 	  Find Bro-du&lt;filter.blue&gt;&lt;kodu&gt; in the maze and take him &lt;filter.hut&gt;!</TouchText>
       <CompletionTest Name="Timer" Args="5" />
@@ -557,9 +945,29 @@ When done you should have when &lt;sensor.keyboard&gt; &lt;filter.arrowkeys&gt; 
       <TargetModeGamepad>InGame</TargetModeGamepad>
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
-      <GoalText>Running Your Program (Step 5/5)</GoalText>
+      <GoalText>Running Your Program (Step 6/6)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск программы (Шаг 6/6)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Have fun!</GamepadText>
       <MouseText>Have fun!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Равлекайся!</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Have fun!</TouchText>
       <CompletionTest Name="Timer" Args="3" />
     </Step>

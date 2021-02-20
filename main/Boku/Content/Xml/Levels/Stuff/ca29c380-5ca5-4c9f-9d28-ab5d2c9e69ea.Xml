@@ -167,6 +167,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Press &lt;a&gt; or [space] to throw an &lt;apple&gt;!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Жми [space], чтобы бросаться &lt;apple&gt;!</string>
+                  </value>
+                </item>
+                </LocalizedSayStringDict>
               <SayMode>1</SayMode>
             </Reflex>
           </reflexes>

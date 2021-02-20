@@ -5,6 +5,19 @@
   <description>Kodu Maze Tutorial, part 3, created for the 2014 Hour of Code.
 Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tutorial.
   </description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>
+          Программирование лабиринта, часть 3, создано для Hour of Code 2014.
+          Посмотри видео по уроку https://www.youtube.com/user/KoduTeam.
+        </string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <descJustification>Left</descJustification>
   <creator>KoduTeam</creator>
   <LinkedFromLevel xsi:nil="true" />
@@ -287,6 +300,25 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	 Watch out for &lt;filter.terracannon&gt; and their missiles &lt;modifier.projectile.missile&gt;!
 	 Keep an eye out for patrolling &lt;filter.saucer&gt;! 
 	 Find Bro-du and lead him &lt;filter.hut&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Добро пожаловать в 3 урок по программированию лабиринта!
+
+              Сейчас Bro-du&lt;filter.blue&gt;&lt;kodu&gt; потерян, голоден, И ОКРУЖЕН ВРАГАМИ!
+
+              Найди в лабиринте 6 &lt;filter.fruit&gt;
+              Остерегайся &lt;filter.terracannon&gt; и их снарядов &lt;modifier.projectile.missile&gt;!
+              Следи за патрулированием &lt;filter.saucer&gt;!
+              Найди Bro-du и отведи его к &lt;filter.hut&gt;!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Welcome to Maze Tutorial 3!
 	  
 	 This time Bro-du&lt;filter.blue&gt;&lt;kodu&gt; is lost, hungry, AND SURROUNDED BY ENEMIES!
@@ -303,6 +335,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MainMenu</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Programming Maze 3</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование лабиринта 3</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Before we rescue Bro-du we're going to make the maze more challenging.
 	  
 	 To do that we will:
@@ -321,6 +363,24 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  (4) Fix the &lt;filter.saucer&gt; &lt;filter.red&gt;to&lt;actuator.damage&gt; the &lt;filter.white&gt;&lt;kodu&gt; for &lt;filter.003points&gt; when they &lt;sensor.bumpers&gt; 
 	  
 	  Let's get going!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Прежде, чем спасать Bro-du, сделай прохождение лабиринта более сложным. Для этого:
+              1) Передвинь 3 &lt;filter.fruit&gt; в лабиринт!
+              2) Отредактируй программу Bro-du &lt;filter.blue&gt;&lt;kodu&gt;, чтобы он начинал идти за Kodu, только если набрано 6 очков &lt;sensor.scored&gt;.
+              3) Исправь ошибки, чтобы &lt;filter.terracannon&gt; &lt;filter.red&gt; стреляла &lt;modifier.projectile.missile&gt;.
+              4) Исправь ошибки, чтобы &lt;filter.saucer&gt; &lt;filter.red&gt; приносила &lt;actuator.damage&gt; Kodu &lt;filter.white&gt;&lt;kodu&gt; в &lt;filter.003points&gt; при &lt;sensor.bumpers&gt;.
+
+              Начинай!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Before we rescue Bro-du we're going to make the maze more challenging.
 	  
 	 To do that we will:
@@ -339,8 +399,28 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Move the  3 &lt;filter.fruit&gt; into the Maze!</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Перемещение 3-х &lt;filter.fruit&gt; в лабиринт!</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>There are 3 new &lt;filter.fruit&gt;on the ground near the path.</GamepadText>
       <MouseText>There are 3 new &lt;filter.fruit&gt;on the ground near the path.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>3 новых &lt;filter.fruit&gt;уже добавлены на входе в лабиринт рядом с дорожкой.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>There are 3 new &lt;filter.fruit&gt;on the ground near the path.</TouchText>
       <CompletionTest Name="Timer" Args="4" />
     </Step>
@@ -352,8 +432,28 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Move the 3 &lt;filter.fruit&gt; into the Maze!</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Перемещение 3-х &lt;filter.fruit&gt; в лабиринт!</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press A while selecting the &lt;filter.fruit&gt; and use the left joystick to move it anywhere in the maze!</GamepadText>
       <MouseText>Click and drag the &lt;filter.fruit&gt;anywhere in the maze!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни и перемести 3 &lt;filter.fruit&gt;куда-нибудь внутрь лабиринта!</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap and drag the &lt;filter.fruit&gt;anywhere in the maze!</TouchText>
       <CompletionTest Name="Timer" Args="4" />
     </Step>
@@ -378,8 +478,28 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>MouseEditObject</TargetModeMouse>
       <TargetModeTouch>AddItem</TargetModeTouch>
       <GoalText>Move the 3 &lt;filter.fruit&gt; into the Maze!</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Перемещение 3-х &lt;filter.fruit&gt; в лабиринт!</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>When your Maze is ready, open up the programming options for Bro-du.</GamepadText>
       <MouseText>When your Maze is ready, open up the programming options for Bro-du.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Когда лабиринт будет готов, открой программу Bro-du.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>When your Maze is ready, open up the programming options for Bro-du.</TouchText>
       <CompletionTest Name="Timer" Args="4" />
     </Step>
@@ -391,6 +511,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -403,6 +533,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (1/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (1/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Now that you're in Bro-du's&lt;filter.blue&gt;&lt;kodu&gt; program options look at the first row.
 	  Together we will change his code to need 6&lt;filter.fruit&gt;
 
@@ -411,6 +551,21 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  Together we will change his code to need 6&lt;filter.fruit&gt;
 
 			from WHEN &lt;sensor.scored&gt;&lt;modifier.003points&gt;&lt;modifier.scorebucket.color.white&gt; to WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;&lt;modifier.scorebucket.color.white&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь ты в программе Bro-du&lt;filter.blue&gt;&lt;kodu&gt;. Посмотри на 1 строчку.
+              Давай изменим код, чтобы требовалось собрать 6&lt;filter.fruit&gt;
+
+              Замени КОГДА &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;&lt;filter.scoreequals&gt;&lt;modifier.003points&gt; на КОГДА &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;&lt;filter.scoreequals&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Now that you're in Bro-du's&lt;filter.blue&gt;&lt;kodu&gt; program options look at the first row.
 	  Together we will change his code to need 6&lt;filter.fruit&gt;: 
 	  
@@ -423,10 +578,33 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (2/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt;(2/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>There is no 6 points tile so we will make 6 by adding &lt;modifier.005points&gt; and &lt;modifier.001point&gt; tiles. 
 	  Let's start by changing the &lt;modifier.003points&gt; into &lt;modifier.005points&gt;</GamepadText>
       <MouseText>There is no 6 points tile so we will make 6 by adding &lt;modifier.005points&gt; and &lt;modifier.001point&gt; tiles. 
 	  Let's start by changing the &lt;modifier.003points&gt; into &lt;modifier.005points&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В списке нет карточки 6 баллов, поэтому получим 6 баллов, добавив &lt;modifier.005points&gt; и &lt;modifier.001point&gt;.
+              Сначала поменяй &lt;modifier.003points&gt; на &lt;modifier.005points&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>There is no 6 points tile so we will make 6 by adding &lt;modifier.005points&gt; and &lt;modifier.001point&gt; tiles. 
 	  Let's start by changing the &lt;modifier.003points&gt; into &lt;modifier.005points&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 1 sensor.scored filter.005points filter.scorebucket.color.white" />
@@ -438,10 +616,33 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>MainMenu</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (3/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (3/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Next lets change &lt;filter.scorebucket.color.white&gt; into &lt;modifier.001point&gt; to make a total of 6 points, 1 for each &lt;filter.fruit&gt;.
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;</GamepadText>
       <MouseText>Next lets change &lt;filter.scorebucket.color.white&gt; into &lt;modifier.001point&gt; to make a total of 6 points, 1 for each &lt;filter.fruit&gt;.
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Затем добавь еще 1 балл, чтобы получить в сумме 6 баллов, по одному за каждое &lt;filter.fruit&gt;.
+              Должно получиться так: КОГДА &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Next lets change &lt;filter.scorebucket.color.white&gt; into &lt;modifier.001point&gt; to make a total of 6 points, 1 for each &lt;filter.fruit&gt;.
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;</TouchText>
       <CompletionTest Name="Kode" Args="reflex 1 sensor.scored filter.005points filter.001point" />
@@ -453,12 +654,36 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press A when selecting the plus sign next to the &lt;modifier.001point&gt;, then click on scores, then &lt;modifier.scorebucket.color.white&gt;
 	  You can find &lt;modifier.scorebucket.color.white&gt; in &lt;group.scorebucketmodifiers&gt;
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;&lt;modifier.scorebucket.color.white&gt;</GamepadText>
       <MouseText>Click on the plus sign next to the &lt;modifier.001point&gt;, then click on scores, then &lt;modifier.scorebucket.color.white&gt;
 	  You can find &lt;modifier.scorebucket.color.white&gt; in &lt;group.scorebucketmodifiers&gt;
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;&lt;modifier.scorebucket.color.white&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Щелкни по ПЛЮСу справа от &lt;modifier.001point&gt;, затем щелкни по Очки, затем &lt;modifier.scorebucket.color.white&gt;
+              &lt;modifier.scorebucket.color.white&gt; можно найти в группе &lt;group.scorebucketmodifiers&gt;
+              Должно получиться так: Когда &lt;sensor.scored&gt;&lt;modifier.scorebucket.color.white&gt;&lt;filter.scoreequals&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on the plus sign next to the &lt;modifier.001point&gt;, then click on scores, then &lt;modifier.scorebucket.color.white&gt;
 	  You can find &lt;modifier.scorebucket.color.white&gt; in &lt;group.scorebucketmodifiers&gt;
 	  It should look like WHEN &lt;sensor.scored&gt;&lt;modifier.005points&gt;&lt;modifier.001point&gt;&lt;modifier.scorebucket.color.white&gt;</TouchText>
@@ -471,6 +696,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -483,12 +718,36 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Edit Bro-du&lt;filter.blue&gt;&lt;kodu&gt; Code (4/4)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Редактирование программного кода Bro-du&lt;filter.blue&gt;&lt;kodu&gt; (4/4)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Perfect!
 	  
 	  Now Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will only follow Kodu&lt;filter.white&gt;&lt;kodu&gt; if 6 &lt;filter.fruit&gt; have been collected!</GamepadText>
       <MouseText>Perfect!
 	  
 	  Now Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will only follow Kodu&lt;filter.white&gt;&lt;kodu&gt; if 6 &lt;filter.fruit&gt; have been collected!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Идеально!
+
+              Теперь Bro-du&lt;filter.blue&gt;&lt;kodu&gt; должен следовать за Kodu&lt;filter.white&gt;&lt;kodu&gt;, если собрано 6 &lt;filter.fruit&gt;!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Perfect!
 	  
 	  Now Bro-du&lt;filter.blue&gt;&lt;kodu&gt; will only follow Kodu&lt;filter.white&gt;&lt;kodu&gt; if 6 &lt;filter.fruit&gt; have been collected!</TouchText>
@@ -501,12 +760,35 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>InGame</TargetModeMouse>
       <TargetModeTouch>InGame</TargetModeTouch>
       <GoalText>Run the Game</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Запуск игры</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Try and find ONE of the new &lt;filter.fruit&gt; you placed in the scene earlier. 
 	  
 	  Watch out for enemies!!!</GamepadText>
       <MouseText>Try and find ONE of the new &lt;filter.fruit&gt; you placed in the scene earlier. 
 	  
 	  Watch out for enemies!!!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Попробуй и найди ОДНО из новых &lt;filter.fruit&gt;, которые ты разместил в лабиринте раньше.
+              Следи за врагами!!!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Try and find ONE of the new &lt;filter.fruit&gt; you placed in the scene earlier. 
 	  
 	  Watch out for enemies!!!</TouchText>
@@ -531,6 +813,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.terracannon&gt;&lt;filter.red&gt;(1/2)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.terracannon&gt;&lt;filter.red&gt;(1/2)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>There are several &lt;filter.terracannon&gt; in the scene and you may have noticed the &lt;filter.terracannon&gt;&lt;filter.red&gt; is not working!
 
 		Can you find out what's wrong?
@@ -541,6 +833,20 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 		Can you find out what's wrong?
 
 		Look at other &lt;filter.terracannon&gt; for clues.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              В лабиринте расположено несколько &lt;filter.terracannon&gt;, и ты можешь заметить, что &lt;filter.terracannon&gt;&lt;filter.red&gt; не работает!
+
+              Можешь найти ошибку в программе?  Если не сообразишь сам, поищи другие &lt;filter.terracannon&gt; для подсказок.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>There are several &lt;filter.terracannon&gt; in the scene and you may have noticed the &lt;filter.terracannon&gt;&lt;filter.red&gt; is not working!
 
 		Can you find out what's wrong?
@@ -567,10 +873,33 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.terracannon&gt; &lt;filter.red&gt;</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.terracannon&gt; &lt;filter.red&gt;</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>We want our &lt;filter.terracannon&gt; detect when &lt;filter.white&gt;&lt;kodu&gt; is within &lt;filter.lineofsight&gt; before firing a &lt;modifier.projectile.missile&gt;.
 	  Can you see why the Kode is not working properly and fix it?</GamepadText>
       <MouseText>We want our &lt;filter.terracannon&gt; detect when &lt;filter.white&gt;&lt;kodu&gt; is within &lt;filter.lineofsight&gt; before firing a &lt;modifier.projectile.missile&gt;.
 	  Can you see why the Kode is not working properly and fix it?</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              &lt;filter.terracannon&gt; должна стрелять &lt;modifier.projectile.missile&gt;, когда &lt;filter.white&gt;&lt;kodu&gt; находится в ее зоне видимости &lt;filter.lineofsight&gt;.
+              Можешь увидеть, почему программа не работает правильно, а потом исправить код, чтобы решить эту проблему?
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>We want our &lt;filter.terracannon&gt; detect when &lt;filter.white&gt;&lt;kodu&gt; is within &lt;filter.lineofsight&gt; before firing a &lt;modifier.projectile.missile&gt;.
 	  Can you see why the Kode is not working properly and fix it?</TouchText>
       <CompletionTest Name="Kode" Args="reflex 1 sensor.eyes filter.bokubot filter.white filter.lineofsight" />
@@ -582,6 +911,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.terracannon&gt; &lt;filter.red&gt;</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.terracannon&gt; &lt;filter.red&gt;</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -594,6 +933,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.terracannon&gt;&lt;filter.red&gt;)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.terracannon&gt;&lt;filter.red&gt;)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>You fixed it! &lt;modifier.expresshappy&gt;
 	  
 	  Now this enemy object is behaving properly:
@@ -604,6 +953,22 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  Now this enemy object is behaving properly:
 	  
 	  When &lt;filter.white&gt;&lt;kodu&gt; is in &lt;filter.lineofsight&gt; of the &lt;filter.terracannon&gt;&lt;filter.red&gt; it will fire a &lt;modifier.projectile.missile&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Ты все исправил! &lt;modifier.expresshappy&gt;
+
+              Теперь этот вражеский объект ведет себя верно:
+
+              Когда &lt;filter.white&gt;&lt;kodu&gt; в зоне видимости &lt;filter.lineofsight&gt; пушки &lt;filter.terracannon&gt;&lt;filter.red&gt;, она начинает стрелять &lt;modifier.projectile.missile&gt;
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>You fixed it! &lt;modifier.expresshappy&gt;
 
 	  Now this enemy object is behaving properly:
@@ -617,6 +982,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.saucer&gt;&lt;filter.red&gt;</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.saucer&gt;&lt;filter.red&gt;</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Next, let's take a look at the &lt;filter.saucer&gt;&lt;filter.red&gt;.
 	This object is not working the way we want it to for our maze.
 
@@ -625,6 +1000,21 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	This object is not working the way we want it to for our maze.
 
 	Bring up it's programming options and let's investigate!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Теперь давай посмотрим на &lt;filter.saucer&gt;&lt;filter.red&gt;.
+              Этот объект не работает в нашем лабиринте так, как мы хотим.
+
+              Открой ее программу и давай исследовать причину!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Next, let's take a look at the &lt;filter.saucer&gt;&lt;filter.red&gt;.
 	This object is not working the way we want it to for our maze.
 
@@ -650,12 +1040,36 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy &lt;filter.saucer&gt;&lt;filter.red&gt;</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов &lt;filter.saucer&gt;&lt;filter.red&gt;</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>This object should do &lt;filter.003points&gt; &lt;actuator.damage&gt; to the &lt;filter.white&gt;&lt;kodu&gt; when they &lt;sensor.bumpers&gt;.
 	  Can you see why it's not working and correct it?
 	  The &lt;actuator.damage&gt; tile is in the &lt;group.combat&gt; group.</GamepadText>
       <MouseText>This object should do &lt;filter.003points&gt; &lt;actuator.damage&gt; to the &lt;filter.white&gt;&lt;kodu&gt; when they &lt;sensor.bumpers&gt;.
 	  Can you see why it's not working and correct it?
 	  The &lt;actuator.damage&gt; tile is in the &lt;group.combat&gt; group.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Эта тарелка должна наносить &lt;filter.white&gt;&lt;kodu&gt; ущерб &lt;actuator.damage&gt; в &lt;filter.003points&gt; в момент &lt;sensor.bumpers&gt;.
+              Можешь увидеть, почему это не работает, и исправить ситуацию?
+              Объект &lt;actuator.damage&gt; находится в группе &lt;group.combat&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>This object should do &lt;filter.003points&gt; &lt;actuator.damage&gt; to the &lt;filter.white&gt;&lt;kodu&gt; when they &lt;sensor.bumpers&gt;.
 	  Can you see why it's not working and correct it?
 	  The &lt;actuator.damage&gt; tile is in the &lt;group.combat&gt; group.</TouchText>
@@ -668,6 +1082,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming Enemy Saucer&lt;filter.saucer&gt;&lt;filter.red&gt;</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование врагов. Летающая тарелка &lt;filter.saucer&gt;&lt;filter.red&gt;</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -692,7 +1116,23 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  (2) Edited Bro-du's&lt;filter.blue&gt;&lt;kodu&gt; kode to follow &lt;kodu&gt; once 6 points have been scored&lt;sensor.scored&gt;.
 	  (3) Fixed the Kode on the &lt;filter.terracannon&gt; &lt;filter.red&gt; to fire missiles &lt;filter.bullet&gt; when Kodu&lt;filter.bokubot&gt; is in &lt;filter.lineofsight&gt; 
 	  (4) Fixed the Kode on the &lt;filter.saucer&gt;&lt;filter.red&gt;to &lt;actuator.damage&gt; &lt;filter.white&gt;&lt;kodu&gt;</MouseText>
-      <TouchText>Well done! 
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Отличная работа!
+              В этом уроке ты:
+              (1) Добавил дополнительных 3 &lt;filter.fruit&gt;, чтобы увеличить сложность.
+              (2) Исправил программу Bro-du&lt;filter.blue&gt;&lt;kodu&gt;, чтобы он начинал следовать за &lt;kodu&gt;, только когда набрано 6 баллов&lt;sensor.scored&gt;.
+              (3) Исправил программу &lt;filter.terracannon&gt; &lt;filter.red&gt;, чтобы она стреляла ракетами &lt;filter.bullet&gt;, когда Kodu&lt;filter.bokubot&gt; находится в зоне видимости &lt;filter.lineofsight&gt;
+              (4) Исправил программу летающей тарелки &lt;filter.saucer&gt;&lt;filter.red&gt;, чтобы  при столкновении с &lt;filter.white&gt;&lt;kodu&gt; наносить ему &lt;actuator.damage&gt;.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>      <TouchText>Well done! 
 	  In this tutorial you:
 	  (1) Added 3 more &lt;filter.fruit&gt; to increase the difficulty.
 	  (2) Edited Bro-du's&lt;filter.blue&gt;&lt;kodu&gt; kode to follow &lt;kodu&gt; once 6 points have been scored&lt;sensor.scored&gt;.
@@ -706,6 +1146,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <TargetModeMouse>Programming</TargetModeMouse>
       <TargetModeTouch>Programming</TargetModeTouch>
       <GoalText>Programming a 1st Person Camera</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Программирование движения камеры от 1 лица</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText>If you're feeling ready for an even greater challenge follow the steps below:
 	  (1) Open up the programming options on Kodu.
@@ -714,6 +1164,24 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
 	  (4) click &lt;actuator.camera.firstperson&gt; to replace &lt;actuator.camera.followme&gt;
 	Now when you hit play the camera will switch to a first person view on Kodu.
 	Good luck!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Если ты готов еще сильнее усложнить лабиринт, слелай следующее:
+              :1) Открой программу Kodu.
+              :2) В 1 строке щелкни на &lt;actuator.camera.followme&gt;
+              :3) Щелкни на &lt;group.camera&gt;
+              :4) Щелкни &lt;actuator.camera.firstperson&gt;, чтобы установить новый вид вместо &lt;actuator.camera.followme&gt;
+              Теперь, при запуске игры камера переключится на вид от лица Kodu.
+              Удачи!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText />
     </Step>
     <Step>
@@ -729,6 +1197,20 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <MouseText>After you finish the maze can you try:
 	  (1) Editing the &lt;filter.terracannon&gt; and the &lt;filter.saucer&gt; to behave differently?
 	  (2) Making an entirely new enemy?</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              После прохождения лабиринта ты можешь попробовать:
+              (1) Отредактировать программы &lt;filter.terracannon&gt; и &lt;filter.saucer&gt;, чтобы они вели себя по-разному.
+              (2) Добавить и запрограммировать совершенно нового врага.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>After you finish the maze can you try:
 	  (1) Editing the &lt;filter.terracannon&gt; and the &lt;filter.saucer&gt; to behave differently?
 	  (2) Making an entirely new enemy?</TouchText>
@@ -742,6 +1224,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <GoalText />
       <GamepadText>Look in the maze for 6 &lt;filter.fruit&gt;</GamepadText>
       <MouseText>Look in the maze for 6 &lt;filter.fruit&gt;</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Найди в лабиринте 6 &lt;filter.fruit&gt;</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Look in the maze for 6 &lt;filter.fruit&gt;</TouchText>
       <CompletionTest Name="Timer" Args="2" />
     </Step>
@@ -754,6 +1246,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <GoalText />
       <GamepadText>Find Bro-du and lead him home&lt;filter.hut&gt;!</GamepadText>
       <MouseText>Find Bro-du and lead him home&lt;filter.hut&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Найди Bro-du и отведи его домой в &lt;filter.hut&gt;!</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Find Bro-du and lead him home&lt;filter.hut&gt;!</TouchText>
       <CompletionTest Name="Timer" Args="2" />
     </Step>
@@ -766,6 +1268,16 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
       <GoalText />
       <GamepadText>Watch out for enemies&lt;filter.terracannon&gt;&lt;filter.saucer&gt;!</GamepadText>
       <MouseText>Watch out for enemies&lt;filter.terracannon&gt;&lt;filter.saucer&gt;!</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Следи за врагами &lt;filter.terracannon&gt; и &lt;filter.saucer&gt;!</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Watch out for enemies&lt;filter.terracannon&gt;&lt;filter.saucer&gt;!</TouchText>
       <CompletionTest Name="Timer" Args="2" />
     </Step>

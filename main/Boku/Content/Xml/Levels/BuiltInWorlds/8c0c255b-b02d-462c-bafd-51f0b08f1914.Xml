@@ -3,6 +3,16 @@
   <id>8c0c255b-b02d-462c-bafd-51f0b08f1914</id>
   <name>Small With Water</name>
   <description>Starter world with grass, trees, and water</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Стартовый мир с травой, деревьями и водой. Изучи территорию</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>a-brkloc</creator>
   <lastWriteTime>2010-06-24T23:58:00</lastWriteTime>
   <BokuVersion>1.0.0.0</BokuVersion>

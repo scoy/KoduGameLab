@@ -1936,6 +1936,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>You got 6 apples for me? Super! Let's go home! </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>У тебя есть 6 яблок для меня? Супер! Пойдем домой!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2023,6 +2033,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Time to eat my feast! Bye Kodu!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Пора пировать! Пока, Kodu!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2112,6 +2132,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>There are apples&lt;apple&gt; in this maze help me find all 6!  </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>В этом лабиринте есть яблоки &lt;apple&gt;. Помогите мне найти все 6!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2173,6 +2203,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>I need 5 more apples&lt;apple&gt;, Kodu! </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Мне нужно еще 5 яблок &lt;apple&gt;, Kodu! </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2234,6 +2274,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>I need 4 more apples&lt;apple&gt;, Kodu!    </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Мне нужно еще 4 яблока &lt;apple&gt;, Kodu!    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2295,6 +2345,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>I need 3 more apples&lt;apple&gt;, Kodu!     </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Мне нужно еще 3 яблока &lt;apple&gt;, Kodu!    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2356,6 +2416,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>I only need 2 more apples&lt;apple&gt;, Kodu!     </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Мне нужно еще 2 яблока &lt;apple&gt;, Kodu!    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -2417,6 +2487,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>I only need 1 more apple&lt;apple&gt;, Kodu!      </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Мне нужно еще 1 яблоко &lt;apple&gt;, Kodu!  </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3119,6 +3199,16 @@
                 <upid>modifier.red</upid>
               </modifierUpids>
               <SayString>There are enemies in maze, Kodu!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>В лабиринте есть враги, Kodu!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3179,6 +3269,16 @@
               </filterUpids>
               <modifierUpids />
               <SayString>You're hurt, here, take this heart &lt;heart&gt;!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Тебе больно! Вот, возьми это сердце &lt;heart&gt;!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3331,6 +3431,16 @@
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Goodluck, Kodu!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Удачи, Kodu!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3656,6 +3766,23 @@ There you are!
 An apple! 
 Bro-du loves apples! 
 Gotchya!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Вот одно!
+                      Так, идем дальше!
+                      Вот ты где!
+                      Яблочко!
+                      Bro-du любит яблоки!
+                      Попалось!
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>2</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -3973,6 +4100,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Great, I have all the apples. Let's find Bro-du!  </SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Отлично, у меня есть все яблоки. Давайте найдем Bro-du!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -4328,6 +4465,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Stay close to the walls to avoid the flying saucers!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Держись ближе к стенам, чтобы избежать летающих тарелок!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -4447,6 +4594,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Stay close to the walls to avoid the flying saucers!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Держись ближе к стенам, чтобы избежать летающих тарелок!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -5473,6 +5630,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Kodu Targeted - FIRE!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Kodu на мушке - ОГОНЬ!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -6152,6 +6319,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Kodu Targeted - FIRE!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Kodu на мушке - ОГОНЬ!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -6386,6 +6563,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Kodu Targeted - FIRE!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Kodu на мушке - ОГОНЬ!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -6831,6 +7018,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Kodu Targeted - FIRE!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Kodu на мушке - ОГОНЬ!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -8934,6 +9131,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Well done Kodu! You're a master of mazes now!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Молодец, Kodu! Теперь ты мастер лабиринтов!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -9030,6 +9237,16 @@ Gotchya!</SayString>
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Goodluck, Kodu!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Удачи, Kodu!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>

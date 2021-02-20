@@ -3,6 +3,16 @@
   <id>7d63a54e-b28a-4c57-a9f0-1967061e9737</id>
   <name>Add/Paint Terrain Tutorial</name>
   <description>Adding and Painting Terrain Tutorial</description>
+  <LocalizedDescriptionDict>
+    <item>
+      <key>
+        <string>RU</string>
+      </key>
+      <value>
+        <string>Урок по добавлению и удалению ландшафта</string>
+      </value>
+    </item>
+  </LocalizedDescriptionDict>  
   <creator>scoy</creator>
   <lastWriteTime>2014-11-13T02:10:00.4Z</lastWriteTime>
   <BokuVersion>1.0.84.0</BokuVersion>

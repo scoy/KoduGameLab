@@ -588,6 +588,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
               </filterUpids>
               <modifierUpids />
               <SayString>Out of Drill Bits!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Свёрла закончились!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -663,6 +673,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
               </filterUpids>
               <modifierUpids />
               <SayString>Out of Drill Bits!</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Свёрла закончились!</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -740,6 +760,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Watch out!  Sand makes me go slow.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Осторожнее!  Песок замедляет меня.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -797,6 +827,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Press &lt;A&gt; button to scan rocks.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Нажми кнопку &lt;A&gt;, чтобы сканировать камни.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>1</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -854,6 +894,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
                 <upid>modifier.once</upid>
               </modifierUpids>
               <SayString>Use &lt;LS&gt;  or [leftarrow][uparrow][downarrow][rightarrow]to move me towards rocks so I can scan them.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>Используй [leftarrow][uparrow][downarrow][rightarrow], чтобы подвинуть меня поближе к камням, чтобы я мог сканировать их.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Center</SayJustification>
               <SaidMode>1</SaidMode>
@@ -923,6 +973,19 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
               </modifierUpids>
               <SayString>The &lt;Y&gt; button is not used in this lesson.
 It is used in other lessons to take pictures with the rover.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Кнопка &lt;Y&gt; не используется в этом уроке.
+                      Она используется в других уроках, чтобы марсоход мог делать снимки.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Center</SayJustification>
               <SaidMode>1</SaidMode>
@@ -16002,6 +16065,22 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
 Lava rocks are less likely to contain Phylosilicates and score fewer points.  Use the laser to Beam them (press &lt;B&gt; button) and save your drills for higher value rocks. 
 
 Sedimentary rocks are more likely to contain Phylosilicates and score more points.  Use your drill to Inspect them (press &lt;x&gt; button) to maximise your score.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>
+                      Сканирование камней выявляет их тип.
+
+                      Вулканические камни &lt;filter.rockLowValue&gt; реже содержат Филосиликаты и набирают меньше очков.  Наведи луч лазера на них (нажми кнопку &lt;B&gt;). Побереги сверла для камней с высокой научной ценностью.
+
+                      Камни осадочных пород &lt;filter.rockHighValueUnknown&gt;  с большей вероятностью содержат Филосиликаты и набирают больше очков.  Используй дрель для таких камней (нажми кнопку &lt;X&gt;), чтобы максимизировать счет.
+                    </string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
@@ -16395,6 +16474,16 @@ Sedimentary rocks are more likely to contain Phylosilicates and score more point
               </modifierUpids>
               <SayString>You have run out of time
 to search for today.</SayString>
+              <LocalizedSayStringDict>
+                <item>
+                  <key>
+                    <string>RU</string>
+                  </key>
+                  <value>
+                    <string>У тебя закончилось время.</string>
+                  </value>
+                </item>
+              </LocalizedSayStringDict>
               <SayMode>0</SayMode>
               <SayJustification>Left</SayJustification>
               <SaidMode>1</SaidMode>
