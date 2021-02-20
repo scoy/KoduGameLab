@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 
 using KoiX;
+using KoiX.Text;
 
 using Boku.Base;
 using Boku.SimWorld;

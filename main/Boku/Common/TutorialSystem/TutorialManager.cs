@@ -17,6 +17,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 
+using KoiX;
+using KoiX.Input;
+using KoiX.Text;
+
 using Boku.Audio;
 using Boku.Base;
 using Boku.Fx;
@@ -64,7 +68,7 @@ namespace Boku.Common.TutorialSystem
         private static float targetPositionY = 0.0f;
 
         private static RenderTarget2D rt = null;
-        private static UI2D.Shared.GetFont font = UI2D.Shared.GetGameFont24Bold;
+        private static GetFont font = SharedX.GetGameFont24Bold;
         private static TextBlob titleBlob = null;
         private static TextBlob instructionBlob = null;
         private static Texture2D backdrop = null;
@@ -160,7 +164,7 @@ namespace Boku.Common.TutorialSystem
                 if (modalDisplay.Active)
                 {
                     // Calc new screen size and position for full viewport.
-                    BokuGame.ScreenSize = new Vector2(BokuGame.bokuGame.GraphicsDevice.Viewport.Width, BokuGame.bokuGame.GraphicsDevice.Viewport.Height);
+                    BokuGame.ScreenSize = new Vector2(KoiLibrary.GraphicsDevice.Viewport.Width, KoiLibrary.GraphicsDevice.Viewport.Height);
                     BokuGame.ScreenPosition = Vector2.Zero;
                 }
                 else
@@ -172,7 +176,7 @@ namespace Boku.Common.TutorialSystem
                     {
                         // Set the screen size to leave some room for the tutorial stuff.
                         float rtHeight = rt != null ? rt.Height : 0;
-                        BokuGame.ScreenSize = new Vector2(BokuGame.bokuGame.GraphicsDevice.Viewport.Width, BokuGame.bokuGame.GraphicsDevice.Viewport.Height - rtHeight);
+                        BokuGame.ScreenSize = new Vector2(KoiLibrary.GraphicsDevice.Viewport.Width, KoiLibrary.GraphicsDevice.Viewport.Height - rtHeight);
                         targetPositionY = BokuGame.bokuGame.GraphicsDevice.Viewport.Height - BokuGame.ScreenSize.Y;
                         BokuGame.ScreenPosition = new Vector2(0, targetPositionY);
                     }
@@ -184,7 +188,7 @@ namespace Boku.Common.TutorialSystem
             }
 #if DEBUG
             // For testing purposes...
-            if (KeyboardInput.WasPressed(Keys.F12))
+            if (KeyboardInputX.WasPressed(Keys.F12))
             {
                 if (Active)
                 {
@@ -288,39 +292,6 @@ namespace Boku.Common.TutorialSystem
                         //Debug.Assert(curCrumb != null, "Don't know how to get there from here...");
                     }
 
-                    // Swallow any mouse clicks just in case user thinks to click on display.
-                    // TODO (****) With changes, mouse hits will never be outside of active screen
-                    // so this should never happen...
-                    /*
-                    if (GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse)
-                    {
-                        Vector2 mouseHit = new Vector2(MouseInput.Position.X, MouseInput.Position.Y);
-                        if (MouseInput.Left.WasPressedOrRepeat)
-                        {
-                            if (backdropBox.Contains(mouseHit))
-                            {
-                                MouseInput.Left.ClearAllWasPressedState();
-                                Foley.PlayNoBudget();
-                            }
-                        }
-                        if (MouseInput.Right.WasPressedOrRepeat)
-                        {
-                            if (backdropBox.Contains(mouseHit))
-                            {
-                                MouseInput.Right.ClearAllWasPressedState();
-                                Foley.PlayNoBudget();
-                            }
-                        }
-                        if (MouseInput.Middle.WasPressedOrRepeat)
-                        {
-                            if (backdropBox.Contains(mouseHit))
-                            {
-                                MouseInput.Middle.ClearAllWasPressedState();
-                                Foley.PlayNoBudget();
-                            }
-                        }
-                    }
-                    */
                 }   // end if non-Modal
 
                 // Find focus actor if needed.
@@ -356,9 +327,9 @@ namespace Boku.Common.TutorialSystem
         private static bool CurStepExcluded()
         {
             bool excluded = false;
-            excluded |= GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse && (curStep.Exclusion == Step.Exclusions.Mouse || curStep.Exclusion == Step.Exclusions.MouseGamepad || curStep.Exclusion == Step.Exclusions.MouseTouch);
-            excluded |= GamePadInput.ActiveMode == GamePadInput.InputMode.GamePad && (curStep.Exclusion == Step.Exclusions.Gamepad || curStep.Exclusion == Step.Exclusions.MouseGamepad || curStep.Exclusion == Step.Exclusions.TouchGamepad);
-            excluded |= GamePadInput.ActiveMode == GamePadInput.InputMode.Touch && (curStep.Exclusion == Step.Exclusions.Touch || curStep.Exclusion == Step.Exclusions.MouseTouch || curStep.Exclusion == Step.Exclusions.TouchGamepad);
+            excluded |= KoiLibrary.LastTouchedDeviceIsKeyboardMouse && (curStep.Exclusion == Step.Exclusions.Mouse || curStep.Exclusion == Step.Exclusions.MouseGamepad || curStep.Exclusion == Step.Exclusions.MouseTouch);
+            excluded |= KoiLibrary.LastTouchedDeviceIsGamepad && (curStep.Exclusion == Step.Exclusions.Gamepad || curStep.Exclusion == Step.Exclusions.MouseGamepad || curStep.Exclusion == Step.Exclusions.TouchGamepad);
+            excluded |= KoiLibrary.LastTouchedDeviceIsTouch && (curStep.Exclusion == Step.Exclusions.Touch || curStep.Exclusion == Step.Exclusions.MouseTouch || curStep.Exclusion == Step.Exclusions.TouchGamepad);
 
             return excluded;
         }
@@ -411,14 +382,14 @@ namespace Boku.Common.TutorialSystem
         public static void PreRender()
         {
             // Decide which font to use based on screen width.
-            UI2D.Shared.GetFont prevFont = font;
-            font = BokuGame.ScreenSize.X > 1280 ? UI2D.Shared.GetGameFont24Bold : UI2D.Shared.GetGameFont18Bold;
+            GetFont prevFont = font;
+            font = BokuGame.ScreenSize.X > 1280 ? SharedX.GetGameFont24Bold : SharedX.GetGameFont18Bold;
 
             // Did the font or window size change?  If so, reallocate the rendertarget.
             if (font != prevFont || rt == null || BokuGame.ScreenSize.X > rt.Width)
             {
-                InGame.RelRT("TutorialRT", rt);
-                BokuGame.Release(ref rt);
+                SharedX.RelRT("TutorialRT", rt);
+                DeviceResetX.Release(ref rt);
                 CreateRenderTarget();
             }
 
@@ -475,11 +446,11 @@ namespace Boku.Common.TutorialSystem
                             // Second line is either from the crumb telling us where to go OR from the step telling us what to do now that we're here.
                             if (curCrumb == null)
                             {
-                                if (GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse)
+                                if (KoiLibrary.LastTouchedDeviceIsKeyboardMouse)
                                 {
                                     instructionStr = curStep.MouseText;
                                 }
-                                else if (GamePadInput.ActiveMode == GamePadInput.InputMode.Touch)
+                                else if (KoiLibrary.LastTouchedDeviceIsTouch)
                                 {
                                     instructionStr = curStep.TouchText;
                                 }
@@ -490,11 +461,11 @@ namespace Boku.Common.TutorialSystem
                             }
                             else
                             {
-                                if (GamePadInput.ActiveMode == GamePadInput.InputMode.KeyboardMouse)
+                                if (KoiLibrary.LastTouchedDeviceIsKeyboardMouse)
                                 {
                                     instructionStr = curCrumb.MouseText;
                                 }
-                                else if (GamePadInput.ActiveMode == GamePadInput.InputMode.Touch)
+                                else if (KoiLibrary.LastTouchedDeviceIsTouch)
                                 {
                                     instructionStr = curCrumb.TouchText;
                                 }
@@ -542,7 +513,7 @@ namespace Boku.Common.TutorialSystem
                         {
                             textColor = Color.Red;
                         }
-                        titleBlob.RenderWithButtons(new Vector2(indent, 0), titleColor, shadowColor, new Vector2(0, 2), maxLines: 4);
+                        titleBlob.RenderText(null, new Vector2(indent, 0), titleColor, shadowColor, new Vector2(0, 2), maxLines: 4);
                         // Vertically center the instruction text.
                         int yOffset = 0;
                         if (instructionBlob.NumLines == 1)
@@ -553,7 +524,7 @@ namespace Boku.Common.TutorialSystem
                         {
                             yOffset = (int)(instructionBlob.TotalSpacing / 2.0f);
                         }
-                        instructionBlob.RenderWithButtons(new Vector2(indent, titleBlob.TotalSpacing + yOffset - 2), textColor, shadowColor, new Vector2(0, 2), maxLines: 4);
+                        instructionBlob.RenderText(null, new Vector2(indent, titleBlob.TotalSpacing + yOffset - 2), textColor, shadowColor, new Vector2(0, 2), maxLines: 4);
 
                     }   // end if display true
 
@@ -590,10 +561,10 @@ namespace Boku.Common.TutorialSystem
             if(DebugMode && active)
             {
                 Vector2 pos = new Vector2(20, 400);
-                SpriteBatch batch = UI2D.Shared.SpriteBatch;
+                SpriteBatch batch = KoiLibrary.SpriteBatch;
                 Color color = Color.Yellow;
 
-                TextBlob blob = new TextBlob(UI2D.Shared.GetGameFont20, "", 1000);
+                TextBlob blob = new TextBlob(SharedX.GetGameFont20, "", 1000);
 
                 string text = "Tutorial Manager\n";
 
@@ -609,7 +580,14 @@ namespace Boku.Common.TutorialSystem
                         text += "    completion test : " + curStep.CompletionTest.Name.ToString() + "\n";
                         text += "      args : " + curStep.CompletionTest.Args.ToString() + "\n";
                     }
-                    text += "  current input mode : " + GamePadInput.ActiveMode.ToString() + "\n";
+                    text += "  current input mode : ";
+                    if (KoiLibrary.LastTouchedDeviceIsKeyboardMouse)
+                        text += "KeyboardMouse";
+                    if (KoiLibrary.LastTouchedDeviceIsTouch)
+                        text += "Touch";
+                    if (KoiLibrary.LastTouchedDeviceIsGamepad)
+                        text += "Gamepad";
+                    text += "\n";
                     if (curCrumb != null)
                     {
                         text += "current crumb id " + curCrumb.id + "\n";
@@ -621,7 +599,7 @@ namespace Boku.Common.TutorialSystem
 
                 blob.RawText = text;
 
-                blob.RenderWithButtons(pos, Color.Black, outlineColor: Color.White, outlineWidth: 1.2f);
+                blob.RenderText(null, pos, Color.Black, outlineColor: Color.White, outlineWidth: 1.2f);
 
             }
 
@@ -666,7 +644,7 @@ namespace Boku.Common.TutorialSystem
 
                 // Ensure that we're rendering to the whole screen.
                 InGame.RestoreViewportToFull();
-                BokuGame.ScreenSize = new Vector2(BokuGame.bokuGame.GraphicsDevice.Viewport.Width, BokuGame.bokuGame.GraphicsDevice.Viewport.Height);
+                BokuGame.ScreenSize = new Vector2(KoiLibrary.GraphicsDevice.Viewport.Width, KoiLibrary.GraphicsDevice.Viewport.Height);
                 BokuGame.ScreenPosition = Vector2.Zero;
             }
 
@@ -718,11 +696,11 @@ namespace Boku.Common.TutorialSystem
 
             // Pick which list to use basedon current input mode.
             List<Crumb> crumbs = crumbListMouse;
-            if (GamePadInput.ActiveMode == GamePadInput.InputMode.Touch)
+            if (KoiLibrary.LastTouchedDeviceIsTouch)
             {
                 crumbs = crumbListTouch;
             }
-            else if (GamePadInput.ActiveMode == GamePadInput.InputMode.GamePad)
+            else if (KoiLibrary.LastTouchedDeviceIsGamepad)
             {
                 crumbs = crumbListGamepad;
             } 
@@ -843,14 +821,14 @@ namespace Boku.Common.TutorialSystem
         {
             if (backdrop == null)
             {
-                //backdrop = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\GridElements\TutorialTitle");
-                backdrop = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\GridElements\CheckboxWhite");
-                //backdrop = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\HelpCard\BlackHighlight");
+                //backdrop = KoiLibrary.LoadTexture2D(@"Textures\GridElements\TutorialTitle");
+                backdrop = KoiLibrary.LoadTexture2D(@"Textures\GridElements\CheckboxWhite");
+                //backdrop = KoiLibrary.LoadTexture2D(@"Textures\HelpCard\BlackHighlight");
             }
 
             if (dropShadow == null)
             {
-                dropShadow = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\GridElements\DropShadow");
+                dropShadow = KoiLibrary.LoadTexture2D(@"Textures\GridElements\DropShadow");
             }
 
             CreateRenderTarget();
@@ -928,11 +906,11 @@ namespace Boku.Common.TutorialSystem
 
         public static void UnloadContent()
         {
-            InGame.RelRT("TutorialRT", rt);
-            BokuGame.Release(ref rt);
+            SharedX.RelRT("TutorialRT", rt);
+            DeviceResetX.Release(ref rt);
 
-            BokuGame.Release(ref backdrop);
-            BokuGame.Release(ref dropShadow);
+            DeviceResetX.Release(ref backdrop);
+            DeviceResetX.Release(ref dropShadow);
 
             if (modalDisplay != null)
             {
@@ -943,8 +921,8 @@ namespace Boku.Common.TutorialSystem
         public static void DeviceReset(GraphicsDevice device)
         {
             // Recreate rendertarget.
-            InGame.RelRT("TutorialRT", rt);
-            BokuGame.Release(ref rt);
+            SharedX.RelRT("TutorialRT", rt);
+            DeviceResetX.Release(ref rt);
 
             CreateRenderTarget();
 
@@ -959,16 +937,16 @@ namespace Boku.Common.TutorialSystem
                 // Calc rt width to match screen ratio.
                 
                 int height = 4 * font().LineSpacing;
-                // int width = (int)(height * BokuGame.bokuGame.GraphicsDevice.Viewport.Width / (float)BokuGame.bokuGame.GraphicsDevice.Viewport.Height / (1.0f - kScreenFraction));
-                //width = (int)MathHelper.Min(width, BokuGame.bokuGame.GraphicsDevice.Viewport.Width);
+                // int width = (int)(height * KoiLibrary.GraphicsDevice.Viewport.Width / (float)KoiLibrary.GraphicsDevice.Viewport.Height / (1.0f - kScreenFraction));
+                //width = (int)MathHelper.Min(width, KoiLibrary.GraphicsDevice.Viewport.Width);
                 int width = (int)BokuGame.ScreenSize.X;
 
                 rt = new RenderTarget2D(
-                    BokuGame.bokuGame.GraphicsDevice,
+                    KoiLibrary.GraphicsDevice,
                     width, height, false,
                     SurfaceFormat.Color,
                     DepthFormat.None);
-                InGame.GetRT("TutorialRT", rt);
+                SharedX.GetRT("TutorialRT", rt);
             }
         }   // end of CreateRenderTarget()
 
