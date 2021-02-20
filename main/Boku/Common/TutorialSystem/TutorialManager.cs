@@ -649,99 +649,14 @@ namespace Boku.Common.TutorialSystem
                 for (int i = 0; i < InGame.XmlWorldData.tutorialSteps.Count; i++)
                 {
                     Step step = InGame.XmlWorldData.tutorialSteps[i];
-                    step.GamepadText = CleanUpString(step.GamepadText);
-                    step.MouseText = CleanUpString(step.MouseText);
-                    step.TouchText = CleanUpString(step.TouchText);
-                    step.GoalText = CleanUpString(step.GoalText);
+                    step.GamepadText = TextHelper.CleanUpString(step.GamepadText);
+                    step.MouseText = TextHelper.CleanUpString(step.MouseText);
+                    step.TouchText = TextHelper.CleanUpString(step.TouchText);
+                    step.GoalText = TextHelper.CleanUpString(step.GoalText);
                 }
             }
 
         }   // end of Activate()
-
-        /// <summary>
-        /// Take the text input, breaks it into seperate lines, 
-        /// trims those lines, converts any leading colons into
-        /// spaces (1 colon == 4 spaces), and then recombines 
-        /// the lines and returns the new string.
-        /// Also takes null and returns an empty string.
-        /// 
-        /// TODO (scoy) This is a good candidate to be moved 
-        /// to TextHelper and used everywhere.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        static public string CleanUpString(string str)
-        {
-            if (str == null)
-            {
-                return string.Empty;
-            }
-
-            // Split into seperate lines.
-            string[] strings = str.Split('\n');
-
-            // Trim ends.
-            for (int i = 0; i < strings.Length; i++)
-            {
-                strings[i] = strings[i].Trim();
-            }
-
-            // Expand colons.
-            for (int i = 0; i < strings.Length; i++)
-            {
-                // Allow up to 3 levels of indent.
-                if (strings[i].StartsWith(":::"))
-                {
-                    strings[i] = strings[i].Replace(":::", "            ");
-                }
-                else if (strings[i].StartsWith("::"))
-                {
-                    strings[i] = strings[i].Replace("::", "        ");
-                }
-                else if (strings[i].StartsWith(":"))
-                {
-                    strings[i] = strings[i].Replace(":", "    ");
-                }
-            }
-
-            // Recombine result.
-            // We want to skip empty strings at the beginning and end.
-            int first = 0;
-            while (first < strings.Length - 1)
-            {
-                if (string.IsNullOrWhiteSpace(strings[first]))
-                {
-                    ++first;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            int last = strings.Length - 1;
-            while (last > first)
-            {
-                if (string.IsNullOrWhiteSpace(strings[last]))
-                {
-                    --last;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            str = "";
-            for (int i = first; i <= last; i++)
-            {
-                str += strings[i];
-                if (i < last)
-                {
-                    str += '\n';
-                }
-            }
-
-            return str;
-        }   // end of CleanUpString()
 
         public static void Deactivate()
         {

@@ -483,7 +483,7 @@ namespace Boku.Common.Xml
                     foreach (Reflex reflex in task.reflexes)
                     {
                         ReflexData rd = reflex.Data;
-                        rd.sayString = TutorialSystem.TutorialManager.CleanUpString(rd.sayString);
+                        rd.sayString = TextHelper.CleanUpString(rd.sayString);
                         rd.sayString = XmlWorldData.OnLoadLocalizedString(rd.sayString, ref rd.OriginalSayString, ref rd.LocalizedSayString, ref rd.LocalizedSayStringDict);
                     }
                 }
