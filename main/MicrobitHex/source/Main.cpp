@@ -334,7 +334,7 @@ void onConfigInputPin(Message& msg) {
     if (pinMode == IO_STATUS_DIGITAL_IN) {
         uint8_t pullMode;
         CHECKED_READ(msg.readU8Hex(pullMode));
-        s_ubit.io.pin[pin].getDigitalValue((PinMode)pullMode);
+        s_ubit.io.pin[pin].getDigitalValue((PullMode)pullMode);
     } else if (pinMode == IO_STATUS_ANALOG_IN) {
         s_ubit.io.pin[pin].getAnalogValue();
     } else {
@@ -637,7 +637,7 @@ int main() {
     s_ubit.buttonB.setEventConfiguration(MICROBIT_BUTTON_SIMPLE_EVENTS);
 
     // Configure serial comms.
-    s_ubit.serial.baud(115200);
+    s_ubit.serial.setBaudrate(115200);
     s_ubit.serial.setRxBufferSize(128);
     s_ubit.serial.setTxBufferSize(128);
     s_ubit.serial.eventOn("\n", ASYNC);
