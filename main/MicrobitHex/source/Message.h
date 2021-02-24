@@ -1,9 +1,6 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-class ManagedString;
-class MicroBitImage;
-
 class Message {
    public:
     Message(int length);
