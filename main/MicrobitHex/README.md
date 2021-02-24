@@ -2,6 +2,20 @@
 
 This project builds the `kodu-microbit-combined.hex` file. This is the image Kodu flashes to attached microbits when entering play mode.
 
+# Microbit V1
+
+Note: To build for v1 you must change the dependencies section of module.json to this:
+
+```
+  "dependencies": {
+    "microbit": "lancaster-university/microbit#v2.1.1"
+  },
+```
+
+What is checked in is for microbit v2.
+
+If the instructions below become out of date, look for updated instructions at https://github.com/lancaster-university/microbit-samples.
+
 ## Prerequisites (Windows)
 1. Install SRecord
     
@@ -25,6 +39,19 @@ This project builds the `kodu-microbit-combined.hex` file. This is the image Kod
 
 2. Run the command `yt build`.
 3. Find the resultant hex file at `./build/source/kodu-microbit-combined.hex`
+
+# Microbit V2
+
+Follow the build instructions at https://github.com/lancaster-university/microbit-v2-samples (I followed the instructions for building in an Ubuntu Linux shell).
+
+# Build the kodu-microbit-combined.hex file.
+
+1. Build the v1 hex
+2. Build the v2 hex
+3. Combine the hex files using this online tool: https://tech.microbit.org/software/universal-hex-creator/
+4. Rename the generated hex to `kodu-microbit-combined.hex` and copy it to the content folder Boku/Content/Microbit for in-game testing.
+
+# Testing
 
 ## Testing the .hex file from a serial terminal
 
