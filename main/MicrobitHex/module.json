@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "The Kodu micro:bit runtime.",
   "dependencies": {
-    "microbit": "lancaster-university/microbit#v2.1.1"
+    "codal-microbit": "git@github.com:lancaster-university/codal-microbit-v2.git#master"
   },
+  "extraIncludes": [
+    "yotta_modules/"
+  ],
   "targetDependencies": {},
   "bin": "./source"
 }
