@@ -185,6 +185,22 @@
 
         First, let's start with adding new terrain.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              На этом уроке ты научишься:
+              1) Добавлять в свой мир и удалять ландшафт.
+              2) Создавать ландшафт из разных материалов.
+
+              Давай начнем с добавления нового ландшафта.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         This tutorial will teach you how to:
         1) Add and delete terrain in your world.
@@ -201,11 +217,34 @@
       <TargetModeMouse>MouseTerrainPaint</TargetModeMouse>
       <TargetModeTouch>TouchTerrainPaint</TargetModeTouch>
       <GoalText>Painting terrain (Step 1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 1/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press &lt;A&gt; to paint, &lt;righttrigger&gt; to add new ground and &lt;lefttrigger&gt; to delete.</GamepadText>
       <MouseText>
         Use the left mouse button &lt;leftmouse&gt; to paint and the right mouse button &lt;rightmouse&gt; to delete.
         You can also add terrain by painting beyond the edge of the existing world.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Используй левую кнопку мыши &lt;leftmouse&gt;, чтобы создать, и правую кнопку мыши &lt;rightmouse&gt;, чтобы удалить территорию.
+              Ты также можешь добавить территорию за пределами существующей поверхности.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Use your finger to paint.  Tap on the eraser to delete.
         You can also add terrain by painting beyond the edge of the existing world.
@@ -220,11 +259,34 @@
       <TargetModeMouse>MouseTerrainPaint</TargetModeMouse>
       <TargetModeTouch>TouchTerrainPaint</TargetModeTouch>
       <GoalText>Painting terrain (Step 1/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 1/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press &lt;A&gt; to paint, &lt;righttrigger&gt; to add new ground and &lt;lefttrigger&gt; to delete.</GamepadText>
       <MouseText>
         Use the left mouse button &lt;leftmouse&gt; to paint and the right mouse button &lt;rightmouse&gt; to delete.
         You can also add terrain by painting beyond the edge of the existing world.
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Используй левую кнопку мыши &lt;leftmouse&gt;, чтобы создать, и правую кнопку мыши &lt;rightmouse&gt;, чтобы удалить территорию.
+              Ты также можешь добавить территорию за пределами существующей поверхности.
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Use your finger to paint.  Tap on the eraser to delete.
         You can also add terrain by painting beyond the edge of the existing world.
@@ -239,8 +301,28 @@
       <TargetModeMouse>MaterialPicker</TargetModeMouse>
       <TargetModeTouch>MaterialPicker</TargetModeTouch>
       <GoalText>Painting terrain (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press &lt;Y&gt; to pick a new material.</GamepadText>
       <MouseText>Click on &lt;materialtype&gt; to pick a new material.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни на &lt;materialtype&gt;, чтобы выбрать новый материал.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on &lt;materialtype&gt; to pick a new material.</TouchText>
     </Step>
     <Step>
@@ -251,8 +333,28 @@
       <TargetModeMouse>MaterialPicker</TargetModeMouse>
       <TargetModeTouch>MaterialPicker</TargetModeTouch>
       <GoalText>Painting terrain (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the triggers &lt;lefttrigger&gt;&lt;righttrigger&gt; to find a new material and then press &lt;a&gt; to select it.</GamepadText>
       <MouseText>Use the arrow keys [leftarrow][rightarrow] to find a new material and then left click &lt;leftmouse&gt; to select it.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Используй стрелки [leftarrow][rightarrow] или колесико мыши, чтобы найти новый материал, затем щелкни левой кнопкой мыши &lt;leftmouse&gt;, чтобы выбрать его.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Drag to choose a new material and then tap to select it.</TouchText>
       <CompletionTest Name="ModeChange" Args="MaterialPicker" />
     </Step>
@@ -264,6 +366,16 @@
       <TargetModeMouse>MouseTerrainPaint</TargetModeMouse>
       <TargetModeTouch>TouchTerrainPaint</TargetModeTouch>
       <GoalText>Painting terrain (Step 2/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 2/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText />
       <MouseText />
       <TouchText />
@@ -277,8 +389,28 @@
       <TargetModeMouse>BrushPicker</TargetModeMouse>
       <TargetModeTouch>BrushPicker</TargetModeTouch>
       <GoalText>Painting terrain (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Press &lt;X&gt; to pick a new brush.</GamepadText>
       <MouseText>Click on &lt;brushtype&gt; to pick a new brush.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Щелкни на &lt;brushtype&gt;, чтобы выбрать новую кисть.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Tap on &lt;brushtype&gt; to pick a new brush.</TouchText>
     </Step>
     <Step>
@@ -289,8 +421,28 @@
       <TargetModeMouse>BrushPicker</TargetModeMouse>
       <TargetModeTouch>BrushPicker</TargetModeTouch>
       <GoalText>Painting terrain (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>Use the triggers &lt;lefttrigger&gt;&lt;righttrigger&gt; to find a new brush and then press &lt;a&gt; to select it.</GamepadText>
       <MouseText>Use the arrow keys [leftarrow][rightarrow] to find a new brush and then left click &lt;leftmouse&gt; to select it.</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Используй клавиши со стрелками [leftarrow][rightarrow] или колесико мыши, чтобы найти новую кисть, затем щелкни левой кнопкой мыши &lt;leftmouse&gt;, чтобы выбрать ее.</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>Drag to choose a new brush and then tap to select it.</TouchText>
       <CompletionTest Name="ModeChange" Args="BrushPicker" />
     </Step>
@@ -302,8 +454,28 @@
       <TargetModeMouse>MouseTerrainPaint</TargetModeMouse>
       <TargetModeTouch>TouchTerrainPaint</TargetModeTouch>
       <GoalText>Painting terrain (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Создание ландшафта (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>You can also change the brush size using the DPad</GamepadText>
       <MouseText>You can also change the brush size using the arrow keys [leftarrow][rightarrow]</MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Ты также можешь менять размер кисти, используя клавиши со стрелками [leftarrow][rightarrow]</string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>You can also change the brush size using the buttons on the left.</TouchText>
       <CompletionTest Name="Timer" Args="10" />
     </Step>
@@ -314,6 +486,16 @@
       <TargetModeMouse>MouseTerrainPaint</TargetModeMouse>
       <TargetModeTouch>TouchTerrainPaint</TargetModeTouch>
       <GoalText>All done! (Step 3/3)</GoalText>
+      <LocalizedGoalTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>Все сделано! (Шаг 3/3)</string>
+          </value>
+        </item>
+      </LocalizedGoalTextDict>
       <GamepadText>
         Congratulations!  In this tutorial you've learned how to add and paint terrain.
         Experiment with different materials and brush shapes and sizes.
@@ -324,6 +506,20 @@
         Experiment with different materials and brush shapes and sizes.
         Have fun!
       </MouseText>
+      <LocalizedMouseTextDict>
+        <item>
+          <key>
+            <string>RU</string>
+          </key>
+          <value>
+            <string>
+              Поздравляем!  В этом уроке ты научился создавать и удалять ландшафт.
+              Поэкспериментируй с разными материалами, а также с формами и размерами кисти.     Фантазируй!
+              Кстати, можно выбрать материал из уже имеющегося в ландшафте. Для этого нужно зажать Alt и щелкнуть на территориии с нужным материалом. Пробуй!
+            </string>
+          </value>
+        </item>
+      </LocalizedMouseTextDict>
       <TouchText>
         Congratulations!  In this tutorial you've learned how to add and paint terrain.
         Experiment with different materials and brush shapes and sizes.
