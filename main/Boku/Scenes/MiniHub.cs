@@ -44,8 +44,6 @@ namespace Boku
     {
         public static MiniHub Instance = null;
 
-        public static string emptyWorldFileName = @"03a1b038-fd3f-492f-b18c-2a197fe68701.Xml";
-
         private Texture2D homeTexture = null;
 
         public NewWorldDialog newWorldDialog;
@@ -603,7 +601,7 @@ namespace Boku
             if (InGame.XmlWorldData != null)
             {
                 bool genreTest = ((int)InGame.XmlWorldData.genres & (int)Genres.MyWorlds) != 0;
-                bool newWorldTest = InGame.XmlWorldData.Filename == emptyWorldFileName;
+                bool newWorldTest = MiniHub.Instance.newWorldDialog.IsNewWorld(InGame.XmlWorldData.id.ToString());
                 if (genreTest && !newWorldTest)
                 {
                     isMyWorld = true;
