@@ -560,7 +560,7 @@ namespace Boku
             {
                 UnDoStack.OverwriteTopOfStack();
 
-                //if a new name, at the very least we need a new guid
+                // If a new name, at the very least we need a new guid.
                 xmlWorldData.id = Guid.NewGuid();
             }
 

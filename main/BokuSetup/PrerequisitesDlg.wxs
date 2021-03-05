@@ -13,8 +13,10 @@
     <CustomAction Id="CA_DetectSoftwarePackages" BinaryKey="BokuSetupActions" DllEntry="DetectSoftwarePackages" Execute="immediate" />
 
     <!-- Commands for launching browsers -->
-    <CustomAction Id="LaunchNetFrameworkSite" ExeCommand="cmd /C start http://www.microsoft.com/downloads/details.aspx?familyid=AB99342F-5D1A-413D-8319-81DA479AB0D7" Directory="TARGETDIR" Return="asyncNoWait" />
-    <CustomAction Id="LaunchXnaFrameworkSite" ExeCommand="cmd /C start http://www.microsoft.com/en-us/download/details.aspx?id=27598" Directory="TARGETDIR" Return="asyncNoWait" />
+    <!-- <CustomAction Id="LaunchNetFrameworkSite" ExeCommand="cmd /C start http://www.microsoft.com/downloads/details.aspx?familyid=AB99342F-5D1A-413D-8319-81DA479AB0D7" Directory="TARGETDIR" Return="asyncNoWait" /> -->
+    <!-- <CustomAction Id="LaunchXnaFrameworkSite" ExeCommand="cmd /C start http://www.microsoft.com/en-us/download/details.aspx?id=27598" Directory="TARGETDIR" Return="asyncNoWait" /> -->
+    <CustomAction Id="LaunchNetFrameworkSite" ExeCommand="cmd /C start https://kodugamelab.blob.core.windows.net:443/blob/dotNetFx40_Full_x86_x64.exe" Directory="TARGETDIR" Return="asyncNoWait" />
+    <CustomAction Id="LaunchXnaFrameworkSite" ExeCommand="cmd /C start https://kodugamelab.blob.core.windows.net/blob/xnafx40_redist.msi" Directory="TARGETDIR" Return="asyncNoWait" />
 
     <!-- Prerequisites dialog -->
     <UI>  

@@ -361,6 +361,24 @@ namespace Boku.UI2D
             }
         }   // end of Render()
 
+        /// <summary>
+        /// Test whether the guid belongs to one of the new worlds.
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        public bool IsNewWorld(string guid)
+        {
+            foreach (NewWorldLevel level in levels)
+            {
+                if (0 == string.Compare(level.LevelGuid, guid, ignoreCase: true))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }   // end of IsNewWorld()
+
         #endregion
 
         #region Internal
