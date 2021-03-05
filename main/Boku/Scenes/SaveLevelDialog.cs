@@ -1143,6 +1143,12 @@ namespace Boku
             /// <param name="newName"></param>
             public void SaveLevelAndExit(bool newName, bool preserveLinks)
             {
+                // If name of world or creator has changed, force newName to true so we generate a new guid.
+                if (InGame.XmlWorldData.name != shared.CurNameScrubbed || InGame.XmlWorldData.creator != Auth.CreatorName)
+                {
+                    newName = true;
+                }
+
                 InGame.XmlWorldData.name = shared.CurNameScrubbed;
                 InGame.XmlWorldData.creator = Auth.CreatorName;
                 if (shared.curVersion != 0)
