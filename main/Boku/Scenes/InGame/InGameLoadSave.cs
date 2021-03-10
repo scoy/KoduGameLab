@@ -743,23 +743,56 @@ namespace Boku
             }
 
             // Save the thumbnail.
-            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".png";
+            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
             if (thumbnail != null)
             {
-                Storage4.TextureSaveAsPng(thumbnail, thumbFilename);
+                Storage4.TextureSaveAsJpeg(thumbnail, thumbFilename);
             }
 
-            // Save full size image.
+            // Save large size 800x600 image.
             try
             {
-                string rt0Filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
-                if (InGame.inGame.FullRenderTarget0 != null)
+                GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
+                SpriteBatch batch = UI2D.Shared.SpriteBatch;
+
+                // Crop and size full render target to 800x600 rt.
+                float aspectFull = InGame.inGame.FullRenderTarget0.Width / (float)InGame.inGame.FullRenderTarget0.Height;
+                float aspectLarge = 800.0f / 600.0f;
+
+                InGame.SetRenderTarget(InGame.inGame.LargeRenderTarget);
+                Rectangle dst = new Rectangle(0, 0, 800, 600);
+
+                batch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+                // If we have a wider aspect ratio, crop the left/right sides.
+                if (aspectFull > aspectLarge)
                 {
-                    Storage4.TextureSaveAsJpeg(InGame.inGame.FullRenderTarget0, rt0Filename);
+                    int srcWidth = (int)(InGame.inGame.FullRenderTarget0.Width / aspectFull * aspectLarge);
+                    int margin = (int)((InGame.inGame.FullRenderTarget0.Width - srcWidth) / 2.0f);
+                    Rectangle src = new Rectangle(margin, 0, srcWidth, InGame.inGame.FullRenderTarget0.Height);
+                    batch.Draw(InGame.inGame.FullRenderTarget0, dst, src, Color.White);
+                }
+                else
+                {
+                    // If we have a tall aspect ratio, crop the top/bottom edges.
+                    int srcHeight = (int)(InGame.inGame.FullRenderTarget0.Height / aspectLarge * aspectFull);
+                    int margin = (int)((InGame.inGame.FullRenderTarget0.Height - srcHeight) / 2.0f);
+                    Rectangle src = new Rectangle(0, margin, InGame.inGame.FullRenderTarget0.Width, srcHeight);
+                    batch.Draw(InGame.inGame.FullRenderTarget0, dst, src, Color.White);
+                }
+                batch.End();
+                InGame.SetRenderTarget(null);
+
+                string filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + "_800.jpg";
+                if (InGame.inGame.LargeRenderTarget != null)
+                {
+                    Storage4.TextureSaveAsJpeg(InGame.inGame.LargeRenderTarget, filename);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                if (e != null)
+                {
+                }
             }
 
 

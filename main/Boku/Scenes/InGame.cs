@@ -414,6 +414,8 @@ namespace Boku
             private RenderTarget2D smallNoEffect = null;
             private RenderTarget2D thumbRenderTarget = null;
 
+            private RenderTarget2D largeRenderTarget = null;    // Used for 'large' image saved with level
+
             private RenderTarget2D bloomRenderTarget = null;
             private RenderTarget2D glowRenderTarget = null;
             private RenderTarget2D tinyRenderTarget0 = null;
@@ -472,6 +474,14 @@ namespace Boku
             public Texture2D FullRenderTarget1
             {
                 get { return fullRenderTarget1; }
+            }
+            /// <summary>
+            /// 800x600 rendertarget used for saving large
+            /// size image of levels.
+            /// </summary>
+            public RenderTarget2D LargeRenderTarget
+            {
+                get { return largeRenderTarget; }
             }
 
             public ShadowCamera ShadowCamera
@@ -1778,6 +1788,7 @@ namespace Boku
                     smallNoEffect = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     smallEffectThumb = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     thumbRenderTarget = new RenderTarget2D(device, 256, 256, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
+                    largeRenderTarget = new RenderTarget2D(device, 800, 600, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
 
                     SetRenderTarget(smallEffectThumb);
                     Clear(Color.Black);
@@ -1808,6 +1819,7 @@ namespace Boku
                 BokuGame.Release(ref smallEffectThumb);
                 BokuGame.Release(ref smallNoEffect);
                 BokuGame.Release(ref thumbRenderTarget);
+                BokuGame.Release(ref largeRenderTarget);
 
                 BokuGame.Release(ref shadowFullRenderTarget);
                 BokuGame.Release(ref shadowSmallRenderTarget0);
@@ -3311,6 +3323,10 @@ namespace Boku
         public Texture2D FullRenderTarget1
         {
             get { return renderObj.FullRenderTarget1; }
+        }
+        public RenderTarget2D LargeRenderTarget
+        {
+            get { return renderObj.LargeRenderTarget; }
         }
 
         public bool RenderWorldAsThumbnail
