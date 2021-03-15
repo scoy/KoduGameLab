@@ -140,7 +140,7 @@ Black &lt;apple&gt;ends game</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\d10a4cd3-2e32-407a-aa89-e52cf9f9a75b.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\d10a4cd3-2e32-407a-aa89-e52cf9f9a75b.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

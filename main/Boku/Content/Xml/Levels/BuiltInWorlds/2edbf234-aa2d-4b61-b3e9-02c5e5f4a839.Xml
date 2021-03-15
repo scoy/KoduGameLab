@@ -149,7 +149,7 @@
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\80cc19be-ca2d-49dc-a351-0bcecdd517ac.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\80cc19be-ca2d-49dc-a351-0bcecdd517ac.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

@@ -153,7 +153,7 @@ Each time he eats one, he'll change colors
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\ac9f3034-1215-419a-bc0e-51ef8363fe38.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\ac9f3034-1215-419a-bc0e-51ef8363fe38.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

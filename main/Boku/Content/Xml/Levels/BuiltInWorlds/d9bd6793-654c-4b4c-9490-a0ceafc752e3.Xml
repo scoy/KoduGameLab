@@ -138,7 +138,7 @@ Grab &lt;heart&gt; for ammo.
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\779997af-d888-405d-b473-468979c1cc52.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\779997af-d888-405d-b473-468979c1cc52.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

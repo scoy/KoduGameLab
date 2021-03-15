@@ -152,7 +152,7 @@ When green are gone, &lt;cloud&gt; makes a &lt;star&gt; which makes more &lt;app
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\6b6a1749-9332-4e6e-8635-a15cfef2e100.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\6b6a1749-9332-4e6e-8635-a15cfef2e100.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

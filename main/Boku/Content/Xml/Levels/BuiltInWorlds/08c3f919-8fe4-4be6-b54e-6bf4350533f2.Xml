@@ -142,7 +142,7 @@ You have 60 seconds.
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\fe79c268-0c5e-48c9-96a6-b19d9468a9ef.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\fe79c268-0c5e-48c9-96a6-b19d9468a9ef.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

@@ -139,7 +139,7 @@ Add a Kodu and program him to allow you to shoot the fish.</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\81d6ef18-0782-48dd-b3ad-2241ceedfe66.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\81d6ef18-0782-48dd-b3ad-2241ceedfe66.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

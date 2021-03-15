@@ -148,7 +148,7 @@ reach the right spot
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\57c82e3d-83d8-44a1-a983-9dc519979b67.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\57c82e3d-83d8-44a1-a983-9dc519979b67.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

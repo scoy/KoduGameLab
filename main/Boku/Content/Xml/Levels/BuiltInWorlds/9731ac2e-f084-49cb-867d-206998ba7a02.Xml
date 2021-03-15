@@ -138,7 +138,7 @@ Eat &lt;heart&gt; to gain the ability to jump</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\e43f0ca7-6dc1-4904-9089-4d35eaf0a5cd.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\e43f0ca7-6dc1-4904-9089-4d35eaf0a5cd.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

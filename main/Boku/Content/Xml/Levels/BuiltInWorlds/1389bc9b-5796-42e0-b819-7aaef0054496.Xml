@@ -237,7 +237,7 @@ Cost: 2</label>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\609f4ee1-8d1e-416b-84ba-ba7be9816ba1.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\609f4ee1-8d1e-416b-84ba-ba7be9816ba1.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

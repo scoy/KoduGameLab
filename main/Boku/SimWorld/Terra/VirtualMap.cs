@@ -525,7 +525,7 @@ namespace Boku.SimWorld.Terra
             // from New World.
             if (fs == null)
             {
-                filename = "Content\\Xml\\Levels\\Stuff\\TerrainHeightMaps\\30e0bd73-fa87-4849-9610-42dfb9ec5403.Raw";
+                filename = "Content\\Xml\\Levels\\Stuff\\TerrainHeightMaps\\30e0bd73-fa87-4849-9610-42dfb9ec5403.Map";
                 fs = Storage4.OpenRead(filename, StorageSource.All);
             }
             

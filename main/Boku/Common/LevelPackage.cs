@@ -183,6 +183,7 @@ namespace Boku.Common
                                 {
                                     // Note this is in in Downloads
                                     targetPath = Path.Combine(targetPath, StuffFolder, HeightMapsFolder, partFilename);
+                                    targetPath = targetPath.Replace(".Raw", ".Map");
                                 }
                                 else
                                 {
@@ -879,6 +880,8 @@ namespace Boku.Common
             else if (filepath.EndsWith(@"Terrain\"))
             {
                 filepath = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, BokuGame.TerrainPath);
+                // Force .raw files to be written as .Map files.
+                filename = filename.Replace(".Raw", ".Map");
                 return true;
             }
             else if (filepath.EndsWith(@"Thumbnail\"))

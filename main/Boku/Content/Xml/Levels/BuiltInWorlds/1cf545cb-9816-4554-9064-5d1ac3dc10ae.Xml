@@ -137,7 +137,7 @@ Beware &lt;saucer&gt;!</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\2ad4bf69-94e5-4e16-b9f5-568a33395a13.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\2ad4bf69-94e5-4e16-b9f5-568a33395a13.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>
