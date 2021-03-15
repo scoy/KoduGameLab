@@ -141,7 +141,7 @@ To adjust missile speed and fire rate, select &lt;cycle&gt; and press &lt;x&gt; 
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\10a86fb9-c33a-4021-9638-4900ef32b354.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\10a86fb9-c33a-4021-9638-4900ef32b354.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

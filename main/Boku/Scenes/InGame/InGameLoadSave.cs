@@ -896,7 +896,7 @@ namespace Boku
 
             //create a new terrain file for the new level 
             Guid guid = Guid.NewGuid();
-            string newTerrainPath = BokuGame.TerrainPath + guid + ".Raw";
+            string newTerrainPath = BokuGame.TerrainPath + guid + ".Map";
 
             //write out the bytes
             Stream file = Storage4.OpenWrite(BokuGame.Settings.MediaPath + newTerrainPath);
@@ -968,7 +968,7 @@ namespace Boku
             if (shared.heightMapModified || forceSave)
             {
                 // Create new name for height map file.
-                string fullPath = BokuGame.TerrainPath + fileroot + ".Raw";
+                string fullPath = BokuGame.TerrainPath + fileroot + ".Map";
 
                 // Save the file.
                 Terrain.SaveHeight(BokuGame.Settings.MediaPath + fullPath);

@@ -142,7 +142,7 @@ Player 1: Press &lt;Y&gt; at any time for detailed instructions.</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\7265596f-5a50-4196-b387-8a771f663063.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\7265596f-5a50-4196-b387-8a771f663063.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

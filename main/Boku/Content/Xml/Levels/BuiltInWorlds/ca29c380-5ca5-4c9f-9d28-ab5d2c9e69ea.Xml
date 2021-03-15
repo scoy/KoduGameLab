@@ -152,7 +152,7 @@ The &lt;kodu&gt;launches an &lt;apple&gt; each time you press &lt;a&gt; or [spac
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\1d0dfb6b-cf4b-4b06-a6db-c29e360c3fa2.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\1d0dfb6b-cf4b-4b06-a6db-c29e360c3fa2.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

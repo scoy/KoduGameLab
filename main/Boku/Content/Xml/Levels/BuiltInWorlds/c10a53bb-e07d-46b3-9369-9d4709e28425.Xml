@@ -140,7 +140,7 @@ Beware everything else.</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\452c8a6b-36dc-48a3-93ca-71d745794a9f.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\452c8a6b-36dc-48a3-93ca-71d745794a9f.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

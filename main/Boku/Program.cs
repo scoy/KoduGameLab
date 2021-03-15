@@ -231,63 +231,6 @@ namespace Boku
                     // ====================================================
                 }
 
-                // If running Win Store build, see if we need to copy over old levels.
-                if(WinStoreHelpers.RunningAsUWP && XmlOptionsData.OldStoreLevelsCopied == false)
-                {
-                    // Path starts with %LocalAppData% == c:\users\scoy.REDMOND\AppData\Local
-                    // Then add Packages\Microsoft.Kodu*\LocalState\Content\Xml\Levels
-                    // The * will have to be figured out just by looking at the first bit.  I think it's tied to the user???
-                    
-                    // Levels\MyWorlds                  *.dds, *.jpg, *.Xml
-                    // Levels\MyWorlds\Stuff            *.Xml
-                    // Levels\Stuff\TerrainHeightMaps   *.Raw
-
-                    // Wrap everything inside a try/catch.  If anything fails
-                    // for any reason we'll just bail and not try again.
-                    try
-                    {
-                        // Try and find path to old levels.
-                        string path = "%LocalAppData%\\Packages";
-                        path = Environment.ExpandEnvironmentVariables(path);
-                        var directories = Directory.EnumerateDirectories(path, "Microsoft.Kodu*");
-                        // There should only be one but if we find multiple examples, just try them all.
-                        foreach(string dir in directories)
-                        {
-                            // Figure out source paths for files.
-                            string levelsPath = Path.Combine(dir, "LocalState\\Content\\Xml\\Levels");
-                            string worldsPath = Path.Combine(levelsPath, "MyWorlds");
-                            string stuffPath = Path.Combine(levelsPath, "MyWorlds\\Stuff");
-                            string terrainPath = Path.Combine(levelsPath, "Stuff\\TerrainHeightMaps");
-
-                            // Destination paths.
-                            string destLevelsPath = Path.Combine(Storage4.UserLocation, "Content\\Xml\\Levels");
-                            string destWorldsPath = Path.Combine(destLevelsPath, "MyWorlds");
-                            string destStuffPath = Path.Combine(destLevelsPath, "MyWorlds\\Stuff");
-                            string destTerrainPath = Path.Combine(destLevelsPath, "Stuff\\TerrainHeightMaps");
-
-                            // Ensure all the destination paths exist.  Note this also creates the intermediate folders.
-                            Storage4.CreateDirectory(destStuffPath);
-                            Storage4.CreateDirectory(destTerrainPath);
-
-                            // Copy the files.
-                            CopyFiles(worldsPath, destWorldsPath, "*.dds");
-                            CopyFiles(worldsPath, destWorldsPath, "*.jpg");
-                            CopyFiles(worldsPath, destWorldsPath, "*.Xml");
-                            CopyFiles(stuffPath, destStuffPath, "*.Xml");
-                            CopyFiles(terrainPath, destTerrainPath, "*.Raw");
-                            
-                        }   // end of loop over directories.
-                    }
-                    catch(Exception e)
-                    {
-                        if (e != null)
-                        {
-                        }
-                    }
-
-                    XmlOptionsData.OldStoreLevelsCopied = true;
-                }
-
                 {
                     // Prevent multiple instances of Kodu
                     // ====================================================
