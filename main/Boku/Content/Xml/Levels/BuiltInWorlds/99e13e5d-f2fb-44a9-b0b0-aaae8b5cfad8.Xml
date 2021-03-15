@@ -141,7 +141,7 @@ Shoot &lt;blimp&gt; 100</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\d69c0e1a-977f-4a53-b720-c769f3e8ec42.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\d69c0e1a-977f-4a53-b720-c769f3e8ec42.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

@@ -138,7 +138,7 @@ Reach the &lt;balloon&gt;
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\7d89edb2-fee3-44f7-a7ba-b40f02a6a366.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\7d89edb2-fee3-44f7-a7ba-b40f02a6a366.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

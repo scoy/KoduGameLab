@@ -160,7 +160,7 @@ Use the onboard power system wisely. Using science tools will drain your power s
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\37f58b39-5f0b-4793-bf91-1c6c431f3dde.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\37f58b39-5f0b-4793-bf91-1c6c431f3dde.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

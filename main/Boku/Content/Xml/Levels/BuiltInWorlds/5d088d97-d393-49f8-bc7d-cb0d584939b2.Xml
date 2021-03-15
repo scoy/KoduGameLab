@@ -138,7 +138,7 @@ In this tutorial you will learn how to add a Kodu &lt;kodu&gt; to your world and
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\efe21078-c7cf-4169-921e-f9ecd1f0512f.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\efe21078-c7cf-4169-921e-f9ecd1f0512f.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

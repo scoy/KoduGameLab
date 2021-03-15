@@ -171,7 +171,7 @@ Find the coins. Keep the light out as much as possible.</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\b13f50bf-f981-4ac6-912b-6fbef4149657.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\b13f50bf-f981-4ac6-912b-6fbef4149657.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

@@ -237,7 +237,7 @@ Visit https://www.youtube.com/user/KoduTeam for a video walk-through of this tut
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\f62c2b14-a159-4cf4-9c02-9c5a767808a1.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\f62c2b14-a159-4cf4-9c02-9c5a767808a1.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters>
       <XmlWaterData>

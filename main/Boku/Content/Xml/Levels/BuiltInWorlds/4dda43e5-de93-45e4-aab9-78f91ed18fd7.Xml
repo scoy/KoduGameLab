@@ -145,7 +145,7 @@ Move using [w] and [s], shoot with &lt;leftmouse&gt;
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\2d379423-170d-44d2-8cc5-59121d745747.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\2d379423-170d-44d2-8cc5-59121d745747.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

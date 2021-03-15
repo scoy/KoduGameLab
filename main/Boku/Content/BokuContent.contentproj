@@ -2960,47 +2960,47 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\3fa877a2-83a0-4522-9ed1-9fbbca417b02.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\3fa877a2-83a0-4522-9ed1-9fbbca417b02.Map">
       <Name>3fa877a2-83a0-4522-9ed1-9fbbca417b02</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5e94695f-6331-44c4-bcc9-4b39d7adce8d.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5e94695f-6331-44c4-bcc9-4b39d7adce8d.Map">
       <Name>5e94695f-6331-44c4-bcc9-4b39d7adce8d</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c6b148d5-bc4d-4d5d-a4ff-f224e661e3fb.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c6b148d5-bc4d-4d5d-a4ff-f224e661e3fb.Map">
       <Name>c6b148d5-bc4d-4d5d-a4ff-f224e661e3fb</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d1857041-31cc-4f9d-a256-c1d7037066bb.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d1857041-31cc-4f9d-a256-c1d7037066bb.Map">
       <Name>d1857041-31cc-4f9d-a256-c1d7037066bb</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e475ede0-15fc-40ed-93f6-bff8f0d4ed19.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e475ede0-15fc-40ed-93f6-bff8f0d4ed19.Map">
       <Name>e475ede0-15fc-40ed-93f6-bff8f0d4ed19</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e922ca04-fdec-4d1c-b664-7e701d0cc128.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e922ca04-fdec-4d1c-b664-7e701d0cc128.Map">
       <Name>e922ca04-fdec-4d1c-b664-7e701d0cc128</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f9815f5e-5a67-4da1-9c95-b1a98aae457e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f9815f5e-5a67-4da1-9c95-b1a98aae457e.Map">
       <Name>f9815f5e-5a67-4da1-9c95-b1a98aae457e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65ab0d81-d12d-4bde-af08-5551b3030f0c.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65ab0d81-d12d-4bde-af08-5551b3030f0c.Map">
       <Name>65ab0d81-d12d-4bde-af08-5551b3030f0c</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\01b40d1d-7b21-4017-a2b7-3aeff5d28c18.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\01b40d1d-7b21-4017-a2b7-3aeff5d28c18.Map">
       <Name>01b40d1d-7b21-4017-a2b7-3aeff5d28c18</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\23a04674-1e11-41b4-ba2b-fca8843501f0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\23a04674-1e11-41b4-ba2b-fca8843501f0.Map">
       <Name>23a04674-1e11-41b4-ba2b-fca8843501f0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -4785,71 +4785,71 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\22f3d27b-5c3c-480d-bd3f-1cd032a5dfb6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\22f3d27b-5c3c-480d-bd3f-1cd032a5dfb6.Map">
       <Name>22f3d27b-5c3c-480d-bd3f-1cd032a5dfb6</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ca028ba3-e1cd-430e-ada6-a8697be09652.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ca028ba3-e1cd-430e-ada6-a8697be09652.Map">
       <Name>ca028ba3-e1cd-430e-ada6-a8697be09652</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\756fec10-4964-478e-a41f-bcc197528827.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\756fec10-4964-478e-a41f-bcc197528827.Map">
       <Name>756fec10-4964-478e-a41f-bcc197528827</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\9305e923-5ad9-4c33-aa87-6e9304d12405.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\9305e923-5ad9-4c33-aa87-6e9304d12405.Map">
       <Name>9305e923-5ad9-4c33-aa87-6e9304d12405</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\48aa670e-ef59-415d-9676-526d3b581104.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\48aa670e-ef59-415d-9676-526d3b581104.Map">
       <Name>48aa670e-ef59-415d-9676-526d3b581104</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\511231af-48a3-4b5a-b2e4-3c8eba88b018.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\511231af-48a3-4b5a-b2e4-3c8eba88b018.Map">
       <Name>511231af-48a3-4b5a-b2e4-3c8eba88b018</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c61df3fb-9156-41b7-8e09-ddf21f5e5bc0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c61df3fb-9156-41b7-8e09-ddf21f5e5bc0.Map">
       <Name>c61df3fb-9156-41b7-8e09-ddf21f5e5bc0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a3b0da37-b8b0-49fe-a485-a5c979518a69.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a3b0da37-b8b0-49fe-a485-a5c979518a69.Map">
       <Name>a3b0da37-b8b0-49fe-a485-a5c979518a69</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7b94cd86-62c0-46fd-ac81-7c24385b0d0a.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7b94cd86-62c0-46fd-ac81-7c24385b0d0a.Map">
       <Name>7b94cd86-62c0-46fd-ac81-7c24385b0d0a</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5d3284db-29e7-451d-a9af-bd8c3f207ad5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5d3284db-29e7-451d-a9af-bd8c3f207ad5.Map">
       <Name>5d3284db-29e7-451d-a9af-bd8c3f207ad5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\be11e0b2-17ca-4f46-89c7-f5fa81f17aea.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\be11e0b2-17ca-4f46-89c7-f5fa81f17aea.Map">
       <Name>be11e0b2-17ca-4f46-89c7-f5fa81f17aea</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\488ce95a-1527-4492-bcd4-3403b5dfa523.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\488ce95a-1527-4492-bcd4-3403b5dfa523.Map">
       <Name>488ce95a-1527-4492-bcd4-3403b5dfa523</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5056,7 +5056,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d82ddb6a-2e10-4420-ab45-01b2c5bb4550.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d82ddb6a-2e10-4420-ab45-01b2c5bb4550.Map">
       <Name>d82ddb6a-2e10-4420-ab45-01b2c5bb4550</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5403,7 +5403,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2d9c3d5b-2614-4150-b08f-748a2d4b3dc8.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2d9c3d5b-2614-4150-b08f-748a2d4b3dc8.Map">
       <Name>2d9c3d5b-2614-4150-b08f-748a2d4b3dc8</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5669,7 +5669,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1f492ed3-236b-43c9-aa7c-d0d95bfc67eb.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1f492ed3-236b-43c9-aa7c-d0d95bfc67eb.Map">
       <Name>1f492ed3-236b-43c9-aa7c-d0d95bfc67eb</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5707,19 +5707,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65bfe3c7-3462-49c5-a8bc-11c492779daf.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65bfe3c7-3462-49c5-a8bc-11c492779daf.Map">
       <Name>65bfe3c7-3462-49c5-a8bc-11c492779daf</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ef112e54-628a-486c-b2f0-c778d38aef3e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ef112e54-628a-486c-b2f0-c778d38aef3e.Map">
       <Name>ef112e54-628a-486c-b2f0-c778d38aef3e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ff433888-bdc1-4012-88e2-e2bd5be03910.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ff433888-bdc1-4012-88e2-e2bd5be03910.Map">
       <Name>ff433888-bdc1-4012-88e2-e2bd5be03910</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5745,7 +5745,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1fb3fbfe-0248-4d2f-82b5-42e941991336.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1fb3fbfe-0248-4d2f-82b5-42e941991336.Map">
       <Name>1fb3fbfe-0248-4d2f-82b5-42e941991336</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -5783,7 +5783,7 @@
       <ProcessorParameters_ColorKeyEnabled>False</ProcessorParameters_ColorKeyEnabled>
       <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
     </Compile>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\05d142a2-cae0-4f4f-b05a-f12cecad66e5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\05d142a2-cae0-4f4f-b05a-f12cecad66e5.Map">
       <Name>05d142a2-cae0-4f4f-b05a-f12cecad66e5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -6000,13 +6000,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\97cce815-3c98-471d-8e19-7eda7ce34238.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\97cce815-3c98-471d-8e19-7eda7ce34238.Map">
       <Name>97cce815-3c98-471d-8e19-7eda7ce34238</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7d89edb2-fee3-44f7-a7ba-b40f02a6a366.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7d89edb2-fee3-44f7-a7ba-b40f02a6a366.Map">
       <Name>7d89edb2-fee3-44f7-a7ba-b40f02a6a366</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7314,25 +7314,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0ae8ad6e-038d-4789-997e-a4b127044478.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0ae8ad6e-038d-4789-997e-a4b127044478.Map">
       <Name>0ae8ad6e-038d-4789-997e-a4b127044478</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b5fc34a1-70ac-4ed4-8d70-16eacb2d07a0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b5fc34a1-70ac-4ed4-8d70-16eacb2d07a0.Map">
       <Name>b5fc34a1-70ac-4ed4-8d70-16eacb2d07a0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\80bc9c0a-2642-44a9-88ca-2c64670201fd.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\80bc9c0a-2642-44a9-88ca-2c64670201fd.Map">
       <Name>80bc9c0a-2642-44a9-88ca-2c64670201fd</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\32501194-442d-4c91-965f-e7c15b7981f2.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\32501194-442d-4c91-965f-e7c15b7981f2.Map">
       <Name>32501194-442d-4c91-965f-e7c15b7981f2</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7358,55 +7358,55 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\db25a663-2bcd-4465-8d85-1aa1f98cffb4.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\db25a663-2bcd-4465-8d85-1aa1f98cffb4.Map">
       <Name>db25a663-2bcd-4465-8d85-1aa1f98cffb4</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b85ce052-4d46-46c3-95a2-6df7c542be0c.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b85ce052-4d46-46c3-95a2-6df7c542be0c.Map">
       <Name>b85ce052-4d46-46c3-95a2-6df7c542be0c</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d30e6cee-f961-4654-86c3-2b8c5b5f9802.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d30e6cee-f961-4654-86c3-2b8c5b5f9802.Map">
       <Name>d30e6cee-f961-4654-86c3-2b8c5b5f9802</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\83e40fde-abdc-4e2f-8f07-fbff25a29af6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\83e40fde-abdc-4e2f-8f07-fbff25a29af6.Map">
       <Name>83e40fde-abdc-4e2f-8f07-fbff25a29af6</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f2bbae2e-3ea2-4fd0-9dfe-e50b533dcf45.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f2bbae2e-3ea2-4fd0-9dfe-e50b533dcf45.Map">
       <Name>f2bbae2e-3ea2-4fd0-9dfe-e50b533dcf45</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\aaf8c883-7aca-4b26-8436-1015609056f7.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\aaf8c883-7aca-4b26-8436-1015609056f7.Map">
       <Name>aaf8c883-7aca-4b26-8436-1015609056f7</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b2ef42fd-507d-48d4-8a63-1f8fc8190ab1.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b2ef42fd-507d-48d4-8a63-1f8fc8190ab1.Map">
       <Name>b2ef42fd-507d-48d4-8a63-1f8fc8190ab1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2b57cd56-f350-47d9-b5fd-53d8ecda9da5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2b57cd56-f350-47d9-b5fd-53d8ecda9da5.Map">
       <Name>2b57cd56-f350-47d9-b5fd-53d8ecda9da5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\35b7a882-055b-4af8-949d-672c7af91c03.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\35b7a882-055b-4af8-949d-672c7af91c03.Map">
       <Name>35b7a882-055b-4af8-949d-672c7af91c03</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7493,7 +7493,7 @@
       <ProcessorParameters_ColorKeyEnabled>False</ProcessorParameters_ColorKeyEnabled>
       <ProcessorParameters_PremultiplyAlpha>False</ProcessorParameters_PremultiplyAlpha>
     </Compile>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c7edf5f2-9875-41d7-b331-fbc7cdadb270.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\c7edf5f2-9875-41d7-b331-fbc7cdadb270.Map">
       <Name>c7edf5f2-9875-41d7-b331-fbc7cdadb270</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7517,25 +7517,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8fa88c34-ccc1-4ffc-ba3c-7bd9b799e82b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8fa88c34-ccc1-4ffc-ba3c-7bd9b799e82b.Map">
       <Name>8fa88c34-ccc1-4ffc-ba3c-7bd9b799e82b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\674242ee-7f50-44d5-8039-789cb0f60f32.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\674242ee-7f50-44d5-8039-789cb0f60f32.Map">
       <Name>674242ee-7f50-44d5-8039-789cb0f60f32</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6ba08d45-6a27-4409-bfb6-541ee176eba4.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6ba08d45-6a27-4409-bfb6-541ee176eba4.Map">
       <Name>6ba08d45-6a27-4409-bfb6-541ee176eba4</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6ef3cd80-4050-40ac-a292-9c9b92a8cccc.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6ef3cd80-4050-40ac-a292-9c9b92a8cccc.Map">
       <Name>6ef3cd80-4050-40ac-a292-9c9b92a8cccc</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7561,7 +7561,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d294a7b4-2d1a-43e5-a0b1-664d087905f9.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d294a7b4-2d1a-43e5-a0b1-664d087905f9.Map">
       <Name>d294a7b4-2d1a-43e5-a0b1-664d087905f9</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7641,7 +7641,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b13f50bf-f981-4ac6-912b-6fbef4149657.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b13f50bf-f981-4ac6-912b-6fbef4149657.Map">
       <Name>b13f50bf-f981-4ac6-912b-6fbef4149657</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -7985,19 +7985,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\bfe3b94d-3233-438f-9e9b-8be906cc81c8.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\bfe3b94d-3233-438f-9e9b-8be906cc81c8.Map">
       <Name>bfe3b94d-3233-438f-9e9b-8be906cc81c8</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\68647fe6-92da-453e-b876-4ca081a40f1b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\68647fe6-92da-453e-b876-4ca081a40f1b.Map">
       <Name>68647fe6-92da-453e-b876-4ca081a40f1b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ff8c88e7-82fb-46c3-afde-58812e7fd338.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ff8c88e7-82fb-46c3-afde-58812e7fd338.Map">
       <Name>ff8c88e7-82fb-46c3-afde-58812e7fd338</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8149,19 +8149,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\678f2dfa-badf-4c78-ba77-1723bddfe4b5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\678f2dfa-badf-4c78-ba77-1723bddfe4b5.Map">
       <Name>678f2dfa-badf-4c78-ba77-1723bddfe4b5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a405f39-e6a2-4727-966a-8073922f7cb0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a405f39-e6a2-4727-966a-8073922f7cb0.Map">
       <Name>6a405f39-e6a2-4727-966a-8073922f7cb0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2ad4bf69-94e5-4e16-b9f5-568a33395a13.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2ad4bf69-94e5-4e16-b9f5-568a33395a13.Map">
       <Name>2ad4bf69-94e5-4e16-b9f5-568a33395a13</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8178,7 +8178,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d4c976a1-a8f3-47df-bd5a-07a8a6cc0b16.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d4c976a1-a8f3-47df-bd5a-07a8a6cc0b16.Map">
       <Name>d4c976a1-a8f3-47df-bd5a-07a8a6cc0b16</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8233,31 +8233,31 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2f4ef2bf-e1f0-4ba3-82c8-03ad1d0c11d5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2f4ef2bf-e1f0-4ba3-82c8-03ad1d0c11d5.Map">
       <Name>2f4ef2bf-e1f0-4ba3-82c8-03ad1d0c11d5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d1cbaed8-fedf-4ffe-be54-a5ac66bf24cc.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d1cbaed8-fedf-4ffe-be54-a5ac66bf24cc.Map">
       <Name>d1cbaed8-fedf-4ffe-be54-a5ac66bf24cc</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\728d484d-fbec-4015-9a94-7600dcd9609f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\728d484d-fbec-4015-9a94-7600dcd9609f.Map">
       <Name>728d484d-fbec-4015-9a94-7600dcd9609f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0d681f9b-c5f0-4ecc-a257-09cdfe42c78b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0d681f9b-c5f0-4ecc-a257-09cdfe42c78b.Map">
       <Name>0d681f9b-c5f0-4ecc-a257-09cdfe42c78b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8721b395-dc6f-4767-9f46-75bf0685380b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8721b395-dc6f-4767-9f46-75bf0685380b.Map">
       <Name>8721b395-dc6f-4767-9f46-75bf0685380b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8355,13 +8355,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\07af2fa3-d638-4849-8a3e-3690b75549b5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\07af2fa3-d638-4849-8a3e-3690b75549b5.Map">
       <Name>07af2fa3-d638-4849-8a3e-3690b75549b5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d7add924-3165-4be9-b0df-b14930ce0424.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d7add924-3165-4be9-b0df-b14930ce0424.Map">
       <Name>d7add924-3165-4be9-b0df-b14930ce0424</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8383,19 +8383,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a825e8bb-cf2c-4d65-9e24-d217b30cc7f1.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a825e8bb-cf2c-4d65-9e24-d217b30cc7f1.Map">
       <Name>a825e8bb-cf2c-4d65-9e24-d217b30cc7f1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6e1d2448-5192-464e-9bb8-994f9d455d8d.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6e1d2448-5192-464e-9bb8-994f9d455d8d.Map">
       <Name>6e1d2448-5192-464e-9bb8-994f9d455d8d</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7933c19f-a328-4a9e-926c-e2ce51e5ba37.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7933c19f-a328-4a9e-926c-e2ce51e5ba37.Map">
       <Name>7933c19f-a328-4a9e-926c-e2ce51e5ba37</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8467,13 +8467,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fdae454e-bdde-4804-a66b-7f55c2e8d9d6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fdae454e-bdde-4804-a66b-7f55c2e8d9d6.Map">
       <Name>fdae454e-bdde-4804-a66b-7f55c2e8d9d6</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\45e3add6-e940-42f6-ad48-2cb126e0cc14.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\45e3add6-e940-42f6-ad48-2cb126e0cc14.Map">
       <Name>45e3add6-e940-42f6-ad48-2cb126e0cc14</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8509,43 +8509,43 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d10a4cd3-2e32-407a-aa89-e52cf9f9a75b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d10a4cd3-2e32-407a-aa89-e52cf9f9a75b.Map">
       <Name>d10a4cd3-2e32-407a-aa89-e52cf9f9a75b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\452c8a6b-36dc-48a3-93ca-71d745794a9f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\452c8a6b-36dc-48a3-93ca-71d745794a9f.Map">
       <Name>452c8a6b-36dc-48a3-93ca-71d745794a9f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65188ef6-e735-4801-ae8a-73a5d67754d8.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\65188ef6-e735-4801-ae8a-73a5d67754d8.Map">
       <Name>65188ef6-e735-4801-ae8a-73a5d67754d8</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\779997af-d888-405d-b473-468979c1cc52.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\779997af-d888-405d-b473-468979c1cc52.Map">
       <Name>779997af-d888-405d-b473-468979c1cc52</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f6e2918f-6e43-482c-b23a-896bb827a568.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f6e2918f-6e43-482c-b23a-896bb827a568.Map">
       <Name>f6e2918f-6e43-482c-b23a-896bb827a568</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a46dd8f-e736-4ec1-9396-4ac54420aef7.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a46dd8f-e736-4ec1-9396-4ac54420aef7.Map">
       <Name>6a46dd8f-e736-4ec1-9396-4ac54420aef7</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\818ebe9e-ebcc-460d-bb51-021e9099f08d.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\818ebe9e-ebcc-460d-bb51-021e9099f08d.Map">
       <Name>818ebe9e-ebcc-460d-bb51-021e9099f08d</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8571,7 +8571,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5b222199-42fd-4552-b91a-b40728d3fac0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5b222199-42fd-4552-b91a-b40728d3fac0.Map">
       <Name>5b222199-42fd-4552-b91a-b40728d3fac0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8618,37 +8618,37 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\46ff9cb4-9414-4e04-b9cf-185e8ac3808b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\46ff9cb4-9414-4e04-b9cf-185e8ac3808b.Map">
       <Name>46ff9cb4-9414-4e04-b9cf-185e8ac3808b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8386999a-9cb6-4c16-8247-f114402d2346.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8386999a-9cb6-4c16-8247-f114402d2346.Map">
       <Name>8386999a-9cb6-4c16-8247-f114402d2346</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5ef1f9ea-9d42-462c-b3ec-7d1ebcecd517.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5ef1f9ea-9d42-462c-b3ec-7d1ebcecd517.Map">
       <Name>5ef1f9ea-9d42-462c-b3ec-7d1ebcecd517</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\427c7b0a-ce54-4fa1-97a4-3e8d1887a586.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\427c7b0a-ce54-4fa1-97a4-3e8d1887a586.Map">
       <Name>427c7b0a-ce54-4fa1-97a4-3e8d1887a586</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8d4a811d-324b-4b79-b419-79975322cc2c.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8d4a811d-324b-4b79-b419-79975322cc2c.Map">
       <Name>8d4a811d-324b-4b79-b419-79975322cc2c</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7a927844-978f-4698-9784-b4fe3b3d3efb.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7a927844-978f-4698-9784-b4fe3b3d3efb.Map">
       <Name>7a927844-978f-4698-9784-b4fe3b3d3efb</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8663,19 +8663,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b76293b7-2a75-47ba-95e0-128b5ba4012e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b76293b7-2a75-47ba-95e0-128b5ba4012e.Map">
       <Name>b76293b7-2a75-47ba-95e0-128b5ba4012e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\97278759-5207-40b3-af29-a30e7682c98a.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\97278759-5207-40b3-af29-a30e7682c98a.Map">
       <Name>97278759-5207-40b3-af29-a30e7682c98a</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f4c6e15a-cfa4-46a2-bc52-e8c00f551d1e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f4c6e15a-cfa4-46a2-bc52-e8c00f551d1e.Map">
       <Name>f4c6e15a-cfa4-46a2-bc52-e8c00f551d1e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8703,11 +8703,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\cab2b6b2-cd11-46e7-9e4e-0a1dcebd1292.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\cab2b6b2-cd11-46e7-9e4e-0a1dcebd1292.Map">
       <Name>cab2b6b2-cd11-46e7-9e4e-0a1dcebd1292</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7846a338-1fd0-4e69-9be6-3fcfd1c600a6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7846a338-1fd0-4e69-9be6-3fcfd1c600a6.Map">
       <Name>7846a338-1fd0-4e69-9be6-3fcfd1c600a6</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8779,7 +8779,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f30473a5-23b0-42ba-8039-8d515867739b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f30473a5-23b0-42ba-8039-8d515867739b.Map">
       <Name>f30473a5-23b0-42ba-8039-8d515867739b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8803,19 +8803,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a7b52e3-8099-4381-9fb4-3364e1b8a89a.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6a7b52e3-8099-4381-9fb4-3364e1b8a89a.Map">
       <Name>6a7b52e3-8099-4381-9fb4-3364e1b8a89a</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fdaffaf7-be3c-4603-b6dc-a15039be101f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fdaffaf7-be3c-4603-b6dc-a15039be101f.Map">
       <Name>fdaffaf7-be3c-4603-b6dc-a15039be101f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fe79c268-0c5e-48c9-96a6-b19d9468a9ef.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\fe79c268-0c5e-48c9-96a6-b19d9468a9ef.Map">
       <Name>fe79c268-0c5e-48c9-96a6-b19d9468a9ef</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8853,7 +8853,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\57c82e3d-83d8-44a1-a983-9dc519979b67.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\57c82e3d-83d8-44a1-a983-9dc519979b67.Map">
       <Name>57c82e3d-83d8-44a1-a983-9dc519979b67</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8868,7 +8868,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d69c0e1a-977f-4a53-b720-c769f3e8ec42.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d69c0e1a-977f-4a53-b720-c769f3e8ec42.Map">
       <Name>d69c0e1a-977f-4a53-b720-c769f3e8ec42</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -8921,59 +8921,59 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ad8ffdb6-a561-48d5-bb04-4052156c24ab.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ad8ffdb6-a561-48d5-bb04-4052156c24ab.Map">
       <Name>ad8ffdb6-a561-48d5-bb04-4052156c24ab</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1d0dfb6b-cf4b-4b06-a6db-c29e360c3fa2.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1d0dfb6b-cf4b-4b06-a6db-c29e360c3fa2.Map">
       <Name>1d0dfb6b-cf4b-4b06-a6db-c29e360c3fa2</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\785dff7a-5f31-4be9-927a-8378db44a8a4.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\785dff7a-5f31-4be9-927a-8378db44a8a4.Map">
       <Name>785dff7a-5f31-4be9-927a-8378db44a8a4</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5e2cbaa6-2c0f-4500-98e3-70442940dd1d.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5e2cbaa6-2c0f-4500-98e3-70442940dd1d.Map">
       <Name>5e2cbaa6-2c0f-4500-98e3-70442940dd1d</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e6449f86-998e-4ff1-9089-a71e3bf1836b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e6449f86-998e-4ff1-9089-a71e3bf1836b.Map">
       <Name>e6449f86-998e-4ff1-9089-a71e3bf1836b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ac9f3034-1215-419a-bc0e-51ef8363fe38.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ac9f3034-1215-419a-bc0e-51ef8363fe38.Map">
       <Name>ac9f3034-1215-419a-bc0e-51ef8363fe38</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2d379423-170d-44d2-8cc5-59121d745747.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\2d379423-170d-44d2-8cc5-59121d745747.Map">
       <Name>2d379423-170d-44d2-8cc5-59121d745747</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5b90485a-ec2a-4173-bcb4-3255670d842a.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5b90485a-ec2a-4173-bcb4-3255670d842a.Map">
       <Name>5b90485a-ec2a-4173-bcb4-3255670d842a</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e43f0ca7-6dc1-4904-9089-4d35eaf0a5cd.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e43f0ca7-6dc1-4904-9089-4d35eaf0a5cd.Map">
       <Name>e43f0ca7-6dc1-4904-9089-4d35eaf0a5cd</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\10a86fb9-c33a-4021-9638-4900ef32b354.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\10a86fb9-c33a-4021-9638-4900ef32b354.Map">
       <Name>10a86fb9-c33a-4021-9638-4900ef32b354</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -9021,13 +9021,13 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\534ad8bf-fce1-4595-a872-13f413555f0c.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\534ad8bf-fce1-4595-a872-13f413555f0c.Map">
       <Name>534ad8bf-fce1-4595-a872-13f413555f0c</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7b1fb167-d985-4b08-90be-a6ccbb86538e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7b1fb167-d985-4b08-90be-a6ccbb86538e.Map">
       <Name>7b1fb167-d985-4b08-90be-a6ccbb86538e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -9055,13 +9055,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b61593a7-70df-46b9-b6e9-41096dd50a29.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b61593a7-70df-46b9-b6e9-41096dd50a29.Map">
       <Name>b61593a7-70df-46b9-b6e9-41096dd50a29</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\60e2db15-1563-4fc1-9fb7-ee4dc327429e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\60e2db15-1563-4fc1-9fb7-ee4dc327429e.Map">
       <Name>60e2db15-1563-4fc1-9fb7-ee4dc327429e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -9256,25 +9256,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7852dad4-b4d1-4879-9fab-f0eb4b76f5dd.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7852dad4-b4d1-4879-9fab-f0eb4b76f5dd.Map">
       <Name>7852dad4-b4d1-4879-9fab-f0eb4b76f5dd</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0745b954-942e-4fda-8b2a-054cd85bc4de.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0745b954-942e-4fda-8b2a-054cd85bc4de.Map">
       <Name>0745b954-942e-4fda-8b2a-054cd85bc4de</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ef60ff93-e51b-4669-a897-981ddf7b1853.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ef60ff93-e51b-4669-a897-981ddf7b1853.Map">
       <Name>ef60ff93-e51b-4669-a897-981ddf7b1853</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\9f6676f0-1d43-4ebf-b5c8-992c0e82593f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\9f6676f0-1d43-4ebf-b5c8-992c0e82593f.Map">
       <Name>9f6676f0-1d43-4ebf-b5c8-992c0e82593f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -9408,7 +9408,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6b6a1749-9332-4e6e-8635-a15cfef2e100.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6b6a1749-9332-4e6e-8635-a15cfef2e100.Map">
       <Name>6b6a1749-9332-4e6e-8635-a15cfef2e100</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -10194,7 +10194,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7265596f-5a50-4196-b387-8a771f663063.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\7265596f-5a50-4196-b387-8a771f663063.Map">
       <Name>7265596f-5a50-4196-b387-8a771f663063</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -10276,19 +10276,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b947b80e-12f0-432d-8117-e78f7d73b2ee.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b947b80e-12f0-432d-8117-e78f7d73b2ee.Map">
       <Name>b947b80e-12f0-432d-8117-e78f7d73b2ee</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0fefaa84-b840-40b6-b257-ba4d6b977be2.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0fefaa84-b840-40b6-b257-ba4d6b977be2.Map">
       <Name>0fefaa84-b840-40b6-b257-ba4d6b977be2</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e663472f-b6b1-40a4-87a5-4f989df0516c.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\e663472f-b6b1-40a4-87a5-4f989df0516c.Map">
       <Name>e663472f-b6b1-40a4-87a5-4f989df0516c</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -10314,7 +10314,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a78bb942-2daa-4365-91c8-dd3edb66b33b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a78bb942-2daa-4365-91c8-dd3edb66b33b.Map">
       <Name>a78bb942-2daa-4365-91c8-dd3edb66b33b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -11084,13 +11084,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\81d6ef18-0782-48dd-b3ad-2241ceedfe66.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\81d6ef18-0782-48dd-b3ad-2241ceedfe66.Map">
       <Name>81d6ef18-0782-48dd-b3ad-2241ceedfe66</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\144c05e7-fd83-4723-9c3b-99326cf2273f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\144c05e7-fd83-4723-9c3b-99326cf2273f.Map">
       <Name>144c05e7-fd83-4723-9c3b-99326cf2273f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -11858,7 +11858,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\efe21078-c7cf-4169-921e-f9ecd1f0512f.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\efe21078-c7cf-4169-921e-f9ecd1f0512f.Map">
       <Name>efe21078-c7cf-4169-921e-f9ecd1f0512f</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -11906,7 +11906,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1f5f6640-581a-41c3-a09f-ece7a3df802e.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1f5f6640-581a-41c3-a09f-ece7a3df802e.Map">
       <Name>1f5f6640-581a-41c3-a09f-ece7a3df802e</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -11932,7 +11932,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b3e270ac-9e47-4568-86c5-9367cab20ca7.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b3e270ac-9e47-4568-86c5-9367cab20ca7.Map">
       <Name>b3e270ac-9e47-4568-86c5-9367cab20ca7</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -11958,7 +11958,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\4ebc403e-e733-45fa-8113-645c89b57571.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\4ebc403e-e733-45fa-8113-645c89b57571.Map">
       <Name>4ebc403e-e733-45fa-8113-645c89b57571</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -12004,7 +12004,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6b27c2c4-02f9-4d7e-bd2c-a94feb8876b6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\6b27c2c4-02f9-4d7e-bd2c-a94feb8876b6.Map">
       <Name>6b27c2c4-02f9-4d7e-bd2c-a94feb8876b6</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -12039,7 +12039,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\30e0bd73-fa87-4849-9610-42dfb9ec5403.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\30e0bd73-fa87-4849-9610-42dfb9ec5403.Map">
       <Name>30e0bd73-fa87-4849-9610-42dfb9ec5403</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -13572,7 +13572,7 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\37f58b39-5f0b-4793-bf91-1c6c431f3dde.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\37f58b39-5f0b-4793-bf91-1c6c431f3dde.Map">
       <Name>37f58b39-5f0b-4793-bf91-1c6c431f3dde</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Processor>PassThroughProcessor</Processor>
@@ -13593,27 +13593,27 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\766af3e8-2060-44e8-aa20-cbcbe8484e32.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\766af3e8-2060-44e8-aa20-cbcbe8484e32.Map">
       <Name>766af3e8-2060-44e8-aa20-cbcbe8484e32</Name>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\80cc19be-ca2d-49dc-a351-0bcecdd517ac.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\80cc19be-ca2d-49dc-a351-0bcecdd517ac.Map">
       <Name>80cc19be-ca2d-49dc-a351-0bcecdd517ac</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Processor>PassThroughProcessor</Processor>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a74d76b7-6662-4eee-9aba-c4c619b8a6f6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a74d76b7-6662-4eee-9aba-c4c619b8a6f6.Map">
       <Name>a74d76b7-6662-4eee-9aba-c4c619b8a6f6</Name>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ed9adf11-1015-4f80-8b69-6ae8a4891eb6.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\ed9adf11-1015-4f80-8b69-6ae8a4891eb6.Map">
       <Name>ed9adf11-1015-4f80-8b69-6ae8a4891eb6</Name>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d9101cd9-ffb1-459a-9172-e33639fc4c58.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\d9101cd9-ffb1-459a-9172-e33639fc4c58.Map">
       <Name>d9101cd9-ffb1-459a-9172-e33639fc4c58</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Processor>PassThroughProcessor</Processor>
@@ -13633,11 +13633,11 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0eb65e5d-738c-4503-a249-1c75f82c26b7.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\0eb65e5d-738c-4503-a249-1c75f82c26b7.Map">
       <Name>0eb65e5d-738c-4503-a249-1c75f82c26b7</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\dbbebf51-9d86-47c5-b815-df2804497b92.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\dbbebf51-9d86-47c5-b815-df2804497b92.Map">
       <Name>dbbebf51-9d86-47c5-b815-df2804497b92</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -14784,20 +14784,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\23a3da6c-5792-49db-a1c2-5eda0c1920c3.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\23a3da6c-5792-49db-a1c2-5eda0c1920c3.Map">
       <Name>23a3da6c-5792-49db-a1c2-5eda0c1920c3</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5951d8e6-041e-4f7b-b79c-bbb5030b7890.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\5951d8e6-041e-4f7b-b79c-bbb5030b7890.Map">
       <Name>5951d8e6-041e-4f7b-b79c-bbb5030b7890</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\609f4ee1-8d1e-416b-84ba-ba7be9816ba1.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\609f4ee1-8d1e-416b-84ba-ba7be9816ba1.Map">
       <Name>609f4ee1-8d1e-416b-84ba-ba7be9816ba1</Name>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\88c6a4f6-8e3a-4a0f-ac9b-e3fd31d9abd5.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\88c6a4f6-8e3a-4a0f-ac9b-e3fd31d9abd5.Map">
       <Name>88c6a4f6-8e3a-4a0f-ac9b-e3fd31d9abd5</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -15177,11 +15177,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b8fbe497-d80a-4e4b-969e-5c0ff161c291.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\b8fbe497-d80a-4e4b-969e-5c0ff161c291.Map">
       <Name>b8fbe497-d80a-4e4b-969e-5c0ff161c291</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\faa27490-077d-42ae-85f2-c6ffff99c9d0.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\faa27490-077d-42ae-85f2-c6ffff99c9d0.Map">
       <Name>faa27490-077d-42ae-85f2-c6ffff99c9d0</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -15227,11 +15227,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1320d662-e79d-4666-897e-148ebb95eb41.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1320d662-e79d-4666-897e-148ebb95eb41.Map">
       <Name>1320d662-e79d-4666-897e-148ebb95eb41</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\abf5f202-330f-4ff6-8b21-283dc0804476.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\abf5f202-330f-4ff6-8b21-283dc0804476.Map">
       <Name>abf5f202-330f-4ff6-8b21-283dc0804476</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -15313,19 +15313,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1ea824c8-c403-4a92-a593-fd2cf1b9a9b8.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\1ea824c8-c403-4a92-a593-fd2cf1b9a9b8.Map">
       <Name>1ea824c8-c403-4a92-a593-fd2cf1b9a9b8</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a9b855a8-af40-4f25-8258-666a5e577e39.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\a9b855a8-af40-4f25-8258-666a5e577e39.Map">
       <Name>a9b855a8-af40-4f25-8258-666a5e577e39</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\de87e667-e724-4110-8de0-3e8184e3d46b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\de87e667-e724-4110-8de0-3e8184e3d46b.Map">
       <Name>de87e667-e724-4110-8de0-3e8184e3d46b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f3cfd2e0-23e8-4fe4-9e36-6889b0ec1994.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f3cfd2e0-23e8-4fe4-9e36-6889b0ec1994.Map">
       <Name>f3cfd2e0-23e8-4fe4-9e36-6889b0ec1994</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -15505,15 +15505,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\38204a09-c979-4699-af02-eba4b66a1497.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\38204a09-c979-4699-af02-eba4b66a1497.Map">
       <Name>38204a09-c979-4699-af02-eba4b66a1497</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8f2571b9-bd31-4cf5-aa14-e848e88ed53b.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\8f2571b9-bd31-4cf5-aa14-e848e88ed53b.Map">
       <Name>8f2571b9-bd31-4cf5-aa14-e848e88ed53b</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f62c2b14-a159-4cf4-9c02-9c5a767808a1.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\f62c2b14-a159-4cf4-9c02-9c5a767808a1.Map">
       <Name>f62c2b14-a159-4cf4-9c02-9c5a767808a1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -16650,11 +16650,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\71b3660d-f472-49b2-90c3-2de1758e1f64.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\71b3660d-f472-49b2-90c3-2de1758e1f64.Map">
       <Name>71b3660d-f472-49b2-90c3-2de1758e1f64</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\be4ca04b-a3cc-4f76-ba7a-84eb917bcf92.Raw">
+    <None Include="Xml\Levels\Stuff\TerrainHeightMaps\be4ca04b-a3cc-4f76-ba7a-84eb917bcf92.Map">
       <Name>be4ca04b-a3cc-4f76-ba7a-84eb917bcf92</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

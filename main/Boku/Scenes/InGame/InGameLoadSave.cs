@@ -542,18 +542,17 @@ namespace Boku
             {
                 UnDoStack.OverwriteTopOfStack();
 
-                //if a new name, at the very least we need a new guid
+                // If a new name, at the very least we need a new guid.
                 xmlWorldData.id = Guid.NewGuid();
             }
 
             // If we're saving the EmptyWorld we should generate a new guid.
-            string curWorldFileName = xmlWorldData.id.ToString() + ".Xml";
-            if (curWorldFileName == MiniHub.emptyWorldFileName)
+            if (MiniHub.Instance.newWorldDialog.IsNewWorld(xmlWorldData.id.ToString()))
             {
                 xmlWorldData.id = Guid.NewGuid();
             }
 
-            //if genres hasn't been populated yet, populate it with MyWorlds flag at least
+            // If genres hasn't been populated yet, populate it with MyWorlds flag.
             if (xmlWorldData.genres == 0)
             {
                 xmlWorldData.genres |= (int)Genres.MyWorlds;
@@ -908,7 +907,7 @@ namespace Boku
 
             //create a new terrain file for the new level 
             Guid guid = Guid.NewGuid();
-            string newTerrainPath = BokuGame.TerrainPath + guid + ".Raw";
+            string newTerrainPath = BokuGame.TerrainPath + guid + ".Map";
 
             //write out the bytes
             Stream file = Storage4.OpenWrite(BokuGame.Settings.MediaPath + newTerrainPath);
@@ -980,7 +979,7 @@ namespace Boku
             if (shared.heightMapModified || forceSave)
             {
                 // Create new name for height map file.
-                string fullPath = BokuGame.TerrainPath + fileroot + ".Raw";
+                string fullPath = BokuGame.TerrainPath + fileroot + ".Map";
 
                 // Save the file.
                 Terrain.SaveHeight(BokuGame.Settings.MediaPath + fullPath);

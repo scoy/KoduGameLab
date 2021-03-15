@@ -157,7 +157,7 @@ Choose your path carefully;  time is limited.
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\0eb65e5d-738c-4503-a249-1c75f82c26b7.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\0eb65e5d-738c-4503-a249-1c75f82c26b7.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

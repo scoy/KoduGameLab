@@ -137,7 +137,7 @@ Clear all &lt;balloon&gt;to win!</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\a825e8bb-cf2c-4d65-9e24-d217b30cc7f1.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\a825e8bb-cf2c-4d65-9e24-d217b30cc7f1.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

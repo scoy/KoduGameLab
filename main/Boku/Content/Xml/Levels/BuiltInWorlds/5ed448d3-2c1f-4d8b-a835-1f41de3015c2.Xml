@@ -138,7 +138,7 @@ It's up to you to create the game!</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\5d3284db-29e7-451d-a9af-bd8c3f207ad5.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\5d3284db-29e7-451d-a9af-bd8c3f207ad5.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>

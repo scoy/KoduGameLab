@@ -140,7 +140,7 @@ Press &lt;a&gt; or [enter] to begin.</description>
     </ScoreXmlSetting>
   </scoreSettings>
   <xmlTerrainData2>
-    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\45e3add6-e940-42f6-ad48-2cb126e0cc14.Raw</virtualMapFile>
+    <virtualMapFile>Xml\Levels\Stuff\TerrainHeightMaps\45e3add6-e940-42f6-ad48-2cb126e0cc14.Map</virtualMapFile>
     <cubeSize>0.5</cubeSize>
     <waters />
   </xmlTerrainData2>
