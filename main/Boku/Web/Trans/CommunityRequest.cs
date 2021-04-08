@@ -21,7 +21,7 @@ namespace Boku.Web.Trans
     {
 
         // Moved from SiteOptions.
-        public static string CommunityUrl = @"https://kodu.cloudapp.net/Community2.asmx";    // Production, deployed to all.
+        //public static string CommunityUrl = @"https://kodu.cloudapp.net/Community2.asmx";    // Production, deployed to all.
         // public static string CommunityUrl = @"http://kodu.cloudapp.net/Community2.asmx";    // Production, deployed to all.
         
         // public static string CommunityUrl = @"https://koduworlds.azurewebsites.net/Community3.asmx";    // Works!
@@ -32,7 +32,7 @@ namespace Boku.Web.Trans
         // public static string CommunityUrl = @"https://koduworlds.com/Community3.asmx";    // Doesn't work.
         // public static string CommunityUrl = @"http://koduworlds.com/Community3.asmx";    // Doesn't work.
 
-        // public static string CommunityUrl = @"http://0475e2071afa49d69241177aba07b626.cloudapp.net/Community2.asmx";   // Staging.
+        public static string CommunityUrl = @"http://0475e2071afa49d69241177aba07b626.cloudapp.net/Community2.asmx";   // Staging.
         //public static string CommunityUrl = @"https://koduclientapi-int.cloudapp.net/Community.asmx"; //Internal
         //public static string CommunityUrl = @"http://localhost.fiddler:50000/Community2.asmx"; //Local
         //public static string CommunityUrl = @"http://koduclientapi-int.cloudapp.net/Community2.asmx"; //Internal
