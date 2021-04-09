@@ -1810,6 +1810,9 @@ namespace Boku
                         if (parent.CurrentBrowserType == LevelBrowserType.Community)
                         {
                             // Matching id?  Guest not allowed.
+                            // Note that we're using LastSaveTime here instead of LastWriteTime.  That's because the community sends
+                            // LastWriteTime as LastSaveTime and sends Modifed as LastWriteTime.  This makes the sorting work since
+                            // we want the Community to sort on Modified but we will need the real LastWriteTime for checksum calculation.
                             if (info.Creator != Auth.DefaultCreatorName && Auth.IsValidCreatorChecksum(info.Checksum, info.LastSaveTime))
                             {
                                 shared.isDeleteActive = true;

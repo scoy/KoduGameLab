@@ -148,7 +148,7 @@ namespace Boku.Common
         public void FromPacket(WorldInfoPacket packet)
         {
             WorldId = packet.WorldId;
-            LastWriteTime = packet.Modified;
+            LastWriteTime = DateTime.SpecifyKind(packet.Modified, DateTimeKind.Utc);
             Name = packet.Name;
             Description = packet.Description;
             Creator = packet.Creator;
@@ -166,8 +166,7 @@ namespace Boku.Common
             RowKey = packet.RowKey;
             PartitionKey = packet.PartitionKey;
             Checksum = packet.checksum;
-            LastSaveTime = packet.LastSaveTime;
-            
+            LastSaveTime = DateTime.SpecifyKind(packet.LastSaveTime, DateTimeKind.Utc);
         }
 
         public void ToPacket(WorldInfoPacket packet)
