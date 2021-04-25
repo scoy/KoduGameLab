@@ -205,8 +205,11 @@ namespace KoiX.Text
         /// <summary>
         /// Ends the current batch and renders the result to the current backbuffer/rendertarget.
         /// This is where all the work gets done.
+        /// <paramref name="cursorTop">Top of cursor.  Leave empty if no cursor.</param>
+        /// <paramref name="cursorBottom">Bottom of cursor.  Leave empty if no cursor.</param>
+        /// <paramref name="cursorColor">Color for cursor.</param>
         /// </summary>
-        public static void EndBatch()
+        public static void EndBatch(Vector2 cursorTop = default(Vector2), Vector2 cursorBottom = default(Vector2), Color cursorColor = default(Color))
         {
 
             if (frame != Time.FrameCounter)
@@ -314,6 +317,10 @@ namespace KoiX.Text
                         // We've got a match, render the texture associated with it.
                         // Also move it to the front of the list to indicate it was recently used.
                         RenderTexture(camera, match.Texture, match.TargetRect, offset);
+
+                        // Render cursor?
+                        DrawCursor(cursorTop, cursorBottom, cursorColor);
+
                         // If not already at the top, move to top.
                         if (matchIndex != 0)
                         {
@@ -341,6 +348,9 @@ namespace KoiX.Text
 
                         // Render the texture to the backbuffer.
                         RenderTexture(camera, ce.Texture, cachedTargetRect, offset);
+
+                        // Render cursor?
+                        DrawCursor(cursorTop, cursorBottom, cursorColor);
 
                         // Clear the bitmap for next call.
                         // TODO (****) is there a dirty rect version of this that is faster?
@@ -382,6 +392,9 @@ namespace KoiX.Text
                     // Render the texture to the backbuffer.
                     RenderTexture(camera, texture, targetRect, offset);
 
+                    // Render cursor?
+                    DrawCursor(cursorTop, cursorBottom, cursorColor);
+
                     // Clear the bitmap for next call.
                     // TODO (****) is there a dirty rect version of this that is faster?
                     // Maybe try DrawRectangle?
@@ -404,6 +417,18 @@ namespace KoiX.Text
         #endregion
 
         #region Internal
+
+        static void DrawCursor(Vector2 cursorTop = default(Vector2), Vector2 cursorBottom = default(Vector2), Color cursorColor = default(Color))
+        {
+            if (cursorBottom != default(Vector2))
+            {
+                Geometry.Line2D line2D = new Geometry.Line2D();
+                line2D.StartPath(cursorTop, cursorColor, strokeWidth: 1.2f);
+                line2D.AddPoint(cursorBottom);
+                line2D.End();
+                line2D.Render(camera);
+            }
+        }   // end of DrawCursor()
 
         static void DrawIntoBitmap(List<BatchEntry> entries, Bitmap bitmap, Point offset)
         {

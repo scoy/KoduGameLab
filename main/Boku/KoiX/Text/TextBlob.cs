@@ -933,54 +933,104 @@ namespace KoiX.Text
 
             if (BokuSettings.Settings.UseSystemFontRendering)
             {
-#if !NETFX_CORE
-                SysFont.EndBatch();
-#endif
+                //
+                // Cursor
+                //
+                if (renderCursor)
+                {
+                    Vector2 pos = position;
+
+                    int line = 0;
+                    int xPos = 0;
+
+                    FindCursorLineAndPosition(out line, out xPos);
+
+                    // HACK This hack is due to the way system font rendering works.
+                    // When MeasureString is called it returns the length of the rendered
+                    // string ignoring any trailing spaces.  But, when DrawString is called
+                    // it pads some space on either end of the string.  The result is that 
+                    // things don't line up in the same way they did for SpriteFont.  So we
+                    // look where the cursor is.  If it's at a space we move it a bit to the 
+                    // right, if not we move it a bit to the left.
+                    if (cursorPosition > 0 && scrubbedText[cursorPosition - 1] == ' ')
+                    {
+                        if (lines[line].text[cursorPosition - lines[line].cursor - 1].type != "R")
+                        {
+                            //xPos += (int)(Font().systemFont.Padding);
+                        }
+                        else
+                        {
+                            // At very beginning of string.
+                            xPos += (int)(Font().systemFont.Padding);
+                        }
+                    }
+                    else
+                    {
+                        xPos = Math.Max(0, xPos - 4);
+                    }
+
+                    // The +3 and +2 are arbitrary tweaks to make the cursor look good in the text edit box.
+                    pos.X = position.X + xPos + 3;
+                    pos.Y += line * TotalSpacing + 2;
+
+                    float cursorHeight = TotalSpacing - 4.0f;
+                    Vector2 cursorTop = pos;
+                    Vector2 cursorBottom = cursorTop;
+                    cursorBottom.Y += cursorHeight;
+
+                    SysFont.EndBatch(cursorTop, cursorBottom, cursorColor: color);
+                }
+                else
+                {
+                    // Draw text without cursor.
+                    SysFont.EndBatch();
+                }
             }
             else
             {
+                // Spritefont version.
+
                 batch.End();
-            }
 
-            //
-            // Cursor
-            //
-            if (renderCursor)
-            {
-                Vector2 pos = position;
-
-                int line = 0;
-                int xPos = 0;
-
-                FindCursorLineAndPosition(out line, out xPos);
-                if (BokuSettings.Settings.UseSystemFontRendering)
+                //
+                // Cursor
+                //
+                if (renderCursor)
                 {
-                    // HACK This hack is due to the way system font rendering works.
-                    // When DrawString is called it pads some space on either end of 
-                    // the string.  The result is that things don't line up in the 
-                    // same way they did for SpriteFont.  So we look where the cursor 
-                    // is and move it a bit to the left.
+                    Vector2 pos = position;
 
-                    // At beginning of line.
-                    if (cursorPosition == 0)
+                    int line = 0;
+                    int xPos = 0;
+
+                    FindCursorLineAndPosition(out line, out xPos);
+                    if (BokuSettings.Settings.UseSystemFontRendering)
                     {
-                        xPos += (int)(Font().systemFont.Padding);
+                        // HACK This hack is due to the way system font rendering works.
+                        // When DrawString is called it pads some space on either end of 
+                        // the string.  The result is that things don't line up in the 
+                        // same way they did for SpriteFont.  So we look where the cursor 
+                        // is and move it a bit to the left.
+
+                        // At beginning of line.
+                        if (cursorPosition == 0)
+                        {
+                            xPos += (int)(Font().systemFont.Padding);
+                        }
                     }
-                }
 
-                pos.X = position.X + xPos;
-                pos.Y += line * TotalSpacing;
+                    pos.X = position.X + xPos;
+                    pos.Y += line * TotalSpacing;
 
-                float cursorHeight = TotalSpacing + 4.0f;
-                Vector2 cursorTop = new Vector2(pos.X, pos.Y);
-                Vector2 cursorBottom = cursorTop;
-                cursorBottom.Y += cursorHeight;
+                    float cursorHeight = TotalSpacing + 4.0f;
+                    Vector2 cursorTop = new Vector2(pos.X, pos.Y);
+                    Vector2 cursorBottom = cursorTop;
+                    cursorBottom.Y += cursorHeight;
 
-                // Render the cursor.
-                KoiX.Geometry.Line.DrawLine(camera, cursorTop, cursorBottom, color, color, 2.0f, 2.0f);
+                    // Render the cursor.
+                    KoiX.Geometry.Line.DrawLine(camera, cursorTop, cursorBottom, color, color, 2.0f, 2.0f);
 
-            }   // end if renderCursor.
-
+                }   // end if renderCursor.
+            }
             
             /*
             // Debug code.
