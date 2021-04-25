@@ -741,7 +741,7 @@ namespace KoiX.Scenes
         }   // end of ShowExportDialog()
 
         /// <summary>
-        /// Hanldes the actual export of the file.
+        /// Handles the actual export of the file.
         /// 
         /// pre: assumes level is at the start of the chain
         /// pre: assumes valid filename is passed in
