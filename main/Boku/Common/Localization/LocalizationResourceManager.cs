@@ -171,11 +171,9 @@ namespace Boku.Common.Localization
                 // DebugLog.WriteLine("    get response");
                 var result = request.BeginGetResponse(GetLocalesCallback, request);
                 
-#if !NETFX_CORE
                 // DebugLog.WriteLine("    register to wait");
                 // This line implements the timeout, if there is a timeout, the callback fires and the request becomes aborted
                 ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, Timeout, true);
-#endif
             }
             catch (Exception e)
             {
@@ -207,12 +205,7 @@ namespace Boku.Common.Localization
                 // should only happen when a user is adding a new language.  In this 
                 // case we want them to be able to modify their local copy.
                 DateTime lastModTime = Storage4.GetLastWriteTimeUtc(LocalesFilePath, StorageSource.UserSpace);
-#if NETFX_CORE
-                // For WindowsStore build .LastModified is not supported so just always persist file.
-                if (true)
-#else
                 if (lastModTime > response.LastModified)
-#endif
                 {
                     persist = false;
                 }
@@ -294,10 +287,8 @@ namespace Boku.Common.Localization
                 var state = new LocaleAsyncState { Request = request, Resource = resource, LanguageLocale = languageLocale };
                 var result = request.BeginGetResponse(GetLocaleCallBack, state);
                 
-#if !NETFX_CORE
                 // This line implements the timeout, if there is a timeout, the callback fires and the request becomes aborted
                 ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, Timeout, true);
-#endif
             }
             catch (Exception e)
             {
@@ -536,11 +527,7 @@ namespace Boku.Common.Localization
             Locale languageLocale = null;
             foreach (Locale locale in Locales)
             {
-#if NETFX_CORE
-                if(string.Compare(language, locale.Directory, StringComparison.OrdinalIgnoreCase) == 0)
-#else
                 if(string.Compare(language, locale.Directory, ignoreCase: true) == 0)
-#endif
                 {
                     languageLocale = locale;
                     break;
