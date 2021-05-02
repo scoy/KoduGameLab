@@ -82,12 +82,13 @@ namespace Boku
         static string CrashCookieFilename = "Crash.txt";
 
         public static Version ThisVersion;
-        public static string CurrentKCodeVersion="9";   // Version of the KCode.
+        public static string CurrentKCodeVersion="10";  // Version of the KCode.
                                                         // 4 -> 5 : Add local variables and Squash.
                                                         // 5 -> 6 : New movement code.  Make missiles targetable.
                                                         // 6 -> 7 : Add Settings slider tiles as well as some settings as scores.
                                                         // 7 -> 8 : Add naming of characters and the ability to sense named characters.
                                                         // 8 -> 9 : Move linked level target from XmlWorldData to ReflexData.
+                                                        // 9 -> 10 : Change terrain files from .Raw to .Map.
         
         public static string UpdateCode;
 
