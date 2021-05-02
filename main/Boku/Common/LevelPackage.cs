@@ -480,6 +480,17 @@ namespace Boku.Common
                             DebugPrint("i = " + i.ToString());
                             DebugPrint("decomp.ImportedLevels[i]" + decomp.ImportedLevels[i].ToString());
 #endif
+                            // If terrain file comes in as .Raw file, change to .Map.
+                            {
+                                string terrainFolder = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, BokuGame.TerrainPath);
+                                string fullPathToTerrainFilename = terrainFolder + decomp.ImportedLevels[i].ToString() + ".Raw";
+                                string desiredTerrainFilename = terrainFolder + decomp.ImportedLevels[i].ToString() + ".Map";
+                                if (File.Exists(fullPathToTerrainFilename))
+                                {
+                                    File.Move(fullPathToTerrainFilename, desiredTerrainFilename);
+                                }
+                            }
+
                             // Find the stuffFilename entry in the level xml and fix it's path information (changing from MyWorlds to Downloads)
                             string fullPathToLevelFilename = destFolderPath + decomp.ImportedLevels[i].ToString() + ".xml";
                             FileStream level = File.OpenRead(fullPathToLevelFilename + ".tmp");
