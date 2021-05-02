@@ -84,7 +84,7 @@ namespace Boku
                                                         // 6 -> 7 : Add Settings slider tiles as well as some settings as scores.
                                                         // 7 -> 8 : Add naming of characters and the ability to sense named characters.
                                                         // 8 -> 9 : Move linked level target from XmlWorldData to ReflexData.
-                                                        // 9 -> 10 : New client version.  We want to keep old clients from seeing any new levels.
+                                                        // 9 -> 10 : Change terrain files from .Raw to .Map.
         
         public static string UpdateCode;
 
