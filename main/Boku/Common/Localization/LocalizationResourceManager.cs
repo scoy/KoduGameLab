@@ -55,29 +55,30 @@ namespace Boku.Common.Localization
         private static IList<Locale> Locales {
             get
             {
-                // DebugLog.WriteLine("Locales.Get");
-                // DebugLog.WriteLine("    _locales " + (_locales != null ? "valid" : "null"));
+                LocalesDebugPrint("Locales.Get");
+                LocalesDebugPrint("    _locales " + (_locales != null ? "valid" : "null"));
                 if (_locales == null)
                 {
-                    // DebugLog.WriteLine("    _locales = null");
+                    LocalesDebugPrint("    _locales = null");
                     // Wait for outstanding network requests (heuristic)
-                    // DebugLog.WriteLine("    waiting...");
+                    LocalesDebugPrint("    waiting...");
                     LocalesSet.WaitOne(Timeout);
-                    // DebugLog.WriteLine("    done waiting.");
+                    LocalesDebugPrint("    done waiting.");
 
-                    // DebugLog.WriteLine("    _locales " + (_locales != null ? "valid" : "null"));
+                    LocalesDebugPrint("    _locales " + (_locales != null ? "valid" : "null"));
                     if (_locales == null)
                     {
-                        // DebugLog.WriteLine("    _locales = null (still)");
+                        LocalesDebugPrint("    _locales = null (still)");
                         // Give up and get from local file
                         SafeGetLocalesFromFile();
 
-                        // DebugLog.WriteLine("    _locales " + (_locales != null ? "valid" : "null"));
+                        LocalesDebugPrint("    _locales " + (_locales != null ? "valid" : "null"));
                     }
 
                     // Ok, fine, nothing seems to be working so let's try another approach.
                     if (_locales == null)
                     {
+                        LocalesDebugPrint("    Hard coded list...");
                         // Final chance, hard code languages.
                         List<Locale> locs = new List<Locale>();
 
@@ -117,9 +118,9 @@ namespace Boku.Common.Localization
             {
                 if (value != null)
                 {
-                    // DebugLog.WriteLine("Locales.Set");
+                    LocalesDebugPrint("Locales.Set");
                     _locales = value;
-                    // DebugLog.WriteLine("    _locales " + (_locales != null ? "valid" : "null"));
+                    LocalesDebugPrint("    _locales " + (_locales != null ? "valid" : "null"));
                     LocalesSet.Set();
                 }
             }}
@@ -133,24 +134,37 @@ namespace Boku.Common.Localization
         {
             get
             {
-                // DebugLog.WriteLine("SuportedLanguages.Get"); 
+                LocalesDebugPrint("SuportedLanguages.Get"); 
                 return Locales.Select(locale => new SupportedLanguage { Language = locale.Directory, NameInEnglish = locale.Language, NameInNative = locale.Native });
             }
         }
 
         public static void Init()
         {
-            // DebugLog.WriteLine("LocalizationResourceManager.Init()");
+            LocalesDebugPrint("LocalizationResourceManager.Init()");
             GetLocalesFromServer();
         }
 
 #if LOCALES_DEBUG
         static public void LocalesDebugPrint(string text)
         {
-            string debugPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\LocalesDebug.txt";
-            TextWriter tw = new StreamWriter(debugPath, true);
-            tw.WriteLine(text);
-            tw.Close();
+            try
+            {
+                string debugPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\LocalesDebug.txt";
+                TextWriter tw = new StreamWriter(debugPath, true);
+                tw.WriteLine(text);
+                tw.Close();
+            }
+            catch(Exception e)
+            {
+                // May throw if another process has the debug text file already open.
+                if (e != null)
+                {
+                    // Sleep a bit then try again.  Infinite loop?
+                    Thread.Sleep(100);
+                    LocalesDebugPrint(text);
+                }
+            }
         }
 #else
         static public void LocalesDebugPrint(string text)
@@ -166,15 +180,15 @@ namespace Boku.Common.Localization
         /// </summary>
         private static void GetLocalesFromServer()
         {
-            // DebugLog.WriteLine("GetLocalesFromServer()");
+            LocalesDebugPrint("\nEntering GetLocalesFromServer()");
             try
             {
-                // DebugLog.WriteLine("    create request");
+                LocalesDebugPrint("    create request");
                 var request = (HttpWebRequest)WebRequest.Create(new Uri(LocalesUrl));
-                // DebugLog.WriteLine("    get response");
+                LocalesDebugPrint("    get response");
                 var result = request.BeginGetResponse(GetLocalesCallback, request);
-                
-                // DebugLog.WriteLine("    register to wait");
+
+                LocalesDebugPrint("    register to wait");
                 // This line implements the timeout, if there is a timeout, the callback fires and the request becomes aborted
                 ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, Timeout, true);
             }
@@ -185,22 +199,20 @@ namespace Boku.Common.Localization
                 {
                     // DebugLog.WriteException(e, "GetLocalesFromServer()");
                 }
-#if LOCALES_DEBUG
                 LocalesDebugPrint("Exception thrown in GetLocalesFromServer()\n" + e.ToString());
-#endif
             }
         }
 
         private static void GetLocalesCallback(IAsyncResult asyncResult)
         {
-            // DebugLog.WriteLine("GetLocalesCallback()");
+            LocalesDebugPrint("\nEntering GetLocalesCallback()");
             try
             {
-                // DebugLog.WriteLine("    get request");
+                LocalesDebugPrint("    get request");
                 var request = (HttpWebRequest)asyncResult.AsyncState;
-                // DebugLog.WriteLine("    get response");
+                LocalesDebugPrint("    get response");
                 var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-                // DebugLog.WriteLine("    get stream");
+                LocalesDebugPrint("    get stream");
                 var responseStream = response.GetResponseStream();
 
                 bool persist = true;
@@ -213,30 +225,27 @@ namespace Boku.Common.Localization
                     persist = false;
                 }
 
-                // DebugLog.WriteLine("    persist : " + persist.ToString());
+                LocalesDebugPrint("    persist : " + persist.ToString());
 
                 if (persist)
                 {
-                    // DebugLog.WriteLine("    Populating from XML stream.");
+                    LocalesDebugPrint("    Populating from XML stream.");
                     PopulatesLocalesFromXmlStream(responseStream, persist);
                 }
                 else
                 {
-                    // DebugLog.WriteLine("    Getting from file.");
+                    LocalesDebugPrint("    Getting from file.");
                     GetLocalesFromFile();
                 }
 
             }
             catch (Exception e)
             {
-                // Keep the compiler quiet when LOCALES_DEBUG not defined.
                 if (e != null)
                 {
                     // DebugLog.WriteException(e, "GetLocalesCallback()");
                 }
-#if LOCALES_DEBUG
                 LocalesDebugPrint("Exception thrown in GetLocalesCallback()\n" + e.ToString());
-#endif
             }
             finally
             {
@@ -263,14 +272,11 @@ namespace Boku.Common.Localization
                 }
                 catch (Exception e)
                 {
-                    // Keep the compiler quiet when LOCALES_DEBUG not defined.
                     if (e != null)
                     {
                         // DebugLog.WriteException(e, "SafeGetLocalesFromFile");
                     }
-#if LOCALES_DEBUG
-                LocalesDebugPrint("Exception thrown in SafeGetLocalesFromFile()\n" + e.ToString());
-#endif
+                    LocalesDebugPrint("Exception thrown in SafeGetLocalesFromFile()\n" + e.ToString());
                 }
             }   // end of lock.
         }
@@ -300,9 +306,7 @@ namespace Boku.Common.Localization
                 {
                     // DebugLog.WriteException(e, "GetLocaleFromServer()");
                 }
-#if LOCALES_DEBUG
                 LocalesDebugPrint("Exception thrown in GetLocaleFromServer()\n" + e.ToString());
-#endif
             }
         }
 
@@ -330,14 +334,11 @@ namespace Boku.Common.Localization
             }
             catch (Exception e)
             {
-                // Keep the compiler quiet when LOCALES_DEBUG not defined.
                 if (e != null)
                 {
                     // DebugLog.WriteException(e, "GetLocaleCallBack()");
                 }
-#if LOCALES_DEBUG
                 LocalesDebugPrint("Exception thrown in GetLocaleCallBack()\n" + e.ToString());
-#endif
             }
             finally
             {
@@ -374,20 +375,20 @@ namespace Boku.Common.Localization
         /// </summary>
         private static void GetLocalesFromFile()
         {
-            // DebugLog.WriteLine("GetLocalesFromFile()");
+            LocalesDebugPrint("\nEntering GetLocalesFromFile()");
             try
             {
                 // DebugLog.WriteLine("    open stream for read.");
                 var localesFileStream = Storage4.OpenRead(LocalesFilePath, StorageSource.All);
                 // DebugLog.WriteLine("    read.");
                 PopulatesLocalesFromXmlStream(localesFileStream);
-#if LOCALES_DEBUG
-                LocalesDebugPrint("In GetLocalesFromFile()");
+
+                LocalesDebugPrint("In GetLocalesFromFile(), looping over each locale.");
                 foreach (Locale loc in Locales)
                 {
                     LocalesDebugPrint(loc.ToString());
                 }
-#endif
+
             }
             catch (Exception e)
             {
@@ -396,9 +397,7 @@ namespace Boku.Common.Localization
                 {
                     // DebugLog.WriteException(e, "GetLocalesFromFile()");
                 }
-#if LOCALES_DEBUG
                 LocalesDebugPrint("Exception thrown in GetLocalesFromFile()\n" + e.ToString());
-#endif
             }
         }
 
@@ -411,13 +410,14 @@ namespace Boku.Common.Localization
         /// </summary>
         private static void PopulatesLocalesFromXmlStream(Stream localesXmlStream, bool persistFile = false)
         {
+            LocalesDebugPrint("\nEntering PopulatesLocalesFromXmlStream()");
+
             // DebugLog.WriteLine("PopulatesLocalesFromXmlStream()");
             // DebugLog.WriteLine("    localesXmlStream : " + (localesXmlStream == null ? "null" : "valid"));
             if (localesXmlStream == null)
             {
-#if LOCALES_DEBUG
-                LocalesDebugPrint("localesXmlStream == null in PopulatesLocalesFromXmlStream()");
-#endif
+                LocalesDebugPrint("    localesXmlStream == null in PopulatesLocalesFromXmlStream()");
+
                 return;
             }
 
@@ -427,14 +427,14 @@ namespace Boku.Common.Localization
                 var localesXml = streamReader.ReadToEnd();
                 if (string.IsNullOrEmpty(localesXml))
                 {
-                    // DebugLog.WriteLine("    null read.  Returning.");
+                    LocalesDebugPrint("    null read.  Returning.");
                     return;
                 }
 
                 var localesXmlParser = new LocalesXmlParser();
                 var locales = localesXmlParser.Parse(localesXml);
 
-                // DebugLog.WriteLine("    filtering, count = " + locales.Count.ToString());
+                LocalesDebugPrint("    pre filtering count = " + locales.Count.ToString());
                 // If the localized version of the language name isn't supported by
                 // our current font set then remove it from the list.  This will
                 // prevent people with older versions of Kodu from trying to select
@@ -442,25 +442,25 @@ namespace Boku.Common.Localization
                 //
                 // Loop over the list backwards so we safely remove elements without
                 // losing our place.
-                /*
+                
                 for (int i = locales.Count - 1; i >= 0; i--)
                 {
                     if (!TextHelper.StringIsValid(locales[i].Native))
                     {
+                        LocalesDebugPrint("    removing " + locales[i].Language);
                         locales.RemoveAt(i);
                     }
                 }
-                */
 
                 Debug.Assert(locales.Count > 0, "Why aren't we seeing files from the localization server?");
 
                 if (locales == null)
                 {
-                    // DebugLog.WriteLine("    done filtering, locales = null");
+                    LocalesDebugPrint("    post filtering, locales = null");
                 }
                 else
                 {
-                    // DebugLog.WriteLine("    done filtering, count = " + locales.Count.ToString());
+                    LocalesDebugPrint("    post filtering count = " + locales.Count.ToString());
                 }
 
                 if (locales != null && locales.Count > 0)
@@ -472,14 +472,14 @@ namespace Boku.Common.Localization
                         return;
                     }
 
-                    // DebugLog.WriteLine("    persisting to : " + LocalesFilePath);
+                    LocalesDebugPrint("    persisting to : " + LocalesFilePath);
                     using (var streamWriter = Storage4.OpenStreamWriter(LocalesFilePath))
                     {
                         streamWriter.Write(localesXml);
                     }
                 }
             }
-        }
+        }   // end of PopulatesLocalesFromXmlStream()
 
 
         #endregion
@@ -507,25 +507,25 @@ namespace Boku.Common.Localization
         /// </summary>
         public static void UpdateResources(string language, Action callback = null)
         {
-            // DebugLog.WriteLine("UpdateResources()");
-            // DebugLog.WriteLine("    language : " + language);
+            LocalesDebugPrint("\nEntering UpdateResources()");
+            LocalesDebugPrint("    language : " + language);
             if (Locales == null)
             {
-                // DebugLog.WriteLine("    Locales is returning null!!!  How? Why?");
+                LocalesDebugPrint("    Locales is returning null!!!  How? Why?");
                 Debug.Assert(false, "This should never happen but yet it still does on some systems.  Hmm.");
                 //return;
-                // DebugLog.WriteLine("    Forcing EN");
+                LocalesDebugPrint("    Forcing EN");
                 language = "EN";
             }
 
             if (Locales == null)
             {
-                // DebugLog.WriteLine("    Locales is still null, calling SafeGetLocalesFromFile");
+                LocalesDebugPrint("    Locales is still null, calling SafeGetLocalesFromFile");
                 SafeGetLocalesFromFile();
-                // DebugLog.WriteLine("    Locales : " + (Locales == null ? "null" : "valid with " + Locales.Count.ToString() + " elements"));
+                LocalesDebugPrint("    Locales : " + (Locales == null ? "null" : "valid with " + Locales.Count.ToString() + " elements"));
             }
 
-            // DebugLog.WriteLine("    getting locale language");
+            LocalesDebugPrint("    getting locale language");
             //Locale languageLocale = Locales.FirstOrDefault(locale => locale.Directory == languageUpperCase);
             Locale languageLocale = null;
             foreach (Locale locale in Locales)
@@ -539,11 +539,11 @@ namespace Boku.Common.Localization
 
             if (languageLocale == null)
             {
-                // DebugLog.WriteLine("    localelanguage = null");
+                LocalesDebugPrint("    localelanguage = null");
             }
             else
             {
-                // DebugLog.WriteLine("    localelanguage.Directory : " + languageLocale.Directory);
+                LocalesDebugPrint("    localelanguage.Directory : " + languageLocale.Directory);
             }
             
             // No point in trying to update a Language if we don't have a Locale for it
@@ -556,12 +556,12 @@ namespace Boku.Common.Localization
                 return;
             }
 
-            // DebugLog.WriteLine("    pendingResources : " + pendingResources.ToString());
+            LocalesDebugPrint("    pendingResources : " + pendingResources.ToString());
             if (pendingResources != 0)
             {
-                // DebugLog.WriteLine("    waiting...");
+                LocalesDebugPrint("    waiting...");
                 updateResourcesEvent.WaitOne();
-                // DebugLog.WriteLine("    done waiting");
+                LocalesDebugPrint("    done waiting");
             }
 
             updateResourcesCallback = callback;
@@ -574,8 +574,9 @@ namespace Boku.Common.Localization
         /// </summary>
         private static void UpdateResource(Resource resource, Locale languageLocale)
         {
-            // DebugLog.WriteLine("UpdateResources()");
-            
+            LocalesDebugPrint("\nEntering UpdateResource()");
+            LocalesDebugPrint("    language : " + languageLocale.Language);
+
             var serverLastUpdated = languageLocale.LastUpdated;
             var localResourceLastUpdated = resource.LastUpdated(languageLocale.Directory);
 
@@ -729,12 +730,13 @@ namespace Boku.Common.Localization
 
         public List<Locale> Parse(string localesXml)
         {
+            LocalizationResourceManager.LocalesDebugPrint("\nEntering Parse");
+            
             var localesDocument = XDocument.Load(XmlReader.Create(new StringReader(localesXml)));
 
             // Validate Root
             if (localesDocument.Root == null || localesDocument.Root.Name != LocalesTag)
             {
-#if LOCALES_DEBUG
                 LocalizationResourceManager.LocalesDebugPrint("Root not valid in Parse()");
                 if (localesDocument.Root == null)
                 {
@@ -746,23 +748,19 @@ namespace Boku.Common.Localization
                     LocalizationResourceManager.LocalesDebugPrint("    localesDocument.Root.Name : " + localesDocument.Root.Name.ToString());
                     LocalizationResourceManager.LocalesDebugPrint("    LocalesTag : " + LocalesTag.ToString());
                 }
-#endif
 
                 return null;
             }
 
-#if LOCALES_DEBUG
-            LocalizationResourceManager.LocalesDebugPrint("Parsing.  LocalTag is : " + LocaleTag.ToString());
-#endif
+            LocalizationResourceManager.LocalesDebugPrint("  Parsing.  LocalTag is : " + LocaleTag.ToString());
 
             var locales = new List<Locale>();
             foreach (var localeElement in localesDocument.Root.Elements())
             {
                 if (localeElement.Name != LocaleTag)
                 {
-#if LOCALES_DEBUG
                     LocalizationResourceManager.LocalesDebugPrint("    skipping " + localeElement.Name.ToString());
-#endif
+
                     continue;
                 }
 
@@ -776,25 +774,27 @@ namespace Boku.Common.Localization
                     }
                 }
 
+                // For some reason the last updated time sometimes comes out null.  So, if 
+                // it is missing, just write in the default time.  So far this only seems
+                // to be happening with people running Windows in Vietnam.
+                if (!locale.LastUpdated.HasValue)
+                {
+                    locale.LastUpdated = new DateTime(2020, 1, 9, 11, 11, 11, DateTimeKind.Utc);
+                }
+
                 if (locale.IsComplete())
                 {
                     locales.Add(locale);
-#if LOCALES_DEBUG
                     LocalizationResourceManager.LocalesDebugPrint("    adding locale : " + locale.ToString());
-#endif
                 }
                 else
                 {
-#if LOCALES_DEBUG
                     LocalizationResourceManager.LocalesDebugPrint("    adding locale failed, not complete : " + locale.ToString());
-#endif
                 }
 
             }
 
-#if LOCALES_DEBUG
             LocalizationResourceManager.LocalesDebugPrint("Done Parsing");
-#endif
 
             return locales;
         }
@@ -841,10 +841,12 @@ namespace Boku.Common.Localization
 
         public bool IsComplete()
         {
-            return !string.IsNullOrEmpty(Language) &&
-                   !string.IsNullOrEmpty(Directory) &&
-                   !string.IsNullOrEmpty(Native) &&
-                   LastUpdated.HasValue;
+            bool result =   !string.IsNullOrEmpty(Language) &&
+                            !string.IsNullOrEmpty(Directory) &&
+                            !string.IsNullOrEmpty(Native) &&
+                            LastUpdated.HasValue;
+
+            return result;
         }
 
         public override string ToString()
@@ -863,4 +865,4 @@ namespace Boku.Common.Localization
 
 #endregion
 
-}
+}   // end of namespace Boku.Common.Localization
