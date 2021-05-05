@@ -1058,10 +1058,54 @@ namespace Boku
             public void PopupOnCommunityShare()
             {
                 popup.Active = false;
-                // Acknowledges upload?
-                communityShareMenu.Activate(parent.shared.CurWorld);
 
-            }
+                //
+                // Make sure image files are as expected.  
+                //
+                //      If the thumbnail is DDS instead of jpg, create the jpg from the DDS.
+                //      If the _800 image is missing, copy thumbnail to it.
+                LevelMetadata curWorld = parent.shared.CurWorld;
+
+                // Verify thumb.
+                {
+                    string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
+                    if (!Storage4.FileExists(thumbFilename, StorageSource.UserSpace))
+                    {
+                        // If we have a DDS, load it and save as jpg.
+                        string oldThumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".dds");
+                        if (Storage4.FileExists(oldThumbFilename, StorageSource.UserSpace))
+                        {
+                            Texture2D thumb = Storage4.TextureLoad(oldThumbFilename);
+                            string newThumbPath = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
+                            Storage4.TextureSaveAsJpeg(thumb, newThumbPath);
+                            BokuGame.Release(ref thumb);
+                        }
+                    }
+                }
+                // Verify 800
+                {
+                    string largeFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + "_800.jpg");
+                    if (!Storage4.FileExists(largeFilename, StorageSource.UserSpace))
+                    {
+                        // No large image so just copy thumb in its place.
+                        string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
+                        using (Stream src = Storage4.OpenRead(thumbFilename, StorageSource.UserSpace))
+                        {
+                            using (Stream dest = Storage4.OpenWrite(largeFilename))
+                            {
+                                src.CopyTo(dest);
+
+                                src.Close();
+                                dest.Close();
+                            }
+                        }
+                    }
+                }
+
+                // Acknowledges upload?
+                communityShareMenu.Activate(curWorld);
+
+            }   // end of void PopupOnCommunityShare()
 
 
             /// <summary>

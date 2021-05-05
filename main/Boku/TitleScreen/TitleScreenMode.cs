@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Media;
 using Boku.Base;
 using Boku.Input;
 using Boku.Common;
+using Boku.Common.Localization;
 using Boku.Common.Sharing;
 using Boku.Common.Xml;
 using Boku.Fx;
@@ -65,6 +66,9 @@ namespace Boku
 
                 if (done && !parent.logonDialog.Active)
                 {
+                    // Ping the community to see if it's alive and let it know we've run a session.
+                    CommunityServices.Ping(version: Program2.ThisVersion.ToString(), language: Localizer.LocalLanguage);
+
                     // Switch to MainMenu.
                     parent.DismissAndShowMain(null, null);
                 }

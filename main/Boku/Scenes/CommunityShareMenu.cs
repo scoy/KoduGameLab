@@ -237,7 +237,7 @@ namespace Boku
             level = level.FindFirstLink();
 
             string folderName = Utils.FolderNameFromFlags(level.Genres);
-            string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
+            string fullPath = Path.Combine(BokuGame.Settings.MediaPath, folderName, level.WorldId.ToString() + @".Xml");
 
             // Share.
             // Check to see if the community server is reachable before sharing level.

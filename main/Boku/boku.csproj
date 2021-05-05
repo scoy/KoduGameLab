@@ -173,6 +173,7 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -325,6 +326,7 @@
     <Compile Include="Common\ScoreSet.cs" />
     <Compile Include="Common\ScreenWarp.cs" />
     <Compile Include="Common\Sharing\AsyncOperation.cs" />
+    <Compile Include="Common\Sharing\CommunityServices.cs" />
     <Compile Include="Common\Sharing\FrameDelayedOperation.cs" />
     <Compile Include="Common\Sharing\TimeDelayedOperation.cs" />
     <Compile Include="Common\SpriteCamera.cs" />

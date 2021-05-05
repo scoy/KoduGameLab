@@ -232,14 +232,17 @@ namespace Boku.Common
             xml.LinkedToLevel = LinkedToLevel;
         }
 
-        //will only follow consistent links
+        /// <summary>
+        /// Finds and returns the next linked level in the chain.
+        /// </summary>
+        /// <returns>Metadata if valid, null if no link or file for link not found.</returns>
         public LevelMetadata NextLink()
         {
             if (LinkedToLevel != null && XmlDataHelper.CheckWorldExistsByGenre((Guid)LinkedToLevel, Genres))
             {
                 LevelMetadata level = XmlDataHelper.LoadMetadataByGenre((Guid)LinkedToLevel, Genres);
 
-                //make sure the link is consistent or don't return it
+                // Make sure the link is consistent or don't return it.
                 if (level != null && level.LinkedFromLevel == this.WorldId)
                 {
                     return level;
@@ -247,16 +250,19 @@ namespace Boku.Common
             }
 
             return null;
-        }
+        }   // end of NextLink()
 
-        //will only follow consistent links
+        /// <summary>
+        /// Finds and returns the previous linked level in the chain.
+        /// </summary>
+        /// <returns>Metadata if valid, null if no link or file for link not found.</returns>
         public LevelMetadata PreviousLink()
         {
             if (LinkedFromLevel != null && XmlDataHelper.CheckWorldExistsByGenre((Guid)LinkedFromLevel, Genres))
             {
                 LevelMetadata level = XmlDataHelper.LoadMetadataByGenre((Guid)LinkedFromLevel, Genres);
 
-                //make sure the link is consistent or don't return it
+                // Make sure the link is consistent or don't return it.
                 if (level != null && level.LinkedToLevel == this.WorldId)
                 {
                     return level;
@@ -264,14 +270,20 @@ namespace Boku.Common
             }
 
             return null;
-        }
+        }   // end of PreviousLink()
 
+        /// <summary>
+        /// Finds and returns the first linked level in the chain.
+        /// Note this doesn't differentiate between finding the first level and
+        /// finding a level with a bad previous link.
+        /// </summary>
+        /// <returns>Metadata if valid, null if file for link not found.</returns>
         public LevelMetadata FindFirstLink()
         {
             LevelMetadata firstLink = this;
             LevelMetadata previousLink = this;
 
-            //loop until the previous link is null
+            // Loop until the previous link is null
             while (previousLink != null)
             {
                 firstLink = previousLink;
@@ -279,8 +291,14 @@ namespace Boku.Common
             }
 
             return firstLink;
-        }
+        }   // end of FindFirstLink()
 
+        /// <summary>
+        /// Finds and returns the last linked level in the chain.
+        /// Note this doesn't differentiate between finding the last level and
+        /// finding a level with a bad previous link.
+        /// </summary>
+        /// <returns>Metadata if valid, null if file for link not found.</returns>
         public LevelMetadata FindLastLink()
         {
             LevelMetadata lastLink = this;
@@ -293,9 +311,12 @@ namespace Boku.Common
             }
 
             return lastLink;
-        }
+        }   // end of FindLastLink()
 
-        //works on any link in the chain
+        /// <summary>
+        /// Calculates the total number of levels in the chain.
+        /// </summary>
+        /// <returns></returns>
         public int CalculateTotalLinkLength()
         {
             LevelMetadata firstLink = FindFirstLink();
@@ -308,44 +329,58 @@ namespace Boku.Common
             }
 
             return linkLength;
-        }
+        }   // end of CalculateTotalLinkLength()
 
+        /// <summary>
+        /// Traverses the linked level chain verifying that all previous and next
+        /// links are properly connected.
+        /// 
+        /// TODO (scoy) This could be both cleaner and more complete.  Right now, the Previous links
+        /// are only validated for going back to the first in the chain.  From the tail to the current
+        /// level they are ignored.  Also, the NextLink() and PreviousLink() functions don't 
+        /// differentiate between null links and links to invalid files.  Links to invalid files should
+        /// probably be removed with a warnign to the user.
+        /// Rewrite this when adding arbitrary links.
+        /// </summary>
+        /// <param name="brokenLevel">The level where the broken link was found.</param>
+        /// <param name="forwardLink">True if the broken link was Next.  False if the broken link was Previous.</param>
+        /// <returns>True if broken, false if ok.</returns>
         public bool FindBrokenLink(ref LevelMetadata brokenLevel, ref bool forwardLink)
         {
-            //initialize the out params - assume no broken link
+            // Initialize the out params - assume no broken link.
             brokenLevel = null;
             forwardLink = false;
 
-            //First, walk backwards to the first link
+            // First, walk backwards to the first link.
             LevelMetadata currentLink = this;
             LevelMetadata previousLink = null;
             LevelMetadata nextLink = null;
 
             while (currentLink.LinkedFromLevel != null)
             {
-                //check to make sure the xml exists
+                // Check to make sure the xml exists.
                 previousLink = currentLink.PreviousLink();
 
                 if (null == previousLink)
                 {
                     brokenLevel = currentLink;
-                    forwardLink = false; //broke walking backwards
+                    forwardLink = false; // Broke walking backwards.
 
                     return true;
                 }
                 currentLink = previousLink;
             }
 
-            //first link now points to the beginning, walk forward to the end, ensuring we 
+            // First link now points to the beginning, walk forward to the end.
             while (currentLink.LinkedToLevel != null)
             {
-                //check to make sure the xml exists
+                // Check to make sure the xml exists.
                 nextLink = currentLink.NextLink();
 
                 if (null == nextLink)
                 {
                     brokenLevel = currentLink;
-                    forwardLink = false; //broke walking backwards
+                    forwardLink = false;    // Broke walking forwards.
 
                     return true;
                 }
@@ -353,9 +388,10 @@ namespace Boku.Common
 
             }
 
-            //if we made it this far, all of the links worked out
+            // If we made it this far, all of the links worked out.
             return false;
-        }
+
+        }   // end of FindBrokenLink()
 
         public static LevelMetadata CreateFromXml(XmlWorldData xml)
         {
