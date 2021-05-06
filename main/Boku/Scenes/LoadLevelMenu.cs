@@ -2137,7 +2137,11 @@ namespace Boku
                 {
                     try
                     {
-                        shared.PopupOnDownload();
+                        // Only allow download if not already there.
+                        if (parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.None || parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.Failed)
+                        {
+                            shared.PopupOnDownload();
+                        }
                     }
                     catch { }
                 }
