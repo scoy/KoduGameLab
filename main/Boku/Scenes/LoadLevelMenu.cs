@@ -2303,7 +2303,11 @@ namespace Boku
 #if NETFX_CORE
                         Launcher.LaunchUriAsync(new Uri(shared.CurWorld.Permalink));
 #else
-                        shared.PopupOnDownload();
+                        // Only allow download if not already there.
+                        if (parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.None || parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.Failed)
+                        {
+                            shared.PopupOnDownload();
+                        }
 #endif
                     }
                     catch { }
