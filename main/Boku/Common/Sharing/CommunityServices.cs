@@ -123,7 +123,8 @@ namespace Boku.Common.Sharing
         /// Assumes that the level has already been chacked for broken links.
         /// </summary>
         /// <param name="level">Level to share to Community.</param>
-        static public void ShareWorld(LevelMetadata level)
+        /// <returns>True if successful, false if fails.</returns>
+        static public bool ShareWorld(LevelMetadata level)
         {
             string uri = CommunityURL + "ping";
             var request = (HttpWebRequest)WebRequest.Create(uri);
@@ -165,12 +166,14 @@ namespace Boku.Common.Sharing
                 if (e != null)
                 {
                     // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    return false;
                 }
             }
 
             // Send request.
             var result = request.BeginGetResponse(new AsyncCallback(ShareWorldCallback), request);
 
+            return true;
         }   // end of ShareWorld()
 
         static void ShareWorldCallback(IAsyncResult asyncResult)
@@ -199,16 +202,96 @@ namespace Boku.Common.Sharing
                 if (e != null)
                 {
                     // 404 error: "The remote server returned an error: (404) Not Found."
-
                 }
             }
-
         }	// end of ShareWorldCallback()
 
 
         #endregion Share
 
         #region Community
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="first"></param>
+        /// <param name="count"></param>
+        /// <param name="sortBy">"date"</param>
+        /// <param name="sortDir">"asc" or "desc"</param>
+        /// <param name="range">"all", "year", "month", "week"</param>
+        /// <param name="keywords">Full text search string.</param>
+        /// <param name="creator">Creator name iff MyWorlds tab is selected.</param>
+        /// <returns></returns>
+        static public bool GetWorlds(int first, int count, string sortBy, string sortDir, string dateRange = "all", string keywords = "", string creator = "")
+        {
+            string uri = CommunityURL + "search";
+            var request = (HttpWebRequest)WebRequest.Create(uri);
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            // Create and attach json payload.
+            try
+            {
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    var args = new
+                    {
+                        first = first,
+                        count = count,
+                        sortBy = sortBy,
+                        sortDir = sortDir,
+                        range = dateRange,
+                        keywords = keywords,
+                        creator = creator
+                    };
+                    // Turn into json string.
+                    string json = JsonConvert.SerializeObject(args);
+
+                    // Attatch json to request.
+                    streamWriter.Write(json);
+                }
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    return false;
+                }
+            }
+
+            // Send request.
+            var result = request.BeginGetResponse(new AsyncCallback(GetWorldsCallback), request);
+
+            return true;
+        }   // end of GetWorlds()
+
+        static void GetWorldsCallback(IAsyncResult asyncResult)
+        {
+            try
+            {
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                var responseStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(responseStream);
+                string results = reader.ReadToEnd();
+
+                // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
+                // I guess I could pass in the browser with each call and save it locally for the callback...
+                CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
+                browser.FetchComplete(results);
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // 404 error: "The remote server returned an error: (404) Not Found."
+
+                }
+            }
+
+        }	// end of GetWorldsCallback()
+
         #endregion Community
 
         #region Download

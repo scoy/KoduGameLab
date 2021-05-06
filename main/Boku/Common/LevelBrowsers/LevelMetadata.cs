@@ -114,8 +114,8 @@ namespace Boku.Common
             }
         }
 
-        public DateTime LastSaveTime = DateTime.MinValue;//Used to determin if level is owned by user. 
-                                                        //Note it should usually be the same as lastWriteTime but not the same as Modified.
+        public DateTime LastSaveTime = DateTime.MinValue;   //Used to determine if level is owned by user. 
+                                                            //Note it should usually be the same as lastWriteTime but not the same as Modified.
         internal LevelMetadata Duplicate()
         {
             LevelMetadata level = new LevelMetadata();

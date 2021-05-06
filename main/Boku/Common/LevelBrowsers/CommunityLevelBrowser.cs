@@ -5,10 +5,13 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 using Boku.Base;
 using Boku.Web;
 using Boku.Common;
+using Boku.Common.Sharing;
 using Boku.Common.Xml;
 
 using BokuShared;
@@ -100,6 +103,8 @@ namespace Boku.Common
                 LevelMetadata level = queuedThumbnailLoads[queuedThumbnailLoads.Count - 1];
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
                 thumbnailLoadOpCount += 1;
+
+                // TODO (scoy) TK Replace this with new services when we have the URL for the thumbnail.
                 Web.Community.Async_GetThumbnail(
                     level.WorldId,
                     level.Thumbnail,
@@ -218,6 +223,21 @@ namespace Boku.Common
         {
             if (pagingOpCount == 0 && !pagingEndReached)
             {
+                LevelSetSorterBasic basicSorter = query.Sorter as LevelSetSorterBasic;
+                LevelSetFilterByKeywords filter = query.Filter as LevelSetFilterByKeywords;
+
+                string sortBy = basicSorter.SortBy.ToString().ToLower();
+                if (sortBy == "rank")
+                {
+                    sortBy = "downloads";
+                }
+                string sortDir = basicSorter.SortDirection == SortDirection.Ascending ? "asc" : "desc";
+                string keywords = filter.SearchString;
+                string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
+                creator = null;
+
+                CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
+                /*
                 // This is a bit of a hack/limitation. For the moment, the community server only
                 // supports filtering by genre and sorting on the basic fields. For this limitation
                 // to be removed, we must support all sorters and filters on the server side, and
@@ -258,6 +278,7 @@ namespace Boku.Common
                         return true;
                     }
                 }
+                */
             }
             return false;
         }
@@ -409,6 +430,68 @@ namespace Boku.Common
 
             pagingOpCount -= 1;
         }
+
+        /// <summary>
+        /// Callback for fetching for community browser.
+        /// This is the new services version so we need to recreate the LevelMetadata structures
+        /// from the passed in result string.
+        /// </summary>
+        /// <param name="results"></param>
+        public void FetchComplete(string results)
+        {
+            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
+
+            // If no results, just bail.
+            if (array == null)
+            {
+                return;
+            }
+
+
+            int count = 0;
+            foreach (JToken token in array)
+            {
+                LevelMetadata level = new LevelMetadata();
+
+                level.WorldId = new Guid(token.Value<string>("WorldId"));
+                level.Name = token.Value<string>("Name");
+                level.Description = token.Value<string>("Description");
+                level.Checksum = token.Value<string>("Checksum");
+                level.Creator = token.Value<string>("Creator");
+                level.Downloads = token.Value<int>("Downloads");
+                level.LastWriteTime = token.Value<DateTime>("LastWriteTime");
+                level.LastSaveTime = level.LastWriteTime;
+
+                //level.NumLevels = token.Value<int>("NumLevels");
+
+                //level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
+
+                // Need URLs for .Kodu2, thumb, and large image.
+
+                LevelBrowserState state = new LevelBrowserState();
+                state.level = level;
+                level.BrowserState = state;
+
+                level.Browser = this;
+                allLevels.Add(level);
+                LevelAdded(level);
+                count += 1;
+            }
+
+            /*
+            if (result.Page.First >= result.Page.Total)
+                pagingEndReached = true;
+            */
+
+            // If we didn't get a full page, must be at end.
+            if (count < kPagingPageSize)
+            {
+                pagingEndReached = true;
+            }
+
+            pagingFirst += count;
+
+        }   // end of FetchComplete()
 
         private void GotThumbnail(AsyncResult ar)
         {

@@ -95,34 +95,6 @@ namespace Boku.Web
         }
 
         /// <summary>
-        /// Queries for the user's admin level.
-        /// </summary>
-        /// <param name="callback"></param>
-        /// <param name="param"></param>
-        /// <returns></returns>
-        public static int Async_UserLogin(
-            BokuAsyncCallback callback,
-            object param)
-        {
-            try
-            {
-                AsyncState state = new AsyncState();
-                state.callback = callback;
-                state.param = param;
-                Trans.UserLogin trans = new Trans.UserLogin(Callback_UserLogin, state);
-                IRegister(state.transId);
-                if (trans.Send())
-                    return state.transId;
-                else
-                    return 0;
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-
-        /// <summary>
         /// Query for a page of level metadata. This function is used by
         /// CommunityLevelBrowser class, but you may call it directly if
         /// you prefer.
