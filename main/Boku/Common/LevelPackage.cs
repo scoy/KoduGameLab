@@ -216,6 +216,7 @@ namespace Boku.Common
                                     //      Change the stuff file path from MyWorlds to Downloads.
                                     //      Change genres to be Downloads rather than MyWorlds.
                                     //      Check the version number and set result to false if it is newer than the client we're running.
+                                    //      Change the terrain file to .Map if still .Raw.
                                     Stream fileStream = Storage4.OpenWrite(targetPath);
 
                                     using (StreamWriter sw = new StreamWriter(fileStream))
@@ -367,6 +368,16 @@ namespace Boku.Common
                     }
                 }
             }   // end of test for version
+
+            //
+            // Fix up path of terrain file.
+            //
+            startIndex = line.IndexOf("<virtualMapFile>");
+            endIndex = -1;
+            if (startIndex >= 0)
+            {
+                line = line.Replace(".Raw", ".Map");
+            }
 
             return result;
         }   // end of ProcessMainFileLine()
