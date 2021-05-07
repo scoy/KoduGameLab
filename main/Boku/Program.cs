@@ -547,6 +547,13 @@ namespace Boku
                     {
                         FetchLatestVersionFromServer(SiteOptions.Product);
 
+                        // Hack to give time for new version to come back.  Probably needs
+                        // to be replaced with something synchronous.
+                        if (updateInfo == null)
+                        {
+                            Thread.Sleep(1000);
+                        }
+
                         var ignoreVersion = new Version(SiteOptions.IgnoreVersion);
                         if (updateInfo != null && ThisVersion < updateInfo.latestVersion
                             && updateInfo.latestVersion != ignoreVersion
