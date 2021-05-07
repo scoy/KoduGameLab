@@ -548,13 +548,6 @@ namespace Boku
                     {
                         FetchLatestVersionFromServer(SiteOptions.Product);
 
-                        // Hack to give time for new version to come back.  Probably needs
-                        // to be replaced with something synchronous.
-                        if (updateInfo == null)
-                        {
-                            Thread.Sleep(1000);
-                        }
-
                         var ignoreVersion = new Version(SiteOptions.IgnoreVersion);
                         if (updateInfo != null && ThisVersion < updateInfo.latestVersion
                             && updateInfo.latestVersion != ignoreVersion
@@ -820,22 +813,32 @@ namespace Boku
     /// version number from the server to determine whether an update is available.
     static partial class Program2
     {
+        private static bool versionPending = true;
+
         private static void FetchLatestVersionFromServer(string productName)
         {
-            const int timeout = 5000;
+            const int timeout = 5000;   // 5 seconds
 
             try
             {
+                versionPending = true;
                 string url = Program2.SiteOptions.KGLUrl + "/API/LatestVersion.xml";
                 Uri uri = new Uri(url);
                 var request = (HttpWebRequest)WebRequest.Create(uri);
                 var result = request.BeginGetResponse(GetLatestVersionCallback, request);
                 ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
+
+                // Sleep until version info comes back or we time out.
+                while (versionPending)
+                {
+                    Thread.Sleep(10);
+                }
             }
             catch (Exception e)
             {
                 if (e != null)
                 {
+                    versionPending = false;
                 }
             }
 
@@ -859,6 +862,9 @@ namespace Boku
                 {
                 }
             }
+
+            versionPending = false;
+
         }   // end of GetLatestVersionCallback()
 
         // Abort the request if the timer fires. 
@@ -871,7 +877,9 @@ namespace Boku
                 {
                     request.Abort();
                 }
+                versionPending = false;
             }
+        
         }   // end of TimeoutCallback()
 
     }   // end of class Program2
