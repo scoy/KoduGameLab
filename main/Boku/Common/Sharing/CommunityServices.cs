@@ -41,32 +41,20 @@ namespace Boku.Common.Sharing
 
         public static void Ping(string version, string language)
         {
-            Debug.WriteLine("POST ping");
-
             string uri = CommunityURL + "ping";
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.ContentType = "application/json";
-            request.Method = "POST";
+            HttpWebRequest request = null;
 
             // Create and attach json payload.
             try
             {
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                // Make an object to serialize.
+                var args = new
                 {
-                    // Make an object to serialize.
-                    var args = new
-                    {
-                        clientVersion = version,
-                        lang = language
-                    };
-                    // Turn into json string.
-                    string json = JsonConvert.SerializeObject(args);
-
-                    // Attatch json to request.
-                    streamWriter.Write(json);
-
-                    internetAvailable = true;
-                }
+                    clientVersion = version,
+                    lang = language
+                };
+                
+                request = CreateRequest(uri, args);
             }
             catch (WebException e)
             {
@@ -77,9 +65,40 @@ namespace Boku.Common.Sharing
             }
 
             // Send request.
-            var result = request.BeginGetResponse(new AsyncCallback(PingCallback), request);
+            if (request != null)
+            {
+                //var result = request.BeginGetResponse(new AsyncCallback(PingCallback), request);
+                var result = request.BeginGetResponse(asyncResult =>
+                {
+                    try
+                    {
+                        var req = (HttpWebRequest)asyncResult.AsyncState;
+                        var response = (HttpWebResponse)req.EndGetResponse(asyncResult);
+                        var responseStream = response.GetResponseStream();
+                        StreamReader reader = new StreamReader(responseStream);
+                        string text = reader.ReadToEnd();
 
-        }	// end of Main()
+                        Newtonsoft.Json.Linq.JContainer foo = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+                        string systemMessage = foo.Value<string>("systemMessage");
+                        if (!string.IsNullOrWhiteSpace(systemMessage))
+                        {
+                            // TODO (scoy) Alert user!?
+                        }
+
+                        communityAvailable = true;
+                    }
+                    catch (WebException e)
+                    {
+                        if (e != null)
+                        {
+                            // 404 error: "The remote server returned an error: (404) Not Found."
+
+                        }
+                    }
+                }, request);
+            }
+
+        }	// end of Ping()
 
         static void PingCallback(IAsyncResult asyncResult)
         {
@@ -140,17 +159,14 @@ namespace Boku.Common.Sharing
                     var args = new
                     {
                         worldId = level.WorldId.ToString(),
+                        createdTime = level.LastWriteTime.ToUniversalTime().ToString(),
                         lastWriteTime = level.LastWriteTime.ToUniversalTime().ToString(),
+                        lastSaveTime = level.LastSaveTime.ToUniversalTime().ToString(),
                         levelName = level.Name,
                         description = level.Description,
                         creator = level.Creator,
                         checksum = level.Checksum,
-                        lastSaveTime = level.LastSaveTime.ToUniversalTime().ToString(),
-                        numLevels = level.CalculateTotalLinkLength(),
-
-                        kodu2Filename = level.WorldId + ".Kodu2",
-                        thumbnailFilename = level.WorldId + ".jpg",
-                        largeImageFilename = level.WorldId + "_800.jpg"
+                        numLevels = level.CalculateTotalLinkLength()
                     };
                     // Turn into json string.
                     string json = JsonConvert.SerializeObject(args);
@@ -306,6 +322,32 @@ namespace Boku.Common.Sharing
         #endregion
 
         #region Internal
+
+        /// <summary>
+        /// Helper function to make building API call easier.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        static HttpWebRequest CreateRequest(string url, object args)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            // Create and attatch json payload.
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                // Turn into json string.
+                string json = JsonConvert.SerializeObject(args);
+
+                // Attatch json to request.
+                streamWriter.Write(json);
+            }
+            return request;
+        }   // end of CreateRequest()
+
+
         #endregion
 
     }   // end of class CommunityServices
