@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
+#define NEW_GET_WORLDS
+
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -221,11 +223,14 @@ namespace Boku.Common
 
         public bool StartFetchingMore(ILevelSetQuery query)
         {
+            // Prevent new ops from being starting while one is already pending.
             if (pagingOpCount == 0 && !pagingEndReached)
             {
+
                 LevelSetSorterBasic basicSorter = query.Sorter as LevelSetSorterBasic;
                 LevelSetFilterByKeywords filter = query.Filter as LevelSetFilterByKeywords;
 
+#if NEW_GET_WORLDS
                 string sortBy = basicSorter.SortBy.ToString().ToLower();
                 if (sortBy == "rank")
                 {
@@ -236,14 +241,16 @@ namespace Boku.Common
                 string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
                 creator = null;
 
+                pagingOpCount += 1;
                 CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
-                /*
+
+                return true;
+#else
+
                 // This is a bit of a hack/limitation. For the moment, the community server only
                 // supports filtering by genre and sorting on the basic fields. For this limitation
                 // to be removed, we must support all sorters and filters on the server side, and
                 // send them up with every query.
-                LevelSetSorterBasic basicSorter = query.Sorter as LevelSetSorterBasic;
-                LevelSetFilterByKeywords filter = query.Filter as LevelSetFilterByKeywords;
                 if (String.IsNullOrEmpty(filter.SearchString)
                     || filter.SearchString.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries).Length < 1)
                 {
@@ -253,7 +260,7 @@ namespace Boku.Common
                         basicSorter != null ? basicSorter.SortBy : SortBy.Date,
                         basicSorter != null ? basicSorter.SortDirection : SortDirection.Descending,
                         pagingFirst,
-                        kPagingPageSize,
+                        kPagingPageSize + 1,    // Make this match new code.
                         FetchComplete,
                         query))
                     {
@@ -278,10 +285,11 @@ namespace Boku.Common
                         return true;
                     }
                 }
-                */
+                
+#endif
             }
             return false;
-        }
+        }   // end of StartFetchingMore()
 
         public void StartDownloadingThumbnail(LevelMetadata level, ThumbnailDownloadCompleteEvent callback, bool lowPriority)
         {
@@ -391,6 +399,7 @@ namespace Boku.Common
             return -1;
         }
 
+        
         private void FetchComplete(AsyncResult ar)
         {
             AsyncResult_GetPageOfLevels result = (AsyncResult_GetPageOfLevels)ar;
@@ -424,12 +433,13 @@ namespace Boku.Common
                 pagingEndReached = true;
             }
 
-            ILevelSetQuery query = (ILevelSetQuery)ar.Param;
-
-            query.NotifyFetchComplete();
+            // Turns off "Fetching" message.
+            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
 
             pagingOpCount -= 1;
-        }
+        }   // end of FetchComplete()
+        
+
 
         /// <summary>
         /// Callback for fetching for community browser.
@@ -437,59 +447,62 @@ namespace Boku.Common
         /// from the passed in result string.
         /// </summary>
         /// <param name="results"></param>
-        public void FetchComplete(string results)
+        public void FetchComplete(IAsyncResult asyncResult, string results)
         {
             Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
 
             // If no results, just bail.
-            if (array == null)
+            if (!asyncResult.IsCompleted || array == null)
             {
+                pagingEndReached = true;
                 return;
             }
-
-
-            int count = 0;
-            foreach (JToken token in array)
+            else
             {
-                LevelMetadata level = new LevelMetadata();
 
-                level.WorldId = new Guid(token.Value<string>("WorldId"));
-                level.Name = token.Value<string>("Name");
-                level.Description = token.Value<string>("Description");
-                level.Checksum = token.Value<string>("Checksum");
-                level.Creator = token.Value<string>("Creator");
-                level.Downloads = token.Value<int>("Downloads");
-                level.LastWriteTime = token.Value<DateTime>("LastWriteTime");
-                level.LastSaveTime = level.LastWriteTime;
+                int count = 0;
+                foreach (JToken token in array)
+                {
+                    LevelMetadata level = new LevelMetadata();
 
-                //level.NumLevels = token.Value<int>("NumLevels");
+                    level.WorldId = new Guid(token.Value<string>("WorldId"));
+                    level.Name = token.Value<string>("Name");
+                    level.Description = token.Value<string>("Description");
+                    level.Checksum = token.Value<string>("Checksum");
+                    level.Creator = token.Value<string>("Creator");
+                    level.Downloads = token.Value<int>("Downloads");
+                    // Yes, this looks wrong but it's the way it has to be.
+                    level.LastWriteTime = token.Value<DateTime>("Modified");
+                    level.LastSaveTime = token.Value<DateTime>("LastWriteTime");
 
-                //level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
+                    // TODO (scoy) Still need thumb url.
 
-                // Need URLs for .Kodu2, thumb, and large image.
+                    if (IndexOf(level.WorldId) == -1)
+                    {
+                        LevelBrowserState state = new LevelBrowserState();
+                        state.level = level;
+                        level.BrowserState = state;
 
-                LevelBrowserState state = new LevelBrowserState();
-                state.level = level;
-                level.BrowserState = state;
+                        level.Browser = this;
+                        allLevels.Add(level);
+                        LevelAdded(level);
+                        count += 1;
+                    }
+                }
 
-                level.Browser = this;
-                allLevels.Add(level);
-                LevelAdded(level);
-                count += 1;
+                // If we didn't get a full page, must be at end.  We used to test
+                // against total number of levels but that turns out to be a bit slow.
+                if (count < kPagingPageSize)
+                {
+                    pagingEndReached = true;
+                }
+
+                pagingFirst += count;
             }
 
-            /*
-            if (result.Page.First >= result.Page.Total)
-                pagingEndReached = true;
-            */
-
-            // If we didn't get a full page, must be at end.
-            if (count < kPagingPageSize)
-            {
-                pagingEndReached = true;
-            }
-
-            pagingFirst += count;
+            pagingOpCount -= 1;
+            // Turns off "Fetching" message.
+            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
 
         }   // end of FetchComplete()
 

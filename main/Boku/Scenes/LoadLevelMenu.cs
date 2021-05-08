@@ -3990,10 +3990,13 @@ namespace Boku
 
         private void CursorFetchingCallback(ILevelSetQuery query)
         {
-            shared.showPagingMessage = true;
+            // TODO (scoy) With the new community services calls, this gets out of sync and always
+            // displays the "Fetching" message.  Just leave off for now.  Maybe tie it to the 
+            // pagingOpCount in the future?  ie only show when paginOpCount != 0.
+            //shared.showPagingMessage = true;
         }
 
-        private void CursorFetchCompleteCallback(ILevelSetQuery query)
+        public void CursorFetchCompleteCallback(ILevelSetQuery query)
         {
             shared.showPagingMessage = false;
         }

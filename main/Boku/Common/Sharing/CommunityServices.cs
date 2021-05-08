@@ -234,38 +234,28 @@ namespace Boku.Common.Sharing
         /// <param name="count"></param>
         /// <param name="sortBy">"date"</param>
         /// <param name="sortDir">"asc" or "desc"</param>
-        /// <param name="range">"all", "year", "month", "week"</param>
+        /// <param name="dateRange">"all", "year", "month", "week"</param>
         /// <param name="keywords">Full text search string.</param>
         /// <param name="creator">Creator name iff MyWorlds tab is selected.</param>
         /// <returns></returns>
         static public bool GetWorlds(int first, int count, string sortBy, string sortDir, string dateRange = "all", string keywords = "", string creator = "")
         {
             string uri = CommunityURL + "search";
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.ContentType = "application/json";
-            request.Method = "POST";
+            var args = new
+            {
+                first = first,
+                count = count,
+                sortBy = sortBy,
+                sortDir = sortDir,
+                range = dateRange,
+                keywords = keywords,
+                creator = creator
+            };
 
-            // Create and attach json payload.
+            HttpWebRequest request = null;
             try
             {
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                {
-                    var args = new
-                    {
-                        first = first,
-                        count = count,
-                        sortBy = sortBy,
-                        sortDir = sortDir,
-                        range = dateRange,
-                        keywords = keywords,
-                        creator = creator
-                    };
-                    // Turn into json string.
-                    string json = JsonConvert.SerializeObject(args);
-
-                    // Attatch json to request.
-                    streamWriter.Write(json);
-                }
+                request = CreateRequest(uri, args);
             }
             catch (WebException e)
             {
@@ -295,7 +285,7 @@ namespace Boku.Common.Sharing
                 // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
                 // I guess I could pass in the browser with each call and save it locally for the callback...
                 CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
-                browser.FetchComplete(results);
+                browser.FetchComplete(asyncResult, results);
             }
             catch (WebException e)
             {
