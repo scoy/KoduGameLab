@@ -41,7 +41,7 @@ namespace Boku
         string linkUrl;
 
         TextBlob blob;
-        Color textColor = Color.Black;
+        Color textColor = Color.Blue;
 
         AABB2D hitBox;
 

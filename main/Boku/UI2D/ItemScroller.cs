@@ -411,7 +411,7 @@ namespace Boku.UI2D
         {
             RenderTarget2D rt = UI2D.Shared.RenderTarget1024_768;
 
-            dirty = true;
+            // dirty = true;    // Should be debug only!
 
             if (dirty || hackFrame == Time.FrameCounter || rt.IsContentLost)
             {
@@ -626,6 +626,11 @@ namespace Boku.UI2D
             else
             {
                 adjHitPos -= relativePosition;
+
+                // Further adjustment to get the hit testing working right.  
+                // This is an utter hack but will be redone in v2 so it's not
+                // worth my time to fix this correctly.
+                adjHitPos += new Vector2(-20, -22);
 
                 for (int i = 0; i < scrollItems.Count; i++)
                 {

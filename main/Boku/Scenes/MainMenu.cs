@@ -390,9 +390,6 @@ namespace Boku
                         shared.menu.InsertText(Strings.Localize("mainMenu.resume"), 0);
                     }
 
-                    shared.liveFeed.UpdateFeed();
-                    shared.liveFeed.Update(shared.camera);
-
                     if (!UpdateNonMenuItems())
                     {
                         // JW - Only update the menu and process input if the interactive non-menu
@@ -466,6 +463,7 @@ namespace Boku
                 {
                     shared.liveFeed.Activate();
                     shared.liveFeed.UpdateFeed();
+                    shared.liveFeed.Update(shared.camera);  // <- this is SLOW!!!
                 }
 
             }   // end of Update()
