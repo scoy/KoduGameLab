@@ -7,6 +7,9 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
+using Boku;
+using Boku.Common.Localization;
+
 namespace Boku.Common.Sharing
 {
     public class CommunityServices
@@ -14,7 +17,7 @@ namespace Boku.Common.Sharing
         #region Members
 
         //const string CommunityURL = "https://koduworlds.azurewebsites.net/api/";
-        const string CommunityURL = "https://koduworlds-staging.azurewebsites.net/api/";
+        const string CommunityURL = "https://koduworlds-api.azurewebsites.net/api/";
 
         static bool internetAvailable = false;
         static bool communityAvailable = false;
@@ -39,7 +42,7 @@ namespace Boku.Common.Sharing
 
         #region Ping
 
-        public static void Ping(string version, string language)
+        public static void Ping(bool startup = false)
         {
             string uri = CommunityURL + "ping";
             HttpWebRequest request = null;
@@ -50,8 +53,10 @@ namespace Boku.Common.Sharing
                 // Make an object to serialize.
                 var args = new
                 {
-                    clientVersion = version,
-                    lang = language
+                    startup = startup.ToString(),
+                    clientVersion = Program2.ThisVersion.ToString(),
+                    lang = Localizer.LocalLanguage,
+                    siteId = SiteID.Instance.Value.ToString()
                 };
                 
                 request = CreateRequest(uri, args);

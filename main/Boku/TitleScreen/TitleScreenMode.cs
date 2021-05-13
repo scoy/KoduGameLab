@@ -67,7 +67,7 @@ namespace Boku
                 if (done && !parent.logonDialog.Active)
                 {
                     // Ping the community to see if it's alive and let it know we've run a session.
-                    CommunityServices.Ping(version: Program2.ThisVersion.ToString(), language: Localizer.LocalLanguage);
+                    CommunityServices.Ping(startup: true);
 
                     // Switch to MainMenu.
                     parent.DismissAndShowMain(null, null);
