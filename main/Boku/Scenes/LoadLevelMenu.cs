@@ -598,13 +598,7 @@ namespace Boku
                     }
 
                     string exportedFilename = null;
-#if NETFX_CORE
-                    // Show WinRT happy save file dialog.
-                    PickSaveFile(level);
-
-#else
                     exportedFilename = ShowExportDialog(level);
-#endif
 
                     return exportedFilename;
 
@@ -613,40 +607,6 @@ namespace Boku
                 return null;
 
             }   // end of ExportSelectedLevel()
-
-#if NETFX_CORE
-            private async void PickSaveFile(LevelMetadata level)
-            {
-                FileSavePicker savePicker = new FileSavePicker();
-                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-                savePicker.FileTypeChoices.Add("Kodu Game Lab World", new List<string>() { ".Kodu2" });
-                savePicker.DefaultFileExtension = ".Kodu2";
-                // TODO (****) where do we get/generate this?
-
-                // Set the default filename.
-                string folderName = Utils.FolderNameFromFlags(level.Genres);
-                string pathToLevelFile = Path.Combine(BokuGame.Settings.MediaPath, folderName, level.WorldId.ToString() + ".Xml");
-                XmlWorldData xml = XmlWorldData.Load(pathToLevelFile, XnaStorageHelper.Instance);
-
-                savePicker.SuggestedFileName = GenerateDefaultFileName(level, true);
-                StorageFile savedItem = await savePicker.PickSaveFileAsync();
-
-                if (savedItem != null)
-                {
-                    IRandomAccessStream stream = await savedItem.OpenAsync(FileAccessMode.ReadWrite);
-                    Stream outStream = stream.AsStreamForWrite();
-
-                    // Store the file.
-                    string filePath = savedItem.Path;
-                    ExportLevel(level, filePath, outStream);
-
-                    //await stream.FlushAsync();
-                    //stream.Dispose();
-                }
-            }
-#endif
-
-#if !NETFX_CORE
 
             /// <summary>
             /// Shows dialog for exporting file.  Returns name chosen to export to.
@@ -701,7 +661,6 @@ namespace Boku
 
                 return result;
             }   // end of ShowExportDialog()
-#endif
 
             private void Callback_ExportSelectedLevel(AsyncOperation op)
             {
@@ -711,28 +670,17 @@ namespace Boku
                 string fileNameWithoutExtension = GenerateDefaultFileName(level, false);
 
                 // If this filename is already in use, add a unique digit on the end.
-#if NETFX_CORE
                 string fileName = String.Format("{0}.kodu2", fileNameWithoutExtension);
-#else
-                string fileName = String.Format("{0}.kodu2", fileNameWithoutExtension);
-#endif
+
                 int rev = 1;
                 while (true)
                 {
-#if NETFX_CORE
-                    if (!Storage4.FileExists(LevelPackage.ExportsPath + fileName, StorageSource.UserSpace))
-#else
                     if (!File.Exists(LevelPackage.ExportsPath + fileName))
-#endif
                     {
                         break;
                     }
 
-#if NETFX_CORE
                     fileName = String.Format("{0} ({1}).kodu2", fileNameWithoutExtension, rev);
-#else
-                    fileName = String.Format("{0} ({1}).kodu2", fileNameWithoutExtension, rev);
-#endif
                     rev += 1;
                 }
 
@@ -1006,7 +954,6 @@ namespace Boku
                     if (exportedFilename != null)
                     {
                         // For WinRT we will show a dialog even though we are fullscreen.
-#if !NETFX_CORE
                         // Only display message on fullscreen.  On windowed we 
                         // use the SaveDialog instead.
                         // TODO (****) *** Aren't we always windowed now?
@@ -1021,7 +968,6 @@ namespace Boku
                                 parent.ShowLevelExportedDialog(exportedFilename);
                             }
                         }
-#endif
                     }
                 }
             }
@@ -2091,26 +2037,18 @@ namespace Boku
 #if !HIDE_LIKES
                 if (shared.likesBox.LeftPressed(hit))
                 {
-#if NETFX_CORE
-                    Debug.Assert(false, "Figure out how to launch IE from a URL in WinRT.");
-#else
                     try
                     {
                         shared.PopupOnLike();
                     }
                     catch { }
-#endif
                 }
 
                 if (shared.commentsBox.LeftPressed(hit))
                 {
                     try
                     {
-#if NETFX_CORE
-                        Launcher.LaunchUriAsync(new Uri(shared.CurWorld.Permalink));
-#else
                         shared.PopupOnComments();
-#endif
                     }
                     catch { }
                 }
@@ -2120,15 +2058,11 @@ namespace Boku
                 {
                     try
                     {
-#if NETFX_CORE
-                        Launcher.LaunchUriAsync(new Uri(shared.CurWorld.Permalink));
-#else
                         // Only allow download if not already there.
                         if (parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.None || parent.shared.CurWorld.DownloadState == LevelMetadata.DownloadStates.Failed)
                         {
                             shared.PopupOnDownload();
                         }
-#endif
                     }
                     catch { }
                 }
@@ -2412,13 +2346,9 @@ namespace Boku
                         {
                             try
                             {
-#if NETFX_CORE
-                                Launcher.LaunchUriAsync(new Uri(shared.CurWorld.Permalink));
-#else
                                 //Process.Start(shared.CurWorld.Permalink);
 
                                 shared.PopupOnLike();
-#endif
                             }
                             catch { }
                         }
@@ -2430,12 +2360,8 @@ namespace Boku
                         {
                             try
                             {
-#if NETFX_CORE
-                                Launcher.LaunchUriAsync(new Uri(shared.CurWorld.Permalink));
-#else
                                 //Process.Start(shared.CurWorld.Permalink);
                                 shared.PopupOnDownload();
-#endif
                             }
                             catch { }
                         }
@@ -2764,11 +2690,7 @@ namespace Boku
                     // Date and creator name.
                     Vector2 datePosition = pos;
                     DateTime localWriteTime = info.LastWriteTime.ToLocalTime();
-#if NETFX_CORE
-                    string dateStr = localWriteTime.ToString() + " " + localWriteTime.ToString();
-#else
                     string dateStr = localWriteTime.ToShortDateString() + " " + localWriteTime.ToShortTimeString();
-#endif
 
                     if (info.Creator != null)
                     {

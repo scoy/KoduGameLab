@@ -4597,11 +4597,6 @@ namespace Boku.Base
         {
             //Debug.Print("starting " + uniqueNum.ToString());
 
-#if NETFX_CORE
-            // TODO (****) Restore this when MG does audio.
-            return;
-#else
-
             // Set up looping sounds.
             if (!Mute)
             {
@@ -4630,7 +4625,6 @@ namespace Boku.Base
                     moveCue.Play();
                 }
             }
-#endif
         }
 
         protected virtual void StopSound()
@@ -8589,16 +8583,9 @@ namespace Boku.Base
                     Vector3 center = WorldCollisionCenter;
 
                     Vector4 classColor = Classification.ColorVector4(ClassColor);
-#if NETFX_CORE
-                    // For some reason wireframe rendering doesn't seem to be working on WinRT
-                    // so go with a trqansparent sphere instead.
-                    classColor.W = 0.4f;
-                    Utils.DrawSolidSphere(camera, center, CollisionRadius, classColor);
-#else
                     BokuGame.bokuGame.GraphicsDevice.RasterizerState = UI2D.Shared.RasterStateWireframe;
                     Utils.DrawSolidEllipsoid(camera, center, CollisionRadius * SquashScale, classColor);
                     BokuGame.bokuGame.GraphicsDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-#endif
                 }
             }
 
@@ -8849,12 +8836,7 @@ namespace Boku.Base
             /// to brain changes.
             ActorFactory.CopyBrains(CreatableId, memStream, serializer);
 
-#if NETFX_CORE
-            memStream.Flush();
-            memStream.Dispose();
-#else
             memStream.Close();
-#endif
         }
 
         public void InitHitPoints(int hp)

@@ -291,13 +291,11 @@ namespace Boku
 #if false
             if (TouchInput.TouchAvailable && TouchInput.MaxTouchCount < 5)
             {
-#if !NETFX_CORE
                 System.Windows.Forms.MessageBox.Show(
                     Strings.Localize("warning.noncomplianttouch"),
                     Strings.Localize("warning.noncomplianttouch_title"),
                     System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Warning);
-#endif
             }
 #endif
 
@@ -336,11 +334,7 @@ namespace Boku
         private void OnTextDialogButton(TextDialog dialog)
         {
             Debug.Assert(false, "Need to remove this login path.  Not sure if anyone ever used it anyway.");
-#if NETFX_CORE
-            Storage4.Username = dialog.UserText;
-#else
             //GamerServices.CreatorName = dialog.UserText;
-#endif
             XmlOptionsData.Username = dialog.UserText;
         }
 

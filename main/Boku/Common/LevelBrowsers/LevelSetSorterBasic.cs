@@ -110,22 +110,14 @@ namespace Boku.Common
             int result = -a.LastWriteTime.CompareTo(b.LastWriteTime);
             if (result == 0)
             {
-#if NETFX_CORE
-                result = String.Compare(b.Name, a.Name, StringComparison.CurrentCultureIgnoreCase);
-#else
                 result = String.Compare(b.Name, a.Name, true);
-#endif
             }
 
             return result;
         }
         private int CreatorComparison(LevelMetadata a, LevelMetadata b)
         {
-#if NETFX_CORE
-            int result = String.Compare(b.Creator, a.Creator, StringComparison.CurrentCultureIgnoreCase);
-#else
             int result = String.Compare(b.Creator, a.Creator, true);
-#endif
             if (result == 0)
             {
                 result = DateComparison(a, b);
@@ -135,11 +127,7 @@ namespace Boku.Common
         }
         private int NameComparison(LevelMetadata a, LevelMetadata b)
         {
-#if NETFX_CORE
-            int result = String.Compare(b.Name, a.Name, StringComparison.CurrentCultureIgnoreCase);
-#else
             int result = String.Compare(b.Name, a.Name, true);
-#endif
             if (result == 0)
             {
                 result = DateComparison(a, b);

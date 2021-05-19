@@ -20,11 +20,7 @@ namespace Boku.Analyses
         private int actors = 0;
         private int totalRules = 0;
         private int blankActors = 0;
-#if NETFX_CORE
-        Dictionary<GameActor, int> rulesPerActor = new Dictionary<GameActor, int>();
-#else
         Hashtable rulesPerActor = new Hashtable();
-#endif
         List<KeyValuePair<GameActor, int>> indentedRulesPerActor = new List<KeyValuePair<GameActor, int>>();
         List<KeyValuePair<GameActor, int>> notRulesPerActor = new List<KeyValuePair<GameActor, int>>();
         List<KeyValuePair<GameActor, int>> creatableActor = new List<KeyValuePair<GameActor, int>>();
@@ -103,11 +99,7 @@ namespace Boku.Analyses
                                     //check if the key we're jumping to exists
                                     if (!reached.ContainsKey(destination))
                                     {
-#if NETFX_CORE
-            Debug.Assert(false, "Not Impl");
-#else
                                         wf.logBlankJumps(actor, index, destination);
-#endif
                                         //we're jumping to a blank page...this is a different kind of error
                                         //TODO: Process later!!!
                                     }
@@ -126,11 +118,7 @@ namespace Boku.Analyses
                 {
                     if (de.Value == false)
                     {
-#if NETFX_CORE
-            Debug.Assert(false, "Not Impl");
-#else
                         wf.logUnreachable(actor, de.Key);
-#endif
                     }
                 }
 
@@ -177,11 +165,7 @@ namespace Boku.Analyses
                     }
                 }
             }
-#if NETFX_CORE
-            Debug.Assert(false, "Not Impl");
-#else
             wf.logTileUsage(usage);
-#endif
         }
 
         private void updateUsage(Dictionary<string, int> usage, string id)
@@ -198,9 +182,6 @@ namespace Boku.Analyses
 
         public void createSummary(string file)
         {
-#if NETFX_CORE
-            Debug.Assert(false, "Not Impl");
-#else
             //create summary
             TextWriter tw = new StreamWriter(WriteToFile.directory
                     + @"\" + InGame.XmlWorldData.id + @"analytics.txt");
@@ -217,14 +198,10 @@ namespace Boku.Analyses
             tw.Close();
 
             wf.writeKode(file);
-#endif
         }
 
         public void summarize(string file)
         {
-#if NETFX_CORE
-            Debug.Assert(false, "Not Impl");
-#else
             wf.writeKode(file);
 
             string f = WriteToFile.directory
@@ -275,7 +252,6 @@ namespace Boku.Analyses
                 sw.Flush();
                 sw.Close();
             }
-#endif
         }
 
         //iterates over all actors

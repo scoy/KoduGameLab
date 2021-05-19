@@ -587,20 +587,12 @@ namespace Boku.Common
 
         public void AddLevel(LevelMetadata level)
         {
-#if NETFX_CORE
-            Debug.Assert(false);
-#else
             Debug.Fail("not supported");
-#endif
         }
 
         public void RemoveLevel(LevelMetadata level)
         {
-#if NETFX_CORE
-            Debug.Assert(false);
-#else
             Debug.Fail("not supported");
-#endif
         }
     }
 }

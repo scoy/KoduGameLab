@@ -76,19 +76,6 @@ namespace Boku.Audio
             {
                 try
                 {
-#if NETFX_CORE
-                    engine = new AudioEngine(@"Content\Audio\KoduMG.xgs");
-
-                    listener = new AudioListener();
-                    emitter = new AudioEmitter();
-
-                    startupWavebank = new WaveBank(engine, @"Content\Audio\Startup Wave Bank.xwb");
-                    startupSoundbank = new SoundBank(engine, @"Content\Audio\Startup Sound Bank.xsb");
-                    inMemoryWavebank = new WaveBank(engine, @"Content\Audio\In Memory Wave Bank.xwb");
-                    inMemoryWavebank2 = new WaveBank(engine, @"Content\Audio\In Memory Wave Bank2.xwb");
-                    streamingWavebank = new WaveBank(engine, @"Content\Audio\Streaming Wave Bank.xwb");
-                    soundbank = new SoundBank(engine, @"Content\Audio\Sound Bank.xsb");
-#else
                     engine = new AudioEngine(Path.Combine(Storage4.TitleLocation, @"Content\Audio\Kodu.xgs"));
 
                     listener = new AudioListener();
@@ -105,7 +92,6 @@ namespace Boku.Audio
                     //inMemoryWavebank2 = new WaveBank(engine, @"Content\Audio\In Memory Wave Bank2.xwb");
                     //streamingWavebank = new WaveBank(engine, @"Content\Audio\Streaming Wave Bank.xwb");
                     //soundbank = new SoundBank(engine, @"Content\Audio\Sound Bank.xsb");
-#endif
 
                     activeCues = new List<AudioCue>();
                     spareCues = new List<AudioCue>();
@@ -137,11 +123,7 @@ namespace Boku.Audio
                 {
                     try
                     {
-#if NETFX_CORE
-                        inMemoryWavebank = new WaveBank(engine, @"Content\Audio\in memory wave bank.xwb");
-#else
                         inMemoryWavebank = new WaveBank(engine, Path.Combine(Storage4.TitleLocation, @"Content\Audio\in memory wave bank.xwb"));
-#endif
                     }
                     catch (Exception e)
                     {
@@ -154,11 +136,7 @@ namespace Boku.Audio
                 {
                     try
                     {
-#if NETFX_CORE
-                        inMemoryWavebank2 = new WaveBank(engine, @"Content\Audio\in memory wave bank2.xwb");
-#else
                         inMemoryWavebank2 = new WaveBank(engine, Path.Combine(Storage4.TitleLocation, @"Content\Audio\in memory wave bank2.xwb"));
-#endif
                     }
                     catch (Exception e)
                     {
@@ -171,11 +149,7 @@ namespace Boku.Audio
                 {
                     try
                     {
-#if NETFX_CORE
-                        streamingWavebank = new WaveBank(engine, @"Content\Audio\streaming wave bank.xwb", 0, 16);
-#else
                         streamingWavebank = new WaveBank(engine, Path.Combine(Storage4.TitleLocation, @"Content\Audio\streaming wave bank.xwb"), 0, 16);
-#endif
                     }
                     catch (Exception e)
                     {
@@ -189,11 +163,7 @@ namespace Boku.Audio
                 {
                     try
                     {
-#if NETFX_CORE
-                        soundbank = new SoundBank(engine, @"Content\Audio\sound bank.xsb");
-#else
                         soundbank = new SoundBank(engine, Path.Combine(Storage4.TitleLocation, @"Content\Audio\sound bank.xsb"));
-#endif
                     }
                     catch (Exception e)
                     {
@@ -305,13 +275,8 @@ namespace Boku.Audio
         {
             if (engine != null)
             {
-#if NETFX_CORE
-                engine.GetCategory("Music").Stop();
-                engine.GetCategory("EnvTemp").Stop();
-#else
                 engine.GetCategory("Music").Stop(AudioStopOptions.Immediate);
                 engine.GetCategory("EnvTemp").Stop(AudioStopOptions.Immediate);
-#endif
             }
         }
 
@@ -320,11 +285,7 @@ namespace Boku.Audio
             if (engine != null)
             {
                 StopGameMusic();
-#if NETFX_CORE
-                engine.GetCategory("Foley").Stop();
-#else
                 engine.GetCategory("Foley").Stop(AudioStopOptions.Immediate);
-#endif
             }
         }
         /// <summary>

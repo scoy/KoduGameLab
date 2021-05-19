@@ -2170,7 +2170,6 @@ namespace Boku.Base
 
             string str = String.Join(" ", effector.Reflex.SayStrings);
 
-#if !NETFX_CORE
             if (playerId == GamePadSensor.PlayerId.All)
             {
                 foreach (var bit in MicrobitManager.Microbits.Values)
@@ -2186,7 +2185,6 @@ namespace Boku.Base
                     bit.ScrollText(str);
                 }
             }
-#endif
             return true;
         }
 
@@ -2271,7 +2269,6 @@ namespace Boku.Base
             PlayerModifier playerModifier = effector.GetPlayerModifierOrNull();
             GamePadSensor.PlayerId playerId = (playerModifier != null) ? playerModifier.playerIndex : GamePadSensor.PlayerId.All;
 
-#if !NETFX_CORE
             List<MicroBitDisplayFrame> frames = new List<MicroBitDisplayFrame>();
             foreach (var pattern in effector.Reflex.MicrobitPatterns)
             {
@@ -2294,7 +2291,6 @@ namespace Boku.Base
                     bit.PrintDisplayFrames(frames);
                 }
             }
-#endif
             return true;
         }
 
@@ -2307,7 +2303,6 @@ namespace Boku.Base
             int pin = int.Parse(effector.Reflex.Actuator.upid[effector.Reflex.Actuator.upid.Length - 1].ToString());
             pin -= 1;
 
-#if !NETFX_CORE
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
             {
@@ -2326,7 +2321,6 @@ namespace Boku.Base
 
                 bit.SetPinValue(pin, value, Microbit.EPinOperatingMode.Digital);
             }
-#endif
             return true;
         }
 
@@ -2340,7 +2334,6 @@ namespace Boku.Base
             int pin = int.Parse(effector.Reflex.Actuator.upid[effector.Reflex.Actuator.upid.Length - 1].ToString());
             pin -= 1;
 
-#if !NETFX_CORE
             // Get the microbit.
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
@@ -2365,7 +2358,6 @@ namespace Boku.Base
                 // Set the frequency.
                 bit.SetPinPwmFrequency(pin, score.Value, multiplier);
             }
-#endif
             return true;
         }
 
@@ -2379,7 +2371,6 @@ namespace Boku.Base
             int pin = int.Parse(effector.Reflex.Actuator.upid[effector.Reflex.Actuator.upid.Length - 1].ToString());
             pin -= 1;
 
-#if !NETFX_CORE
             // Get the microbit.
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
@@ -2399,7 +2390,6 @@ namespace Boku.Base
                 // Set the pulse width.
                 bit.SetPinPwmDutyCycle(pin, score.Value / 100.0f);
             }
-#endif
             return true;
         }
 
