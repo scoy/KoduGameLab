@@ -692,7 +692,7 @@ namespace Boku
                 // Show the dialog and process the result.
                 if (DialogSave.ShowDialog() == DialogResult.OK)
                 {
-                    ExportLevel(level, DialogSave.FileName, null);
+                    ExportLevel(level, DialogSave.FileName);
                     result = DialogSave.FileName;
                 }
 
@@ -736,43 +736,38 @@ namespace Boku
                     rev += 1;
                 }
 
-                ExportLevel(level, Path.Combine(LevelPackage.ExportsPath, fileName), null);
+                ExportLevel(level, Path.Combine(LevelPackage.ExportsPath, fileName));
 
                 InGame.EndMessage(parent.blockingOpMessage.Render, null);
             }
 
-            //pre: assumes level is at the start of the chain
-            //pre: assumes valid filename is passed in
             /// <summary>
-            /// 
+            /// Exports given level and all linke levels.
+            /// Ignores broken links.
             /// </summary>
             /// <param name="level"></param>
             /// <param name="fileName"></param>
-            /// <param name="outStream">May be null.  If not null this is used.  If this is null then fileName is used.</param>
-            private void ExportLevel(LevelMetadata level, string fileName, Stream outStream)
+            public static void ExportLevel(LevelMetadata level, string fileName)
             {
-                //only the first level in a chain should ever make it this far 
-                //(higher up, we determine it's a package and pass in the first level)
-                Debug.Assert(level.LinkedFromLevel == null);
-
-                //ensure valid filename
                 Debug.Assert(fileName != null);
+
+                // Always start with first level in chain.
+                level = level.FindFirstLink();
 
                 List<string> levelFiles = new List<string>();
                 List<string> stuffFiles = new List<string>();
                 List<string> thumbnailFiles = new List<string>();
-                List<string> screenshotFiles = new List<string>();
+                List<string> screenshotFiles = new List<string>();  // Currently not used.
                 List<string> terrainFiles = new List<string>();
 
                 do
                 {
+                    // Ensure we have a .jpg thumbnail and a _800.jpg image.
+                    LevelPackage.FixUpThumbAndLargeImage(level);
+
                     string folderName = Utils.FolderNameFromFlags(level.Genres);
 
-#if NETFX_CORE
-                    string fullPathToLevelFile = Path.Combine(BokuGame.Settings.MediaPath, folderName, level.WorldId.ToString() + ".Xml");
-#else
                     string fullPathToLevelFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, folderName, level.WorldId.ToString() + ".Xml");
-#endif
 
 #if EXPORT_DEBUG_HACK
                     {
@@ -791,7 +786,6 @@ namespace Boku
                     //load the xml so we can find the stuff, thumbnail and terrain file paths
                     XmlWorldData xml = XmlWorldData.Load(fullPathToLevelFile, XnaStorageHelper.Instance);
 
-#if !NETFX_CORE
                     if (xml == null)
                     {
                         string message = "Failed to open for export:\n" + fullPathToLevelFile;
@@ -799,59 +793,36 @@ namespace Boku
 
                         return;
                     }
-#endif
 
-#if NETFX_CORE
-                    string fullPathToStuffFile = Path.Combine(BokuGame.Settings.MediaPath, xml.stuffFilename);
-#else
                     string fullPathToStuffFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, xml.stuffFilename);
-#endif
 
                     stuffFiles.Add(fullPathToStuffFile);
 
-#if NETFX_CORE
-                    string fullPathToThumbnailFile = Path.Combine(BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + ".Dds");
-#else
-                    string fullPathToThumbnailFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + ".Dds");
-#endif
+                    string fullPathToThumbnailFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + ".Jpg");
                     thumbnailFiles.Add(fullPathToThumbnailFile);
 
-#if NETFX_CORE
-                    string fullPathToScreenshotFile = Path.Combine(BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + ".Jpg");
-#else
-                    string fullPathToScreenshotFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + ".Jpg");
-#endif
+                    // Don't add full screenshots to .Kodu2 files.  Just a waste of space at this time.
+                    /*
+                    string fullPathToScreenshotFile = Path.Combine(Storage4.UserLocation, BokuGame.Settings.MediaPath, folderName, xml.GetImageFilenameWithoutExtension() + "_800.Jpg");
                     screenshotFiles.Add(fullPathToScreenshotFile);
+                    */
 
-
-                    // Only provide terrain file if it is not a builtin terrain.
-                    // TODO Rethink this.  Maybe put terrain in every file.
-                    string fullPathToTerrainFile = null;
-                    string partialPathToTerrainFile = Path.Combine(BokuGame.Settings.MediaPath, xml.xmlTerrainData2.virtualMapFile);
-                    if (Storage4.FileExists(partialPathToTerrainFile, StorageSource.UserSpace))
-                    {
-#if NETFX_CORE
-                        fullPathToTerrainFile = partialPathToTerrainFile;
-#else
-                        fullPathToTerrainFile = Path.Combine(Storage4.UserLocation, partialPathToTerrainFile);
-#endif
-                    }
+                    string fullPathToTerrainFile = Path.Combine(BokuGame.Settings.MediaPath, xml.xmlTerrainData2.virtualMapFile);
                     terrainFiles.Add(fullPathToTerrainFile);
 
-                    //traverse down the chain to the next link, until finished
+                    // Traverse down the chain to the next link, until finished.
                     level = level.NextLink();
 
                 } while (level != null);
 
-                //we have gathered all of the file information, do the export
+                // We have gathered all of the file information, do the export.
                 LevelPackage.ExportLevel(
                     levelFiles,
                     stuffFiles,
                     thumbnailFiles,
                     screenshotFiles,
                     terrainFiles,
-                    fileName,
-                    outStream);
+                    fileName);
             }   // end of ExportLevel()
 
 
@@ -1059,51 +1030,8 @@ namespace Boku
             {
                 popup.Active = false;
 
-                //
-                // Make sure image files are as expected.  
-                //
-                //      If the thumbnail is DDS instead of jpg, create the jpg from the DDS.
-                //      If the _800 image is missing, copy thumbnail to it.
-                LevelMetadata curWorld = parent.shared.CurWorld;
-
-                // Verify thumb.
-                {
-                    string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
-                    if (!Storage4.FileExists(thumbFilename, StorageSource.UserSpace))
-                    {
-                        // If we have a DDS, load it and save as jpg.
-                        string oldThumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".dds");
-                        if (Storage4.FileExists(oldThumbFilename, StorageSource.UserSpace))
-                        {
-                            Texture2D thumb = Storage4.TextureLoad(oldThumbFilename);
-                            string newThumbPath = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
-                            Storage4.TextureSaveAsJpeg(thumb, newThumbPath);
-                            BokuGame.Release(ref thumb);
-                        }
-                    }
-                }
-                // Verify 800
-                {
-                    string largeFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + "_800.jpg");
-                    if (!Storage4.FileExists(largeFilename, StorageSource.UserSpace))
-                    {
-                        // No large image so just copy thumb in its place.
-                        string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, curWorld.WorldId.ToString() + ".jpg");
-                        using (Stream src = Storage4.OpenRead(thumbFilename, StorageSource.UserSpace))
-                        {
-                            using (Stream dest = Storage4.OpenWrite(largeFilename))
-                            {
-                                src.CopyTo(dest);
-
-                                src.Close();
-                                dest.Close();
-                            }
-                        }
-                    }
-                }
-
                 // Acknowledges upload?
-                communityShareMenu.Activate(curWorld);
+                communityShareMenu.Activate(parent.shared.CurWorld);
 
             }   // end of void PopupOnCommunityShare()
 

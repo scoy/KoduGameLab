@@ -463,7 +463,7 @@ namespace Boku
                 {
                     shared.liveFeed.Activate();
                     shared.liveFeed.UpdateFeed();
-                    shared.liveFeed.Update(shared.camera);  // <- this is SLOW!!!
+                    shared.liveFeed.Update(shared.camera);
                 }
 
             }   // end of Update()

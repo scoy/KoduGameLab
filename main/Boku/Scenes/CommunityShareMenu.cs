@@ -15,9 +15,11 @@ using Boku.Base;
 using Boku.Common;
 using Boku.Common.Xml;
 using Boku.Common.Gesture;
+using Boku.Common.Sharing;
 using Boku.UI2D;
 using Boku.Fx;
 using Boku.Web;
+
 using Point = Microsoft.Xna.Framework.Point;
 
 namespace Boku
@@ -180,7 +182,7 @@ namespace Boku
         }
         public void ShowConfirmLinkedShareDialog()
         {
-            //handler for if user agrees to share all levels
+            // Handler for if user agrees to share all levels.
             ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
             {
                 //close the dialog
@@ -202,14 +204,12 @@ namespace Boku
         }
 
 
-        public void PopupOnCommunityShare()
+        public void PopupOnCommunityShare(LevelMetadata level)
         {
-            var level = CurWorld;
-
-                //Check if level has links.
+            // Check if level has links.
             if (level.LinkedToLevel != null || level.LinkedFromLevel != null)
             {
-                //check if the chosen level has any broken links - if so, warn the player
+                // Check if the chosen level has any broken links - if so, warn the player.
                 LevelMetadata brokenLevel = null;
                 bool forwardsLinkBroken = false;
                 if (level.FindBrokenLink(ref brokenLevel, ref forwardsLinkBroken))
@@ -218,20 +218,24 @@ namespace Boku
                 }
                 else
                 {
-                    //prompt to confirm linked share
+                    // Prompt to confirm linked share.
                     ShowConfirmLinkedShareDialog();
                 }
             }
             else
             {
-                //not a linked level, share as per normal
+                // Not a linked level, share as per normal.
                 ContinueCommunityShare();
             }
-        }
+        }   // end of PopupOnCommunityShare()
+
         internal void ContinueCommunityShare()
         {
             LevelMetadata level = CurWorld;
 
+            CommunityServices.ShareWorld(level);
+
+            /*
             //TODO: check for broken links?
             //always start the share on the first level in the set
             level = level.FindFirstLink();
@@ -245,22 +249,8 @@ namespace Boku
             {
                 ShowNoCommunityDialog();
             }
-        }   // end of PopupOnCommunityShare()
-
-        public void CheckCommunityCallback(AsyncResult resultObj)
-        {
-            Web.AsyncResult_UserLogin result = (Web.AsyncResult_UserLogin)resultObj;
-
-            if (result.Success)
-            {
-                // Yes, the community site is alive.
-            }
-            else
-            {
-                // Put up dialog with error for no community site.
-                ShowNoCommunityDialog();
-            }
-        }
+            */
+        }   // end of ContinueCommunityShare()
 
         /// <summary>
         /// Callback that results from testing whether or not the community server is active.
@@ -369,7 +359,7 @@ namespace Boku
         public void Activate(LevelMetadata level)
         {
             CurWorld = level;
-            PopupOnCommunityShare();
+            PopupOnCommunityShare(level);
             Activate();
         }
         override public void Deactivate()

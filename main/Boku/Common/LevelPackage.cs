@@ -15,6 +15,8 @@ using System.Xml.Serialization;
 using Ionic.Zip;
 using System.IO.Packaging;
 
+using Microsoft.Xna.Framework.Graphics;
+
 using Boku.Audio;
 using BokuShared;
 
@@ -715,14 +717,10 @@ namespace Boku.Common
             List<string> thumbnailFiles,
             List<string> screenshotFiles,
             List<string> terrainFiles,
-            string fileName,
-            Stream outStream)
+            string fileName)
         {
             // Note We may allow multiple screenshots per level in the future
             // so don't assume a fixed number of them.
-            Debug.Assert(levelFiles.Count == stuffFiles.Count &&
-                            levelFiles.Count == thumbnailFiles.Count &&
-                            levelFiles.Count == terrainFiles.Count);
 
             /*
             // Non-WinRT, use DotNetZip.
@@ -781,6 +779,8 @@ namespace Boku.Common
                 }
 
             }   // end of using around archive.
+
+            stream.Close();
 
 #if WRITE_CAB_FILES
             // Create the cab archive.
@@ -857,6 +857,53 @@ namespace Boku.Common
             catch { }
 #endif
         }   // end of ExportLevel()
+
+        /// <summary>
+        /// For the given level:
+        ///      If the thumbnail is DDS instead of jpg, create the jpg from the DDS.
+        ///      If the _800 image is missing, copy thumbnail to it.
+        /// </summary>
+        /// <param name="level"></param>
+        public static void FixUpThumbAndLargeImage(LevelMetadata level)
+        {
+            // Verify thumb.
+            {
+                string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, level.WorldId.ToString() + ".jpg");
+                if (!Storage4.FileExists(thumbFilename, StorageSource.UserSpace))
+                {
+                    // If we have a DDS, load it and save as jpg.
+                    string oldThumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, level.WorldId.ToString() + ".dds");
+                    if (Storage4.FileExists(oldThumbFilename, StorageSource.UserSpace))
+                    {
+                        Texture2D thumb = Storage4.TextureLoad(oldThumbFilename);
+                        string newThumbPath = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, level.WorldId.ToString() + ".jpg");
+                        Storage4.TextureSaveAsJpeg(thumb, newThumbPath);
+                        BokuGame.Release(ref thumb);
+                    }
+                }
+            }
+
+            // Verify 800
+            {
+                string largeFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, level.WorldId.ToString() + "_800.jpg");
+                if (!Storage4.FileExists(largeFilename, StorageSource.UserSpace))
+                {
+                    // No large image so just copy thumb in its place.
+                    string thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, BokuGame.MyWorldsPath, level.WorldId.ToString() + ".jpg");
+                    using (Stream src = Storage4.OpenRead(thumbFilename, StorageSource.UserSpace))
+                    {
+                        using (Stream dest = Storage4.OpenWrite(largeFilename))
+                        {
+                            src.CopyTo(dest);
+
+                            src.Close();
+                            dest.Close();
+                        }
+                    }
+                }
+            }
+
+        }   // end of FixUpThumbAndLargeImage()
 
     }   // end of class LevelPackage
 

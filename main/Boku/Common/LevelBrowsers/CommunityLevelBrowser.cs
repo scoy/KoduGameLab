@@ -399,7 +399,82 @@ namespace Boku.Common
             return -1;
         }
 
-        
+#if NEW_GET_WORLDS
+
+        /// <summary>
+        /// Callback for fetching for community browser.
+        /// This is the new services version so we need to recreate the LevelMetadata structures
+        /// from the passed in result string.
+        /// </summary>
+        /// <param name="results"></param>
+        public void FetchComplete(IAsyncResult asyncResult, string results)
+        {
+            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
+
+            // If no results, just bail.
+            if (!asyncResult.IsCompleted || array == null)
+            {
+                pagingEndReached = true;
+                return;
+            }
+            else
+            {
+
+                int count = 0;
+                foreach (JToken token in array)
+                {
+                    LevelMetadata level = new LevelMetadata();
+
+                    level.WorldId = new Guid(token.Value<string>("WorldId"));
+                    level.Name = token.Value<string>("Name");
+                    level.Description = token.Value<string>("Description");
+                    level.Checksum = token.Value<string>("Checksum");
+                    level.Creator = token.Value<string>("Creator");
+                    level.Downloads = token.Value<int>("Downloads");
+                    // Yes, this looks wrong but it's the way it has to be.  The reason is that
+                    // the Community sorts on Modified which is slightly different than LastWriteTime.
+                    // So we replace LastWriteTime with Modified and store the real LastWriteTime in
+                    // LastSaveTime.  The browser code chokes when the levels from the Community show 
+                    // up in an order that it doesn't expect.  Since the browser sorts on LastWriteTime
+                    // it keeps the browser and Community in sync and things just work.
+                    // TODO (scoy) Rethink / rewrite the browser to actually work for this case.
+                    // Optionally, add Modified to LevelMetaData and make the browser sort on it.
+                    level.LastWriteTime = token.Value<DateTime>("Modified");
+                    level.LastSaveTime = token.Value<DateTime>("LastWriteTime");
+
+                    // TODO (scoy) Still need thumb url.
+
+                    if (IndexOf(level.WorldId) == -1)
+                    {
+                        LevelBrowserState state = new LevelBrowserState();
+                        state.level = level;
+                        level.BrowserState = state;
+
+                        level.Browser = this;
+                        allLevels.Add(level);
+                        LevelAdded(level);
+                        count += 1;
+                    }
+                }
+
+                // If we didn't get a full page, must be at end.  We used to test
+                // against total number of levels but that turns out to be a bit slow.
+                if (count < kPagingPageSize)
+                {
+                    pagingEndReached = true;
+                }
+
+                pagingFirst += count;
+            }
+
+            pagingOpCount -= 1;
+            // Turns off "Fetching" message.
+            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
+
+        }   // end of FetchComplete()
+
+#else
+
         private void FetchComplete(AsyncResult ar)
         {
             AsyncResult_GetPageOfLevels result = (AsyncResult_GetPageOfLevels)ar;
@@ -439,72 +514,7 @@ namespace Boku.Common
             pagingOpCount -= 1;
         }   // end of FetchComplete()
         
-
-
-        /// <summary>
-        /// Callback for fetching for community browser.
-        /// This is the new services version so we need to recreate the LevelMetadata structures
-        /// from the passed in result string.
-        /// </summary>
-        /// <param name="results"></param>
-        public void FetchComplete(IAsyncResult asyncResult, string results)
-        {
-            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
-
-            // If no results, just bail.
-            if (!asyncResult.IsCompleted || array == null)
-            {
-                pagingEndReached = true;
-                return;
-            }
-            else
-            {
-
-                int count = 0;
-                foreach (JToken token in array)
-                {
-                    LevelMetadata level = new LevelMetadata();
-
-                    level.WorldId = new Guid(token.Value<string>("WorldId"));
-                    level.Name = token.Value<string>("Name");
-                    level.Description = token.Value<string>("Description");
-                    level.Checksum = token.Value<string>("Checksum");
-                    level.Creator = token.Value<string>("Creator");
-                    level.Downloads = token.Value<int>("Downloads");
-                    // Yes, this looks wrong but it's the way it has to be.
-                    level.LastWriteTime = token.Value<DateTime>("Modified");
-                    level.LastSaveTime = token.Value<DateTime>("LastWriteTime");
-
-                    // TODO (scoy) Still need thumb url.
-
-                    if (IndexOf(level.WorldId) == -1)
-                    {
-                        LevelBrowserState state = new LevelBrowserState();
-                        state.level = level;
-                        level.BrowserState = state;
-
-                        level.Browser = this;
-                        allLevels.Add(level);
-                        LevelAdded(level);
-                        count += 1;
-                    }
-                }
-
-                // If we didn't get a full page, must be at end.  We used to test
-                // against total number of levels but that turns out to be a bit slow.
-                if (count < kPagingPageSize)
-                {
-                    pagingEndReached = true;
-                }
-
-                pagingFirst += count;
-            }
-
-            pagingOpCount -= 1;
-            // Turns off "Fetching" message.
-            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
-
-        }   // end of FetchComplete()
+#endif
 
         private void GotThumbnail(AsyncResult ar)
         {

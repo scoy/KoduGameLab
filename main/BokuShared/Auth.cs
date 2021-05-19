@@ -217,7 +217,7 @@ namespace BokuShared
             string result = "";
 
             // Check if UTC, should never be anything else.
-            Debug.Assert(dateTime.Kind == DateTimeKind.Utc, "We should be using UTC times except when displaying to user.");
+            //Debug.Assert(dateTime.Kind == DateTimeKind.Utc, "We should be using UTC times except when displaying to user.");
 
             // Force UTC in case it isn't already.
             string dateString = dateTime.ToUniversalTime().ToString();
