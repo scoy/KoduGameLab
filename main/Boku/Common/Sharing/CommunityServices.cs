@@ -158,7 +158,7 @@ namespace Boku.Common.Sharing
         /// <summary>
         /// Shares a world to the Community.
         /// If the world is a part of a linked chain, all the linked levels are shared.
-        /// Assumes that the level has already been chacked for broken links.
+        /// Assumes that the level has already been checked for broken links.
         /// </summary>
         /// <param name="level">Level to share to Community.</param>
         /// <returns>True if successful, false if fails.</returns>
@@ -339,6 +339,9 @@ namespace Boku.Common.Sharing
 
                     // Indicate we're fully complete.
                     ShareRequestState = RequestState.Complete;
+                    // Rest for next share.
+                    // TODO (scoy) Should we do this here or in the LoadLevelMenu?
+                    ShareRequestState = RequestState.None;
 
                 }, finalizeRequest);
             }

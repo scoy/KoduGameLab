@@ -233,6 +233,9 @@ namespace Boku
         {
             LevelMetadata level = CurWorld;
 
+            // Always force us to save starting with the first level in the chain.
+            level = level.FindFirstLink();
+
             CommunityServices.ShareWorld(level);
 
             /*
