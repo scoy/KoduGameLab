@@ -82,7 +82,7 @@ namespace Boku.Common
                 LevelRemoved(level);
             }
 
-            CommunityServices.DeleteWorld(Guid worldId);
+            CommunityServices.DeleteWorld(worldId);
 
             callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
 
