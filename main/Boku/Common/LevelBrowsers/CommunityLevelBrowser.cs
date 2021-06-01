@@ -82,13 +82,21 @@ namespace Boku.Common
                 LevelRemoved(level);
             }
 
+            CommunityServices.DeleteWorld(Guid worldId);
+
+            callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
+
+            return true;    // Looks like this is ignored?
+
+            /*
             return 0 != Web.Community.Async_DelWorldData2(
                 worldId,
                 Auth.Pin,
                 callback,
                 param);
-        }
-
+            */ 
+        }   // end of StartDeletingLevel()
+            
         public void Update()
         {
             lock (Synch)

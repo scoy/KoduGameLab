@@ -1569,6 +1569,34 @@ namespace Boku
                     shared.mainBrowser.Update();
                 }
 
+                // If Sharing is complete, clear the state.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Complete)
+                {
+                    // Success.
+                    shared.communityShareMenu.ShowShareSuccessDialog();
+
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
+                // If Sharing and we don't have internet, show error.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.NoInternet)
+                {
+                    shared.communityShareMenu.ShowNoCommunityDialog();
+
+                    // Clear state so we can try again.
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
+                // If Sharing caused an error, show the dialog.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Error)
+                {
+                    // Launch error dialog.
+                    shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+
+                    // Clear state so we can try again.
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
                 // Don't update level grid if modal dialog is showing.
                 if (ModularMessageDialogManager.Instance.IsDialogActive())
                     return;

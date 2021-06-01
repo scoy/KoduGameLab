@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 using Boku;
 using Boku.Common.Localization;
+using BokuShared;
 
 namespace Boku.Common.Sharing
 {
@@ -197,7 +198,8 @@ namespace Boku.Common.Sharing
                         lastWriteTime = level.LastWriteTime.ToUniversalTime().ToString(),
                         checksum = level.Checksum,
                         numLevels = level.CalculateTotalLinkLength(),
-                        description = level.Description
+                        description = level.Description,
+                        pin = Auth.Pin
                     };
                     // Turn into json string.
                     string json = JsonConvert.SerializeObject(args);
@@ -339,9 +341,6 @@ namespace Boku.Common.Sharing
 
                     // Indicate we're fully complete.
                     ShareRequestState = RequestState.Complete;
-                    // Rest for next share.
-                    // TODO (scoy) Should we do this here or in the LoadLevelMenu?
-                    ShareRequestState = RequestState.None;
 
                 }, finalizeRequest);
             }
@@ -517,9 +516,96 @@ namespace Boku.Common.Sharing
         #endregion Community
 
         #region Download
+
+        // For downloading worlds, we should already have the URL for the .Kodu2 file in the 
+        // Community Worlds metadata and so should only need to make this call to increment 
+        // the downloads count for this world.
+
         #endregion Download
 
         #region Delete World
+
+        public static void DeleteWorld(Guid worldId)
+        {
+            string url = ServiceApiUrl + "DeleteWorld";
+            HttpWebRequest request = null;
+
+            // Create and attach json payload.
+            try
+            {
+                // Make an object to serialize.
+                var args = new
+                {
+                    creator = Auth.CreatorName,
+                    pin = Auth.Pin,
+                    worldId = worldId.ToString()
+                };
+
+                request = CreateApiRequest(url, args);
+
+                internetAvailable = true;
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    internetAvailable = false;
+                    communityAvailable = false;
+                }
+            }
+
+            // Send request.
+            if (request != null)
+            {
+                var result = request.BeginGetResponse(new AsyncCallback(DeleteWorldCallback), request);
+            }
+
+        }	// end of DeleteWorld()
+
+        static void DeleteWorldCallback(IAsyncResult asyncResult)
+        {
+            //string text = "";
+
+            try
+            {
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+
+                // How do we handle errors?
+                /*
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    communityAvailable = true;
+                }
+                else
+                {
+                    communityAvailable = false;
+                }
+                var responseStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(responseStream);
+                text = reader.ReadToEnd();
+
+                Newtonsoft.Json.Linq.JContainer foo = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+                string systemMessage = foo.Value<string>("systemMessage");
+                if (!string.IsNullOrWhiteSpace(systemMessage))
+                {
+                    // TODO (scoy) Alert user!?
+                }
+                */
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // 404 error: "The remote server returned an error: (404) Not Found."
+                    communityAvailable = false;
+                }
+            }
+
+        }	// end of DeleteWorldCallback()
+
+
         #endregion Delete World
 
         #region Instrumentation
