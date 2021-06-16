@@ -2490,6 +2490,7 @@ namespace Boku
                 return shared.CurWorld.Browser.StartDeletingLevel(
                     shared.CurWorld.WorldId,
                     shared.CurWorld.Genres & Genres.Virtual,
+                    shared.CurWorld.LastWriteTime,
                     DeleteCallback,
                     shared.CurWorld.Browser);
             }

@@ -39,6 +39,10 @@ namespace Boku.Common.Sharing
         static bool internetAvailable = false;
         static bool communityAvailable = false;
 
+        static bool nonAsyncPingPending = false;
+
+        static RequestState deleteWorldState = RequestState.None;
+
         #endregion
 
         #region Accessors
@@ -51,6 +55,21 @@ namespace Boku.Common.Sharing
         public static bool CommunityAvailable
         {
             get { return communityAvailable; }
+        }
+
+        /// <summary>
+        /// State of delete world request.  After request will
+        /// be 
+        ///     NoInternet -- no internet
+        ///     Pending -- still in progress
+        ///     Error -- delete failed.  Wrong pin?
+        ///     Complete -- world succesfully deleted.
+        ///     
+        /// After responding to result, should set state back to None.
+        /// </summary>
+        public RequestState DeleteWorldState
+        {
+            get { return deleteWorldState; }
         }
 
         #endregion
@@ -137,6 +156,107 @@ namespace Boku.Common.Sharing
         }	// end of PingCallback()
 
         #endregion Ping
+
+        #region PingNonAsync
+
+        /// <summary>
+        /// Non asynchronous version of Ping.
+        /// Sets the same values as async Ping.
+        /// </summary>
+        /// <param name="startup"></param>
+        /// <returns>True on success, false otherwise.</returns>
+        public static bool PingNonAsync(bool startup = false)
+        {
+            string url = ServiceApiUrl + "ping";
+            HttpWebRequest request = null;
+
+            // Create and attach json payload.
+            try
+            {
+                // Make an object to serialize.
+                var args = new
+                {
+                    startup = startup.ToString(),
+                    clientVersion = Program2.ThisVersion.ToString(),
+                    lang = Localizer.LocalLanguage,
+                    siteId = SiteID.Instance.Value.ToString()
+                };
+
+                request = CreateApiRequest(url, args);
+
+                internetAvailable = true;
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    internetAvailable = false;
+                    communityAvailable = false;
+                }
+            }
+
+            // Send request.
+            if (request != null)
+            {
+                nonAsyncPingPending = true;
+                var result = request.BeginGetResponse(new AsyncCallback(PingNonAsyncCallback), request);
+            }
+
+            // Wait for response.
+            while (nonAsyncPingPending)
+            {
+                Thread.Sleep(10);
+            }
+
+            return CommunityAvailable;
+
+        }	// end of PingNonAsync()
+
+        static void PingNonAsyncCallback(IAsyncResult asyncResult)
+        {
+            string text = "";
+
+            try
+            {
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    communityAvailable = true;
+                }
+                else
+                {
+                    communityAvailable = false;
+                }
+                var responseStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(responseStream);
+                text = reader.ReadToEnd();
+
+                Newtonsoft.Json.Linq.JContainer foo = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+                string systemMessage = foo.Value<string>("systemMessage");
+                if (!string.IsNullOrWhiteSpace(systemMessage))
+                {
+                    // TODO (scoy) Alert user!?
+                }
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // 404 error: "The remote server returned an error: (404) Not Found."
+                    communityAvailable = false;
+                }
+            }
+            finally
+            {
+                nonAsyncPingPending = false;
+            }
+
+        }	// end of PingNonAsyncCallback()
+
+
+        #endregion PingNonAsync
 
         #region Share
 
@@ -525,7 +645,7 @@ namespace Boku.Common.Sharing
 
         #region Delete World
 
-        public static void DeleteWorld(Guid worldId)
+        public static void DeleteWorld(Guid worldId, DateTime lastWriteTime)
         {
             string url = ServiceApiUrl + "DeleteWorld";
             HttpWebRequest request = null;
@@ -536,9 +656,10 @@ namespace Boku.Common.Sharing
                 // Make an object to serialize.
                 var args = new
                 {
+                    worldId = worldId.ToString(),
                     creator = Auth.CreatorName,
                     pin = Auth.Pin,
-                    worldId = worldId.ToString()
+                    lastWriteTime = lastWriteTime.ToString()
                 };
 
                 request = CreateApiRequest(url, args);
@@ -552,12 +673,15 @@ namespace Boku.Common.Sharing
                     // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
                     internetAvailable = false;
                     communityAvailable = false;
+
+                    deleteWorldState = RequestState.NoInternet;
                 }
             }
 
             // Send request.
             if (request != null)
             {
+                deleteWorldState = RequestState.Pending;
                 var result = request.BeginGetResponse(new AsyncCallback(DeleteWorldCallback), request);
             }
 
@@ -572,27 +696,14 @@ namespace Boku.Common.Sharing
                 var request = (HttpWebRequest)asyncResult.AsyncState;
                 var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
 
-                // How do we handle errors?
-                /*
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    communityAvailable = true;
+                    deleteWorldState = RequestState.Complete;
                 }
                 else
                 {
-                    communityAvailable = false;
+                    deleteWorldState = RequestState.Error;
                 }
-                var responseStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(responseStream);
-                text = reader.ReadToEnd();
-
-                Newtonsoft.Json.Linq.JContainer foo = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-                string systemMessage = foo.Value<string>("systemMessage");
-                if (!string.IsNullOrWhiteSpace(systemMessage))
-                {
-                    // TODO (scoy) Alert user!?
-                }
-                */
             }
             catch (WebException e)
             {
@@ -600,11 +711,11 @@ namespace Boku.Common.Sharing
                 {
                     // 404 error: "The remote server returned an error: (404) Not Found."
                     communityAvailable = false;
+                    deleteWorldState = RequestState.NoInternet;
                 }
             }
 
         }	// end of DeleteWorldCallback()
-
 
         #endregion Delete World
 

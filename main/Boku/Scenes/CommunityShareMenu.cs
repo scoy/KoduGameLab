@@ -98,8 +98,7 @@ namespace Boku
 
                     // Share.
                     // Check to see if the community server is reachable before sharing level.
-                    // TODO (scoy)  Replace this ping with the new one.
-                    if (!Web.Community.Async_Ping(Callback_Ping, fullPath))
+                    if (!CommunityServices.PingNonAsync())
                     {
                         ShowNoCommunityDialog();
                     }

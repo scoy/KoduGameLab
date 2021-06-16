@@ -75,6 +75,7 @@ namespace Boku.Web
             IUnregister(transId);
         }
 
+        /*
         public static bool Async_Ping(
             BokuAsyncCallback callback,
             object param)
@@ -93,6 +94,7 @@ namespace Boku.Web
                 return false;
             }
         }
+        */
 
         /// <summary>
         /// Query for a page of level metadata. This function is used by

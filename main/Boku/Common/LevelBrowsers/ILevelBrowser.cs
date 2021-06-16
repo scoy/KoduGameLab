@@ -65,6 +65,7 @@ namespace Boku.Common
         bool StartDeletingLevel(
             Guid worldId,
             Genres bucket,
+            DateTime lastWriteTime,
             BokuAsyncCallback callback,
             object param);
 

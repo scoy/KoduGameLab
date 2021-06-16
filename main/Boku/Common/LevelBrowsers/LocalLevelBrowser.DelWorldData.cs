@@ -26,6 +26,7 @@ namespace Boku.Common
         public bool StartDeletingLevel(
             Guid worldId,
             Genres bucket,
+            DateTime lastWriteTime,     // Ignored for local browser.
             BokuAsyncCallback callback,
             object param)
         {

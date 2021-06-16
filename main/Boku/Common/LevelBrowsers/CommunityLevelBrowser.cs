@@ -71,6 +71,7 @@ namespace Boku.Common
         public bool StartDeletingLevel(
             Guid worldId,
             Genres bucket,
+            DateTime lastWriteTime,
             BokuAsyncCallback callback,
             object param)
         {
@@ -82,7 +83,7 @@ namespace Boku.Common
                 LevelRemoved(level);
             }
 
-            CommunityServices.DeleteWorld(worldId);
+            CommunityServices.DeleteWorld(worldId, lastWriteTime);
 
             callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
 

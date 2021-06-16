@@ -975,7 +975,7 @@ namespace Boku
             if (cur == Strings.Localize("mainMenu.community") || cur == "GALLERY")
             {
                 // Check to see if the community server is reachable before switching screens.
-                if (!Web.Community.Async_Ping(Callback_Ping, null))
+                if (!CommunityServices.PingNonAsync())
                 {
                     noCommunityMessage.Activate();
                     menu.Active = true;
