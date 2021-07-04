@@ -73,6 +73,15 @@ namespace Boku.Base
         public event TimerEvent TimerElapsed;
 
         /// <summary>
+        /// The timer's current duration in seconds.
+        /// </summary>
+        public double Duration
+        {
+            get { return seconds; }
+            set { seconds = value; }
+        }
+
+        /// <summary>
         /// Constructor for a GameTimer
         /// </summary>
         /// <param name="clock">Real Time or Game Time</param>
