@@ -59,16 +59,22 @@ namespace Boku.Programming
             if (prevFrame + 1 == Time.NonPausedFrameCounter)
             {
                 // Running continuously.
-                if (this.timer.Elapsed)
+                if (timer.Elapsed)
                 {
-                    this.timer.ReStart(sync: true);
+                    // Reset the duration for the timer if we have any random amount.  
+                    // This way each time the timer triggers a new random duration is set.
+                    if (timerRandom != 0)
+                    {
+                        timer.Duration = CalcTimerValue();
+                    }
+                    timer.ReStart(sync: true);
                     match = true;
                 }
             }
             else
             {
                 // First frame, need to restart.
-                this.timer.ReStart(sync: false);
+                timer.ReStart(sync: false);
             }
 
             prevFrame = Time.NonPausedFrameCounter;
@@ -79,13 +85,16 @@ namespace Boku.Programming
 
         public override void Reset(Reflex reflex)
         {
-            this.timerBase = 0;
-            this.timerRandom = 0;
+            timerBase = 0;
+            timerRandom = 0;
             bool randomScore = false;
 
-            this.timer.Stop();
+            timer.Stop();
 
-            // walk filters and set params if found
+            // Walk filters and set params if found.
+            //
+            // TODO (scoy) We could expand timers so they encompass the 
+            // full range of numeric inputs, eg scores, health, etc.
             //
             for (int indexFilter = 0; indexFilter < reflex.Filters.Count; indexFilter++)
             {
@@ -97,11 +106,11 @@ namespace Boku.Programming
                         TimerFilter timerFilter = filter as TimerFilter;
                         if (randomScore)
                         {
-                            this.timerRandom += timerFilter.seconds;
+                            timerRandom += timerFilter.seconds;
                         }
                         else
                         {
-                            this.timerBase += timerFilter.seconds;
+                            timerBase += timerFilter.seconds;
                         }
                     }
                     if (filter is RandomFilter)
@@ -111,11 +120,14 @@ namespace Boku.Programming
                 }
             }
 
-            if (randomScore && this.timerRandom == 0)
-                this.timerRandom = 5;
+            // Force random to default to 5.
+            if (randomScore && timerRandom == 0)
+            {
+                timerRandom = 5;
+            }
 
-            this.timer.Reset( CalcTimerValue() );
-            this.timer.Stop(); // make sure it is paused/stopped
+            timer.Reset(CalcTimerValue());
+            timer.Stop(); // make sure it is paused/stopped
 
             base.Reset(reflex);
         }
