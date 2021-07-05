@@ -284,11 +284,16 @@ namespace Boku
 
                         if (shared.editingText && released && specialChar != null)
                         {
-                            char c = (char)int.Parse(specialChar);
-                            if (TextHelper.CharIsValid(c))
+                            try
                             {
-                                TextInput(c);
+                                char c = (char)int.Parse(specialChar);
+                                if (TextHelper.CharIsValid(c))
+                                {
+                                    TextInput(c);
+                                }
                             }
+                            catch { }
+                                
                             specialChar = null;
                         }
                         prevAltPressed = altPressed;
@@ -607,11 +612,16 @@ namespace Boku
 
                         if (shared.editingText && released && specialChar != null)
                         {
-                            char c = (char)int.Parse(specialChar);
-                            if (TextHelper.CharIsValid(c))
+                            try
                             {
-                                TextInput(c);
+                                char c = (char)int.Parse(specialChar);
+                                if (TextHelper.CharIsValid(c))
+                                {
+                                    TextInput(c);
+                                }
                             }
+                            catch { }
+
                             specialChar = null;
                         }
                         prevAltPressed = altPressed;
@@ -1199,6 +1209,15 @@ namespace Boku
             // Used to accumulate values when user is inputting special characters using the Alt key.
             string specialChar = null;
 
+            public void TextInputAltOnly(char c)
+            {
+                // Only pass along characters when the Alt key is pressed.
+                if (KeyboardInput.AltIsPressed)
+                {
+                    TextInput(c);
+                }
+            }   // end of TextInputAltOnly()
+
             public void TextInput(char c)
             {
                 // If tagPicker is active, ignore input.
@@ -1556,7 +1575,14 @@ namespace Boku
                 Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
                 KeyboardInputX.OnChar = TextInput;
 #else
+                // ARGH!
+                // WinKeyboard handles Greek tonos properly which is probably why we switched over.
+                // KeyboardInput handles Alt+ characters properly, which is why we need to switch back.
+                // If both are hooked up, duplicates ensue.
+                // So, create a filtered version of TextInput that only passes on stuff when Alt is
+                // pressed.
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = TextInput;
+                KeyboardInput.OnChar = TextInputAltOnly;
 #endif
             }
 

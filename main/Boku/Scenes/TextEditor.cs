@@ -722,7 +722,7 @@ namespace Boku
 #else
                 // ARGH!
                 // WinKeyboard handles Greek tonos properly which is probably why we switched over.
-                // KeyboardInput handle Alt+ characters properly, which is why we need to switch back.
+                // KeyboardInput handles Alt+ characters properly, which is why we need to switch back.
                 // If both are hooked up, duplicates ensue.
                 // So, create a filtered version of TextInput that only passes on stuff when Alt is
                 // pressed.
