@@ -168,14 +168,10 @@ namespace Boku
 
                 menu.AddText(Strings.Localize("mainMenu.new"));
                 menu.AddText(Strings.Localize("mainMenu.play"));
-#if NETFX_CORE
+                
+                // Option to import .Kodu2 files from desktop.
                 menu.AddText(Strings.Localize("mainMenu.import"));
-#else
-                if (WinStoreHelpers.RunningAsUWP)
-                {
-                    menu.AddText(Strings.Localize("mainMenu.import"));
-                }
-#endif
+
                 menu.AddText(Strings.Localize("mainMenu.community"));
                 menu.AddText(Strings.Localize("mainMenu.options"));
                 menu.AddText(Strings.Localize("mainMenu.help"));
@@ -929,12 +925,11 @@ namespace Boku
                 BokuGame.bokuGame.loadLevelMenu.Activate();
             }
 
-#if NETFX_CORE
             // IMPORT
             if (cur == Strings.Localize("mainMenu.import"))
             {
                 // Note this also switches to the LoadLevelMenu if any worlds are imported.
-                bool levelImported = await PickImportFilesAsync();
+                bool levelImported = PickImportFiles();
                 if (levelImported)
                 {
                     Deactivate();
@@ -946,28 +941,6 @@ namespace Boku
                 else
                 {
                     menu.Active = true;
-                }
-            }
-#endif
-            if (WinStoreHelpers.RunningAsUWP)
-            {
-                // IMPORT
-                if (cur == Strings.Localize("mainMenu.import"))
-                {
-                    // Note this also switches to the LoadLevelMenu if any worlds are imported.
-                    bool levelImported = PickImportFiles();
-                    if (levelImported)
-                    {
-                        Deactivate();
-                        // Switch to LoadLevelMenu which should also trigger a loading of the files in the Imports dir.
-                        BokuGame.bokuGame.loadLevelMenu.LocalLevelMode = LoadLevelMenu.LocalLevelModes.General;
-                        BokuGame.bokuGame.loadLevelMenu.ReturnToMenu = LoadLevelMenu.ReturnTo.MainMenu;
-                        BokuGame.bokuGame.loadLevelMenu.Activate();
-                    }
-                    else
-                    {
-                        menu.Active = true;
-                    }
                 }
             }
 
