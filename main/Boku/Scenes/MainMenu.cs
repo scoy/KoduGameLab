@@ -953,6 +953,12 @@ namespace Boku
                     noCommunityMessage.Activate();
                     menu.Active = true;
                 }
+                else
+                {
+                    // Open the community UI
+                    Deactivate();
+                    BokuGame.bokuGame.community.Activate();
+                }
             }
 
             // OPTIONS
