@@ -976,7 +976,7 @@ namespace Boku
             {
                 popup.Active = false;
 
-                // Acknowledges upload?
+                // Does share and displays dialogs for error or success.
                 communityShareMenu.Activate(parent.shared.CurWorld);
 
             }   // end of void PopupOnCommunityShare()
@@ -1575,6 +1575,7 @@ namespace Boku
                     // Success.
                     shared.communityShareMenu.ShowShareSuccessDialog();
 
+                    // Clear state for next share.
                     CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
                 }
 

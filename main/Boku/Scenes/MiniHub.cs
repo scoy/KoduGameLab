@@ -196,6 +196,40 @@ namespace Boku
                 // Ensure the help overlay is up to date.
                 HelpOverlay.RefreshTexture();
 
+                //
+                // If Sharing to the Community, we need to respond to results.
+                //
+
+                // If Sharing is complete, clear the state.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Complete)
+                {
+                    // Success.
+                    shared.communityShareMenu.ShowShareSuccessDialog();
+
+                    // Clear state for next share.
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
+                // If Sharing and we don't have internet, show error.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.NoInternet)
+                {
+                    shared.communityShareMenu.ShowNoCommunityDialog();
+
+                    // Clear state so we can try again.
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
+                // If Sharing caused an error, show the dialog.
+                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Error)
+                {
+                    // Launch error dialog.
+                    shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+
+                    // Clear state so we can try again.
+                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                }
+
+
             }   // end of MiniHub UpdateObj Update()
 
             void Callback_OpenMainMenu(AsyncOperation op)
@@ -651,9 +685,10 @@ namespace Boku
                 }
                 else
                 {
-                    var level =LevelMetadata.CreateFromXml(InGame.XmlWorldData);
+                    var level = LevelMetadata.CreateFromXml(InGame.XmlWorldData);
 
-                    shared.communityShareMenu.Activate(level);
+                    // Does share and displays dialogs for error or success.
+                    BokuGame.bokuGame.loadLevelMenu.shared.communityShareMenu.Activate(level);
                 }
             }
             else if (menu.CurString == Strings.Localize("miniHub.load"))
