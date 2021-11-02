@@ -1063,6 +1063,8 @@ namespace Boku
             return levelsImported;
         }   // end of PickImportFiles()
 
+        /*
+        // Depricated.  Used to be called when Community was chosen from the MainMenu.
         void Callback_Ping(object param)
         {
             AsyncResult result = (AsyncResult)param;
@@ -1081,6 +1083,7 @@ namespace Boku
                 shared.menu.Active = true;
             }
         }
+        */
 
         public void OnCancel(ModularMenu menu)
         {
