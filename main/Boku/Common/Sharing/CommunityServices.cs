@@ -719,6 +719,103 @@ namespace Boku.Common.Sharing
 
         #endregion Delete World
 
+        #region GetThumbnail
+
+        static Dictionary<string, LevelMetadata> levelDict = new Dictionary<string, LevelMetadata>(); 
+
+        public static void GetThumbnail(LevelMetadata level)
+        {
+            const int timeout = 10000;   // 10 seconds.
+
+            try
+            {
+                Uri uri = new Uri(level.ThumbnailUrl);
+                var request = (HttpWebRequest)WebRequest.Create(uri);
+
+                levelDict.Remove(level.ThumbnailUrl);   // In case it's already there...
+                levelDict.Add(level.ThumbnailUrl, level);
+
+                var result = request.BeginGetResponse(GetThumbnailCallback, request);
+                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
+            }
+            catch (Exception e)
+            {
+                if (e != null)
+                {
+                }
+            }
+
+        }   // end of GetThumbnail()
+
+        static void GetThumbnailCallback(IAsyncResult asyncResult)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
+                using (HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncResult))
+                {
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+
+                        byte[] foo;
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            responseStream.CopyTo(ms);
+                            foo = ms.ToArray();
+
+                            string key = response.ResponseUri.ToString();
+
+                            LevelMetadata level = null;
+                            if (levelDict.TryGetValue(key, out level))
+                            {
+                                if (level != null)
+                                {
+                                    level.ThumbnailBytes = foo;
+
+                                    ms.Seek(0, SeekOrigin.Begin);
+                                    level.Thumbnail.Texture = Storage4.TextureLoad(ms);
+                                    level.Thumbnail.Loading = false;
+
+                                    // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
+                                    // I guess I could pass in the browser with each call and save it locally for the callback...
+                                    CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
+                                    browser.GotThumbnail(asyncResult, level);
+                                }
+
+                                levelDict.Remove(key);
+                            }
+
+                        }
+                    }
+                }
+                
+            }
+            catch (Exception e)
+            {
+                if (e != null)
+                {
+                }
+            }
+
+        }   // end of GetThumbnailCallback()
+
+        // Abort the request if the timer fires. 
+        private static void TimeoutCallback(object state, bool timedOut)
+        {
+            if (timedOut)
+            {
+                var request = state as HttpWebRequest;
+                if (request != null)
+                {
+                    request.Abort();
+                }
+            }
+
+        }   // end of TimeoutCallback()
+
+
+        #endregion
+
         #region Instrumentation
         #endregion Instrumentation
 

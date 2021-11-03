@@ -82,6 +82,9 @@ namespace Boku.Common
         public string RowKey;
         public string PartitionKey;
 
+        public string ThumbnailUrl;
+        public string DataUrl;
+
         public string Checksum;
 
         // Generated fields used within the UI
@@ -142,6 +145,9 @@ namespace Boku.Common
             level.Checksum = Checksum;
             level.LastSaveTime = LastSaveTime;
 
+            level.ThumbnailUrl = ThumbnailUrl;
+            level.DataUrl = DataUrl;
+
             return level;
         }
 
@@ -167,6 +173,9 @@ namespace Boku.Common
             PartitionKey = packet.PartitionKey;
             Checksum = packet.checksum;
             LastSaveTime = DateTime.SpecifyKind(packet.LastSaveTime, DateTimeKind.Utc);
+
+            // ThumbnailUrl =
+            // DataUrl = 
         }
 
         public void ToPacket(WorldInfoPacket packet)
@@ -190,6 +199,8 @@ namespace Boku.Common
             packet.RowKey = RowKey;
             packet.PartitionKey = PartitionKey;
             packet.LastSaveTime = LastSaveTime;
+            // packet.ThumbnailUrl = ThumbnailUrl;
+            // packet.DataUrl = DataUrl;
         }
 
         public void FromXml(XmlWorldData xml)
@@ -217,6 +228,8 @@ namespace Boku.Common
             LinkedToLevel = xml.LinkedToLevel;
             LastSaveTime = xml.lastWriteTime;
 
+            // ThumbnailUrl = xml.ThumbnailUrl;
+            // DataUrl = xml.DataUrl;
         }
 
         public void ToXml(XmlWorldData xml)
@@ -230,6 +243,9 @@ namespace Boku.Common
             xml.genres = (int)(Genres & ~(Genres.Virtual));
             xml.LinkedFromLevel = LinkedFromLevel;
             xml.LinkedToLevel = LinkedToLevel;
+
+            // xml.ThumbnailUrl = ThumbnailUrl;
+            // xml.DataUrl = DataUrl;
         }
 
         /// <summary>

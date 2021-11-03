@@ -115,12 +115,7 @@ namespace Boku.Common
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
                 thumbnailLoadOpCount += 1;
 
-                // TODO (scoy) TK Replace this with new services when we have the URL for the thumbnail.
-                Web.Community.Async_GetThumbnail(
-                    level.WorldId,
-                    level.Thumbnail,
-                    GotThumbnail,
-                    level);
+                CommunityServices.GetThumbnail(level);
             }
         }
 
@@ -451,7 +446,8 @@ namespace Boku.Common
                     level.LastWriteTime = token.Value<DateTime>("Modified");
                     level.LastSaveTime = token.Value<DateTime>("LastWriteTime");
 
-                    // TODO (scoy) Still need thumb url.
+                    level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
+                    level.DataUrl = token.Value<string>("DataUrl");
 
                     if (IndexOf(level.WorldId) == -1)
                     {
@@ -548,6 +544,17 @@ namespace Boku.Common
 
             thumbnailLoadOpCount -= 1;
         }
+
+        public void GotThumbnail(IAsyncResult ar, LevelMetadata level)
+        {
+            LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+
+            if (state.thumbnailCallback != null)
+                state.thumbnailCallback(level);
+            state.thumbnailCallback = null;
+
+            thumbnailLoadOpCount -= 1;
+        }   // end of GotThumbnail()
 
         private void LevelAdded(LevelMetadata level)
         {
