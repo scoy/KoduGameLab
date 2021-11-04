@@ -243,7 +243,6 @@ namespace Boku.Common
                 string sortDir = basicSorter.SortDirection == SortDirection.Ascending ? "asc" : "desc";
                 string keywords = filter.SearchString;
                 string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
-                creator = null;
 
                 pagingOpCount += 1;
                 CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
