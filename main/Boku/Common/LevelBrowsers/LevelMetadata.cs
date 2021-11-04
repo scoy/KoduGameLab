@@ -53,6 +53,34 @@ namespace Boku.Common
             set { Debug.Assert(browser == null || value == null); browser = value; }
         }
 
+        /*
+            Clarification on what the various time values are...
+         
+            In SQL we have:
+            •	Created : Time level was originally uploaded to SQL.  Not used for anything as far as I can tell.
+            •	Modified : When this entry was last written to in the database.  This gets modified on update.  This is used 
+                    for sorting levels by date.  Note that even for levels that have not been modified this is often slightly 
+                    different than Created.  Apparently we are using DataTime.Now for both and so we get fractionally different 
+                    times for each when a level is first uploaded.
+            •	LastWriteTime : This is the time that is used for creating the checksum and comes from the uploaded metadata.
+
+            In the Client:
+            •	LastSaveTime : This is the same as SQL's LastWriteTime.  Updated on write and then used for checksum calculation.
+            •	LastWriteTime : This gets SQL's Modified time.  Used for sorting by date when in the Community browser.  In the 
+                    local browser we use the system file write time to sort on so this will have invalid data in it.  This only has 
+                    valid data when it gets it from the Community server.
+
+            All these times are UTC.  
+
+            The C# DateTime class keeps track of whether or not a time is UTC but SQL doesn't so we have to coerce all DateTimes 
+            we get from SQL into UTC every time we get a DateTime back from the database.  This is done through the SpecifyKind()
+            method which forces the UTC flag to be set without changing the time value.  
+                LastWriteTime = DateTime.SpecifyKind(packet.Modified, DateTimeKind.Utc);
+                LastSaveTime = DateTime.SpecifyKind(packet.LastSaveTime, DateTimeKind.Utc);
+
+            In SQL we need to use DateTime2 instead of DateTime as the type since SQL's DateTime has less precision than .Net's DateTime class.
+        */
+
         /// <summary>
         /// Level metadata fields
         /// </summary>
