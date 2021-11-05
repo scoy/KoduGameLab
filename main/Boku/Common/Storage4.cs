@@ -917,7 +917,14 @@ namespace Boku.Common
             // Create default user location.
             userLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), @"SavedGames\Boku\Player1");
 
-            uniqueMachineID = GetHashedMACAddress();
+            // For some reason, MAC addresses seem to change regularly so it 
+            // might be better to use the SiteId Guid we created on install.
+            // The reason we need a unique number is so that in a school setting where we
+            // have multiple machines writing to the same network disk space we get per machine
+            // settings and per machine AutoSave stacks.
+            //uniqueMachineID = GetHashedMACAddress();
+            SiteID.Load();
+            uniqueMachineID = SiteID.Instance.Value.ToString().GetHashCode().ToString();
         }
 
         /// <summary>
