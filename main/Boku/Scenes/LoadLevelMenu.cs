@@ -478,6 +478,7 @@ namespace Boku
                     }
 
                     // Always allow abuse reporting.  No longer allow un-reporting.
+                    /*
                     if (true)
                     {
                         if (parent.shared.CurWorld.FlaggedByMe)
@@ -489,6 +490,7 @@ namespace Boku
                             popup.AddItem(Strings.Localize("loadLevelMenu.reportAbuse"), PopupOnReportAbuse);
                         }
                     }
+                    */ 
                 }
                 else
                 {
