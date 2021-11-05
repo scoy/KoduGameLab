@@ -45,7 +45,7 @@ namespace Boku
 
         public string Community = "Default";
         
-        public string KGLUrl = @"https://www.kodugamelab.com";
+        public string KGLUrl = @"http://www.kodugamelab.com";
 
         public string SKAuthUrl = "";
         public string SKUrl = "";
