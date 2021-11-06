@@ -34,8 +34,8 @@ namespace Boku.Common.Sharing
         #region Members
 
         //const string ServiceApiUrl = "https://koduworlds.azurewebsites.net/api/";
-        //const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
-        const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";
+        const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
+        //const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";
 
         static bool internetAvailable = false;
         static bool communityAvailable = false;
