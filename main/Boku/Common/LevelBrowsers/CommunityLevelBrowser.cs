@@ -443,7 +443,7 @@ namespace Boku.Common
                     // TODO (scoy) Rethink / rewrite the browser to actually work for this case.
                     // Optionally, add Modified to LevelMetaData and make the browser sort on it.
                     level.LastWriteTime = token.Value<DateTime>("Modified");
-                    level.LastSaveTime = token.Value<DateTime>("LastWriteTime");
+                    level.LastSaveTime = token.Value<DateTime>("LastSaveTime");
 
                     level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
                     level.DataUrl = token.Value<string>("DataUrl");
