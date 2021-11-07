@@ -1156,7 +1156,7 @@ namespace Boku
                     if (info != null)
                     {
                         // Double check that user is ok to delete.
-                        if (Auth.IsValidCreatorChecksum(info.Checksum, info.LastSaveTime))
+                        if (Auth.IsValidCreatorChecksum(info.Checksum, info.SaveTime))
                         {
                             // Delete this world.
                             bool deleted = parent.updateObj.DeleteCurrentWorld();
@@ -1748,7 +1748,7 @@ namespace Boku
                             // Note that we're using LastSaveTime here instead of LastWriteTime.  That's because the community sends
                             // LastWriteTime as LastSaveTime and sends Modifed as LastWriteTime.  This makes the sorting work since
                             // we want the Community to sort on Modified but we will need the real LastWriteTime for checksum calculation.
-                            if (info.Creator != Auth.DefaultCreatorName && Auth.IsValidCreatorChecksum(info.Checksum, info.LastSaveTime))
+                            if (info.Creator != Auth.DefaultCreatorName && Auth.IsValidCreatorChecksum(info.Checksum, info.SaveTime))
                             {
                                 shared.isDeleteActive = true;
                             }
@@ -2490,13 +2490,14 @@ namespace Boku
             /// </summary>
             public bool DeleteCurrentWorld()
             {
-                return shared.CurWorld.Browser.StartDeletingLevel(
-                    shared.CurWorld.WorldId,
-                    shared.CurWorld.Genres & Genres.Virtual,
-                    shared.CurWorld.LastWriteTime,
-                    DeleteCallback,
-                    shared.CurWorld.Browser);
-            }
+                bool result = shared.CurWorld.Browser.StartDeletingLevel(
+                                                                        shared.CurWorld,
+                                                                        shared.CurWorld.Genres & Genres.Virtual,
+                                                                        DeleteCallback,
+                                                                        shared.CurWorld.Browser);
+
+                return result;
+            }   // end of DeleteCurrentWorld()
 
 
             //

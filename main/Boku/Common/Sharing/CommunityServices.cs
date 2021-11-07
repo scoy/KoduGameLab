@@ -315,7 +315,7 @@ namespace Boku.Common.Sharing
                         created = level.LastWriteTime.ToUniversalTime().ToString(),
                         name = level.Name,
                         creator = level.Creator,
-                        lastWriteTime = level.LastWriteTime.ToUniversalTime().ToString(),
+                        saveTime = level.SaveTime,
                         checksum = level.Checksum,
                         numLevels = level.CalculateTotalLinkLength(),
                         description = level.Description,
@@ -363,9 +363,9 @@ namespace Boku.Common.Sharing
 
                 // Get SAS strings from response.
                 Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-                string koduSAS = container.Value<string>("dataUri");
-                string thumbSAS = container.Value<string>("thumbUri");
-                string largeSAS = container.Value<string>("screenUri");
+                string koduSAS = container.Value<string>("dataUrl");
+                string thumbSAS = container.Value<string>("thumbUrl");
+                string largeSAS = container.Value<string>("screenUrl");
 
                 // Generate temp Kodu2 file.
                 pathToKodu2File = Path.Combine(Storage4.UserLocation, LevelPackage.ExportsPath, level.WorldId.ToString() + ".Kodu2");
@@ -432,14 +432,17 @@ namespace Boku.Common.Sharing
 
             try
             {
+                Debug.Assert(level.LastWriteTime.Kind == DateTimeKind.Utc, "If this isn't UTC, figure out why and fix.");
+                Debug.Assert(level.LastSaveTime.Kind == DateTimeKind.Utc, "If this isn't UTC, figure out why and fix.");
+
                 // Recreate args?  Seems like a waste
                 var args = new
                 {
                     worldId = level.WorldId.ToString(),
-                    created = level.LastWriteTime.ToUniversalTime().ToString(),
+                    created = level.LastWriteTime.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"),
                     name = level.Name,
                     creator = level.Creator,
-                    lastWriteTime = level.LastWriteTime.ToUniversalTime().ToString(),
+                    saveTime = level.SaveTime,
                     checksum = level.Checksum,
                     numLevels = level.CalculateTotalLinkLength(),
                     description = level.Description
@@ -575,7 +578,7 @@ namespace Boku.Common.Sharing
         /// <returns></returns>
         static public bool GetWorlds(int first, int count, string sortBy, string sortDir, string dateRange = "all", string keywords = "", string creator = "")
         {
-            string uri = ServiceApiUrl + "search";
+            string url = ServiceApiUrl + "search";
             var args = new
             {
                 first = first,
@@ -590,7 +593,7 @@ namespace Boku.Common.Sharing
             HttpWebRequest request = null;
             try
             {
-                request = CreateApiRequest(uri, args);
+                request = CreateApiRequest(url, args);
             }
             catch (WebException e)
             {
@@ -637,17 +640,139 @@ namespace Boku.Common.Sharing
 
         #region Download
 
+        static public bool DownloadWorld(LevelMetadata level)
+        {
+            string url = ServiceApiUrl + "downloadWorld";
+            var args = new
+            {
+                worldId = level.WorldId.ToString()
+            };
+
+            HttpWebRequest request = null;
+            try
+            {
+                request = CreateApiRequest(url, args);
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    return false;
+                }
+            }
+
+            // Send request.
+            var result = request.BeginGetResponse(new AsyncCallback(DownloadWorldCallback), request);
+
+            return true;
+        }   // end of DownloadWorld()
+
+        static void DownloadWorldCallback(IAsyncResult asyncResult)
+        {
+            try
+            {
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+                var responseStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(responseStream);
+                string results = reader.ReadToEnd();
+
+                // Get the URL for downloading the .Kodu2 file.
+
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // 404 error: "The remote server returned an error: (404) Not Found."
+
+                }
+            }
+
+        }	// end of GetWorldsCallback()
+
         // For downloading worlds, we should already have the URL for the .Kodu2 file in the 
         // Community Worlds metadata and so should only need to make this call to increment 
         // the downloads count for this world.
+
+        public static void DownloadWorld2(LevelMetadata level)
+        {
+            const int timeout = 10000;   // 10 seconds.
+
+            try
+            {
+                Uri uri = new Uri(level.DataUrl + level.WorldId.ToString() + ".Kodu2");
+                var request = (HttpWebRequest)WebRequest.Create(uri);
+
+                levelDict.Remove(level.DataUrl);   // In case it's already there...
+                levelDict.Add(level.DataUrl, level);
+
+                var result = request.BeginGetResponse(DownloadWorldCallback, request);
+                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
+            }
+            catch (Exception e)
+            {
+                if (e != null)
+                {
+                }
+            }
+        }   // end of DownloadWorld()
+
+        static void DownloadWorldCallback2(IAsyncResult asyncResult)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
+                using (HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncResult))
+                {
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        // Create a path to the imports folder.
+                        string path = Path.Combine(Storage4.UserLocation, "Imports", level.Name + ".Kodu2");
+
+                        using (FileStream fs = new FileStream(path, FileMode.Create))
+                        {
+                            responseStream.CopyTo(fs);
+                            fs.Close();
+                        }
+
+                        List<Guid> importedLevels = new List<Guid>();
+                        bool importOk = LevelPackage.ImportAllLevels(importedLevels);
+
+                        if (importOk)
+                        {
+                            // Call server's Download api which will register the download.
+
+                        }
+                        else
+                        {
+                            // Display error dialog?
+                        }
+
+                        // Clean up dictionary.
+                        string key = response.ResponseUri.ToString();
+                        levelDict.Remove(key);
+                    }   // end of using responseStream
+                }   // end of using response
+
+            }
+            catch (Exception e)
+            {
+                if (e != null)
+                {
+                }
+            }
+
+        }   // end of DownloadWorldCallback()
 
         #endregion Download
 
         #region Delete World
 
-        public static void DeleteWorld(Guid worldId, DateTime lastWriteTime)
+        public static void DeleteWorld(LevelMetadata level)
         {
-            string url = ServiceApiUrl + "DeleteWorld";
+            string url = ServiceApiUrl + "deleteWorld";
             HttpWebRequest request = null;
 
             // Create and attach json payload.
@@ -656,10 +781,10 @@ namespace Boku.Common.Sharing
                 // Make an object to serialize.
                 var args = new
                 {
-                    worldId = worldId.ToString(),
+                    worldId = level.WorldId.ToString(),
                     creator = Auth.CreatorName,
                     pin = Auth.Pin,
-                    lastWriteTime = lastWriteTime.ToString()
+                    saveTime = level.SaveTime
                 };
 
                 request = CreateApiRequest(url, args);
