@@ -420,7 +420,9 @@ namespace Boku.Common
         /// <param name="results"></param>
         public void FetchComplete(IAsyncResult asyncResult, string results)
         {
-            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.DateParseHandling = DateParseHandling.None;
+            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results, settings) as Newtonsoft.Json.Linq.JContainer;
 
             // If no results, just bail.
             if (!asyncResult.IsCompleted || array == null)
