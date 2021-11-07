@@ -176,6 +176,7 @@ namespace Boku.Common.Xml
         public string checksum = "";
         public DateTime lastSaveTime = DateTime.MinValue;//Used to determin if level is owned by user. 
                                                          //Note it should usually be the same as lastWriteTime but not the same as Modified.
+        public string saveTime = "";                        // String version of the above.  This is the one actually used for checksum calculation.
 
 
         public List<Step> tutorialSteps = new List<Step>();
@@ -301,7 +302,7 @@ namespace Boku.Common.Xml
 
             // Since we're saving as the signed in person, use the current Auth info.
             creator = Auth.CreatorName;
-            checksum = Auth.CreateChecksumHash(lastWriteTime);
+            checksum = Auth.CreateChecksumHash(saveTime);
 
             // Manipulate localized strings.
             name = BeforeSaveLocalizedString(name, ref originalName, ref localizedName, ref LocalizedNameDict);
@@ -521,7 +522,9 @@ namespace Boku.Common.Xml
                 // the original date of the level to persist.
                 if (!Program2.CmdLine.Exists("analytics"))
                 {
-                    this.lastWriteTime = DateTime.UtcNow;
+                    lastWriteTime = DateTime.UtcNow;
+                    lastSaveTime = lastWriteTime;
+                    saveTime = lastSaveTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
                 }
 #endif
             }

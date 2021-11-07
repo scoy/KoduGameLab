@@ -69,21 +69,20 @@ namespace Boku.Common
         /// <param name="param"></param>
         /// <returns></returns>
         public bool StartDeletingLevel(
-            Guid worldId,
+            LevelMetadata level,
             Genres bucket,
-            DateTime lastWriteTime,
             BokuAsyncCallback callback,
             object param)
         {
-            int index = IndexOf(worldId);
+            int index = IndexOf(level.WorldId);
             if (index >= 0)
             {
-                LevelMetadata level = allLevels[index];
+                LevelMetadata level2 = allLevels[index];
                 allLevels.RemoveAt(index);
-                LevelRemoved(level);
+                LevelRemoved(level2);
             }
 
-            CommunityServices.DeleteWorld(worldId, lastWriteTime);
+            CommunityServices.DeleteWorld(level);
 
             callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
 
@@ -318,10 +317,19 @@ namespace Boku.Common
 
         public bool StartDownloadingWorld(LevelMetadata level, LevelDownloadCompleteEvent callback)
         {
+            
+            CommunityServices.DownloadWorld(level);
+            LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+            state.downloadCallback = callback;
+
+            /*
             LevelBrowserState state = (LevelBrowserState)level.BrowserState;
             state.downloadCallback = callback;
             level.DownloadState = LevelMetadata.DownloadStates.InProgress;
             return 0 != Web.Community.Async_GetWorldData(level.WorldId, GetWorldDataCallback, level);
+            */
+
+            return true;
         }
 
         //similiar to StartDownloadingWorld, but operates assuming we can't rely on the current browser page to contain the level
@@ -434,16 +442,15 @@ namespace Boku.Common
                     level.Checksum = token.Value<string>("Checksum");
                     level.Creator = token.Value<string>("Creator");
                     level.Downloads = token.Value<int>("Downloads");
-                    // Yes, this looks wrong but it's the way it has to be.  The reason is that
-                    // the Community sorts on Modified which is slightly different than LastWriteTime.
-                    // So we replace LastWriteTime with Modified and store the real LastWriteTime in
-                    // LastSaveTime.  The browser code chokes when the levels from the Community show 
-                    // up in an order that it doesn't expect.  Since the browser sorts on LastWriteTime
-                    // it keeps the browser and Community in sync and things just work.
-                    // TODO (scoy) Rethink / rewrite the browser to actually work for this case.
-                    // Optionally, add Modified to LevelMetaData and make the browser sort on it.
+                    // The Community sorts on Modified which is slightly different than LastWriteTime.
+                    // So we use LastWriteTime as the equivalent of Modified.  It would be nice if we
+                    // changed LastWriteTime to Modified but that would (maybe) break back compat by
+                    // changing LevelMetadata.  On the other hand, since LastWriteTime is only ever
+                    // filled in when browsing the Community, maybe it's worth a try.
+                    // TODO (scoy) Change LastWriteTime to Modified in LevelMetadata and see what breaks.
                     level.LastWriteTime = token.Value<DateTime>("Modified");
                     level.LastSaveTime = token.Value<DateTime>("LastSaveTime");
+                    level.SaveTime = token.Value<string>("SaveTime");
 
                     level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
                     level.DataUrl = token.Value<string>("DataUrl");

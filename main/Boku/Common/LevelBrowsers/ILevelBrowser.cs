@@ -58,14 +58,13 @@ namespace Boku.Common
         /// <summary>
         /// Start deleting a level. May complete synchronously or asynchronously.
         /// </summary>
-        /// <param name="worldId">The level's id</param>
+        /// <param name="level">The level to delete.</param>
         /// <param name="callback">Optional callback. Receives an AsyncResult argument.</param>
         /// <param name="param">User-supplied parameter, returned in callback.</param>
         /// <returns></returns>
         bool StartDeletingLevel(
-            Guid worldId,
+            LevelMetadata level,
             Genres bucket,
-            DateTime lastWriteTime,
             BokuAsyncCallback callback,
             object param);
 

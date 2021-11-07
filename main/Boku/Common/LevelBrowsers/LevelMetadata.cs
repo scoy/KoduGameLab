@@ -147,6 +147,8 @@ namespace Boku.Common
 
         public DateTime LastSaveTime = DateTime.MinValue;   //Used to determine if level is owned by user. 
                                                             //Note it should usually be the same as lastWriteTime but not the same as Modified.
+        public string SaveTime;                             // String version of LastSaveTime
+
         internal LevelMetadata Duplicate()
         {
             LevelMetadata level = new LevelMetadata();
@@ -172,6 +174,7 @@ namespace Boku.Common
             level.PartitionKey = PartitionKey;
             level.Checksum = Checksum;
             level.LastSaveTime = LastSaveTime;
+            level.SaveTime = SaveTime;
 
             level.ThumbnailUrl = ThumbnailUrl;
             level.DataUrl = DataUrl;
@@ -255,6 +258,7 @@ namespace Boku.Common
             LinkedFromLevel = xml.LinkedFromLevel;
             LinkedToLevel = xml.LinkedToLevel;
             LastSaveTime = xml.lastWriteTime;
+            SaveTime = xml.saveTime;
 
             // ThumbnailUrl = xml.ThumbnailUrl;
             // DataUrl = xml.DataUrl;
@@ -271,6 +275,8 @@ namespace Boku.Common
             xml.genres = (int)(Genres & ~(Genres.Virtual));
             xml.LinkedFromLevel = LinkedFromLevel;
             xml.LinkedToLevel = LinkedToLevel;
+
+            xml.saveTime = SaveTime;
 
             // xml.ThumbnailUrl = ThumbnailUrl;
             // xml.DataUrl = DataUrl;

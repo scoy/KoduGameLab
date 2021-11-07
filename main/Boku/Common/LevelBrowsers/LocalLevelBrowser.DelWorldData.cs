@@ -24,9 +24,8 @@ namespace Boku.Common
         /// <param name="param"></param>
         /// <returns></returns>
         public bool StartDeletingLevel(
-            Guid worldId,
+            LevelMetadata level,
             Genres bucket,
-            DateTime lastWriteTime,     // Ignored for local browser.
             BokuAsyncCallback callback,
             object param)
         {
@@ -58,6 +57,7 @@ namespace Boku.Common
                 worldPath = BokuGame.DownloadsPath;
             }
 
+            Guid worldId = level.WorldId;
 
             lock (Synch)
             {
@@ -65,7 +65,7 @@ namespace Boku.Common
                 {
                     record = allLevels[i];
 
-                    if (record.WorldId == worldId && (record.Genres & bucket) == bucket)
+                    if (record.WorldId == level.WorldId && (record.Genres & bucket) == bucket)
                     {
                         worldFilename = Path.Combine(BokuGame.Settings.MediaPath, worldPath + worldId.ToString() + @".Xml");
                         stuffFilename = Path.Combine(BokuGame.Settings.MediaPath, stuffPath + worldId.ToString() + @".Xml");
@@ -93,10 +93,10 @@ namespace Boku.Common
                         // Only deletes terrain file if no other world is using it.  (including autosaves)
                         DeleteTerrainFile(terrainFilename);
 
-                        LevelMetadata level = allLevels[i];
+                        LevelMetadata level2 = allLevels[i];
                         allLevels.RemoveAt(i);
 
-                        LevelRemoved_Synched(level);
+                        LevelRemoved_Synched(level2);
 
                         deleted = true;
 
