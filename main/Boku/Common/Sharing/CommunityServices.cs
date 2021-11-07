@@ -680,6 +680,8 @@ namespace Boku.Common.Sharing
 
         static void DownloadWorldCallback(IAsyncResult asyncResult)
         {
+            const int timeout = 10000;   // 10 seconds.
+
             try
             {
                 var request = (HttpWebRequest)asyncResult.AsyncState;
@@ -689,7 +691,14 @@ namespace Boku.Common.Sharing
                 string results = reader.ReadToEnd();
 
                 // Get the URL for downloading the .Kodu2 file.
+                Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(results) as Newtonsoft.Json.Linq.JContainer;
+                string dataUrl = container.Value<string>("dataUrl");
 
+                Uri uri = new Uri(dataUrl);
+                var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
+
+                var result = dataRequest.BeginGetResponse(DownloadWorldCallback2, dataRequest);
+                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, dataRequest, timeout, true);
             }
             catch (WebException e)
             {
@@ -700,34 +709,7 @@ namespace Boku.Common.Sharing
                 }
             }
 
-        }	// end of GetWorldsCallback()
-
-        // For downloading worlds, we should already have the URL for the .Kodu2 file in the 
-        // Community Worlds metadata and so should only need to make this call to increment 
-        // the downloads count for this world.
-
-        public static void DownloadWorld2(LevelMetadata level)
-        {
-            const int timeout = 10000;   // 10 seconds.
-
-            try
-            {
-                Uri uri = new Uri(level.DataUrl + level.WorldId.ToString() + ".Kodu2");
-                var request = (HttpWebRequest)WebRequest.Create(uri);
-
-                levelDict.Remove(level.DataUrl);   // In case it's already there...
-                levelDict.Add(level.DataUrl, level);
-
-                var result = request.BeginGetResponse(DownloadWorldCallback, request);
-                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
-            }
-            catch (Exception e)
-            {
-                if (e != null)
-                {
-                }
-            }
-        }   // end of DownloadWorld()
+        }	// end of DownloadWorldCallback()
 
         static void DownloadWorldCallback2(IAsyncResult asyncResult)
         {
@@ -738,31 +720,33 @@ namespace Boku.Common.Sharing
                 {
                     using (Stream responseStream = response.GetResponseStream())
                     {
-                        // Create a path to the imports folder.
-                        string path = Path.Combine(Storage4.UserLocation, "Imports", level.Name + ".Kodu2");
+                        // Create a path to the imports folder.  Note the name of the file really
+                        // doesn't matter.
+                        string path = Path.Combine(Storage4.UserLocation, "Imports", "Temp.Kodu2");
 
+                        // If an error left a file there, delete it.
+                        Storage4.Delete(path);
+                        
+                        // Write the file.
                         using (FileStream fs = new FileStream(path, FileMode.Create))
                         {
                             responseStream.CopyTo(fs);
                             fs.Close();
                         }
 
+                        // Trigger Kodu's import system.
                         List<Guid> importedLevels = new List<Guid>();
                         bool importOk = LevelPackage.ImportAllLevels(importedLevels);
 
                         if (importOk)
                         {
-                            // Call server's Download api which will register the download.
-
+                            // How to trigger the download arrow icon to show up in the browser???
                         }
                         else
                         {
                             // Display error dialog?
                         }
 
-                        // Clean up dictionary.
-                        string key = response.ResponseUri.ToString();
-                        levelDict.Remove(key);
                     }   // end of using responseStream
                 }   // end of using response
 
@@ -774,7 +758,7 @@ namespace Boku.Common.Sharing
                 }
             }
 
-        }   // end of DownloadWorldCallback()
+        }   // end of DownloadWorldCallback2()
 
         #endregion Download
 
