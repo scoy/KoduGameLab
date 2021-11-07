@@ -308,6 +308,16 @@ namespace Boku.Common.Sharing
             {
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
+                    // If we're uploading an old level (before we started using SaveTime) then
+                    // Need to fill in SaveTime so the database gets a valid value.
+                    // Note this assumes that the currently signed in user is the creator of 
+                    // the level and we recalc the checksum.
+                    if (string.IsNullOrWhiteSpace(level.SaveTime))
+                    {
+                        level.SaveTime = level.LastSaveTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
+                        level.Checksum = Auth.CreateChecksumHash(Auth.CreatorName, Auth.Pin, level.SaveTime);
+                    }
+
                     // Give the community server the metadata about the level we want to upload.
                     var args = new
                     {
