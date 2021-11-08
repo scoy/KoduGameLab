@@ -89,7 +89,7 @@ namespace Boku
         [XmlIgnore]
         public bool Instrumentation
         {
-            get { return InstrumentationUnchecked && !runningInDebugger; }
+            get { return InstrumentationUnchecked /* && !runningInDebugger */ ; }
         }
 
         [XmlIgnore]
