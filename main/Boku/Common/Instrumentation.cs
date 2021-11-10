@@ -11,6 +11,10 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 
+using Newtonsoft.Json;
+
+using Boku.Common.Sharing;
+
 namespace Boku.Common
 {
     /// These enumeration values persist as strings server-side in the instrumentation
@@ -521,16 +525,23 @@ namespace Boku.Common
             }
 #endif
 
+            string json = JsonConvert.SerializeObject(instruments);
+
+            CommunityServices.UploadInstrumentation(json);
+
+            /*
             Boku.Web.Trans.Instrumentation trans = new Boku.Web.Trans.Instrumentation(
                 instruments,
                 Flush_Callback,
                 state);
-
+            */
             // Make a new, empty set of instruments.
             instruments = new Instruments();
 
-            return trans.Send();
-            //return false;
+            //return trans.Send();
+
+            // Return false tells system not to wait.
+            return false;
         }
 
         #endregion

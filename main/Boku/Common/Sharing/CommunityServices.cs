@@ -921,7 +921,7 @@ namespace Boku.Common.Sharing
         }   // end of GetThumbnailCallback()
 
         // Abort the request if the timer fires. 
-        private static void TimeoutCallback(object state, bool timedOut)
+        static void TimeoutCallback(object state, bool timedOut)
         {
             if (timedOut)
             {
@@ -938,6 +938,91 @@ namespace Boku.Common.Sharing
         #endregion
 
         #region Instrumentation
+
+        static bool pendingUploadInstrumentation;
+
+        public static void UploadInstrumentation(string json)
+        {
+            string url = ServiceApiUrl + "uploadInstrumentation";
+            HttpWebRequest request = null;
+
+            // Attach json payload.
+            try
+            {
+                request = CreateApiRequest(url, json);
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // No internet connection:  "The remote name could not be resolved: 'koduworlds.azurewebsites.net'"
+                    internetAvailable = false;
+                    communityAvailable = false;
+                }
+            }
+
+            // Send request.
+            if (request != null)
+            {
+                const int timeout = 10000;   // 10 seconds.
+
+                pendingUploadInstrumentation = true;
+                var result = request.BeginGetResponse(new AsyncCallback(UploadInstrumentationCallback), request);
+                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, UploadInstrumentationTimeoutCallback, request, timeout, true);
+            }
+
+            // Busy wait for response.  We do this since the next thing
+            // Kodu will do is shut down.
+            while (pendingUploadInstrumentation)
+            {
+                Thread.Sleep(10);
+            }
+
+        }	// end of UploadInstrumentation()
+
+        static void UploadInstrumentationCallback(IAsyncResult asyncResult)
+        {
+            //string text = "";
+
+            try
+            {
+                var request = (HttpWebRequest)asyncResult.AsyncState;
+                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                }
+                else
+                {
+                }
+            }
+            catch (WebException e)
+            {
+                if (e != null)
+                {
+                    // 404 error: "The remote server returned an error: (404) Not Found."
+                    communityAvailable = false;
+                }
+            }
+
+            pendingUploadInstrumentation = false;
+
+        }	// end of UploadInstrumentationCallback()
+
+        // Abort the request if the timer fires. 
+        static void UploadInstrumentationTimeoutCallback(object state, bool timedOut)
+        {
+            if (timedOut)
+            {
+                var request = state as HttpWebRequest;
+                if (request != null)
+                {
+                    request.Abort();
+                }
+            }
+            pendingUploadInstrumentation = false;
+        }   // end of TimeoutCallback()
+
         #endregion Instrumentation
 
         #endregion
