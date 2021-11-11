@@ -527,7 +527,7 @@ namespace Boku.SimWorld.Terra
                     fs = Storage4.OpenRead(filename, StorageSource.All);
                 }
 
-                // If still null just prelace with default terrain file.
+                // If still null just replace with default terrain file.
                 if (fs == null)
                 {
                     filename = "Content\\Xml\\Levels\\Stuff\\TerrainHeightMaps\\30e0bd73-fa87-4849-9610-42dfb9ec5403.Map";
