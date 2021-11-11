@@ -137,9 +137,9 @@ namespace Boku.Common
 
             //active time spent in Kodu
             ActiveSession,
-            
+
             //time in main menu
-            MainMenuTime, 
+            MainMenuTime,
 
             // Time spent in the community level browser UI.
             CommunityUI,
@@ -183,7 +183,7 @@ namespace Boku.Common
             InGame,                         // In game, edit or sim mode
             MiniHubTime,                    // Home Menu
 
-         //   InGameToolBox,                  // Top level wrapper for all world editing tools.
+            //   InGameToolBox,                  // Top level wrapper for all world editing tools.
 
             // Add your timer ids above this comment line
             SIZEOF,
@@ -238,14 +238,15 @@ namespace Boku.Common
     public static partial class Instrumentation
     {
         #region Public
-        
+
         //The list of currently active timers.
         public static Dictionary<TimerId, object> activeTimers = new Dictionary<TimerId, object>();
 
         public static void recordFrameRate(float fps)
         {
             int bucket = (int)fps / 5;
-            switch(bucket){
+            switch(bucket)
+            {
                 case 0:
                     IncrementCounter(CounterId.FPS_0to5);
                     break;
@@ -392,7 +393,7 @@ namespace Boku.Common
             return timer;
         }
 
-        
+
         /// <summary>
         /// Stops a timer.
         /// </summary>
@@ -525,9 +526,62 @@ namespace Boku.Common
             }
 #endif
 
-            string json = JsonConvert.SerializeObject(instruments);
+            // Prepare instrumentation for upload
 
-            CommunityServices.UploadInstrumentation(json);
+            // Write events
+            List<object> events = new List<object>();
+            for (int i = 0; i < (int)EventId.SIZEOF; ++i)
+            {
+                List<Event> l = instruments.events[i];
+                if (l == null)
+                    continue;
+                foreach (Event q in l)
+                {
+                    events.Add(new { id = q.Id, comment = q.Comment });
+                }
+            }
+            // Write counters
+            List<object> counters = new List<object>();
+            for (int i = 0; i < (int)CounterId.SIZEOF; ++i)
+            {
+                Counter q = instruments.counters[i];
+                if (q == null)
+                    continue;
+                counters.Add(new { id = q.Id, count = q.Count });
+            }
+            // Write timers
+            List<object> timers = new List<object>();
+            for (int i = 0; i < (int)TimerId.SIZEOF; ++i)
+            {
+                Timer q = instruments.timers[i];
+                if (q == null)
+                    continue;
+                timers.Add(new { id = q.Id, totalTime = q.TotalTime, count = q.Count });
+            }
+            // Write data items
+            List<object> dataItems = new List<object>();
+            for (int i = 0; i < (int)DataItemId.SIZEOF; ++i)
+            {
+                List<DataItem> l = instruments.dataItems[i];
+                if (l == null)
+                    continue;
+                foreach (DataItem q in l)
+                {
+                    dataItems.Add(new { id = q.Id, value = q.Value });
+                }
+            }
+
+            // Put all instrumation in one object for upload
+            var cookedInstrumentation = new
+            {
+                events = events,
+                counters = counters,
+                timers = timers,
+                dataItems = dataItems
+            };
+
+            // Send to services
+            CommunityServices.UploadInstrumentation(cookedInstrumentation);
 
             /*
             Boku.Web.Trans.Instrumentation trans = new Boku.Web.Trans.Instrumentation(
