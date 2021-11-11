@@ -265,7 +265,7 @@ namespace Boku.Common.Sharing
         //
         // Static values used to carry info across share calls and callbacks.
         //
-        // Level we're sharing.
+        // Level we're sharing.  Ugly, but it works.
         static LevelMetadata level = null;
         static string pathToKodu2File = null;
 
@@ -654,6 +654,9 @@ namespace Boku.Common.Sharing
 
         static public bool DownloadWorld(LevelMetadata level)
         {
+            // Hold onto the a ref for the level we're trying to download.
+            CommunityServices.level = level;
+
             string url = ServiceApiUrl + "downloadWorld";
             var args = new
             {
@@ -676,6 +679,8 @@ namespace Boku.Common.Sharing
 
             // Send request.
             var result = request.BeginGetResponse(new AsyncCallback(DownloadWorldCallback), request);
+
+            level.DownloadState = LevelMetadata.DownloadStates.InProgress;
 
             return true;
         }   // end of DownloadWorld()
@@ -707,7 +712,7 @@ namespace Boku.Common.Sharing
                 if (e != null)
                 {
                     // 404 error: "The remote server returned an error: (404) Not Found."
-
+                    CommunityServices.level.DownloadState = LevelMetadata.DownloadStates.Failed;
                 }
             }
 
@@ -742,11 +747,11 @@ namespace Boku.Common.Sharing
 
                         if (importOk)
                         {
-                            // How to trigger the download arrow icon to show up in the browser???
+                            CommunityServices.level.DownloadState = LevelMetadata.DownloadStates.Complete;
                         }
                         else
                         {
-                            // Display error dialog?
+                            CommunityServices.level.DownloadState = LevelMetadata.DownloadStates.Failed;
                         }
 
                     }   // end of using responseStream
