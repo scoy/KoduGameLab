@@ -946,7 +946,7 @@ namespace Boku.Common.Sharing
 
         static bool pendingUploadInstrumentation;
 
-        public static void UploadInstrumentation(string json)
+        public static void UploadInstrumentation(object instrumentation)
         {
             string url = ServiceApiUrl + "uploadInstrumentation";
             HttpWebRequest request = null;
@@ -954,7 +954,7 @@ namespace Boku.Common.Sharing
             // Attach json payload.
             try
             {
-                request = CreateApiRequest(url, json);
+                request = CreateApiRequest(url, instrumentation);
             }
             catch (WebException e)
             {
