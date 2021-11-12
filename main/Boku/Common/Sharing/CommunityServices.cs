@@ -866,6 +866,10 @@ namespace Boku.Common.Sharing
             }
             catch (Exception e)
             {
+                //CMP. Hack to allow thumbs to continue loading
+                CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
+                browser.GotThumbnail(null, level);
+
                 if (e != null)
                 {
                 }
@@ -918,6 +922,9 @@ namespace Boku.Common.Sharing
             }
             catch (Exception e)
             {
+                //CMP. Hack to allow thumbs to continue loading
+                CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
+                browser.GotThumbnail(null, level);
                 if (e != null)
                 {
                 }
