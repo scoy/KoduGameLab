@@ -183,9 +183,9 @@ namespace Boku.Common
                                 }
                                 else if (partFullName.StartsWith(TerrainFolder))
                                 {
-                                    // Note this is in in Downloads
-                                    targetPath = Path.Combine(targetPath, StuffFolder, HeightMapsFolder, partFilename);
-                                    targetPath = targetPath.Replace(".Raw", ".Map");
+                                    // Note this is in in Downloads.
+                                    // Force terrain filename to match worldId.
+                                    targetPath = Path.Combine(targetPath, StuffFolder, HeightMapsFolder, guid.ToString() + ".Map");
                                 }
                                 else
                                 {
@@ -219,6 +219,7 @@ namespace Boku.Common
                                     //      Change genres to be Downloads rather than MyWorlds.
                                     //      Check the version number and set result to false if it is newer than the client we're running.
                                     //      Change the terrain file to .Map if still .Raw.
+                                    //      Make sure the filename for the .Map file matches what is in the main file.
                                     Stream fileStream = Storage4.OpenWrite(targetPath);
 
                                     using (StreamWriter sw = new StreamWriter(fileStream))
@@ -293,6 +294,7 @@ namespace Boku.Common
         ///     Change the stuff file path from MyWorlds to Downloads.
         ///     Change genres to be Downloads rather than MyWorlds.
         ///     Check the version number and set result to false if it is newer than the client we're running.
+        ///     Change the terrain file to use the .Map extension and have its name match the worldId.
         /// </summary>
         /// <param name="line"></param>
         /// <param name="guid"></param>
@@ -372,13 +374,15 @@ namespace Boku.Common
             }   // end of test for version
 
             //
-            // Fix up path of terrain file.
+            // Fix up path of terrain file.  Need to use .Map extension and force filename to match worldId.
             //
             startIndex = line.IndexOf("<virtualMapFile>");
             endIndex = -1;
             if (startIndex >= 0)
             {
-                line = line.Replace(".Raw", ".Map");
+                int slashIndex = line.LastIndexOf('\\');
+                line = line.Substring(0, slashIndex + 1);
+                line += guid.ToString() + ".Map</virtualMapFile>";
             }
 
             return result;
@@ -965,3 +969,4 @@ namespace Boku.Common
     }   // end of class Decompressor
 
 }   // end of namespace Boku.Common
+
