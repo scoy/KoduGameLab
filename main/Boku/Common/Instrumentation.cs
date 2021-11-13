@@ -526,62 +526,8 @@ namespace Boku.Common
             }
 #endif
 
-            // Prepare instrumentation for upload
-
-            // Write events
-            List<object> events = new List<object>();
-            for (int i = 0; i < (int)EventId.SIZEOF; ++i)
-            {
-                List<Event> l = instruments.events[i];
-                if (l == null)
-                    continue;
-                foreach (Event q in l)
-                {
-                    events.Add(new { id = q.Id, comment = q.Comment });
-                }
-            }
-            // Write counters
-            List<object> counters = new List<object>();
-            for (int i = 0; i < (int)CounterId.SIZEOF; ++i)
-            {
-                Counter q = instruments.counters[i];
-                if (q == null)
-                    continue;
-                counters.Add(new { id = q.Id, count = q.Count });
-            }
-            // Write timers
-            List<object> timers = new List<object>();
-            for (int i = 0; i < (int)TimerId.SIZEOF; ++i)
-            {
-                Timer q = instruments.timers[i];
-                if (q == null)
-                    continue;
-                timers.Add(new { id = q.Id, totalTime = q.TotalTime, count = q.Count });
-            }
-            // Write data items
-            List<object> dataItems = new List<object>();
-            for (int i = 0; i < (int)DataItemId.SIZEOF; ++i)
-            {
-                List<DataItem> l = instruments.dataItems[i];
-                if (l == null)
-                    continue;
-                foreach (DataItem q in l)
-                {
-                    dataItems.Add(new { id = q.Id, value = q.Value });
-                }
-            }
-
-            // Put all instrumation in one object for upload
-            var cookedInstrumentation = new
-            {
-                events = events,
-                counters = counters,
-                timers = timers,
-                dataItems = dataItems
-            };
-
-            // Send to services
-            CommunityServices.UploadInstrumentation(cookedInstrumentation);
+            // Prepare and upload instrumentation
+            UploadInstruments();
 
             /*
             Boku.Web.Trans.Instrumentation trans = new Boku.Web.Trans.Instrumentation(
@@ -596,6 +542,85 @@ namespace Boku.Common
 
             // Return false tells system not to wait.
             return false;
+        }
+
+
+
+        public static void UploadInstruments()
+        {
+            //progress.Message = "Sending your feedback...";
+
+            // Put all instrumation in one object for upload
+            var cookedInstrumentation = new
+            {
+                userName= BokuShared.Auth.CreatorName,
+                events = new List<object>(),
+                counters = new List<object>(),
+                timers = new List<object>(),
+                dataItems = new List<object>()
+            };
+            //Turn each instrument type into a simple object array for 
+            //upload to services
+            for (int i = 0; i < instruments.events.Length; ++i)
+            {
+                List<Boku.Common.Instrumentation.Event> list = instruments.events[i];
+                if (list == null)
+                    continue;
+                for (int j = 0; j < list.Count; ++j)
+                {
+                    Boku.Common.Instrumentation.Event src = list[j];
+                    cookedInstrumentation.events.Add(new
+                    {
+                        Name = src.Id.ToString(),
+                        Comment = src.Comment,
+                    });
+                }
+            }
+
+            for (int i = 0; i < instruments.timers.Length; ++i)
+            {
+                Boku.Common.Instrumentation.Timer src = instruments.timers[i];
+                if (src == null)
+                    continue;
+                cookedInstrumentation.timers.Add(new
+                {
+                    Name = src.Id.ToString(),
+                    TotalTime = src.TotalTime,
+                    Count = src.Count
+                });
+
+            }
+
+            for (int i = 0; i < instruments.counters.Length; ++i)
+            {
+                Boku.Common.Instrumentation.Counter src = instruments.counters[i];
+                if (src == null)
+                    continue;
+                cookedInstrumentation.counters.Add(new
+                {
+                    Name = src.Id.ToString(),
+                    Count = src.Count
+                });
+            }
+
+            for (int i = 0; i < instruments.dataItems.Length; ++i)
+            {
+                List<Boku.Common.Instrumentation.DataItem> list = instruments.dataItems[i];
+                if (list == null)
+                    continue;
+                for (int j = 0; j < list.Count; ++j)
+                {
+                    Boku.Common.Instrumentation.DataItem src = list[j];
+                    cookedInstrumentation.dataItems.Add(new
+                    {
+                        Name = src.Id.ToString(),
+                        Value = src.Value
+                    });
+                }
+            }
+
+            //Transmit cooked instruments
+            CommunityServices.UploadInstrumentation(cookedInstrumentation);
         }
 
         #endregion
