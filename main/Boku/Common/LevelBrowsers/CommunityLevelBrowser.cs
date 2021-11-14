@@ -588,6 +588,8 @@ namespace Boku.Common
 
         private bool IsAlreadyDownloaded(LevelMetadata level)
         {
+            bool isAlreadyDownloaded = false;
+
             string filename = BokuGame.Settings.MediaPath + BokuGame.DownloadsPath + level.WorldId.ToString() + @".Xml";
             
             if (Storage4.FileExists(filename, StorageSource.UserSpace))
@@ -597,14 +599,16 @@ namespace Boku.Common
                 {
                     LevelMetadata local = LevelMetadata.CreateFromXml(xml);
 
-                    return (
+                    DateTime levelSaveTime = DateTime.Parse(level.SaveTime);
+
+                    isAlreadyDownloaded = 
                         local.WorldId == level.WorldId &&
                         local.Creator == level.Creator &&
-                        local.LastWriteTime >= level.LastWriteTime);
+                        local.LastWriteTime >= levelSaveTime;
                 }
             }
 
-            return false;
+            return isAlreadyDownloaded;
         }
 
         #endregion
