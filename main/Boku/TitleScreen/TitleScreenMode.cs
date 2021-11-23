@@ -67,7 +67,20 @@ namespace Boku
                 if (done && !parent.logonDialog.Active)
                 {
                     // Ping the community to see if it's alive and let it know we've run a session.
-                    CommunityServices.Ping(startup: true);
+                    //CommunityServices.Ping(startup: true);
+                    var args = new
+                    {
+                        //startup = startup.ToString(),
+                        clientVersion = Program2.ThisVersion.ToString(),
+                        lang = Boku.Common.Localization.Localizer.LocalLanguage,
+                        siteId = SiteID.Instance.Value.ToString()
+                    };
+                    KoduService.Ping(args,(responseObject)=>{
+                        if(responseObject==null)
+                        {
+                            //ping failed.
+                        }
+                    });
 
                     // Switch to MainMenu.
                     parent.DismissAndShowMain(null, null);

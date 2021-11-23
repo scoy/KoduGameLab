@@ -948,7 +948,16 @@ namespace Boku
             if (cur == Strings.Localize("mainMenu.community") || cur == "GALLERY")
             {
                 // Check to see if the community server is reachable before switching screens.
-                if (!CommunityServices.PingNonAsync())
+                var args = new
+                {
+                    //startup = startup.ToString(),
+                    clientVersion = Program2.ThisVersion.ToString(),
+                    lang = Boku.Common.Localization.Localizer.LocalLanguage,
+                    siteId = SiteID.Instance.Value.ToString()
+                };
+
+                if (!KoduService.PingNonAsync(args))
+                //if (!CommunityServices.PingNonAsync())
                 {
                     noCommunityMessage.Activate();
                     menu.Active = true;

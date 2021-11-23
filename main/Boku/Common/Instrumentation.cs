@@ -544,6 +544,11 @@ namespace Boku.Common
             return false;
         }
 
+        static List<object> ExceptionInfos = new List<object>();
+        public static void RecordException(object info)
+        {
+            ExceptionInfos.Add(info);
+        }
 
 
         public static void UploadInstruments()
@@ -557,7 +562,8 @@ namespace Boku.Common
                 events = new List<object>(),
                 counters = new List<object>(),
                 timers = new List<object>(),
-                dataItems = new List<object>()
+                dataItems = new List<object>(),
+                exceptions= ExceptionInfos //NOTE. Used directly. Not cooked.
             };
             //Turn each instrument type into a simple object array for 
             //upload to services

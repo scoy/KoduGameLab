@@ -98,10 +98,23 @@ namespace Boku
 
                     // Share.
                     // Check to see if the community server is reachable before sharing level.
-                    if (!CommunityServices.PingNonAsync())
+                    var args = new
+                    {
+                        //startup = startup.ToString(),
+                        clientVersion = Program2.ThisVersion.ToString(),
+                        lang =Boku.Common.Localization.Localizer.LocalLanguage,
+                        siteId = SiteID.Instance.Value.ToString()
+                    };
+
+                    if (!KoduService.PingNonAsync(args))
                     {
                         ShowNoCommunityDialog();
                     }
+
+                    //if (!CommunityServices.PingNonAsync())
+                    //{
+                    //    ShowNoCommunityDialog();
+                    //}
 
                     // Deactivate dialog.
                     dialog.Deactivate();
@@ -236,7 +249,48 @@ namespace Boku
             // Always force us to save starting with the first level in the chain.
             level = level.FindFirstLink();
 
-            CommunityServices.ShareWorld(level);
+            //Prepare level for upload
+            if (string.IsNullOrWhiteSpace(level.SaveTime))
+            {
+                level.SaveTime = level.LastSaveTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
+                level.Checksum = BokuShared.Auth.CreateChecksumHash(BokuShared.Auth.CreatorName, BokuShared.Auth.Pin, level.SaveTime);
+            }
+
+            // Generate temp Kodu2 file.
+            string pathToKodu2File = Path.Combine(Storage4.UserLocation, LevelPackage.ExportsPath, level.WorldId.ToString() + ".Kodu2");
+            LoadLevelMenu.Shared.ExportLevel(level, pathToKodu2File);
+
+            // Get paths for image files.
+            string pathToThumb = Path.Combine(Storage4.UserLocation, @"Content\Xml\Levels\MyWorlds", level.WorldId.ToString() + ".Jpg");
+            string pathToLarge = Path.Combine(Storage4.UserLocation, @"Content\Xml\Levels\MyWorlds", level.WorldId.ToString() + "_800.Jpg");
+
+
+            // Give the community server the metadata about the level we want to upload.
+            var args = new
+            {
+                worldId = level.WorldId.ToString(),
+                created = level.LastWriteTime.ToUniversalTime().ToString(),
+                name = level.Name,
+                creator = level.Creator,
+                saveTime = level.SaveTime,
+                checksum = level.Checksum,
+                numLevels = level.CalculateTotalLinkLength(),
+                description = level.Description,
+                pin = BokuShared.Auth.Pin,
+            };
+
+            KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge,(response) =>{
+                if(response==null)
+                {
+                    //failed
+                }
+
+                // Clean up.
+                // Delete the temp Kodu2 file.
+                File.Delete(pathToKodu2File);
+
+            });
+            //CommunityServices.ShareWorld(level);
 
             /*
             //TODO: check for broken links?
