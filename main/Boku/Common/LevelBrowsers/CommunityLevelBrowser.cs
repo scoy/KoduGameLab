@@ -82,8 +82,25 @@ namespace Boku.Common
                 LevelRemoved(level2);
             }
 
-            CommunityServices.DeleteWorld(level);
+            //CommunityServices.DeleteWorld(level);
 
+            //Build delete world args
+            var args = new
+            {
+                worldId = level.WorldId.ToString(),
+                creator = Auth.CreatorName,
+                pin = Auth.Pin,
+                saveTime = level.SaveTime
+            };
+            KoduService.DeleteWorld(args,(returnedObject)=> { 
+                if(returnedObject==null)
+                {
+                    //delete failed
+                }
+                //4scoy. Handle success/failure
+            });
+
+            //4scoy. shouldnt we call this when delete finishes?
             callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
 
             return true;    // Looks like this is ignored?
@@ -114,7 +131,58 @@ namespace Boku.Common
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
                 thumbnailLoadOpCount += 1;
 
-                CommunityServices.GetThumbnail(level);
+                //CommunityServices.GetThumbnail(level);
+                KoduService.GetThumbnail(level.ThumbnailUrl,
+                    
+                    (responseData)=> { 
+                    if(responseData == null)
+                    {
+                        //failed
+
+                        //4scoy. is this needed/wanted in case of fail?
+                        LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+                        if (state.thumbnailCallback != null)
+                            state.thumbnailCallback(level);
+                        state.thumbnailCallback = null;
+
+
+                        thumbnailLoadOpCount -= 1;
+                    }
+                    else
+                    {
+                        //use response data to make thumbnail
+                        byte[] data = responseData;
+
+                        level.ThumbnailBytes = data;
+                        using (MemoryStream ms = new MemoryStream(data))
+                        {
+                            ms.Seek(0, SeekOrigin.Begin);
+                            level.Thumbnail.Texture = Storage4.TextureLoad(ms);
+                            level.Thumbnail.Loading = false;
+                        }
+
+                        // 4scoy. Make sure success/failure handled right.
+
+                        // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
+                        // I guess I could pass in the browser with each call and save it locally for the callback...
+                        //CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
+                        //browser.GotThumbnail(asyncResult, level);
+
+                        LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+
+                        //4scoy functionally this seems to just do a ui refresh
+                        //Maybe explicitly calling the function would be
+                        //better
+                        if (state.thumbnailCallback != null)
+                            state.thumbnailCallback(level);
+                        state.thumbnailCallback = null;
+
+                        thumbnailLoadOpCount -= 1;
+
+
+                    }
+                });
+
             }
         }
 
@@ -244,8 +312,27 @@ namespace Boku.Common
                 string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
 
                 pagingOpCount += 1;
-                CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
 
+
+                //CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
+                //build search arguments
+                var args = new
+                {
+                    first = pagingFirst,
+                    count = kPagingPageSize,
+                    sortBy = sortBy,
+                    sortDir = sortDir,
+                    range = "all",
+                    keywords = keywords,
+                    creator = creator
+                };
+                KoduService.Search(args, (object results) => {
+                    //4scoy NOTE in case of fail (results==null) we still pass
+                    //to FetchComplete(). It handles that case.
+                    //This should probably be done differently.
+                    FetchComplete((string)results);
+
+                });
                 return true;
 #else
 
@@ -317,8 +404,50 @@ namespace Boku.Common
 
         public bool StartDownloadingWorld(LevelMetadata level, LevelDownloadCompleteEvent callback)
         {
-            
-            CommunityServices.DownloadWorld(level);
+            var args = new
+            {
+                worldId = level.WorldId.ToString()
+            };
+            KoduService.DownloadWorld(args, (responseStream) =>{
+
+                if(responseStream==null)
+                {
+                    //failed
+                    //4scoy. Handle this.
+                    return;
+                }
+
+                // Create a path to the imports folder.  Note the name of the file really
+                // doesn't matter.
+                string path = Path.Combine(Storage4.UserLocation, "Imports", "Temp.Kodu2");
+
+                // If an error left a file there, delete it.
+                Storage4.Delete(path);
+
+                // Write the file.
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    responseStream.CopyTo(fs);
+                    fs.Close();
+                }
+
+                // Trigger Kodu's import system.
+                List<Guid> importedLevels = new List<Guid>();
+                bool importOk = LevelPackage.ImportAllLevels(importedLevels);
+
+                //4scoy.Is this right?
+                if (importOk)
+                {
+                    level.DownloadState = LevelMetadata.DownloadStates.Complete;
+                }
+                else
+                {
+                    level.DownloadState = LevelMetadata.DownloadStates.Failed;
+                }
+
+            });
+
+            //CommunityServices.DownloadWorld(level);
             LevelBrowserState state = (LevelBrowserState)level.BrowserState;
             state.downloadCallback = callback;
 
@@ -418,20 +547,22 @@ namespace Boku.Common
         /// from the passed in result string.
         /// </summary>
         /// <param name="results"></param>
-        public void FetchComplete(IAsyncResult asyncResult, string results)
+        public void FetchComplete(string results)
         {
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.DateParseHandling = DateParseHandling.None;
-            Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results, settings) as Newtonsoft.Json.Linq.JContainer;
+            //4scoy. is this right?
 
             // If no results, just bail.
-            if (!asyncResult.IsCompleted || array == null)
+            //if (!asyncResult.IsCompleted || array == null)
+            if (results == null)
             {
                 pagingEndReached = true;
                 return;
             }
             else
             {
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.DateParseHandling = DateParseHandling.None;
+                Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results, settings) as Newtonsoft.Json.Linq.JContainer;
 
                 int count = 0;
                 foreach (JToken token in array)

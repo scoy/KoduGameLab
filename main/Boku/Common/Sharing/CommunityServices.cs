@@ -33,9 +33,9 @@ namespace Boku.Common.Sharing
 
         #region Members
 
-        const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
+        //const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
         //const string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
-        //const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
+        const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
 
         static bool internetAvailable = false;
@@ -635,7 +635,10 @@ namespace Boku.Common.Sharing
                 // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
                 // I guess I could pass in the browser with each call and save it locally for the callback...
                 CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
-                browser.FetchComplete(asyncResult, results);
+                
+                //todo. cmp. figure this out.
+                //browser.FetchComplete(asyncResult, results);
+                browser.FetchComplete(results);
             }
             catch (WebException e)
             {
