@@ -47,7 +47,7 @@ namespace Boku.Common
         class LevelBrowserState
         {
             public LevelMetadata level;
-            public LevelDownloadCompleteEvent downloadCallback;
+            public LevelDownloadCompleteEvent downloadCallback = null;
             public ThumbnailDownloadCompleteEvent thumbnailCallback;
         }
 
@@ -74,6 +74,9 @@ namespace Boku.Common
             BokuAsyncCallback callback,
             object param)
         {
+            // Remove the level from the browser's current set of worlds.
+            // Note that this assumes that the delete is just going to 
+            // work.  We do this so that the UI feels very responsive.
             int index = IndexOf(level.WorldId);
             if (index >= 0)
             {
@@ -98,10 +101,21 @@ namespace Boku.Common
                     //delete failed
                 }
                 //4scoy. Handle success/failure
+                // For now, don't do anything.  On success, there's nothing to do.
+                // As noted on the top of the function, we remove the level from the browser
+                // before even trying to delete it. What should happen here is that we should
+                // re-add the level to the browser and give the user a error message telling
+                // them that the delete failed.  Right now, the only way this should fail is
+                // if the services go offline between the Search call and the user choosing to
+                // delete a world.  This should be very rare.  Additionally, the only result
+                // of this is that the next time the user comes into the Community, they will
+                // notice that the world they tried to delete is still there.  Should do this
+                // right for V2 since we handle dialogs much more sanely there.
             });
 
-            //4scoy. shouldnt we call this when delete finishes?
-            callback(null); // DeleteCallback doesn't need result, just needs to start fetching levels.
+            // In this case, the callback is just prompting the browser to start fetching
+            // levels.  No arg is needed.
+            callback(null);
 
             return true;    // Looks like this is ignored?
 
@@ -131,60 +145,40 @@ namespace Boku.Common
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
                 thumbnailLoadOpCount += 1;
 
-                //CommunityServices.GetThumbnail(level);
                 KoduService.GetThumbnail(level.ThumbnailUrl,
                     
                     (responseData)=> { 
-                    if(responseData == null)
-                    {
-                        //failed
-
-                        //4scoy. is this needed/wanted in case of fail?
-                        LevelBrowserState state = (LevelBrowserState)level.BrowserState;
-                        if (state.thumbnailCallback != null)
-                            state.thumbnailCallback(level);
-                        state.thumbnailCallback = null;
-
-
-                        thumbnailLoadOpCount -= 1;
-                    }
-                    else
-                    {
-                        //use response data to make thumbnail
-                        byte[] data = responseData;
-
-                        level.ThumbnailBytes = data;
-                        using (MemoryStream ms = new MemoryStream(data))
+                        if(responseData == null)
                         {
-                            ms.Seek(0, SeekOrigin.Begin);
-                            level.Thumbnail.Texture = Storage4.TextureLoad(ms);
-                            level.Thumbnail.Loading = false;
+                            // Failed.  Nothing to do here.
+                        }
+                        else
+                        {
+                            // Use response data to make thumbnail.
+                            byte[] data = responseData;
+
+                            level.ThumbnailBytes = data;
+                            using (MemoryStream ms = new MemoryStream(data))
+                            {
+                                ms.Seek(0, SeekOrigin.Begin);
+                                level.Thumbnail.Texture = Storage4.TextureLoad(ms);
+                                level.Thumbnail.Loading = false;
+                            }
                         }
 
-                        // 4scoy. Make sure success/failure handled right.
-
-                        // TODO (scoy) This feels dirty.  Is there a better way to tie the browser to the call?
-                        // I guess I could pass in the browser with each call and save it locally for the callback...
-                        //CommunityLevelBrowser browser = BokuGame.bokuGame.community.shared.srvBrowser;
-                        //browser.GotThumbnail(asyncResult, level);
-
+                        // This will trigger a UI refresh which will either use the 
+                        // new thumbnail we just created or, if we had a failure, this
+                        // will just use the MissingImage graphic.
                         LevelBrowserState state = (LevelBrowserState)level.BrowserState;
-
-                        //4scoy functionally this seems to just do a ui refresh
-                        //Maybe explicitly calling the function would be
-                        //better
                         if (state.thumbnailCallback != null)
                             state.thumbnailCallback(level);
                         state.thumbnailCallback = null;
 
                         thumbnailLoadOpCount -= 1;
+                    });
 
-
-                    }
-                });
-
-            }
-        }
+            }   // end if we have any thumbnails to load.
+        }   // end of Update()
 
         public void Shutdown()
         {
@@ -314,8 +308,7 @@ namespace Boku.Common
                 pagingOpCount += 1;
 
 
-                //CommunityServices.GetWorlds(first: pagingFirst, count: kPagingPageSize, sortBy: sortBy, sortDir: sortDir, dateRange: "all", keywords: keywords, creator: creator);
-                //build search arguments
+                // Build search arguments.
                 var args = new
                 {
                     first = pagingFirst,
@@ -408,12 +401,15 @@ namespace Boku.Common
             {
                 worldId = level.WorldId.ToString()
             };
+            level.DownloadState = LevelMetadata.DownloadStates.InProgress;
             KoduService.DownloadWorld(args, (responseStream) =>{
 
                 if(responseStream==null)
                 {
-                    //failed
-                    //4scoy. Handle this.
+                    // Failed.
+                    // Show the failed icon to the user in the UI.
+                    level.DownloadState = LevelMetadata.DownloadStates.Failed;
+
                     return;
                 }
 
@@ -435,7 +431,7 @@ namespace Boku.Common
                 List<Guid> importedLevels = new List<Guid>();
                 bool importOk = LevelPackage.ImportAllLevels(importedLevels);
 
-                //4scoy.Is this right?
+                // Set the icon on the world tile to match the result of the import.
                 if (importOk)
                 {
                     level.DownloadState = LevelMetadata.DownloadStates.Complete;
@@ -448,8 +444,15 @@ namespace Boku.Common
             });
 
             //CommunityServices.DownloadWorld(level);
-            LevelBrowserState state = (LevelBrowserState)level.BrowserState;
-            state.downloadCallback = callback;
+            // 4scoy What is this doing?  Do we need this?
+            // As the code sits right now, the callback is never called.
+            // Looking at the code, it appears to be related to downloading linked levels.
+            // In the old code, when a level was downloaded we also followed any links 
+            // and downloaded all the levels linked to it.  In the new system, all the
+            // linked levels should be part of the .Kodu2 file and will get downloaded
+            // and imported as a unit so chasing the links is no longer needed.
+            //LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+            //state.downloadCallback = callback;
 
             /*
             LevelBrowserState state = (LevelBrowserState)level.BrowserState;
@@ -459,7 +462,7 @@ namespace Boku.Common
             */
 
             return true;
-        }
+        }   // end of StartDownloadingWorld()
 
         //similiar to StartDownloadingWorld, but operates assuming we can't rely on the current browser page to contain the level
         //all world references will be through Guids instead of LevelMetadata until the download completes
@@ -549,10 +552,7 @@ namespace Boku.Common
         /// <param name="results"></param>
         public void FetchComplete(string results)
         {
-            //4scoy. is this right?
-
             // If no results, just bail.
-            //if (!asyncResult.IsCompleted || array == null)
             if (results == null)
             {
                 pagingEndReached = true;
