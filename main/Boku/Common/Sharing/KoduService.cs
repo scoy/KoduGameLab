@@ -12,9 +12,9 @@ namespace Boku.Common.Sharing
 	{
 		#region Members
 		//Our service address
-		//const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
+		const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
 		//const string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
-		const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
+		//const string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
         #endregion
 
         //define callback that passes a WebResponse
