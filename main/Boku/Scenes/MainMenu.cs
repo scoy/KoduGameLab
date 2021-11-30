@@ -951,9 +951,9 @@ namespace Boku
                 var args = new
                 {
                     //startup = startup.ToString(),
-                    clientVersion = Program2.ThisVersion.ToString(),
-                    lang = Boku.Common.Localization.Localizer.LocalLanguage,
-                    siteId = SiteID.Instance.Value.ToString()
+                    //clientVersion = Program2.ThisVersion.ToString(),
+                    //lang = Boku.Common.Localization.Localizer.LocalLanguage,
+                    //siteId = SiteID.Instance.Value.ToString()
                 };
 
                 if (!KoduService.PingNonAsync(args))
