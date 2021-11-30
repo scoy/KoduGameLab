@@ -73,7 +73,7 @@ namespace Boku
                         //startup = startup.ToString(),
                         clientVersion = Program2.ThisVersion.ToString(),
                         lang = Boku.Common.Localization.Localizer.LocalLanguage,
-                        siteId = SiteID.Instance.Value.ToString()
+                        //siteId = SiteID.Instance.Value.ToString()
                     };
                     KoduService.Ping(args,(responseObject)=>{
                         if(responseObject==null)

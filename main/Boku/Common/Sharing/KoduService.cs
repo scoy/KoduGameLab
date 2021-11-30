@@ -366,30 +366,56 @@ namespace Boku.Common.Sharing
 		//Response object passed to callback is null in case of failure
 		private static void MakeApiRequest(string url, object args, WebResponseCallback callBack)
 		{
-			var request = CreateApiRequest(url, args);
+			var timer = new System.Diagnostics.Stopwatch();
+			timer.Start();
+			HttpWebResponse response = null;//respond with null in case of fail
+			try
+			{
+				var request = CreateApiRequest(url, args);
 
-			// Send request.
-			var result = request.BeginGetResponse(asyncResult => {
-				try
-				{
+				// Send request.
+				var result = request.BeginGetResponse(asyncResult => {
+					timer.Stop();
+
 					//Handle request response.
-					Console.WriteLine("MakeApiRequest Callback");
+					Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
 
 					var req = (HttpWebRequest)asyncResult.AsyncState;
-					var response = (HttpWebResponse)req.EndGetResponse(asyncResult);
-					callBack(response);
-				}
-				catch (Exception ex)//todo should this be WebException?
+					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
+				}, request);
+			}
+			catch (WebException ex)//WebException handled first
+			{
+				timer.Stop();
+				Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
+				Console.WriteLine("WebEx ARGS:" + args);
+
+				using (var stream = ex.Response.GetResponseStream())
+				using (var reader = new StreamReader(stream))
 				{
-					//it looks like this is the "normal" failure for stuff like service is not up. 
-					Console.WriteLine("MakeApiRequest EXCEPTION");
-					Console.WriteLine(ex.Message);
-					callBack(null);//report fail
+					Console.WriteLine(reader.ReadToEnd());
 				}
-				finally
-				{
-				}
-			}, request);
+				response = null;//report fail
+			}
+			catch (Exception ex)
+			{
+				timer.Stop();
+
+				//More serious exception. Service possibly not reached.
+				Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
+				Console.WriteLine("EXCEPTION ARGS:" + args);
+				Console.WriteLine(ex.Message);
+				response=null;//report fail
+			}
+			finally
+			{
+				//finally success or fail do the callback
+				//Handle this outside of the try catch to only catch
+				//comm related errors. This might not be the right thing to do.
+				//If a mangled thumbnail or world causes an exception what will happen?
+				callBack(response);
+			}
+
 		}
 
 		//Helper to handle uploads to storage 
