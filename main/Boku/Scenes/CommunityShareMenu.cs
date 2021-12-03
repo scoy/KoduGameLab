@@ -288,6 +288,11 @@ namespace Boku
                 //4scoy
                 //It looks to me like we should be calling 
                 //Callback_PutWorldData here.
+                // NOTE This is no longer needed. Previously, when we uploaded a level that was
+                // part of a linked chain we would traverse the chain and upload every level in
+                // the chain.  That is what this call was doing.  Instead, we now bundle all the
+                // linked levels into the .Kodu2 file and upload them as a unit.
+                // (scoy) TODO Once the new network code is stable, all this should be removed.
 
                 // Clean up.
                 // Delete the temp Kodu2 file.
@@ -339,6 +344,11 @@ namespace Boku
         //4scoy
         //It looks to me like this code should be called inside the UploadWorld 
         //callback
+        // NOTE This is no longer needed. Previously, when we uploaded a level that was
+        // part of a linked chain we would traverse the chain and upload every level in
+        // the chain.  That is what this code is doing.  Instead, we now bundle all the
+        // linked levels into the .Kodu2 file and upload them as a unit.
+        // (scoy) TODO Once the new network code is stable, all this should be removed.
         public void Callback_PutWorldData(AsyncResult result)
         {
             LevelMetadata uploadedLevel = result.Param as LevelMetadata;
