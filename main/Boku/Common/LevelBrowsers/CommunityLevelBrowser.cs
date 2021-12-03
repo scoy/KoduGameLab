@@ -143,39 +143,40 @@ namespace Boku.Common
                 // Pull from the end of the list to service newer requests first.
                 LevelMetadata level = queuedThumbnailLoads[queuedThumbnailLoads.Count - 1];
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
-                thumbnailLoadOpCount += 1;
 
-                KoduService.GetThumbnail(level.ThumbnailUrl,
-                    
-                    (responseData)=> { 
-                        if(responseData == null)
+                if (level.ThumbnailUrl != null)
+                {
+                    thumbnailLoadOpCount += 1;
+                    KoduService.GetThumbnail(level.ThumbnailUrl,
+                        (responseStream) =>
                         {
-                            // Failed.  Nothing to do here.
-                        }
-                        else
-                        {
-                            // Use response data to make thumbnail.
-                            byte[] data = responseData;
-
-                            level.ThumbnailBytes = data;
-                            using (MemoryStream ms = new MemoryStream(data))
+                            if (responseStream == null)
                             {
-                                ms.Seek(0, SeekOrigin.Begin);
-                                level.Thumbnail.Texture = Storage4.TextureLoad(ms);
-                                level.Thumbnail.Loading = false;
+                            // Failed.  Nothing to do here.
                             }
+                            else
+                            {
+                                using (MemoryStream ms = new MemoryStream())
+                                {
+                                    responseStream.CopyTo(ms);
+                                    ms.Seek(0, SeekOrigin.Begin);
+                                    level.Thumbnail.Texture = Storage4.TextureLoad(ms);
+                                    level.Thumbnail.Loading = false;
+                                }
+
                         }
 
                         // This will trigger a UI refresh which will either use the 
                         // new thumbnail we just created or, if we had a failure, this
                         // will just use the MissingImage graphic.
                         LevelBrowserState state = (LevelBrowserState)level.BrowserState;
-                        if (state.thumbnailCallback != null)
-                            state.thumbnailCallback(level);
-                        state.thumbnailCallback = null;
+                            if (state.thumbnailCallback != null)
+                                state.thumbnailCallback(level);
+                            state.thumbnailCallback = null;
 
-                        thumbnailLoadOpCount -= 1;
-                    });
+                            thumbnailLoadOpCount -= 1;
+                        });//end of callback and func
+                }//end of if thumburl!=null
 
             }   // end if we have any thumbnails to load.
         }   // end of Update()
