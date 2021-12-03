@@ -46,12 +46,14 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
+					using (var responseStream = response.GetResponseStream())
+					using (var reader = new StreamReader(responseStream))
+					{
+						var text = reader.ReadToEnd();
 
-					Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-					callback(returnObject);
+						Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+						callback(returnObject);
+					}
 				}
 			});//End of MakeApiRequest
 		}   // end of Ping()
@@ -99,13 +101,14 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
+					using (var responseStream = response.GetResponseStream())
+					using (var reader = new StreamReader(responseStream))
+					{
+						var text = reader.ReadToEnd();
 
-					//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-					callback(text);
-
+						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+						callback(text);
+					}
 				}
 
 			});//End of MakeApiRequest
@@ -113,43 +116,11 @@ namespace Boku.Common.Sharing
 		}   // end of GetWorlds()
 
 		//GetThumbnail
-		//Callback returns byte array of thumb data or null if fail
-		public static void GetThumbnail(string ThumbnailUrl, ByteArrayCallback callback)
+		//Callback returns stream of thumb data or null if fail
+		public static void GetThumbnail(string ThumbnailUrl, ResponseStreamCallback callback)
 		{
-			//const int timeout = 10000;   // 10 seconds.
-			try
-			{
-				Uri uri = new Uri(ThumbnailUrl);
-				var request = (HttpWebRequest)WebRequest.Create(uri);
-
-				var result = request.BeginGetResponse((asyncResult) => {
-					using (HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asyncResult))
-					{
-						using (Stream responseStream = response.GetResponseStream())
-						{
-							byte[] data;
-							//todo. Better way to return data?
-							using (MemoryStream ms = new MemoryStream())
-							{
-								responseStream.CopyTo(ms);
-								data = ms.ToArray();
-							}
-							callback(data);
-						}
-					}
-
-				}, request);
-				//todo timeouts!
-				//ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
-			}
-			catch (Exception e)//Should this be WebException?
-			{
-				callback(null);//failed to load for ANY reason
-				if (e != null)
-				{
-				}
-			}
-
+			//Just pass to DownloadData
+			DownloadData(ThumbnailUrl, callback);
 		}   // end of GetThumbnail()
 
 		//DeleteWorld
@@ -166,12 +137,14 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
+					using (var responseStream = response.GetResponseStream())
+					using (var reader = new StreamReader(responseStream))
+					{
+						var text = reader.ReadToEnd();
 
-					//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-					callback(text);
+						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+						callback(text);
+					}
 
 				}
 			});//End of MakeApiRequest
@@ -184,6 +157,7 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "downloadWorld";
 
+			//first do an api requrest
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
@@ -192,30 +166,43 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					//handle response from DownloadWorld api
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
-
-					// Get the URL for downloading the .Kodu2 file.
-					Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-					string dataUrl = container.Value<string>("dataUrl");
-
-					//get data from dataUrl
-					Uri uri = new Uri(dataUrl);
-					var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
-					dataRequest.BeginGetResponse((asyncResult) => {
-						using (HttpWebResponse dataResponse = (HttpWebResponse)dataRequest.EndGetResponse(asyncResult))
+					var timer = new System.Diagnostics.Stopwatch();
+					timer.Start();
+					string dataUrl = null;
+					try
+					{
+						using (var responseStream = response.GetResponseStream())
+						using (var reader = new StreamReader(responseStream))
 						{
-							using (Stream dataResponseStream = dataResponse.GetResponseStream())
-							{
-								callback(dataResponseStream);
-							}
+							//handle response from DownloadWorld api
+							var text = reader.ReadToEnd();
+
+							// Get the URL for downloading the .Kodu2 file.
+							Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+							dataUrl = container.Value<string>("dataUrl");
 						}
 
-					}, dataRequest);
+					}
+					catch (Exception ex)
+					{
+						timer.Stop();
 
-					//todo. exception handling.
+						//More serious exception. Service possibly not reached.
+						//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
+						//Console.WriteLine("EXCEPTION ARGS:" + args);
+						//Console.WriteLine(ex.Message);
+						
+						Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
+
+						response = null;//report fail
+					}
+					finally{
+						//Pass on data url and callback to DownloadData
+						if (dataUrl!=null)
+							DownloadData(dataUrl, callback);
+						else
+							callback(null);
+					}
 
 				}
 			});//End of MakeApiRequest
@@ -238,9 +225,13 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
+					string text = "";
+					using (var responseStream = response.GetResponseStream())
+					using (var reader = new StreamReader(responseStream))
+					{
+						text = reader.ReadToEnd();
+					}
+
 
 					// Get SAS strings from response.
 					Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
@@ -330,13 +321,13 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					var responseStream = response.GetResponseStream();
-					StreamReader reader = new StreamReader(responseStream);
-					var text = reader.ReadToEnd();
-
-					//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-					callback(text);
-
+					string text = "";
+					using (var responseStream = response.GetResponseStream())
+					using (var reader = new StreamReader(responseStream))
+					{
+						text = reader.ReadToEnd();
+						callback(text);
+					}
 				}
 			});//End of MakeApiRequest
 
@@ -378,7 +369,7 @@ namespace Boku.Common.Sharing
 					timer.Stop();
 
 					//Handle request response.
-					Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
+					//Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
 
 					var req = (HttpWebRequest)asyncResult.AsyncState;
 					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
@@ -387,14 +378,16 @@ namespace Boku.Common.Sharing
 			catch (WebException ex)//WebException handled first
 			{
 				timer.Stop();
-				Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
-				Console.WriteLine("WebEx ARGS:" + args);
+				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("WebEx ARGS:" + args);
 
+				string body = "";
 				using (var stream = ex.Response.GetResponseStream())
 				using (var reader = new StreamReader(stream))
 				{
-					Console.WriteLine(reader.ReadToEnd());
+					body=reader.ReadToEnd();
 				}
+				Instrumentation.RecordException(new {type="WEX", url = url,args=args, message = ex.Message,body=body, time = timer.Elapsed });
 				response = null;//report fail
 			}
 			catch (Exception ex)
@@ -402,10 +395,12 @@ namespace Boku.Common.Sharing
 				timer.Stop();
 
 				//More serious exception. Service possibly not reached.
-				Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
-				Console.WriteLine("EXCEPTION ARGS:" + args);
-				Console.WriteLine(ex.Message);
-				response=null;//report fail
+				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("EXCEPTION ARGS:" + args);
+				//Console.WriteLine(ex.Message);
+				Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
+
+				response = null;//report fail
 			}
 			finally
 			{
@@ -418,39 +413,133 @@ namespace Boku.Common.Sharing
 
 		}
 
-		//Helper to handle uploads to storage 
+		//Helper to handle data downloads of worlds and thumbnails 
+		private static void DownloadData(string url, ResponseStreamCallback callback)
+		{
+			var timer = new System.Diagnostics.Stopwatch();
+			timer.Start();
+			//HttpWebResponse dataResponse = null;//respond with null in case of fail
+			try
+			{
+				//get data from dataUrl
+				Uri uri = new Uri(url);
+				var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
+				dataRequest.BeginGetResponse((asyncResult) => {
+					timer.Stop();
+					//Console.WriteLine("OK MS:" + timer.Elapsed + " " + url);
+
+					using (HttpWebResponse dataResponse = (HttpWebResponse)dataRequest.EndGetResponse(asyncResult))
+					{
+						using (Stream dataResponseStream = dataResponse.GetResponseStream())
+						{
+							callback(dataResponseStream);
+						}
+					}
+
+				}, dataRequest);
+			}
+			catch (WebException ex)//WebException handled first
+			{
+				timer.Stop();
+				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("WebEx ARGS:" + args);
+
+				string body = "";
+				using (var stream = ex.Response.GetResponseStream())
+				using (var reader = new StreamReader(stream))
+				{
+					body = reader.ReadToEnd();
+				}
+				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
+
+				callback(null);//report fail
+			}
+			catch (Exception ex)
+			{
+				timer.Stop();
+
+				//More serious exception. Service possibly not reached.
+				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("EXCEPTION ARGS:" + args);
+				//Console.WriteLine(ex.Message);
+
+				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
+				callback(null);//report fail
+			}
+			finally
+			{
+			}
+		}
+
+			//Helper to handle uploads to storage 
 		private static void UploadData(string url, string contentType, byte[] buffer, GenericObjectCallback callback)
 		{
-			var request = (HttpWebRequest)WebRequest.Create(url);
-			request.ContentType = "application/json";
-			request.Method = "PUT";
-			request.Headers.Add("x-ms-blob-type", "BlockBlob");
-			request.Headers.Add("x-ms-blob-content-type", contentType);
-
-			// Create and attatch binary payload.
-			using (var streamWriter = new BinaryWriter(request.GetRequestStream()))
+			var timer = new System.Diagnostics.Stopwatch();
+			timer.Start();
+			HttpWebResponse response = null;//respond with null in case of fail
+			try
 			{
-				// Attach buffer to request.
-				streamWriter.Write(buffer);
-			}
-			request.BeginGetResponse(asyncResult => {
-				try
+				var request = (HttpWebRequest)WebRequest.Create(url);
+				request.ContentType = "application/json";
+				request.Method = "PUT";
+				request.Headers.Add("x-ms-blob-type", "BlockBlob");
+				request.Headers.Add("x-ms-blob-content-type", contentType);
+				
+				// Create and attatch binary payload.
+				using (var streamWriter = new BinaryWriter(request.GetRequestStream()))
 				{
+					// Attach buffer to request.
+					streamWriter.Write(buffer);
+				}
+
+				// Send request.
+				var result = request.BeginGetResponse(asyncResult => {
+					timer.Stop();
+
 					//Handle request response.
-					Console.WriteLine("UploadData Callback");
-					callback(true);
-				}
-				catch (Exception ex)//todo should this be WebException?
+					Console.WriteLine("OK MS:" + timer.Elapsed.Milliseconds + " " + url);
+
+					var req = (HttpWebRequest)asyncResult.AsyncState;
+					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
+				}, request);
+			}
+			catch (WebException ex)//WebException handled first
+			{
+				timer.Stop();
+				Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("WebEx ARGS:" + args);
+
+				string body = "";
+				using (var stream = ex.Response.GetResponseStream())
+				using (var reader = new StreamReader(stream))
 				{
-					//it looks like this is the "normal" failure for stuff like service is not up. 
-					Console.WriteLine("UploadData EXCEPTION");
-					Console.WriteLine(ex.Message);
-					callback(null);//report fail
+					body = reader.ReadToEnd();
 				}
-				finally
-				{
-				}
-			}, request);
+				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
+
+				response = null;//report fail
+			}
+			catch (Exception ex)
+			{
+				timer.Stop();
+
+				//More serious exception. Service possibly not reached.
+				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
+				//Console.WriteLine("EXCEPTION ARGS:" + args);
+				//Console.WriteLine(ex.Message);
+
+				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
+
+				response = null;//report fail
+			}
+			finally
+			{
+				//finally success or fail do the callback
+				//Handle this outside of the try catch to only catch
+				//comm related errors. This might not be the right thing to do.
+				//If a mangled thumbnail or world causes an exception what will happen?
+				callback(response);
+			}
 		}   // end of UploadData()
 
 		//Wrapper for UploadData that takes a file path
