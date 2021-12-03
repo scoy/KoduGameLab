@@ -5,13 +5,7 @@
 
 #if EXTERNAL || true
 # define GLOBAL_CATCH    // include the global exception handler.
-# if XBOX
-#  define GLOBAL_CATCH_XBOX
-# else
-#  if !NETFX_CORE       // Disable global catch for WinRT.  Replace later?  TODO (****)
-#   define GLOBAL_CATCH_PC
-#  endif
-# endif
+# define GLOBAL_CATCH_PC
 #endif
 
 #if EXTERNAL
@@ -31,27 +25,22 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Xml.Serialization;
 using BokuShared.Wire;
-#if !NETFX_CORE
 using System.Globalization;
-// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FULL SCREEN WINDOWED MODE FIX
 using System.Windows.Forms;
-// FULL SCREEN WINDOWED MODE FIX >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-#endif
 
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-
+using Boku.Analyses;
 using Boku.Common;
+using Boku.Common.Localization;
 using Boku.Common.Sharing;
 using Boku.Common.Xml;
 using Boku.Web;
-using Boku.Analyses;
 
 using BokuShared;
-using Boku.Common.Localization;
 
 namespace Boku
 {
@@ -101,11 +90,6 @@ namespace Boku
 
         public static bool bShowVersionWarning = false;
 
-#if GLOBAL_CATCH_XBOX
-        // The XBOX will popup a Guide message box on unhandled exception.
-        static bool messageBoxShowing = false;
-#endif
-
         static bool localizedFilesUpdated = false;
         static public void langCallback()
         {
@@ -115,48 +99,25 @@ namespace Boku
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-#if NETFX_CORE
-        static public void Main(string[] args)
-#else
         // Must specify STA threading model to be allowed clipboard access.
         [STAThread]
         static public void Main(string[] args)
-#endif
         {
 #if GLOBAL_CATCH
             try
             {
 #endif
 
-#if NETFX_CORE
-            Debug.Assert(false, "Need to figure out how to get version info");
-            ThisVersion = new Version(1, 4, 182, 0);
-            UpdateCode = "055B31F9-07F8-479b-875F-F03279DF595E";
-            // Alt approach found on web.  Can it be made to work?
-            /*
-            var asmName = this.GetType().AssemblyQualifiedName;
-            var versionExpression = new System.Text.RegularExpressions.Regex("Version=(?<version>[0-9.]*)");
-            var m = versionExpression.Match(asmName);
-            string version = String.Empty;
-            if (m.Success)
-            {
-                version = m.Groups["version"].Value;
-            }
-            */
-#else
-
                 ThisVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 Assembly asm = Assembly.GetExecutingAssembly();
                 var attr = (asm.GetCustomAttributes(typeof(GuidAttribute), true));
                 UpdateCode = (attr[0] as GuidAttribute).Value;
-#endif
 
                 // Fake command line args to test double-click to launch
                 //args = new string[3] { args[0], @"/Import", @"C:\Users\scoy\My Documents\New World 3, by Stephen Coy.Kodu2" };
 
                 CmdLine = new CmdLine(args);
 
-#if !NETFX_CORE
                 if (CmdLine.Exists("?") || CmdLine.Exists("HELP"))
                 {
                     System.Windows.Forms.MessageBox.Show(
@@ -181,11 +142,11 @@ namespace Boku
                         "  /NOMICROBIT \t- Do not scan for attached BBC micro:bits\r\n" +
                         "  /MICROBIT \"COM3 E:\"\t- Try to enable micro:bit with given com port and drive letter.  The quotes are required.\r\n" +
                         "  /COMMUNITY <URL>\r\n" +
+                        "  /SERVICE_API_URL <URL>\r\n" +
                         "");
 
                     return;
                 }
-#endif
 
                 {
                     // Initialize level import/export facility
@@ -197,7 +158,6 @@ namespace Boku
                     // pick it up the next time the user enters the load
                     // level menu.
                     Storage4.Init();
-#if !NETFX_CORE
                     Storage4.StartupDir = Application.StartupPath;
 
                     // Note, we need to get the user override location before
@@ -209,7 +169,6 @@ namespace Boku
                     {
                         Storage4.UserOverrideLocation = settings.UserFolder;
                     }
-#endif
 
                     if (!LevelPackage.Initialize(CmdLine))
                     {
@@ -217,10 +176,8 @@ namespace Boku
                         return;
                     }
 
-#if !NETFX_CORE
                     // Restore default state for now.
                     Storage4.ResetUserOverrideLocation();
-#endif
                     // ====================================================
                 }
 
@@ -258,14 +215,12 @@ namespace Boku
                     // import and set it as the startup world so that we can
                     // jump right into it.
 
-#if !NETFX_CORE
                     // First, set the userOverrideLocation so we import to the correct location.
                     BokuSettings settings = BokuSettings.Settings;
                     if (!string.IsNullOrEmpty(settings.UserFolder))
                     {
                         Storage4.UserOverrideLocation = settings.UserFolder;
                     }
-#endif
 
                     List<Guid> importedLevels = new List<Guid>();
                     bool importOk = LevelPackage.ImportAllLevels(importedLevels);
@@ -332,19 +287,11 @@ namespace Boku
                     {
                         if (string.IsNullOrEmpty(commandLineLang))
                         {
-#if NETFX_CORE                        
-                        if (Windows.System.UserProfile.GlobalizationPreferences.Languages.Count > 0)
-#endif
                             {
                                 try
                                 {
                                     // Get current language.
-#if NETFX_CORE
-                                lang = Windows.System.UserProfile.GlobalizationPreferences.Languages[0];
-                                lang = lang.Substring(0, 2);
-#else
                                     lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-#endif
 
                                     // Verify that it's a supported language.
                                     bool valid = false;
@@ -367,12 +314,6 @@ namespace Boku
                                     lang = "EN";
                                 }
                             }
-#if NETFX_CORE                        
-                        else
-                        {
-                            lang = "EN";
-                        }
-#endif
                         }
                         else
                         {
@@ -383,11 +324,7 @@ namespace Boku
                     }
 
                     // Always create missing loc report except when English is the language.
-#if NETFX_CORE
-                if (string.Compare(lang, "EN", StringComparison.CurrentCultureIgnoreCase) != 0)
-#else
                     if (string.Compare(lang, "EN", true) != 0)
-#endif
                     {
                         Localizer.ShouldReportMissing = true;
                     }
@@ -402,9 +339,7 @@ namespace Boku
 
                             while (!localizedFilesUpdated)
                             {
-#if !NETFX_CORE
                                 Thread.Sleep(10);
-#endif
                             }
                         }
                     }
@@ -418,10 +353,6 @@ namespace Boku
 
                 {
                     BokuSettings settings = BokuSettings.Settings;
-
-#if NETFX_CORE
-                settings.FullScreen = true;
-#endif
 
                     // Apply Settings from the command Line
                     // ====================================================
@@ -450,19 +381,8 @@ namespace Boku
                     // Update flags for update checking and instrumentation gathering from both the command line arguments and privacy options chosen during installation.
 
                     // XmlOptionsData will default to these values if these options have not been overridden in the Options screen.
-#if NETFX_CORE
-                InstallerOptCheckForUpdates = Storage4.FileExists(kOptInForUpdatesFilename, StorageSource.TitleSpace);
-                InstallerOptSendInstrumentation = Storage4.FileExists(kOptInForInstrumentationFilename, StorageSource.TitleSpace);
-#else
                     InstallerOptCheckForUpdates = File.Exists(Storage4.TitleLocation + @"\" + kOptInForUpdatesFilename);
                     InstallerOptSendInstrumentation = File.Exists(Storage4.TitleLocation + @"\" + kOptInForInstrumentationFilename);
-#endif
-
-#if NETFX_CORE
-                // For the WinRT version assume that update notifications
-                // are handled by the store.
-                SiteOptions.CheckForUpdates = false;
-#endif
 
                     // XmlOptionData.CheckForUpdates combines the installer option
                     // as well as any user override.
@@ -518,7 +438,6 @@ namespace Boku
                         Storage4.UserOverrideLocation = settings.UserFolder;
                     }
 
-#if !NETFX_CORE
                     if (!XmlOptionsData.ShowMicrobitTiles)
                     {
                         // Scan for attached microbits (but don't connect to them yet). If any are found,
@@ -526,7 +445,6 @@ namespace Boku
                         // permanently visible in the tile picker.
                         Input.MicrobitManager.RefreshDevices(false);
                     }
-#endif
                     // ====================================================
                 }
 
@@ -534,28 +452,30 @@ namespace Boku
                     // Record this installation's unique ID to instrumentation.
                     Instrumentation.RecordDataItem(Instrumentation.DataItemId.InstallationUniqueId, SiteID.Instance.Value.ToString());
 
-#if !NETFX_CORE
                     StartupForm.Startup();
                     StartupForm.EnableCancelButton(false);
                     StartupForm.SetProgressStyle(System.Windows.Forms.ProgressBarStyle.Marquee);
-#endif
 
                     // Get the latest version number.
                     // ====================================================
 
-                    // See if an update is available.
+                    // See if an update is available.  Note, we always get the file even if not checking
+                    // for updates since it also contains the ServiceApiUrl.
+                    FetchLatestVersionFromServer(SiteOptions.Product);
+
+                    // We just fetched the latest ServiceApiUrl.  Now override it if needed.
+                    if (CmdLine.Exists("SERVICE_API_URL"))
+                    {
+                        XmlOptionsData.ServiceApiUrl = CmdLine.GetString("SERVICE_API_URL", "");
+                    }
+
                     if (SiteOptions.CheckForUpdates && !WinStoreHelpers.RunningAsUWP)
                     {
-                        FetchLatestVersionFromServer(SiteOptions.Product);
-
                         var ignoreVersion = new Version(SiteOptions.IgnoreVersion);
                         if (updateInfo != null && ThisVersion < updateInfo.latestVersion
                             && updateInfo.latestVersion != ignoreVersion
                         )
                         {
-#if NETFX_CORE
-                        // TODO (****) Do we have a different version checking scheme for Store Apps?
-#else
                             StartupForm.Shutdown();
 
                             var updateForm = new UpdateForm();
@@ -610,22 +530,13 @@ namespace Boku
                                 SiteOptions.Save();
                             }
 
-#endif
                         }
                     }
 
-#if !NETFX_CORE
                     StartupForm.SetStatusText("Starting up...");
-#endif
 
                     // ====================================================
 
-#if NETFX_CORE
-                {
-                    var factory = new MonoGame.Framework.GameFrameworkViewSource<BokuGame>();
-                    Windows.ApplicationModel.Core.CoreApplication.Run(factory);
-                }
-#else
 
                     // TODO (****) *** See notes!!!!
                     // Consider starting MainForm here and putting init of BokuGame into XNAControl.
@@ -660,13 +571,9 @@ namespace Boku
                     }
                     */
 
-#endif
-
-#if !NETFX_CORE
                     // In case the app was closed while in play mode with a microbit attached. Release microbits
                     // so that the serial port receive thread doesn't block application exit.
                     Boku.Input.MicrobitManager.ReleaseDevices();
-#endif
 
                     FlushInstrumentation();
 
@@ -684,8 +591,6 @@ namespace Boku
                     stream.Close();
                 }
 
-                
-#if !XBOX
                 // Be sure mouse cursor is on regardless of current input mode.
                 BokuGame.bokuGame.IsMouseVisible = true;
 
@@ -727,50 +632,6 @@ namespace Boku
 
                     Process.GetCurrentProcess().Kill();
                 }
-#else // !XBOX
-                // On XBOX, show the error in a Guide message box unless we're running the debugger.
-                if (GamerServices.IsInitialized && !Debugger.IsAttached)
-                {
-                    // The Guide message box only supports messages up to 255 chars in length.
-                    string msg;
-
-                    if(ex is System.IO.IOException)
-                    {
-                        msg = Strings.Localize("error.outOfDiskSpace");
-                    }   
-                    else
-                    {
-                        if (ex.StackTrace.Length > 255)
-                            msg = ex.StackTrace.Substring(0, 255);
-                        else
-                            msg = ex.StackTrace;
-                    }
-
-                    List<string> buttons = new List<string>();
-                    buttons.Add("OK");
-
-                    messageBoxShowing = true;
-                    Guide.BeginShowMessageBox(
-                        ex.Message,
-                        msg,
-                        buttons,
-                        0,
-                        Microsoft.Xna.Framework.GamerServices.MessageBoxIcon.Error,
-                        CrashMessageBoxClosed,
-                        null);
-
-                    // Hang out till the message box closes.
-                    while (messageBoxShowing)
-                    {
-                        Thread.Sleep(1);
-                    }
-                }
-                else
-                {
-                    // GamerServices was not initialized at the time of the crash, so forward it to the OS.
-                    throw;
-                }
-#endif // !XBOX
             }
 #endif // GLOBAL_CATCH
 
@@ -854,6 +715,12 @@ namespace Boku
 
                 Message_Version messageVersion = Message_Version.Load(responseStream);
 
+                // If we've got a valid new URL, save it in OptionsData.
+                if(!String.IsNullOrEmpty(messageVersion.ServiceApiUrl))
+                {
+                    XmlOptionsData.ServiceApiUrl = messageVersion.ServiceApiUrl;
+                }
+
                 updateInfo = new UpdateInfo(messageVersion);
             }
             catch (Exception e)
@@ -908,15 +775,7 @@ namespace Boku
                         {
                             // Pump web request callbacks.
                             Web.Trans.Request.Update();
-#if NETFX_CORE
-                            {
-                                System.Threading.Tasks.Task delayTask = System.Threading.Tasks.Task.Delay(10);
-                                delayTask.ConfigureAwait(false);
-                                delayTask.Wait();
-                            }
-#else
                             System.Threading.Thread.Sleep(10);
-#endif
                             timeSpent += 10;
                         }
                     }

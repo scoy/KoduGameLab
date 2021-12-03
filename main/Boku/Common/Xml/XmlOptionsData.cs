@@ -8,17 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
-
 using System.Xml;
 using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 
-#if NETFX_CORE
-    using Windows.Foundation;
-#endif
-
 using Boku;
+using Boku.Common.Sharing;
 using BokuShared;
 
 namespace Boku.Common.Xml
@@ -122,6 +118,10 @@ namespace Boku.Common.Xml
         public string creatorName = Auth.DefaultCreatorName;
         public string creatorIdHash = Auth.DefaultCreatorHash;
 
+        // URL for web service calls.  Default to hard coded version.  Override
+        // with any newer url we've saved which is fed from LatestVersion.Xml file.
+        public string serviceApiUrl = KoduService.ServiceApiUrl;
+
         private static XmlOptionsData _instance = null;
         
         #endregion
@@ -176,6 +176,24 @@ namespace Boku.Common.Xml
                 {
                     Instance.creatorIdHash = value; 
                     Save();
+                }
+            }
+        }
+
+        public static string ServiceApiUrl
+        {
+            get { return Instance.serviceApiUrl; }
+            set
+            {
+                if (Instance.serviceApiUrl != value)
+                {
+                    Instance.serviceApiUrl = value;
+                    Save();
+
+                    // Also update KoduService since that's where it actually gets used.
+                    // (scoy) TODO This is bad duplication.  We should just have a single 
+                    // instance of this value.
+                    KoduService.ServiceApiUrl = value;
                 }
             }
         }
@@ -734,6 +752,12 @@ namespace Boku.Common.Xml
                     xmlData.langauge = GetInstallerLanguageOrDefault();
                     Save();
                 }
+            }
+
+            // If we've got a valid Url in OptionsData, use it.
+            if (!String.IsNullOrEmpty(xmlData.serviceApiUrl))
+            {
+                KoduService.ServiceApiUrl = xmlData.serviceApiUrl;
             }
 
             return xmlData;
