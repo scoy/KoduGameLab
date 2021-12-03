@@ -102,8 +102,8 @@ namespace Boku
                     {
                         //startup = startup.ToString(),
                         clientVersion = Program2.ThisVersion.ToString(),
-                        lang =Boku.Common.Localization.Localizer.LocalLanguage,
-                        siteId = SiteID.Instance.Value.ToString()
+                        //lang =Boku.Common.Localization.Localizer.LocalLanguage,
+                        //siteId = SiteID.Instance.Value.ToString()
                     };
 
                     if (!KoduService.PingNonAsync(args))
@@ -285,6 +285,10 @@ namespace Boku
                     //failed
                 }
 
+                //4scoy
+                //It looks to me like we should be calling 
+                //Callback_PutWorldData here.
+
                 // Clean up.
                 // Delete the temp Kodu2 file.
                 File.Delete(pathToKodu2File);
@@ -332,6 +336,9 @@ namespace Boku
             }
         }   // end of Callback_Ping()
 
+        //4scoy
+        //It looks to me like this code should be called inside the UploadWorld 
+        //callback
         public void Callback_PutWorldData(AsyncResult result)
         {
             LevelMetadata uploadedLevel = result.Param as LevelMetadata;
