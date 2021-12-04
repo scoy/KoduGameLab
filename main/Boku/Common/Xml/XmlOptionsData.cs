@@ -755,7 +755,7 @@ namespace Boku.Common.Xml
             }
 
             // If we've got a valid Url in OptionsData, use it.
-            if (!String.IsNullOrEmpty(xmlData.serviceApiUrl))
+            if (xmlData!=null && !String.IsNullOrEmpty(xmlData.serviceApiUrl))
             {
                 KoduService.ServiceApiUrl = xmlData.serviceApiUrl;
             }
