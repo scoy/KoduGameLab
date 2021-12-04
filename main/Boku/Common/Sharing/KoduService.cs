@@ -13,14 +13,15 @@ namespace Boku.Common.Sharing
 		#region Members
 
 		//Our service address
-		public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
-        //public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
-        //public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
+		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
+		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
+		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
+		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
-        #endregion
+		#endregion
 
-        //define callback that passes a WebResponse
-        public delegate void WebResponseCallback(HttpWebResponse response);
+		//define callback that passes a WebResponse
+		public delegate void WebResponseCallback(HttpWebResponse response);
 
 		//define callback that passes a byte[]
 		public delegate void ByteArrayCallback(byte[] response);
@@ -62,21 +63,26 @@ namespace Boku.Common.Sharing
 
 		//Ping (non async version)
 		//returns true/false if ping OK.
-		public static bool PingNonAsync(object args)
+		public static Newtonsoft.Json.Linq.JContainer PingNonAsync(object args)
 		{
 			var pingPending = true;
-			var communityAvailable = false;
+			//var communityAvailable = false;
+
+			Newtonsoft.Json.Linq.JContainer responseObject = null;
+
 			Ping(args, 
 				//lambda callback
 				(object returnObject) => {
 					if (returnObject == null)
 					{
 						//ping failed
+						responseObject = null;
 					}
 					else
 					{
 						//ping ok.
-						communityAvailable = true;
+						responseObject = (Newtonsoft.Json.Linq.JContainer)returnObject;
+						//communityAvailable = true;
 					}
 					pingPending = false;
 				}
@@ -86,7 +92,7 @@ namespace Boku.Common.Sharing
 			{
 				Thread.Sleep(10);
 			}
-			return (communityAvailable);
+			return (responseObject);
 		}   // end of PingNonAsync()
 
 		//Search worlds
@@ -304,14 +310,48 @@ namespace Boku.Common.Sharing
 
 
 		}
+		//UploadInstrumentation (non async version)
+		//returns true/false if ping OK.
+		public static bool UploadInstrumentationNonAsync(object args)
+		{
+			var pending = true;
+			var ok = false;
+			//var communityAvailable = false;
 
-        #endregion
+			//Newtonsoft.Json.Linq.JContainer responseObject = null;
 
-        #region Private
+			UploadInstrumentation(args,
+				//lambda callback
+				(object returnObject) => {
+					if (returnObject == null)
+					{
+						// failed
+						ok = false;
+
+					}
+					else
+					{
+						// ok.
+						ok = true;
+					}
+					pending = false;
+				}
+			);
+
+			while (pending)
+			{
+				Thread.Sleep(10);
+			}
+			return (ok);
+		}   // end of PingNonAsync()
+
+		#endregion
+
+		#region Private
 
 		//Finalize an world upload.
 		//Private and should only be called by internals
-        private static void FinalizeUpload(object args, GenericObjectCallback callback)
+		private static void FinalizeUpload(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "finalizeUpload";
 
@@ -334,6 +374,29 @@ namespace Boku.Common.Sharing
 			});//End of MakeApiRequest
 
 		}   // end of DeleteWorld()
+
+		//UploadInstrumentation (async version)
+		//Callback returns server response json or null if fail
+		public static void UploadInstrumentation(object args, GenericObjectCallback callback)
+		{
+			string url = ServiceApiUrl + "uploadInstrumentation";
+
+			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
+				if (response == null)
+				{
+					//failed
+					callback(null);
+				}
+				else
+				{
+					//No response obj expected so check status code
+					if (response.StatusCode == HttpStatusCode.OK)
+						callback(true);
+					else
+						callback(null);
+				}
+			});//End of MakeApiRequest
+		}   // end of UploadInstrumentation()
 
 		//Private helper to make API calls easier
 		private static HttpWebRequest CreateApiRequest(string url, object args)

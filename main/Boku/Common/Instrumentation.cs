@@ -626,7 +626,14 @@ namespace Boku.Common
             }
 
             //Transmit cooked instruments
-            CommunityServices.UploadInstrumentation(cookedInstrumentation);
+            if(KoduService.UploadInstrumentationNonAsync(cookedInstrumentation))
+            {
+                //Upload ok
+            }
+            else
+            {
+                //upload failed
+            }
         }
 
         #endregion

@@ -76,9 +76,21 @@ namespace Boku
                         //siteId = SiteID.Instance.Value.ToString()
                     };
                     KoduService.Ping(args,(responseObject)=>{
-                        if(responseObject==null)
+                        if (responseObject == null)
                         {
                             //ping failed.
+                        }
+                        else
+                        {
+                            var container=(Newtonsoft.Json.Linq.JContainer)responseObject;
+                            var msgStr=container.Value<string>("systemMessage");
+                            //If the response contains a system message display it.
+                            if (!string.IsNullOrEmpty(msgStr))
+                            {
+                                //4scoy. Show dialog.
+                                //Maybe move this ping somewhere a message
+                                //box would be easier like MainMenu?
+                            }
                         }
                     });
 

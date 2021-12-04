@@ -106,9 +106,23 @@ namespace Boku
                         //siteId = SiteID.Instance.Value.ToString()
                     };
 
-                    if (!KoduService.PingNonAsync(args))
+                    //4scoy we are not getting here anymore
+                    // Ping the services
+                    Newtonsoft.Json.Linq.JContainer pingResponse = KoduService.PingNonAsync(args);
+                    if (pingResponse==null)
                     {
+                        //failed
                         ShowNoCommunityDialog();
+                    }
+                    else
+                    {
+                        var msgStr = pingResponse.Value<string>("systemMessage");
+                        //If the response contains a system message display it.
+                        if (!string.IsNullOrEmpty(msgStr))
+                        {
+                            //4scoy. Is this ok the dialog? 
+                            ShowShareErrorDialog(msgStr);
+                        }
                     }
 
                     //if (!CommunityServices.PingNonAsync())
