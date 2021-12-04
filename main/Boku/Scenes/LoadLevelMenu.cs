@@ -431,7 +431,9 @@ namespace Boku
 
                         // Share with community.  No sharing of downloaded files since we expect that they are already uploaded.
                         // No sharing of built in worlds since everyone already has those also.
+                        // Only allow sharing of worlds the user is the author of.
                         if (Program2.SiteOptions.CommunityEnabled
+                            && parent.shared.CurWorld.Creator == Auth.CreatorName
                             && (parent.shared.CurWorld != null)
                             && (parent.shared.CurWorld.Genres & Genres.Downloads) == 0
                             && (parent.shared.CurWorld.Genres & Genres.BuiltInWorlds) == 0)
