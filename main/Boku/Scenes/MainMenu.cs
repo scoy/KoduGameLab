@@ -951,23 +951,43 @@ namespace Boku
                 var args = new
                 {
                     //startup = startup.ToString(),
-                    //clientVersion = Program2.ThisVersion.ToString(),
+                    clientVersion = Program2.ThisVersion.ToString(),
                     //lang = Boku.Common.Localization.Localizer.LocalLanguage,
                     //siteId = SiteID.Instance.Value.ToString()
                 };
 
-                if (!KoduService.PingNonAsync(args))
-                //if (!CommunityServices.PingNonAsync())
+                // Ping the services
+                Newtonsoft.Json.Linq.JContainer pingResponse = KoduService.PingNonAsync(args);
+                if (pingResponse == null)
                 {
+                    //failed
                     noCommunityMessage.Activate();
                     menu.Active = true;
                 }
                 else
                 {
-                    // Open the community UI
-                    Deactivate();
-                    BokuGame.bokuGame.community.Activate();
+                    var msgStr = pingResponse.Value<string>("systemMessage");
+                    //msgStr = "Test Me!";
+                    //If the response contains a system message display it.
+                    if (!string.IsNullOrEmpty(msgStr))
+                    {
+                        //4scoy is this ok?
+                        //Override the noCommunity messagw with 
+                        //returned systemMessage
+                        noCommunityMessage.SetText(msgStr);
+                        noCommunityMessage.Activate();
+                        menu.Active = true;
+    
+                    }
+                    else
+                    {
+
+                        // Open the community UI
+                        Deactivate();
+                        BokuGame.bokuGame.community.Activate();
+                    }
                 }
+
             }
 
             // OPTIONS
