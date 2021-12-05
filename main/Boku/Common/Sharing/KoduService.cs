@@ -8,11 +8,25 @@ using System.Threading;
 
 namespace Boku.Common.Sharing
 {
-	class KoduService
+	public class KoduService
 	{
+        public enum RequestState
+        {
+            None,
+
+            PendingUpload,
+            UploadComplete,
+
+            Pending,
+            Complete,
+
+            NoInternet,
+            Error,
+        }
+
 		#region Members
 
-		//Our service address
+		// Our service address
 		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
 		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
@@ -20,23 +34,26 @@ namespace Boku.Common.Sharing
 
 		#endregion
 
-		//define callback that passes a WebResponse
+		// Define callback that passes a WebResponse.
 		public delegate void WebResponseCallback(HttpWebResponse response);
 
-		//define callback that passes a byte[]
+		// Define callback that passes a byte[].
 		public delegate void ByteArrayCallback(byte[] response);
 
-		//define callback that passes a object
+		// Define callback that passes a object.
 		public delegate void GenericObjectCallback(object responseObject);
 
-		//define callback that passes a WebResponseStream
+		// Define callback that passes a WebResponseStream.
 		public delegate void ResponseStreamCallback(Stream response);
 
 
 		#region Public
 
-		//Ping (async version)
-		//Callback returns server response json or null if fail
+        /// <summary>
+        /// Ping (async version)
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback">Callback gets server response json or null if fail</param>
 		public static void Ping(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "ping";
@@ -44,7 +61,7 @@ namespace Boku.Common.Sharing
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//ping failed
+					// Ping failed.
 					callback(null);
 				}
 				else
@@ -58,31 +75,32 @@ namespace Boku.Common.Sharing
 						callback(returnObject);
 					}
 				}
-			});//End of MakeApiRequest
+			}); // end of MakeApiRequest
 		}   // end of Ping()
 
-		//Ping (non async version)
-		//returns true/false if ping OK.
+        /// <summary>
+        /// Ping (non asyn version)
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns>ResponseObject if ping OK, null otherwise.</returns>
 		public static Newtonsoft.Json.Linq.JContainer PingNonAsync(object args)
 		{
 			var pingPending = true;
-			//var communityAvailable = false;
 
 			Newtonsoft.Json.Linq.JContainer responseObject = null;
 
 			Ping(args, 
-				//lambda callback
+				// lambda callback
 				(object returnObject) => {
 					if (returnObject == null)
 					{
-						//ping failed
+						// Ping failed.
 						responseObject = null;
 					}
 					else
 					{
-						//ping ok.
+						// Ping ok.
 						responseObject = (Newtonsoft.Json.Linq.JContainer)returnObject;
-						//communityAvailable = true;
 					}
 					pingPending = false;
 				}
@@ -92,11 +110,15 @@ namespace Boku.Common.Sharing
 			{
 				Thread.Sleep(10);
 			}
-			return (responseObject);
+
+			return responseObject;
 		}   // end of PingNonAsync()
 
-		//Search worlds
-		//Callback returns server response json or null if fail
+        /// <summary>
+        /// Search Worlds (formerly GetWorlds)
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback">Gets server response json or null if fail.</param>
 		static public void Search(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "search";
@@ -104,7 +126,7 @@ namespace Boku.Common.Sharing
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//Search failed
+					// Search failed.
 					callback(null);
 				}
 				else
@@ -119,20 +141,26 @@ namespace Boku.Common.Sharing
 					}
 				}
 
-			});//End of MakeApiRequest
+			}); //End of MakeApiRequest
 
 		}   // end of GetWorlds()
 
-		//GetThumbnail
-		//Callback returns stream of thumb data or null if fail
+        /// <summary>
+        /// Get thumbnail for world.
+        /// </summary>
+        /// <param name="ThumbnailUrl"></param>
+        /// <param name="callback">Gets stream of thumb data or null if fail.</param>
 		public static void GetThumbnail(string ThumbnailUrl, ResponseStreamCallback callback)
 		{
 			//Just pass to DownloadData
 			DownloadData(ThumbnailUrl, callback);
 		}   // end of GetThumbnail()
 
-		//DeleteWorld
-		//Callback returns null on fail.
+        /// <summary>
+        /// Delete world from Community.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback">Gets response text on success, null on failure.</param>
 		public static void DeleteWorld(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "deleteWorld";
@@ -140,7 +168,7 @@ namespace Boku.Common.Sharing
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//Search failed
+					// Search failed.
 					callback(null);
 				}
 				else
@@ -155,21 +183,24 @@ namespace Boku.Common.Sharing
 					}
 
 				}
-			});//End of MakeApiRequest
+			}); // end of MakeApiRequest
 
 		}   // end of DeleteWorld()
 
-		//Download world to disk
-		//Callback returns a ResponseStream or null on fail.
+        /// <summary>
+        /// Download world to disk.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback">Get ResponseStream or null on failure.</param>
 		public static void DownloadWorld(object args, ResponseStreamCallback callback)
 		{
 			string url = ServiceApiUrl + "downloadWorld";
 
-			//first do an api requrest
+			// First do an api requrest.
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//Download failed
+					// Download failed.
 					callback(null);
 				}
 				else
@@ -182,7 +213,7 @@ namespace Boku.Common.Sharing
 						using (var responseStream = response.GetResponseStream())
 						using (var reader = new StreamReader(responseStream))
 						{
-							//handle response from DownloadWorld api
+							// Handle response from DownloadWorld api.
 							var text = reader.ReadToEnd();
 
 							// Get the URL for downloading the .Kodu2 file.
@@ -202,14 +233,18 @@ namespace Boku.Common.Sharing
 						
 						Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
 
-						response = null;//report fail
+						response = null;    // Report fail.
 					}
 					finally{
-						//Pass on data url and callback to DownloadData
-						if (dataUrl!=null)
-							DownloadData(dataUrl, callback);
-						else
-							callback(null);
+						// Pass on data url and callback to DownloadData.
+                        if (dataUrl != null)
+                        {
+                            DownloadData(dataUrl, callback);
+                        }
+                        else
+                        {
+                            callback(null);
+                        }
 					}
 
 				}
@@ -218,17 +253,23 @@ namespace Boku.Common.Sharing
 
 		}   // end of DownloadWorld()
 
-		//Upload a world(including thumb and screen) from disk
-		//returns null on failure
+        /// <summary>
+        /// Uploads a world (including thumb and screen) from disk.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="levelPath">Path to .Kodu2 file to upoload.</param>
+        /// <param name="thumbPath">Path to thumbnail image to upload.</param>
+        /// <param name="screenPath">Path to screenshot to upload.</param>
+        /// <param name="callback">Gets null on failure.</param>
 		public static void UploadWorld(object args, string levelPath,string thumbPath,string screenPath, GenericObjectCallback callback)
 		{
-			//Create an upload request
+			// Create an upload request.
 			string url = ServiceApiUrl + "authorizeUpload/";
 
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//failed
+					// Failed.
 					callback(null);
 				}
 				else
@@ -256,62 +297,77 @@ namespace Boku.Common.Sharing
 					UploadDataFromFile(uploadDataUrl, @"application/octet-stream", levelPath, (uploadResponse) => {
 						if(uploadResponse == null)
                         {
-							//data upload failed
+							// Data upload failed.
 							uploadFailed = true;
                         }
 						levelUploaded = true;
-						//Check if all uploads have finished...
+						// Check if all uploads have finished...
 						if (levelUploaded && thumbUploaded && screenUploaded)
 						{
-							if (uploadFailed)
-								callback(null);//report failure to caller
-							else
-								FinalizeUpload(args, callback);
+                            if (uploadFailed)
+                            {
+                                callback(null); // Report failure to caller.
+                            }
+                            else
+                            {
+                                FinalizeUpload(args, callback);
+                            }
 						}
 					});
 
 					UploadDataFromFile(uploadScreenUrl, @"image/jpeg", thumbPath, (uploadResponse) => {
 						if (uploadResponse == null)
 						{
-							//data upload failed
+							// Thumbnail upload failed.
 							uploadFailed = true;
 						}
 						thumbUploaded = true;
-						//Check if all uploads have finished...
+						// Check if all uploads have finished...
 						if (levelUploaded && thumbUploaded && screenUploaded)
 						{
-							if (uploadFailed)
-								callback(null);//report failure to caller
-							else
-								FinalizeUpload(args,callback);
+                            if (uploadFailed)
+                            {
+                                callback(null); // Report failure to caller.
+                            }
+                            else
+                            {
+                                FinalizeUpload(args, callback);
+                            }
 						}
 					});
 
 					UploadDataFromFile(uploadThumbUrl, @"image/jpeg", screenPath, (uploadResponse) => {
 						if (uploadResponse == null)
 						{
-							//data upload failed
+							// Screen image upload failed.
 							uploadFailed = true;
 						}
 						screenUploaded = true;
 
-						//Check if all uploads have finished...
+						// Check if all uploads have finished...
 						if (levelUploaded && thumbUploaded && screenUploaded)
 						{
-							if (uploadFailed)
-								callback(null);//report failure to caller
-							else
-								FinalizeUpload(args, callback);
+                            if (uploadFailed)
+                            {
+                                callback(null); // Report failure to caller.
+                            }
+                            else
+                            {
+                                FinalizeUpload(args, callback);
+                            }
 						}
 					});
 
 				}
 			});//End of MakeApiRequest
 
+		}   // end of UploadWorld()
 
-		}
-		//UploadInstrumentation (non async version)
-		//returns true/false if ping OK.
+        /// <summary>
+        /// NonAsync uploading of instrumentation data.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns>True if OK, false on failure.</returns>
 		public static bool UploadInstrumentationNonAsync(object args)
 		{
 			var pending = true;
@@ -325,13 +381,13 @@ namespace Boku.Common.Sharing
 				(object returnObject) => {
 					if (returnObject == null)
 					{
-						// failed
+						// Failed.
 						ok = false;
 
 					}
 					else
 					{
-						// ok.
+						// Ok.
 						ok = true;
 					}
 					pending = false;
@@ -342,16 +398,22 @@ namespace Boku.Common.Sharing
 			{
 				Thread.Sleep(10);
 			}
-			return (ok);
-		}   // end of PingNonAsync()
+
+			return ok;
+		}   // end of UploadInstrumentationNonAsync()
 
 		#endregion
 
 		#region Private
 
-		//Finalize an world upload.
-		//Private and should only be called by internals
-		private static void FinalizeUpload(object args, GenericObjectCallback callback)
+        /// <summary>
+        /// Once all the parts of a world have been uploaded successfully, this is called
+        /// so the services can add the world to the database.
+        /// Should only be called by internals.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback"></param>
+		static void FinalizeUpload(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "finalizeUpload";
 
@@ -398,14 +460,19 @@ namespace Boku.Common.Sharing
 			});//End of MakeApiRequest
 		}   // end of UploadInstrumentation()
 
-		//Private helper to make API calls easier
-		private static HttpWebRequest CreateApiRequest(string url, object args)
+        /// <summary>
+        /// Helper function for making API calls easier.
+        /// </summary>
+        /// <param name="url">Url for request.</param>
+        /// <param name="args">Object which will be turned into a JSON packet and attached to the request.</param>
+        /// <returns>The created WebRequest.</returns>
+		static HttpWebRequest CreateApiRequest(string url, object args)
 		{
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			request.ContentType = "application/json";
 			request.Method = "POST";
 
-			// Create and attatch json payload.
+			// Create and attach json payload.
 			using (var streamWriter = new StreamWriter(request.GetRequestStream()))
 			{
 				// Turn into json string.
@@ -415,16 +482,22 @@ namespace Boku.Common.Sharing
 				streamWriter.Write(json);
 			}
 			return request;
-		}
+		}   // end of CreateApiRequest()
 
 		//Make the api request.
 		//Callback is always called 
 		//Response object passed to callback is null in case of failure
-		private static void MakeApiRequest(string url, object args, WebResponseCallback callBack)
+        /// <summary>
+        /// Makes an API request.
+        /// </summary>
+        /// <param name="url">The URL for the request.</param>
+        /// <param name="args">Object which is serialized into a JSON packet and sent with the request.</param>
+        /// <param name="callBack">Always called, gets response.</param>
+		static void MakeApiRequest(string url, object args, WebResponseCallback callBack)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
-			HttpWebResponse response = null;//respond with null in case of fail
+			HttpWebResponse response = null;    //respond with null in case of fail.
 			try
 			{
 				var request = CreateApiRequest(url, args);
@@ -433,14 +506,14 @@ namespace Boku.Common.Sharing
 				var result = request.BeginGetResponse(asyncResult => {
 					timer.Stop();
 
-					//Handle request response.
+					// Handle request response.
 					//Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
 
 					var req = (HttpWebRequest)asyncResult.AsyncState;
 					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
 				}, request);
 			}
-			catch (WebException ex)//WebException handled first
+			catch (WebException ex) // WebException handled first.
 			{
 				timer.Stop();
 				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
@@ -453,7 +526,7 @@ namespace Boku.Common.Sharing
 					body=reader.ReadToEnd();
 				}
 				Instrumentation.RecordException(new {type="WEX", url = url,args=args, message = ex.Message,body=body, time = timer.Elapsed });
-				response = null;//report fail
+				response = null;    // Report fail.
 			}
 			catch (Exception ex)
 			{
@@ -465,28 +538,32 @@ namespace Boku.Common.Sharing
 				//Console.WriteLine(ex.Message);
 				Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
 
-				response = null;//report fail
+				response = null;    // Report fail.
 			}
 			finally
 			{
-				//finally success or fail do the callback
-				//Handle this outside of the try catch to only catch
-				//comm related errors. This might not be the right thing to do.
-				//If a mangled thumbnail or world causes an exception what will happen?
+				// Finally success or fail do the callback.
+				// Handle this outside of the try catch to only catch
+				// comm related errors. This might not be the right thing to do.
+				// If a mangled thumbnail or world causes an exception what will happen?
 				callBack(response);
 			}
 
-		}
+		}   // end of MakeApiRequest()
 
-		//Helper to handle data downloads of worlds and thumbnails 
-		private static void DownloadData(string url, ResponseStreamCallback callback)
+        /// <summary>
+        /// Helper function to handle data downloads of worlds and thumbnails .
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="callback"></param>
+		static void DownloadData(string url, ResponseStreamCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
 			//HttpWebResponse dataResponse = null;//respond with null in case of fail
 			try
 			{
-				//get data from dataUrl
+				// Get data from dataUrl.
 				Uri uri = new Uri(url);
 				var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
 				dataRequest.BeginGetResponse((asyncResult) => {
@@ -503,7 +580,7 @@ namespace Boku.Common.Sharing
 
 				}, dataRequest);
 			}
-			catch (WebException ex)//WebException handled first
+			catch (WebException ex) // WebException handled first.
 			{
 				timer.Stop();
 				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
@@ -517,31 +594,37 @@ namespace Boku.Common.Sharing
 				}
 				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
 
-				callback(null);//report fail
+				callback(null); // Report fail.
 			}
 			catch (Exception ex)
 			{
 				timer.Stop();
 
-				//More serious exception. Service possibly not reached.
+				// More serious exception. Service possibly not reached.
 				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
 				//Console.WriteLine("EXCEPTION ARGS:" + args);
 				//Console.WriteLine(ex.Message);
 
 				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
-				callback(null);//report fail
+				callback(null); // Report fail.
 			}
 			finally
 			{
 			}
-		}
+		}   // end of DownloadData()
 
-			//Helper to handle uploads to storage 
-		private static void UploadData(string url, string contentType, byte[] buffer, GenericObjectCallback callback)
+        /// <summary>
+        /// Helper function to handle world uploads to blob storage.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="contentType"></param>
+        /// <param name="buffer"></param>
+        /// <param name="callback"></param>
+		static void UploadData(string url, string contentType, byte[] buffer, GenericObjectCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
-			HttpWebResponse response = null;//respond with null in case of fail
+			HttpWebResponse response = null;    // Respond with null in case of fail.
 			try
 			{
 				var request = (HttpWebRequest)WebRequest.Create(url);
@@ -561,14 +644,14 @@ namespace Boku.Common.Sharing
 				var result = request.BeginGetResponse(asyncResult => {
 					timer.Stop();
 
-					//Handle request response.
+					// Handle request response.
 					Console.WriteLine("OK MS:" + timer.Elapsed.Milliseconds + " " + url);
 
 					var req = (HttpWebRequest)asyncResult.AsyncState;
 					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
 				}, request);
 			}
-			catch (WebException ex)//WebException handled first
+			catch (WebException ex) // WebException handled first.
 			{
 				timer.Stop();
 				Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
@@ -582,39 +665,48 @@ namespace Boku.Common.Sharing
 				}
 				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
 
-				response = null;//report fail
+				response = null;    // Report fail.
 			}
 			catch (Exception ex)
 			{
 				timer.Stop();
 
-				//More serious exception. Service possibly not reached.
+				// More serious exception. Service possibly not reached.
 				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
 				//Console.WriteLine("EXCEPTION ARGS:" + args);
 				//Console.WriteLine(ex.Message);
 
 				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
 
-				response = null;//report fail
+				response = null;    // Report fail.
 			}
 			finally
 			{
-				//finally success or fail do the callback
-				//Handle this outside of the try catch to only catch
-				//comm related errors. This might not be the right thing to do.
-				//If a mangled thumbnail or world causes an exception what will happen?
+				// Finally success or fail do the callback.
+				// Handle this outside of the try catch to only catch
+				// comm related errors. This might not be the right thing to do.
+				// If a mangled thumbnail or world causes an exception what will happen?
 				callback(response);
 			}
 		}   // end of UploadData()
 
-		//Wrapper for UploadData that takes a file path
+        /// <summary>
+        /// Wrapper for UploadData that takes a file path.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="contentType"></param>
+        /// <param name="filePath"></param>
+        /// <param name="callback"></param>
 		private static void UploadDataFromFile(string url, string contentType, string filePath, GenericObjectCallback callback)
 		{
 			byte[] buffer = File.ReadAllBytes(filePath);
 			UploadData(url, contentType, buffer, callback);
-		}
+        }   // end of UploadData()
 
-        #endregion //Private
-    }
-}
+        #endregion // Private
+
+    }   // end of class KoduService
+
+}   // end of namespace Boku.Common.Sharing
+
 
