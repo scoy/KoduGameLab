@@ -1574,32 +1574,32 @@ namespace Boku
                 }
 
                 // If Sharing is complete, clear the state.
-                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Complete)
+                if (KoduService.ShareRequestState == KoduService.RequestState.Complete)
                 {
                     // Success.
                     shared.communityShareMenu.ShowShareSuccessDialog();
 
                     // Clear state for next share.
-                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
                 }
 
                 // If Sharing and we don't have internet, show error.
-                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.NoInternet)
+                if (KoduService.ShareRequestState == KoduService.RequestState.NoInternet)
                 {
                     shared.communityShareMenu.ShowNoCommunityDialog();
 
                     // Clear state so we can try again.
-                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
                 }
 
                 // If Sharing caused an error, show the dialog.
-                if (CommunityServices.ShareRequestState == CommunityServices.RequestState.Error)
+                if (KoduService.ShareRequestState == KoduService.RequestState.Error)
                 {
                     // Launch error dialog.
                     shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
 
                     // Clear state so we can try again.
-                    CommunityServices.ShareRequestState = CommunityServices.RequestState.None;
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
                 }
 
                 // Don't update level grid if modal dialog is showing.

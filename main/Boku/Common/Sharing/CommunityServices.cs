@@ -17,6 +17,7 @@ namespace Boku.Common.Sharing
 {
     public class CommunityServices
     {
+        /*
         public enum RequestState
         {
             None,
@@ -30,7 +31,7 @@ namespace Boku.Common.Sharing
             NoInternet,
             Error,
         }
-
+        
         #region Members
 
         const string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
@@ -1122,7 +1123,7 @@ namespace Boku.Common.Sharing
         }   // end of CreateStorageRequest()
 
         #endregion
-
+        */
     }   // end of class CommunityServices
 
 }   // end of namespace Boku.Common.Sharing

@@ -14,9 +14,6 @@ namespace Boku.Common.Sharing
         {
             None,
 
-            PendingUpload,
-            UploadComplete,
-
             Pending,
             Complete,
 
@@ -31,6 +28,11 @@ namespace Boku.Common.Sharing
 		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
+
+        // Used by rest of system to keep track of state.  LoadLevelMenu
+        // needs to poll this for Complete or Error and handle dialogs.
+        // LoadLevelMenu then needs to reset this to None.
+        public static RequestState ShareRequestState = RequestState.None;
 
 		#endregion
 
@@ -263,6 +265,8 @@ namespace Boku.Common.Sharing
         /// <param name="callback">Gets null on failure.</param>
 		public static void UploadWorld(object args, string levelPath,string thumbPath,string screenPath, GenericObjectCallback callback)
 		{
+            ShareRequestState = RequestState.Pending;
+
 			// Create an upload request.
 			string url = ServiceApiUrl + "authorizeUpload/";
 
@@ -270,6 +274,7 @@ namespace Boku.Common.Sharing
 				if (response == null)
 				{
 					// Failed.
+                    ShareRequestState = RequestState.Error;
 					callback(null);
 				}
 				else
@@ -306,6 +311,7 @@ namespace Boku.Common.Sharing
 						{
                             if (uploadFailed)
                             {
+                                ShareRequestState = RequestState.Error;
                                 callback(null); // Report failure to caller.
                             }
                             else
@@ -319,7 +325,8 @@ namespace Boku.Common.Sharing
 						if (uploadResponse == null)
 						{
 							// Thumbnail upload failed.
-							uploadFailed = true;
+                            ShareRequestState = RequestState.Error;
+                            uploadFailed = true;
 						}
 						thumbUploaded = true;
 						// Check if all uploads have finished...
@@ -327,6 +334,7 @@ namespace Boku.Common.Sharing
 						{
                             if (uploadFailed)
                             {
+                                ShareRequestState = RequestState.Error;
                                 callback(null); // Report failure to caller.
                             }
                             else
@@ -340,7 +348,8 @@ namespace Boku.Common.Sharing
 						if (uploadResponse == null)
 						{
 							// Screen image upload failed.
-							uploadFailed = true;
+                            ShareRequestState = RequestState.Error;
+                            uploadFailed = true;
 						}
 						screenUploaded = true;
 
@@ -349,6 +358,7 @@ namespace Boku.Common.Sharing
 						{
                             if (uploadFailed)
                             {
+                                ShareRequestState = RequestState.Error;
                                 callback(null); // Report failure to caller.
                             }
                             else
@@ -420,7 +430,8 @@ namespace Boku.Common.Sharing
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//Search failed
+					// Call failed.
+                    ShareRequestState = RequestState.Error;
 					callback(null);
 				}
 				else
@@ -430,6 +441,7 @@ namespace Boku.Common.Sharing
 					using (var reader = new StreamReader(responseStream))
 					{
 						text = reader.ReadToEnd();
+                        ShareRequestState = RequestState.Complete;
 						callback(text);
 					}
 				}
@@ -437,8 +449,11 @@ namespace Boku.Common.Sharing
 
 		}   // end of DeleteWorld()
 
-		//UploadInstrumentation (async version)
-		//Callback returns server response json or null if fail
+        /// <summary>
+        /// Async version.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <param name="callback">Gets server responce json or null on failure.</param>
 		public static void UploadInstrumentation(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "uploadInstrumentation";
@@ -446,12 +461,12 @@ namespace Boku.Common.Sharing
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
-					//failed
+					// Failed.
 					callback(null);
 				}
 				else
 				{
-					//No response obj expected so check status code
+					// No response obj expected so check status code.
 					if (response.StatusCode == HttpStatusCode.OK)
 						callback(true);
 					else
@@ -484,9 +499,6 @@ namespace Boku.Common.Sharing
 			return request;
 		}   // end of CreateApiRequest()
 
-		//Make the api request.
-		//Callback is always called 
-		//Response object passed to callback is null in case of failure
         /// <summary>
         /// Makes an API request.
         /// </summary>
