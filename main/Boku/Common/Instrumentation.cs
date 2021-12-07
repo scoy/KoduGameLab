@@ -52,6 +52,9 @@ namespace Boku.Common
             // User searched levels.
             SearchLevels,
 
+            // User deleted a level from the community.
+            LevelDeleted,
+
             // Add your event ids above this comment line
             SIZEOF,
         }

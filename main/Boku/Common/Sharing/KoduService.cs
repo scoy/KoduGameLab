@@ -125,6 +125,8 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "search";
 
+            Instrumentation.RecordEvent(Instrumentation.EventId.SearchLevels, args.ToString());
+
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
 				{
@@ -145,7 +147,7 @@ namespace Boku.Common.Sharing
 
 			}); //End of MakeApiRequest
 
-		}   // end of GetWorlds()
+		}   // end of Search()
 
         /// <summary>
         /// Get thumbnail for world.
@@ -197,6 +199,8 @@ namespace Boku.Common.Sharing
 		public static void DownloadWorld(object args, ResponseStreamCallback callback)
 		{
 			string url = ServiceApiUrl + "downloadWorld";
+
+            Instrumentation.RecordEvent(Instrumentation.EventId.LevelDownloaded, args.ToString());
 
 			// First do an api requrest.
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
@@ -266,6 +270,8 @@ namespace Boku.Common.Sharing
 		public static void UploadWorld(object args, string levelPath,string thumbPath,string screenPath, GenericObjectCallback callback)
 		{
             ShareRequestState = RequestState.Pending;
+
+            Instrumentation.RecordEvent(Instrumentation.EventId.LevelUploaded, args.ToString());
 
 			// Create an upload request.
 			string url = ServiceApiUrl + "authorizeUpload/";
@@ -426,6 +432,8 @@ namespace Boku.Common.Sharing
 		static void FinalizeUpload(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "finalizeUpload";
+
+            Instrumentation.RecordEvent(Instrumentation.EventId.LevelDeleted, args.ToString());
 
 			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
 				if (response == null)
