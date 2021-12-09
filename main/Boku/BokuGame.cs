@@ -420,7 +420,6 @@ namespace Boku
 
             // Instrument the Boku version number.
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.BokuVersion, Program2.ThisVersion.ToString());
-            Instrumentation.RecordDataItem(Instrumentation.DataItemId.UpdateCode, Program2.UpdateCode.ToString());
 
             // Instrument the OS version string.
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.OperatingSystem, Environment.OSVersion.VersionString);

@@ -75,8 +75,6 @@ namespace Boku
                                                         // 8 -> 9 : Move linked level target from XmlWorldData to ReflexData.
                                                         // 9 -> 10 : Change terrain files from .Raw to .Map.
         
-        public static string UpdateCode;
-
         public static UpdateInfo updateInfo=null;
 
         public static CmdLine CmdLine;
@@ -109,9 +107,6 @@ namespace Boku
 #endif
 
                 ThisVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                Assembly asm = Assembly.GetExecutingAssembly();
-                var attr = (asm.GetCustomAttributes(typeof(GuidAttribute), true));
-                UpdateCode = (attr[0] as GuidAttribute).Value;
 
                 // Fake command line args to test double-click to launch
                 //args = new string[3] { args[0], @"/Import", @"C:\Users\scoy\My Documents\New World 3, by Stephen Coy.Kodu2" };
