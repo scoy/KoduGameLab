@@ -540,11 +540,16 @@ namespace Boku.Common.Sharing
 				//Console.WriteLine("WebEx ARGS:" + args);
 
 				string body = "";
-				using (var stream = ex.Response.GetResponseStream())
-				using (var reader = new StreamReader(stream))
-				{
-					body=reader.ReadToEnd();
-				}
+                if (ex.Response != null)
+                {
+                    using (var stream = ex.Response.GetResponseStream())
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            body = reader.ReadToEnd();
+                        }
+                    }
+                }
 				Instrumentation.RecordException(new {type="WEX", url = url,args=args, message = ex.Message,body=body, time = timer.Elapsed });
 				response = null;    // Report fail.
 			}
