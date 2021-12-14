@@ -25,6 +25,7 @@ namespace Boku.Common.Sharing
 
 		// Our service address
 		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
+		//public static string ServiceApiUrl = "http://koduapicentral.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
@@ -612,10 +613,13 @@ namespace Boku.Common.Sharing
 				//Console.WriteLine("WebEx ARGS:" + args);
 
 				string body = "";
-				using (var stream = ex.Response.GetResponseStream())
-				using (var reader = new StreamReader(stream))
+				if (ex.Response != null)
 				{
-					body = reader.ReadToEnd();
+					using (var stream = ex.Response.GetResponseStream())
+					using (var reader = new StreamReader(stream))
+					{
+						body = reader.ReadToEnd();
+					}
 				}
 				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
 
@@ -683,10 +687,13 @@ namespace Boku.Common.Sharing
 				//Console.WriteLine("WebEx ARGS:" + args);
 
 				string body = "";
-				using (var stream = ex.Response.GetResponseStream())
-				using (var reader = new StreamReader(stream))
+				if (ex.Response != null)
 				{
-					body = reader.ReadToEnd();
+					using (var stream = ex.Response.GetResponseStream())
+					using (var reader = new StreamReader(stream))
+					{
+						body = reader.ReadToEnd();
+					}
 				}
 				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
 
