@@ -461,7 +461,7 @@ namespace Boku
                     // We just fetched the latest ServiceApiUrl.  Now override it if needed.
                     if (CmdLine.Exists("SERVICE_API_URL"))
                     {
-                        XmlOptionsData.ServiceApiUrl = CmdLine.GetString("SERVICE_API_URL", "");
+                        KoduService.ServiceApiUrl = CmdLine.GetString("SERVICE_API_URL", "");
                     }
 
                     if (SiteOptions.CheckForUpdates && !WinStoreHelpers.RunningAsUWP)
@@ -709,12 +709,6 @@ namespace Boku
                 var responseStream = response.GetResponseStream();
 
                 Message_Version messageVersion = Message_Version.Load(responseStream);
-
-                // If we've got a valid new URL, save it in OptionsData.
-                if(!String.IsNullOrEmpty(messageVersion.ServiceApiUrl))
-                {
-                    XmlOptionsData.ServiceApiUrl = messageVersion.ServiceApiUrl;
-                }
 
                 updateInfo = new UpdateInfo(messageVersion);
             }
