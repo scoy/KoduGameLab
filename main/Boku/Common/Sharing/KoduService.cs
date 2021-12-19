@@ -155,10 +155,18 @@ namespace Boku.Common.Sharing
         /// </summary>
         /// <param name="ThumbnailUrl"></param>
         /// <param name="callback">Gets stream of thumb data or null if fail.</param>
-		public static void GetThumbnail(string ThumbnailUrl, ResponseStreamCallback callback)
+		public static void GetThumbnail(Guid worldID, string thumbnailUrl, ResponseStreamCallback callback)
 		{
-			//Just pass to DownloadData
-			DownloadData(ThumbnailUrl, callback);
+			if (thumbnailUrl == null)
+			{
+				//sort of a hack for beta.
+				//if thumb url is null it probably hasn't been converted from old db yet
+				//in that case fetch directly. 
+				//This will also convert and update the thumburl service side.
+				thumbnailUrl = ServiceApiUrl + "thumbnail/" + worldID.ToString();
+			}
+			//Pass callback to DownloadData
+			DownloadData(thumbnailUrl, callback);
 		}   // end of GetThumbnail()
 
         /// <summary>
@@ -233,12 +241,7 @@ namespace Boku.Common.Sharing
 					{
 						timer.Stop();
 
-						//More serious exception. Service possibly not reached.
-						//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
-						//Console.WriteLine("EXCEPTION ARGS:" + args);
-						//Console.WriteLine(ex.Message);
-						
-						Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
+						LogException(ex, url, args, timer.Elapsed);
 
 						response = null;    // Report fail.
 					}
@@ -513,8 +516,8 @@ namespace Boku.Common.Sharing
         /// </summary>
         /// <param name="url">The URL for the request.</param>
         /// <param name="args">Object which is serialized into a JSON packet and sent with the request.</param>
-        /// <param name="callBack">Always called, gets response.</param>
-		static void MakeApiRequest(string url, object args, WebResponseCallback callBack)
+        /// <param name="callback">Always called, gets response.</param>
+		static void MakeApiRequest(string url, object args, WebResponseCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
@@ -529,40 +532,23 @@ namespace Boku.Common.Sharing
 
 					// Handle request response.
 					//Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
-
-					var req = (HttpWebRequest)asyncResult.AsyncState;
-					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
+					try
+					{
+						var req = (HttpWebRequest)asyncResult.AsyncState;
+						response = (HttpWebResponse)req.EndGetResponse(asyncResult);
+					}
+					catch (Exception ex)
+					{
+						LogException(ex, url, null, timer.Elapsed);
+						callback(null);
+					}
 				}, request);
-			}
-			catch (WebException ex) // WebException handled first.
-			{
-				timer.Stop();
-				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("WebEx ARGS:" + args);
-
-				string body = "";
-                if (ex.Response != null)
-                {
-                    using (var stream = ex.Response.GetResponseStream())
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            body = reader.ReadToEnd();
-                        }
-                    }
-                }
-				Instrumentation.RecordException(new {type="WEX", url = url,args=args, message = ex.Message,body=body, time = timer.Elapsed });
-				response = null;    // Report fail.
 			}
 			catch (Exception ex)
 			{
 				timer.Stop();
 
-				//More serious exception. Service possibly not reached.
-				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("EXCEPTION ARGS:" + args);
-				//Console.WriteLine(ex.Message);
-				Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = timer.Elapsed });
+				LogException(ex, url, args, timer.Elapsed);
 
 				response = null;    // Report fail.
 			}
@@ -572,7 +558,7 @@ namespace Boku.Common.Sharing
 				// Handle this outside of the try catch to only catch
 				// comm related errors. This might not be the right thing to do.
 				// If a mangled thumbnail or world causes an exception what will happen?
-				callBack(response);
+				callback(response);
 			}
 
 		}   // end of MakeApiRequest()
@@ -595,46 +581,28 @@ namespace Boku.Common.Sharing
 				dataRequest.BeginGetResponse((asyncResult) => {
 					timer.Stop();
 					//Console.WriteLine("OK MS:" + timer.Elapsed + " " + url);
-
-					using (HttpWebResponse dataResponse = (HttpWebResponse)dataRequest.EndGetResponse(asyncResult))
+					try
 					{
-						using (Stream dataResponseStream = dataResponse.GetResponseStream())
+						using (HttpWebResponse dataResponse = (HttpWebResponse)dataRequest.EndGetResponse(asyncResult))
 						{
-							callback(dataResponseStream);
+							using (Stream dataResponseStream = dataResponse.GetResponseStream())
+							{
+								callback(dataResponseStream);
+							}
 						}
+					}catch(Exception ex)
+                    {
+						LogException(ex, url, null, timer.Elapsed);
+						callback(null);
 					}
 
 				}, dataRequest);
-			}
-			catch (WebException ex) // WebException handled first.
-			{
-				timer.Stop();
-				//Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("WebEx ARGS:" + args);
-
-				string body = "";
-				if (ex.Response != null)
-				{
-					using (var stream = ex.Response.GetResponseStream())
-					using (var reader = new StreamReader(stream))
-					{
-						body = reader.ReadToEnd();
-					}
-				}
-				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
-
-				callback(null); // Report fail.
 			}
 			catch (Exception ex)
 			{
 				timer.Stop();
 
-				// More serious exception. Service possibly not reached.
-				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("EXCEPTION ARGS:" + args);
-				//Console.WriteLine(ex.Message);
-
-				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
+				LogException(ex, url, null, timer.Elapsed);
 				callback(null); // Report fail.
 			}
 			finally
@@ -642,6 +610,33 @@ namespace Boku.Common.Sharing
 			}
 		}   // end of DownloadData()
 
+		/// <summary>
+		/// Helper function to handle logging exception messages.
+		/// </summary>
+		/// <param name="ex"></param>
+		/// <param name="url"></param>
+		/// <param name="args"></param>
+		/// <param name="elapsed"></param>
+		private static void LogException(Exception ex,string url, object args, TimeSpan elapsed) {
+			if (ex is WebException)
+			{
+				var wex = (WebException)ex;
+				string body = "";
+				if (wex.Response != null)
+				{
+					using (var stream = wex.Response.GetResponseStream())
+					using (var reader = new StreamReader(stream))
+					{
+						body = reader.ReadToEnd();
+					}
+				}
+				Instrumentation.RecordException(new { type = "WEX", url = url, args = args, message = ex.Message, body = "", time = elapsed });
+            }
+            else
+            {
+				Instrumentation.RecordException(new { type = "EX", url = url, args = args, message = ex.Message, time = elapsed });
+			}
+		}
         /// <summary>
         /// Helper function to handle world uploads to blob storage.
         /// </summary>
@@ -680,35 +675,11 @@ namespace Boku.Common.Sharing
 					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
 				}, request);
 			}
-			catch (WebException ex) // WebException handled first.
-			{
-				timer.Stop();
-				Console.WriteLine("WebEx MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("WebEx ARGS:" + args);
-
-				string body = "";
-				if (ex.Response != null)
-				{
-					using (var stream = ex.Response.GetResponseStream())
-					using (var reader = new StreamReader(stream))
-					{
-						body = reader.ReadToEnd();
-					}
-				}
-				Instrumentation.RecordException(new { type = "WEX", url = url, message = ex.Message, body = body, time = timer.Elapsed });
-
-				response = null;    // Report fail.
-			}
 			catch (Exception ex)
 			{
 				timer.Stop();
 
-				// More serious exception. Service possibly not reached.
-				//Console.WriteLine("EXCEPTION MS:" + timer.Elapsed + " " + url);
-				//Console.WriteLine("EXCEPTION ARGS:" + args);
-				//Console.WriteLine(ex.Message);
-
-				Instrumentation.RecordException(new { type = "EX", url = url, message = ex.Message, time = timer.Elapsed });
+				LogException(ex, url, null, timer.Elapsed);
 
 				response = null;    // Report fail.
 			}
