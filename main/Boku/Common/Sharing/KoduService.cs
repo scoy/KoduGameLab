@@ -155,10 +155,18 @@ namespace Boku.Common.Sharing
         /// </summary>
         /// <param name="ThumbnailUrl"></param>
         /// <param name="callback">Gets stream of thumb data or null if fail.</param>
-		public static void GetThumbnail(string ThumbnailUrl, ResponseStreamCallback callback)
+		public static void GetThumbnail(Guid worldID, string thumbnailUrl, ResponseStreamCallback callback)
 		{
-			//Just pass to DownloadData
-			DownloadData(ThumbnailUrl, callback);
+			if (thumbnailUrl == null)
+			{
+				//sort of a hack for beta.
+				//if thumb url is null it probably hasn't been converted from old db yet
+				//in that case fetch directly. 
+				//This will also convert and update the thumburl service side.
+				thumbnailUrl = ServiceApiUrl + "thumbnail/" + worldID.ToString();
+			}
+			//Pass callback to DownloadData
+			DownloadData(thumbnailUrl, callback);
 		}   // end of GetThumbnail()
 
         /// <summary>
