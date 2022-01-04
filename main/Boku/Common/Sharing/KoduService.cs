@@ -3,7 +3,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
-//using System.Net.Http;
+using System.Net.Http;
 using System.Threading;
 
 namespace Boku.Common.Sharing
@@ -28,6 +28,7 @@ namespace Boku.Common.Sharing
 		//public static string ServiceApiUrl = "http://koduapicentral.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
+		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
         // Used by rest of system to keep track of state.  LoadLevelMenu
@@ -49,36 +50,44 @@ namespace Boku.Common.Sharing
 		// Define callback that passes a WebResponseStream.
 		public delegate void ResponseStreamCallback(Stream response);
 
+		//Used to connect to services
+		private static HttpClient httpClient = new HttpClient();
 
 		#region Public
 
-        /// <summary>
-        /// Ping (async version)
-        /// </summary>
-        /// <param name="args"></param>
-        /// <param name="callback">Callback gets server response json or null if fail</param>
+		/// <summary>
+		/// Ping (async version)
+		/// </summary>
+		/// <param name="args"></param>
+		/// <param name="callback">Callback gets server response json or null if fail</param>
 		public static void Ping(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "ping";
 
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
-				if (response == null)
+			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+
+			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
+			{
+				var response = responseTask.Result;
+				if (!response.IsSuccessStatusCode)
 				{
-					// Ping failed.
+					//Todo: Log error.
+					Console.WriteLine("Ping failed:" + response.ReasonPhrase);
+					//Ping failed
 					callback(null);
 				}
 				else
 				{
-					using (var responseStream = response.GetResponseStream())
-					using (var reader = new StreamReader(responseStream))
+					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
 					{
-						var text = reader.ReadToEnd();
+						var json = jsonTask.Result;
 
-						Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+						Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
 						callback(returnObject);
-					}
+					});
 				}
-			}); // end of MakeApiRequest
+            });
+
 		}   // end of Ping()
 
         /// <summary>
@@ -128,25 +137,30 @@ namespace Boku.Common.Sharing
 
             Instrumentation.RecordEvent(Instrumentation.EventId.SearchLevels, args.ToString());
 
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
-				if (response == null)
+			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+
+			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
+			{
+				var response = responseTask.Result;
+				if (!response.IsSuccessStatusCode)
 				{
-					// Search failed.
+					//Todo: Log error.
+					Console.WriteLine("Search failed:" + response.ReasonPhrase);
+					//Ping failed
 					callback(null);
 				}
 				else
 				{
-					using (var responseStream = response.GetResponseStream())
-					using (var reader = new StreamReader(responseStream))
+					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
 					{
-						var text = reader.ReadToEnd();
+						var json = jsonTask.Result;
 
-						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-						callback(text);
-					}
+						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
+						//pass text since the callback handles deserialize
+						callback(json);
+					});
 				}
-
-			}); //End of MakeApiRequest
+			});
 
 		}   // end of Search()
 
@@ -178,26 +192,30 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "deleteWorld";
 
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
-				if (response == null)
+			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+
+			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
+			{
+				var response = responseTask.Result;
+				if (!response.IsSuccessStatusCode)
 				{
-					// Search failed.
+					//Todo: Log error.
+					Console.WriteLine("deleteWorld failed:" + response.ReasonPhrase);
+					//failed
 					callback(null);
 				}
 				else
 				{
-					using (var responseStream = response.GetResponseStream())
-					using (var reader = new StreamReader(responseStream))
+					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
 					{
-						var text = reader.ReadToEnd();
+						var json = jsonTask.Result;
 
-						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-						callback(text);
-					}
-
+						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
+						//pass text since the callback handles deserialize
+						callback(json);
+					});
 				}
-			}); // end of MakeApiRequest
-
+			});
 		}   // end of DeleteWorld()
 
         /// <summary>
