@@ -61,41 +61,19 @@ namespace Boku.Common.Sharing
 		/// <param name="args"></param>
 		/// <param name="callback">Callback gets server response json or null if fail</param>
 		public static void Ping(object args, GenericObjectCallback callback)
-		{
-			string url = ServiceApiUrl + "ping";
+        {
+            string url = ServiceApiUrl + "ping";
 
-			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+            MakeHttpRequest(url, args, callback);
 
-			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
-			{
-				var response = responseTask.Result;
-				if (!response.IsSuccessStatusCode)
-				{
-					//Todo: Log error.
-					Console.WriteLine("Ping failed:" + response.ReasonPhrase);
-					//Ping failed
-					callback(null);
-				}
-				else
-				{
-					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
-					{
-						var json = jsonTask.Result;
-
-						Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
-						callback(returnObject);
-					});
-				}
-            });
-
-		}   // end of Ping()
+        }   // end of Ping()
 
         /// <summary>
         /// Ping (non asyn version)
         /// </summary>
         /// <param name="args"></param>
         /// <returns>ResponseObject if ping OK, null otherwise.</returns>
-		public static Newtonsoft.Json.Linq.JContainer PingNonAsync(object args)
+        public static Newtonsoft.Json.Linq.JContainer PingNonAsync(object args)
 		{
 			var pingPending = true;
 
@@ -112,7 +90,7 @@ namespace Boku.Common.Sharing
 					else
 					{
 						// Ping ok.
-						responseObject = (Newtonsoft.Json.Linq.JContainer)returnObject;
+						responseObject = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)returnObject) as Newtonsoft.Json.Linq.JContainer;
 					}
 					pingPending = false;
 				}
@@ -137,30 +115,7 @@ namespace Boku.Common.Sharing
 
             Instrumentation.RecordEvent(Instrumentation.EventId.SearchLevels, args.ToString());
 
-			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
-
-			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
-			{
-				var response = responseTask.Result;
-				if (!response.IsSuccessStatusCode)
-				{
-					//Todo: Log error.
-					Console.WriteLine("Search failed:" + response.ReasonPhrase);
-					//Ping failed
-					callback(null);
-				}
-				else
-				{
-					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
-					{
-						var json = jsonTask.Result;
-
-						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
-						//pass text since the callback handles deserialize
-						callback(json);
-					});
-				}
-			});
+			MakeHttpRequest(url, args, callback);
 
 		}   // end of Search()
 
@@ -192,30 +147,8 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "deleteWorld";
 
-			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+			MakeHttpRequest(url, args, callback);
 
-			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
-			{
-				var response = responseTask.Result;
-				if (!response.IsSuccessStatusCode)
-				{
-					//Todo: Log error.
-					Console.WriteLine("deleteWorld failed:" + response.ReasonPhrase);
-					//failed
-					callback(null);
-				}
-				else
-				{
-					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
-					{
-						var json = jsonTask.Result;
-
-						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
-						//pass text since the callback handles deserialize
-						callback(json);
-					});
-				}
-			});
 		}   // end of DeleteWorld()
 
         /// <summary>
@@ -581,11 +514,47 @@ namespace Boku.Common.Sharing
 
 		}   // end of MakeApiRequest()
 
-        /// <summary>
-        /// Helper function to handle data downloads of worlds and thumbnails .
-        /// </summary>
-        /// <param name="url"></param>
-        /// <param name="callback"></param>
+		/// <summary>
+		/// Makes an API request via HttpClient.
+		/// </summary>
+		/// <param name="url">The URL for the request.</param>
+		/// <param name="args">Object which is serialized into a JSON packet and sent with the request.</param>
+		/// <param name="callback">Always called, gets response.</param>
+		private static void MakeHttpRequest(string url, object args, GenericObjectCallback callback)
+		{
+			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
+			var timer = new System.Diagnostics.Stopwatch();
+			timer.Start();
+
+			httpClient.PutAsync(url, httpContent).ContinueWith(responseTask =>
+			{
+				timer.Stop();
+				var response = responseTask.Result;
+				if (!response.IsSuccessStatusCode)
+				{
+					//Log error.
+					Instrumentation.RecordException(new { type = "HTP", url = url, args = args, message = response.ReasonPhrase, body = "", time = timer.Elapsed });
+					//failed
+					callback(null);
+				}
+				else
+				{
+					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
+					{
+						var json = jsonTask.Result;
+
+						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
+						callback(json);
+					});
+				}
+			});
+		}
+
+		/// <summary>
+		/// Helper function to handle data downloads of worlds and thumbnails .
+		/// </summary>
+		/// <param name="url"></param>
+		/// <param name="callback"></param>
 		static void DownloadData(string url, ResponseStreamCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
