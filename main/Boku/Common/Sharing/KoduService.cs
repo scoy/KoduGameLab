@@ -526,7 +526,7 @@ namespace Boku.Common.Sharing
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
 
-			httpClient.PutAsync(url, httpContent).ContinueWith(responseTask =>
+			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
 			{
 				timer.Stop();
 				var response = responseTask.Result;
