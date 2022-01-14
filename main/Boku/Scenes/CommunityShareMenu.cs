@@ -283,7 +283,7 @@ namespace Boku
             var args = new
             {
                 worldId = level.WorldId.ToString(),
-                created = level.LastWriteTime.ToUniversalTime().ToString(),
+                created = level.LastWriteTime.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"),
                 name = level.Name,
                 creator = level.Creator,
                 saveTime = level.SaveTime,

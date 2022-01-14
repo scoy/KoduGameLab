@@ -188,6 +188,8 @@ namespace Boku.Common
 
             //   InGameToolBox,                  // Top level wrapper for all world editing tools.
 
+            ResponseTime,
+
             // Add your timer ids above this comment line
             SIZEOF,
         }
