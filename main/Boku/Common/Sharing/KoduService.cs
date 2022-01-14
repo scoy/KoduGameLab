@@ -525,9 +525,11 @@ namespace Boku.Common.Sharing
 			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
+			var instrumentationTimer = Instrumentation.StartTimer(Instrumentation.TimerId.ResponseTime);
 
 			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
 			{
+				Instrumentation.StopTimer(instrumentationTimer);
 				timer.Stop();
 				var response = responseTask.Result;
 				if (!response.IsSuccessStatusCode)
