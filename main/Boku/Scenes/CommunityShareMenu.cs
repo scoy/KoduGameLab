@@ -106,7 +106,8 @@ namespace Boku
                         //siteId = SiteID.Instance.Value.ToString()
                     };
 
-                    //4scoy we are not getting here anymore
+                    //4scoy we are not getting here anymore. 
+                    //Todo: Remove this?
                     // Ping the services
                     Newtonsoft.Json.Linq.JContainer pingResponse = KoduService.PingNonAsync(args);
                     if (pingResponse==null)
@@ -291,14 +292,23 @@ namespace Boku
                 numLevels = level.CalculateTotalLinkLength(),
                 description = level.Description,
                 pin = BokuShared.Auth.Pin,
+                clientVersion = Program2.ThisVersion.ToString(),
             };
 
+            KoduService.ShareRequestState = KoduService.RequestState.Pending;
             KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge,(response) =>{
                 if(response==null)
                 {
                     //failed
+                    KoduService.ShareRequestState = KoduService.RequestState.Error;
+                    //todo handle reason?
+                }
+                else
+                {
+                    KoduService.ShareRequestState = KoduService.RequestState.Complete;
                 }
 
+                
                 //4scoy
                 //It looks to me like we should be calling 
                 //Callback_PutWorldData here.

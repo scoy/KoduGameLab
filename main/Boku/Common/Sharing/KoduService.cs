@@ -25,10 +25,8 @@ namespace Boku.Common.Sharing
 
 		// Our service address
 		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
-		//public static string ServiceApiUrl = "http://koduapicentral.azurewebsites.net/api/";
-		//public static string ServiceApiUrl = "https://koduworlds-api.azurewebsites.net/api/";
-		//public static string ServiceApiUrl = "http://koduworlds-api.azurewebsites.net/api/";//For use with fiddler
 		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
+		//public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
         // Used by rest of system to keep track of state.  LoadLevelMenu
@@ -160,57 +158,31 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "downloadWorld";
 
-            Instrumentation.RecordEvent(Instrumentation.EventId.LevelDownloaded, args.ToString());
-
-			// First do an api requrest.
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
+			//Make api call to get data url
+			MakeHttpRequest(url, args, (response)=> {
 				if (response == null)
 				{
-					// Download failed.
-					callback(null);
+					callback(null);//Failed. 404 or something.
 				}
 				else
 				{
-					var timer = new System.Diagnostics.Stopwatch();
-					timer.Start();
-					string dataUrl = null;
 					try
 					{
-						using (var responseStream = response.GetResponseStream())
-						using (var reader = new StreamReader(responseStream))
-						{
-							// Handle response from DownloadWorld api.
-							var text = reader.ReadToEnd();
+						//get returned data url
+						var container = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)response) as Newtonsoft.Json.Linq.JContainer;
+						var dataUrl = container.Value<string>("dataUrl");
 
-							// Get the URL for downloading the .Kodu2 file.
-							Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
-							dataUrl = container.Value<string>("dataUrl");
-						}
-
-					}
-					catch (Exception ex)
-					{
-						timer.Stop();
-
-						LogException(ex, url, args, timer.Elapsed);
-
-						response = null;    // Report fail.
-					}
-					finally{
 						// Pass on data url and callback to DownloadData.
-                        if (dataUrl != null)
-                        {
-                            DownloadData(dataUrl, callback);
-                        }
-                        else
-                        {
-                            callback(null);
-                        }
+						DownloadData(dataUrl, callback);
+
+						Instrumentation.RecordEvent(Instrumentation.EventId.LevelDownloaded, args.ToString());
 					}
-
+					catch
+					{
+						callback(null);//should never happen but...
+					}
 				}
-			});//End of MakeApiRequest
-
+			});
 
 		}   // end of DownloadWorld()
 
@@ -247,6 +219,7 @@ namespace Boku.Common.Sharing
 						text = reader.ReadToEnd();
 					}
 
+					//todo allow for rejected.
 
 					// Get SAS strings from response.
 					Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
@@ -557,7 +530,36 @@ namespace Boku.Common.Sharing
 		/// </summary>
 		/// <param name="url"></param>
 		/// <param name="callback"></param>
-		static void DownloadData(string url, ResponseStreamCallback callback)
+		public static void DownloadData(string url, ResponseStreamCallback callback)
+		{
+			//var timer = new System.Diagnostics.Stopwatch();
+			//timer.Start();
+			
+			//Force protocol to Tls12 to support GitHub
+			ServicePointManager.Expect100Continue = true;
+			ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;//3072 = Tls12. The library we are using doesn't have Tls12 enum value.
+
+			httpClient.GetAsync(url).ContinueWith(responseTask =>
+			{
+				var response = responseTask.Result;
+				if (!response.IsSuccessStatusCode)
+				{
+					//failed
+					callback(null);
+				}
+				else
+				{
+					response.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
+					{
+						var res= streamTask.Result;
+
+						//Note Result will be none if readstream failed?
+						callback(res);
+					});
+				}
+			});
+		}   // end of DownloadData()
+		public static void xDownloadData(string url, ResponseStreamCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
@@ -566,6 +568,7 @@ namespace Boku.Common.Sharing
 			{
 				// Get data from dataUrl.
 				Uri uri = new Uri(url);
+
 				var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
 				dataRequest.BeginGetResponse((asyncResult) => {
 					timer.Stop();
@@ -579,8 +582,9 @@ namespace Boku.Common.Sharing
 								callback(dataResponseStream);
 							}
 						}
-					}catch(Exception ex)
-                    {
+					}
+					catch (Exception ex)
+					{
 						LogException(ex, url, null, timer.Elapsed);
 						callback(null);
 					}
