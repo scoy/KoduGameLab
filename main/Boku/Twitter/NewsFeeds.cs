@@ -55,17 +55,31 @@ namespace Boku
         {
             using (WebClient webClient = new WebClient())
             {
-                webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(NewsCallback);
+                //webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(NewsCallback);
                 try
                 {
                     string url = Program2.SiteOptions.KGLUrl + "/API/GetLatestNews";
-                    Uri uri = new Uri(url);
-                    webClient.OpenReadAsync(uri);
+                    //Uri uri = new Uri(url);
+                    //webClient.OpenReadAsync(uri);
+                    Common.Sharing.KoduService.DownloadData(url, (result)=> {
+                        if (result == null)
+                        {
+                            currentState = OpState.Failed;
+                        }
+                        else
+                        {
+                            StreamReader sr = new StreamReader(result);
+                            rawGetData = sr.ReadToEnd();
+                            currentState = OpState.Retrieved;
+                            Console.WriteLine(rawGetData);
+                        }
+                    });
                 }
                 catch (Exception e)
                 {
                     if (e != null)
                     {
+                        currentState = OpState.Failed;
                     }
                 }
             }
