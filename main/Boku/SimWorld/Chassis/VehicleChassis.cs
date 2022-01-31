@@ -253,6 +253,9 @@ namespace Boku.SimWorld.Chassis
 
                 // Adjust Actor's height to follow the terrain.
                 // Add in effect of gravity.
+                // Note: we test for pause here since that's the state the actor is in when
+                // in edit mode.  We want gravity ignored in that mode so we can position
+                // actors up in the air.
                 if (state != GameThing.State.Paused)
                 {
                     velocity.Z += Gravity * secs;
