@@ -385,7 +385,7 @@ namespace Boku.Common
 
             // For some reason we occasionally get duplicate entries.
             // Assert in debug mode but don't let it crash.
-            Debug.Assert(!activeTimers.ContainsKey(timer.id), "Why are we adding a duplicate key?");
+            //Debug.Assert(!activeTimers.ContainsKey(timer.id), "Why are we adding a duplicate key?");
 
             // Remove timer if already in dictionary.  This shouldn't
             // happen but prevents crashes in release mode.
