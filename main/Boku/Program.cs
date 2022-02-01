@@ -503,7 +503,7 @@ namespace Boku
                             {
                                 System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
                             };
-                            updateForm.MessageLabel.Links[0].LinkData = SiteOptions.KGLUrl;
+                            updateForm.MessageLabel.Links[0].LinkData = KoduService.KGLUrl;
                             updateForm.MessageLabel.LinkClicked += (s, e) =>
                             {
                                 System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
@@ -669,74 +669,35 @@ namespace Boku
     /// version number from the server to determine whether an update is available.
     static partial class Program2
     {
-        private static bool versionPending = true;
-
-        private static void FetchLatestVersionFromServer(string productName)
+        static void FetchLatestVersionFromServer(string productName)
         {
-            const int timeout = 5000;   // 5 seconds
-
             try
             {
-                versionPending = true;
-                string url = Program2.SiteOptions.KGLUrl + "/API/LatestVersion.xml";
-                Uri uri = new Uri(url);
-                var request = (HttpWebRequest)WebRequest.Create(uri);
-                var result = request.BeginGetResponse(GetLatestVersionCallback, request);
-                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, timeout, true);
+                string url = KoduService.KGLUrl + "/API/LatestVersion.xml";
 
-                // Sleep until version info comes back or we time out.
-                while (versionPending)
+                KoduService.DownloadData(url, (result) =>
                 {
-                    Thread.Sleep(10);
-                }
+                    if (result == null)
+                    {
+                        // Failed.  Nothing to do here.
+                    }
+                    else
+                    {
+                        Message_Version messageVersion = Message_Version.Load(result);
+                        updateInfo = new UpdateInfo(messageVersion);
+                    }
+
+                });
+                
             }
             catch (Exception e)
             {
                 if (e != null)
                 {
-                    versionPending = false;
                 }
             }
 
         }   // end of FetchLatestVersionFromServer()
-
-        private static void GetLatestVersionCallback(IAsyncResult asyncResult)
-        {
-            try
-            {
-                var request = (HttpWebRequest)asyncResult.AsyncState;
-                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-                var responseStream = response.GetResponseStream();
-
-                Message_Version messageVersion = Message_Version.Load(responseStream);
-
-                updateInfo = new UpdateInfo(messageVersion);
-            }
-            catch (Exception e)
-            {
-                if (e != null)
-                {
-                }
-            }
-
-            versionPending = false;
-
-        }   // end of GetLatestVersionCallback()
-
-        // Abort the request if the timer fires. 
-        private static void TimeoutCallback(object state, bool timedOut)
-        {
-            if (timedOut)
-            {
-                var request = state as HttpWebRequest;
-                if (request != null)
-                {
-                    request.Abort();
-                }
-                versionPending = false;
-            }
-        
-        }   // end of TimeoutCallback()
 
     }   // end of class Program2
 

@@ -45,12 +45,6 @@ namespace Boku
 
         public string Community = "Default";
         
-        public string KGLUrl = @"https://www.kodugamelab.com";
-
-        public string SKAuthUrl = "";
-        public string SKUrl = "";
-        public string SKStorageUrl = "";
-
         public bool CommunityEnabled
         {
             get { return communityEnabled && NetworkEnabled; }

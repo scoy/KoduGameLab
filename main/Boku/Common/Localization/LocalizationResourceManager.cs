@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-
 //#define LOCALES_DEBUG
 
 using System;
@@ -16,6 +15,8 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Net;
 using System.Globalization;
+
+using Boku.Common.Sharing;
 
 namespace Boku.Common.Localization
 {
@@ -32,11 +33,11 @@ namespace Boku.Common.Localization
         public const string LanguageDir = @"Content\Xml\Localizable";
         public const string DefaultLanguage = "EN"; //The English ISO 639-1 language code
         public const string DefaultLanguageDir = LanguageDir + @"\" + DefaultLanguage;
-        private const string LocalesFileName = @"Locales.xml";
-        private const string LocalesFilePath = LanguageDir + @"\" + LocalesFileName;
-        private static readonly string LocalesUrl = Program2.SiteOptions.KGLUrl + "/API/Languages.xml";         // URL to locales file with current languages and update times.
-        private static readonly string LocalizationsUrl = Program2.SiteOptions.KGLUrl + "/API/Localizations";   // URL root to individual language folders.
-        private const int Timeout = 5000;
+        const string LocalesFileName = @"Locales.xml";
+        const string LocalesFilePath = LanguageDir + @"\" + LocalesFileName;
+        static readonly string LocalesUrl = KoduService.KGLUrl + "/API/Languages.xml";          // URL to locales file with current languages and update times.
+        static readonly string LocalizationsUrl = KoduService.KGLUrl + "/API/Localizations";    // URL root to individual language folders.
+        const int Timeout = 5000;
 
         #endregion
 
@@ -44,12 +45,12 @@ namespace Boku.Common.Localization
         /// List of Supported Locales, could be null. For guaranteed non-nullness, use the 
         /// Property "Locales" instead.
         /// </summary>
-        private static IList<Locale> _locales;
+        static IList<Locale> _locales;
 
         /// <summary>
         /// Guarantees non-null access to _locales
         /// </summary>
-        private static IList<Locale> Locales {
+        static IList<Locale> Locales {
             get
             {
                 LocalesDebugPrint("Locales.Get");
@@ -122,7 +123,7 @@ namespace Boku.Common.Localization
                 }
             }}
 
-        private static readonly AutoResetEvent LocalesSet = new AutoResetEvent(false);
+        static readonly AutoResetEvent LocalesSet = new AutoResetEvent(false);
 
         /// <summary>
         /// List of Supported Languages
@@ -172,22 +173,56 @@ namespace Boku.Common.Localization
 
 
         #region Retreive Locales From Server
+
         /// <summary>
         /// Attempts to read Locales.xml from the remote server
         /// </summary>
-        private static void GetLocalesFromServer()
+        static void GetLocalesFromServer()
         {
             LocalesDebugPrint("\nEntering GetLocalesFromServer()");
             try
             {
-                LocalesDebugPrint("    create request");
-                var request = (HttpWebRequest)WebRequest.Create(new Uri(LocalesUrl));
-                LocalesDebugPrint("    get response");
-                var result = request.BeginGetResponse(GetLocalesCallback, request);
+                KoduService.DownloadDataAsync(LocalesUrl, (responseMessage) =>
+                {
+                    if (responseMessage == null)
+                    {
+                        // Failed.  Nothing to do here.
+                        LocalesDebugPrint("    Failed to download Languages.Xml.");
+                    }
+                    else
+                    {
+                        LocalesDebugPrint("    Succeeded to download Languages.Xml.");
 
-                LocalesDebugPrint("    register to wait");
-                // This line implements the timeout, if there is a timeout, the callback fires and the request becomes aborted
-                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, Timeout, true);
+                        bool persist = true;
+                        // If disk version is newer than online version, don't persist.  This
+                        // should only happen when a user is adding a new language.  In this 
+                        // case we want them to be able to modify their local copy.
+                        DateTime lastModTime = Storage4.GetLastWriteTimeUtc(LocalesFilePath, StorageSource.UserSpace);
+                        if (lastModTime > responseMessage.Content.Headers.LastModified)
+                        {
+                            persist = false;
+                        }
+
+                        LocalesDebugPrint("    persist : " + persist.ToString());
+
+                        if (persist)
+                        {
+                            LocalesDebugPrint("    Populating from XML stream.");
+                            responseMessage.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
+                            {
+                                Stream result = streamTask.Result;
+                                PopulatesLocalesFromXmlStream(result, persist);
+                            });
+                        }
+                        else
+                        {
+                            LocalesDebugPrint("    Getting from file.");
+                            GetLocalesFromFile();
+                        }
+
+                    }
+
+                });
             }
             catch (Exception e)
             {
@@ -198,66 +233,12 @@ namespace Boku.Common.Localization
                 }
                 LocalesDebugPrint("Exception thrown in GetLocalesFromServer()\n" + e.ToString());
             }
-        }
-
-        private static void GetLocalesCallback(IAsyncResult asyncResult)
-        {
-            LocalesDebugPrint("\nEntering GetLocalesCallback()");
-            try
-            {
-                LocalesDebugPrint("    get request");
-                var request = (HttpWebRequest)asyncResult.AsyncState;
-                LocalesDebugPrint("    get response");
-                var response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-                LocalesDebugPrint("    get stream");
-                var responseStream = response.GetResponseStream();
-
-                bool persist = true;
-                // If disk version is newer than online version, don't persist.  This
-                // should only happen when a user is adding a new language.  In this 
-                // case we want them to be able to modify their local copy.
-                DateTime lastModTime = Storage4.GetLastWriteTimeUtc(LocalesFilePath, StorageSource.UserSpace);
-                if (lastModTime > response.LastModified)
-                {
-                    persist = false;
-                }
-
-                LocalesDebugPrint("    persist : " + persist.ToString());
-
-                if (persist)
-                {
-                    LocalesDebugPrint("    Populating from XML stream.");
-                    PopulatesLocalesFromXmlStream(responseStream, persist);
-                }
-                else
-                {
-                    LocalesDebugPrint("    Getting from file.");
-                    GetLocalesFromFile();
-                }
-
-            }
-            catch (Exception e)
-            {
-                if (e != null)
-                {
-                    // DebugLog.WriteException(e, "GetLocalesCallback()");
-                }
-                LocalesDebugPrint("Exception thrown in GetLocalesCallback()\n" + e.ToString());
-            }
-            finally
-            {
-                if (_locales == null)
-                {
-                    // DebugLog.WriteLine("    Safe get from file.");
-                    SafeGetLocalesFromFile();
-                }
-            }
-        }
+        }   // end of GetLocalesFromServer()
 
         /// <summary>
         /// Attempts to load Locales from the local file without throwing
         /// </summary>
-        private static void SafeGetLocalesFromFile()
+        static void SafeGetLocalesFromFile()
         {
             // DebugLog.WriteLine("SafeGetLocalesFromFile()");
             lock (LanguageDir)  // Just need some object to lock on...
@@ -282,19 +263,31 @@ namespace Boku.Common.Localization
         /// <summary>
         /// Attempts to get the locale for a specific resource from the remote server.
         /// </summary>
-        private static void GetLocaleFromServer(Resource resource, Locale languageLocale)
+        static void GetLocaleFromServer(Resource resource, Locale languageLocale)
         {
             // DebugLog.WriteLine("GetLocaleFromServer()");
             try
             {
-                //var request = (HttpWebRequest)WebRequest.Create(new Uri(string.Format("{0}?file={1}&dir={2}", LocalesUrl, resource.Name, languageLocale.Directory)));
-                string path = string.Format("{0}/{1}/{2}", LocalizationsUrl, languageLocale.Directory, resource.Name);
-                var request = (HttpWebRequest)WebRequest.Create(new Uri(path));
-                var state = new LocaleAsyncState { Request = request, Resource = resource, LanguageLocale = languageLocale };
-                var result = request.BeginGetResponse(GetLocaleCallBack, state);
-                
-                // This line implements the timeout, if there is a timeout, the callback fires and the request becomes aborted
-                ThreadPool.RegisterWaitForSingleObject(result.AsyncWaitHandle, TimeoutCallback, request, Timeout, true);
+                string url = string.Format("{0}/{1}/{2}", LocalizationsUrl, languageLocale.Directory, resource.Name);
+
+                KoduService.DownloadData(url, (result) =>
+                {
+                    if (result == null)
+                    {
+                        // Failed.  Nothing to do here.
+                    }
+                    else
+                    {
+                        using (var streamReader = new StreamReader(result))
+                        {
+                            string resourceXml = streamReader.ReadToEnd();
+                            if (string.IsNullOrEmpty(resourceXml))
+                                return;
+                            resource.Update(languageLocale.Directory, resourceXml);
+                        }
+                    }
+
+                });
             }
             catch (Exception e)
             {
@@ -305,63 +298,11 @@ namespace Boku.Common.Localization
                 }
                 LocalesDebugPrint("Exception thrown in GetLocaleFromServer()\n" + e.ToString());
             }
-        }
-
-        private static void GetLocaleCallBack(IAsyncResult asyncResult)
-        {
-            // DebugLog.WriteLine("GetLocaleCallBack()");
-            var state = (LocaleAsyncState)asyncResult.AsyncState;
-            try
-            {                
-                var response = (HttpWebResponse) state.Request.EndGetResponse(asyncResult);
-                using (var responseStream = response.GetResponseStream())
-                {
-                    if (responseStream == null)
-                        return;
-
-                    using (var streamReader = new StreamReader(responseStream))
-                    {
-                        var resourceXml = streamReader.ReadToEnd();
-                        if (string.IsNullOrEmpty(resourceXml))
-                            return;
-
-                        state.Resource.Update(state.LanguageLocale.Directory, resourceXml);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                if (e != null)
-                {
-                    // DebugLog.WriteException(e, "GetLocaleCallBack()");
-                }
-                LocalesDebugPrint("Exception thrown in GetLocaleCallBack()\n" + e.ToString());
-            }
             finally
             {
-                DecrementPendingResourceUpdates(state.LanguageLocale);
+                DecrementPendingResourceUpdates(languageLocale);
             }
-        }
-
-        class LocaleAsyncState
-        {
-            public Resource Resource { get; set; }
-            public HttpWebRequest Request { get; set; }
-            public Locale LanguageLocale { get; set; }
-        }
-
-        // Abort the request if the timer fires. 
-        private static void TimeoutCallback(object state, bool timedOut)
-        {
-            if (timedOut)
-            {
-                var request = state as HttpWebRequest;
-                if (request != null)
-                {
-                    request.Abort();
-                }
-            }
-        }
+        }   // end of GetLocaleFromServer()
 
         #endregion
 
@@ -370,7 +311,7 @@ namespace Boku.Common.Localization
         /// <summary>
         /// Attempts to read Locales.xml from local storage.
         /// </summary>
-        private static void GetLocalesFromFile()
+        static void GetLocalesFromFile()
         {
             LocalesDebugPrint("\nEntering GetLocalesFromFile()");
             try
@@ -405,7 +346,7 @@ namespace Boku.Common.Localization
         /// <summary>
         /// Given a stream containing Locales.xml data, tries to to update the List of supported Locales
         /// </summary>
-        private static void PopulatesLocalesFromXmlStream(Stream localesXmlStream, bool persistFile = false)
+        static void PopulatesLocalesFromXmlStream(Stream localesXmlStream, bool persistFile = false)
         {
             LocalesDebugPrint("\nEntering PopulatesLocalesFromXmlStream()");
 
@@ -487,17 +428,17 @@ namespace Boku.Common.Localization
         /// <summary>
         /// AutoResetEvent to ensure that a single thread cannot update the resources of more than one language simultaneously
         /// </summary>
-        private static readonly AutoResetEvent updateResourcesEvent = new AutoResetEvent(false);
+        static readonly AutoResetEvent updateResourcesEvent = new AutoResetEvent(false);
 
         /// <summary>
         /// Counter to ensure that all resources have been updated before calling the callback
         /// </summary>
-        private static int pendingResources;
+        static int pendingResources;
 
         /// <summary>
         /// Callback after updating resources to allow external callers to get signaled
         /// </summary>
-        private static Action updateResourcesCallback;
+        static Action updateResourcesCallback;
 
         /// <summary>
         /// Updates all resources for a given language.
@@ -569,7 +510,7 @@ namespace Boku.Common.Localization
         /// <summary>
         /// Updates a certain resource for a given language only if necessary
         /// </summary>
-        private static void UpdateResource(Resource resource, Locale languageLocale)
+        static void UpdateResource(Resource resource, Locale languageLocale)
         {
             LocalesDebugPrint("\nEntering UpdateResource()");
             LocalesDebugPrint("    language : " + languageLocale.Language);
@@ -587,7 +528,7 @@ namespace Boku.Common.Localization
             }
         }
 
-        private static void DecrementPendingResourceUpdates(Locale languageLocale)
+        static void DecrementPendingResourceUpdates(Locale languageLocale)
         {
             if (Interlocked.Decrement(ref pendingResources) == 0)
             {
@@ -649,7 +590,7 @@ namespace Boku.Common.Localization
                 }
             }
 
-            private static Encoding GetEncoding(string xmlEncoding)
+            static Encoding GetEncoding(string xmlEncoding)
             {
                 switch (xmlEncoding.ToUpper())
                 {
@@ -663,8 +604,6 @@ namespace Boku.Common.Localization
 
         }
 
-       
-
         public static readonly Resource CardsResource = new Resource("Cards.xml");
         public static readonly Resource HelpResource = new Resource("Help.xml");
         public static readonly Resource HelpOverlaysResource = new Resource("HelpOverlays.xml");
@@ -673,7 +612,7 @@ namespace Boku.Common.Localization
         public static readonly Resource TutorialStringsResource = new Resource("TutorialStrings.xml");
         public static readonly Resource TweakScreenHelpResource = new Resource("TweakScreenHelp.xml");
 
-        private static readonly List<Resource> AllResources = new List<Resource>
+        static readonly List<Resource> AllResources = new List<Resource>
         {
             CardsResource,
             HelpResource,
@@ -796,7 +735,7 @@ namespace Boku.Common.Localization
             return locales;
         }
 
-        private readonly Dictionary<string, Action<Locale, string>> _localeSubelementDelegates = new Dictionary<string, Action<Locale, string>>
+        readonly Dictionary<string, Action<Locale, string>> _localeSubelementDelegates = new Dictionary<string, Action<Locale, string>>
         {
             {LanguageTag, (locale, language) => { locale.Language = language; }},
             {DirectoryTag, (locale, directory) => { locale.Directory = directory; }},

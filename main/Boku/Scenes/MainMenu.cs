@@ -58,7 +58,7 @@ namespace Boku
         {
             get
             {
-                return   Program2.SiteOptions.KGLUrl + "?ref=client";
+                return   KoduService.KGLUrl + "?ref=client";
             }
         }
 

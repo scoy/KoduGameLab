@@ -32,6 +32,7 @@ using Boku.SimWorld;
 using BokuShared;
 using Boku.Common.Gesture;
 using Boku.Common.Localization;
+using Boku.Common.Sharing;
 using Boku.Web;
 
 namespace Boku
@@ -852,7 +853,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#code_of_conduct");
+                    Process.Start(KoduService.KGLUrl + @"/EULA#code_of_conduct");
                 };
 
                 showCodeOfConduct = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewCodeOfConduct"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);
@@ -862,7 +863,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-                    Process.Start(Program2.SiteOptions.KGLUrl + @"/privacy");
+                    Process.Start(KoduService.KGLUrl + @"/privacy");
                 };
 
                 showPrivacyStatement = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewPrivacyStatement"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);
@@ -872,7 +873,7 @@ namespace Boku
             {
                 UIGridModularButtonElement.UIButtonElementEvent onA = delegate()
                 {
-                    Process.Start(Program2.SiteOptions.KGLUrl + @"/EULA#eula");
+                    Process.Start(KoduService.KGLUrl + @"/EULA#eula");
                 };
 
                 showEULA = new UIGridModularButtonElement(blob, Strings.Localize("optionsParams.viewEULA"), Strings.Localize("optionsParams.viewButtonLabel"), onA, null, null);

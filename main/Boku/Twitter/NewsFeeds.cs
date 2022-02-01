@@ -25,6 +25,7 @@ using Microsoft.Xna.Framework.Storage;
 using Boku.Base;
 using Boku.Common;
 using Boku.Common.Localization;
+using Boku.Common.Sharing;
 using Boku.UI2D;
 using Boku.Fx;
 using Boku.Web;
@@ -55,13 +56,10 @@ namespace Boku
         {
             using (WebClient webClient = new WebClient())
             {
-                //webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(NewsCallback);
                 try
                 {
-                    string url = Program2.SiteOptions.KGLUrl + "/API/GetLatestNews";
-                    //Uri uri = new Uri(url);
-                    //webClient.OpenReadAsync(uri);
-                    Common.Sharing.KoduService.DownloadData(url, (result)=> {
+                    string url = KoduService.KGLUrl + "/API/GetLatestNews";
+                    KoduService.DownloadData(url, (result)=> {
                         if (result == null)
                         {
                             currentState = OpState.Failed;
@@ -84,40 +82,6 @@ namespace Boku
                 }
             }
         }   // end of BeginFetchNews()
-
-        void NewsCallback(object sender, OpenReadCompletedEventArgs e)
-        {
-            Stream stream = null;
-            try
-            {
-                if (!e.Cancelled)
-                {
-                    stream = e.Result;
-                    StreamReader sr = new StreamReader(stream);
-                    rawGetData = sr.ReadToEnd();
-                    currentState = OpState.Retrieved;
-                }
-                else
-                {
-                    currentState = OpState.Failed;
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex != null)
-                {
-                    currentState = OpState.Failed;
-                }
-            }
-            finally
-            {
-                if (stream != null)
-                {
-                    stream.Close();
-                }
-            }
-
-        }   // end of NewsCallback()
 
         public List<FeedMs> GetFeedList(int width, Shared.GetFont titleFont, Shared.GetFont dateFont, Shared.GetFont bodyFont)
         {

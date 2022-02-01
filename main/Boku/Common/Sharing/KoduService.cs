@@ -23,6 +23,9 @@ namespace Boku.Common.Sharing
 
 		#region Members
 
+        // Address for web site and API content (news, version update, localization).
+        public static string KGLUrl = @"https://www.kodugamelab.com";
+
 		// Our service address
 		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
 		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
@@ -48,7 +51,10 @@ namespace Boku.Common.Sharing
 		// Define callback that passes a WebResponseStream.
 		public delegate void ResponseStreamCallback(Stream response);
 
-		//Used to connect to services
+        // Define callback that passes a ResponseMessage.
+        public delegate void ResponseMessageCallback(HttpResponseMessage responseMessage);
+
+		// Used to connect to services.
 		private static HttpClient httpClient = new HttpClient();
 
 		#region Public
@@ -132,7 +138,7 @@ namespace Boku.Common.Sharing
 				//This will also convert and update the thumburl service side.
 				thumbnailUrl = ServiceApiUrl + "thumbnail/" + worldID.ToString();
 			}
-			//Pass callback to DownloadData
+			// Pass callback to DownloadData.
 			DownloadData(thumbnailUrl, callback);
 		}   // end of GetThumbnail()
 
@@ -441,7 +447,7 @@ namespace Boku.Common.Sharing
         /// <param name="url">The URL for the request.</param>
         /// <param name="args">Object which is serialized into a JSON packet and sent with the request.</param>
         /// <param name="callback">Always called, gets response.</param>
-		static void MakeApiRequest(string url, object args, WebResponseCallback callback)
+		public static void MakeApiRequest(string url, object args, WebResponseCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
 			timer.Start();
@@ -526,7 +532,8 @@ namespace Boku.Common.Sharing
 		}
 
 		/// <summary>
-		/// Helper function to handle data downloads of worlds and thumbnails .
+		/// Helper function to handle data downloads of worlds and thumbnails.
+        /// Note that this is async.  Should probably rename.
 		/// </summary>
 		/// <param name="url"></param>
 		/// <param name="callback"></param>
@@ -535,16 +542,16 @@ namespace Boku.Common.Sharing
 			//var timer = new System.Diagnostics.Stopwatch();
 			//timer.Start();
 			
-			//Force protocol to Tls12 to support GitHub
+			// Force protocol to Tls12 to support GitHub
 			ServicePointManager.Expect100Continue = true;
-			ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;//3072 = Tls12. The library we are using doesn't have Tls12 enum value.
+			ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;  // 3072 = Tls12. The library we are using doesn't have Tls12 enum value.
 
 			httpClient.GetAsync(url).ContinueWith(responseTask =>
 			{
 				var response = responseTask.Result;
 				if (!response.IsSuccessStatusCode)
 				{
-					//failed
+					// Failed.
 					callback(null);
 				}
 				else
@@ -553,12 +560,31 @@ namespace Boku.Common.Sharing
 					{
 						var res= streamTask.Result;
 
-						//Note Result will be none if readstream failed?
+						// Note Result will be none if readstream failed?
 						callback(res);
 					});
 				}
 			});
 		}   // end of DownloadData()
+
+        /// <summary>
+        /// Helper function.  Calls callback with HttpResponceMessage.
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="callback"></param>
+        public static void DownloadDataAsync(string url, ResponseMessageCallback callback)
+        {
+            // Force protocol to Tls12 to support GitHub
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;  // 3072 = Tls12. The library we are using doesn't have Tls12 enum value.
+
+            httpClient.GetAsync(url).ContinueWith(responseTask =>
+            {
+                var response = responseTask.Result;
+                callback(response);
+            });
+        }   // end of DownloadDataAsync()
+
 		public static void xDownloadData(string url, ResponseStreamCallback callback)
 		{
 			var timer = new System.Diagnostics.Stopwatch();
