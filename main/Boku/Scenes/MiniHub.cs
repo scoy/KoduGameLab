@@ -168,7 +168,6 @@ namespace Boku
                 AuthUI.ShowStatusDialog();
 
                 parent.saveLevelDialog.Update();
-                shared.communityShareMenu.Update();
 
                 parent.saveChangesMessage.Update();
                 parent.saveChangesWithDiscardMessage.Update();

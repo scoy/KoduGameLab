@@ -26,6 +26,11 @@ namespace Boku
 {
     /// <summary>
     /// Handles dialogs used for sharing levels.
+    /// 
+    /// Half of the functionality has been replaced.  So now, this class is striclty
+    /// being used just to display error and warning dialogs.  All of the actual
+    /// sharing is done elsewhere.
+    /// 
     /// </summary>
     public class CommunityShareMenu : GameObject, INeedsDeviceReset
     {
@@ -33,123 +38,7 @@ namespace Boku
 
         public CommunityShareMenu()
         {
-            // signedInMessage
-            {
-                ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "upload"
-
-                    //find the first link
-                    LevelMetadata level = CurWorld;
-                    level = level.FindFirstLink();
-
-                    string folderName = Utils.FolderNameFromFlags(level.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
-
-                    // Read it back from disk and start uploading it to the community.
-                    BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(fullPath);
-
-                    UploadWorldData(packet, level);
-
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerB = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "cancel"
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-
-                ModularMessageDialog.ButtonHandler handlerY = delegate(ModularMessageDialog dialog)
-                {
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-            }
-
-            // signedOutMessage
-            {
-                ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
-                {
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerB = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "cancel"
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerY = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "upload anonymous"
-                    LevelMetadata level = CurWorld;
-
-                    //find the first link
-                    level = level.FindFirstLink();
-
-                    string folderName = Utils.FolderNameFromFlags(level.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
-
-                    // Share.
-                    // Check to see if the community server is reachable before sharing level.
-                    var args = new
-                    {
-                        //startup = startup.ToString(),
-                        clientVersion = Program2.ThisVersion.ToString(),
-                        //lang =Boku.Common.Localization.Localizer.LocalLanguage,
-                        //siteId = SiteID.Instance.Value.ToString()
-                    };
-
-                    //4scoy we are not getting here anymore. 
-                    //Todo: Remove this?
-                    // Ping the services
-                    Newtonsoft.Json.Linq.JContainer pingResponse = KoduService.PingNonAsync(args);
-                    if (pingResponse==null)
-                    {
-                        //failed
-                        ShowNoCommunityDialog();
-                    }
-                    else
-                    {
-                        var msgStr = pingResponse.Value<string>("systemMessage");
-                        //If the response contains a system message display it.
-                        if (!string.IsNullOrEmpty(msgStr))
-                        {
-                            //4scoy. Is this ok the dialog? 
-                            ShowShareErrorDialog(msgStr);
-                        }
-                    }
-
-                    //if (!CommunityServices.PingNonAsync())
-                    //{
-                    //    ShowNoCommunityDialog();
-                    //}
-
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-
-                };
-            }
-        }
-
-        private void UploadWorldData(WorldPacket packet, LevelMetadata level)
-        {
-            if (packet == null)
-            {
-                ShowShareErrorDialog("Load failed.");
-            }
-            else if (0 == Web.Community.Async_PutWorldData(packet, Callback_PutWorldData, level))
-            {
-                ShowShareErrorDialog("Upload failed.");
-            }
-        }
+        }   // end of c'tor
 
         /// <summary>
         /// Recreate render targets
@@ -341,69 +230,6 @@ namespace Boku
             }
             */
         }   // end of ContinueCommunityShare()
-
-        /// <summary>
-        /// Callback that results from testing whether or not the community server is active.
-        /// </summary>
-        /// <param name="resultObj"></param>
-        public void Callback_Ping(AsyncResult resultObj)
-        {
-            AsyncResult result = (AsyncResult)resultObj;
-
-            if (result.Success)
-            {
-                // Read it back from disk and start uploading it to the community.
-                BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(result.Param as string);
-
-                LevelMetadata level = XmlDataHelper.LoadMetadataByGenre(packet.Info.WorldId, (BokuShared.Genres)packet.Info.Genres);
-
-                UploadWorldData(packet, level);
-            }
-            else
-            {
-                ShowShareErrorDialog("Login failed.");
-            }
-        }   // end of Callback_Ping()
-
-        //4scoy
-        //It looks to me like this code should be called inside the UploadWorld 
-        //callback
-        // NOTE This is no longer needed. Previously, when we uploaded a level that was
-        // part of a linked chain we would traverse the chain and upload every level in
-        // the chain.  That is what this code is doing.  Instead, we now bundle all the
-        // linked levels into the .Kodu2 file and upload them as a unit.
-        // (scoy) TODO Once the new network code is stable, all this should be removed.
-        public void Callback_PutWorldData(AsyncResult result)
-        {
-            LevelMetadata uploadedLevel = result.Param as LevelMetadata;
-
-            if (result.Success && uploadedLevel != null && uploadedLevel.LinkedToLevel != null)
-            {
-                LevelMetadata nextLevel = uploadedLevel.NextLink();
-
-                if (nextLevel != null)
-                {
-                    string folderName = Utils.FolderNameFromFlags(nextLevel.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + nextLevel.WorldId.ToString() + @".Xml";
-
-                    // Read it back from disk and start uploading it to the community.
-                    BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(fullPath);
-
-                    UploadWorldData(packet, nextLevel);
-
-                    return;
-                }
-            }
-
-            if (result.Success)
-            {
-                ShowShareSuccessDialog();
-            }
-            else
-            {
-                ShowShareErrorDialog("Share failed.");
-            }
-        }   // end of Callback_PutWorldData()
 
         public void LoadContent(bool immediate)
         {
