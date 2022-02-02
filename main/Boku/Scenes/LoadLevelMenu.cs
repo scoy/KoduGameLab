@@ -114,7 +114,6 @@ namespace Boku
             // Arrows for scrolling levels w/ mouse.
             public AABB2D arrowLeftBox = new AABB2D();
             public AABB2D arrowRightBox = new AABB2D();
-            public CommunityShareMenu communityShareMenu = new CommunityShareMenu();
 
             #endregion
 
@@ -981,7 +980,7 @@ namespace Boku
                 popup.Active = false;
 
                 // Does share and displays dialogs for error or success.
-                communityShareMenu.Activate(parent.shared.CurWorld);
+                MiniHub.communityShareMenu.Activate(parent.shared.CurWorld);
 
             }   // end of void PopupOnCommunityShare()
 
@@ -1577,7 +1576,7 @@ namespace Boku
                 if (KoduService.ShareRequestState == KoduService.RequestState.Complete)
                 {
                     // Success.
-                    shared.communityShareMenu.ShowShareSuccessDialog();
+                    MiniHub.communityShareMenu.ShowShareSuccessDialog();
 
                     // Clear state for next share.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -1586,7 +1585,7 @@ namespace Boku
                 // If Sharing and we don't have internet, show error.
                 if (KoduService.ShareRequestState == KoduService.RequestState.NoInternet)
                 {
-                    shared.communityShareMenu.ShowNoCommunityDialog();
+                    MiniHub.communityShareMenu.ShowNoCommunityDialog();
 
                     // Clear state so we can try again.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -1596,7 +1595,7 @@ namespace Boku
                 if (KoduService.ShareRequestState == KoduService.RequestState.Error)
                 {
                     // Launch error dialog.
-                    shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+                    MiniHub.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
 
                     // Clear state so we can try again.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -3111,7 +3110,7 @@ namespace Boku
                 // Slip the help overlay under any message dialogs.
                 HelpOverlay.Render();
 
-                shared.communityShareMenu.Render();
+                MiniHub.communityShareMenu.Render();
 
                 InGame.RenderMessages();
 

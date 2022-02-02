@@ -37,6 +37,8 @@ namespace Boku.Common.Sharing
         // LoadLevelMenu then needs to reset this to None.
         public static RequestState ShareRequestState = RequestState.None;
 
+        public static bool PingFailed = false;  // Used to tell if services are up.
+
 		#endregion
 
 		// Define callback that passes a WebResponse.
@@ -510,24 +512,32 @@ namespace Boku.Common.Sharing
 			{
 				Instrumentation.StopTimer(instrumentationTimer);
 				timer.Stop();
-				var response = responseTask.Result;
-				if (!response.IsSuccessStatusCode)
-				{
-					//Log error.
-					Instrumentation.RecordException(new { type = "HTP", url = url, args = args, message = response.ReasonPhrase, body = "", time = timer.Elapsed });
-					//failed
-					callback(null);
-				}
-				else
-				{
-					response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
-					{
-						var json = jsonTask.Result;
+                try
+                {
+                    var response = responseTask.Result;
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        //Log error.
+                        Instrumentation.RecordException(new { type = "HTP", url = url, args = args, message = response.ReasonPhrase, body = "", time = timer.Elapsed });
+                        //failed
+                        callback(null);
+                    }
+                    else
+                    {
+                        response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
+                        {
+                            var json = jsonTask.Result;
 
-						//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
-						callback(json);
-					});
-				}
+                            //Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
+                            callback(json);
+                        });
+                    }
+                }
+                catch
+                {
+                    // Call failed.  This happens when not connected to internet.
+                    callback(null);
+                }
 			});
 		}
 
@@ -548,22 +558,30 @@ namespace Boku.Common.Sharing
 
 			httpClient.GetAsync(url).ContinueWith(responseTask =>
 			{
-				var response = responseTask.Result;
-				if (!response.IsSuccessStatusCode)
-				{
-					// Failed.
-					callback(null);
-				}
-				else
-				{
-					response.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
-					{
-						var res= streamTask.Result;
+                try
+                {
+                    var response = responseTask.Result;
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        // Failed.
+                        callback(null);
+                    }
+                    else
+                    {
+                        response.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
+                        {
+                            var res = streamTask.Result;
 
-						// Note Result will be none if readstream failed?
-						callback(res);
-					});
-				}
+                            // Note Result will be none if readstream failed?
+                            callback(res);
+                        });
+                    }
+                }
+                catch
+                {
+                    // No internet.
+                    callback(null);
+                }
 			});
 		}   // end of DownloadData()
 
@@ -580,8 +598,16 @@ namespace Boku.Common.Sharing
 
             httpClient.GetAsync(url).ContinueWith(responseTask =>
             {
-                var response = responseTask.Result;
-                callback(response);
+                try
+                {
+                    var response = responseTask.Result;
+                    callback(response);
+                }
+                catch
+                {
+                    // No internet.
+                    callback(null);
+                }
             });
         }   // end of DownloadDataAsync()
 

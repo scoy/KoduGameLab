@@ -78,7 +78,8 @@ namespace Boku
                     KoduService.Ping(args,(responseObject)=>{
                         if (responseObject == null)
                         {
-                            //ping failed.
+                            // Ping failed.
+                            KoduService.PingFailed = true;
                         }
                         else
                         {

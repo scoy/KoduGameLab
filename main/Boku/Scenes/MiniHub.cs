@@ -47,6 +47,8 @@ namespace Boku
         private Texture2D homeTexture = null;
 
         public NewWorldDialog newWorldDialog;
+
+        public static CommunityShareMenu communityShareMenu = new CommunityShareMenu();
         
         protected class Shared : INeedsDeviceReset
         {
@@ -56,10 +58,9 @@ namespace Boku
 
             public Matrix worldMatrix = Matrix.Identity;
 
-            public Texture2D inGameImage = null;      // This is the same image as above but with more filtering.  This
+            public Texture2D inGameImage = null;    // This is the same image as above but with more filtering.  This
                                                     // is used as a backdrop to the mini-hub.
 
-            public CommunityShareMenu communityShareMenu = new CommunityShareMenu();
             // c'tor
             public Shared(MiniHub parent)
             {
@@ -203,7 +204,7 @@ namespace Boku
                 if (KoduService.ShareRequestState == KoduService.RequestState.Complete)
                 {
                     // Success.
-                    shared.communityShareMenu.ShowShareSuccessDialog();
+                    MiniHub.communityShareMenu.ShowShareSuccessDialog();
 
                     // Clear state for next share.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -212,7 +213,7 @@ namespace Boku
                 // If Sharing and we don't have internet, show error.
                 if (KoduService.ShareRequestState == KoduService.RequestState.NoInternet)
                 {
-                    shared.communityShareMenu.ShowNoCommunityDialog();
+                    MiniHub.communityShareMenu.ShowNoCommunityDialog();
 
                     // Clear state so we can try again.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -222,7 +223,7 @@ namespace Boku
                 if (KoduService.ShareRequestState == KoduService.RequestState.Error)
                 {
                     // Launch error dialog.
-                    shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+                    MiniHub.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
 
                     // Clear state so we can try again.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -357,7 +358,7 @@ namespace Boku
                         parent.shareSuccessMessage.Render();
                         parent.noCommunityMessage.Render();
 
-                        shared.communityShareMenu.Render();
+                        communityShareMenu.Render();
 
                         HelpOverlay.Render();
                     }
@@ -687,7 +688,7 @@ namespace Boku
                     var level = LevelMetadata.CreateFromXml(InGame.XmlWorldData);
 
                     // Does share and displays dialogs for error or success.
-                    BokuGame.bokuGame.loadLevelMenu.shared.communityShareMenu.Activate(level);
+                    communityShareMenu.Activate(level);
                 }
             }
             else if (menu.CurString == Strings.Localize("miniHub.load"))

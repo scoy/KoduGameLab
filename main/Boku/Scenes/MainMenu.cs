@@ -82,7 +82,7 @@ namespace Boku
 
         public NewWorldDialog newWorldDialog;
 
-        protected class Shared : INeedsDeviceReset
+        public class Shared : INeedsDeviceReset
         {
             public Camera camera = new PerspectiveUICamera();
             public Camera bokuCamera = new SimCamera();
@@ -692,7 +692,7 @@ namespace Boku
 
 
         // List objects.
-        protected Shared shared = null;
+        public Shared shared = null;
         protected RenderObj renderObj = null;
         protected UpdateObj updateObj = null;
 
@@ -708,7 +708,7 @@ namespace Boku
 
         private CommandMap commandMap = new CommandMap("App.TitleMenu");   // Placeholder for stack.
 
-        private ModularMessageDialog noCommunityMessage = null;
+        public  ModularMessageDialog noCommunityMessage = null;
         private ModularMessageDialog noSharingMessage = null;
         private ModularMessageDialog prevSessionCrashedMessage = null;
 
@@ -947,6 +947,19 @@ namespace Boku
             // COMMUNITY
             if (cur == Strings.Localize("mainMenu.community") || cur == "GALLERY")
             {
+                if (KoduService.PingFailed)
+                {
+                    // Give no community dialog.
+                    noCommunityMessage.Activate();
+                    menu.Active = true;
+                }
+                else
+                {
+                    // Open the community UI
+                    Deactivate();
+                    BokuGame.bokuGame.community.Activate();
+                }
+                /*
                 // Check to see if the community server is reachable before switching screens.
                 var args = new
                 {
@@ -987,6 +1000,7 @@ namespace Boku
                         BokuGame.bokuGame.community.Activate();
                     }
                 }
+                */
 
             }
 

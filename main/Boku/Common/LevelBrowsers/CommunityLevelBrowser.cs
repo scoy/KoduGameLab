@@ -323,6 +323,15 @@ namespace Boku.Common
                     //This should probably be done differently.
                     FetchComplete((string)results);
 
+                    // If we got nothing from the start, then the community is not available.
+                    // Exit back out to main menu.
+                    if (pagingFirst == 0 && results == null)
+                    {
+                        // Switch back to the MainMenu.
+                        BokuGame.bokuGame.community.Deactivate();
+                        BokuGame.bokuGame.mainMenu.Activate();
+                    }
+
                 });
                 return true;
 #else
