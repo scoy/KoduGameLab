@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 
-using Microsoft.Xna.Framework.Media;
+using Newtonsoft.Json;
 
 using Boku.Base;
 using Boku.Input;
@@ -83,21 +83,15 @@ namespace Boku
                         }
                         else
                         {
-                            //CMP Jan 2022. This conversion (string to obj) will be needed if this message is used.
-                            //responseObject = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)responseObject) as Newtonsoft.Json.Linq.JContainer;
+                            responseObject = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)responseObject) as Newtonsoft.Json.Linq.JContainer;
 
-                            //4scoy. todo. Can we get this working?
-                            //See version in CommunityShareMenu.
+                            var container = (Newtonsoft.Json.Linq.JContainer)responseObject;
+                            var msgStr = container.Value<string>("systemMessage");
 
-                            //var container=(Newtonsoft.Json.Linq.JContainer)responseObject;
-                            //var msgStr=container.Value<string>("systemMessage");
-                            ////If the response contains a system message display it.
-                            //if (!string.IsNullOrEmpty(msgStr))
-                            //{
-                            //    //4scoy. Show dialog.
-                            //    //Maybe move this ping somewhere a message
-                            //    //box would be easier like MainMenu?
-                            //}
+                            if (!string.IsNullOrEmpty(msgStr))
+                            {
+                                System.Windows.Forms.MessageBox.Show(msgStr, "Kodu Server Message", System.Windows.Forms.MessageBoxButtons.OK);
+                            }
                         }
                     });
 
