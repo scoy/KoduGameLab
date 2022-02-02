@@ -331,7 +331,6 @@
     <Compile Include="Common\ScoreSet.cs" />
     <Compile Include="Common\ScreenWarp.cs" />
     <Compile Include="Common\Sharing\AsyncOperation.cs" />
-    <Compile Include="Common\Sharing\CommunityServices.cs" />
     <Compile Include="Common\Sharing\FrameDelayedOperation.cs" />
     <Compile Include="Common\Sharing\KoduService.cs" />
     <Compile Include="Common\Sharing\TimeDelayedOperation.cs" />

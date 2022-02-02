@@ -223,7 +223,7 @@ namespace Boku
                 if (KoduService.ShareRequestState == KoduService.RequestState.Error)
                 {
                     // Launch error dialog.
-                    MiniHub.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+                    shared.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
 
                     // Clear state so we can try again.
                     KoduService.ShareRequestState = KoduService.RequestState.None;
@@ -358,7 +358,7 @@ namespace Boku
                         parent.shareSuccessMessage.Render();
                         parent.noCommunityMessage.Render();
 
-                        communityShareMenu.Render();
+                        shared.communityShareMenu.Render();
 
                         HelpOverlay.Render();
                     }
@@ -688,7 +688,7 @@ namespace Boku
                     var level = LevelMetadata.CreateFromXml(InGame.XmlWorldData);
 
                     // Does share and displays dialogs for error or success.
-                    communityShareMenu.Activate(level);
+                    BokuGame.bokuGame.loadLevelMenu.shared.communityShareMenu.Activate(level);
                 }
             }
             else if (menu.CurString == Strings.Localize("miniHub.load"))
