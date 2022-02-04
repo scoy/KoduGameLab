@@ -75,7 +75,9 @@ namespace Boku
                         lang = Boku.Common.Localization.Localizer.LocalLanguage,
                         //siteId = SiteID.Instance.Value.ToString()
                     };
+                    var instrumentationTimer = Instrumentation.StartTimer(Instrumentation.TimerId.PingTime);
                     KoduService.Ping(args,(responseObject)=>{
+                        Instrumentation.StopTimer(instrumentationTimer);
                         if (responseObject == null)
                         {
                             // Ping failed.
