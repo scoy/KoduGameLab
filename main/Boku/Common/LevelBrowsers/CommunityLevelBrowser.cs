@@ -593,7 +593,7 @@ namespace Boku.Common
                     level.SaveTime = token.Value<string>("SaveTime");
 
                     level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
-                    level.DataUrl = token.Value<string>("DataUrl");
+                    level.DataUrl = token.Value<string>("DataUrl");//not used. May be removed service side.
 
                     if (IndexOf(level.WorldId) == -1)
                     {

@@ -27,9 +27,9 @@ namespace Boku.Common.Sharing
         public static string KGLUrl = @"https://www.kodugamelab.com";
 
 		// Our service address
-		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
+		//public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
 		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
-		//public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
+		public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
         // Used by rest of system to keep track of state.  LoadLevelMenu
@@ -125,11 +125,11 @@ namespace Boku.Common.Sharing
 
 		}   // end of Search()
 
-        /// <summary>
-        /// Get thumbnail for world.
-        /// </summary>
-        /// <param name="ThumbnailUrl"></param>
-        /// <param name="callback">Gets stream of thumb data or null if fail.</param>
+		/// <summary>
+		/// Get thumbnail for world.
+		/// </summary>
+		/// <param name="ThumbnailUrl"></param>
+		/// <param name="callback">Gets stream of thumb data or null if fail.</param>
 		public static void GetThumbnail(Guid worldID, string thumbnailUrl, ResponseStreamCallback callback)
 		{
 			if (thumbnailUrl == null)
@@ -152,6 +152,9 @@ namespace Boku.Common.Sharing
 		public static void DeleteWorld(object args, GenericObjectCallback callback)
 		{
 			string url = ServiceApiUrl + "deleteWorld";
+
+			//todo. validate.
+			Instrumentation.RecordEvent(Instrumentation.EventId.LevelDeleted, args.ToString());
 
 			MakeHttpRequest(url, args, callback);
 
@@ -204,14 +207,18 @@ namespace Boku.Common.Sharing
         /// <param name="callback">Gets null on failure.</param>
 		public static void UploadWorld(object args, string levelPath,string thumbPath,string screenPath, GenericObjectCallback callback)
 		{
+			//4scoy. This will test if UploadWorld is called
+			//before the last one completes. 
+			if (ShareRequestState == RequestState.Pending)
+				Console.WriteLine("Nested UploadWorld!");
+
             ShareRequestState = RequestState.Pending;
 
             Instrumentation.RecordEvent(Instrumentation.EventId.LevelUploaded, args.ToString());
 
 			// Create an upload request.
 			string url = ServiceApiUrl + "authorizeUpload/";
-
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
+			MakeHttpRequest(url, args, (response) => {
 				if (response == null)
 				{
 					// Failed.
@@ -220,17 +227,19 @@ namespace Boku.Common.Sharing
 				}
 				else
 				{
-					string text = "";
-					using (var responseStream = response.GetResponseStream())
-					using (var reader = new StreamReader(responseStream))
-					{
-						text = reader.ReadToEnd();
-					}
-
-					//todo allow for rejected.
+					string text = (string)response;
 
 					// Get SAS strings from response.
 					Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
+
+					string status = container.Value<string>("status");
+					if(status!=null && status != "ok")
+                    {
+						//authorize error.
+						ShareRequestState = RequestState.Error;
+						callback(null);
+                    }
+
 					string uploadDataUrl = container.Value<string>("dataUrl");
 					string uploadThumbUrl = container.Value<string>("thumbUrl");
 					string uploadScreenUrl = container.Value<string>("screenUrl");
@@ -369,29 +378,38 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "finalizeUpload";
 
-            Instrumentation.RecordEvent(Instrumentation.EventId.LevelDeleted, args.ToString());
-
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
+			//Make api call to get data url
+			MakeHttpRequest(url, args, (response) => {
 				if (response == null)
 				{
 					// Call failed.
-                    ShareRequestState = RequestState.Error;
-					callback(null);
+					ShareRequestState = RequestState.Error;
+					callback(null);//Failed. 404 or something.
 				}
 				else
 				{
-					string text = "";
-					using (var responseStream = response.GetResponseStream())
-					using (var reader = new StreamReader(responseStream))
+					try
 					{
-						text = reader.ReadToEnd();
-                        ShareRequestState = RequestState.Complete;
-						callback(text);
+						//get returned response
+
+						//Handle rejection
+
+						//text = reader.ReadToEnd();
+						ShareRequestState = RequestState.Complete;
+						callback("");
+
+//update this
+
+						//Instrumentation.RecordEvent(Instrumentation.EventId.LevelDownloaded, args.ToString());
+					}
+					catch
+					{
+						callback(null);//should never happen but...
 					}
 				}
-			});//End of MakeApiRequest
+			});
 
-		}   // end of DeleteWorld()
+		}   // end of ()
 
         /// <summary>
         /// Async version.
@@ -402,21 +420,27 @@ namespace Boku.Common.Sharing
 		{
 			string url = ServiceApiUrl + "uploadInstrumentation";
 
-			KoduService.MakeApiRequest(url, args, (HttpWebResponse response) => {
+			MakeHttpRequest(url, args, (response) => {
 				if (response == null)
 				{
-					// Failed.
-					callback(null);
+					// Call failed.
+					callback(null);//Failed. 404 or something.
 				}
 				else
 				{
-					// No response obj expected so check status code.
-					if (response.StatusCode == HttpStatusCode.OK)
-						callback(true);
-					else
-						callback(null);
+					try
+					{
+						//if (response.StatusCode == HttpStatusCode.OK)
+							callback(true);
+						//else
+						//	callback(null);
+					}
+					catch
+					{
+						callback(null);//should never happen but...
+					}
 				}
-			});//End of MakeApiRequest
+			});
 		}   // end of UploadInstrumentation()
 
         /// <summary>
@@ -425,75 +449,6 @@ namespace Boku.Common.Sharing
         /// <param name="url">Url for request.</param>
         /// <param name="args">Object which will be turned into a JSON packet and attached to the request.</param>
         /// <returns>The created WebRequest.</returns>
-		static HttpWebRequest CreateApiRequest(string url, object args)
-		{
-			var request = (HttpWebRequest)WebRequest.Create(url);
-			request.ContentType = "application/json";
-			request.Method = "POST";
-
-			// Create and attach json payload.
-			using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-			{
-				// Turn into json string.
-				string json = JsonConvert.SerializeObject(args);
-
-				// Attatch json to request.
-				streamWriter.Write(json);
-			}
-			return request;
-		}   // end of CreateApiRequest()
-
-        /// <summary>
-        /// Makes an API request.
-        /// </summary>
-        /// <param name="url">The URL for the request.</param>
-        /// <param name="args">Object which is serialized into a JSON packet and sent with the request.</param>
-        /// <param name="callback">Always called, gets response.</param>
-		public static void MakeApiRequest(string url, object args, WebResponseCallback callback)
-		{
-			var timer = new System.Diagnostics.Stopwatch();
-			timer.Start();
-			HttpWebResponse response = null;    //respond with null in case of fail.
-			try
-			{
-				var request = CreateApiRequest(url, args);
-
-				// Send request.
-				var result = request.BeginGetResponse(asyncResult => {
-					timer.Stop();
-
-					// Handle request response.
-					//Console.WriteLine("OK MS:"+ timer.Elapsed.Milliseconds+" "+url);
-					try
-					{
-						var req = (HttpWebRequest)asyncResult.AsyncState;
-						response = (HttpWebResponse)req.EndGetResponse(asyncResult);
-					}
-					catch (Exception ex)
-					{
-						LogException(ex, url, null, timer.Elapsed);
-						callback(null);
-					}
-				}, request);
-			}
-			catch (Exception ex)
-			{
-				timer.Stop();
-
-				LogException(ex, url, args, timer.Elapsed);
-
-				response = null;    // Report fail.
-			}
-			finally
-			{
-				// Finally success or fail do the callback.
-				// Handle this outside of the try catch to only catch
-				// comm related errors. This might not be the right thing to do.
-				// If a mangled thumbnail or world causes an exception what will happen?
-				callback(response);
-			}
-
-		}   // end of MakeApiRequest()
 
 		/// <summary>
 		/// Makes an API request via HttpClient.
@@ -504,41 +459,41 @@ namespace Boku.Common.Sharing
 		private static void MakeHttpRequest(string url, object args, GenericObjectCallback callback)
 		{
 			var httpContent = new StringContent(JsonConvert.SerializeObject(args), Encoding.UTF8, "application/json");
-			var timer = new System.Diagnostics.Stopwatch();
-			timer.Start();
-			var instrumentationTimer = Instrumentation.StartTimer(Instrumentation.TimerId.ResponseTime);
 
-			httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
+			try
 			{
-				Instrumentation.StopTimer(instrumentationTimer);
-				timer.Stop();
-                try
-                {
-                    var response = responseTask.Result;
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        //Log error.
-                        Instrumentation.RecordException(new { type = "HTP", url = url, args = args, message = response.ReasonPhrase, body = "", time = timer.Elapsed });
-                        //failed
-                        callback(null);
-                    }
-                    else
-                    {
-                        response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
-                        {
-                            var json = jsonTask.Result;
+				httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
+				{
+					var response = responseTask.Result;
+					if (!response.IsSuccessStatusCode)
+					{
+						//Log error.
+						//failed
+						callback(null);
 
-                            //Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
-                            callback(json);
-                        });
-                    }
-                }
-                catch
-                {
-                    // Call failed.  This happens when not connected to internet.
-                    callback(null);
-                }
-			});
+					}else{
+						response.Content.ReadAsStringAsync().ContinueWith(jsonTask =>
+						{
+							var json = jsonTask.Result;
+
+							//Newtonsoft.Json.Linq.JContainer returnObject = JsonConvert.DeserializeObject(json) as Newtonsoft.Json.Linq.JContainer;
+							callback(json);
+						});
+					}
+				});
+			}catch(Exception ex)
+            {
+				Instrumentation.RecordException(new
+				{
+					type = "HTP",
+					url = url,
+					args = args,
+					message = ex.Message,
+					//body = ex.InnerException.Message
+					/*, time = timer.Elapsed */
+				});
+				callback(null);
+			}
 		}
 
 		/// <summary>
@@ -555,34 +510,43 @@ namespace Boku.Common.Sharing
 			// Force protocol to Tls12 to support GitHub
 			ServicePointManager.Expect100Continue = true;
 			ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;  // 3072 = Tls12. The library we are using doesn't have Tls12 enum value.
-
-			httpClient.GetAsync(url).ContinueWith(responseTask =>
+			try
 			{
-                try
-                {
-                    var response = responseTask.Result;
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        // Failed.
-                        callback(null);
-                    }
-                    else
-                    {
-                        response.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
-                        {
-                            var res = streamTask.Result;
+				httpClient.GetAsync(url).ContinueWith(responseTask =>
+				{
+					var response = responseTask.Result;
+					if (!response.IsSuccessStatusCode)
+					{
+						// Failed.
+						callback(null);
+					}
+					else
+					{
+						response.Content.ReadAsStreamAsync().ContinueWith(streamTask =>
+						{
+							var res = streamTask.Result;
 
-                            // Note Result will be none if readstream failed?
-                            callback(res);
-                        });
-                    }
-                }
-                catch
-                {
-                    // No internet.
-                    callback(null);
-                }
-			});
+							// Note Result will be none if readstream failed?
+							callback(res);
+						});
+					}
+				});
+			}
+			catch (Exception ex)
+			{
+				Instrumentation.RecordException(new
+				{
+					type = "HTP",
+					url = url,
+					args = "",
+					message = ex.Message,
+					//body = ex.InnerException.Message
+					/*, time = timer.Elapsed */
+				});
+				callback(null);
+			}
+
+
 		}   // end of DownloadData()
 
         /// <summary>
@@ -595,65 +559,31 @@ namespace Boku.Common.Sharing
             // Force protocol to Tls12 to support GitHub
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;  // 3072 = Tls12. The library we are using doesn't have Tls12 enum value.
-
-            httpClient.GetAsync(url).ContinueWith(responseTask =>
-            {
-                try
-                {
-                    var response = responseTask.Result;
-                    callback(response);
-                }
-                catch
-                {
-                    // No internet.
-                    callback(null);
-                }
-            });
-        }   // end of DownloadDataAsync()
-
-		public static void xDownloadData(string url, ResponseStreamCallback callback)
-		{
-			var timer = new System.Diagnostics.Stopwatch();
-			timer.Start();
-			//HttpWebResponse dataResponse = null;//respond with null in case of fail
 			try
 			{
-				// Get data from dataUrl.
-				Uri uri = new Uri(url);
-
-				var dataRequest = (HttpWebRequest)WebRequest.Create(uri);
-				dataRequest.BeginGetResponse((asyncResult) => {
-					timer.Stop();
-					//Console.WriteLine("OK MS:" + timer.Elapsed + " " + url);
-					try
-					{
-						using (HttpWebResponse dataResponse = (HttpWebResponse)dataRequest.EndGetResponse(asyncResult))
-						{
-							using (Stream dataResponseStream = dataResponse.GetResponseStream())
-							{
-								callback(dataResponseStream);
-							}
-						}
-					}
-					catch (Exception ex)
-					{
-						LogException(ex, url, null, timer.Elapsed);
-						callback(null);
-					}
-
-				}, dataRequest);
+				httpClient.GetAsync(url).ContinueWith(responseTask =>
+				{
+					var response = responseTask.Result;
+					callback(response);
+				});
 			}
 			catch (Exception ex)
 			{
-				timer.Stop();
+				Instrumentation.RecordException(new
+				{
+					type = "HTP",
+					url = url,
+					args = "",
+					message = ex.Message,
+					//body = ex.InnerException.Message
+					/*, time = timer.Elapsed */
+				});
+				callback(null);
+			}
 
-				LogException(ex, url, null, timer.Elapsed);
-				callback(null); // Report fail.
-			}
-			finally
-			{
-			}
-		}   // end of DownloadData()
+
+        }   // end of DownloadDataAsync()
+
 
 		/// <summary>
 		/// Helper function to handle logging exception messages.
@@ -691,51 +621,36 @@ namespace Boku.Common.Sharing
         /// <param name="callback"></param>
 		static void UploadData(string url, string contentType, byte[] buffer, GenericObjectCallback callback)
 		{
-			var timer = new System.Diagnostics.Stopwatch();
-			timer.Start();
-			HttpWebResponse response = null;    // Respond with null in case of fail.
+			var content = new ByteArrayContent(buffer);
+			content.Headers.Add("x-ms-blob-type", "BlockBlob");
+			content.Headers.Add("x-ms-blob-content-type", contentType);
 			try
 			{
-				var request = (HttpWebRequest)WebRequest.Create(url);
-				request.ContentType = "application/json";
-				request.Method = "PUT";
-				request.Headers.Add("x-ms-blob-type", "BlockBlob");
-				request.Headers.Add("x-ms-blob-content-type", contentType);
-				
-				// Create and attatch binary payload.
-				using (var streamWriter = new BinaryWriter(request.GetRequestStream()))
+				httpClient.PutAsync(url, content).ContinueWith(responseTask =>
 				{
-					// Attach buffer to request.
-					streamWriter.Write(buffer);
-				}
+					responseTask.Result.EnsureSuccessStatusCode();
 
-				// Send request.
-				var result = request.BeginGetResponse(asyncResult => {
-					timer.Stop();
+					var result = responseTask.Result;
 
-					// Handle request response.
-					Console.WriteLine("OK MS:" + timer.Elapsed.Milliseconds + " " + url);
-
-					var req = (HttpWebRequest)asyncResult.AsyncState;
-					response = (HttpWebResponse)req.EndGetResponse(asyncResult);
-				}, request);
+					//todo better response
+					callback("");
+				});
 			}
 			catch (Exception ex)
 			{
-				timer.Stop();
-
-				LogException(ex, url, null, timer.Elapsed);
-
-				response = null;    // Report fail.
+				Instrumentation.RecordException(new
+				{
+					type = "HTP",
+					url = url,
+					args = "",
+					message = ex.Message,
+					//body = ex.InnerException.Message
+					/*, time = timer.Elapsed */
+				});
+				callback(null);
 			}
-			finally
-			{
-				// Finally success or fail do the callback.
-				// Handle this outside of the try catch to only catch
-				// comm related errors. This might not be the right thing to do.
-				// If a mangled thumbnail or world causes an exception what will happen?
-				callback(response);
-			}
+			//response.EnsureSuccessStatusCode();
+
 		}   // end of UploadData()
 
         /// <summary>
