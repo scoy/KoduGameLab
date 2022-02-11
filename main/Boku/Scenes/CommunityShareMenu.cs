@@ -123,6 +123,12 @@ namespace Boku
 
         public void PopupOnCommunityShare(LevelMetadata level)
         {
+            // Bail if there's already an upload in progress.
+            if (KoduService.ShareRequestState != KoduService.RequestState.None)
+            {
+                return;
+            }
+
             // Check if level has links.
             if (level.LinkedToLevel != null || level.LinkedFromLevel != null)
             {
@@ -148,12 +154,14 @@ namespace Boku
 
         internal void ContinueCommunityShare()
         {
+            KoduService.ShareRequestState = KoduService.RequestState.Pending;
+
             LevelMetadata level = CurWorld;
 
             // Always force us to save starting with the first level in the chain.
             level = level.FindFirstLink();
 
-            //Prepare level for upload
+            // Prepare level for upload.
             if (string.IsNullOrWhiteSpace(level.SaveTime))
             {
                 level.SaveTime = level.LastSaveTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
@@ -184,51 +192,23 @@ namespace Boku
                 clientVersion = Program2.ThisVersion.ToString(),
             };
 
-            KoduService.ShareRequestState = KoduService.RequestState.Pending;
             KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge,(response) =>{
-                if(response==null)
+                if (response == null)
                 {
-                    //failed
-                    KoduService.ShareRequestState = KoduService.RequestState.Error;
-                    //todo handle reason?
+                    // Failed.
+                    // todo handle reason?
                 }
                 else
                 {
+                    // This is redundant since it's also done in the FinalizeUpload() call.
                     KoduService.ShareRequestState = KoduService.RequestState.Complete;
                 }
-
-                
-                //4scoy
-                //It looks to me like we should be calling 
-                //Callback_PutWorldData here.
-                // NOTE This is no longer needed. Previously, when we uploaded a level that was
-                // part of a linked chain we would traverse the chain and upload every level in
-                // the chain.  That is what this call was doing.  Instead, we now bundle all the
-                // linked levels into the .Kodu2 file and upload them as a unit.
-                // (scoy) TODO Once the new network code is stable, all this should be removed.
 
                 // Clean up.
                 // Delete the temp Kodu2 file.
                 File.Delete(pathToKodu2File);
 
             });
-            //CommunityServices.ShareWorld(level);
-
-            /*
-            //TODO: check for broken links?
-            //always start the share on the first level in the set
-            level = level.FindFirstLink();
-
-            string folderName = Utils.FolderNameFromFlags(level.Genres);
-            string fullPath = Path.Combine(BokuGame.Settings.MediaPath, folderName, level.WorldId.ToString() + @".Xml");
-
-            // Share.
-            // Check to see if the community server is reachable before sharing level.
-            if (!Web.Community.Async_Ping(Callback_Ping, fullPath))
-            {
-                ShowNoCommunityDialog();
-            }
-            */
         }   // end of ContinueCommunityShare()
 
         public void LoadContent(bool immediate)

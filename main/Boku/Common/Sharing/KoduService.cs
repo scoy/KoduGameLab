@@ -1,10 +1,12 @@
-﻿using System;
-using System.Net;
+﻿
+using System;
+using System.Diagnostics;
 using System.IO;
-using System.Text;
-using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace Boku.Common.Sharing
 {
@@ -35,7 +37,18 @@ namespace Boku.Common.Sharing
         // Used by rest of system to keep track of state.  LoadLevelMenu
         // needs to poll this for Complete or Error and handle dialogs.
         // LoadLevelMenu then needs to reset this to None.
-        public static RequestState ShareRequestState = RequestState.None;
+        // Same thing for MiniHub.
+        public static RequestState shareRequestState = RequestState.None;
+
+        public static RequestState ShareRequestState
+        {
+            get { return shareRequestState; }
+            set
+            {
+                shareRequestState = value;
+                //Debug.WriteLine("ShareRequestState : " + shareRequestState.ToString());
+            }
+        }
 
         public static bool PingFailed = false;  // Used to tell if services are up.
 
@@ -207,13 +220,6 @@ namespace Boku.Common.Sharing
         /// <param name="callback">Gets null on failure.</param>
 		public static void UploadWorld(object args, string levelPath,string thumbPath,string screenPath, GenericObjectCallback callback)
 		{
-			//4scoy. This will test if UploadWorld is called
-			//before the last one completes. 
-			if (ShareRequestState == RequestState.Pending)
-				Console.WriteLine("Nested UploadWorld!");
-
-            ShareRequestState = RequestState.Pending;
-
             Instrumentation.RecordEvent(Instrumentation.EventId.LevelUploaded, args.ToString());
 
 			// Create an upload request.
@@ -383,29 +389,25 @@ namespace Boku.Common.Sharing
 				if (response == null)
 				{
 					// Call failed.
-					ShareRequestState = RequestState.Error;
-					callback(null);//Failed. 404 or something.
-				}
+					callback(null); // Failed. 404 or something.
+                    KoduService.ShareRequestState = KoduService.RequestState.Error;
+                }
 				else
 				{
 					try
 					{
-						//get returned response
-
-						//Handle rejection
-
-						//text = reader.ReadToEnd();
-						ShareRequestState = RequestState.Complete;
+						// Get returned response.
 						callback("");
+                        KoduService.ShareRequestState = KoduService.RequestState.Complete;
 
-//update this
-
+                        // Update this.
 						//Instrumentation.RecordEvent(Instrumentation.EventId.LevelDownloaded, args.ToString());
 					}
 					catch
 					{
-						callback(null);//should never happen but...
-					}
+						callback(null); // Should never happen but...
+                        KoduService.ShareRequestState = KoduService.RequestState.Error;
+                    }
 				}
 			});
 
