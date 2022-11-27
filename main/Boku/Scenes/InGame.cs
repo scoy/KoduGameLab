@@ -1981,6 +1981,31 @@ namespace Boku
                     }
                     
                 }
+
+                if (DebugLog.Indiana)
+                {
+                    if (InGame.inGame.CurrentUpdateMode == UpdateMode.RunSim && !VictoryOverlay.Active)
+                    {
+                        string timeStamp = DateTime.Now.ToUniversalTime().ToString("o");
+                        foreach (GameThing thing in InGame.inGame.gameThingList)
+                        {
+                            GameActor actor = thing as GameActor;
+                            if (actor != null)
+                            {
+                                string log = timeStamp 
+                                    + "," + actor.Classification.name 
+                                    + "," + actor.HitPoints.ToString()
+                                    + "," + actor.Movement.Position.X.ToString()
+                                    + "," + actor.Movement.Position.Y.ToString()
+                                    + "," + actor.Movement.Position.Z.ToString();
+                                DebugLog.IndianaWriteLine(log);
+                            }
+
+                        }
+                    }
+
+                }
+
             }   // end of Update()
 
 #if !NETFX_CORE
