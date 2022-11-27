@@ -105,7 +105,7 @@ namespace Boku
 
         */
 
-        static string IndianaFilename = "run.cvs";
+        static string IndianaFilename = "run.csv";
 
         /// <summary>
         /// Writes a header to the debug file to indicate the new run.
