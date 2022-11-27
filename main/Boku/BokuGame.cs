@@ -258,6 +258,11 @@ namespace Boku
                 string hiDefPath = path.Replace("Content", "ContentHiDef");
                 try
                 {
+                    // DEBUGGING NOTE:  If you get a ContentLoadException here for a shader don't stress.
+                    // Simple shaders will not have (or need) a HiDef version.
+                    // The main problem is that this is annoying so you need to go into the 
+                    // Debug->Exceptions and uncheck Thrown for Common Language Runtime Exceptions.
+                    // If needed, you can break and turn them back on once the content is loaded.
                     resource = ContentLoader.ContentManager.Load<T>(hiDefPath);
                 }
                 catch
