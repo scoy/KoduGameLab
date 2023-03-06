@@ -380,7 +380,7 @@ namespace Boku.Common.Localization
                 //
                 // Loop over the list backwards so we safely remove elements without
                 // losing our place.
-                
+                /*
                 for (int i = locales.Count - 1; i >= 0; i--)
                 {
                     if (!TextHelper.StringIsValid(locales[i].Native))
@@ -389,7 +389,7 @@ namespace Boku.Common.Localization
                         locales.RemoveAt(i);
                     }
                 }
-
+                */
                 Debug.Assert(locales.Count > 0, "Why aren't we seeing files from the localization server?");
 
                 if (locales == null)
