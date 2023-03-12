@@ -372,6 +372,19 @@ namespace Boku.Common.Localization
                 var localesXmlParser = new LocalesXmlParser();
                 var locales = localesXmlParser.Parse(localesXml);
 
+
+                // Fix up for bad dates.  The thought here is that for some locales we're getting
+                // the DateTime string translated wrong which is causing radically invalid dates.
+                // So, adjust the dates to something reasonable.
+                DateTime minDateTime = new DateTime(2019, 1, 1, 11, 11, 11);
+                for(int i=0; i<locales.Count; i++)
+                {
+                    if (locales[i].LastUpdated < minDateTime)
+                    {
+                        locales[i].LastUpdated = minDateTime;
+                    }
+                }
+
                 LocalesDebugPrint("    pre filtering count = " + locales.Count.ToString());
                 // If the localized version of the language name isn't supported by
                 // our current font set then remove it from the list.  This will
@@ -380,6 +393,9 @@ namespace Boku.Common.Localization
                 //
                 // Loop over the list backwards so we safely remove elements without
                 // losing our place.
+                //
+                // Commented out because I think this is what is causing problems with
+                // Vietnamese showing up properly in the list.
                 /*
                 for (int i = locales.Count - 1; i >= 0; i--)
                 {
