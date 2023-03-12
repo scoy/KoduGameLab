@@ -294,6 +294,20 @@ namespace Boku.Common.Xml
                 for (int j = 0; j < p.edges.Count; j++)
                 {
                     XmlData.Edge e = (XmlData.Edge)p.edges[j];
+
+                    // Force node indices into valid range.  Note, this should never trigger
+                    // so if you see this, try and trace it back.
+                    if (e.node0 < 0 || e.node0 >= path.Nodes.Count)
+                    {
+                        Debug.Assert(false, "Figure out and fix.");
+                        e.node0 = 0;
+                    }
+                    if (e.node1 < 0 || e.node1 >= path.Nodes.Count)
+                    {
+                        Debug.Assert(false, "Figure out and fix.");
+                        e.node1 = 0;
+                    }
+
                     WayPoint.Node n0 = (WayPoint.Node)path.Nodes[e.node0];
                     WayPoint.Node n1 = (WayPoint.Node)path.Nodes[e.node1];
                     WayPoint.CreateNewEdge(n0, n1, (WayPoint.Edge.Direction)e.direction);
