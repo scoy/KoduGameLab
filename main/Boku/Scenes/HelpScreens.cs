@@ -319,6 +319,13 @@ namespace Boku
 
             public override void Render(Camera camera)
             {
+                // If we don't have anything to show, something is wrong.
+                if (shared.curTexture == null)
+                {
+                    Debug.Assert(false);
+                    return;
+                }
+
                 // Clear the screen.
                 InGame.Clear(Color.Black);
 
