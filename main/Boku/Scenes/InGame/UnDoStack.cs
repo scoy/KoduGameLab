@@ -250,10 +250,7 @@ namespace Boku
                 if (HaveResume())
                 {
                     int resumeIndex = XmlOptionsData.LastAutoSave;
-                    for(resumeIndex = 0; resumeIndex<10; resumeIndex++)
-                    {
-                        result = Init(@"AutoSave" + Storage4.UniqueMachineID + @"\AutoSave" + resumeIndex, resumeIndex);
-                    }
+                    result = Init(@"AutoSave" + Storage4.UniqueMachineID + @"\AutoSave" + resumeIndex, resumeIndex);
                 }
                 return result;
             }
