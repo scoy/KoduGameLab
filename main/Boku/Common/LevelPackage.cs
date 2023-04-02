@@ -132,6 +132,12 @@ namespace Boku.Common
         {
             bool result = true;
 
+            // Contains a mapping of old/new filenames for .map files.  This is only used when importing a level
+            // where the .map guid doesn't match the main filename's guid.
+            // The key is the old guid.  The value is the new.
+            // Names which map to themselves are not entered here.
+            Dictionary<string, string> mapNames = new Dictionary<string, string>();
+
             // Get list of files in the imports folder.
             string[] files = Storage4.GetFiles(importsPath, "*.kodu2", StorageSource.UserSpace);
 
@@ -140,7 +146,9 @@ namespace Boku.Common
                 foreach (string filename in files)
                 {
                     bool success = true;
-                    Guid guid = Guid.Empty;
+                    Guid guid = Guid.Empty;     // Set to be the guid of the first level in a multi-level world.
+                                                // Used to create the list for running on import.
+                                                // Should not be used for anything else.
 
                     // Open file via DotNetZip and copy level info into proper place (DOWNLOADS folder)
                     try
@@ -183,9 +191,18 @@ namespace Boku.Common
                                 }
                                 else if (partFullName.StartsWith(TerrainFolder))
                                 {
-                                    // Note this is in in Downloads.
+                                    // Note this is in Downloads.
                                     // Force terrain filename to match worldId.
-                                    targetPath = Path.Combine(targetPath, StuffFolder, HeightMapsFolder, guid.ToString() + ".Map");
+                                    // If name is in mapNames dictionary then use the remapped name from the dictionary.
+                                    string oldGuid = partFilename.Substring(0, partFilename.Length - 4);
+                                    string newGuid = null;
+                                    if (!mapNames.TryGetValue(oldGuid, out newGuid))
+                                    {
+                                        // If we didn't get a new guid, use the old one.
+                                        newGuid = oldGuid;
+                                    }
+
+                                    targetPath = Path.Combine(targetPath, StuffFolder, HeightMapsFolder, newGuid + ".Map");
                                 }
                                 else
                                 {
@@ -242,7 +259,7 @@ namespace Boku.Common
                                         {
                                             string line = lines[i];
 
-                                            if (ProcessMainFileLine(ref line, ref guid, partFilename) == false)
+                                            if (ProcessMainFileLine(ref line, ref guid, mapNames, partFilename) == false)
                                             {
                                                 result = false;
                                             }
@@ -270,7 +287,8 @@ namespace Boku.Common
 
                     if (success)
                     {
-                        // Add world to list of successful imports.
+                        // Add world to list of successful imports.  For multi-level worlds this
+                        // only adds the first level.
                         if (importedLevels != null)
                         {
                             importedLevels.Add(guid);
@@ -297,21 +315,23 @@ namespace Boku.Common
         ///     Change the terrain file to use the .Map extension and have its name match the worldId.
         /// </summary>
         /// <param name="line"></param>
-        /// <param name="guid"></param>
-        /// <param name="partFilename"></param>
+        /// <param name="guid">The guid of the first level in this archive.</param>
+        /// <param name="mapNames">Pairing of old and new terrain map names.</param>
+        /// <param name="mainFilename">The zip file part.  In this case it should be the main Xml filename for the level.</param>
         /// <returns>true if ok, false if from newer version than current client</returns>
-        static bool ProcessMainFileLine(ref string line, ref Guid guid, string partFilename)
+        static bool ProcessMainFileLine(ref string line, ref Guid guid, Dictionary<string, string> mapNames, string mainFilename)
         {
             bool result = true;
 
-            // Is this level from a single level game or is it the first
-            // level of a multi-level game?
+            // Is this level from a single level game or the first
+            // level of a multi-level game?  If so, save it for
+            // addition to the list of imported worlds.
             if (line.Contains("<LinkedFromLevel xsi:nil=\"true\" />"))
             {
                 // Save away guid.
-                if (partFilename != null)
+                if (mainFilename != null)
                 {
-                    guid = new Guid(Path.GetFileNameWithoutExtension(partFilename));
+                    guid = new Guid(Path.GetFileNameWithoutExtension(mainFilename));
                 }
             }
 
@@ -376,13 +396,31 @@ namespace Boku.Common
             //
             // Fix up path of terrain file.  Need to use .Map extension and force filename to match worldId.
             //
+
             startIndex = line.IndexOf("<virtualMapFile>");
             endIndex = -1;
             if (startIndex >= 0)
             {
+                // Compare the exisiting map file name with our desired one (that matches worldId).
+                // If they differ, add this to mapNames dict and replace name here.
+                string mainGuid = mainFilename.Substring(0, mainFilename.Length - 4);
+
                 int slashIndex = line.LastIndexOf('\\');
-                line = line.Substring(0, slashIndex + 1);
-                line += guid.ToString() + ".Map</virtualMapFile>";
+                string mapGuid = line.Substring(slashIndex + 1, mainGuid.Length);
+
+                if (mainGuid == mapGuid)
+                {
+                    // Nothing to do here. Move along.
+                }
+                else
+                {
+                    // Add the new mapping to the dictionary.
+                    mapNames.Add(mapGuid, mainGuid);
+
+                    // Replace the guid in the line.
+                    line = line.Substring(0, slashIndex + 1);
+                    line += mainGuid.ToString() + ".Map</virtualMapFile>";
+                }
             }
 
             return result;
@@ -413,6 +451,12 @@ namespace Boku.Common
         public static bool ImportLevels(List<Guid> importedLevels)
         {
             bool result = true;
+
+            // Contains a mapping of old/new filenames for .map files.  This is only used when importing a level
+            // where the .map guid doesn't match the main filename's guid.
+            // The key is the old guid.  The value is the new.
+            // Names which map to themselves are not entered here.
+            Dictionary<string, string> mapNames = new Dictionary<string, string>();
 
 #if IMPORT_DEBUG
             DebugPrint("\n\nNew Run\n\n");
@@ -527,7 +571,7 @@ namespace Boku.Common
                                 string line = reader.ReadLine();
 
                                 Guid guid = Guid.Empty;
-                                if (ProcessMainFileLine(ref line, ref guid, null) == false)
+                                if (ProcessMainFileLine(ref line, ref guid, mapNames, null) == false)
                                 {
                                     result = false;
                                 }
