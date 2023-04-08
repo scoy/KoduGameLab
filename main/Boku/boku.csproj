@@ -591,7 +591,6 @@
     <Compile Include="Twitter\FeedMS.cs" />
     <Compile Include="Twitter\Hyperlink.cs" />
     <Compile Include="Twitter\NewsFeeds.cs" />
-    <Compile Include="Twitter\ParserMSFeed.cs" />
     <Compile Include="Ui2d\AuthSignInDialog.cs" />
     <Compile Include="Ui2d\AuthSignOutDialog.cs" />
     <Compile Include="Ui2d\AuthStatusDialog.cs" />
