@@ -69,7 +69,7 @@ namespace Boku
                             StreamReader sr = new StreamReader(result);
                             rawGetData = sr.ReadToEnd();
                             currentState = OpState.Retrieved;
-                            Console.WriteLine(rawGetData);
+                            //Debug.Print(rawGetData);
                         }
                     });
                 }
