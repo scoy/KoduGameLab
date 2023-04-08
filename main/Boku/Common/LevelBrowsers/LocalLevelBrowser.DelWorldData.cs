@@ -72,7 +72,7 @@ namespace Boku.Common
                         thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, worldPath + worldId.ToString());
 
                         // Need to get the terrain file before we delete the main file.  BUT the terrain should be
-                        // deleted after, otherwise the usage test will find the main file and always thing that 
+                        // deleted after, otherwise the usage test will find the main file and always think that 
                         // the terrain file is in use.
                         string terrainFilename = null;
                         try
@@ -88,6 +88,7 @@ namespace Boku.Common
                         Storage4.Delete(stuffFilename);
                         Storage4.Delete(thumbFilename + @".dds");
                         Storage4.Delete(thumbFilename + @".jpg");
+                        Storage4.Delete(thumbFilename + @"_800.jpg");
                         Storage4.Delete(thumbFilename + @".png");
 
                         // Only deletes terrain file if no other world is using it.  (including autosaves)
