@@ -334,13 +334,11 @@ namespace Boku
                 AuthUI.ShowStatusDialog();
 
                 // Update the dialogs.
-                parent.prevSessionCrashedMessage.Update();
                 parent.noCommunityMessage.Update();
                 parent.noSharingMessage.Update();
 
                 // Don't do anything else until the user reads and dismisses the dialogs.
-                if (parent.prevSessionCrashedMessage.Active 
-                    || parent.exitingKodu)
+                if (parent.exitingKodu)
                 {
                     return;
                 }
@@ -498,18 +496,6 @@ namespace Boku
 
             public override void Activate()
             {
-                // If we have a level to resume, check for the crashed cookie.  If we find the cookie
-                // delete it and activate the dialog letting the user know they can recover the level.
-                if (InGame.UnDoStack.HaveResume())
-                {
-                    if (Storage4.FileExists(MainMenu.CrashCookieFilename, StorageSource.UserSpace))
-                    {
-                        Storage4.Delete(MainMenu.CrashCookieFilename);
-
-                        parent.prevSessionCrashedMessage.Activate();
-                    }
-                }
-
                 // Force feed to refresh rendering.
                 shared.liveFeed.Dirty = true;
 
@@ -674,7 +660,6 @@ namespace Boku
                     InGame.inGame.shared.scrollableTextDisplay.Render();
                 }
 
-                MainMenu.Instance.prevSessionCrashedMessage.Render();
                 MainMenu.Instance.noCommunityMessage.Render();
                 MainMenu.Instance.noSharingMessage.Render();
 
@@ -710,19 +695,14 @@ namespace Boku
 
         public  ModularMessageDialog noCommunityMessage = null;
         private ModularMessageDialog noSharingMessage = null;
-        private ModularMessageDialog prevSessionCrashedMessage = null;
 
         private bool exitingKodu = false;   // Flag set when the user chooses to exit Kodu 
                                             // from the above dialogs.  This flags allows us
                                             // to exit more cleanly.  Without it we flash the
                                             // storage selection dialog as we exit.
 
-        // Only show this notification once.
-
-
-        static public string CrashCookieFilename = "Crash.txt";
-
         #region Accessors
+
         public bool Active
         {
             get { return (state == States.Active); }
@@ -857,12 +837,6 @@ namespace Boku
                                                             );
             noSharingMessage = new ModularMessageDialog(Strings.Localize("miniHub.noSharingMessage"),
                                                             null, null,
-                                                            handlerB, Strings.Localize("textDialog.back"),
-                                                            null, null,
-                                                            null, null
-                                                            );
-            prevSessionCrashedMessage = new ModularMessageDialog(Strings.Localize("mainMenu.prevSessionCrashedMessage"),
-                                                            handlerA, Strings.Localize("textDialog.resume"),
                                                             handlerB, Strings.Localize("textDialog.back"),
                                                             null, null,
                                                             null, null

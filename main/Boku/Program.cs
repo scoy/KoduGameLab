@@ -578,14 +578,6 @@ namespace Boku
             }
             catch (Exception ex)
             {
-                // For both Xbox and PC write out a file to act as the crash cookie.
-                {
-                    Stream stream = Storage4.OpenWrite(MainMenu.CrashCookieFilename);
-                    byte[] buffer = { 42 };
-                    stream.Write(buffer, 0, 1);
-                    stream.Close();
-                }
-
                 // Be sure mouse cursor is on regardless of current input mode.
                 BokuGame.bokuGame.IsMouseVisible = true;
 
