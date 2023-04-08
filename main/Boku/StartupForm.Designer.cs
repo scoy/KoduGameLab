@@ -5,7 +5,6 @@ namespace Boku
 {
     partial class StartupForm
     {
-#if !NETFX_CORE
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -115,6 +114,5 @@ namespace Boku
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Button cancelButton;
-#endif
     }
 }

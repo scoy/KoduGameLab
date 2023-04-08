@@ -305,7 +305,6 @@ namespace Boku.Common.TutorialSystem
                 data = null;
                 if (e != null)
                 {
-#if !NETFX_CORE
                     string message = e.Message;
                     if (e.InnerException != null)
                     {
@@ -317,7 +316,6 @@ namespace Boku.Common.TutorialSystem
                         System.Windows.Forms.MessageBoxButtons.OK,
                         System.Windows.Forms.MessageBoxIcon.Error
                         );
-#endif
                     }
             }
             finally

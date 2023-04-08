@@ -2,17 +2,12 @@
 // Licensed under the MIT license.
 
 using System;
-
-#if NETFX_CORE
-#else
-    using System.Drawing;
-    using System.Windows.Forms;
-#endif
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Boku
 {
     // (TODO (****) BROKEN
-#if !NETFX_CORE
     public partial class ErrorForm : Form
     {
         public ErrorForm()
@@ -29,5 +24,4 @@ namespace Boku
             textBoxLiveId.Enabled = Program2.SiteOptions.NetworkEnabled;
         }
     }
-#endif
 }

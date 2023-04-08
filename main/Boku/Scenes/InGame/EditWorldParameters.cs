@@ -546,13 +546,8 @@ namespace Boku
                         {
                             for (int i = 0; i < InGame.XmlWorldData.changeHistory.Count; i++)
                             {
-#if NETFX_CORE
-                                text += InGame.XmlWorldData.changeHistory[i].time.ToString() + " ";
-                                text += InGame.XmlWorldData.changeHistory[i].time.ToString() + " ";
-#else
                                 text += InGame.XmlWorldData.changeHistory[i].time.ToShortDateString() + " ";
                                 text += InGame.XmlWorldData.changeHistory[i].time.ToShortTimeString() + " ";
-#endif
                                 text += InGame.XmlWorldData.changeHistory[i].gamertag + "\n";
                             }
                         }

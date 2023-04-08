@@ -14,9 +14,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
-#if !NETFX_CORE
-    using System.Windows.Forms;
-#endif
+using System.Windows.Forms;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;

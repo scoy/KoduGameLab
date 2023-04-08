@@ -5,15 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-
-#if NETFX_CORE
-    using System.Runtime.InteropServices.WindowsRuntime;
-    using Windows.Security.Cryptography;
-    using Windows.Security.Cryptography.Core;
-    using Windows.Storage.Streams;
-#else
-    using System.Security.Cryptography;
-#endif
+using System.Security.Cryptography;
 
 namespace BokuShared
 {
@@ -87,17 +79,8 @@ namespace BokuShared
 
             byte[] result;
 
-#if NETFX_CORE
-            HashAlgorithmProvider alg = Windows.Security.Cryptography.Core.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
-            CryptographicHash hash = alg.CreateHash();
-            IBuffer buffer = CryptographicBuffer.CreateFromByteArray(data);
-            hash.Append(buffer);
-            IBuffer hashBuff = hash.GetValueAndReset();
-            result = hashBuff.ToArray();
-#else
             MD5 md5 = System.Security.Cryptography.MD5.Create();
             result = md5.ComputeHash(data);
-#endif       
 
             return result;
         }   // end of MD5()

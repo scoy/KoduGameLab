@@ -9,10 +9,6 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Reflection;
 
-#if NETFX_CORE
-    using Windows.Storage;
-#endif
-
 namespace Cab
 {
     /// <summary>
@@ -93,29 +89,21 @@ namespace Cab
         /// <param name="fullPathToCabinet">Full path to the archive you want to decompress.</param>
         public void Expand(string destinationFolder, string fullPathToCabinet)
         {
-#if NETFX_CORE
-            //Debug.Assert(!String.IsNullOrEmpty(destinationFolder));
-            //Debug.Assert(destinationFolder.Contains(":"), "destinationFolder needs to be full path.");
-            //Debug.Assert(fullPathToCabinet.Contains(":"), "fullPathToCabinet needs to be full path.");
-#else
             // if destination folder is null, use current working folder
             if (destinationFolder == null)
                 destinationFolder = Assembly.GetExecutingAssembly().Location;
 
             destinationFolder = Path.GetFullPath(destinationFolder);
-#endif
 
             // Ensure the path ends with a backslash.
             if (!destinationFolder.EndsWith("" + Cabinet.DirectorySeparatorChar))
                 destinationFolder = destinationFolder + Cabinet.DirectorySeparatorChar;
 
-#if !NETFX_CORE
             // Create the folder if necessary
             if (!Directory.Exists(destinationFolder))
                 Directory.CreateDirectory(destinationFolder);
 
             fullPathToCabinet = Path.GetFullPath(fullPathToCabinet);
-#endif
 
             // Separate path and filename information, since this is
             // how cabinet.dll wants it.
@@ -246,22 +234,16 @@ namespace Cab
                         // Ensure filename is still just a filename without path info.
                         file = Path.GetFileName(file);
 
-#if NETFX_CORE
-                        Debug.Assert(path.Contains(":"), "Needs to be full path");
-#else
                         // Ensure path is still rooted.
                         path = Path.GetFullPath(path);
-#endif
 
                         // Ensure the path still ends in a backslash
                         if (!path.EndsWith("" + Cabinet.DirectorySeparatorChar))
                             path = path + Cabinet.DirectorySeparatorChar;
 
-#if !NETFX_CORE
                         // Create the destination path if necessary
                         if (!Directory.Exists(path))
                             Directory.CreateDirectory(path);
-#endif
 
                         string fullPathAndFilename = path + file;
 
@@ -325,23 +307,7 @@ namespace Cab
                 filenames.Add(null);
             }
 
-#if NETFX_CORE
-            // For WinRT the FileAccess is kind of messed up.  It looks like the problem is
-            // that the original code expected to be able to open a file with read/write access.
-            // WinRT doesn't seem to support that.  So, hack time.  Since we're only using this
-            // code for importing .kodu files, if the filename ends in .kodu we open the file
-            // for reading, else we open the file for writing.
-            if (filename.EndsWith(".kodu", StringComparison.OrdinalIgnoreCase))
-            {
-                streams[hf] = File.Open(filename, fileMode, FileAccess.Read, FileShare.ReadWrite);
-            }
-            else
-            {
-                streams[hf] = File.Open(filename, fileMode, FileAccess.Write, FileShare.ReadWrite);
-            }
-#else
             streams[hf] = File.Open(filename, fileMode, fileAccess, FileShare.ReadWrite);
-#endif
 
             filenames[hf] = filename;
 
@@ -385,12 +351,7 @@ namespace Cab
         {
             Stream stream = streams[hf];
 
-#if NETFX_CORE
-            stream.Flush();
-            stream.Dispose();
-#else
             stream.Close();
-#endif
 
             streams[hf] = null;
             filenames[hf] = null;

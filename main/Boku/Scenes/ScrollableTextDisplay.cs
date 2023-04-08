@@ -136,7 +136,6 @@ namespace Boku
 
                 GamePadInput pad = GamePadInput.GetGamePad0();
 
-#if !NETFX_CORE
                 // For games using micro:bit, allow buttons to dismiss ingame dialogs.
                 if (InGame.inGame.CurrentUpdateMode == InGame.UpdateMode.RunSim)
                 {
@@ -150,7 +149,6 @@ namespace Boku
                         }
                     }
                 }
-#endif
 
                 if (Actions.Select.WasPressed)
                 {

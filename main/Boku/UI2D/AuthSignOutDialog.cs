@@ -82,27 +82,18 @@ namespace Boku.UI2D
                         // input like the SaveLevelDialog.
                         prevOnChar = KeyboardInput.OnChar;
                         prevOnKey = KeyboardInput.OnKey;
-#if !NETFX_CORE
                         prevTextInput = BokuGame.bokuGame.winKeyboard.CharacterEntered;
-#endif
 
                         // Now that we've saved them.  Null them out.
                         KeyboardInput.OnKey = null;
-#if NETFX_CORE
-                        Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
-                        KeyboardInput.OnChar = null;
-#else
                         BokuGame.bokuGame.winKeyboard.CharacterEntered = null;
-#endif
                     }
                     else
                     {
                         // Restore keyboard event handlers.
                         KeyboardInput.OnKey = prevOnKey;
                         KeyboardInput.OnChar = prevOnChar;
-#if !NETFX_CORE
                         BokuGame.bokuGame.winKeyboard.CharacterEntered = prevTextInput;
-#endif
                     }
                 }
             }

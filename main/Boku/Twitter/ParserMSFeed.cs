@@ -3,18 +3,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
-
 using System.Xml;
 using System.Xml.Serialization;
-using System.Diagnostics;
-
-#if NETFX_CORE
-#else
-    using System.Data;
-#endif
-
-using System.IO;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;

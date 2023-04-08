@@ -83,67 +83,27 @@ namespace Boku
                 deadKoduTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\SleepyKodu");
             }
 
-#if !NETFX_CORE
             // Check if microbit:driver needs installing.
             if (MicrobitManager.DriverInstalled == false)
             {
                 MicrobitManager.ShowDriverDialog();
             }
-#endif
 
-#if NETFX_CORE
-            if (BokuGame.ScreenSize.X > BokuGame.ScreenSize.Y)
+            for (int i = 0; i < updateList.Count; ++i)
             {
-#endif
-                for (int i = 0; i < updateList.Count; ++i)
-                {
-                    UpdateObject obj = updateList[i] as UpdateObject;
-                    obj.Update();
-                }
-#if NETFX_CORE
+                UpdateObject obj = updateList[i] as UpdateObject;
+                obj.Update();
             }
-            else
-            {
-                // Game paused since in strange snapped mode
-            }
-#endif
         }   // end of GameListManager Update()
 
 
         public void Render()
         {
-#if NETFX_CORE
-            if (BokuGame.ScreenSize.X > BokuGame.ScreenSize.Y)
+            for (int i = 0; i < renderList.Count; ++i)
             {
-#endif
-                for (int i = 0; i < renderList.Count; ++i)
-                {
-                    RenderObject obj = renderList[i] as RenderObject;
-                    obj.Render(null);
-                }
-#if NETFX_CORE
+                RenderObject obj = renderList[i] as RenderObject;
+                obj.Render(null);
             }
-            else
-            {
-                // Game paused since in strange snapped mode
-                GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
-                InGame.Clear(Color.Black);
-
-                // Center Kodu.
-                Vector2 size = new Vector2(deadKoduTexture.Width, deadKoduTexture.Height);
-                Vector2 pos = (BokuGame.ScreenSize - size) * 0.5f;
-                SpriteBatch batch = UI2D.Shared.SpriteBatch;
-                batch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
-                batch.Draw(deadKoduTexture, pos, Color.White);
-                batch.End();
-
-                pos.X = BokuGame.ScreenSize.X / 2.0f - 150.0f;
-                pos.Y += size.Y + 30.0f;
-
-                blob.RenderWithButtons(pos, new Color(0.8f, 0.8f, 0.8f));
-
-            }
-#endif
         }   // end of GameListManager Render()
 
 

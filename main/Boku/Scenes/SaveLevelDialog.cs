@@ -298,24 +298,6 @@ namespace Boku
                         prevAltPressed = altPressed;
                         TouchContact touch = TouchInput.GetOldestTouch();
 
-#if NETFX_CORE
-                        // Prevent keyboard input from leaking though.
-                        if (touch != null && VirtualKeyboard.Active && VirtualKeyboard.HitBox.Contains(touch.position))
-                        {
-                            touch = null;
-                        }
-                        else
-                        {
-                            // Adjust if position has been offset by VirtualKeyboard.
-                            if (touch != null)
-                            {
-                                Vector2 pos = touch.position;
-                                pos.Y += shared.yOffset;
-                                touch.position = pos;
-                            }
-                        }
-#endif
-
                         if (touch != null)
                         {
                             //Vector2 hit = TouchInput.GetAspectRatioAdjustedPosition(touch.position, shared.camera, true);
@@ -1272,7 +1254,6 @@ namespace Boku
                         }
                         else if (shared.focus == Shared.InputFocus.Description)
                         {
-#if !NETFX_CORE
                             // Copy?  Just copy the whole description to the clipboard since we don't
                             // support any kind of selection.
                             if (c == 3)
@@ -1288,7 +1269,6 @@ namespace Boku
                                     str = System.Windows.Forms.Clipboard.GetText();
                                 }
                             }
-#endif
 
                             // With the description it's a bit different since this gets 
                             // broken up into multiple lines.  What we do here is break 
@@ -1572,10 +1552,7 @@ namespace Boku
             public override void Activate()
             {
                 KeyboardInput.OnKey = KeyInput;
-#if NETFX_CORE
-                Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
-                KeyboardInput.OnChar = TextInput;
-#else
+
                 // ARGH!
                 // WinKeyboard handles Greek tonos properly which is probably why we switched over.
                 // KeyboardInput handles Alt+ characters properly, which is why we need to switch back.
@@ -1584,16 +1561,13 @@ namespace Boku
                 // pressed.
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = TextInput;
                 KeyboardInput.OnChar = TextInputAltOnly;
-#endif
             }
 
             public override void Deactivate()
             {
                 KeyboardInput.OnKey = null;
                 KeyboardInput.OnChar = null;
-#if !NETFX_CORE
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = null;
-#endif
             }
 
             #endregion

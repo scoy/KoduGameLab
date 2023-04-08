@@ -78,24 +78,14 @@ namespace Boku.Input
         {
             get
             {
-#if NETFX_CORE
-                Debug.Assert(false, "Do we need this?  Can we always just look for Shift being pressed?");
-                return false;
-#else
                 return Console.CapsLock;
-#endif
             }
         }
         public bool NumLock
         {
             get
             {
-#if NETFX_CORE
-                Debug.Assert(false, "No clue here...");
-                return false;
-#else
                 return Console.NumberLock;
-#endif
             }
         }
         

@@ -102,13 +102,7 @@ namespace Boku
                 menu.AddText(Strings.Localize("miniHub.publish"));
                 menu.AddText(Strings.Localize("miniHub.load"));
                 menu.AddText(Strings.Localize("miniHub.emptyLevel"));
-
-#if NETFX_CORE
-                // Disable printing since WinRT doesn't support just sending a text file to the printer.
-#else
                 menu.AddText(Strings.Localize("miniHub.print"));
-#endif
-
                 menu.AddText(Strings.Localize("miniHub.quit"));
             }   // end of BuildMenu()
 

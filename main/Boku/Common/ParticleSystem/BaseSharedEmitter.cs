@@ -185,23 +185,12 @@ namespace Boku.Common.ParticleSystem
                     if (startIndex < endIndex)
                     {
                         // The active range of particles is contiguous.
-#if NETFX_CORE_OLD
-                        // MG only supports starting from 0.
-                        int numParticles = endIndex;
-                        device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, numParticles * 4, 0, numParticles * 2);
-#else
                         int numParticles = numActiveParticles;
                         device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, startIndex * 4, numParticles * 4, startIndex * 6, numParticles * 2);
-#endif
                     }
                     else
                     {
                         // The active range of particles wraps from the end of the array around to the beginning.
-#if NETFX_CORE_OLD
-                        // MG only supports starting from 0.
-                        int numParticles = endIndex;
-                        device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, maxParticles * 4, 0, maxParticles * 2);
-#else
                         int numParticles = maxParticles - startIndex;
                         device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, startIndex * 4, numParticles * 4, startIndex * 6, numParticles * 2);
                         numParticles = numActiveParticles - numParticles;
@@ -209,7 +198,6 @@ namespace Boku.Common.ParticleSystem
                         {
                             device.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, numParticles * 4, 0, numParticles * 2);
                         }
-#endif
                     }
                 }
 

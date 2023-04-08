@@ -895,43 +895,9 @@ namespace Boku.Programming
                     position.X = (int)((cardFace.Texture.Width - labelSize.X)/2.0f);
                 }
 
-#if NETFX_CORE
-                if (scale.X == 1.0f)
-                {
-                    TextHelper.DrawStringNoBatch(FontLabel, label, position, Color.Black);
-                }
-                else
-                {
-                    // The label is too wide so we want to render it to another 
-                    // texture and then shrink that texture onto our tile.
-                    RenderTarget2D tmpRT = UI2D.Shared.RenderTarget256_256;
-                    InGame.SetRenderTarget(tmpRT);
-                    InGame.Clear(Color.Transparent);
-
-                    TextHelper.DrawStringNoBatch(FontLabel, label, Vector2.Zero, Color.Black);
-
-                    // Restore tile texture.  Beause we're swapping rendertargets we effectively
-                    // have to start over with rendering the tile.  So clear and redraw tthe icon.
-                    InGame.SetRenderTarget(cardFace.Texture);
-                    InGame.Clear(Color.Transparent);
-
-                    batch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
-                    {
-                        // Draw the icon texture.
-                        batch.Draw(texture, destRect, Color.White);
-
-                        // Apply the label shrunk to fit the dstRect.
-                        Rectangle dstRect = new Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
-                        Rectangle srcRect = new Rectangle(0, 0, (int)labelSize.X, (int)labelSize.Y);
-                        batch.Draw(tmpRT, dstRect, srcRect, Color.White);
-                    }
-                    batch.End();
-                }
-#else
                 SysFont.StartBatch(null);
                 SysFont.DrawString(label, position, rect, FontLabel().systemFont, Color.Black, scale, outlineColor: new Color(248, 248, 248), outlineWidth: 1.5f);
                 SysFont.EndBatch();
-#endif
             }
 
             // Draw overlay if needed.

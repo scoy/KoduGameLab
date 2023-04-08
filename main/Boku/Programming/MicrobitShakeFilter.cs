@@ -52,7 +52,6 @@ namespace Boku.Programming
 
             bool shaken = false;
 
-#if !NETFX_CORE
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
             {
@@ -82,7 +81,6 @@ namespace Boku.Programming
                     //System.Diagnostics.Debug.WriteLine(String.Format("range [{0},{1}], value {2}, {3}", minStrength, maxStrength, strength, shaken ? "SHAKE!" : ""));
                 }
             }
-#endif
 
             param = shaken;
 

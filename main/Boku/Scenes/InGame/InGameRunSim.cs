@@ -82,9 +82,7 @@ namespace Boku
 
                 ThoughtBalloonManager.Update(shared.camera);
                 SaidStringManager.Update();
-#if !NETFX_CORE
                 MicrobitManager.Update();
-#endif
 
                 // Start with visible cursor.
                 parent.cursor3D.Activate();
@@ -315,13 +313,8 @@ namespace Boku
                         if (swipeGesture.WasRecognized &&
                             swipeGesture.SwipeDirection == Directions.North)
                         {
-#if NETFX_CORE
-                            float halfWidth = (float)BokuGame.bokuGame.Window.ClientBounds.Width * 0.5f;
-                            float height = (float)BokuGame.bokuGame.Window.ClientBounds.Height;
-#else
                             float halfWidth = (float)XNAControl.Instance.ClientSize.Width * 0.5f;
                             float height = (float)XNAControl.Instance.ClientSize.Height;
-#endif
 
                             //center half of the screen width-wise
                             float minX = halfWidth - (halfWidth * k_TouchExitAreaWidthPercent);
@@ -348,13 +341,8 @@ namespace Boku
                             TapGestureRecognizer hackTapGesture = TouchGestureManager.Get().TapGesture;
                             if (hackTapGesture.WasTapped())
                             {
-#if NETFX_CORE
-                                float halfWidth = (float)BokuGame.bokuGame.Window.ClientBounds.Width * 0.5f;
-                                float height = (float)BokuGame.bokuGame.Window.ClientBounds.Height;
-#else
                                 float halfWidth = (float)XNAControl.Instance.ClientSize.Width * 0.5f;
                                 float height = (float)XNAControl.Instance.ClientSize.Height;
-#endif
 
                                 //center area of the screen width-wise
                                 float minX = halfWidth - (halfWidth * 0.1f);
@@ -555,13 +543,8 @@ namespace Boku
                     SwipeGestureRecognizer swipeGesture = TouchGestureManager.Get().SwipeGesture;
                     if ( bAllowCameraMovement && swipeGesture.IdentifiedFinger )
                     {
-#if NETFX_CORE
-                        float halfWidth = (float)BokuGame.bokuGame.Window.ClientBounds.Width * 0.5f;
-                        float height = (float)BokuGame.bokuGame.Window.ClientBounds.Height;
-#else
                         float halfWidth = (float)XNAControl.Instance.ClientSize.Width * 0.5f;
                         float height = (float)XNAControl.Instance.ClientSize.Height;
-#endif
 
                         //center half of the screen width-wise
                         float minX = halfWidth - (halfWidth * k_TouchExitAreaWidthPercent);
@@ -1013,13 +996,11 @@ namespace Boku
 
                     timerInstrument = Instrumentation.StartTimer(Instrumentation.TimerId.InGameRunSim);
 
-#if !NETFX_CORE
                     // Refresh the list of attached microbits.
                     {
                         System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(MicrobitManager.RefreshWorker));
                         t.Start();
                     }
-#endif
 
                     // Be sure all Auth UI is hidden.
                     AuthUI.HideAllDialogs();
@@ -1029,9 +1010,7 @@ namespace Boku
 
                 if (Program2.CmdLine.Exists("analytics"))
                 {
-#if !NETFX_CORE
                     Console.WriteLine("Begin Analytics");
-#endif
                     ObjectAnalysis oa = new ObjectAnalysis();
                     oa.beginAnalysis(MainMenu.StartupWorldFilename.ToString());
 
@@ -1042,11 +1021,7 @@ namespace Boku
                     Deactivate();
 
                     // Wave bye, bye.
-#if NETFX_CORE
-                    Windows.UI.Xaml.Application.Current.Exit();
-#else
                 BokuGame.bokuGame.Exit();
-#endif
                 }
             }   // end of RunSimUpdateObj Activate()
 
@@ -1072,9 +1047,7 @@ namespace Boku
 
                     Instrumentation.StopTimer(timerInstrument);
 
-#if !NETFX_CORE
                     MicrobitManager.ReleaseDevices();
-#endif
 
                     base.Deactivate();
 

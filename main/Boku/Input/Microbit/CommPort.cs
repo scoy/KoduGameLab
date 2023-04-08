@@ -6,7 +6,6 @@ using System.Threading;
 
 namespace Boku.Input
 {
-#if !NETFX_CORE
     public class CommPort : CommLine
     {
         public delegate void OnReceiveCallback(string cmd);
@@ -57,5 +56,4 @@ namespace Boku.Input
             return true;
         }
     }
-#endif
 }

@@ -8,19 +8,15 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 
-#if NETFX_CORE
-#else
-    using System.Data;
-    using System.Drawing;
-    using System.Windows.Forms;
-#endif
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 using Boku.Common;
 
 namespace Boku
 {
     // (TODO (****) BROKEN
-#if !NETFX_CORE
     public partial class StartupForm : Form
     {
         static AutoResetEvent signal;
@@ -191,5 +187,4 @@ namespace Boku
             this.Text = Strings.Localize("shareHub.appName") + " (" + Program2.ThisVersion.ToString() + ", " + Program2.SiteOptions.Product + ")";
         }
     }
-#endif
 }

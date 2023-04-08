@@ -454,12 +454,10 @@ namespace Boku.Common.ParticleSystem
                 {
                     device.Textures[i] = null;
                 }
-#if !NETFX_CORE
                 for (int i = 0; i < 4; i++)
                 {
                     device.VertexTextures[i] = null;
                 }
-#endif
             }
             catch
             {

@@ -1120,14 +1120,9 @@ namespace Boku.Common
 
                     string text = TextHelper.FilterInvalidCharacters(entry.text);
                     
-#if NETFX_CORE
-                    TextHelper.DrawString(Font, text, new Vector2(x + buttonSize + buttonLabelMargin + 1, y + 1), shadowColor);
-                    TextHelper.DrawString(Font, text, new Vector2(x + buttonSize + buttonLabelMargin, y), foreColor);
-#else
                     SysFont.StartBatch(null);
                     SysFont.DrawString(text, new Vector2(x + buttonSize + buttonLabelMargin, y), new RectangleF(), Font().systemFont, foreColor, outlineColor: shadowColor, outlineWidth: 1.5f);
                     SysFont.EndBatch();
-#endif
                     
                     // Adjust drawing region.
                     leftGroupPosition.X = MathHelper.Min(leftGroupPosition.X, x);
@@ -1372,7 +1367,6 @@ namespace Boku.Common
                 data = null;
                 if (e != null)
                 {
-#if !NETFX_CORE
                     string message = e.Message;
                     if (e.InnerException != null)
                     {
@@ -1384,7 +1378,6 @@ namespace Boku.Common
                         System.Windows.Forms.MessageBoxButtons.OK,
                         System.Windows.Forms.MessageBoxIcon.Error
                         );
-#endif
                 }
             }
             finally

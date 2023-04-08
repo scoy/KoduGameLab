@@ -384,37 +384,6 @@ namespace Boku
 
                     Color darkGrey = new Color(10, 10, 10);
 
-#if NETFX_CORE
-                    batch.Begin();
-                    if (HaveReDo)
-                    {
-                        string str = Strings.Localize("undoStack.redo") + "(" + NumReDo.ToString() + ")";
-                        TextHelper.DrawStringWithShadow(Font,
-                            batch,
-                            x + buttonSize - 12,
-                            y - 4,
-                            str,
-                            redoTextColor, darkGrey, false);
-                        Vector2 max = redoHitBox.Max;
-                        max.X += Font().MeasureString(str).X;
-                        redoHitBox.Set(redoHitBox.Min, max);
-                    }
-
-                    if (HaveUnDo)
-                    {
-                        string str = Strings.Localize("undoStack.undo") + "(" + NumUnDo.ToString() + ")";
-                        TextHelper.DrawStringWithShadow(Font,
-                            batch,
-                            x + buttonSize - 12,
-                            y + buttonSize - 16,
-                            str,
-                            undoTextColor, darkGrey, false);
-                        Vector2 max = undoHitBox.Max;
-                        max.X += Font().MeasureString(str).X;
-                        undoHitBox.Set(undoHitBox.Min, max);
-                    }
-                    batch.End();
-#else
                     SysFont.StartBatch(null);
                     if (HaveReDo)
                     {
@@ -434,7 +403,6 @@ namespace Boku
                         undoHitBox.Set(undoHitBox.Min, max);
                     }
                     SysFont.EndBatch();
-#endif
                 }
             }
             #endregion Public

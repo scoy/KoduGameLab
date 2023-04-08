@@ -13,7 +13,6 @@ using System.Xml.Serialization;
 
 namespace Boku.Input
 {
-#if !NETFX_CORE
     /// <summary>
     /// Lowest level Com driver handling all Win32 API calls and processing send and receive in terms of
     /// individual bytes. Used as a base class for higher level drivers.
@@ -1633,5 +1632,4 @@ namespace Boku.Input
         }
 
     }
-#endif
 }

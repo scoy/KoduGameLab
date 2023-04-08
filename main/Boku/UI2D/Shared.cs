@@ -6,9 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !NETFX_CORE
 using System.Drawing;
-#endif
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -147,9 +145,7 @@ namespace Boku.UI2D
                 if (gameFont10 == null)
                 {
                     gameFont10 = new FontWrapper();
-#if !NETFX_CORE
                     gameFont10.systemFont = SysFont.GetSystemFont(UIFontName, 10.0f, FontStyle.Regular);
-#endif
                     gameFont10.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri10");
                 }
                 return gameFont10;
@@ -162,9 +158,7 @@ namespace Boku.UI2D
                 if (gameFont13_5 == null)
                 {
                     gameFont13_5 = new FontWrapper();
-#if !NETFX_CORE
                     gameFont13_5.systemFont = SysFont.GetSystemFont(UIFontName, 13.5f, FontStyle.Regular);
-#endif
                     gameFont13_5.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri13_5");
                 }
                 return gameFont13_5;
@@ -177,9 +171,7 @@ namespace Boku.UI2D
                 if (gameFont15_75 == null)
                 {
                     gameFont15_75 = new FontWrapper();
-#if !NETFX_CORE
                     gameFont15_75.systemFont = SysFont.GetSystemFont(UIFontName, 15.75f, FontStyle.Regular);
-#endif
                     gameFont15_75.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri15_75");
                 }
                 return gameFont15_75;
@@ -192,9 +184,7 @@ namespace Boku.UI2D
                 if (gameFont18Bold == null)
                 {
                     gameFont18Bold = new FontWrapper();
-#if !NETFX_CORE
                     gameFont18Bold.systemFont = SysFont.GetSystemFont(UIFontName, 18.0f, FontStyle.Bold);
-#endif
                     gameFont18Bold.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri18Bold");
                 }
                 return gameFont18Bold;
@@ -207,9 +197,7 @@ namespace Boku.UI2D
                 if (gameFont20 == null)
                 {
                     gameFont20 = new FontWrapper();
-#if !NETFX_CORE
                     gameFont20.systemFont = SysFont.GetSystemFont(UIFontName, 20.0f, FontStyle.Regular);
-#endif
                     gameFont20.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri20");
                 }
                 return gameFont20;
@@ -222,9 +210,7 @@ namespace Boku.UI2D
                 if (gameFont24 == null)
                 {
                     gameFont24 = new FontWrapper();
-#if !NETFX_CORE
                     gameFont24.systemFont = SysFont.GetSystemFont(UIFontName, 24.0f, FontStyle.Regular);
-#endif
                     gameFont24.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri24");
                 }
                 return gameFont24;
@@ -237,9 +223,7 @@ namespace Boku.UI2D
                 if (gameFont24Bold == null)
                 {
                     gameFont24Bold = new FontWrapper();
-#if !NETFX_CORE
                     gameFont24Bold.systemFont = SysFont.GetSystemFont(UIFontName, 24.0f, FontStyle.Bold);
-#endif
                     gameFont24Bold.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri24Bold");
                 }
                 return gameFont24Bold;
@@ -252,9 +236,7 @@ namespace Boku.UI2D
                 if (gameFont30Bold == null)
                 {
                     gameFont30Bold = new FontWrapper();
-#if !NETFX_CORE
                     gameFont30Bold.systemFont = SysFont.GetSystemFont(UIFontName, 30.0f, FontStyle.Bold);
-#endif
                     gameFont30Bold.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\Calibri30Bold");
                 }
                 return gameFont30Bold;
@@ -267,9 +249,7 @@ namespace Boku.UI2D
                 if (cardLabel == null)
                 {
                     cardLabel = new FontWrapper();
-#if !NETFX_CORE
                     cardLabel.systemFont = SysFont.GetSystemFont("Arial", 20.0f, FontStyle.Bold);
-#endif
                     cardLabel.spriteFont = BokuGame.Load<SpriteFont>(BokuGame.Settings.MediaPath + @"Fonts\CardLabel");
                 }
                 return cardLabel;
@@ -762,9 +742,6 @@ namespace Boku.UI2D
             if (renderTargetDepthStencil1280_720 == null)
             {
                 int numSamples = BokuSettings.Settings.AntiAlias ? 8 : 1;
-#if NETFX_CORE
-                numSamples = 0;
-#endif
                 renderTargetDepthStencil1280_720 = new RenderTarget2D(
                     device,
                     width, height, false,

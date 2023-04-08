@@ -1177,12 +1177,6 @@ namespace Boku.Common.Xml
 
         #region refresh logic for design tools
 
-#if NETFX_CORE
-        public void RefreshFromXML()
-        {
-            Debug.Assert(false, "Is this needed during runtime?");
-        }
-#else
 
         public void RefreshFromXML()
         {
@@ -1258,7 +1252,7 @@ namespace Boku.Common.Xml
                 }
             }
         }
-#endif
+
         #endregion
 
         /// <summary>

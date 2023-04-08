@@ -813,21 +813,15 @@ namespace Boku.Programming
 
         private void DumpCategories(BitArray array, string label)
         {
-#if !NETFX_CORE
             Debug.Print(label);
-#endif
             for (int i = 0; i < array.Length; i++)
             {
                 if (array.Get(i) == true)
                 {
-#if !NETFX_CORE
                     Debug.Print(((BrainCategories)i).ToString());
-#endif
                 }
             }
-#if !NETFX_CORE
             Debug.Print("");
-#endif
         }
 #endif
 

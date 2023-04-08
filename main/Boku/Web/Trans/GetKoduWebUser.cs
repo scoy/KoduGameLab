@@ -6,10 +6,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 
-#if NETFX_CORE
-#else
-    using System.Web;
-#endif
+using System.Web;
 
 using Boku.Common.Sharing;
 using BokuShared;

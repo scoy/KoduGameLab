@@ -344,12 +344,7 @@ namespace Boku
                 shared.descBlob = new TextBlob(UI2D.Shared.GetGameFont24, shared.curString, 650);
                 //shared.Justification = blob.justify;
                 //KeyboardInput.OnChar = TextInput;
-#if NETFX_CORE
-                Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
-                KeyboardInput.OnChar = TextInput;
-#else
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = TextInput;
-#endif
                 KeyboardInput.OnKey = KeyInput;
             }
 
@@ -359,9 +354,7 @@ namespace Boku
 
                 KeyboardInput.OnChar = null;
                 KeyboardInput.OnKey = null;
-#if !NETFX_CORE
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = null;
-#endif
             }
 
         }   // end of class TextDialog UpdateObj  

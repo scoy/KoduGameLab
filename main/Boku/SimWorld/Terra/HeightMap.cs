@@ -110,11 +110,7 @@ namespace Boku.SimWorld.Terra
 
             Load(br);
 
-#if NETFX_CORE
-            br.Dispose();
-#else
             br.Close();
-#endif
             Storage4.Close(fs);
 
         }   // end of HeightMap c'tor
@@ -130,12 +126,7 @@ namespace Boku.SimWorld.Terra
 
             Save(bw);
 
-#if NETFX_CORE
-            bw.Flush();
-            bw.Dispose();
-#else
             bw.Close();
-#endif
             Storage4.Close(fs);
         }   // end of HeightMap Save()
 

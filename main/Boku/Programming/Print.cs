@@ -7,11 +7,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-#if NETFX_CORE
-    using Windows.Graphics.Printing;
-#else
-    using System.Windows.Forms;
-#endif
+using System.Windows.Forms;
 
 using System.IO;
 
@@ -81,12 +77,7 @@ namespace Boku.Programming
                 // If this level is a tutorial, also print out the tutorial text.
                 TutorialManager.Print(tw);
 
-#if NETFX_CORE
-                tw.Flush();
-                tw.Dispose();
-#else
                 tw.Close();
-#endif
 
                 Instrumentation.IncrementCounter(Instrumentation.CounterId.PrintKode);
 
@@ -125,13 +116,7 @@ namespace Boku.Programming
             {
                 PrintHeading(tw);
                 PrintActorProgramming(tw, actor);
-#if NETFX_CORE
-                tw.Flush();
-                tw.Dispose();
-#else
                 tw.Close();
-#endif
-            
                 SendToPrinter(fullPath);
             }
 
@@ -152,11 +137,7 @@ namespace Boku.Programming
         static private TextWriter OpenFile(string fullPath)
         {
             TextWriter tw = null;
-#if NETFX_CORE
-            tw = Storage4.OpenStreamWriter(fullPath);
-#else
             tw = new StreamWriter(fullPath);
-#endif
 
             return tw;
         }   // end of OpenFile
@@ -190,11 +171,7 @@ namespace Boku.Programming
             tw.WriteLine(Strings.Localize("loadLevelMenu.title") + " : " + InGame.XmlWorldData.name);
             tw.WriteLine(Strings.Localize("loadLevelMenu.creator") + " : " + InGame.XmlWorldData.creator);
             tw.WriteLine(Strings.Localize("loadLevelMenu.description") + " : " + InGame.XmlWorldData.description);
-#if NETFX_CORE
-            tw.WriteLine(Strings.Localize("loadLevelMenu.date") + " : " + InGame.XmlWorldData.lastWriteTime.ToString() + " " + InGame.XmlWorldData.lastWriteTime.ToString());
-#else
             tw.WriteLine(Strings.Localize("loadLevelMenu.date") + " : " + InGame.XmlWorldData.lastWriteTime.ToShortDateString() + " " + InGame.XmlWorldData.lastWriteTime.ToShortTimeString());
-#endif
 
             tw.WriteLine("========");
         }   // end of PrintHeading()
@@ -494,39 +471,8 @@ namespace Boku.Programming
             return tiles;
         }   // end of GetTileString()
 
-#if NETFX_CORE
-        static void printManager_PrintTaskRequested(PrintManager printManager, PrintTaskRequestedEventArgs args)
-        {
-            PrintTask printTask = args.Request.CreatePrintTask("Kode", PrintTaskSourceRequested);
-        }
-
-        static void PrintTaskSourceRequested(PrintTaskSourceRequestedArgs args)
-        {
-            IPrintDocumentSource source = null;
-
-            // TODO How do we get from our text file to an IPrintDocumentSource???
-
-            args.SetSource(source);
-        }
-
-        static bool firstTime = true;
-#endif
         private static void SendToPrinter(string fullPath)
         {
-#if NETFX_CORE
-            // Do nothing here.  At least the users can go find the Kode.txt
-            // file on disk and print it manually.
-            /*
-            PrintManager printManager = PrintManager.GetForCurrentView();
-            if (firstTime)
-            {
-                printManager.PrintTaskRequested += printManager_PrintTaskRequested;
-                firstTime = false;
-            }
-
-            PrintManager.ShowPrintUIAsync();
-            */
-#else
             try
             {
                 DialogResult? print = DialogResult.OK;
@@ -559,10 +505,8 @@ namespace Boku.Programming
                 {
                 }
             }
-#endif
         }   // end of SendToPrinter()
 
-#if!NETFX_CORE
         static System.IO.StreamReader fileToPrint;
         static System.Drawing.Font printFont;
         static System.Drawing.Printing.PrintDocument printDocument;
@@ -617,8 +561,6 @@ namespace Boku.Programming
                 e.HasMorePages = true;
             }
         }
-
-#endif
 
         #endregion
 

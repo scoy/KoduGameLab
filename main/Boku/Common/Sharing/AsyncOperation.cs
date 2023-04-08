@@ -119,11 +119,7 @@ namespace Boku.Common.Sharing
         {
             Log("Queueing " + GetType().Name);
 
-#if NETFX_CORE
-            Debug.Assert(false, "What are we doing with LiveManager?");
-#else
             //LiveManager._QueueOperation(this, startImmediately);
-#endif
         }
 
         /// <summary>
@@ -168,11 +164,7 @@ namespace Boku.Common.Sharing
             succeeded = success;
 
             // Queue ourselves for completion by the main thread.
-#if NETFX_CORE
-            Debug.Assert(false, "What are we doing with LiveManager?");
-#else
             //LiveManager._CompleteOperation(this);
-#endif
         }
 
         private void Log(string msg)

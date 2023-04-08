@@ -462,23 +462,14 @@ namespace Boku
             {
                 KeyboardInput.OnKey = KeyInput;
                 shared.lastKeyPressedAt = DateTime.Now;
-#if NETFX_CORE
-                Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
-                KeyboardInput.OnChar = TextInput;
-#else
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = TextInput;
                 //KeyboardInput.OnChar = TextInput;
-#endif
             }
 
             public override void Deactivate()
             {
                 KeyboardInput.OnKey = null;
-#if NETFX_CORE
-                KeyboardInput.OnChar = null;
-#else
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = null;
-#endif
             }
 
             #endregion

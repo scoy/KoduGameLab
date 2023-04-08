@@ -700,9 +700,7 @@ namespace Boku.Common
 
         public static Object EnumParse(Type enumType, string str, bool ignoreCase)
         {
-#if !NETFX_CORE
             Debug.Assert(enumType.IsEnum);
-#endif
             return Enum.Parse(enumType, str, ignoreCase);
         }
 
@@ -764,9 +762,7 @@ namespace Boku.Common
 
     }   // end of class Utils
 
-#if !NETFX_CORE
     [SerializableAttribute]
-#endif
     public class XmlSerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IXmlSerializable
     {
         #region Constructors

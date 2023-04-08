@@ -8,10 +8,6 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-#if NETFX_CORE
-    using Windows.Storage;
-#endif
-
 namespace Cab
 {
     /// <summary>
@@ -51,7 +47,6 @@ namespace Cab
         {
         }
 
-#if !NETFX_CORE
         public void Create(string filename) //ToDo(DZ): Is this enough implementation for the memory-only version?
         {
             erf = new Cabinet.ERF();
@@ -238,7 +233,6 @@ namespace Cab
                 throw new Exception("Failed to destroy cab compressor");
             }
         }
-#endif
     }   // end of partial class Compressor
 
 
@@ -407,13 +401,7 @@ namespace Cab
         {
             Stream stream = streams[hf];
 
-#if NETFX_CORE
-            stream.Flush();
-            stream.Dispose();
-            stream = null;
-#else
             stream.Close();
-#endif
 
             streams[hf] = null;
             filenames[hf] = null;
@@ -502,10 +490,7 @@ namespace Cab
             pattribs = Util.FileAttributesToDos(fa);
 
             DateTime ct = compressorHelper.GetLastWriteTimeUtc(filename);//File.GetLastWriteTimeUtc(filename);
-#if !NETFX_CORE
-            // This relies on a WIN32 api which makes WinRT very unhappy.
             Util.DateTimeToDos(ct, out pdate, out ptime);
-#endif
 
             err = 0;
 

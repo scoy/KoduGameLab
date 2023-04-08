@@ -890,13 +890,11 @@ namespace Boku.Scenes.InGame.MouseEditTools
 
             if(oldInAction !=isInAction)
             {
-#if !NETFX_CORE
                 Console.WriteLine(this.ToString() + ":" + 
                     ":" + MouseInput.Left.IsPressed.ToString() +
                     ":" + MouseInput.Middle.IsPressed.ToString() +
                     ":" + MouseInput.Right.IsPressed.ToString()
                     );
-#endif
                 oldInAction=isInAction;
             }
         }
@@ -941,9 +939,7 @@ namespace Boku.Scenes.InGame.MouseEditTools
                      (shared.currentTouchAction == ToolBar.TouchControls.BrushActionIDs.baFlatten) ||
                      (shared.currentTouchAction == ToolBar.TouchControls.BrushActionIDs.baSpikey))
                 {
-#if !NETFX_CORE
                     Debug.Print("Painting with selection...");
-#endif
 
                     float rate = 1.0f;
                     inGame.Terrain.RenderToSelection(left, rate * rate * terrainSpeed);

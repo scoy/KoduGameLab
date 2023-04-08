@@ -142,12 +142,7 @@ namespace Boku.Common
                     writer.Write(pixel.PackedValue);
                 }
 
-#if NETFX_CORE
-                writer.Flush();
-                writer.Dispose();
-#else
                 writer.Close();
-#endif
                 Close(stream);
 
             }
@@ -494,11 +489,7 @@ namespace Boku.Common
                         break;
                 }
 
-#if NETFX_CORE
-                reader.Dispose();
-#else
                 reader.Close();
-#endif
                 Close(stream);
 
                 return tex;

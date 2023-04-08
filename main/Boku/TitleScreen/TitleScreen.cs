@@ -112,13 +112,6 @@ namespace Boku
 
                 Vector2 screenSize = BokuGame.ScreenSize;
 
-#if NETFX_CORE
-                // For some reason, right at the start, this shows up as 0, 0.
-                if (screenSize == Vector2.Zero)
-                {
-                    screenSize = new Vector2(device.Viewport.Width, device.Viewport.Height);
-                }
-#endif
 
                 Vector2 backgroundSize = new Vector2(backgroundTexture.Width, backgroundTexture.Height);
                 Vector2 position = (screenSize - backgroundSize) / 2.0f;
@@ -245,17 +238,7 @@ namespace Boku
             WaitMode = true;
         }
 
-#if NETFX_CORE
-        /// <summary>
-        /// Hacked render call to help make the WinRT startup look better.
-        /// </summary>
-        public void Render()
-        {
-            renderObj.UnloadContent();
-            renderObj.LoadContent(true);
-            renderObj.Render(null);
-        }
-#endif
+
 
         public override bool Refresh(List<UpdateObject> updateList, List<RenderObject> renderList)
         {
@@ -295,12 +278,10 @@ namespace Boku
                 pendingState = States.Active;
                 BokuGame.objectListDirty = true;
 
-#if !NETFX_CORE
                 // Bring window to top.
                 bool prevTopMost = MainForm.Instance.TopMost;
                 MainForm.Instance.TopMost = true;
                 MainForm.Instance.TopMost = prevTopMost;
-#endif
             }
         }
         override public void Deactivate()
@@ -310,12 +291,10 @@ namespace Boku
                 pendingState = States.Inactive;
                 BokuGame.objectListDirty = true;
 
-#if !NETFX_CORE
                 // Bring window to top.
                 bool prevTopMost = MainForm.Instance.TopMost;
                 MainForm.Instance.TopMost = true;
                 MainForm.Instance.TopMost = prevTopMost;
-#endif
             }
         }
 

@@ -63,11 +63,7 @@ namespace Boku.Web.Trans
         private string ReformatDate(string input)
         {
             long DATE1970_TICKS = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).Ticks;
-#if NETFX_CORE
-            Regex DATE_SERIALIZATION_REGEX = new Regex(@"\\/Date\((?<ticks>-?\d+)\)\\/");
-#else
             Regex DATE_SERIALIZATION_REGEX = new Regex(@"\\/Date\((?<ticks>-?\d+)\)\\/", RegexOptions.Compiled);
-#endif
 
             Match match;
 

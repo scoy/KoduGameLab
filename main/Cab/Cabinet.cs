@@ -287,7 +287,6 @@ namespace Cab
             int dist,
             int seektype);
 
-#if !NETFX_CORE
         [DllImport("cabinet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int FCICreate(
             ref ERF perf,
@@ -337,8 +336,6 @@ namespace Cab
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool FCIDestroy(
             int handle);
-
-#endif
 
         [DllImport("cabinet.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr FDICreate(

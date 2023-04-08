@@ -160,13 +160,8 @@ namespace Boku
         /// </summary>
         public bool UseSystemFontRendering
         {
-#if NETFX_CORE
-            get { return false; }
-            set { }
-#else
             get { return useSystemFontRendering; }
             set { useSystemFontRendering = value; }
-#endif
         }
 
         #endregion

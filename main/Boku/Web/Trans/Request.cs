@@ -10,11 +10,6 @@ using System.Text;
 using System.Threading;
 using Boku.Common.Sharing;
 
-#if NETFX_CORE
-    using Boku.Common;
-#endif
-
-
 namespace Boku.Web.Trans
 {
     enum WebMethod
@@ -109,11 +104,7 @@ namespace Boku.Web.Trans
         {
             if (buf != null)
             {
-#if NETFX_CORE
-                return Encoding.UTF8.GetString(buf, 0, buf.Length);
-#else
                 return Encoding.ASCII.GetString(buf);
-#endif
             }
 
             return string.Empty;
@@ -344,12 +335,7 @@ namespace Boku.Web.Trans
                 Stream stream = request.EndGetRequestStream(ar);
                 StreamWriter writer = new StreamWriter(stream);
                 writer.WriteLine(requestBody);
-#if NETFX_CORE
-                writer.Flush();
-                writer.Dispose();
-#else
                 writer.Close();
-#endif
 
                 request.BeginGetResponse(request_GetResponse, null);
             }
