@@ -430,7 +430,7 @@ namespace Boku
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.OperatingSystem, Environment.OSVersion.VersionString);
 
             // Instrument the graphics device information.
-            string gfxString = String.Format("{0}, Driver: not supported in 4.0", GraphicsAdapter.DefaultAdapter.Description);
+            string gfxString = GraphicsAdapter.DefaultAdapter.Description;
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.GraphicsAdapter, gfxString);
 
             BokuGame.gameAudio = new Audio.Audio(BokuSettings.Settings.Audio);

@@ -5,6 +5,10 @@
 # define FLUSH_TO_FILE
 #endif
 
+// Uncomment this to enable sending of instrumented counters.
+// Hidden since they don't seem to be of much use.
+// #define ENABLE_COUNTERS
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -209,7 +213,8 @@ namespace Boku.Common
             BokuVersion,
 
             //Update Code - Used to show provenance of install (MS or open)
-            UpdateCode,
+            // Removed to help limit database growth.
+            //UpdateCode,
 
             // OS version
             OperatingSystem,
@@ -330,6 +335,12 @@ namespace Boku.Common
             if (!Program2.SiteOptions.Instrumentation)
                 return;
 
+            // We only really care about these two events.  Ignore the rest.
+            if (id != EventId.LevelUploaded && id != EventId.MicrobitTilesEnabled)
+            {
+                return;
+            }
+
             if (instruments.events[(int)id] == null)
                 instruments.events[(int)id] = new List<Event>();
 
@@ -362,6 +373,7 @@ namespace Boku.Common
         /// <param name="value"></param>
         public static void SetCounter(CounterId id, int value)
         {
+#if ENABLE_COUNTERS
             if (!Program2.SiteOptions.Instrumentation)
                 return;
 
@@ -370,6 +382,7 @@ namespace Boku.Common
 
             instruments.counters[(int)id].Id = id;
             instruments.counters[(int)id].Count = value;
+#endif
         }
 
         /// <summary>
@@ -381,6 +394,13 @@ namespace Boku.Common
         {
             if (!Program2.SiteOptions.Instrumentation)
                 return null;
+
+            // Trim down the number of timers we actually care about.
+            // Only keep these three.
+            if(id != TimerId.ActiveSession && id != TimerId.BokuSession && id != TimerId.ProgrammingTime)
+            {
+                return null;
+            }
 
             ActiveTimer timer = new ActiveTimer();
             timer.id = id;
@@ -454,6 +474,12 @@ namespace Boku.Common
         {
             if (!Program2.SiteOptions.Instrumentation)
                 return;
+
+            if (id == DataItemId.SettingsXml)
+            {
+                // Just fills up database with info we don't care about.
+                return;
+            }
 
             if (instruments.dataItems[(int)id] == null)
                 instruments.dataItems[(int)id] = new List<DataItem>();
