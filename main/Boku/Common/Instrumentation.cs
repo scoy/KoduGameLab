@@ -432,6 +432,14 @@ namespace Boku.Common
 
             ActiveTimer timer = timerObj as ActiveTimer;
 
+            // As part of the effort to trim the amount of instrumentation we limit which
+            // timers can actually be started.  For those not on the list, null is returned.
+            // This can then be passed into here where we just ignore it.
+            if (timer == null)
+            {
+                return;
+            }
+
             if (instruments.timers[(int)timer.id] == null)
             {
                 instruments.timers[(int)timer.id] = new Timer();
