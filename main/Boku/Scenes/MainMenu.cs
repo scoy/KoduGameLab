@@ -106,10 +106,9 @@ namespace Boku
                 optionsMenu = new OptionsMenu();
                 liveFeed = new LiveFeedDisplay();
 
-                if (BokuGame.bMarsMode)
-                    boku = ActorManager.GetActor("RoverGreeter").CreateNewInstance() as BokuGreeter;
-                else
-                    boku = ActorManager.GetActor("BokuGreeter").CreateNewInstance() as BokuGreeter;
+                // Rover greeter used for JPL builds which are not deprecated.  May
+                //boku = ActorManager.GetActor("RoverGreeter").CreateNewInstance() as BokuGreeter;
+                boku = ActorManager.GetActor("BokuGreeter").CreateNewInstance() as BokuGreeter;
                 boku.SetColor(Classification.Colors.White);
 
                 bokuCamera.NearClip = 0.1f;
@@ -222,15 +221,7 @@ namespace Boku
             {
                 if (backgroundTexture == null)
                 {
-                    if (BokuGame.bMarsMode)
-                    {
-                        backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreenMars");
-                        //jplTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\nasajpl");
-                    }
-                    else
-                    {
-                        backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreen");
-                    }
+                    backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreen");
                 }
 
                 if (blueArrowTexture == null)
@@ -252,7 +243,6 @@ namespace Boku
             public void UnloadContent()
             {
                 BokuGame.Release(ref backgroundTexture);
-                //BokuGame.Release(ref jplTexture);
                 BokuGame.Release(ref blueArrowTexture);
 
                 BokuGame.Unload(boku);
@@ -577,20 +567,11 @@ namespace Boku
                     // Do we really need to?
                     //Luz.SetToEffect(true); // disable scene point lights
 
-                    if (BokuGame.bMarsMode)
-                    {
-                        shared.boku.Movement.Position = new Vector3(-0.0f, 0.25f, -0.5f);
-                        shared.boku.ReScale = 0.50f;
+                    // If using the RoverGreeter use these settings.
+                    //shared.boku.Movement.Position = new Vector3(-0.0f, 0.25f, -0.5f);
+                    //shared.boku.ReScale = 0.50f;
+                    shared.boku.Movement.Position = new Vector3(0.0f, 0.0f, 0.0f);
 
-                        //quad = ScreenSpaceQuad.GetInstance();
-                        //float wid=shared.jplTexture.Width/2;
-                        //position = new Vector2(1250-(wid), 20);
-                        //quad.Render(shared.jplTexture, position, new Vector2(wid, shared.jplTexture.Height/2), @"TexturedRegularAlpha");
-                    }
-                    else
-                    {
-                        shared.boku.Movement.Position = new Vector3(0.0f, 0.0f, 0.0f);
-                    }
                     fVal += 0.01f;
 
                     // Be sure to set the right camera so the env map looks correct.

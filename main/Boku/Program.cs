@@ -355,11 +355,6 @@ namespace Boku
                     settings.FullScreen = CmdLine.GetBool("F", settings.FullScreen);
                     BokuGame.syncRefresh = CmdLine.GetBool("S", BokuGame.syncRefresh);
                     BokuGame.Logon = CmdLine.GetBool("Logon", SiteOptions.Logon);
-                    DateTime endMarsMode = new DateTime(2012, 10, 1, 0, 0, 0);
-                    if (CmdLine.Exists("MARS") || DateTime.Now < endMarsMode)
-                    {
-                        BokuGame.bMarsMode = true;
-                    }
                     if (CmdLine.Exists("W"))
                     {
                         settings.ResolutionX = CmdLine.GetInt("W", settings.ResolutionX);

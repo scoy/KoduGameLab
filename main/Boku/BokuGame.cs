@@ -109,8 +109,6 @@ namespace Boku
 
         private static bool logon = false;                  // should we have the user give us their username?
 
-        public static bool bMarsMode = false;               //For special JPL/NASA main menu.
-
         // This is the size that we're targetting for rendering.  Normally this is the same
         // as the viewport size.  The exception is when the tutorial system in active.  In
         // that case this will be smaller in the Y direction.
