@@ -432,6 +432,7 @@ namespace Boku
                         // No sharing of built in worlds since everyone already has those also.
                         // Only allow sharing of worlds the user is the author of.
                         if (Program2.SiteOptions.CommunityEnabled
+                            && !KoduService.PingFailed
                             && parent.shared.CurWorld.Creator == Auth.CreatorName
                             && (parent.shared.CurWorld != null)
                             && (parent.shared.CurWorld.Genres & Genres.Downloads) == 0

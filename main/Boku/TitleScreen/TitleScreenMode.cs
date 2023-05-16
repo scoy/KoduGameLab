@@ -76,26 +76,35 @@ namespace Boku
                         //siteId = SiteID.Instance.Value.ToString()
                     };
                     var instrumentationTimer = Instrumentation.StartTimer(Instrumentation.TimerId.PingTime);
-                    KoduService.Ping(args,(responseObject)=>{
-                        Instrumentation.StopTimer(instrumentationTimer);
-                        if (responseObject == null)
+                    try
+                    {
+                        KoduService.Ping(args, (responseObject) =>
                         {
-                            // Ping failed.
-                            KoduService.PingFailed = true;
-                        }
-                        else
-                        {
-                            responseObject = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)responseObject) as Newtonsoft.Json.Linq.JContainer;
-
-                            var container = (Newtonsoft.Json.Linq.JContainer)responseObject;
-                            var msgStr = container.Value<string>("systemMessage");
-
-                            if (!string.IsNullOrEmpty(msgStr))
+                            Instrumentation.StopTimer(instrumentationTimer);
+                            if (responseObject == null)
                             {
-                                System.Windows.Forms.MessageBox.Show(msgStr, "Kodu Server Message", System.Windows.Forms.MessageBoxButtons.OK);
+                                // Ping failed.
+                                KoduService.PingFailed = true;
                             }
-                        }
-                    });
+                            else
+                            {
+                                responseObject = (Newtonsoft.Json.Linq.JContainer)JsonConvert.DeserializeObject((string)responseObject) as Newtonsoft.Json.Linq.JContainer;
+
+                                var container = (Newtonsoft.Json.Linq.JContainer)responseObject;
+                                var msgStr = container.Value<string>("systemMessage");
+
+                                if (!string.IsNullOrEmpty(msgStr))
+                                {
+                                    System.Windows.Forms.MessageBox.Show(msgStr, "Kodu Server Message", System.Windows.Forms.MessageBoxButtons.OK);
+                                }
+                            }
+                        });
+                    }
+                    catch
+                    {
+                        // Not sure why Ping failed, but set system so it won't keep trying the same thing.
+                        KoduService.PingFailed = true;
+                    }
 
                     // Switch to MainMenu.
                     parent.DismissAndShowMain(null, null);

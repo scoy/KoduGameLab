@@ -192,23 +192,34 @@ namespace Boku
                 clientVersion = Program2.ThisVersion.ToString(),
             };
 
-            KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge,(response) =>{
-                if (response == null)
+            try
+            {
+                if (!KoduService.PingFailed)
                 {
-                    // Failed.
-                    // todo handle reason?
-                }
-                else
-                {
-                    // This is redundant since it's also done in the FinalizeUpload() call.
-                    KoduService.ShareRequestState = KoduService.RequestState.Complete;
-                }
+                    KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge, (response) =>
+                    {
+                        if (response == null)
+                        {
+                            // Failed.
+                            // todo handle reason?
+                        }
+                        else
+                        {
+                            // This is redundant since it's also done in the FinalizeUpload() call.
+                            KoduService.ShareRequestState = KoduService.RequestState.Complete;
+                        }
 
-                // Clean up.
-                // Delete the temp Kodu2 file.
-                File.Delete(pathToKodu2File);
+                        // Clean up.
+                        // Delete the temp Kodu2 file.
+                        File.Delete(pathToKodu2File);
 
-            });
+                    });
+                }
+            }
+            catch
+            {
+                KoduService.ShareRequestState = KoduService.RequestState.NoInternet;
+            }
         }   // end of ContinueCommunityShare()
 
         public void LoadContent(bool immediate)
