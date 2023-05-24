@@ -195,7 +195,7 @@ namespace Boku
 
             }   // end of Shared c'tor
 
-            private void OnTagPickerExit(ModularCheckboxList picker)
+            void OnTagPickerExit(ModularCheckboxList picker)
             {
                 int tags = tagPicker.GetTags();
 
@@ -211,7 +211,7 @@ namespace Boku
 
             }   // end of OnTagPickerChange()
 
-            private void OnChange(UIGrid grid)
+            void OnChange(UIGrid grid)
             {
                 if (popup != null)
                 {
@@ -219,7 +219,7 @@ namespace Boku
                 }
             }
 
-            private void SetUpBuckets()
+            void SetUpBuckets()
             {
                 bucketsGrid = new UIGrid(BucketOnSelect, BucketOnCancel, new Point(6, 0), "App.LoadLevelMenu.BucketsGrid");
                 bucketsGrid.AlwaysReadInput = true;
@@ -294,11 +294,11 @@ namespace Boku
 
             }   // end of SetUpBuckets()
 
-            private void BucketOnSelect(UIGrid grid)
+            void BucketOnSelect(UIGrid grid)
             {
             }   // end of BucketOnSelect()
 
-            private void BucketOnCancel(UIGrid grid)
+            void BucketOnCancel(UIGrid grid)
             {
                 // Do nothing.
             }   // end of BucketOnCancel()
@@ -312,42 +312,54 @@ namespace Boku
                 // SortBy list
                 //
 
-                int i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortDate"));
-                sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Date;
-                if (sortList.GetItem(i).Check)
+                int i = sortList.GetIndex("loadLevelMenu.sortDate");
+                if (i != -1)
                 {
-                    sortListDisplay = sortList.GetItem(i).Text;
-                    sortList.CurIndex = i;
+                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Date;
+                    if (sortList.GetItem(i).Check)
+                    {
+                        sortListDisplay = sortList.GetItem(i).LocalizedText;
+                        sortList.CurIndex = i;
+                    }
                 }
 
                 if (parent.OriginalBrowserType == LevelBrowserType.Local)
                 {
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortCreator"));
-                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Creator;
-                    if (sortList.GetItem(i).Check)
+                    i = sortList.GetIndex("loadLevelMenu.sortCreator");
+                    if (i != -1)
                     {
-                        sortListDisplay = sortList.GetItem(i).Text;
-                        sortList.CurIndex = i;
+                        sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Creator;
+                        if (sortList.GetItem(i).Check)
+                        {
+                            sortListDisplay = sortList.GetItem(i).LocalizedText;
+                            sortList.CurIndex = i;
+                        }
                     }
 
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortTitle"));
-                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Name;
-                    if (sortList.GetItem(i).Check)
+                    i = sortList.GetIndex("loadLevelMenu.sortTitle");
+                    if (i != -1)
                     {
-                        sortListDisplay = sortList.GetItem(i).Text;
-                        sortList.CurIndex = i;
+                        sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Name;
+                        if (sortList.GetItem(i).Check)
+                        {
+                            sortListDisplay = sortList.GetItem(i).LocalizedText;
+                            sortList.CurIndex = i;
+                        }
                     }
                 }
 
                 // If we're on the community browser, also allow sorting by rating.
                 if (parent.OriginalBrowserType == LevelBrowserType.Community)
                 {
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortRank"));
-                    sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Rank;
-                    if (sortList.GetItem(i).Check)
+                    i = sortList.GetIndex("loadLevelMenu.sortRank");
+                    if (i != -1)
                     {
-                        sortListDisplay = sortList.GetItem(i).Text;
-                        sortList.CurIndex = i;
+                        sortList.GetItem(i).Check = levelSorter.SortBy == SortBy.Rank;
+                        if (sortList.GetItem(i).Check)
+                        {
+                            sortListDisplay = sortList.GetItem(i).LocalizedText;
+                            sortList.CurIndex = i;
+                        }
                     }
                 }
 
@@ -378,15 +390,15 @@ namespace Boku
                 sortList.OnChange = ListOnExit;     // We want to exit when we change anything.
                 sortList.WorldMatrix = Matrix.CreateTranslation(1.25f, 2.0f, 0.0f);
 
-                sortList.AddItem(Strings.Localize("loadLevelMenu.sortDate"), true);
+                sortList.AddItem("loadLevelMenu.sortDate", true);
                 if (parent.OriginalBrowserType == LevelBrowserType.Local)
                 {
-                    sortList.AddItem(Strings.Localize("loadLevelMenu.sortCreator"), false);
-                    sortList.AddItem(Strings.Localize("loadLevelMenu.sortTitle"), false);
+                    sortList.AddItem("loadLevelMenu.sortCreator", false);
+                    sortList.AddItem("loadLevelMenu.sortTitle", false);
                 }
                 else
                 {
-                    sortList.AddItem(Strings.Localize("loadLevelMenu.sortRank"), false);
+                    sortList.AddItem("loadLevelMenu.sortRank", false);
                 }
 
                 SetAuxMenuDefaultSelections();
@@ -501,7 +513,7 @@ namespace Boku
             }   // end of SetUpPopup()
 
 
-            private void AttachSelectedLevel()
+            void AttachSelectedLevel()
             {
                 LevelMetadata targetNextLevel = parent.shared.CurWorld;
                 if (targetNextLevel != null)
@@ -584,7 +596,7 @@ namespace Boku
             /// Exports the selected level.
             /// </summary>
             /// <returns>Filename exported to or null if not exported.</returns>
-            private string ExportSelectedLevel()
+            string ExportSelectedLevel()
             {
                 //always operate on first link in a chain of levels (if no chain, the level will be the first link)
                 LevelMetadata level = parent.shared.CurWorld.FindFirstLink();
@@ -617,7 +629,7 @@ namespace Boku
             /// </summary>
             /// <param name="level"></param>
             /// <returns>Filename we exported to, null if user backs out.</returns>
-            private string ShowExportDialog(LevelMetadata level)
+            string ShowExportDialog(LevelMetadata level)
             {
                 // Create new SaveFileDialog.
                 SaveFileDialog DialogSave = new SaveFileDialog();
@@ -666,7 +678,7 @@ namespace Boku
                 return result;
             }   // end of ShowExportDialog()
 
-            private void Callback_ExportSelectedLevel(AsyncOperation op)
+            void Callback_ExportSelectedLevel(AsyncOperation op)
             {
                 LevelMetadata level = op.Param as LevelMetadata;
 
@@ -778,7 +790,7 @@ namespace Boku
             }   // end of ExportLevel()
 
 
-            private string GenerateDefaultFileName(LevelMetadata level, bool withExtension)
+            string GenerateDefaultFileName(LevelMetadata level, bool withExtension)
             {
                 // Create friendly file name.
                 string fileName = LevelPackage.CreateExportFilenameWithoutExtension(level.Name, level.Creator);
@@ -791,7 +803,7 @@ namespace Boku
                 return fileName;
             }
 
-            private void CheckPlaySelectedLevel(bool bEditMode)
+            void CheckPlaySelectedLevel(bool bEditMode)
             {
                 LevelMetadata level = parent.shared.CurWorld;
 
@@ -849,7 +861,7 @@ namespace Boku
                 }
             }
 
-            private void PlayLevel(LevelMetadata level, bool bEditMode)
+            void PlayLevel(LevelMetadata level, bool bEditMode)
             {
                 if (level != null)
                 {
@@ -1110,7 +1122,7 @@ namespace Boku
             }
 
 
-            private void PopupOnPlayOrEdit(bool bEditMode)
+            void PopupOnPlayOrEdit(bool bEditMode)
             {
                 popup.Active = false;
 
@@ -1146,7 +1158,7 @@ namespace Boku
                 AsyncOps.Enqueue(op);
             }
 
-            private void Callback_DeleteSelectedLevel(AsyncOperation op)
+            void Callback_DeleteSelectedLevel(AsyncOperation op)
             {
                 InGame.EndMessage(parent.blockingOpMessage.Render, null);
 
@@ -1315,7 +1327,7 @@ namespace Boku
             {
                 if (list == sortList)
                 {
-                    int i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortDate"));
+                    int i = sortList.GetIndex("loadLevelMenu.sortDate");
                     if (i != -1 && sortList.GetItem(i).Check)
                     {
                         // If already using this sort, toggle the direction.
@@ -1331,7 +1343,7 @@ namespace Boku
                         sortListDisplay = Strings.Localize("loadLevelMenu.sortDate");
                     }
 
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortCreator"));
+                    i = sortList.GetIndex("loadLevelMenu.sortCreator");
                     if (i != -1 && sortList.GetItem(i).Check)
                     {
                         // If already using this sort, toggle the direction.
@@ -1347,7 +1359,7 @@ namespace Boku
                         sortListDisplay = Strings.Localize("loadLevelMenu.sortCreator");
                     }
 
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortTitle"));
+                    i = sortList.GetIndex("loadLevelMenu.sortTitle");
                     if (i != -1 && sortList.GetItem(i).Check)
                     {
                         // If already using this sort, toggle the direction.
@@ -1363,7 +1375,7 @@ namespace Boku
                         sortListDisplay = Strings.Localize("loadLevelMenu.sortTitle");
                     }
 
-                    i = sortList.GetIndex(Strings.Localize("loadLevelMenu.sortRank"));
+                    i = sortList.GetIndex("loadLevelMenu.sortRank");
                     if (i != -1 && sortList.GetItem(i).Check)
                     {
                         // If already using this sort, toggle the direction.
@@ -1427,7 +1439,7 @@ namespace Boku
                 }
             }
 
-            private void GotThumbnail(LevelMetadata level)
+            void GotThumbnail(LevelMetadata level)
             {
                 for (int i = 0; i < LoadLevelMenuUIGrid.kWidth; ++i)
                 {
@@ -1545,8 +1557,8 @@ namespace Boku
         {
             #region Members
 
-            private LoadLevelMenu parent = null;
-            private Shared shared = null;
+            LoadLevelMenu parent = null;
+            Shared shared = null;
 
             #endregion
 
@@ -1771,7 +1783,7 @@ namespace Boku
                         !shared.tagPicker.Active && !shared.textLineEditor.Active);
             }
 
-            private void HandleGamepadInput()
+            void HandleGamepadInput()
             {
                 if (LevelGridFocused())
                 {
@@ -2112,7 +2124,7 @@ namespace Boku
 
             }   // end of HandleMouseInput()
 
-            private bool TouchedLevelIndex(int levelIndex)
+            bool TouchedLevelIndex(int levelIndex)
             {
                 TouchContact touch = TouchInput.GetOldestTouch();
                 if (touch == null) { return false; }
@@ -2139,7 +2151,7 @@ namespace Boku
                 return false;
             }
 
-            private int GetLevelIndexFromTouch()
+            int GetLevelIndexFromTouch()
             {
                 TouchContact touch = TouchInput.GetOldestTouch();
                 if (touch == null) { return -1; }
@@ -2178,7 +2190,7 @@ namespace Boku
                 return -1;
             }
 
-            private void HandleBucketGridTouch()
+            void HandleBucketGridTouch()
             {
                 if (TouchInput.TouchCount == 0) { return; } // nothing to see here.
                 TouchContact touch = TouchInput.GetOldestTouch();
@@ -2219,7 +2231,7 @@ namespace Boku
                 }
             }
 
-            private void HandleTouchInput()
+            void HandleTouchInput()
             {
                 if (TouchInput.TouchCount == 0) { return; } // nothing to see here.
 
@@ -2455,7 +2467,7 @@ namespace Boku
 
             }   // end of ApplyBucketFiltering()
 
-            private void SplitText()
+            void SplitText()
             {
                 for (int i = 0; i < LoadLevelMenuUIGrid.kWidth; i++)
                 {
@@ -2565,8 +2577,8 @@ namespace Boku
         {
             #region Members
 
-            private LoadLevelMenu parent = null;
-            private Shared shared = null;
+            LoadLevelMenu parent = null;
+            Shared shared = null;
 
             public Texture2D whiteTile = null;
             public Texture2D blackTile = null;  // Button shapes under Show and Sort options.
@@ -2593,10 +2605,10 @@ namespace Boku
             public UI2D.Shared.GetFont FontLarge = UI2D.Shared.GetGameFont20;
             public TextBlob blob = new TextBlob(UI2D.Shared.GetGameFont15_75, "", 500);
 
-            private UIGridLevelElement prevFocusElement = null;     // Used to detect when the focus element changes so we can start fading in the A button.
-            private float AButtonAlpha = 1.0f;
+            UIGridLevelElement prevFocusElement = null;     // Used to detect when the focus element changes so we can start fading in the A button.
+            float AButtonAlpha = 1.0f;
 
-            private float xOffset = 0.0f;   // Offset calculated to map rendered image into final display.
+            float xOffset = 0.0f;   // Offset calculated to map rendered image into final display.
             // We save the X value off to the side to be used when rendering
             // the left/right arrows in mouse mode.  This allows us to be
             // sure that they end up at the edges of the screen.
@@ -3124,7 +3136,7 @@ namespace Boku
             /// <summary>
             /// Inits A Button alpha to 0 and twitches it to 1.0f.
             /// </summary>
-            private void TwitchAButtonAlpha()
+            void TwitchAButtonAlpha()
             {
                 AButtonAlpha = 0.0f;
                 TwitchManager.Set<float> set = delegate(float val, Object param) { AButtonAlpha = val; };
@@ -3135,7 +3147,7 @@ namespace Boku
             /// Checks for any transitions in the aux menu state, adjusts the shadow alpha
             /// accordingly and then renders the shadow if needed.
             /// </summary>
-            private void RenderAuxMenuShadow(Vector2 rtSize)
+            void RenderAuxMenuShadow(Vector2 rtSize)
             {
                 if (auxMenusActive)
                 {
@@ -3281,7 +3293,7 @@ namespace Boku
         protected UpdateObj updateObj = null;
 
         // Instrumentation
-        private object UiOpenInstrument;
+        object UiOpenInstrument;
 
         public enum ReturnTo
         {
@@ -3292,21 +3304,21 @@ namespace Boku
             Editor
         }
 
-        private enum States
+        enum States
         {
             Inactive,
             Active,
         }
-        private States state = States.Inactive;
-        private States pendingState = States.Inactive;
+        States state = States.Inactive;
+        States pendingState = States.Inactive;
 
-        private CommandMap commandMap = new CommandMap("App.LoadLevelMenu");   // Placeholder for stack.
+        CommandMap commandMap = new CommandMap("App.LoadLevelMenu");   // Placeholder for stack.
 
-        private ReturnTo returnToMenu = ReturnTo.MainMenu;
+        ReturnTo returnToMenu = ReturnTo.MainMenu;
 
         protected SimpleMessage blockingOpMessage;
 
-        private bool loadingFromString = false;
+        bool loadingFromString = false;
 
         #endregion
 
@@ -3616,7 +3628,7 @@ namespace Boku
             ShowWarning(Strings.Localize("loadLevelMenu.brokenLevelShareMessage"));
         }
 
-        private void ShowWarning( string text )
+        void ShowWarning( string text )
         {
             //handler for "continue" - user wants to play anyway
             ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
@@ -3863,17 +3875,17 @@ namespace Boku
             }
         }
 
-        private void CursorAdditionCallback(ILevelSetCursor cursor, int index)
+        void CursorAdditionCallback(ILevelSetCursor cursor, int index)
         {
             shared.LevelAdded(cursor, index);
         }
 
-        private void CursorRemovalCallback(ILevelSetCursor cursor, int index)
+        void CursorRemovalCallback(ILevelSetCursor cursor, int index)
         {
             shared.LevelRemoved(cursor, index);
         }
 
-        private void CursorFetchingCallback(ILevelSetQuery query)
+        void CursorFetchingCallback(ILevelSetQuery query)
         {
             // TODO (scoy) With the new community services calls, this gets out of sync and always
             // displays the "Fetching" message.  Just leave off for now.  Maybe tie it to the 
@@ -3886,19 +3898,19 @@ namespace Boku
             shared.showPagingMessage = false;
         }
 
-        private void CursorShiftedCallback(ILevelSetCursor cursor, int desired, int actual)
+        void CursorShiftedCallback(ILevelSetCursor cursor, int desired, int actual)
         {
             shared.CursorShifted(cursor, desired, actual);
         }
 
-        private void CursorJumpedCallback(ILevelSetCursor cursor)
+        void CursorJumpedCallback(ILevelSetCursor cursor)
         {
             shared.CursorJumped(cursor);
         }
 
         //helper function that will re-load to ensure the linked level ids and set the downloads genre
         //pre: level exists and was successfully downloaded
-        private LevelMetadata ProcessDownloadedLevel(Guid worldId)
+        LevelMetadata ProcessDownloadedLevel(Guid worldId)
         {
             if (!XmlDataHelper.CheckWorldExistsByGenre(worldId, Genres.Downloads))
             {
@@ -3923,7 +3935,7 @@ namespace Boku
             return localLevel;
         }
 
-        private void BackwardLinkDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, Guid worldId)
+        void BackwardLinkDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, Guid worldId)
         {
             if (!XmlDataHelper.WriteWorldDataPacketToDisk(packet, thumbnailBytes, DateTime.Now))
             {
@@ -3953,7 +3965,7 @@ namespace Boku
             }
         }
 
-        private void ForwardLinkDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, Guid worldId)
+        void ForwardLinkDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, Guid worldId)
         {
             if (!XmlDataHelper.WriteWorldDataPacketToDisk(packet, thumbnailBytes, DateTime.Now))
             {
@@ -3985,7 +3997,7 @@ namespace Boku
 
 
 
-        private void WorldDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, LevelMetadata level)
+        void WorldDownloadComplete(WorldDataPacket packet, byte[] thumbnailBytes, LevelMetadata level)
         {
             if (!XmlDataHelper.WriteWorldDataPacketToDisk(packet, thumbnailBytes, level.LastWriteTime))
             {
@@ -4167,7 +4179,7 @@ namespace Boku
             return true;
         }
 
-        private bool PlayLevelFromPath(string fullPath)
+        bool PlayLevelFromPath(string fullPath)
         {
             // Console.WriteLine("Trying to load level from string: " + fullPath);
             if (!Storage4.FileExists(fullPath, StorageSource.All))

@@ -30,18 +30,18 @@ namespace Boku.UI2D
     {
         public delegate void UICheckboxListEvent(ModularCheckboxList list);
 
-        private UICheckboxListEvent onExit = null;      // Called when exiting the list.
-        private UICheckboxListEvent onChange = null;    // Called whenever any element's state is changed.
+        UICheckboxListEvent onExit = null;      // Called when exiting the list.
+        UICheckboxListEvent onChange = null;    // Called whenever any element's state is changed.
 
-        private Effect effect = null;
-        private UI2D.Shared.GetFont Font = UI2D.Shared.GetGameFont24;
+        Effect effect = null;
+        UI2D.Shared.GetFont Font = UI2D.Shared.GetGameFont24;
 
-        private float tileBorder = 0.125f;
-        private int checkboxSize = 30;
-        private int margin = 10;        // Space to left of checkbox and right of text.
-        private int gap = 8;            // Space between checkbox and text.
+        float tileBorder = 0.125f;
+        int checkboxSize = 30;
+        int margin = 10;        // Space to left of checkbox and right of text.
+        int gap = 8;            // Space between checkbox and text.
 
-        private CommandMap commandMap = new CommandMap("ModularCheckboxList");
+        CommandMap commandMap = new CommandMap("ModularCheckboxList");
 
         public class CheckboxItem
         {
@@ -50,21 +50,22 @@ namespace Boku.UI2D
             public static Color selectedTextColor = new Color(20, 20, 20);
             public static Color unselectedTextColor = new Color(0, 255, 12);
 
-            private ModularCheckboxList parent = null;
-            private Object obj = null;      // Whatever the user wants.
+            ModularCheckboxList parent = null;
+            Object obj = null;      // Whatever the user wants.
 
-            private bool check = false;     // Current state.
-            private float checkLit = 0.0f;  // 0..1 value whether or not the checkbox is lit.
+            bool check = false;     // Current state.
+            float checkLit = 0.0f;  // 0..1 value whether or not the checkbox is lit.
 
-            private string text;
-            private Vector4 textColor = unselectedTextColor.ToVector4();    // Displayed color.
-            private Vector4 _textColor = unselectedTextColor.ToVector4();   // Twitch target color.
-            private float barAlpha = 0.0f;                                  // Display alpha for highlight bar.
-            private float _barAlpha = 0.0f;                                 // Twitch target alpha.
+            string keyText;         // String which is fed to localization to get text to display.
+            string localizedText;   // Localized text which we display.
+            Vector4 textColor = unselectedTextColor.ToVector4();    // Displayed color.
+            Vector4 _textColor = unselectedTextColor.ToVector4();   // Twitch target color.
+            float barAlpha = 0.0f;                                  // Display alpha for highlight bar.
+            float _barAlpha = 0.0f;                                 // Twitch target alpha.
 
-            private bool selected = false;  // Is this the "in focus" element?
+            bool selected = false;  // Is this the "in focus" element?
 
-            private AABB2D uvBoundingBox = new AABB2D();                    // Needs to be filled in when rt is refreshed.
+            AABB2D uvBoundingBox = new AABB2D();                    // Needs to be filled in when rt is refreshed.
 
             #endregion
 
@@ -142,10 +143,15 @@ namespace Boku.UI2D
                 get { return barAlpha; }
             }
 
-            public string Text
+            public string LocalizedText
             {
-                get { return text; }
-                set { text = TextHelper.FilterInvalidCharacters(value); }
+                get { return localizedText; }
+                //set { localizedText = TextHelper.FilterInvalidCharacters(value); }
+            }
+
+            public string KeyText
+            {
+                get { return keyText; }
             }
 
             public AABB2D UVBoundingBox
@@ -179,21 +185,24 @@ namespace Boku.UI2D
 
             #region Public
 
-            public CheckboxItem(string text, bool check, ModularCheckboxList parent)
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="keyText">This is the text which is fed into localization.  We also use this to id and find this item.</param>
+            /// <param name="check"></param>
+            /// <param name="parent"></param>
+            /// <param name="obj"></param>
+            public CheckboxItem(string keyText, bool check, ModularCheckboxList parent, object obj = null)
             {
-                this.text = TextHelper.FilterInvalidCharacters(text);
-                this.check = check;
-                this.parent = parent;
-
-                if (check)
+                this.keyText = keyText;
+                localizedText = Strings.Localize(keyText);
+                if (localizedText == "")
                 {
-                    checkLit = 1.0f;
+                    //Debug.Assert(false, "Why can't we localize this?");
+                    // Punt and display the key.
+                    localizedText = keyText;
                 }
-            }
-
-            public CheckboxItem(string text, bool check, ModularCheckboxList parent, object obj)
-            {
-                this.text = TextHelper.FilterInvalidCharacters(text);
+                localizedText = TextHelper.FilterInvalidCharacters(localizedText);
                 this.check = check;
                 this.parent = parent;
                 this.obj = obj;
@@ -207,43 +216,43 @@ namespace Boku.UI2D
             #endregion
         }   // end of class CheckboxItem
 
-        private Texture2D normalMap = null;
+        Texture2D normalMap = null;
 
-        private Texture2D whiteHighlight = null;
-        private Texture2D greenBar = null;
-        private Texture2D checkboxLit = null;
-        private Texture2D checkboxUnlit = null;
-        private Texture2D radioButtonLit = null;
-        private Texture2D radioButtonUnlit = null;
+        Texture2D whiteHighlight = null;
+        Texture2D greenBar = null;
+        Texture2D checkboxLit = null;
+        Texture2D checkboxUnlit = null;
+        Texture2D radioButtonLit = null;
+        Texture2D radioButtonUnlit = null;
 
-        private int curIndex = 0;   // The currently selected option.
+        int curIndex = 0;   // The currently selected option.
 
-        private int w = 0;  // Size in pixels
-        private int h = 0;
+        int w = 0;  // Size in pixels
+        int h = 0;
 
         // Properties for the underlying 9-grid geometry.
-        private float width;
-        private float height;
-        private float edgeSize = 0.06f;
+        float width;
+        float height;
+        float edgeSize = 0.06f;
 
-        private Base9Grid geometry = null;
-        private Matrix worldMatrix = Matrix.Identity;
-        private Matrix invWorldMatrix = Matrix.Identity;
+        Base9Grid geometry = null;
+        Matrix worldMatrix = Matrix.Identity;
+        Matrix invWorldMatrix = Matrix.Identity;
 
-        private bool active = false;
+        bool active = false;
 
-        private List<CheckboxItem> itemList = null; // The list of items.
+        List<CheckboxItem> itemList = null; // The list of items.
 
-        private bool dirty = true;              // Used?
+        bool dirty = true;              // Used?
 
-        private bool allExclusive = false;          // Treat all items as radio buttons.
-        private bool exclusiveFirstItem = false;    // Treat 1st item as a radio button relative to all other entries.
+        bool allExclusive = false;          // Treat all items as radio buttons.
+        bool exclusiveFirstItem = false;    // Treat 1st item as a radio button relative to all other entries.
 
-        private bool useRtCoords = false;           // If the menu is being rendered into a rendertarget this should be set to true.
+        bool useRtCoords = false;           // If the menu is being rendered into a rendertarget this should be set to true.
                                                     // Currently for MainMenu this is true, for MiniHub this is false.
 
-        private AABB2D changeBox = new AABB2D();    // Mouse hit box for "change" button.
-        private AABB2D backBox = new AABB2D();      // Mouse hit box for "back" button.
+        AABB2D changeBox = new AABB2D();    // Mouse hit box for "change" button.
+        AABB2D backBox = new AABB2D();      // Mouse hit box for "back" button.
 
         #region Accessors
 
@@ -307,9 +316,9 @@ namespace Boku.UI2D
         /// <summary>
         /// Returns the text for the currently selected item.
         /// </summary>
-        public string CurString
+        public string CurLocalizedString
         {
-            get { return itemList[curIndex].Text; }
+            get { return itemList[curIndex].LocalizedText; }
         }
 
         /// <summary>
@@ -366,6 +375,11 @@ namespace Boku.UI2D
             itemList = new List<CheckboxItem>();
         }
 
+        /// <summary>
+        /// Gets an item based on its index in the list.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public CheckboxItem GetItem(int i)
         {
             Debug.Assert(i < itemList.Count && i >= 0);
@@ -375,11 +389,11 @@ namespace Boku.UI2D
         /// <summary>
         /// Adds a new Checkbox item.
         /// </summary>
-        /// <param name="text">Text label for checkbox</param>
+        /// <param name="text">Text key which will be localized for label on checkbox</param>
         /// <param name="check">Initial state of checkbox.</param>
-        public void AddItem(string text, bool check)
+        public void AddItem(string keyText, bool check)
         {
-            CheckboxItem item = new CheckboxItem(text, check, this);
+            CheckboxItem item = new CheckboxItem(keyText, check, this);
             itemList.Add(item);
             if (itemList.Count == 1)
             {
@@ -387,17 +401,17 @@ namespace Boku.UI2D
             }
 
             dirty = true;
-        }   // end of ModularCheckboxList AddText()
+        }   // end of ModularCheckboxList AddItem()
 
         /// <summary>
         /// Adds a new Checkbox item.
         /// </summary>
-        /// <param name="text">Text label for checkbox</param>
+        /// <param name="keyText">Text key which will be localized for label on checkbox</param>
         /// <param name="check">Initial state of checkbox.</param>
         /// <param name="obj">User defined object ref.</param>
-        public void AddItem(string text, bool check, object obj)
+        public void AddItem(string keyText, bool check, object obj)
         {
-            CheckboxItem item = new CheckboxItem(text, check, this, obj);
+            CheckboxItem item = new CheckboxItem(keyText, check, this, obj);
             itemList.Add(item);
             if (itemList.Count == 1)
             {
@@ -410,12 +424,12 @@ namespace Boku.UI2D
         /// <summary>
         /// Inserts a new item at the given index.
         /// </summary>
-        /// <param name="text">Text label for checkbox</param>
+        /// <param name="keyText">Text key which will be localized for label on checkbox</param>
         /// <param name="check">Initial state of checkbox.</param>
         /// <param name="index">Index for new item</param>
-        public void InsertText(string text, bool check, int index)
+        public void InsertText(string keyText, bool check, int index)
         {
-            CheckboxItem item = new CheckboxItem(text, check, this);
+            CheckboxItem item = new CheckboxItem(keyText, check, this);
 
             // Move everything below the new entry down one space.
             itemList.Add(itemList[itemList.Count - 1]);
@@ -431,14 +445,14 @@ namespace Boku.UI2D
         }   // end of InsertText()
 
         /// <summary>
-        /// Removes the given entry.
+        /// Removes the given entry based on its KeyText.
         /// </summary>
         /// <param name="text"></param>
-        public void DeleteText(string text)
+        public void DeleteText(string keyText)
         {
             for (int i = 0; i < itemList.Count; i++)
             {
-                if (itemList[i].Text == text)
+                if (itemList[i].KeyText == keyText)
                 {
                     itemList.RemoveAt(i);
                     break;
@@ -450,7 +464,7 @@ namespace Boku.UI2D
             dirty = true;
         }   // end of DeleteText()
 
-        private void HandleMouseInput(Camera camera)
+        void HandleMouseInput(Camera camera)
         {
             if (GamePadInput.ActiveMode != GamePadInput.InputMode.KeyboardMouse) { return; }
 
@@ -538,7 +552,7 @@ namespace Boku.UI2D
             }
         }
 
-        private void HandleTouchInput(Camera camera)
+        void HandleTouchInput(Camera camera)
         {
             if (GamePadInput.ActiveMode != GamePadInput.InputMode.Touch) { return; }
 
@@ -636,7 +650,7 @@ namespace Boku.UI2D
             }
         }
 
-        private void HandleGamePadInput(Camera camera)
+        void HandleGamePadInput(Camera camera)
         {
             if (GamePadInput.ActiveMode != GamePadInput.InputMode.GamePad) { return; }
 
@@ -709,7 +723,7 @@ namespace Boku.UI2D
                     w = 0;
                     for (int i = 0; i < itemList.Count; i++)
                     {
-                        w = Math.Max(w, 2 * margin + checkboxSize + gap + (int)Font().MeasureString(itemList[i].Text).X);
+                        w = Math.Max(w, 2 * margin + checkboxSize + gap + (int)Font().MeasureString(itemList[i].LocalizedText).X);
                     }
 
                     if (geometry != null)
@@ -732,7 +746,7 @@ namespace Boku.UI2D
         /// <summary>
         /// Toggles the state of the current item.
         /// </summary>
-        private void ToggleState()
+        void ToggleState()
         {
             // Toggle current item state.
             if (!allExclusive)
@@ -759,7 +773,7 @@ namespace Boku.UI2D
 
         }   // end of ToggleState()
 
-        private void ApplyExclusiveFirstItemFiltering()
+        void ApplyExclusiveFirstItemFiltering()
         {
             if (exclusiveFirstItem)
             {
@@ -851,7 +865,7 @@ namespace Boku.UI2D
                 for (int i = 0; i < itemList.Count; i++)
                 {
                     Vector2 position = pos + new Vector2(margin + checkboxSize + gap, i * lineSpacing);
-                    TextHelper.DrawString(Font, itemList[i].Text, position, itemList[i].TextColor);
+                    TextHelper.DrawString(Font, itemList[i].LocalizedText, position, itemList[i].TextColor);
                     // Calc bounds in UV space.
                     Vector2 min = new Vector2(0, i * lineSpacing);
                     Vector2 max = min + new Vector2(w, lineSpacing);
@@ -902,12 +916,12 @@ namespace Boku.UI2D
         /// This sets the current index on the matching text line.  If no
         /// matching line is found, the current index is not changed.
         /// </summary>
-        /// <param name="text"></param>
-        public void SetValue(string text)
+        /// <param name="keyText"></param>
+        public void SetValue(string keyText)
         {
             for (int i = 0; i < itemList.Count; i++)
             {
-                if (itemList[i].Text == text)
+                if (itemList[i].KeyText == keyText)
                 {
                     curIndex = i;
                     dirty = true;
@@ -920,14 +934,14 @@ namespace Boku.UI2D
         /// Returns the index associated with the text. 
         /// Returns -1 if not found.
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="keyText"></param>
         /// <returns></returns>
-        public int GetIndex(string text)
+        public int GetIndex(string keyText)
         {
             int result = -1;
             for (int i = 0; i < itemList.Count; i++)
             {
-                if (itemList[i].Text == text)
+                if (itemList[i].KeyText == keyText)
                 {
                     result = i;
                     break;

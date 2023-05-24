@@ -114,6 +114,11 @@ namespace Boku.Common
             hasLoaded = true;
         }   // end of Strings Load()
 
+        /// <summary>
+        /// Given a key as input, returns the localized string that goes with it.
+        /// </summary>
+        /// <param name="internalKey"></param>
+        /// <returns>Localized string, if found, empty string if not.</returns>
         public static string Localize(string internalKey)
         {
             if (!hasLoaded)
@@ -132,7 +137,7 @@ namespace Boku.Common
             }
             else
             {
-                Debug.Assert(false, "Missing string.");
+                //Debug.Assert(false, "Missing string.");
                 return "";
             }
         }
