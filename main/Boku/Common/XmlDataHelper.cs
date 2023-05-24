@@ -187,7 +187,9 @@ namespace Boku.Common
                 file.Read(packet.Data.WorldXmlBytes, 0, (int)file.Length);
                 Storage4.Close(file);
 
-                Instrumentation.RecordEvent(Instrumentation.EventId.LevelUploaded, xmlWorldData.name);
+                //todo scoy. this is the same event that is generated in KoduService. 
+                //Should it be something else?
+                //Instrumentation.RecordEvent(Instrumentation.EventId.LevelUploaded, xmlWorldData.name);
             }
             catch
             {

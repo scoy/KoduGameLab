@@ -518,11 +518,7 @@ namespace Boku.Common.TutorialSystem
                 // Since actor names have spaces we need to use the full args string.
                 for (int i = 0; i < InGame.inGame.gameThingList.Count; i++)
                 {
-#if NETFX_CORE
-                    if (string.Compare(args, InGame.inGame.gameThingList[i].CreatableName, StringComparison.CurrentCultureIgnoreCase) == 0)
-#else
                     if (string.Compare(args, InGame.inGame.gameThingList[i].DisplayNameNumber, ignoreCase: true) == 0)
-#endif
                     {
                         Vector3 pos = InGame.inGame.gameThingList[i].Movement.Position;
                         pos.Z = InGame.inGame.shared.CursorPosition.Z;

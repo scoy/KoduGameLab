@@ -8,12 +8,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Reflection;
-
-#if NETFX_CORE
-    using Windows.Security;
-#else
-    using System.Security.Permissions;
-#endif
+using System.Security.Permissions;
 
 /* Author: Neil Petrick
  * 
@@ -116,11 +111,9 @@ namespace TouchHook
             }
         }
 
-#if !NETFX_CORE
         // Not sure why this was here.  Doesn't seem to make any difference 
         // and really bothers the Microsoft Store checks.
         //[PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-#endif
         protected int CoreHookProc(int nCode, IntPtr wParam, IntPtr lParam)
         {
             //Message msg = (Message)Marshal.PtrToStructure(lParam, typeof(Message));

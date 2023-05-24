@@ -5,10 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !NETFX_CORE
 using System.Drawing;
 using System.Drawing.Imaging;
-#endif
 using System.Text;
 
 using Microsoft.Xna.Framework;
@@ -17,7 +15,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Boku.Common
 {
-#if !NETFX_CORE
     public static partial class SysFont
     {
         /// <summary>
@@ -96,5 +93,4 @@ namespace Boku.Common
         }   // end of class CacheEntry
 
     }   // end of class SysFont
-#endif
 }   // end of namespace Boku.Common

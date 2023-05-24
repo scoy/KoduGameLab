@@ -74,12 +74,6 @@ namespace Boku
 
             foreach (GraphicsAdapter ga in GraphicsAdapter.Adapters)
             {
-#if NETFX_CORE
-                Debug.Assert(false, "Waiting on MG");
-                // Assume Reach for now.
-                hwSupportsReach = true;
-                break;
-#else
                 if (ga.IsDefaultAdapter)
                 {
                     if (ga.IsProfileSupported(GraphicsProfile.Reach))
@@ -93,7 +87,6 @@ namespace Boku
 
                     break;
                 }
-#endif
             }
 
             // Set HiDef iff HW supports AND user doesn't prefer Reach.
@@ -115,23 +108,14 @@ namespace Boku
             // Select right profile.
             GraphicsProfile profile = BokuGame.HiDefProfile ? GraphicsProfile.HiDef : GraphicsProfile.Reach;
 
-#if NETFX_CORE
-            // For Win8 always force fullscreen and use full device resolution.
-            graphics.IsFullScreen = BokuSettings.Settings.FullScreen = true;
-            BokuSettings.Settings.ResolutionX = graphics.PreferredBackBufferWidth;
-            BokuSettings.Settings.ResolutionY = graphics.PreferredBackBufferHeight;
-#else
             //graphics.IsFullScreen = BokuSettings.Settings.FullScreen;
             //graphics.PreferredBackBufferWidth = BokuSettings.Settings.ResolutionX;
             //graphics.PreferredBackBufferHeight = BokuSettings.Settings.ResolutionY;
-#endif
 
             // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FULL SCREEN WINDOWED MODE FIX
 
-#if !NETFX_CORE
             // Always start windowed.
             //graphics.IsFullScreen = false;
-#endif
 
             // FULL SCREEN WINDOWED MODE FIX >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

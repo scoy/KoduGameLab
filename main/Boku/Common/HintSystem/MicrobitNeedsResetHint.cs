@@ -10,7 +10,6 @@ using Boku.Input;
 
 namespace Boku.Common.HintSystem
 {
-#if !NETFX_CORE
     class MicrobitNeedsResetHint : BaseHint
     {
         private double updateTime = 0;
@@ -63,5 +62,4 @@ namespace Boku.Common.HintSystem
             }
         }
     }
-#endif
 }

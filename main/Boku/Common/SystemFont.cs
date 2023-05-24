@@ -5,10 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !NETFX_CORE
 using System.Drawing;
 using System.Drawing.Imaging;
-#endif
 using System.Text;
 
 using Microsoft.Xna.Framework;
@@ -18,14 +16,6 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Boku.Common
 {
 
-#if NETFX_CORE
-    /// <summary>
-    /// Empty placeholder class until we can figure out how to make this work for store builds.
-    /// </summary>
-    public class SystemFont
-    {
-    }
-#else
     /// <summary>
     /// Simple wrapper for a System Font class that
     /// helps it act more like SpriteFonts.
@@ -93,5 +83,4 @@ namespace Boku.Common
         }   // end of MeasureString()
 
     }   // end of class SystemFont
-#endif
 }   // end of namespace Boku.Common

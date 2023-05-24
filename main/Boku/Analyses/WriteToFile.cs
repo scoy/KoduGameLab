@@ -15,7 +15,6 @@ namespace Boku.Analyses
 {
     public class WriteToFile
     {
-#if !NETFX_CORE
         public static string directory = Environment.GetFolderPath(Environment.SpecialFolder.Personal)
             + @"\analytics";
         public string unreachableFile = "unreachablePages.txt";
@@ -259,6 +258,5 @@ namespace Boku.Analyses
 
             return tiles;
         }   // end of GetTileString()
-#endif
     }
 }

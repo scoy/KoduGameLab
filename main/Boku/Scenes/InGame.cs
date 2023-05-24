@@ -42,25 +42,10 @@ using Boku.UI2D;
 using Boku.Input;
 using Boku.Audio;
 using Boku.Animatics;
-#if !NETFX_CORE
-    using TouchHook;
-#endif
+using TouchHook;
 
 namespace Boku
 {
-#if NETFX_CORE
-    // Faked up enum just ot get things to compile.  Values don't
-    // matter since we're not trying to actually set presence.
-    public enum GamerPresenceMode
-    {
-        FreePlay,
-        EditingLevel,
-        FoundSecret,
-        StuckOnAHardBit,
-        AtMenu,
-        LookingForGames,
-    }
-#endif
 
     /// <summary>
     /// This is the running Sim and editors.
@@ -294,10 +279,8 @@ namespace Boku
 
             public void ResetLevelPlaySeconds()
             {
-#if !NETFX_CORE
                 //Debug.Print("-->played seconds on 'ResetLevel'.  Total play seconds: " + InGame.inGame.shared.GetLevelPlaySeconds());
                 //Debug.Print("*->loaded seconds on 'ResetLevel'.  Total loaded seconds: " + InGame.inGame.shared.GetLevelLoadedSeconds());
-#endif
                 
                 InGame.inGame.startTime = Time.GameTimeTotalSeconds;
                 InGame.inGame.pauseTime = InGame.inGame.startTime;
@@ -414,6 +397,8 @@ namespace Boku
             private RenderTarget2D smallNoEffect = null;
             private RenderTarget2D thumbRenderTarget = null;
 
+            private RenderTarget2D largeRenderTarget = null;    // Used for 'large' image saved with level
+
             private RenderTarget2D bloomRenderTarget = null;
             private RenderTarget2D glowRenderTarget = null;
             private RenderTarget2D tinyRenderTarget0 = null;
@@ -472,6 +457,14 @@ namespace Boku
             public Texture2D FullRenderTarget1
             {
                 get { return fullRenderTarget1; }
+            }
+            /// <summary>
+            /// 800x600 rendertarget used for saving large
+            /// size image of levels.
+            /// </summary>
+            public RenderTarget2D LargeRenderTarget
+            {
+                get { return largeRenderTarget; }
             }
 
             public ShadowCamera ShadowCamera
@@ -1749,9 +1742,6 @@ namespace Boku
                     BokuGame.Release(ref thumbRenderTarget);
 
                     int numSamples = BokuSettings.Settings.AntiAlias ? 8 : 1;
-#if NETFX_CORE
-                    numSamples = 0;
-#endif
                     fullRenderTarget0 = new RenderTarget2D(device, width, height, false, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, numSamples, RenderTargetUsage.PlatformContents);
                     fullRenderTarget1 = new RenderTarget2D(device, width, height, false, SurfaceFormat.Color, DepthFormat.Depth24Stencil8, numSamples, RenderTargetUsage.PlatformContents);
 
@@ -1777,7 +1767,8 @@ namespace Boku
                     smallRenderTarget0 = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     smallNoEffect = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
                     smallEffectThumb = new RenderTarget2D(device, width / 4, height / 4, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
-                    thumbRenderTarget = new RenderTarget2D(device, 128, 128, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
+                    thumbRenderTarget = new RenderTarget2D(device, 256, 256, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
+                    largeRenderTarget = new RenderTarget2D(device, 800, 600, false, SurfaceFormat.Color, DepthFormat.None, 1, RenderTargetUsage.PlatformContents);
 
                     SetRenderTarget(smallEffectThumb);
                     Clear(Color.Black);
@@ -1808,6 +1799,7 @@ namespace Boku
                 BokuGame.Release(ref smallEffectThumb);
                 BokuGame.Release(ref smallNoEffect);
                 BokuGame.Release(ref thumbRenderTarget);
+                BokuGame.Release(ref largeRenderTarget);
 
                 BokuGame.Release(ref shadowFullRenderTarget);
                 BokuGame.Release(ref shadowSmallRenderTarget0);
@@ -1969,14 +1961,37 @@ namespace Boku
                     }
                     
                 }
+
+                if (DebugLog.Indiana)
+                {
+                    if (InGame.inGame.CurrentUpdateMode == UpdateMode.RunSim && !VictoryOverlay.Active)
+                    {
+                        string timeStamp = DateTime.Now.ToUniversalTime().ToString("o");
+                        foreach (GameThing thing in InGame.inGame.gameThingList)
+                        {
+                            GameActor actor = thing as GameActor;
+                            if (actor != null)
+                            {
+                                string log = timeStamp 
+                                    + "," + actor.Classification.name 
+                                    + "," + actor.HitPoints.ToString()
+                                    + "," + actor.Movement.Position.X.ToString()
+                                    + "," + actor.Movement.Position.Y.ToString()
+                                    + "," + actor.Movement.Position.Z.ToString();
+                                DebugLog.IndianaWriteLine(log);
+                            }
+
+                        }
+                    }
+
+                }
+
             }   // end of Update()
 
-#if !NETFX_CORE
             void Callback_OpenMiniHub(AsyncOperation op)
             {
                 InGame.inGame.SwitchToMiniHub();
             }
-#endif
 
             public override void Activate()
             {
@@ -3312,6 +3327,10 @@ namespace Boku
         {
             get { return renderObj.FullRenderTarget1; }
         }
+        public RenderTarget2D LargeRenderTarget
+        {
+            get { return renderObj.LargeRenderTarget; }
+        }
 
         public bool RenderWorldAsThumbnail
         {
@@ -3736,9 +3755,7 @@ namespace Boku
 
         public static void ResetLevelLoadedTime()
         {
-#if !NETFX_CORE
             //Debug.Print("-->loaded seconds pre 'ResetLevelLoaded'.  Total loaded seconds: " + InGame.inGame.shared.GetLevelLoadedSeconds());
-#endif
 
             InGame.inGame.loadTime = Time.GameTimeTotalSeconds;
             InGame.inGame.totalLoadedPauseTime = 0.0;

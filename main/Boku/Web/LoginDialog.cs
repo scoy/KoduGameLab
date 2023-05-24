@@ -7,17 +7,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-#if NETFX_CORE
-#else
-    using System.Data;
-    using System.Drawing;
-    using System.Windows.Forms;
-#endif
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Boku
 {
     // (TODO (****) BROKEN
-#if !NETFX_CORE
     public partial class LoginDialog : Form
     {
         public LoginDialog()
@@ -25,5 +21,4 @@ namespace Boku
             InitializeComponent();
         }
     }
-#endif
 }

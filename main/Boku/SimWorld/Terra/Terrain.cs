@@ -2220,12 +2220,6 @@ namespace Boku.SimWorld.Terra
             float fov = camera.AspectRatio >= 1.0f ? camera.Fov * camera.AspectRatio : camera.Fov;
             float maxFaceDot = (float)Math.Cos((Math.PI - fov) / 2.0);
 
-#if NETFX_CORE
-                // Note: Indexing into shaders doesn't work with MG.  Apparently it
-                // was some hack done in XNA related to the Effect code they used.
-                // Anyway, instead of using this indexing we need to pick and set 
-                // the right technique which we do further down from here.
-#else
             if (BokuSettings.Settings.PreferReach)
             {
                 //Select the VS based on the number of point-lights
@@ -2270,7 +2264,6 @@ namespace Boku.SimWorld.Terra
                 ParameterColor(EffectParams.PSIndex).SetValue(2);
                 ParameterEdit(EffectParams.PSIndex).SetValue(2);
             }
-#endif
 
 #if Debug_CountTerrainVerts
             VertCounter_Debug = 0;
@@ -2321,31 +2314,7 @@ namespace Boku.SimWorld.Terra
 
                 if (editMode)
                 {
-#if NETFX_CORE
-                    int lightNum = Luz.Count;
-                    if (lightNum > 6)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L10_FD_SM2"];
-                    }
-                    else if (lightNum > 4)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L6_FD_SM2"];
-                    }
-                    else if (lightNum > 2)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L4_FD_SM2"];
-                    }
-                    else if (lightNum > 0)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L2_FD_SM2"];
-                    }
-                    else
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L0_FD_SM2"];
-                    }
-#else
                     effect.CurrentTechnique = mat.TechniqueEdit(TerrainMaterial.EffectTechs.TerrainEditMode);
-#endif
                 }
                 else
                 {
@@ -2355,31 +2324,7 @@ namespace Boku.SimWorld.Terra
                     }
                     else
                     {
-#if NETFX_CORE
-                        int lightNum = Luz.Count;
-                        if (lightNum > 6)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L10_FD_SM2"];
-                        }
-                        else if (lightNum > 4)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L6_FD_SM2"];
-                        }
-                        else if (lightNum > 2)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L4_FD_SM2"];
-                        }
-                        else if (lightNum > 0)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L2_FD_SM2"];
-                        }
-                        else
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L0_FD_SM2"];
-                        }
-#else
                         effect.CurrentTechnique = mat.TechniqueColor(TerrainMaterial.EffectTechs.TerrainColorPass);
-#endif
                     }
                 }
 
@@ -2469,31 +2414,7 @@ namespace Boku.SimWorld.Terra
 
                 if (editMode)
                 {
-#if NETFX_CORE
-                    int lightNum = Luz.Count;
-                    if (lightNum > 6)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L10_FA_SM2"];
-                    }
-                    else if (lightNum > 4)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L6_FA_SM2"];
-                    }
-                    else if (lightNum > 2)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L4_FA_SM2"];
-                    }
-                    else if (lightNum > 0)
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L2_FA_SM2"];
-                    }
-                    else
-                    {
-                        effect.CurrentTechnique = effect.Techniques["TerrainEditColorPass_L0_FA_SM2"];
-                    }
-#else
                     effect.CurrentTechnique = mat.TechniqueEdit(TerrainMaterial.EffectTechs_FA.TerrainEditMode_FA);
-#endif
                 }
                 else
                 {
@@ -2503,31 +2424,7 @@ namespace Boku.SimWorld.Terra
                     }
                     else
                     {
-#if NETFX_CORE
-                        int lightNum = Luz.Count;
-                        if (lightNum > 6)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L10_FA_SM2"];
-                        }
-                        else if (lightNum > 4)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L6_FA_SM2"];
-                        }
-                        else if (lightNum > 2)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L4_FA_SM2"];
-                        }
-                        else if (lightNum > 0)
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L2_FA_SM2"];
-                        }
-                        else
-                        {
-                            effect.CurrentTechnique = effect.Techniques["TerrainColorPass_L0_FA_SM2"];
-                        }
-#else
                         effect.CurrentTechnique = mat.TechniqueColor(TerrainMaterial.EffectTechs_FA.TerrainColorPass_FA);
-#endif
                     }
                 }
 

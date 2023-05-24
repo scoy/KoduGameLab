@@ -15,15 +15,22 @@ using Boku.Base;
 using Boku.Common;
 using Boku.Common.Xml;
 using Boku.Common.Gesture;
+using Boku.Common.Sharing;
 using Boku.UI2D;
 using Boku.Fx;
 using Boku.Web;
+
 using Point = Microsoft.Xna.Framework.Point;
 
 namespace Boku
 {
     /// <summary>
     /// Handles dialogs used for sharing levels.
+    /// 
+    /// Half of the functionality has been replaced.  So now, this class is striclty
+    /// being used just to display error and warning dialogs.  All of the actual
+    /// sharing is done elsewhere.
+    /// 
     /// </summary>
     public class CommunityShareMenu : GameObject, INeedsDeviceReset
     {
@@ -31,95 +38,7 @@ namespace Boku
 
         public CommunityShareMenu()
         {
-            // signedInMessage
-            {
-                ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "upload"
-
-                    //find the first link
-                    LevelMetadata level = CurWorld;
-                    level = level.FindFirstLink();
-
-                    string folderName = Utils.FolderNameFromFlags(level.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
-
-                    // Read it back from disk and start uploading it to the community.
-                    BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(fullPath);
-
-                    UploadWorldData(packet, level);
-
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerB = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "cancel"
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-
-                ModularMessageDialog.ButtonHandler handlerY = delegate(ModularMessageDialog dialog)
-                {
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-            }
-
-            // signedOutMessage
-            {
-                ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
-                {
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerB = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "cancel"
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-                };
-                ModularMessageDialog.ButtonHandler handlerY = delegate(ModularMessageDialog dialog)
-                {
-                    // User chose "upload anonymous"
-                    LevelMetadata level = CurWorld;
-
-                    //find the first link
-                    level = level.FindFirstLink();
-
-                    string folderName = Utils.FolderNameFromFlags(level.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
-
-                    // Share.
-                    // Check to see if the community server is reachable before sharing level.
-                    if (!Web.Community.Async_Ping(Callback_Ping, fullPath))
-                    {
-                        ShowNoCommunityDialog();
-                    }
-
-                    // Deactivate dialog.
-                    dialog.Deactivate();
-                    Deactivate();
-
-                };
-            }
-        }
-
-        private void UploadWorldData(WorldPacket packet, LevelMetadata level)
-        {
-            if (packet == null)
-            {
-                ShowShareErrorDialog("Load failed.");
-            }
-            else if (0 == Web.Community.Async_PutWorldData(packet, Callback_PutWorldData, level))
-            {
-                ShowShareErrorDialog("Upload failed.");
-            }
-        }
+        }   // end of c'tor
 
         /// <summary>
         /// Recreate render targets
@@ -180,7 +99,7 @@ namespace Boku
         }
         public void ShowConfirmLinkedShareDialog()
         {
-            //handler for if user agrees to share all levels
+            // Handler for if user agrees to share all levels.
             ModularMessageDialog.ButtonHandler handlerA = delegate(ModularMessageDialog dialog)
             {
                 //close the dialog
@@ -202,14 +121,18 @@ namespace Boku
         }
 
 
-        public void PopupOnCommunityShare()
+        public void PopupOnCommunityShare(LevelMetadata level)
         {
-            var level = CurWorld;
+            // Bail if there's already an upload in progress.
+            if (KoduService.ShareRequestState != KoduService.RequestState.None)
+            {
+                return;
+            }
 
-                //Check if level has links.
+            // Check if level has links.
             if (level.LinkedToLevel != null || level.LinkedFromLevel != null)
             {
-                //check if the chosen level has any broken links - if so, warn the player
+                // Check if the chosen level has any broken links - if so, warn the player.
                 LevelMetadata brokenLevel = null;
                 bool forwardsLinkBroken = false;
                 if (level.FindBrokenLink(ref brokenLevel, ref forwardsLinkBroken))
@@ -218,104 +141,86 @@ namespace Boku
                 }
                 else
                 {
-                    //prompt to confirm linked share
+                    // Prompt to confirm linked share.
                     ShowConfirmLinkedShareDialog();
                 }
             }
             else
             {
-                //not a linked level, share as per normal
+                // Not a linked level, share as per normal.
                 ContinueCommunityShare();
-            }
-        }
-        internal void ContinueCommunityShare()
-        {
-            LevelMetadata level = CurWorld;
-
-            //TODO: check for broken links?
-            //always start the share on the first level in the set
-            level = level.FindFirstLink();
-
-            string folderName = Utils.FolderNameFromFlags(level.Genres);
-            string fullPath = BokuGame.Settings.MediaPath + folderName + level.WorldId.ToString() + @".Xml";
-
-            // Share.
-            // Check to see if the community server is reachable before sharing level.
-            if (!Web.Community.Async_Ping(Callback_Ping, fullPath))
-            {
-                ShowNoCommunityDialog();
             }
         }   // end of PopupOnCommunityShare()
 
-        public void CheckCommunityCallback(AsyncResult resultObj)
+        internal void ContinueCommunityShare()
         {
-            Web.AsyncResult_UserLogin result = (Web.AsyncResult_UserLogin)resultObj;
+            KoduService.ShareRequestState = KoduService.RequestState.Pending;
 
-            if (result.Success)
+            LevelMetadata level = CurWorld;
+
+            // Always force us to save starting with the first level in the chain.
+            level = level.FindFirstLink();
+
+            // Prepare level for upload.
+            if (string.IsNullOrWhiteSpace(level.SaveTime))
             {
-                // Yes, the community site is alive.
+                level.SaveTime = level.LastSaveTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
+                level.Checksum = BokuShared.Auth.CreateChecksumHash(BokuShared.Auth.CreatorName, BokuShared.Auth.Pin, level.SaveTime);
             }
-            else
+
+            // Generate temp Kodu2 file.
+            string pathToKodu2File = Path.Combine(Storage4.UserLocation, LevelPackage.ExportsPath, level.WorldId.ToString() + ".Kodu2");
+            LoadLevelMenu.Shared.ExportLevel(level, pathToKodu2File);
+
+            // Get paths for image files.
+            string pathToThumb = Path.Combine(Storage4.UserLocation, @"Content\Xml\Levels\MyWorlds", level.WorldId.ToString() + ".Jpg");
+            string pathToLarge = Path.Combine(Storage4.UserLocation, @"Content\Xml\Levels\MyWorlds", level.WorldId.ToString() + "_800.Jpg");
+
+
+            // Give the community server the metadata about the level we want to upload.
+            var args = new
             {
-                // Put up dialog with error for no community site.
-                ShowNoCommunityDialog();
-            }
-        }
+                worldId = level.WorldId.ToString(),
+                //created = level.LastWriteTime.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"),//bogus
+                name = level.Name,
+                creator = level.Creator,
+                saveTime = level.SaveTime,
+                checksum = level.Checksum,
+                numLevels = level.CalculateTotalLinkLength(),
+                description = level.Description,
+                pin = BokuShared.Auth.Pin,
+                clientVersion = Program2.ThisVersion.ToString(),
+            };
 
-        /// <summary>
-        /// Callback that results from testing whether or not the community server is active.
-        /// </summary>
-        /// <param name="resultObj"></param>
-        public void Callback_Ping(AsyncResult resultObj)
-        {
-            AsyncResult result = (AsyncResult)resultObj;
-
-            if (result.Success)
+            try
             {
-                // Read it back from disk and start uploading it to the community.
-                BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(result.Param as string);
-
-                LevelMetadata level = XmlDataHelper.LoadMetadataByGenre(packet.Info.WorldId, (BokuShared.Genres)packet.Info.Genres);
-
-                UploadWorldData(packet, level);
-            }
-            else
-            {
-                ShowShareErrorDialog("Login failed.");
-            }
-        }   // end of Callback_Ping()
-
-        public void Callback_PutWorldData(AsyncResult result)
-        {
-            LevelMetadata uploadedLevel = result.Param as LevelMetadata;
-
-            if (result.Success && uploadedLevel != null && uploadedLevel.LinkedToLevel != null)
-            {
-                LevelMetadata nextLevel = uploadedLevel.NextLink();
-
-                if (nextLevel != null)
+                if (!KoduService.PingFailed)
                 {
-                    string folderName = Utils.FolderNameFromFlags(nextLevel.Genres);
-                    string fullPath = BokuGame.Settings.MediaPath + folderName + nextLevel.WorldId.ToString() + @".Xml";
+                    KoduService.UploadWorld(args, pathToKodu2File, pathToThumb, pathToLarge, (response) =>
+                    {
+                        if (response == null)
+                        {
+                            // Failed.
+                            // todo handle reason?
+                        }
+                        else
+                        {
+                            // This is redundant since it's also done in the FinalizeUpload() call.
+                            KoduService.ShareRequestState = KoduService.RequestState.Complete;
+                        }
 
-                    // Read it back from disk and start uploading it to the community.
-                    BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(fullPath);
+                        // Clean up.
+                        // Delete the temp Kodu2 file.
+                        File.Delete(pathToKodu2File);
 
-                    UploadWorldData(packet, nextLevel);
-
-                    return;
+                    });
                 }
             }
-
-            if (result.Success)
+            catch
             {
-                ShowShareSuccessDialog();
+                KoduService.ShareRequestState = KoduService.RequestState.NoInternet;
             }
-            else
-            {
-                ShowShareErrorDialog("Share failed.");
-            }
-        }   // end of Callback_PutWorldData()
+        }   // end of ContinueCommunityShare()
 
         public void LoadContent(bool immediate)
         {
@@ -369,7 +274,7 @@ namespace Boku
         public void Activate(LevelMetadata level)
         {
             CurWorld = level;
-            PopupOnCommunityShare();
+            PopupOnCommunityShare(level);
             Activate();
         }
         override public void Deactivate()

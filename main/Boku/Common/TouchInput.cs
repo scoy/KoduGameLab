@@ -9,18 +9,14 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 
-#if !NETFX_CORE
-    using TouchHook;
-#endif
+using TouchHook;
 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Boku.Common.Xml;
 using Boku.Common.Gesture;
 using System.Diagnostics;
-#if !NETFX_CORE
-    using System.Windows.Forms;
-#endif
+using System.Windows.Forms;
 
 namespace Boku.Common 
 {
@@ -197,10 +193,7 @@ namespace Boku.Common
         #region Public
         public static void Init()
         {
-#if NETFX_CORE
-#else
             Input.Init();
-#endif
         }
 
         //static private bool skipShow = false;
@@ -209,9 +202,6 @@ namespace Boku.Common
         {
             //if (BokuGame.bokuGame.IsActive)
             {
-#if NETFX_CORE
-                Touch[] touchesThisFrame = AltGetTouchContacts();
-#else
                 //----------------------------------------------------------------------------------
                 // This is a stub until Unity support is added. Unity doesn't need its update called
                 //----------------------------------------------------------------------------------
@@ -221,7 +211,6 @@ namespace Boku.Common
                 //----------------------------------------------------------------------------------
 
                 Touch[] touchesThisFrame = Input.touches; //From touchesThisFrame list in UnityTouchEmulation.
-#endif
 
                 // Sort the array of Touch objects on the fingerId
                 Array.Sort(touchesThisFrame, delegate(Touch touchZero, Touch touchOne)
@@ -312,9 +301,7 @@ namespace Boku.Common
                         "new:\n" + newTouchesThisFrameString + newTouchContactsString);
                      */
 
-#if !NETFX_CORE
                     Input.ClearEvents();
-#endif
                     touchContacts.Clear();
                     wasReleased = false;
                     return;
@@ -695,11 +682,7 @@ namespace Boku.Common
 
         private static Vector2 ScreenToClient(int x, int y)
         {
-#if NETFX_CORE
-            Point screenPos = BokuGame.bokuGame.Window.ClientBounds.Location;
-#else
             Point screenPos = new Point(XNAControl.Instance.ClientRectangle.Location.X, XNAControl.Instance.ClientRectangle.Location.Y);
-#endif
             return new Vector2(x - screenPos.X, y - screenPos.Y);
         }
 

@@ -818,20 +818,14 @@ namespace Boku.Common.TutorialSystem
                     }
                     */
 
-#if !NETFX_CORE
                     Debug.Print("cur " + TutorialManager.curGameMode.ToString() + " -> " + target.ToString());
-#endif
                     if(crumb==null)
                     {
-#if !NETFX_CORE
                         Debug.Print("  null crumb");
-#endif
                     }
                     else
                     {
-#if !NETFX_CORE
                         Debug.Print("  crumb target " + crumb.targetMode.ToString());
-#endif
                     }
                     crumb = null;
                 }

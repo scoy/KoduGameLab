@@ -61,7 +61,7 @@ namespace Boku.Common
                     // First look for the right name.
                     if (Auth.CreatorName == item.Creator && !string.IsNullOrEmpty(item.Checksum))
                     {
-                        if (!Auth.IsValidCreatorChecksum(item.Checksum, item.LastWriteTime))
+                        if (!Auth.IsValidCreatorChecksum(item.Checksum, item.SaveTime))
                         {
                             return false;
                         }

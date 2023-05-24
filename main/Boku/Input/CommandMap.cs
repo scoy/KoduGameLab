@@ -344,9 +344,6 @@ namespace Boku.Input
         const string BindToken = "Bind";
         protected void LateBindEvents()
         {
-#if NETFX_CORE
-            Debug.Assert(false, "Is any of this actually used???");
-#else
             for (int indexCommand = 0; indexCommand < this.commands.Count; indexCommand++)
             {
                 InputCommand command = this.commands[indexCommand];
@@ -416,7 +413,6 @@ namespace Boku.Input
                     }
                 }
             }
-#endif
         }
 
         /// <summary>

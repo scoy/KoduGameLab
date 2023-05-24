@@ -1,14 +1,19 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
+#define NEW_GET_WORLDS
+
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 using Boku.Base;
 using Boku.Web;
 using Boku.Common;
+using Boku.Common.Sharing;
 using Boku.Common.Xml;
 
 using BokuShared;
@@ -42,7 +47,7 @@ namespace Boku.Common
         class LevelBrowserState
         {
             public LevelMetadata level;
-            public LevelDownloadCompleteEvent downloadCallback;
+            public LevelDownloadCompleteEvent downloadCallback = null;
             public ThumbnailDownloadCompleteEvent thumbnailCallback;
         }
 
@@ -64,26 +69,65 @@ namespace Boku.Common
         /// <param name="param"></param>
         /// <returns></returns>
         public bool StartDeletingLevel(
-            Guid worldId,
+            LevelMetadata level,
             Genres bucket,
             BokuAsyncCallback callback,
             object param)
         {
-            int index = IndexOf(worldId);
+            // Remove the level from the browser's current set of worlds.
+            // Note that this assumes that the delete is just going to 
+            // work.  We do this so that the UI feels very responsive.
+            int index = IndexOf(level.WorldId);
             if (index >= 0)
             {
-                LevelMetadata level = allLevels[index];
+                LevelMetadata level2 = allLevels[index];
                 allLevels.RemoveAt(index);
-                LevelRemoved(level);
+                LevelRemoved(level2);
             }
 
+            //CommunityServices.DeleteWorld(level);
+
+            //Build delete world args
+            var args = new
+            {
+                worldId = level.WorldId.ToString(),
+                creator = Auth.CreatorName,
+                pin = Auth.Pin,
+                saveTime = level.SaveTime
+            };
+            KoduService.DeleteWorld(args,(returnedObject)=> { 
+                if(returnedObject==null)
+                {
+                    //delete failed
+                }
+                //4scoy. Handle success/failure
+                // For now, don't do anything.  On success, there's nothing to do.
+                // As noted on the top of the function, we remove the level from the browser
+                // before even trying to delete it. What should happen here is that we should
+                // re-add the level to the browser and give the user a error message telling
+                // them that the delete failed.  Right now, the only way this should fail is
+                // if the services go offline between the Search call and the user choosing to
+                // delete a world.  This should be very rare.  Additionally, the only result
+                // of this is that the next time the user comes into the Community, they will
+                // notice that the world they tried to delete is still there.  Should do this
+                // right for V2 since we handle dialogs much more sanely there.
+            });
+
+            // In this case, the callback is just prompting the browser to start fetching
+            // levels.  No arg is needed.
+            callback(null);
+
+            return true;    // Looks like this is ignored?
+
+            /*
             return 0 != Web.Community.Async_DelWorldData2(
                 worldId,
                 Auth.Pin,
                 callback,
                 param);
-        }
-
+            */ 
+        }   // end of StartDeletingLevel()
+            
         public void Update()
         {
             lock (Synch)
@@ -99,14 +143,40 @@ namespace Boku.Common
                 // Pull from the end of the list to service newer requests first.
                 LevelMetadata level = queuedThumbnailLoads[queuedThumbnailLoads.Count - 1];
                 queuedThumbnailLoads.RemoveAt(queuedThumbnailLoads.Count - 1);
+
                 thumbnailLoadOpCount += 1;
-                Web.Community.Async_GetThumbnail(
-                    level.WorldId,
-                    level.Thumbnail,
-                    GotThumbnail,
-                    level);
-            }
-        }
+                KoduService.GetThumbnail(level.WorldId,level.ThumbnailUrl,
+                    (responseStream) =>
+                    {
+                        if (responseStream == null)
+                        {
+                        // Failed.  Nothing to do here.
+                        }
+                        else
+                        {
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                responseStream.CopyTo(ms);
+                                ms.Seek(0, SeekOrigin.Begin);
+                                level.Thumbnail.Texture = Storage4.TextureLoad(ms);
+                                level.Thumbnail.Loading = false;
+                            }
+
+                    }
+
+                    // This will trigger a UI refresh which will either use the 
+                    // new thumbnail we just created or, if we had a failure, this
+                    // will just use the MissingImage graphic.
+                    LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+                        if (state.thumbnailCallback != null)
+                            state.thumbnailCallback(level);
+                        state.thumbnailCallback = null;
+
+                        thumbnailLoadOpCount -= 1;
+                    });//end of callback and func
+
+            }   // end if we have any thumbnails to load.
+        }   // end of Update()
 
         public void Shutdown()
         {
@@ -216,14 +286,60 @@ namespace Boku.Common
 
         public bool StartFetchingMore(ILevelSetQuery query)
         {
+            // Prevent new ops from being starting while one is already pending.
             if (pagingOpCount == 0 && !pagingEndReached)
             {
+
+                LevelSetSorterBasic basicSorter = query.Sorter as LevelSetSorterBasic;
+                LevelSetFilterByKeywords filter = query.Filter as LevelSetFilterByKeywords;
+
+#if NEW_GET_WORLDS
+                string sortBy = basicSorter.SortBy.ToString().ToLower();
+                if (sortBy == "rank")
+                {
+                    sortBy = "downloads";
+                }
+                string sortDir = basicSorter.SortDirection == SortDirection.Ascending ? "asc" : "desc";
+                string keywords = filter.SearchString;
+                string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
+
+                pagingOpCount += 1;
+
+
+                // Build search arguments.
+                var args = new
+                {
+                    first = pagingFirst,
+                    count = kPagingPageSize,
+                    sortBy = sortBy,
+                    sortDir = sortDir,
+                    range = "all",
+                    keywords = keywords,
+                    creator = creator
+                };
+                KoduService.Search(args, (object results) => {
+                    //4scoy NOTE in case of fail (results==null) we still pass
+                    //to FetchComplete(). It handles that case.
+                    //This should probably be done differently.
+                    FetchComplete((string)results);
+
+                    // If we got nothing from the start, then the community is not available.
+                    // Exit back out to main menu.
+                    if (pagingFirst == 0 && results == null)
+                    {
+                        // Switch back to the MainMenu.
+                        BokuGame.bokuGame.community.Deactivate();
+                        BokuGame.bokuGame.mainMenu.Activate();
+                    }
+
+                });
+                return true;
+#else
+
                 // This is a bit of a hack/limitation. For the moment, the community server only
                 // supports filtering by genre and sorting on the basic fields. For this limitation
                 // to be removed, we must support all sorters and filters on the server side, and
                 // send them up with every query.
-                LevelSetSorterBasic basicSorter = query.Sorter as LevelSetSorterBasic;
-                LevelSetFilterByKeywords filter = query.Filter as LevelSetFilterByKeywords;
                 if (String.IsNullOrEmpty(filter.SearchString)
                     || filter.SearchString.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries).Length < 1)
                 {
@@ -233,7 +349,7 @@ namespace Boku.Common
                         basicSorter != null ? basicSorter.SortBy : SortBy.Date,
                         basicSorter != null ? basicSorter.SortDirection : SortDirection.Descending,
                         pagingFirst,
-                        kPagingPageSize,
+                        kPagingPageSize + 1,    // Make this match new code.
                         FetchComplete,
                         query))
                     {
@@ -258,9 +374,11 @@ namespace Boku.Common
                         return true;
                     }
                 }
+                
+#endif
             }
             return false;
-        }
+        }   // end of StartFetchingMore()
 
         public void StartDownloadingThumbnail(LevelMetadata level, ThumbnailDownloadCompleteEvent callback, bool lowPriority)
         {
@@ -286,11 +404,72 @@ namespace Boku.Common
 
         public bool StartDownloadingWorld(LevelMetadata level, LevelDownloadCompleteEvent callback)
         {
+            var args = new
+            {
+                worldId = level.WorldId.ToString()
+            };
+            level.DownloadState = LevelMetadata.DownloadStates.InProgress;
+            KoduService.DownloadWorld(args, (responseStream) =>{
+
+                if(responseStream==null)
+                {
+                    // Failed.
+                    // Show the failed icon to the user in the UI.
+                    level.DownloadState = LevelMetadata.DownloadStates.Failed;
+
+                    return;
+                }
+
+                // Create a path to the imports folder.  Note the name of the file really
+                // doesn't matter.
+                string path = Path.Combine(Storage4.UserLocation, "Imports", "Temp.Kodu2");
+
+                // If an error left a file there, delete it.
+                Storage4.Delete(path);
+
+                // Write the file.
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    responseStream.CopyTo(fs);
+                    fs.Close();
+                }
+
+                // Trigger Kodu's import system.
+                List<Guid> importedLevels = new List<Guid>();
+                bool importOk = LevelPackage.ImportAllLevels(importedLevels);
+
+                // Set the icon on the world tile to match the result of the import.
+                if (importOk)
+                {
+                    level.DownloadState = LevelMetadata.DownloadStates.Complete;
+                }
+                else
+                {
+                    level.DownloadState = LevelMetadata.DownloadStates.Failed;
+                }
+
+            });
+
+            //CommunityServices.DownloadWorld(level);
+            // 4scoy What is this doing?  Do we need this?
+            // As the code sits right now, the callback is never called.
+            // Looking at the code, it appears to be related to downloading linked levels.
+            // In the old code, when a level was downloaded we also followed any links 
+            // and downloaded all the levels linked to it.  In the new system, all the
+            // linked levels should be part of the .Kodu2 file and will get downloaded
+            // and imported as a unit so chasing the links is no longer needed.
+            //LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+            //state.downloadCallback = callback;
+
+            /*
             LevelBrowserState state = (LevelBrowserState)level.BrowserState;
             state.downloadCallback = callback;
             level.DownloadState = LevelMetadata.DownloadStates.InProgress;
             return 0 != Web.Community.Async_GetWorldData(level.WorldId, GetWorldDataCallback, level);
-        }
+            */
+
+            return true;
+        }   // end of StartDownloadingWorld()
 
         //similiar to StartDownloadingWorld, but operates assuming we can't rely on the current browser page to contain the level
         //all world references will be through Guids instead of LevelMetadata until the download completes
@@ -370,6 +549,83 @@ namespace Boku.Common
             return -1;
         }
 
+#if NEW_GET_WORLDS
+
+        /// <summary>
+        /// Callback for fetching for community browser.
+        /// This is the new services version so we need to recreate the LevelMetadata structures
+        /// from the passed in result string.
+        /// </summary>
+        /// <param name="results"></param>
+        public void FetchComplete(string results)
+        {
+            // If no results, just bail.
+            if (results == null)
+            {
+                pagingEndReached = true;
+                return;
+            }
+            else
+            {
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.DateParseHandling = DateParseHandling.None;
+                Newtonsoft.Json.Linq.JContainer array = JsonConvert.DeserializeObject(results, settings) as Newtonsoft.Json.Linq.JContainer;
+
+                int count = 0;
+                foreach (JToken token in array)
+                {
+                    LevelMetadata level = new LevelMetadata();
+
+                    level.WorldId = new Guid(token.Value<string>("WorldId"));
+                    level.Name = token.Value<string>("Name");
+                    level.Description = token.Value<string>("Description");
+                    level.Checksum = token.Value<string>("Checksum");
+                    level.Creator = token.Value<string>("Creator");
+                    level.Downloads = token.Value<int>("Downloads");
+                    // The Community sorts on Modified which is slightly different than LastWriteTime.
+                    // So we use LastWriteTime as the equivalent of Modified.  It would be nice if we
+                    // changed LastWriteTime to Modified but that would (maybe) break back compat by
+                    // changing LevelMetadata.  On the other hand, since LastWriteTime is only ever
+                    // filled in when browsing the Community, maybe it's worth a try.
+                    // TODO (scoy) Change LastWriteTime to Modified in LevelMetadata and see what breaks.
+                    level.LastWriteTime = token.Value<DateTime>("Modified");
+                    level.LastSaveTime = token.Value<DateTime>("LastSaveTime");
+                    level.SaveTime = token.Value<string>("SaveTime");
+
+                    level.ThumbnailUrl = token.Value<string>("ThumbnailUrl");
+                    level.DataUrl = token.Value<string>("DataUrl");//not used. May be removed service side.
+
+                    if (IndexOf(level.WorldId) == -1)
+                    {
+                        LevelBrowserState state = new LevelBrowserState();
+                        state.level = level;
+                        level.BrowserState = state;
+
+                        level.Browser = this;
+                        allLevels.Add(level);
+                        LevelAdded(level);
+                        count += 1;
+                    }
+                }
+
+                // If we didn't get a full page, must be at end.  We used to test
+                // against total number of levels but that turns out to be a bit slow.
+                if (count < kPagingPageSize)
+                {
+                    pagingEndReached = true;
+                }
+
+                pagingFirst += count;
+            }
+
+            pagingOpCount -= 1;
+            // Turns off "Fetching" message.
+            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
+
+        }   // end of FetchComplete()
+
+#else
+
         private void FetchComplete(AsyncResult ar)
         {
             AsyncResult_GetPageOfLevels result = (AsyncResult_GetPageOfLevels)ar;
@@ -403,12 +659,13 @@ namespace Boku.Common
                 pagingEndReached = true;
             }
 
-            ILevelSetQuery query = (ILevelSetQuery)ar.Param;
-
-            query.NotifyFetchComplete();
+            // Turns off "Fetching" message.
+            BokuGame.bokuGame.community.CursorFetchCompleteCallback(null);
 
             pagingOpCount -= 1;
-        }
+        }   // end of FetchComplete()
+        
+#endif
 
         private void GotThumbnail(AsyncResult ar)
         {
@@ -434,6 +691,17 @@ namespace Boku.Common
             thumbnailLoadOpCount -= 1;
         }
 
+        public void GotThumbnail(IAsyncResult ar, LevelMetadata level)
+        {
+            LevelBrowserState state = (LevelBrowserState)level.BrowserState;
+
+            if (state.thumbnailCallback != null)
+                state.thumbnailCallback(level);
+            state.thumbnailCallback = null;
+
+            thumbnailLoadOpCount -= 1;
+        }   // end of GotThumbnail()
+
         private void LevelAdded(LevelMetadata level)
         {
             if (IsAlreadyDownloaded(level))
@@ -458,6 +726,8 @@ namespace Boku.Common
 
         private bool IsAlreadyDownloaded(LevelMetadata level)
         {
+            bool isAlreadyDownloaded = false;
+
             string filename = BokuGame.Settings.MediaPath + BokuGame.DownloadsPath + level.WorldId.ToString() + @".Xml";
             
             if (Storage4.FileExists(filename, StorageSource.UserSpace))
@@ -467,34 +737,28 @@ namespace Boku.Common
                 {
                     LevelMetadata local = LevelMetadata.CreateFromXml(xml);
 
-                    return (
+                    DateTime levelSaveTime = DateTime.Parse(level.SaveTime);
+
+                    isAlreadyDownloaded = 
                         local.WorldId == level.WorldId &&
                         local.Creator == level.Creator &&
-                        local.LastWriteTime >= level.LastWriteTime);
+                        local.LastWriteTime >= levelSaveTime;
                 }
             }
 
-            return false;
+            return isAlreadyDownloaded;
         }
 
         #endregion
 
         public void AddLevel(LevelMetadata level)
         {
-#if NETFX_CORE
-            Debug.Assert(false);
-#else
             Debug.Fail("not supported");
-#endif
         }
 
         public void RemoveLevel(LevelMetadata level)
         {
-#if NETFX_CORE
-            Debug.Assert(false);
-#else
             Debug.Fail("not supported");
-#endif
         }
     }
 }

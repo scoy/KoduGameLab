@@ -77,7 +77,6 @@ namespace Boku.Programming
                 }
             }
 
-#if !NETFX_CORE
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
             {
@@ -95,7 +94,6 @@ namespace Boku.Programming
                         break;
                 }
             }
-#endif
 
             // Return as a parameter a vector that can be used for input to the movement system, so
             // that players can drive and turn bots using gamepad buttons.

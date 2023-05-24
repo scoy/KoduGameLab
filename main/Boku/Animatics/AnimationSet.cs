@@ -1371,11 +1371,7 @@ namespace Boku.Animatics
                         listener.Up = InGame.inGame.Camera.ViewUp;
                         listener.Velocity = Vector3.Zero;
 
-#if NETFX_CORE
-                        BokuGame.Audio.SoundBank.PlayCue(name);
-#else
                         BokuGame.Audio.SoundBank.PlayCue(name, listener, emitter);
-#endif
                     }
                 }
                 catch (Exception e)

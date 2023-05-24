@@ -24,7 +24,7 @@ namespace Boku.Common
         /// <param name="param"></param>
         /// <returns></returns>
         public bool StartDeletingLevel(
-            Guid worldId,
+            LevelMetadata level,
             Genres bucket,
             BokuAsyncCallback callback,
             object param)
@@ -57,6 +57,7 @@ namespace Boku.Common
                 worldPath = BokuGame.DownloadsPath;
             }
 
+            Guid worldId = level.WorldId;
 
             lock (Synch)
             {
@@ -64,14 +65,14 @@ namespace Boku.Common
                 {
                     record = allLevels[i];
 
-                    if (record.WorldId == worldId && (record.Genres & bucket) == bucket)
+                    if (record.WorldId == level.WorldId && (record.Genres & bucket) == bucket)
                     {
                         worldFilename = Path.Combine(BokuGame.Settings.MediaPath, worldPath + worldId.ToString() + @".Xml");
                         stuffFilename = Path.Combine(BokuGame.Settings.MediaPath, stuffPath + worldId.ToString() + @".Xml");
                         thumbFilename = Path.Combine(BokuGame.Settings.MediaPath, worldPath + worldId.ToString());
 
                         // Need to get the terrain file before we delete the main file.  BUT the terrain should be
-                        // deleted after, otherwise the usage test will find the main file and always thing that 
+                        // deleted after, otherwise the usage test will find the main file and always think that 
                         // the terrain file is in use.
                         string terrainFilename = null;
                         try
@@ -87,15 +88,16 @@ namespace Boku.Common
                         Storage4.Delete(stuffFilename);
                         Storage4.Delete(thumbFilename + @".dds");
                         Storage4.Delete(thumbFilename + @".jpg");
+                        Storage4.Delete(thumbFilename + @"_800.jpg");
                         Storage4.Delete(thumbFilename + @".png");
 
                         // Only deletes terrain file if no other world is using it.  (including autosaves)
                         DeleteTerrainFile(terrainFilename);
 
-                        LevelMetadata level = allLevels[i];
+                        LevelMetadata level2 = allLevels[i];
                         allLevels.RemoveAt(i);
 
-                        LevelRemoved_Synched(level);
+                        LevelRemoved_Synched(level2);
 
                         deleted = true;
 

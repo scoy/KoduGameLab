@@ -8,10 +8,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if !NETFX_CORE
 using System.Drawing;
 using System.Drawing.Imaging;
-#endif
 using System.Text;
 #if PARALLEL
 using System.Threading.Tasks;
@@ -23,8 +21,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Boku.Common
 {
-#if !NETFX_CORE
-
     using Point = Microsoft.Xna.Framework.Point;
     using Color = Microsoft.Xna.Framework.Color;
 
@@ -627,5 +623,4 @@ namespace Boku.Common
 
         #endregion
     }   // end of class SysFont
-#endif
 }   // end of namespace Boku.Common

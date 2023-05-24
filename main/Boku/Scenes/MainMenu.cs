@@ -19,16 +19,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
-#if NETFX_CORE
-    using System.Threading.Tasks;
-    //using Windows.Foundation;
-    using Windows.Storage;
-    using Windows.Storage.Pickers;
-    using Windows.System;
-#else
-    using Microsoft.Xna.Framework.Net;
-#endif
-
+using Microsoft.Xna.Framework.Net;
 
 using Boku.Audio;
 using Boku.Base;
@@ -58,7 +49,7 @@ namespace Boku
         {
             get
             {
-                return   Program2.SiteOptions.KGLUrl + "?ref=client";
+                return   KoduService.KGLUrl + "?ref=client";
             }
         }
 
@@ -82,7 +73,7 @@ namespace Boku
 
         public NewWorldDialog newWorldDialog;
 
-        protected class Shared : INeedsDeviceReset
+        public class Shared : INeedsDeviceReset
         {
             public Camera camera = new PerspectiveUICamera();
             public Camera bokuCamera = new SimCamera();
@@ -115,10 +106,9 @@ namespace Boku
                 optionsMenu = new OptionsMenu();
                 liveFeed = new LiveFeedDisplay();
 
-                if (BokuGame.bMarsMode)
-                    boku = ActorManager.GetActor("RoverGreeter").CreateNewInstance() as BokuGreeter;
-                else
-                    boku = ActorManager.GetActor("BokuGreeter").CreateNewInstance() as BokuGreeter;
+                // Rover greeter used for JPL builds which are not deprecated.  May
+                //boku = ActorManager.GetActor("RoverGreeter").CreateNewInstance() as BokuGreeter;
+                boku = ActorManager.GetActor("BokuGreeter").CreateNewInstance() as BokuGreeter;
                 boku.SetColor(Classification.Colors.White);
 
                 bokuCamera.NearClip = 0.1f;
@@ -175,11 +165,7 @@ namespace Boku
                 menu.AddText(Strings.Localize("mainMenu.community"));
                 menu.AddText(Strings.Localize("mainMenu.options"));
                 menu.AddText(Strings.Localize("mainMenu.help"));
-#if !NETFX_CORE
-                // Once you run an app in Win8, you are never allowed to kill it.
-                // Only the system can kill it.
                 menu.AddText(Strings.Localize("mainMenu.exit"));
-#endif
 
                 // And then remove what we don't want.
                 if (!Program2.SiteOptions.CommunityEnabled)
@@ -235,19 +221,7 @@ namespace Boku
             {
                 if (backgroundTexture == null)
                 {
-                    if (BokuGame.bMarsMode)
-                    {
-                        backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreenMars");
-                        //jplTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\nasajpl");
-                    }
-                    else
-                    {
-#if NETFX_CORE
-                        backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreenMG");
-#else
-                        backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreen");
-#endif
-                    }
+                    backgroundTexture = BokuGame.Load<Texture2D>(BokuGame.Settings.MediaPath + @"Textures\MainMenuWidescreen");
                 }
 
                 if (blueArrowTexture == null)
@@ -269,7 +243,6 @@ namespace Boku
             public void UnloadContent()
             {
                 BokuGame.Release(ref backgroundTexture);
-                //BokuGame.Release(ref jplTexture);
                 BokuGame.Release(ref blueArrowTexture);
 
                 BokuGame.Unload(boku);
@@ -334,13 +307,11 @@ namespace Boku
                 AuthUI.ShowStatusDialog();
 
                 // Update the dialogs.
-                parent.prevSessionCrashedMessage.Update();
                 parent.noCommunityMessage.Update();
                 parent.noSharingMessage.Update();
 
                 // Don't do anything else until the user reads and dismisses the dialogs.
-                if (parent.prevSessionCrashedMessage.Active 
-                    || parent.exitingKodu)
+                if (parent.exitingKodu)
                 {
                     return;
                 }
@@ -370,11 +341,8 @@ namespace Boku
                         if (shared.urlBox.Contains(mouseHit) ||
                             (null != touch && shared.urlBox.Contains(touch.position)))
                         {
-#if NETFX_CORE
-                            Launcher.LaunchUriAsync(new Uri(KoduGameLabUrl));
-#else
+
                             Process.Start(KoduGameLabUrl);
-#endif
                             MouseInput.Left.ClearAllWasPressedState();
                         }
 
@@ -459,7 +427,7 @@ namespace Boku
                 {
                     shared.liveFeed.Activate();
                     shared.liveFeed.UpdateFeed();
-                    shared.liveFeed.Update(shared.camera);  // <- this is SLOW!!!
+                    shared.liveFeed.Update(shared.camera);
                 }
 
             }   // end of Update()
@@ -483,11 +451,8 @@ namespace Boku
 
                     if (shared.urlBox.Contains(mouseHit) || (shared.urlBox.Contains(touchHit) && TouchInput.WasLastReleased))
                     {
-#if NETFX_CORE
-                        Launcher.LaunchUriAsync(new Uri(KoduGameLabUrl));
-#else
+
                         Process.Start(KoduGameLabUrl);
-#endif
                         MouseInput.Left.ClearAllWasPressedState();
                         inputHandled = true;
                     }
@@ -498,18 +463,6 @@ namespace Boku
 
             public override void Activate()
             {
-                // If we have a level to resume, check for the crashed cookie.  If we find the cookie
-                // delete it and activate the dialog letting the user know they can recover the level.
-                if (InGame.UnDoStack.HaveResume())
-                {
-                    if (Storage4.FileExists(MainMenu.CrashCookieFilename, StorageSource.UserSpace))
-                    {
-                        Storage4.Delete(MainMenu.CrashCookieFilename);
-
-                        parent.prevSessionCrashedMessage.Activate();
-                    }
-                }
-
                 // Force feed to refresh rendering.
                 shared.liveFeed.Dirty = true;
 
@@ -614,20 +567,11 @@ namespace Boku
                     // Do we really need to?
                     //Luz.SetToEffect(true); // disable scene point lights
 
-                    if (BokuGame.bMarsMode)
-                    {
-                        shared.boku.Movement.Position = new Vector3(-0.0f, 0.25f, -0.5f);
-                        shared.boku.ReScale = 0.50f;
+                    // If using the RoverGreeter use these settings.
+                    //shared.boku.Movement.Position = new Vector3(-0.0f, 0.25f, -0.5f);
+                    //shared.boku.ReScale = 0.50f;
+                    shared.boku.Movement.Position = new Vector3(0.0f, 0.0f, 0.0f);
 
-                        //quad = ScreenSpaceQuad.GetInstance();
-                        //float wid=shared.jplTexture.Width/2;
-                        //position = new Vector2(1250-(wid), 20);
-                        //quad.Render(shared.jplTexture, position, new Vector2(wid, shared.jplTexture.Height/2), @"TexturedRegularAlpha");
-                    }
-                    else
-                    {
-                        shared.boku.Movement.Position = new Vector3(0.0f, 0.0f, 0.0f);
-                    }
                     fVal += 0.01f;
 
                     // Be sure to set the right camera so the env map looks correct.
@@ -674,7 +618,6 @@ namespace Boku
                     InGame.inGame.shared.scrollableTextDisplay.Render();
                 }
 
-                MainMenu.Instance.prevSessionCrashedMessage.Render();
                 MainMenu.Instance.noCommunityMessage.Render();
                 MainMenu.Instance.noSharingMessage.Render();
 
@@ -692,7 +635,7 @@ namespace Boku
 
 
         // List objects.
-        protected Shared shared = null;
+        public Shared shared = null;
         protected RenderObj renderObj = null;
         protected UpdateObj updateObj = null;
 
@@ -708,21 +651,16 @@ namespace Boku
 
         private CommandMap commandMap = new CommandMap("App.TitleMenu");   // Placeholder for stack.
 
-        private ModularMessageDialog noCommunityMessage = null;
+        public  ModularMessageDialog noCommunityMessage = null;
         private ModularMessageDialog noSharingMessage = null;
-        private ModularMessageDialog prevSessionCrashedMessage = null;
 
         private bool exitingKodu = false;   // Flag set when the user chooses to exit Kodu 
                                             // from the above dialogs.  This flags allows us
                                             // to exit more cleanly.  Without it we flash the
                                             // storage selection dialog as we exit.
 
-        // Only show this notification once.
-
-
-        static public string CrashCookieFilename = "Crash.txt";
-
         #region Accessors
+
         public bool Active
         {
             get { return (state == States.Active); }
@@ -840,11 +778,8 @@ namespace Boku
                 dialog.Deactivate();
 
                 // Wave bye, bye.
-#if NETFX_CORE
-                Windows.UI.Xaml.Application.Current.Exit();
-#else
+
                 BokuGame.bokuGame.Exit();
-#endif
 
                 exitingKodu = true;
             };
@@ -861,20 +796,10 @@ namespace Boku
                                                             null, null,
                                                             null, null
                                                             );
-            prevSessionCrashedMessage = new ModularMessageDialog(Strings.Localize("mainMenu.prevSessionCrashedMessage"),
-                                                            handlerA, Strings.Localize("textDialog.resume"),
-                                                            handlerB, Strings.Localize("textDialog.back"),
-                                                            null, null,
-                                                            null, null
-                                                            );
 
         }   // end of MainMenu c'tor
 
-#if NETFX_CORE
-        public async void OnSelect(ModularMenu menu)
-#else
         public void OnSelect(ModularMenu menu)
-#endif
         {
             menu.Active = false;
             string cur = menu.CurString;
@@ -947,12 +872,61 @@ namespace Boku
             // COMMUNITY
             if (cur == Strings.Localize("mainMenu.community") || cur == "GALLERY")
             {
-                // Check to see if the community server is reachable before switching screens.
-                if (!Web.Community.Async_Ping(Callback_Ping, null))
+                if (KoduService.PingFailed)
                 {
+                    // Give no community dialog.
                     noCommunityMessage.Activate();
                     menu.Active = true;
                 }
+                else
+                {
+                    // Open the community UI
+                    Deactivate();
+                    BokuGame.bokuGame.community.Activate();
+                }
+                /*
+                // Check to see if the community server is reachable before switching screens.
+                var args = new
+                {
+                    //startup = startup.ToString(),
+                    clientVersion = Program2.ThisVersion.ToString(),
+                    //lang = Boku.Common.Localization.Localizer.LocalLanguage,
+                    //siteId = SiteID.Instance.Value.ToString()
+                };
+
+                // Ping the services
+                Newtonsoft.Json.Linq.JContainer pingResponse = KoduService.PingNonAsync(args);
+                if (pingResponse == null)
+                {
+                    //failed
+                    noCommunityMessage.Activate();
+                    menu.Active = true;
+                }
+                else
+                {
+                    var msgStr = pingResponse.Value<string>("systemMessage");
+                    //msgStr = "Test Me!";
+                    //If the response contains a system message display it.
+                    if (!string.IsNullOrEmpty(msgStr))
+                    {
+                        //4scoy is this ok?
+                        //Override the noCommunity messagw with 
+                        //returned systemMessage
+                        noCommunityMessage.SetText(msgStr);
+                        noCommunityMessage.Activate();
+                        menu.Active = true;
+    
+                    }
+                    else
+                    {
+
+                        // Open the community UI
+                        Deactivate();
+                        BokuGame.bokuGame.community.Activate();
+                    }
+                }
+                */
+
             }
 
             // OPTIONS
@@ -981,47 +955,9 @@ namespace Boku
                 Deactivate();
 
                 // Wave bye, bye.
-#if NETFX_CORE
-                Windows.UI.Xaml.Application.Current.Exit();
-#else
                 BokuGame.bokuGame.Exit();
-#endif
             }
         }   // end of OnSelect
-
-#if NETFX_CORE
-
-        private async Task<bool> PickImportFilesAsync()
-        {
-            bool levelsImported = false;
-
-            // Ask user for files to import.
-            FileOpenPicker filePicker = new FileOpenPicker();
-            filePicker.FileTypeFilter.Add(".kodu");
-            filePicker.FileTypeFilter.Add(".kodu2");
-            filePicker.ViewMode = PickerViewMode.List;
-            filePicker.SuggestedStartLocation = PickerLocationId.Desktop;
-            filePicker.SettingsIdentifier = "ImportPicker";
-            filePicker.CommitButtonText = Strings.Localize("mainMenu.importWorldsCommitButtonText");
-
-            IReadOnlyList<StorageFile> files = await filePicker.PickMultipleFilesAsync();
-
-            // Copy resulting files into Imports directory.
-            if (files != null && files.Count > 0)
-            {
-                foreach (StorageFile file in files)
-                {
-                    StorageFolder importsFolder = await Storage4.UserSpaceFolder.CreateFolderAsync(LevelPackage.importsPath, CreationCollisionOption.OpenIfExists);
-                    StorageFile fileCopy = await file.CopyAsync(importsFolder);
-                }
-
-                levelsImported = true;
-            }
-
-            return levelsImported;
-        }   // end of PickImportFile()
-
-#endif
 
         private bool PickImportFiles()
         {
@@ -1056,25 +992,6 @@ namespace Boku
 
             return levelsImported;
         }   // end of PickImportFiles()
-
-        void Callback_Ping(object param)
-        {
-            AsyncResult result = (AsyncResult)param;
-
-            if (result.Success)
-            {
-                // Open the community UI
-                Deactivate();
-                BokuGame.bokuGame.community.Activate();
-            }
-            else
-            {
-                noCommunityMessage.Activate();
-
-                // since we aren't leaving this screen, we need to reactivate the menu.
-                shared.menu.Active = true;
-            }
-        }
 
         public void OnCancel(ModularMenu menu)
         {

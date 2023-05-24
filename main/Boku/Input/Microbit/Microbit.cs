@@ -9,16 +9,12 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using Microsoft.Xna.Framework;
-
-#if !NETFX_CORE
 using System.IO.Ports;
-#endif
 
 using Boku.Common;
 
 namespace Boku.Input
 {
-#if !NETFX_CORE
     /// <summary>
     /// Represents the interface to a connected microbit.
     /// </summary>
@@ -1041,5 +1037,4 @@ namespace Boku.Input
             }
         }
     }
-#endif
 }

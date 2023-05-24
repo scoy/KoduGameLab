@@ -7,16 +7,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
-#if !NETFX_CORE
-    using System.Windows.Forms;
-#endif
-
+using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 namespace Boku.Common
 {
-#if !NETFX_CORE
     /// <summary>
     /// Class that handles intercepting Windows keyboard messages.
     /// TODO Should this be IDispose?
@@ -480,5 +475,4 @@ namespace Boku.Common
 
         #endregion
     }   // end of class WinKeyboard
-#endif
 }   // end of namespace Boku.Common

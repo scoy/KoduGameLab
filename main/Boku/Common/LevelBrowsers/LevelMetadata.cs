@@ -53,6 +53,34 @@ namespace Boku.Common
             set { Debug.Assert(browser == null || value == null); browser = value; }
         }
 
+        /*
+            Clarification on what the various time values are...
+         
+            In SQL we have:
+            •	Created : Time level was originally uploaded to SQL.  Not used for anything as far as I can tell.
+            •	Modified : When this entry was last written to in the database.  This gets modified on update.  This is used 
+                    for sorting levels by date.  Note that even for levels that have not been modified this is often slightly 
+                    different than Created.  Apparently we are using DataTime.Now for both and so we get fractionally different 
+                    times for each when a level is first uploaded.
+            •	LastWriteTime : This is the time that is used for creating the checksum and comes from the uploaded metadata.
+
+            In the Client:
+            •	LastSaveTime : This is the same as SQL's LastWriteTime.  Updated on write and then used for checksum calculation.
+            •	LastWriteTime : This gets SQL's Modified time.  Used for sorting by date when in the Community browser.  In the 
+                    local browser we use the system file write time to sort on so this will have invalid data in it.  This only has 
+                    valid data when it gets it from the Community server.
+
+            All these times are UTC.  
+
+            The C# DateTime class keeps track of whether or not a time is UTC but SQL doesn't so we have to coerce all DateTimes 
+            we get from SQL into UTC every time we get a DateTime back from the database.  This is done through the SpecifyKind()
+            method which forces the UTC flag to be set without changing the time value.  
+                LastWriteTime = DateTime.SpecifyKind(packet.Modified, DateTimeKind.Utc);
+                LastSaveTime = DateTime.SpecifyKind(packet.LastSaveTime, DateTimeKind.Utc);
+
+            In SQL we need to use DateTime2 instead of DateTime as the type since SQL's DateTime has less precision than .Net's DateTime class.
+        */
+
         /// <summary>
         /// Level metadata fields
         /// </summary>
@@ -81,6 +109,9 @@ namespace Boku.Common
         public SoclCommentPacket[] CommentDetails;
         public string RowKey;
         public string PartitionKey;
+
+        public string ThumbnailUrl;
+        public string DataUrl;
 
         public string Checksum;
 
@@ -114,8 +145,10 @@ namespace Boku.Common
             }
         }
 
-        public DateTime LastSaveTime = DateTime.MinValue;//Used to determin if level is owned by user. 
-                                                        //Note it should usually be the same as lastWriteTime but not the same as Modified.
+        public DateTime LastSaveTime = DateTime.MinValue;   //Used to determine if level is owned by user. 
+                                                            //Note it should usually be the same as lastWriteTime but not the same as Modified.
+        public string SaveTime;                             // String version of LastSaveTime
+
         internal LevelMetadata Duplicate()
         {
             LevelMetadata level = new LevelMetadata();
@@ -141,6 +174,10 @@ namespace Boku.Common
             level.PartitionKey = PartitionKey;
             level.Checksum = Checksum;
             level.LastSaveTime = LastSaveTime;
+            level.SaveTime = SaveTime;
+
+            level.ThumbnailUrl = ThumbnailUrl;
+            level.DataUrl = DataUrl;
 
             return level;
         }
@@ -167,6 +204,9 @@ namespace Boku.Common
             PartitionKey = packet.PartitionKey;
             Checksum = packet.checksum;
             LastSaveTime = DateTime.SpecifyKind(packet.LastSaveTime, DateTimeKind.Utc);
+
+            // ThumbnailUrl =
+            // DataUrl = 
         }
 
         public void ToPacket(WorldInfoPacket packet)
@@ -190,6 +230,8 @@ namespace Boku.Common
             packet.RowKey = RowKey;
             packet.PartitionKey = PartitionKey;
             packet.LastSaveTime = LastSaveTime;
+            // packet.ThumbnailUrl = ThumbnailUrl;
+            // packet.DataUrl = DataUrl;
         }
 
         public void FromXml(XmlWorldData xml)
@@ -216,7 +258,10 @@ namespace Boku.Common
             LinkedFromLevel = xml.LinkedFromLevel;
             LinkedToLevel = xml.LinkedToLevel;
             LastSaveTime = xml.lastWriteTime;
+            SaveTime = xml.saveTime;
 
+            // ThumbnailUrl = xml.ThumbnailUrl;
+            // DataUrl = xml.DataUrl;
         }
 
         public void ToXml(XmlWorldData xml)
@@ -230,16 +275,24 @@ namespace Boku.Common
             xml.genres = (int)(Genres & ~(Genres.Virtual));
             xml.LinkedFromLevel = LinkedFromLevel;
             xml.LinkedToLevel = LinkedToLevel;
+
+            xml.saveTime = SaveTime;
+
+            // xml.ThumbnailUrl = ThumbnailUrl;
+            // xml.DataUrl = DataUrl;
         }
 
-        //will only follow consistent links
+        /// <summary>
+        /// Finds and returns the next linked level in the chain.
+        /// </summary>
+        /// <returns>Metadata if valid, null if no link or file for link not found.</returns>
         public LevelMetadata NextLink()
         {
             if (LinkedToLevel != null && XmlDataHelper.CheckWorldExistsByGenre((Guid)LinkedToLevel, Genres))
             {
                 LevelMetadata level = XmlDataHelper.LoadMetadataByGenre((Guid)LinkedToLevel, Genres);
 
-                //make sure the link is consistent or don't return it
+                // Make sure the link is consistent or don't return it.
                 if (level != null && level.LinkedFromLevel == this.WorldId)
                 {
                     return level;
@@ -247,16 +300,19 @@ namespace Boku.Common
             }
 
             return null;
-        }
+        }   // end of NextLink()
 
-        //will only follow consistent links
+        /// <summary>
+        /// Finds and returns the previous linked level in the chain.
+        /// </summary>
+        /// <returns>Metadata if valid, null if no link or file for link not found.</returns>
         public LevelMetadata PreviousLink()
         {
             if (LinkedFromLevel != null && XmlDataHelper.CheckWorldExistsByGenre((Guid)LinkedFromLevel, Genres))
             {
                 LevelMetadata level = XmlDataHelper.LoadMetadataByGenre((Guid)LinkedFromLevel, Genres);
 
-                //make sure the link is consistent or don't return it
+                // Make sure the link is consistent or don't return it.
                 if (level != null && level.LinkedToLevel == this.WorldId)
                 {
                     return level;
@@ -264,14 +320,20 @@ namespace Boku.Common
             }
 
             return null;
-        }
+        }   // end of PreviousLink()
 
+        /// <summary>
+        /// Finds and returns the first linked level in the chain.
+        /// Note this doesn't differentiate between finding the first level and
+        /// finding a level with a bad previous link.
+        /// </summary>
+        /// <returns>Metadata if valid, null if file for link not found.</returns>
         public LevelMetadata FindFirstLink()
         {
             LevelMetadata firstLink = this;
             LevelMetadata previousLink = this;
 
-            //loop until the previous link is null
+            // Loop until the previous link is null
             while (previousLink != null)
             {
                 firstLink = previousLink;
@@ -279,8 +341,14 @@ namespace Boku.Common
             }
 
             return firstLink;
-        }
+        }   // end of FindFirstLink()
 
+        /// <summary>
+        /// Finds and returns the last linked level in the chain.
+        /// Note this doesn't differentiate between finding the last level and
+        /// finding a level with a bad previous link.
+        /// </summary>
+        /// <returns>Metadata if valid, null if file for link not found.</returns>
         public LevelMetadata FindLastLink()
         {
             LevelMetadata lastLink = this;
@@ -293,9 +361,12 @@ namespace Boku.Common
             }
 
             return lastLink;
-        }
+        }   // end of FindLastLink()
 
-        //works on any link in the chain
+        /// <summary>
+        /// Calculates the total number of levels in the chain.
+        /// </summary>
+        /// <returns></returns>
         public int CalculateTotalLinkLength()
         {
             LevelMetadata firstLink = FindFirstLink();
@@ -308,44 +379,58 @@ namespace Boku.Common
             }
 
             return linkLength;
-        }
+        }   // end of CalculateTotalLinkLength()
 
+        /// <summary>
+        /// Traverses the linked level chain verifying that all previous and next
+        /// links are properly connected.
+        /// 
+        /// TODO (scoy) This could be both cleaner and more complete.  Right now, the Previous links
+        /// are only validated for going back to the first in the chain.  From the tail to the current
+        /// level they are ignored.  Also, the NextLink() and PreviousLink() functions don't 
+        /// differentiate between null links and links to invalid files.  Links to invalid files should
+        /// probably be removed with a warnign to the user.
+        /// Rewrite this when adding arbitrary links.
+        /// </summary>
+        /// <param name="brokenLevel">The level where the broken link was found.</param>
+        /// <param name="forwardLink">True if the broken link was Next.  False if the broken link was Previous.</param>
+        /// <returns>True if broken, false if ok.</returns>
         public bool FindBrokenLink(ref LevelMetadata brokenLevel, ref bool forwardLink)
         {
-            //initialize the out params - assume no broken link
+            // Initialize the out params - assume no broken link.
             brokenLevel = null;
             forwardLink = false;
 
-            //First, walk backwards to the first link
+            // First, walk backwards to the first link.
             LevelMetadata currentLink = this;
             LevelMetadata previousLink = null;
             LevelMetadata nextLink = null;
 
             while (currentLink.LinkedFromLevel != null)
             {
-                //check to make sure the xml exists
+                // Check to make sure the xml exists.
                 previousLink = currentLink.PreviousLink();
 
                 if (null == previousLink)
                 {
                     brokenLevel = currentLink;
-                    forwardLink = false; //broke walking backwards
+                    forwardLink = false; // Broke walking backwards.
 
                     return true;
                 }
                 currentLink = previousLink;
             }
 
-            //first link now points to the beginning, walk forward to the end, ensuring we 
+            // First link now points to the beginning, walk forward to the end.
             while (currentLink.LinkedToLevel != null)
             {
-                //check to make sure the xml exists
+                // Check to make sure the xml exists.
                 nextLink = currentLink.NextLink();
 
                 if (null == nextLink)
                 {
                     brokenLevel = currentLink;
-                    forwardLink = false; //broke walking backwards
+                    forwardLink = false;    // Broke walking forwards.
 
                     return true;
                 }
@@ -353,9 +438,10 @@ namespace Boku.Common
 
             }
 
-            //if we made it this far, all of the links worked out
+            // If we made it this far, all of the links worked out.
             return false;
-        }
+
+        }   // end of FindBrokenLink()
 
         public static LevelMetadata CreateFromXml(XmlWorldData xml)
         {

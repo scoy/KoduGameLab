@@ -661,11 +661,7 @@ namespace Boku.UI2D
         {
             for (int i = 0; i < list.Count; i++)
             {
-#if NETFX_CORE
-                if(string.Compare(list[i].Key, key, StringComparison.OrdinalIgnoreCase) == 0)
-#else
                 if (string.Compare(list[i].Key, key, true) == 0)
-#endif
                 {
                     curIndex = i;
                     Dirty = true;

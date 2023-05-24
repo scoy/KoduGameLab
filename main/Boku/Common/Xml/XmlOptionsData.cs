@@ -8,17 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
-
 using System.Xml;
 using System.Xml.Serialization;
 
 using Microsoft.Xna.Framework;
 
-#if NETFX_CORE
-    using Windows.Foundation;
-#endif
-
 using Boku;
+using Boku.Common.Sharing;
 using BokuShared;
 
 namespace Boku.Common.Xml
@@ -232,16 +228,6 @@ namespace Boku.Common.Xml
             }
         }
 
-#if NETFX_CORE
-        public static string GetCurrentUsername()
-        {
-            IAsyncOperation<string> op = Windows.System.UserProfile.UserInformation.GetDisplayNameAsync();
-            op.AsTask().ConfigureAwait(false);
-            string username = op.GetResults();
-            return username;
-        }
-#endif
-
         /// <summary>
         /// Username set by user at startup.
         /// </summary>
@@ -251,11 +237,7 @@ namespace Boku.Common.Xml
             {
                 if (String.IsNullOrEmpty(Instance.username))
                 {
-#if NETFX_CORE
-                    Instance.username = GetCurrentUsername();
-#else
                     Instance.username = System.Environment.UserName;
-#endif
                 }
                 return Instance.username;
             }

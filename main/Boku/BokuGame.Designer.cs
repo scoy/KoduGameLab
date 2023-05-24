@@ -54,23 +54,11 @@ namespace Boku
             // Graphics 
             //
 
-#if NETFX_CORE
-            graphics = new Microsoft.Xna.Framework.GraphicsDeviceManager(this);
-
-            graphics.PreparingDeviceSettings += PreparingDeviceSettingsHandler;
-#endif
-
             // Determine if HiDef is supported.
             // Find the default adapter and check if it supports Reach and Hidef.
             // TODO (****) What do we do if Reach isn't supported???
             foreach (GraphicsAdapter ga in GraphicsAdapter.Adapters)
             {
-#if NETFX_CORE
-                Debug.Assert(false, "Waiting on MG");
-                // Assume Reach for now.
-                hwSupportsReach = true;
-                break;
-#else
                 if (ga.IsDefaultAdapter)
                 {
                     if (ga.IsProfileSupported(GraphicsProfile.Reach))
@@ -84,7 +72,6 @@ namespace Boku
 
                     break;
                 }
-#endif
             }
 
             // Set HiDef iff HW supports AND user doesn't prefer Reach.
@@ -106,19 +93,10 @@ namespace Boku
             //graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
             graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
 
-#if NETFX_CORE
-            // For Win8 always force fullscreen and use full device resolution.
-            graphics.IsFullScreen = BokuSettings.Settings.FullScreen = true;
-            BokuSettings.Settings.ResolutionX = graphics.PreferredBackBufferWidth;
-            BokuSettings.Settings.ResolutionY = graphics.PreferredBackBufferHeight;
-#endif
-
             // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< FULL SCREEN WINDOWED MODE FIX
             
-#if !NETFX_CORE
             // Always start windowed.
             graphics.IsFullScreen = false;
-#endif
             
             // FULL SCREEN WINDOWED MODE FIX >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -128,19 +106,12 @@ namespace Boku
             //
             // Game
             //
-#if NETFX_CORE
-            IsFixedTimeStep = false;
-            Window.AllowUserResizing = false;
-#endif
+
             IsMouseVisible = true;
 
         }   // end of BokuGame InitializeComponent()
 
-#if NETFX_CORE
-        static GraphicsDeviceManager graphics = null;
-#else
         GraphicsDeviceManager graphics = null;
-#endif
 
     }   // end of partial class BokuGame
 

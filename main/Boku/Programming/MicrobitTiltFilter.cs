@@ -101,7 +101,6 @@ namespace Boku.Programming
             param = null;
             this.tiltPosition = Vector2.Zero;
 
-#if !NETFX_CORE
             // TODO @*******: use the player# to get the right Microbit, or blended from all if no player#.
             Microbit bit = MicrobitExtras.GetMicrobitOrNull(playerId);
             if (bit != null)
@@ -109,7 +108,6 @@ namespace Boku.Programming
                 tiltPosition = new Vector2(bit.State.Acc.Y, -bit.State.Acc.X);
                 tiltPosition = DeadZone(tiltPosition * tiltPosition * new Vector2(Math.Sign(tiltPosition.X), Math.Sign(tiltPosition.Y)), 0.01f);
             }
-#endif
 
             param = this.tiltPosition;
             match = (this.tiltPosition != Vector2.Zero); // only if not centered

@@ -299,7 +299,6 @@ namespace Boku.Common
             return Localize("colorNames." + color.ToString());
         }   // end of GetColorName()
 
-#if !NETFX_CORE
         public static string GetNetworkSessionEndReason(Microsoft.Xna.Framework.Net.NetworkSessionEndReason reason)
         {
             switch (reason)
@@ -316,7 +315,6 @@ namespace Boku.Common
                     throw new Exception("invalid reason");
             }
         }
-#endif
 
         public static string GetGenreName(int flag)
         {

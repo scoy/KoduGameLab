@@ -10,21 +10,16 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-#if !NETFX_CORE
 using System.Management;
 using System.IO.Ports;
 using Microsoft.Win32.SafeHandles;
-#endif
 
 using Boku.Common;
 using Boku.Common.Xml;
 using Boku.Programming;
 
-#if !NETFX_CORE
 using MicrobitNeedDriverDlg;
-#endif
 
-#if !NETFX_CORE
 namespace Boku.Input
 {
     /// <summary>
@@ -368,6 +363,5 @@ namespace Boku.Input
         }
     }
 }
-#endif
 
 

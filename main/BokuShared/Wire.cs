@@ -232,6 +232,7 @@ namespace BokuShared.Wire
         public int Revision;
         public string ReleaseNotesUrl;
         public string UpdateUrl;
+        public string ServiceApiUrl;
 
         public Version Version
         {

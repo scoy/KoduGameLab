@@ -891,26 +891,20 @@ namespace Boku.Common
                 if (localFatChars.Count > 50)
                     return;
 
-#if !NETFX_CORE
                 Debug.Print("===");
                 Debug.Print("sor : " + sor);
                 Debug.Print("eor : " + eor);
-#endif
 
                 string display = "";
                 int i = 0;
                 foreach (FatChar fc in localFatChars)
                 {
-#if !NETFX_CORE
                     //Debug.Print(String.Format("{0:d2} : {1:1} {2:d2} {3:3}", i, fc.c, fc.EL, fc.type));
                     Debug.Print(i.ToString("d3") + " : " + fc.level.ToString("d2") + " " + fc.c + " " + fc.type + "(" + fc.originalType + ")" + " " + fc.displayOrderIndex.ToString("d3"));
-#endif
                     display += fc.c;
                     ++i;
                 }
-#if !NETFX_CORE
                 Debug.Print("Display : " + display);
-#endif
 #endif
             }   // end of Dump()
 

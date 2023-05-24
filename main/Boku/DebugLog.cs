@@ -17,6 +17,9 @@ namespace Boku
     /// </summary>
     public static class DebugLog
     {
+        // Set to true to add support for Indiana University data logging.
+        static public bool Indiana = false;
+
         /*
         static string filename = "KoduDebug.txt";
 
@@ -101,6 +104,63 @@ namespace Boku
         }   // end of WriteException()
 
         */
+
+        static string IndianaFilename = "run.csv";
+
+        /// <summary>
+        /// Writes a header to the debug file to indicate the new run.
+        /// </summary>
+        static public void IndianaNewRun()
+        {
+            IndianaWriteLine("\n\n\n====================\n");
+            IndianaWriteLine("New Run " + DateTime.Now.ToShortTimeString());
+            IndianaWriteLine("\n");
+
+        }   // end of IndianaNewRun()
+
+        static public void IndianaWriteLine(string str)
+        {
+            lock (IndianaFilename)
+            {
+
+                try
+                {
+                    string dirPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), @"SavedGames\Boku\Player1");
+                    string filePath = Path.Combine(dirPath, IndianaFilename);
+
+                    if (!Directory.Exists(dirPath))
+                    {
+                        Directory.CreateDirectory(dirPath);
+                    }
+
+                    var t = Thread.CurrentThread;
+                    File.AppendAllText(filePath, str + "\n");
+                }
+                catch (Exception e)
+                {
+                    if (e != null)
+                    {
+                        string msg = "";
+                        msg += "Error logging to debug file.\n";
+                        if (!string.IsNullOrEmpty(e.Message))
+                        {
+                            msg += e.Message + "\n";
+                        }
+                        if (e.InnerException != null)
+                        {
+                            if (!string.IsNullOrEmpty(e.InnerException.Message))
+                            {
+                                msg += e.InnerException.Message + "\n";
+                            }
+                        }
+
+                        MessageBox.Show(msg);
+
+                    }
+                }
+
+            }   // end of lock
+        }   // end of IndianaWriteLine()
 
     }   // end of class DebugLog
 

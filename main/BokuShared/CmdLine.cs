@@ -59,12 +59,6 @@ namespace BokuShared
         /// <param name="args"></param>
         public CmdLine(string[] args)
         {
-#if NETFX_CORE
-            if (args == null)
-            {
-                args = new string[0];
-            }
-#endif
             this.args = (string[])args.Clone();
             Parse(args);
         }

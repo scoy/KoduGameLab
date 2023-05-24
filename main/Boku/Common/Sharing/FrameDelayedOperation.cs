@@ -37,20 +37,12 @@ namespace Boku.Common.Sharing
         protected override void IStart()
         {
             Debug.Assert(false);    // TODO (****) Is this really being used?  If not, remove.
-#if NETFX_CORE
-            Debug.Assert(false, "What are we doing with LiveManager?");
-#else
             startFrame = Time.FrameCounter;
-#endif
         }
 
         internal override void Update()
         {
-#if NETFX_CORE
-            Debug.Assert(false, "What are we doing with LiveManager?");
-#else
             if (Time.FrameCounter - startFrame >= frames)
-#endif
             {
                 Complete(true);
             }

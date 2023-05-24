@@ -16,18 +16,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-
-#if NETFX_CORE
-    using Windows.System;
-    using Windows.UI.ApplicationSettings;
-    using Windows.UI.Popups;
-#else
-    using System.Windows.Forms;
-#endif
-using System.IO;
+using System.Windows.Forms;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -61,11 +54,7 @@ namespace Boku
     /// <summary>
     /// Boku, the story of a boy and his code.
     /// </summary>
-#if NETFX_CORE
-    partial class BokuGame : Microsoft.Xna.Framework.Game
-#else
     partial class BokuGame
-#endif
     {
         // instrumentation
         static object sessionTimerInstrument;
@@ -94,15 +83,10 @@ namespace Boku
         // SGI_MOD - picture support
         private static PictureManager pictureManager = new PictureManager();
 
-#if NETFX_CORE
-        // For Win8 we'll try and replace all calls to WinKeyboard
-        // with ones from the KeyboardInput class.
-#else
         /// <summary>
         /// Winkeyboard object for reading processed keyboard input.
         /// </summary>
         public WinKeyboard winKeyboard = null;
-#endif        
 
         //
         // Scenes, modes, whatever you want to call them.
@@ -116,7 +100,6 @@ namespace Boku
         public InGame inGame;
         public LoadLevelMenu loadLevelMenu;      // The menu formerly known as BigBin.
         public LoadLevelMenu community;
-        public LoadLevelMenu sharingScreen;
         public MiniHub miniHub;
         public ProgressScreen progressScreen;
 
@@ -125,8 +108,6 @@ namespace Boku
         public Random rnd = new Random();                   // Just because it's useful.
 
         private static bool logon = false;                  // should we have the user give us their username?
-
-        public static bool bMarsMode = false;               //For special JPL/NASA main menu.
 
         // This is the size that we're targetting for rendering.  Normally this is the same
         // as the viewport size.  The exception is when the tutorial system in active.  In
@@ -142,11 +123,7 @@ namespace Boku
 
         public GraphicsDevice GraphicsDevice
         {
-#if NETFX_CORE
-            get { return graphics.GraphicsDevice; }
-#else
             get { return XNAControl.Device; }
-#endif
         }
 
         /// <summary>
@@ -211,7 +188,6 @@ namespace Boku
             set { bokuGame.screenPosition = value; }
         }
         
-#if !NETFX_CORE
         bool isMouseVisible = true;
         public bool IsMouseVisible
         {
@@ -232,14 +208,11 @@ namespace Boku
                 }
             }
         }
-#endif
 
-#if !NETFX_CORE
         public bool IsActive
         {
             get { return XNAControl.Instance.Focused; }
         }
-#endif
 
         public static bool objectListDirty
         {
@@ -283,6 +256,11 @@ namespace Boku
                 string hiDefPath = path.Replace("Content", "ContentHiDef");
                 try
                 {
+                    // DEBUGGING NOTE:  If you get a ContentLoadException here for a shader don't stress.
+                    // Simple shaders will not have (or need) a HiDef version.
+                    // The main problem is that this is annoying so you need to go into the 
+                    // Debug->Exceptions and uncheck Thrown for Common Language Runtime Exceptions.
+                    // If needed, you can break and turn them back on once the content is loaded.
                     resource = ContentLoader.ContentManager.Load<T>(hiDefPath);
                 }
                 catch
@@ -332,14 +310,10 @@ namespace Boku
         {
             get
             {
-#if NETFX_CORE
-                //Debug.Assert(false, "How to get current thread id in WinRT?");
-#else
                 Debug.Assert(
                     ThreadId == System.Threading.Thread.CurrentThread.ManagedThreadId,
                     "The graphics device may only be accessed from the main application thread."
                 );
-#endif
                 return graphics;
             }
         }
@@ -386,11 +360,7 @@ namespace Boku
 
         static BokuGame()
         {
-#if NETFX_CORE
-            Debug.Assert(false, "What's the WinRT approved way of getting a thread id?");
-#else
             ThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
-#endif
         }
 
         public BokuGame()
@@ -400,45 +370,14 @@ namespace Boku
 
             //Guide.SimulateTrialMode = true;
 
-#if NETFX_CORE
-            //Debug.Assert(false, "argh");
-#else
             winKeyboard = new WinKeyboard(MainForm.Instance);
-#endif
             
             // TODO (****) *** Do we need this code any more?
-#if NETFX_CORE
-            InitializeComponent();
-#endif
 
-#if NETFX_CORE
-            SettingsPane curSettingsPane = SettingsPane.GetForCurrentView();
-            curSettingsPane.CommandsRequested += OnCommandsRequested;
-#endif
         }   // end of BokuGame c'tor
-
-#if NETFX_CORE
-        void OnCommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
-        {
-            UICommandInvokedHandler handler = new UICommandInvokedHandler(OnSettingsCommand);
-                
-            SettingsCommand privacyCommand = new SettingsCommand("Privacy", "Privacy", OnSettingsCommand);
-            args.Request.ApplicationCommands.Add(privacyCommand);
-        }
-
-        void OnSettingsCommand(Windows.UI.Popups.IUICommand command)
-        {
-            if (command.Label.Equals("Privacy"))
-            {
-                Uri uri = new Uri(Program2.SiteOptions.KGLUrl + @"/Link/PrivacyStatement");
-                Launcher.LaunchUriAsync(uri);
-            }
-        }
-#endif
 
         public void Window_ClientSizeChanged(object sender, EventArgs e)
         {
-#if !NETFX_CORE
             Form form = StartupForm.ActiveForm;
             if (form.WindowState == FormWindowState.Maximized)
             {
@@ -450,27 +389,13 @@ namespace Boku
                 BokuGame.Graphics.ApplyChanges();
                 */
             }
-#endif
         }
 
         //
         // Overrides from base game object starting with initialization.
         //
 
-#if NETFX_CORE
-        /*
-        protected override void Initialize()
-        {
-            //base.Initialize();
-        }
-        */
-        /// <summary>
-        /// For non-graphics initialization.
-        /// </summary>
-        public void OldInitialize()
-#else
         public void Initialize()
-#endif
         {
             /// Steve, uncomment this first line to simulate having 508,313,600MB less video memory
             //InGame.DebugCheckVideoMem(508313600); // Steve's line
@@ -490,37 +415,21 @@ namespace Boku
             // If there's already an instance of Kodu running, exit this one.
             if (bokuGame == null)
             {
-#if NETFX_CORE
-                Windows.UI.Xaml.Application.Current.Exit();
-#else
                 BokuGame.bokuGame.Exit();
-#endif
             }
 
             // Set the window title bar text to display program name and version
-#if NETFX_CORE
-            Window.Title = Strings.Localize("shareHub.appName") + " (" + Program2.ThisVersion.ToString() + ", " + Program2.SiteOptions.Product + ")";
-#else
             MainForm.Instance.Text = Strings.Localize("shareHub.appName") + " (" + Program2.ThisVersion.ToString() + ", " + Program2.SiteOptions.Product + ")";
-#endif
 
             // Instrument the Boku version number.
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.BokuVersion, Program2.ThisVersion.ToString());
-            Instrumentation.RecordDataItem(Instrumentation.DataItemId.UpdateCode, Program2.UpdateCode.ToString());
 
             // Instrument the OS version string.
-#if NETFX_CORE
-            Instrumentation.RecordDataItem(Instrumentation.DataItemId.OperatingSystem, "WinRT");
-#else
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.OperatingSystem, Environment.OSVersion.VersionString);
-#endif
 
-#if NETFX_CORE
-#else
             // Instrument the graphics device information.
-            string gfxString = String.Format("{0}, Driver: not supported in 4.0", GraphicsAdapter.DefaultAdapter.Description);
+            string gfxString = GraphicsAdapter.DefaultAdapter.Description;
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.GraphicsAdapter, gfxString);
-#endif
 
             BokuGame.gameAudio = new Audio.Audio(BokuSettings.Settings.Audio);
 
@@ -528,19 +437,11 @@ namespace Boku
             GamePadInput.Init();
             TouchInput.Init();
             Brush2DManager.Init();
-#if !NETFX_CORE
             SysFont.Init();
-#endif
             AuthUI.Init();
             GUIButtonManager.Init();
 
             gameListManager = new GameListManager();
-
-#if NETFX_CORE
-            GraphicsDevice.DeviceReset += DeviceResetHandler;
-#else
-            // TODO (****) *** Where to hook up device reset handler???
-#endif
 
             ScreenSize = new Vector2(BokuGame.bokuGame.GraphicsDevice.Viewport.Width, BokuGame.bokuGame.GraphicsDevice.Viewport.Height);
             ScreenPosition = Vector2.Zero;
@@ -551,17 +452,10 @@ namespace Boku
             MemoryStream stream = new MemoryStream();
             BokuSettings.Save(stream);
             stream.Position = 0;
-#if NETFX_CORE
-            Debug.Assert(false, "Not impl");
-            string settingsStr = "";
-#else
             string settingsStr = Encoding.ASCII.GetString(stream.ToArray());
-#endif
             Instrumentation.RecordDataItem(Instrumentation.DataItemId.SettingsXml, settingsStr);
 
-#if !NETFX_CORE
             // Call LoadContent()
-#endif
 
         }   // end of BokuGame Initialize()
 
@@ -728,208 +622,6 @@ namespace Boku
         // The first time LoadContent is called by the framework, this will be true. For subsequent calls, it will be false.
         bool firstLoadContent = true;
 
-#if NETFX_CORE
-        int loadStep = 0;
-        protected bool LoadContentWinRT()
-        {
-            bool doneLoading = false;
-
-            switch (loadStep)
-            {
-                case 0:
-                    // If we're here and we're not starting up then the device was lost and
-                    // we must do a complete reload of all content. Flush cached textures,
-                    // geometry, etc. from the content manager so they'll be reloaded from disk.
-                    ContentLoader.ContentManager.Unload();
-                    break;
-                case 1:
-                    // Moved here to clear up some order of initialization issues.
-                    // Would be nice to clean this up some time.
-                    HelpOverlay.Init();
-                    break;
-                case 2:
-                    TweakScreenHelp.Init();
-                    break;
-                case 3:
-                    // CardSpace must load before InGame so that InGame can generate the AddItem pie selector tiles.
-                    CardSpace.LoadContent(true);
-                    break;
-                case 4:
-                    // TODO (****) Figure out why this is needed.  For WinRT we're loading SSQuad early
-                    // so that we can display the loading screen.  But that causes an error in CardSpace.
-                    // By Unloading SSQuad here we avoid the error.  No clue what's going on.
-                    ScreenSpaceQuad.GetInstance().UnloadContent();
-                    CardSpace.InitDeviceResources(GraphicsDevice);
-                    break;
-                case 5:
-                    if (firstLoadContent)
-                    {
-                        // Load the static actors from the actors.xml list. This must
-                        // be done before the add item menus are initialized.
-                        ActorManager.LoadActors();
-                    }
-                    break;
-                case 6:
-                    if (firstLoadContent)
-                    {
-                        // Create and activate the shader globals object.  We want
-                        // this to be the first object "rendered" each frame.
-                        shaderGlobals = new ShaderGlobals();
-                        BokuGame.gameListManager.AddObject(shaderGlobals);
-                    }
-                    break;
-                case 7:
-                    if (firstLoadContent)
-                    {
-                        LoadSurfaces();
-                    }
-                    break;
-                case 8:
-                    if (firstLoadContent)
-                    {
-                        // Create the scenes and add them to the object list.
-                        titleScreenMode = new TitleScreenMode();
-                        BokuGame.gameListManager.AddObject(titleScreenMode);
-                    }
-                    break;
-                case 9:
-                    if (firstLoadContent)
-                    {
-                        progressScreen = new ProgressScreen();
-                    }
-                    break;
-                case 10:
-                    if (firstLoadContent)
-                    {
-                        ThoughtBalloonManager.Init();
-                        ToolTipManager.Init();
-                        Hints.Init();
-                    }
-                    break;
-                case 11:
-                    if (firstLoadContent)
-                    {
-                        inGame = new InGame();
-                        BokuGame.gameListManager.AddObject(inGame);
-                    }
-                    break;
-                case 12:
-                    if (firstLoadContent)
-                    {
-                        mainMenu = new MainMenu();
-                        BokuGame.gameListManager.AddObject(mainMenu);
-                    }
-                    break;
-                case 13:
-                    if (firstLoadContent)
-                    {
-                        videoOutput = new VideoOutput();
-                        BokuGame.gameListManager.AddObject(videoOutput);
-                    }
-                    break;
-                case 14:
-                    if (firstLoadContent)
-                    {
-                        helpScreens = new HelpScreens();
-                        BokuGame.gameListManager.AddObject(helpScreens);
-                    }
-                    break;
-                case 15:
-                    if (firstLoadContent)
-                    {
-                        community = new LoadLevelMenu(LevelBrowserType.Community);
-                        BokuGame.gameListManager.AddObject(community);
-                    }
-                    break;
-                case 16:
-                    if (firstLoadContent)
-                    {
-                        loadLevelMenu = new LoadLevelMenu(LevelBrowserType.Local);
-                        BokuGame.gameListManager.AddObject(loadLevelMenu);
-                    }
-                    break;
-                case 17:
-                    if (firstLoadContent)
-                    {
-                        miniHub = new MiniHub();
-                        BokuGame.gameListManager.AddObject(miniHub);
-                    }
-                    break;
-                case 18:
-                    if (firstLoadContent)
-                    {
-                        sharingScreen = new LoadLevelMenu(LevelBrowserType.Sharing);
-                        BokuGame.gameListManager.AddObject(sharingScreen);
-                    }
-                    break;
-                case 19:
-                    if (firstLoadContent)
-                    {
-                        // Activate the title sceen. It will display progress while
-                        // additional assets are loaded in the background.
-                        shaderGlobals.Activate();
-                        titleScreenMode.Activate();
-
-                        // Last item in firstLoadContent
-                        firstLoadContent = false;
-                    }
-                    break;
-                case 20:
-                    // Init the utils object.
-                    Utils.Init(GraphicsDevice);
-                    break;
-                case 21:
-                    // Synchronously load resources necessary to display the title
-                    // and progress screens while we background-load queued content.
-                    BokuGame.Load(shaderGlobals, true);
-                    BokuGame.Load(SimpleTexturedQuad.GetInstance(), true);
-                    BokuGame.Load(CameraSpaceQuad.GetInstance(), true);
-                    BokuGame.Load(ScreenSpaceQuad.GetInstance(), true);
-                    BokuGame.Load(ScreenSpace3PanelQuad.GetInstance(), true);
-                    BokuGame.Load(titleScreenMode, true);
-                    BokuGame.Load(progressScreen, true);
-                    break;
-                case 22:
-                    // Static items that don't implement INeedsDeviceReset
-                    BokuGame.Load(singletonContentLoader);
-                    break;
-                case 23:
-                    // Sphere object
-                    BokuGame.Load(Sphere.GetInstance());
-
-                    // Actors, load all actor models into BokuGame
-                    ActorManager.LoadModels();
-                    break;
-                case 24:
-                    // Scenes
-                    BokuGame.Load(mainMenu);
-                    BokuGame.Load(videoOutput);
-                    BokuGame.Load(helpScreens);
-                    BokuGame.Load(sharingScreen);
-                    BokuGame.Load(community);
-                    BokuGame.Load(loadLevelMenu);
-                    BokuGame.Load(inGame);
-                    BokuGame.Load(miniHub);
-                    break;
-                case 25:
-                    base.LoadContent();
-                    break;
-                default:
-                    doneLoading = true;
-                    break;
-            }
-
-            ++loadStep;
-            // If done, reset for next time.
-            if(doneLoading)
-            {
-                loadStep = 0;
-            }
-
-            return doneLoading;
-        }   // end of BokuGame LoadContentWinRT()
-#else
-
         public void LoadContent()
         {
             //Debug.WriteLine("Begin LoadContent");
@@ -995,9 +687,6 @@ namespace Boku
                 miniHub = new MiniHub();
                 BokuGame.gameListManager.AddObject(miniHub);
 
-                sharingScreen = new LoadLevelMenu(LevelBrowserType.Sharing);
-                BokuGame.gameListManager.AddObject(sharingScreen);
-
                 // Activate the title sceen. It will display progress while
                 // additional assets are loaded in the background.
                 shaderGlobals.Activate();
@@ -1031,7 +720,6 @@ namespace Boku
             BokuGame.Load(mainMenu);
             BokuGame.Load(videoOutput);
             BokuGame.Load(helpScreens);
-            BokuGame.Load(sharingScreen);
             BokuGame.Load(community);
             BokuGame.Load(loadLevelMenu);
             BokuGame.Load(inGame);
@@ -1040,7 +728,6 @@ namespace Boku
             //Debug.WriteLine("End LoadContent");
 
         }   // end of BokuGame LoadContent()
-#endif
 
         public void UnloadContent()
         {
@@ -1071,7 +758,6 @@ namespace Boku
             BokuGame.Unload(helpScreens);
             BokuGame.Unload(community);
             BokuGame.Unload(loadLevelMenu);
-            BokuGame.Unload(sharingScreen);
             BokuGame.Unload(inGame);
             BokuGame.Unload(miniHub);
 
@@ -1114,7 +800,6 @@ namespace Boku
             BokuGame.DeviceResetIfLoaded(mainMenu);
             BokuGame.DeviceResetIfLoaded(videoOutput);
             BokuGame.DeviceResetIfLoaded(helpScreens);
-            BokuGame.DeviceResetIfLoaded(sharingScreen);
             BokuGame.DeviceResetIfLoaded(community);
             BokuGame.DeviceResetIfLoaded(loadLevelMenu);
             BokuGame.DeviceResetIfLoaded(inGame);
@@ -1158,33 +843,6 @@ namespace Boku
             }
         }
 
-#if NETFX_CORE
-        // For WinRT cert we need to get away from the splash screen
-        // as soon as possible.  This is a hack to get the loading
-        // screen up for 1 frame and then do Initialization.
-        int startupFrameCount = 3;
-        TitleScreen titleScreen;
-#endif
-
-#if NETFX_CORE
-        /// <summary>
-        /// Only used by Win8 version
-        /// </summary>
-        /// <param name="gameTime"></param>
-        protected override void Update(GameTime gameTime)
-        {
-            Update();
-        }
-
-        /// <summary>
-        /// Only used by Win8 version
-        /// </summary>
-        /// <param name="gameTime"></param>
-        protected override void Draw(GameTime gameTime)
-        {
-            Draw();
-        }
-#else
         /// <summary>
         /// Only used by XNAControl desktop version.
         /// </summary>
@@ -1194,73 +852,14 @@ namespace Boku
             Draw();
             ScreenGrab();
         }
-#endif
 
         //
         // These methods make up the main game loop.
         //
         public void Update()
         {
-#if NETFX_CORE
-
-            // Hack to work within Windows store guidelines for startup perf.
-            // We push the Initializing and Content Loading to happen after
-            // the Update/Render loop is started.  It still takes the same amount
-            // of time but passes cert.
-            if (startupFrameCount > 0)
-            {
-                Time.Update();
-                if (titleScreen == null)
-                {
-                    titleScreen = new TitleScreen();
-                    titleScreen.LoadContent(true);
-                    ScreenSpaceQuad.GetInstance().LoadContent(true);
-                }
-                if (startupFrameCount == 2)
-                {
-                    BokuGame.bokuGame.OldInitialize();
-                }
-                if (startupFrameCount == 1)
-                {
-                    bool done = BokuGame.bokuGame.LoadContentWinRT();
-                    // Prevent frame countdown from advancing if not done loading.
-                    if (!done)
-                    {
-                        ++startupFrameCount;
-                    }
-                }
-                --startupFrameCount;
-                return;
-            }
-
-            /*            
-            if (firstTime)
-            {
-                BokuGame.gameListManager.AddObject(titleScreenMode);
-
-                BokuGame.bokuGame.OldInitialize();
-
-                firstTime = false;
-            }
-            */
-#endif
-
-#if !NETFX_CORE
             System.Windows.Forms.Form form = StartupForm.ActiveForm;
-#endif
 
-#if NETFX_CORE
-            // On WinRT the viewport will change sizes as the app gets snapped.  
-            // Change ScreenSize to keep up.  Note we still get the wrong numbers
-            // too much of the time espeically when width = 320 but it does
-            // revert to proper values when full screen.
-            if (BokuGame.bokuGame.GraphicsDevice.Viewport.Width != BokuGame.ScreenSize.X || BokuGame.bokuGame.GraphicsDevice.Viewport.Height != BokuGame.ScreenSize.Y)
-            {
-                BokuGame.ScreenSize = new Vector2(BokuGame.bokuGame.GraphicsDevice.Viewport.Width, BokuGame.bokuGame.GraphicsDevice.Viewport.Height);
-                // Capture new copy of viewport.
-                InGame.CaptureFullViewport();
-            }
-#else
             // Strangely enough, we actually see the window change sizes here before
             // we get the SizeChanged event.  So deal with it.
             // If the TutorialManager is active it may be tweaking this so don't touch.
@@ -1272,7 +871,6 @@ namespace Boku
                 InGame.CaptureFullViewport();
             }
 
-#endif
             // We need to update the tutorial and hints first so that they can steal input if needed.
             // Also the screen size and position should be set before doing anything else.
             TutorialManager.Update();
@@ -1370,19 +968,7 @@ namespace Boku
 
         public void Draw()
         {
-
-#if NETFX_CORE
-            // Hack to make WinRT startup look better.
-            if (startupFrameCount > 0)
-            {
-                titleScreen.Render();
-                return;
-            }
-#endif
-
-#if !NETFX_CORE
             Debug.Assert(System.Threading.Thread.CurrentThread.ManagedThreadId == ThreadId);
-#endif
 
             // Render to the TutorialManager's render target.
             TutorialManager.PreRender();
@@ -1472,7 +1058,6 @@ namespace Boku
         private void ScreenGrab()
         {
 // (TODO (****) BROKEN
-#if !NETFX_CORE
             if (Actions.PrintScreen.WasPressed || Actions.ShiftPrintScreen.WasPressed || pictureManager.DoScreenGrab)
             {
                 bool debugCapture = Actions.ShiftPrintScreen.WasPressed;
@@ -1539,7 +1124,6 @@ namespace Boku
                     pictureManager.ScreenGrabFinished();
                 }
             }
-#endif
         }   // end of ScreenGrab()
 
         private string ScreenGrabName()
@@ -1560,11 +1144,7 @@ namespace Boku
         // Game loop is over, exiting.
         //
 
-#if NETFX_CORE
-        protected override void EndRun()
-#else
         public void EndRun()
-#endif
         {
             // Adding an empty try/catch here because I'm seeing null dref exceptions
             // in the error log but I'm not sure what's causing it.
@@ -1614,13 +1194,10 @@ namespace Boku
             //base.OnExiting(sender, args);
         }   // end of BokuGame OnExiting()
 
-#if NETFX_CORE
-#else
         public void Exit()
         {
             Application.Exit();
         }
-#endif
 
         //
         // End of game overrides.

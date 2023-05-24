@@ -620,7 +620,6 @@ namespace Boku
                 string str = new string(c, 1);
                 str = TextHelper.FilterInvalidCharacters(str);
 
-#if !NETFX_CORE
                 // Copy?  Just copy the whole description to the clipboard since we don't
                 // support any kind of selection.
                 if (c == 3)
@@ -636,7 +635,6 @@ namespace Boku
                         str = System.Windows.Forms.Clipboard.GetText();
                     }
                 }
-#endif
 
                 shared.blob.InsertString(str);
 
@@ -710,10 +708,6 @@ namespace Boku
             public override void Activate()
             {
                 KeyboardInput.OnKey = KeyInput;
-#if NETFX_CORE
-                Debug.Assert(false, "Does this work?  Why did we prefer winKeyboard?");
-                KeyboardInput.OnChar = TextInput;
-#else
                 // ARGH!
                 // WinKeyboard handles Greek tonos properly which is probably why we switched over.
                 // KeyboardInput handles Alt+ characters properly, which is why we need to switch back.
@@ -722,18 +716,13 @@ namespace Boku
                 // pressed.
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = TextInput;
                 KeyboardInput.OnChar = TextInputAltOnly;
-#endif
             }
 
             public override void Deactivate()
             {
                 KeyboardInput.OnKey = null;
-#if NETFX_CORE
-                KeyboardInput.OnChar = null;
-#else
                 BokuGame.bokuGame.winKeyboard.CharacterEntered = null;
                 KeyboardInput.OnChar = null;
-#endif
             }
 
             #endregion

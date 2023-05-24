@@ -2153,11 +2153,7 @@ namespace Boku.Common
 
                 if (KeyboardInput.WasPressed(Keys.Escape))
                 {
-#if NETFX_CORE
-                    Windows.UI.Xaml.Application.Current.Exit();
-#else
                     BokuGame.bokuGame.Exit();
-#endif
                 }
                     if (KeyboardInput.WasPressed(Keys.Enter))
                 {

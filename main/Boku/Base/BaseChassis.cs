@@ -1728,10 +1728,15 @@ namespace Boku.Base
                     continue;
                 }
 
-                // Project point onto new heading path and update new heading.
-                Vector3 newPoint = desiredMovement.AvoidTargets[i].Movement.Position + delta * minDist / deltaLen;
-                newHeading = newPoint - actor.Movement.Position;
-                newHeading.Normalize();
+                // If deltaLen == 0 then the avoid direction generates NaNs.  So do nothing this frame 
+                // since next frame it should be different since everything is moving.
+                if (deltaLen != 0)
+                {
+                    // Project point onto new heading path and update new heading.
+                    Vector3 newPoint = desiredMovement.AvoidTargets[i].Movement.Position + delta * minDist / deltaLen;
+                    newHeading = newPoint - actor.Movement.Position;
+                    newHeading.Normalize();
+                }
             }
 
             return newHeading;

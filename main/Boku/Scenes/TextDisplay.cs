@@ -141,7 +141,6 @@ namespace Boku
 
                 if (InGame.inGame.State == InGame.States.Active && InGame.inGame.CurrentUpdateMode == InGame.UpdateMode.RunSim)
                 {
-#if !NETFX_CORE
                     // For games using micro:bit, allow buttons to dismiss ingame dialogs.
                     if (InGame.inGame.CurrentUpdateMode == InGame.UpdateMode.RunSim)
                     {
@@ -155,7 +154,6 @@ namespace Boku
                             }
                         }
                     }
-#endif
 
                     // We need to be able to slip out to the mini-hub here since
                     // continuous, repeated calls to TextDisplay can lock the 

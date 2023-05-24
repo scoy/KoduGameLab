@@ -852,14 +852,9 @@ namespace Boku.UI
                 if (!progElement.ReflexCompatible(this.reflex, this.card, false))
                     continue;
 
-#if !NETFX_CORE                
                 // Don't show microbit tiles if settings disallows it.
                 if (!XmlOptionsData.ShowMicrobitTiles && MicrobitExtras.IsMicrobitTile(progElement))
                     continue;
-#else
-                if (MicrobitExtras.IsMicrobitTile(progElement))
-                    continue;
-#endif 
 
                 // If this is an inline, we need to do a recursion check to not allow
                 // any pages that could cause a loop.

@@ -5,11 +5,19 @@
 # define FLUSH_TO_FILE
 #endif
 
+// Uncomment this to enable sending of instrumented counters.
+// Hidden since they don't seem to be of much use.
+// #define ENABLE_COUNTERS
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
+
+using Newtonsoft.Json;
+
+using Boku.Common.Sharing;
 
 namespace Boku.Common
 {
@@ -47,6 +55,9 @@ namespace Boku.Common
 
             // User searched levels.
             SearchLevels,
+
+            // User deleted a level from the community.
+            LevelDeleted,
 
             // Add your event ids above this comment line
             SIZEOF,
@@ -133,9 +144,9 @@ namespace Boku.Common
 
             //active time spent in Kodu
             ActiveSession,
-            
+
             //time in main menu
-            MainMenuTime, 
+            MainMenuTime,
 
             // Time spent in the community level browser UI.
             CommunityUI,
@@ -179,7 +190,11 @@ namespace Boku.Common
             InGame,                         // In game, edit or sim mode
             MiniHubTime,                    // Home Menu
 
-         //   InGameToolBox,                  // Top level wrapper for all world editing tools.
+            //   InGameToolBox,                  // Top level wrapper for all world editing tools.
+
+            ResponseTime,
+            PingTime,
+            SearchTime,
 
             // Add your timer ids above this comment line
             SIZEOF,
@@ -198,7 +213,8 @@ namespace Boku.Common
             BokuVersion,
 
             //Update Code - Used to show provenance of install (MS or open)
-            UpdateCode,
+            // Removed to help limit database growth.
+            //UpdateCode,
 
             // OS version
             OperatingSystem,
@@ -234,14 +250,15 @@ namespace Boku.Common
     public static partial class Instrumentation
     {
         #region Public
-        
+
         //The list of currently active timers.
         public static Dictionary<TimerId, object> activeTimers = new Dictionary<TimerId, object>();
 
         public static void recordFrameRate(float fps)
         {
             int bucket = (int)fps / 5;
-            switch(bucket){
+            switch(bucket)
+            {
                 case 0:
                     IncrementCounter(CounterId.FPS_0to5);
                     break;
@@ -318,6 +335,12 @@ namespace Boku.Common
             if (!Program2.SiteOptions.Instrumentation)
                 return;
 
+            // We only really care about these two events.  Ignore the rest.
+            if (id != EventId.LevelUploaded && id != EventId.MicrobitTilesEnabled)
+            {
+                return;
+            }
+
             if (instruments.events[(int)id] == null)
                 instruments.events[(int)id] = new List<Event>();
 
@@ -350,6 +373,7 @@ namespace Boku.Common
         /// <param name="value"></param>
         public static void SetCounter(CounterId id, int value)
         {
+#if ENABLE_COUNTERS
             if (!Program2.SiteOptions.Instrumentation)
                 return;
 
@@ -358,6 +382,7 @@ namespace Boku.Common
 
             instruments.counters[(int)id].Id = id;
             instruments.counters[(int)id].Count = value;
+#endif
         }
 
         /// <summary>
@@ -370,12 +395,19 @@ namespace Boku.Common
             if (!Program2.SiteOptions.Instrumentation)
                 return null;
 
+            // Trim down the number of timers we actually care about.
+            // Only keep these three.
+            if(id != TimerId.ActiveSession && id != TimerId.BokuSession && id != TimerId.ProgrammingTime)
+            {
+                return null;
+            }
+
             ActiveTimer timer = new ActiveTimer();
             timer.id = id;
 
             // For some reason we occasionally get duplicate entries.
             // Assert in debug mode but don't let it crash.
-            Debug.Assert(!activeTimers.ContainsKey(timer.id), "Why are we adding a duplicate key?");
+            //Debug.Assert(!activeTimers.ContainsKey(timer.id), "Why are we adding a duplicate key?");
 
             // Remove timer if already in dictionary.  This shouldn't
             // happen but prevents crashes in release mode.
@@ -388,7 +420,7 @@ namespace Boku.Common
             return timer;
         }
 
-        
+
         /// <summary>
         /// Stops a timer.
         /// </summary>
@@ -399,6 +431,14 @@ namespace Boku.Common
                 return;
 
             ActiveTimer timer = timerObj as ActiveTimer;
+
+            // As part of the effort to trim the amount of instrumentation we limit which
+            // timers can actually be started.  For those not on the list, null is returned.
+            // This can then be passed into here where we just ignore it.
+            if (timer == null)
+            {
+                return;
+            }
 
             if (instruments.timers[(int)timer.id] == null)
             {
@@ -442,6 +482,12 @@ namespace Boku.Common
         {
             if (!Program2.SiteOptions.Instrumentation)
                 return;
+
+            if (id == DataItemId.SettingsXml)
+            {
+                // Just fills up database with info we don't care about.
+                return;
+            }
 
             if (instruments.dataItems[(int)id] == null)
                 instruments.dataItems[(int)id] = new List<DataItem>();
@@ -521,16 +567,114 @@ namespace Boku.Common
             }
 #endif
 
+            // Prepare and upload instrumentation
+            UploadInstruments();
+
+            /*
             Boku.Web.Trans.Instrumentation trans = new Boku.Web.Trans.Instrumentation(
                 instruments,
                 Flush_Callback,
                 state);
-
+            */
             // Make a new, empty set of instruments.
             instruments = new Instruments();
 
-            return trans.Send();
-            //return false;
+            //return trans.Send();
+
+            // Return false tells system not to wait.
+            return false;
+        }
+
+        static List<object> ExceptionInfos = new List<object>();
+        public static void RecordException(object info)
+        {
+            ExceptionInfos.Add(info);
+        }
+
+
+        public static void UploadInstruments()
+        {
+            //progress.Message = "Sending your feedback...";
+
+            // Put all instrumation in one object for upload
+            var cookedInstrumentation = new
+            {
+                userName= BokuShared.Auth.CreatorName,
+                events = new List<object>(),
+                counters = new List<object>(),
+                timers = new List<object>(),
+                dataItems = new List<object>(),
+                exceptions= ExceptionInfos //NOTE. Used directly. Not cooked.
+            };
+            //Turn each instrument type into a simple object array for 
+            //upload to services
+            for (int i = 0; i < instruments.events.Length; ++i)
+            {
+                List<Boku.Common.Instrumentation.Event> list = instruments.events[i];
+                if (list == null)
+                    continue;
+                for (int j = 0; j < list.Count; ++j)
+                {
+                    Boku.Common.Instrumentation.Event src = list[j];
+                    cookedInstrumentation.events.Add(new
+                    {
+                        Name = src.Id.ToString(),
+                        Comment = src.Comment,
+                    });
+                }
+            }
+
+            for (int i = 0; i < instruments.timers.Length; ++i)
+            {
+                Boku.Common.Instrumentation.Timer src = instruments.timers[i];
+                if (src == null)
+                    continue;
+                cookedInstrumentation.timers.Add(new
+                {
+                    Name = src.Id.ToString(),
+                    TotalTime = src.TotalTime,
+                    Count = src.Count
+                });
+
+            }
+
+            for (int i = 0; i < instruments.counters.Length; ++i)
+            {
+                Boku.Common.Instrumentation.Counter src = instruments.counters[i];
+                if (src == null)
+                    continue;
+                cookedInstrumentation.counters.Add(new
+                {
+                    Name = src.Id.ToString(),
+                    Count = src.Count
+                });
+            }
+
+            for (int i = 0; i < instruments.dataItems.Length; ++i)
+            {
+                List<Boku.Common.Instrumentation.DataItem> list = instruments.dataItems[i];
+                if (list == null)
+                    continue;
+                for (int j = 0; j < list.Count; ++j)
+                {
+                    Boku.Common.Instrumentation.DataItem src = list[j];
+                    cookedInstrumentation.dataItems.Add(new
+                    {
+                        Name = src.Id.ToString(),
+                        Value = src.Value
+                    });
+                }
+            }
+
+            //Transmit cooked instruments
+            if(KoduService.UploadInstrumentationNonAsync(cookedInstrumentation))
+            {
+                //Upload ok
+            }
+            else
+            {
+                //upload failed
+            }
         }
 
         #endregion

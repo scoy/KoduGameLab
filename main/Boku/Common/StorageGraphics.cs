@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-
-#region Using
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +14,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 
 using System.Xml.Serialization;
-#endregion Using
 
 
 /* This is an extension of the Storage class defined in Storage.cs
@@ -28,6 +25,7 @@ namespace Boku.Common
     public partial class Storage4
     {
         #region Constants for DDS ReadWrite
+
         private const int INT_SIZE = 12;
         private const UInt32 DDS_FILE_MAGIC_NUMBER = 0x20534444;
         private const UInt32 DDSD_MIPMAPCOUNT = 0x00020000;
@@ -43,10 +41,13 @@ namespace Boku.Common
         private const UInt32 DDSCAPS_COMPLEX = 0x00000008;
         private const UInt32 DDSCAPS_TEXTURE = 0x00001000;
         private const UInt32 DDSCAPS_MIPMAP = 0x00400000;
+
         #endregion Constants for DDS ReadWrite
 
         #region File Name Format Constants
+
         private const string FULL_FILE_PATH_FORMAT = "{0}.{1}";
+
         #endregion
 
         #region Texture2D Specific
@@ -141,12 +142,7 @@ namespace Boku.Common
                     writer.Write(pixel.PackedValue);
                 }
 
-#if NETFX_CORE
-                writer.Flush();
-                writer.Dispose();
-#else
                 writer.Close();
-#endif
                 Close(stream);
 
             }
@@ -181,44 +177,6 @@ namespace Boku.Common
             return false;
         }
 
-        static public bool TextureSaveToStream(Texture2D tex, Stream stream)
-        {
-            if (tex != null)
-            {
-                // A super-hack for the PC
-                Debug.Assert(false);
-#if !NETFX_CORE
-                // TODO (****) save to dds no longer supported.  Try SaveAsPng() or SaveAsJpeg()
-                //tex.Save("TextureSaveToStream.dds", ImageFileFormat.Dds);
-                // Intentionally uses the filesystem API, not Storage class.
-                Stream file = File.Open("TextureSaveToStream.dds", FileMode.Open);
-                BinaryReader reader = new BinaryReader(file);
-                BinaryWriter writer = new BinaryWriter(stream);
-
-                byte[] buffer = new byte[4096];
-
-                do
-                {
-                    int count = reader.Read(buffer, 0, buffer.Length);
-                    if (count == 0)
-                        break;
-
-                    writer.Write(buffer, 0, count);
-                }
-                while (true);
-
-                reader.Close();
-
-                // Intentionally uses the filesystem API, not Storage class.
-                File.Delete("TextureSaveToStream.dds");
-
-                return true;
-#endif
-            }
-            return false;
-
-        }
-
 
         /// <summary>
         /// Load a texture from a given stream.
@@ -236,8 +194,9 @@ namespace Boku.Common
 
             switch (textureType)
             {
+                case TextureType.jpg:
                 case TextureType.png:
-                    return TextureLoadPNG(stream);
+                    return TextureLoadPNG_JPG(stream);
 
                 case TextureType.dds:
                     return TextureLoadDDS(stream);
@@ -279,7 +238,7 @@ namespace Boku.Common
         }
 
         /// <summary>
-        /// Load a .dds texture. On PC, will try .png if that fails.
+        /// Load a texture. On PC, will try .png if that fails.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="wantRetry"></param>
@@ -287,6 +246,22 @@ namespace Boku.Common
         static public Texture2D TextureLoad(string name, bool wantRetry)
         {
             name = StripTextureExt(name);
+
+            if (FileExists(name + ".jpg", StorageSource.All))
+            {
+                Stream stream = OpenRead(name + ".jpg", StorageSource.All);
+                Texture2D tex = TextureLoadPNG_JPG(stream);
+                Close(stream);
+                return tex;
+            }
+
+            if (FileExists(name + ".png", StorageSource.All))
+            {
+                Stream stream = OpenRead(name + ".png", StorageSource.All);
+                Texture2D tex = TextureLoadPNG_JPG(stream);
+                Close(stream);
+                return tex;
+            }
 
             if (FileExists(name + ".dds", StorageSource.All))
             {
@@ -296,13 +271,6 @@ namespace Boku.Common
                 return tex;
             }
 
-            if (FileExists(name + ".png", StorageSource.All))
-            {
-                Stream stream = OpenRead(name + ".png", StorageSource.All);
-                Texture2D tex = TextureLoadPNG(stream);
-                Close(stream);
-                return tex;
-            }
 
             throw new FileNotFoundException(String.Format("Texture2D file not found in {0}: {1}", StorageSource.All, name));
         }
@@ -314,6 +282,7 @@ namespace Boku.Common
         /// <returns></returns>
         static public void TextureDelete(string name)
         {
+            Delete(name + ".jpg");
             Delete(name + ".dds");
             Delete(name + ".png");
         }
@@ -326,6 +295,12 @@ namespace Boku.Common
         static public bool TextureExists(string nameNoExt)
         {
             bool ret = false;
+            
+            if (FileExists(nameNoExt + ".jpg", StorageSource.All))
+            {
+                ret = true;
+            }
+
             if (FileExists(nameNoExt + ".dds", StorageSource.All))
             {
                 ret = true;
@@ -351,18 +326,27 @@ namespace Boku.Common
 
         static public Stream TextureFileOpenRead(string nameNoExt, StorageSource sources)
         {
+            // JPG is now the default so try that first.
+            if (FileExists(nameNoExt + ".jpg", sources))
+            {
+                return OpenRead(nameNoExt + ".jpg", sources);
+            }
+
+            // Fall back to DDS which may be valid for older levels.
             if (FileExists(nameNoExt + ".dds", sources))
             {
                 return OpenRead(nameNoExt + ".dds", sources);
             }
 
+            // Finally, if nothing else try PNG.
             if (FileExists(nameNoExt + ".png", sources))
             {
                 return OpenRead(nameNoExt + ".png", sources);
             }
 
             throw new FileNotFoundException(String.Format("Texture2D file not found in {0}: {1}", sources, nameNoExt));
-        }
+
+        }   // end of TextureFileOpenRead()
 
         static public Stream TextureFileOpenRead(string nameNoExt, StorageSource sources, TextureFileType fileType)
         {
@@ -505,11 +489,7 @@ namespace Boku.Common
                         break;
                 }
 
-#if NETFX_CORE
-                reader.Dispose();
-#else
                 reader.Close();
-#endif
                 Close(stream);
 
                 return tex;
@@ -522,7 +502,7 @@ namespace Boku.Common
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        static private Texture2D TextureLoadPNG(Stream stream)
+        static private Texture2D TextureLoadPNG_JPG(Stream stream)
         {
             GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
 
@@ -537,6 +517,7 @@ namespace Boku.Common
         public enum TextureType
         {
             png,
+            jpg,
             dds,
 
             Unknown // must be last, doubles as NumTypes
@@ -549,6 +530,12 @@ namespace Boku.Common
         /// <returns></returns>
         static public TextureType TextureFormat(byte[] magic)
         {
+            if ((magic[0] == 0xff)
+                && (magic[1] == 0xd8))
+            {
+                return TextureType.jpg;
+            }
+
             if ((magic[0] == ((DDS_FILE_MAGIC_NUMBER >> 0) & 0xff))
                 && (magic[1] == ((DDS_FILE_MAGIC_NUMBER >> 8) & 0xff))
                 && (magic[2] == ((DDS_FILE_MAGIC_NUMBER >> 16) & 0xff))

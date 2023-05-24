@@ -10,9 +10,6 @@ using System.Xml;
 using System.Diagnostics;
 using System.IO;
 
-#if NETFX_CORE
-    using Windows.UI.Popups;
-#endif
 
 namespace Boku.Common.Localization
 {
@@ -142,11 +139,7 @@ namespace Boku.Common.Localization
                 return result;
             }
 
-#if NETFX_CORE
-            XmlReader reader = null;
-#else
             XmlTextReader reader = null;
-#endif
             Stream stream = null;
 
             try
@@ -157,16 +150,8 @@ namespace Boku.Common.Localization
                 stream = Storage4.OpenRead(fileName, StorageSource.All);
 
                 // Create our xml reader
-#if NETFX_CORE
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.ConformanceLevel = ConformanceLevel.Fragment;
-                settings.IgnoreWhitespace = true;
-                settings.IgnoreComments = true;
-                reader = XmlReader.Create(stream, settings);
-#else
                 // DebugLog.WriteLine("    create reader");
                 reader = new XmlTextReader(stream);
-#endif
 
                 // DebugLog.WriteLine("    advance reader");
                 // Advance the reader to the specified start depth
@@ -269,17 +254,11 @@ namespace Boku.Common.Localization
                 result = null;
             }
 
-#if NETFX_CORE
-            if(reader != null)
-            {
-                reader.Dispose();
-            }
-#else
             if (reader != null)
             {
                 reader.Close();
             }
-#endif
+
             if (stream != null)
             {
                 stream.Close();
@@ -365,15 +344,11 @@ namespace Boku.Common.Localization
                         {
                         }
 
-#if NETFX_CORE
-                        MessageDialog dialog = new MessageDialog("reportPath = " + reportPath + "\nLoadContent failure in Localizer.");
-#else
                         System.Windows.Forms.MessageBox.Show(
                             "reportPath = " + reportPath,
                             "LoadContent failure in Localizer.",
                             System.Windows.Forms.MessageBoxButtons.OK,
                             System.Windows.Forms.MessageBoxIcon.Asterisk);
-#endif
                     }
                 }
             }
@@ -384,11 +359,7 @@ namespace Boku.Common.Localization
             if (reportWriter != null)
             {
                 reportWriter.Flush();
-#if NETFX_CORE
-                reportWriter.Dispose();
-#else
                 reportWriter.Close();
-#endif
                 reportWriter = null;
             }
 

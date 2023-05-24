@@ -201,11 +201,7 @@ namespace Boku.Base
         private Vector4 GetColor(EffectParameter param)
         {
             float[] tmp = new float[3];
-#if NETFX_CORE
-            tmp = param.GetValueSingleArray();
-#else
             tmp = param.GetValueSingleArray(3);
-#endif
 
             Vector4 result = new Vector4(tmp[0], tmp[1], tmp[2], 1.0f);
 

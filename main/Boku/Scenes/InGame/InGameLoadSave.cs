@@ -6,6 +6,7 @@
 #define AutoSaveToDisk
 
 //#define CAMERA_DEBUG
+//#define DEEP_COPY_DEBUG
 
 using System;
 using System.Collections;
@@ -13,9 +14,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
-#if !NETFX_CORE
-    using System.Windows.Forms;
-#endif
+using System.Windows.Forms;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -52,16 +51,16 @@ namespace Boku
     {
         #region Members
 
-        private static XmlWorldData xmlWorldData = null;    // Top level world info.
-        private static XmlLevelData xmlLevelData = null;    // "Stuff" ie bots, programs, etc.
+        static XmlWorldData xmlWorldData = null;    // Top level world info.
+        static XmlLevelData xmlLevelData = null;    // "Stuff" ie bots, programs, etc.
 
-        private static string xmlWorldDataFullPath = null;
-        private static string xmlLevelDataFullPath = null;
+        static string xmlWorldDataFullPath = null;
+        static string xmlLevelDataFullPath = null;
 
-        private static bool autoSaved = false;              // If true, this means the level has been modified and autosaved
-                                                            // but not yet saved for real.
+        static bool autoSaved = false;              // If true, this means the level has been modified and autosaved
+                                                    // but not yet saved for real.
 
-        private static int inreset = 0;
+        static int inreset = 0;
         #endregion
 
         #region Accessors
@@ -155,7 +154,7 @@ namespace Boku
         /// Get called back by the SaveLevelDialog when the user makes a choice.
         /// </summary>
         /// <param name="dialog"></param>
-        private void OnSaveLevelDialogButton(SaveLevelDialog dialog)
+        void OnSaveLevelDialogButton(SaveLevelDialog dialog)
         {
             if (dialog.Button == SaveLevelDialog.SaveLevelDialogButtons.Cancel)
             {
@@ -527,16 +526,17 @@ namespace Boku
         /// <param name="newName">The user has changed the name of the level.</param>
         public void SaveLevel(bool newName, bool preserveLinks)
         {
+            // Get a version of the old level metadata into memory for comparison.  We use this
+            // to see if any of the level links have been changed.
             LevelMetadata oldLevelData = null;
 
             if (XmlDataHelper.CheckWorldExistsByGenre(xmlWorldData.id, (Genres)xmlWorldData.genres))
             {
-                //load a version of the old level metadata into memory for comparison
                 oldLevelData = XmlDataHelper.LoadMetadataByGenre(xmlWorldData.id, (Genres)xmlWorldData.genres);
             }
 
             // If the name has changed, force an autosave so that if
-            // we next resume, edit then save we get the correct name
+            // we next resume, edit, then save we get the correct name
             // pre-loaded into the "new level name" text dialog.
             if (newName)
             {
@@ -544,12 +544,18 @@ namespace Boku
 
                 // If a new name, at the very least we need a new guid.
                 xmlWorldData.id = Guid.NewGuid();
+#if DEEP_COPY_DEBUG
+                Debug.Print("new guid : " + xmlWorldData.id.ToString());
+#endif
             }
 
             // If we're saving the EmptyWorld we should generate a new guid.
             if (MiniHub.Instance.newWorldDialog.IsNewWorld(xmlWorldData.id.ToString()))
             {
                 xmlWorldData.id = Guid.NewGuid();
+#if DEEP_COPY_DEBUG
+                Debug.Print("new guid : " + xmlWorldData.id.ToString());
+#endif
             }
 
             // If genres hasn't been populated yet, populate it with MyWorlds flag.
@@ -558,17 +564,17 @@ namespace Boku
                 xmlWorldData.genres |= (int)Genres.MyWorlds;
             }
 
-            //we're saving a non-local world, deep copy in both directions
+            // We're saving a non My Worlds world, deep copy this world and all linked worlds.
             if ((xmlWorldData.genres & (int)Genres.BuiltInWorlds) != 0 ||
                 (xmlWorldData.genres & (int)Genres.Downloads) != 0)
             {
                 xmlWorldData.id = Guid.NewGuid();
-                xmlWorldData.genres = (int)Genres.MyWorlds; //for local copies, only set my worlds flag, otherwise we can get weird results
+                xmlWorldData.genres = (int)Genres.MyWorlds;
 
-                //copy forward
-                DeepCopyNonLocalLink(xmlWorldData, true);
-                //copy backward
-                DeepCopyNonLocalLink(xmlWorldData, false);
+                // Copy forward
+                DeepCopyNonLocalLink(xmlWorldData, forwards: true);
+                // Copy backward
+                DeepCopyNonLocalLink(xmlWorldData, forwards: false);
             }
             else
             {
@@ -695,7 +701,7 @@ namespace Boku
         /// Saves the level to disk.
         /// </summary>
         /// <param name="newName">The user has changed the name of the level.</param>
-        private void SaveLevel(XmlWorldData worldData, XmlLevelData levelData, Texture2D thumbnail, bool newName)
+        void SaveLevel(XmlWorldData worldData, XmlLevelData levelData, Texture2D thumbnail, bool newName)
         {
             // If we have a new name then we need a new id.  Also if the level
             // we're saving is a BuiltInWorld, give it a new ID so we don't
@@ -742,25 +748,56 @@ namespace Boku
             }
 
             // Save the thumbnail.
-            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString();
+            string thumbFilename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
             if (thumbnail != null)
             {
-                Storage4.TextureSaveAsDDS(thumbnail, thumbFilename);
+                Storage4.TextureSaveAsJpeg(thumbnail, thumbFilename);
             }
 
-
-            // Save full size image.
-            // MG doesn't implement SaveAsJpeg right now, so wrap with try/catch.  We can safely not save this file.
+            // Save large size 800x600 image.
             try
             {
-                string rt0Filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + ".jpg";
-                if (InGame.inGame.FullRenderTarget0 != null)
+                GraphicsDevice device = BokuGame.bokuGame.GraphicsDevice;
+                SpriteBatch batch = UI2D.Shared.SpriteBatch;
+
+                // Crop and size full render target to 800x600 rt.
+                float aspectFull = InGame.inGame.FullRenderTarget0.Width / (float)InGame.inGame.FullRenderTarget0.Height;
+                float aspectLarge = 800.0f / 600.0f;
+
+                InGame.SetRenderTarget(InGame.inGame.LargeRenderTarget);
+                Rectangle dst = new Rectangle(0, 0, 800, 600);
+
+                batch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
+                // If we have a wider aspect ratio, crop the left/right sides.
+                if (aspectFull > aspectLarge)
                 {
-                    Storage4.TextureSaveAsJpeg(InGame.inGame.FullRenderTarget0, rt0Filename);
+                    int srcWidth = (int)(InGame.inGame.FullRenderTarget0.Width / aspectFull * aspectLarge);
+                    int margin = (int)((InGame.inGame.FullRenderTarget0.Width - srcWidth) / 2.0f);
+                    Rectangle src = new Rectangle(margin, 0, srcWidth, InGame.inGame.FullRenderTarget0.Height);
+                    batch.Draw(InGame.inGame.FullRenderTarget0, dst, src, Color.White);
+                }
+                else
+                {
+                    // If we have a tall aspect ratio, crop the top/bottom edges.
+                    int srcHeight = (int)(InGame.inGame.FullRenderTarget0.Height / aspectLarge * aspectFull);
+                    int margin = (int)((InGame.inGame.FullRenderTarget0.Height - srcHeight) / 2.0f);
+                    Rectangle src = new Rectangle(0, margin, InGame.inGame.FullRenderTarget0.Width, srcHeight);
+                    batch.Draw(InGame.inGame.FullRenderTarget0, dst, src, Color.White);
+                }
+                batch.End();
+                InGame.SetRenderTarget(null);
+
+                string filename = BokuGame.Settings.MediaPath + BokuGame.MyWorldsPath + worldData.id.ToString() + "_800.jpg";
+                if (InGame.inGame.LargeRenderTarget != null)
+                {
+                    Storage4.TextureSaveAsJpeg(InGame.inGame.LargeRenderTarget, filename);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                if (e != null)
+                {
+                }
             }
 
 
@@ -769,173 +806,146 @@ namespace Boku
 
         }   // end of InGame SaveLevel()
 
-        //TODO: refactor to follow pattern elsewhere where we find the first link that needs processing and 
-        //always recurse forwards only
-        private bool DeepCopyNonLocalLink(XmlWorldData currentWorld, bool forwards)
+        /// <summary>
+        /// Does a deep copy of a non-local world (non-MyWorlds, so it should be in Downloads) 
+        /// and all it linked levels.
+        /// This requires that all the levels get a new guid.
+        /// </summary>
+        /// <param name="linkedWorld">This is the world we're coming from.</param>
+        /// <param name="forwards">Are we going forwards in the chain or backwards?</param>
+        /// <returns>true on success, false on error.</returns>
+        bool DeepCopyNonLocalLink(XmlWorldData linkedWorld, bool forwards)
         {
-            Guid? nextLink = null;
+#if DEEP_COPY_DEBUG
+            Debug.Print("Start DeepCopy, forwards : " + forwards.ToString());
+            Debug.Print("linkedWorld is " + linkedWorld.id);
+#endif
+
+            // Get the link to the next world.
+            Guid? currentGuid = null;
+
             if (forwards)
             {
-                nextLink = currentWorld.LinkedToLevel;
+                currentGuid = linkedWorld.LinkedToLevel;
             }
             else
             {
-                nextLink = currentWorld.LinkedFromLevel;
+                currentGuid = linkedWorld.LinkedFromLevel;
             }
 
-            //base case - no more links
-            if (nextLink == null)
+            // No link? easy.
+            if (currentGuid == null)
             {
+#if DEEP_COPY_DEBUG
+                Debug.Print("No Link");
+#endif
                 return true;
             }
+            
+#if DEEP_COPY_DEBUG
+            Debug.Print("Current (old) Guid : " + currentGuid.ToString());
+#endif
 
-            //assume built-in world unless the download exists
-            string folder = BokuGame.BuiltInWorldsPath;
-            if (XmlDataHelper.CheckWorldExistsByGenre((Guid)nextLink, Genres.Downloads))
+            string worldFilename = Path.Combine(Storage4.UserLocation, "Content", BokuGame.DownloadsPath, currentGuid.ToString() + ".Xml");
+            XmlWorldData currentWorld = XmlWorldData.Load(worldFilename, XnaStorageHelper.Instance);
+            if (currentWorld == null)
             {
-                folder = BokuGame.DownloadsPath;
-            }
-            else if (XmlDataHelper.CheckWorldExistsByGenre((Guid)nextLink, Genres.MyWorlds))
-            {
-                //my world already local, don't need a deep copy, just set ids and return
-
-                //load the next world and update it's link from (we can guarantee it's local - otherwise we would have taken the other branch
-                LevelMetadata nextWorld = XmlDataHelper.LoadMetadataByGenre((Guid)nextLink, Genres.MyWorlds);
-
-                if (forwards)
-                {
-                    //update the target level's backwards link
-                    nextWorld.LinkedFromLevel = currentWorld.id;
-                }
-                else
-                {
-                    //update the target level's forwards link
-                    nextWorld.LinkedToLevel = currentWorld.id;
-                }
-
-                //save out the target level with the new link info
-                XmlDataHelper.UpdateWorldMetadata(nextWorld);
-
-                //update current level link to information (we're traversing forwards)
-                currentWorld.LinkedToLevel = nextLink;
-
-
-                //we're done, no need to recurse, it's already a local world
-                return true;
-            }
-
-            //we can assume links always match the genre of the source when deep copying
-            string fullPath = BokuGame.Settings.MediaPath + folder + nextLink.ToString() + @".Xml";
-            string thumbnailPath = BokuGame.Settings.MediaPath + folder + nextLink.ToString();
-
-            //does xml exist?
-            if (!Storage4.FileExists(fullPath, StorageSource.All))
-            {
-                Debug.WriteLine("Unable to perform deep copy, missing file linked to:" + fullPath);
-
                 return false;
             }
 
+            // Create a new guid for the current level.
+            Guid newGuid = Guid.NewGuid();
+#if DEEP_COPY_DEBUG
+            Debug.Print("New Guid : " + newGuid.ToString());
+#endif
 
-            BokuShared.Wire.WorldPacket packet = XmlDataHelper.ReadWorldPacketFromDisk(fullPath, folder);
-
-
-            XmlWorldData nextWorldData = XmlWorldData.Load(packet.Data.WorldXmlBytes);
-
-            //assign a new id and put in My Worlds genre
-            nextWorldData.id = Guid.NewGuid();
-            nextWorldData.genres = (int)Genres.MyWorlds; //copied worlds clear out other genres - otherwise we get some weird results
-
-            //set up links from the next level we're about to process back to the current leve
+            // Fix up links between linkedWorld and currentWorld.
+            // Note: linkedWorld is written back out to disk by the calling function.
+            // This should be the only touch needed to the original file.
             if (forwards)
             {
-                //if we were moving forwards, then we're setting up the next level in the chain and it should point back to 
-                //this current level
-                nextWorldData.LinkedFromLevel = currentWorld.id;
+                linkedWorld.LinkedToLevel = newGuid;
+                currentWorld.LinkedFromLevel = linkedWorld.id;
             }
             else
             {
-                //if we're moving backwards, then we're setting up the previous level in the chain and it's "next level"
-                //should point to this current level
-                nextWorldData.LinkedToLevel = currentWorld.id;
+                linkedWorld.LinkedFromLevel = newGuid;
+                currentWorld.LinkedToLevel = linkedWorld.id;
             }
 
-            // Register placeholder creatables.  This is necessary because they
-            // must exist before loading the stuff XML or else they'll be filtered
-            // out of the reflexes while loading.  After load, we re-register with
-            // the actual creatables.
-            foreach (Guid creatableId in nextWorldData.creatableIds)
+            // Update id.
+            currentWorld.id = newGuid;
+
+            // Update tags.
+            currentWorld.genres &= ~(int)Genres.Downloads;  // Clear Downloads.
+            currentWorld.genres |= (int)Genres.MyWorlds;    // Set MyWorlds.
+
+            // Stuff file.
             {
-                RegisterPlaceholderCardSpace(creatableId);
+                string srcName = Path.Combine(Storage4.UserLocation, "Content", BokuGame.DownloadsStuffPath, currentGuid.ToString() + ".Xml");
+                string dstName = Path.Combine(Storage4.UserLocation, "Content", BokuGame.MyWorldsStuffPath, newGuid.ToString() + ".Xml");
+                File.Copy(srcName, dstName);
+#if DEEP_COPY_DEBUG
+                Debug.Print("Copying " + srcName + " to " + dstName);
+#endif
             }
 
-            //load a copy of the stuff data
-            XmlLevelData nextLevelData = XmlLevelData.Load(packet.Data.StuffXmlBytes);
-
-            //write out the terrain file - the other terrain properties (cube size, waters) should be copied automatically
-
-            //create a new terrain file for the new level 
-            Guid guid = Guid.NewGuid();
-            string newTerrainPath = BokuGame.TerrainPath + guid + ".Map";
-
-            //write out the bytes
-            Stream file = Storage4.OpenWrite(BokuGame.Settings.MediaPath + newTerrainPath);
-            try
+            // Terrain file.
             {
-                file.Write(packet.Data.VirtualMapBytes, 0, (int)packet.Data.VirtualMapBytes.Length);
+                string srcName = Path.Combine(Storage4.UserLocation, "Content", BokuGame.TerrainPath, currentGuid.ToString() + ".Map");
+                string dstName = Path.Combine(Storage4.UserLocation, "Content", BokuGame.TerrainPath, newGuid.ToString() + ".Map");
+                File.Copy(srcName, dstName);
+#if DEEP_COPY_DEBUG
+                Debug.Print("Copying " + srcName + " to " + dstName);
+#endif
             }
-            finally
+
+            // Thumbnail & screenshots.
             {
-                if (file != null)
+                string srcFolder = Path.Combine(Storage4.UserLocation, "Content", BokuGame.DownloadsPath);
+                string[] files = Storage4.GetFiles(srcFolder, StorageSource.UserSpace);
+
+                // Loop over files in Downloads folder.
+                string currentGuidString = currentGuid.ToString();
+                string newGuidString = newGuid.ToString();
+                foreach (string filename in files)
                 {
-                    Storage4.Close(file);
-                    file = null;
+                    // Look for images with matching guid.
+                    if (filename.Contains(currentGuidString))
+                    {
+                        // Look for image files.
+                        string ext = Path.GetExtension(filename);
+                        ext = ext.ToLower();
+                        if (ext == ".jpg" || ext == ".dds")
+                        {
+                            // Change path from Downloads to MyWorlds.
+                            string dstName = filename.Replace("Downloads", "MyWorlds");
+                            // Change to new guid.
+                            dstName = dstName.Replace(currentGuidString, newGuidString);
+                            File.Copy(filename, dstName);
+#if DEEP_COPY_DEBUG
+                            Debug.Print("Copying " + filename + " to " + dstName);
+#endif
+                        }
+                    }
                 }
             }
 
-            //update nextWorldData to point to the new terrain file
-            nextWorldData.xmlTerrainData2.virtualMapFile = newTerrainPath;
+            // Recurse.
+            DeepCopyNonLocalLink(currentWorld, forwards);
 
-            //make sure we preserve the thumbnail
-            Texture2D thumbnail = Boku.Common.Storage4.TextureLoad(thumbnailPath, false);
+            // Write changes to current file.  Note that we do this AFTER recursing
+            // since the call may change the links.
+            worldFilename = Path.Combine("Content", BokuGame.MyWorldsPath, newGuid.ToString() + ".Xml");
+            currentWorld.Save(worldFilename, XnaStorageHelper.Instance);
+#if DEEP_COPY_DEBUG
+            Debug.Print("Writing current file to : " + worldFilename);
+            Debug.Print("  name : ", currentWorld.name);
+            Debug.Print("Done with DeepCopy");
+#endif
 
-            try
-            {
-                //feed world and level data in for actual save
-                SaveLevel(nextWorldData, nextLevelData, thumbnail, true);
-            }
-            finally
-            {
-                if (thumbnail != null)
-                {
-                    //we're done with the thumbnail, clean it up
-                    thumbnail.Dispose();
-                    thumbnail = null;
-                }
-            }
-
-            if (forwards)
-            {
-                //update current level link to information (we're traversing forwards)
-                currentWorld.LinkedToLevel = nextWorldData.id;
-            }
-            else
-            {
-                //update current level link from information (we're traversing backwards)
-                currentWorld.LinkedFromLevel = nextWorldData.id;
-            }
-
-            //we have updated one of the current world's linked from level or linked to level properties - save the changes
-            //Note: this will only update if the world already exists - for worlds that haven't been saved yet (i.e. the first
-            // world that initiated the recursion, the xml file won't be found yet and this call will return without doing anything,
-            // allowing the final save to happen once the recursive method ends, as we want)
-            XmlDataHelper.UpdateWorldXml(currentWorld);
-
-            //TODO: Ideally move this to a non-recursive implementation for performance
-
-            //recurse on next link (save changes from here on out, only calling function will handle save of the first world)
-            return DeepCopyNonLocalLink(nextWorldData, forwards);
-        }
+            return true;
+        }   // end of DeepCopyNonLocalLink()
 
         /// <summary>
         /// This checks if the terrain heightmap has been modified.  If it has then a 
@@ -1292,7 +1302,7 @@ namespace Boku
         /// Once xmlWorldData is loaded, initialize everything dependent on it.
         /// </summary>
         /// <param name="xmlWorldData"></param>
-        private void InitFromWorldData(XmlWorldData xmlWorldData)
+        void InitFromWorldData(XmlWorldData xmlWorldData)
         {
             BokuGame.bokuGame.shaderGlobals.EnvTextureName = xmlWorldData.envMapTextureFilename;
             BokuGame.bokuGame.shaderGlobals.SetLightRig(xmlWorldData.lightRig);
@@ -1394,7 +1404,7 @@ namespace Boku
         /// <param name="newWorld">If New World was chosen from either Main Menu or Home Menu.</param>
         /// <param name="andRun">If true, we're loading a world to be run.  If false, loading for edit.</param>
         /// <returns>True if level is successfully loaded, false otherwise.</returns>
-        private bool LoadLevel(string levelFullPath, bool keepPersistentScores, bool newWorld, bool andRun)
+        bool LoadLevel(string levelFullPath, bool keepPersistentScores, bool newWorld, bool andRun)
         {
             // Before loading, unreference the old level and run a garbage collection pass.
             // This avoids having two level's worth of data loaded in memory at the same time

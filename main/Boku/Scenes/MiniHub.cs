@@ -47,6 +47,8 @@ namespace Boku
         private Texture2D homeTexture = null;
 
         public NewWorldDialog newWorldDialog;
+
+        public static CommunityShareMenu communityShareMenu = new CommunityShareMenu();
         
         protected class Shared : INeedsDeviceReset
         {
@@ -56,10 +58,9 @@ namespace Boku
 
             public Matrix worldMatrix = Matrix.Identity;
 
-            public Texture2D inGameImage = null;      // This is the same image as above but with more filtering.  This
+            public Texture2D inGameImage = null;    // This is the same image as above but with more filtering.  This
                                                     // is used as a backdrop to the mini-hub.
 
-            public CommunityShareMenu communityShareMenu = new CommunityShareMenu();
             // c'tor
             public Shared(MiniHub parent)
             {
@@ -101,13 +102,7 @@ namespace Boku
                 menu.AddText(Strings.Localize("miniHub.publish"));
                 menu.AddText(Strings.Localize("miniHub.load"));
                 menu.AddText(Strings.Localize("miniHub.emptyLevel"));
-
-#if NETFX_CORE
-                // Disable printing since WinRT doesn't support just sending a text file to the printer.
-#else
                 menu.AddText(Strings.Localize("miniHub.print"));
-#endif
-
                 menu.AddText(Strings.Localize("miniHub.quit"));
             }   // end of BuildMenu()
 
@@ -168,7 +163,6 @@ namespace Boku
                 AuthUI.ShowStatusDialog();
 
                 parent.saveLevelDialog.Update();
-                shared.communityShareMenu.Update();
 
                 parent.saveChangesMessage.Update();
                 parent.saveChangesWithDiscardMessage.Update();
@@ -195,6 +189,40 @@ namespace Boku
 
                 // Ensure the help overlay is up to date.
                 HelpOverlay.RefreshTexture();
+
+                //
+                // If Sharing to the Community, we need to respond to results.
+                //
+
+                // If Sharing is complete, clear the state.
+                if (KoduService.ShareRequestState == KoduService.RequestState.Complete)
+                {
+                    // Success.
+                    MiniHub.communityShareMenu.ShowShareSuccessDialog();
+
+                    // Clear state for next share.
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
+                }
+
+                // If Sharing and we don't have internet, show error.
+                if (KoduService.ShareRequestState == KoduService.RequestState.NoInternet)
+                {
+                    MiniHub.communityShareMenu.ShowNoCommunityDialog();
+
+                    // Clear state so we can try again.
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
+                }
+
+                // If Sharing caused an error, show the dialog.
+                if (KoduService.ShareRequestState == KoduService.RequestState.Error)
+                {
+                    // Launch error dialog.
+                    MiniHub.communityShareMenu.ShowShareErrorDialog("Share failed.");    // TODO (scoy) Localize this string!
+
+                    // Clear state so we can try again.
+                    KoduService.ShareRequestState = KoduService.RequestState.None;
+                }
+
 
             }   // end of MiniHub UpdateObj Update()
 
@@ -324,7 +352,7 @@ namespace Boku
                         parent.shareSuccessMessage.Render();
                         parent.noCommunityMessage.Render();
 
-                        shared.communityShareMenu.Render();
+                        MiniHub.communityShareMenu.Render();
 
                         HelpOverlay.Render();
                     }
@@ -651,9 +679,10 @@ namespace Boku
                 }
                 else
                 {
-                    var level =LevelMetadata.CreateFromXml(InGame.XmlWorldData);
+                    var level = LevelMetadata.CreateFromXml(InGame.XmlWorldData);
 
-                    shared.communityShareMenu.Activate(level);
+                    // Does share and displays dialogs for error or success.
+                    MiniHub.communityShareMenu.Activate(level);
                 }
             }
             else if (menu.CurString == Strings.Localize("miniHub.load"))

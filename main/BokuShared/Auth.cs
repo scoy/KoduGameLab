@@ -5,15 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-
-#if NETFX_CORE
-    using System.Runtime.InteropServices.WindowsRuntime;
-    using Windows.Security.Cryptography;
-    using Windows.Security.Cryptography.Core;
-    using Windows.Storage.Streams;
-#else
-    using System.Security.Cryptography;
-#endif
+using System.Security.Cryptography;
 
 namespace BokuShared
 {
@@ -87,17 +79,8 @@ namespace BokuShared
 
             byte[] result;
 
-#if NETFX_CORE
-            HashAlgorithmProvider alg = Windows.Security.Cryptography.Core.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
-            CryptographicHash hash = alg.CreateHash();
-            IBuffer buffer = CryptographicBuffer.CreateFromByteArray(data);
-            hash.Append(buffer);
-            IBuffer hashBuff = hash.GetValueAndReset();
-            result = hashBuff.ToArray();
-#else
             MD5 md5 = System.Security.Cryptography.MD5.Create();
             result = md5.ComputeHash(data);
-#endif       
 
             return result;
         }   // end of MD5()
@@ -149,11 +132,11 @@ namespace BokuShared
         /// Given a checksum and a time stamp, determines if the
         /// checksum is valid for the current creator.  Used to
         /// filter on My Worlds and to verify whether a user is
-        /// alloiwed to delete a community world.
+        /// allowed to delete a community world.
         /// </summary>
         /// <param name="checksum"></param>
         /// <returns></returns>
-        public static bool IsValidCreatorChecksum(string checksum, DateTime dateTime)
+        public static bool IsValidCreatorChecksum(string checksum, string dateTime)
         {
             string hash = CreateChecksumHash(dateTime);
             if (hash == checksum)
@@ -212,17 +195,11 @@ namespace BokuShared
         /// <param name="pin"></param>
         /// <param name="dateTime">Assumes pin is valid.  Need to check before here!</param>
         /// <returns></returns>
-        public static string CreateChecksumHash(string creatorName, string pin, DateTime dateTime)
+        public static string CreateChecksumHash(string creatorName, string pin, string dateTime)
         {
             string result = "";
 
-            // Check if UTC, should never be anything else.
-            Debug.Assert(dateTime.Kind == DateTimeKind.Utc, "We should be using non-UTC times except when displaying to user.");
-
-            // Force UTC in case it isn't already.
-            string dateString = dateTime.ToUniversalTime().ToString();
-
-            string s = creatorName + pin + dateString;
+            string s = creatorName + pin + dateTime;
             s = s.ToLowerInvariant();
             byte[] data = GetBytes(s);
             byte[] hash = MD5(data, data.Length);
@@ -241,7 +218,7 @@ namespace BokuShared
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string CreateChecksumHash(DateTime dateTime)
+        public static string CreateChecksumHash(string dateTime)
         {
             string result = CreateChecksumHash(creatorName, pin, dateTime);
 
@@ -279,7 +256,7 @@ namespace BokuShared
         /// <param name="creatorName"></param>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static string ExtractPin(string fileChecksum, string creatorName, DateTime dateTime)
+        public static string ExtractPin(string fileChecksum, string creatorName, string dateTime)
         {
             string pin = null;
             for (int i = 0; i < 10000; i++)

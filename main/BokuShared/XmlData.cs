@@ -8,22 +8,16 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 
-#if NETFX_CORE
-    using System.Threading.Tasks;
-#endif
-
 namespace BokuShared
 {
     public abstract partial class XmlData<XmlDataClass> where XmlDataClass : class
     {
         public XmlData()
         {
-#if !NETFX_CORE
             Debug.Assert(
                 typeof(XmlDataClass).IsSubclassOf(typeof(XmlData<XmlDataClass>)),
                 String.Format("{0} must derive from XmlData<{0}>", typeof(XmlDataClass).ToString())
             );
-#endif
         }
 
         /// <summary>
@@ -141,12 +135,8 @@ namespace BokuShared
         {
             Stream stream = new MemoryStream(buffer);
             XmlDataClass data = Load(stream);
-#if NETFX_CORE
-            stream.Flush();
-            stream.Dispose();
-#else
+
             stream.Close();
-#endif
             return data;
         }
 

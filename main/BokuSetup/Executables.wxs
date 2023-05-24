@@ -10,6 +10,7 @@
       <ComponentRef Id="Cab.dll" />
       <ComponentRef Id="Ionic.Zip.Reduced.dll" />
       <ComponentRef Id="TouchHook.dll" />
+      <ComponentRef Id="Newtonsoft.Json.dll" />
       <ComponentRef Id="MicrobitNeedDriverDlg.dll" />
     </ComponentGroup>
   </Fragment>
@@ -46,6 +47,9 @@
       </Component>
       <Component Id="TouchHook.dll" Guid="*">
          <File Id="TouchHook.dll" KeyPath="yes" Source="ApplicationSource\TouchHook.dll" />
+      </Component>
+      <Component Id="Newtonsoft.Json.dll" Guid="*">
+        <File Id="Newtonsoft.Json.dll" KeyPath="yes" Source="ApplicationSource\Newtonsoft.Json.dll" />
       </Component>
       <Component Id="MicrobitNeedDriverDlg.dll" Guid="*">
          <File Id="MicrobitNeedDriverDlg.dll" KeyPath="yes" Source="ApplicationSource\MicrobitNeedDriverDlg.dll" />
