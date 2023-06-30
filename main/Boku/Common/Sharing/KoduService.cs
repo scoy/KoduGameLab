@@ -466,6 +466,13 @@ namespace Boku.Common.Sharing
 			{
 				httpClient.PostAsync(url, httpContent).ContinueWith(responseTask =>
 				{
+                    // This happens when there's no internet connection.
+                    if (responseTask.Status == System.Threading.Tasks.TaskStatus.Faulted)
+                    {
+                        callback(null);
+                        return;
+                    }
+
 					var response = responseTask.Result;
 					if (!response.IsSuccessStatusCode)
 					{
@@ -516,6 +523,13 @@ namespace Boku.Common.Sharing
 			{
 				httpClient.GetAsync(url).ContinueWith(responseTask =>
 				{
+                    // This happens when there's no internet connection.
+                    if (responseTask.Status == System.Threading.Tasks.TaskStatus.Faulted)
+                    {
+                        callback(null);
+                        return;
+                    }
+
 					var response = responseTask.Result;
 					if (!response.IsSuccessStatusCode)
 					{
@@ -565,6 +579,13 @@ namespace Boku.Common.Sharing
 			{
 				httpClient.GetAsync(url).ContinueWith(responseTask =>
 				{
+                    // This happens when there's no internet connection.
+                    if (responseTask.Status == System.Threading.Tasks.TaskStatus.Faulted)
+                    {
+                        callback(null);
+                        return;
+                    }
+
 					var response = responseTask.Result;
 					callback(response);
 				});
