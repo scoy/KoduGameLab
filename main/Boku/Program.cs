@@ -185,7 +185,48 @@ namespace Boku
                     // If we didn't create the shared mutex, then another
                     // instance of Boku already exists.
                     if (!instanceMutexCreated)
-                        return;
+                    {
+                        // If we get here it's because there is already another version of Kodu
+                        // running.  If the current process was launched in response to a 
+                        // double-clicked .Kodu2 file, then we've already copied to the imports
+                        // folder and will leave it for the currently running process to handle.
+                        // This normally works except we occasionally get a zombie Kodu process
+                        // stuck running which then prevents a usable Kodu from starting up until
+                        // the user reboots.
+                        //
+                        // So, the plan is to get the info for currently running processes.  There
+                        // should be 2, this one and the already existing one.  We can id a zombie
+                        // process because it will have 0 for it's MainWindowHandle (as will the 
+                        // current process since it hasn't created the window yet).
+                        // If the "other" process has a valid MainWindowHandle then it's legit and we should return here.
+                        // If the "other" process has a zero MainWindowHandle then it's zombie.  Kill it, recreate the mutex, and fall through.
+                        //
+                        // Followup note:  I think I found the cause of the zombie kodus.  The call 
+                        // to send instrumentation stays "live" until it is sent.  If the internet is
+                        // not available, this code just loops forever leaving a thread active.  I've
+                        // added some error handling that should catch this and prevent the infinite
+                        // loop problem.  Leaving the zombie fix here just in case something else 
+                        // turns up that acts like this.
+
+                        int curProcId = Process.GetCurrentProcess().Id;
+                        Process[] processes = Process.GetProcessesByName("Boku");
+                        for (int i = 0; i < processes.Length; i++)
+                        {
+                            if (processes[i].MainWindowHandle == IntPtr.Zero && processes[i].Id != curProcId)
+                            {
+                                // Zombie process.
+                                processes[i].Kill();
+                                InstanceMutex.Close();
+                                InstanceMutex = new Mutex(false, @"Local\Boku", out instanceMutexCreated);
+                                Debug.Assert(instanceMutexCreated, "Hmm, shouldn't this always be true?");
+                            }
+                            else
+                            {
+                                // Legit other process.  Do nothing
+                                return;
+                            }
+                        }
+                    }
                     // ====================================================
                 }
 
@@ -574,7 +615,10 @@ namespace Boku
             catch (Exception ex)
             {
                 // Be sure mouse cursor is on regardless of current input mode.
-                BokuGame.bokuGame.IsMouseVisible = true;
+                if (BokuGame.bokuGame != null)
+                {
+                    BokuGame.bokuGame.IsMouseVisible = true;
+                }
 
                 StartupForm.Shutdown();
                 
