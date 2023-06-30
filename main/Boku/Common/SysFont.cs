@@ -29,7 +29,7 @@ namespace Boku.Common
 
     /// <summary>
     /// Static class to provide system style font rendering for XNA apps.
-    /// Desinged to be used as a psuedo replacement for SpriteFonts.
+    /// Designed to be used as a psuedo replacement for SpriteFonts.
     /// </summary>
     public static partial class SysFont
     {
