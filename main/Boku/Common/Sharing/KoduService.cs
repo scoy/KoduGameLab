@@ -278,7 +278,7 @@ namespace Boku.Common.Sharing
 						}
 					});
 
-					UploadDataFromFile(uploadThumbUrl, @"image/jpeg", thumbPath, (uploadResponse) => {
+					UploadDataFromFile(uploadScreenUrl, @"image/jpeg", thumbPath, (uploadResponse) => {
 						if (uploadResponse == null)
 						{
 							// Thumbnail upload failed.
@@ -301,7 +301,7 @@ namespace Boku.Common.Sharing
 						}
 					});
 
-					UploadDataFromFile(uploadScreenUrl, @"image/jpeg", screenPath, (uploadResponse) => {
+					UploadDataFromFile(uploadThumbUrl, @"image/jpeg", screenPath, (uploadResponse) => {
 						if (uploadResponse == null)
 						{
 							// Screen image upload failed.
