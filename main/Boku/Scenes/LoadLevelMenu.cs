@@ -706,7 +706,7 @@ namespace Boku
             }
 
             /// <summary>
-            /// Exports given level and all linke levels.
+            /// Exports given level and all linked levels.
             /// Ignores broken links.
             /// </summary>
             /// <param name="level"></param>
