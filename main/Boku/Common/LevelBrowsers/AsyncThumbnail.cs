@@ -46,6 +46,8 @@ namespace Boku.Common
                 // We need to dispose of these resources manually since they weren't loaded by a ContentManager.
                 texture.Dispose();
                 texture = null;
+
+                Loading = false;
             }
         }
 

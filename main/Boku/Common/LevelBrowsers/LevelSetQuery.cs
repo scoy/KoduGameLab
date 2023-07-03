@@ -30,6 +30,27 @@ namespace Boku.Common
 
         bool notifyCursors;
 
+        /// <summary>
+        /// Hack to get position of cursor so we can free up 
+        /// textures of levels far away from cursor.  If feels
+        /// like there should be a cleaner way...
+        /// </summary>
+        public int CurrentCursorPosition
+        {
+            get 
+            {
+                int result = 0;
+
+                if (cursors.Count > 0 && cursors[0] != null)
+                {
+                    result = cursors[0].QueryPointer;
+                }
+
+                return result; 
+            }
+        }
+
+
         public LevelMetadata this[int i]
         {
             get

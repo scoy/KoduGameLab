@@ -176,7 +176,58 @@ namespace Boku.Common
                     });//end of callback and func
 
             }   // end if we have any thumbnails to load.
+
+            // If the browser list of worlds gets long, we end up using a lot of graphics memory storing 
+            // the thumbnail textures.  So, look at the list and free up thumbnails on the worlds that
+            // are farthest away from the cursor window.
+            // maxLevelsInMemoryCushion is the number of worlds we keep textures for on each side of the 
+            // cursor's current position.  If a user is just scrolling forward, this will limit us to
+            // about 100 textures in memory.  If the user is scrolling forward and backward we may have 
+            // up to 200 textures.
+            int maxLevelsInMemoryCushion = 100;
+            if (queries.Count > 0)
+            {
+                LevelSetQuery query = queries[0] as LevelSetQuery;
+                if (query != null)
+                {
+                    int curPosition = query.CurrentCursorPosition;
+                    // Are we deep enough in the list to get rid of earlier textures?
+                    if (curPosition > maxLevelsInMemoryCushion)
+                    {
+                        // Free up and thumbnails from earlier levels.
+                        for (int i = 0; i < curPosition - maxLevelsInMemoryCushion; i++)
+                        {
+                            FreeThumbnail(i);
+                        }
+                    }
+                    // Have we scrolled deep into the list and then come back to the beginning?
+                    if (curPosition + maxLevelsInMemoryCushion < allLevels.Count)
+                    {
+                        for (int i = curPosition + maxLevelsInMemoryCushion; i < allLevels.Count; i++)
+                        {
+                            FreeThumbnail(i);
+                        }
+                    }
+                }
+            }
         }   // end of Update()
+
+        void FreeThumbnail(int i)
+        {
+            // Ensure we actually have a list this long.
+            if (allLevels.Count > i)
+            {
+                LevelMetadata level = allLevels[i];
+                if (level != null)
+                {
+                    // Note that we're call Dispose on the Thumbnail, not its Texture.  The 
+                    // Reason is that the Texture getter returns the MissingImage texture if
+                    // the real texture isn't loaded.  This Dispose call does nothing if the
+                    // real texture isn't there.
+                    level.Thumbnail.Dispose();
+                }
+            }
+        }   // end of FreeThumbnail()
 
         public void Shutdown()
         {
