@@ -29,9 +29,9 @@ namespace Boku.Common.Sharing
         public static string KGLUrl = @"https://www.kodugamelab.com";
 
 		// Our service address
-		//public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
+		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
 		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
-		public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
+		//public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
 		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
 
         // Used by rest of system to keep track of state.  LoadLevelMenu
@@ -82,6 +82,8 @@ namespace Boku.Common.Sharing
 		public static void Ping(object args, GenericObjectCallback callback)
         {
             string url = ServiceApiUrl + "ping";
+
+            Debug.Assert(!ServiceApiUrl.Contains("stage"), "Be sure to turn off staging before checking in!");
 
             MakeHttpRequest(url, args, callback);
 
