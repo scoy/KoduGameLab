@@ -221,7 +221,7 @@ namespace Boku.Common
                         state.level = level;
                         level.BrowserState = state;
 
-                        // Force the creator name of built-ins to "Microsoft"
+                        // Force the creator name of built-ins to "Kodu Team"
                         if ((level.Genres & Genres.BuiltInWorlds) != 0)
                         {
                             level.Creator = "Kodu Team";

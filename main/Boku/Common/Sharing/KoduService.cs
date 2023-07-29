@@ -29,10 +29,10 @@ namespace Boku.Common.Sharing
         public static string KGLUrl = @"https://www.kodugamelab.com";
 
 		// Our service address
-		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";
-		//public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";//High latency test server.
-		//public static string ServiceApiUrl = "http://koduapi-stage.azurewebsites.net/api/";
-		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";//Localhost for development
+		public static string ServiceApiUrl = "https://api.koduworlds.com/api/";                 // Production.
+		//public static string ServiceApiUrl = "http://koduapi-stage2.azurewebsites.net/api/";    // Staging API (test only)
+		//public static string ServiceApiUrl = "http://localhost.fiddler:3000/api/";              //Localhost for development
+        //public static string ServiceApiUrl = "http://koduapi-latency.azurewebsites.net/api/";   //High latency test server.
 
         // Used by rest of system to keep track of state.  LoadLevelMenu
         // needs to poll this for Complete or Error and handle dialogs.
@@ -241,11 +241,11 @@ namespace Boku.Common.Sharing
 					Newtonsoft.Json.Linq.JContainer container = JsonConvert.DeserializeObject(text) as Newtonsoft.Json.Linq.JContainer;
 
 					string status = container.Value<string>("status");
-					if(status!=null && status != "ok")
+                    if (status != null && status != "ok")
                     {
-						//authorize error.
-						ShareRequestState = RequestState.Error;
-						callback(null);
+                        //authorize error.
+                        ShareRequestState = RequestState.Error;
+                        callback(null);
                     }
 
 					string uploadDataUrl = container.Value<string>("dataUrl");
@@ -280,6 +280,7 @@ namespace Boku.Common.Sharing
 						}
 					});
 
+                    // NOTE: Screen
 					UploadDataFromFile(uploadScreenUrl, @"image/jpeg", thumbPath, (uploadResponse) => {
 						if (uploadResponse == null)
 						{

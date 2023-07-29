@@ -183,7 +183,7 @@ namespace Boku.Common
             // maxLevelsInMemoryCushion is the number of worlds we keep textures for on each side of the 
             // cursor's current position.  If a user is just scrolling forward, this will limit us to
             // about 100 textures in memory.  If the user is scrolling forward and backward we may have 
-            // up to 200 textures.
+
             int maxLevelsInMemoryCushion = 100;
             if (queries.Count > 0)
             {
@@ -354,6 +354,29 @@ namespace Boku.Common
                 string keywords = filter.SearchString;
                 string creator = (filter.FilterGenres & Genres.MyWorlds) != 0 ? Auth.CreatorName : null;
 
+                // In the Community menu we can't rely on the MyWorlds bit to indicate that MyWorlds
+                // has been chosen since it's included in All.  For the Community
+                creator = filter.FilterGenres == Genres.All ? null : Auth.CreatorName;
+                creator = Auth.CreatorName;
+
+                // In the Community menu we can't rely on the MyWorlds bit to indicate that MyWorlds
+                // has been chosen since it's included in All.  We also can't use the grid settings
+                // because they don't seem to be right.  I suspect that it's due to the selection
+                // state not filtering through on the first frame.
+                //
+                // For the Community browser we start by assuming MyWorlds is chosen and clear it if
+                //      - Filter is set to All
+                //      - MyWorlds bit is clear
+                //      - CreatorName is Guest
+                //
+                // creatorName is then passed to the server where, if it's not null, we use the "MyWorlds" version of Search and Get. 
+                string creatorName = Auth.CreatorName;
+                if (filter.FilterGenres == Genres.All || ((filter.FilterGenres & Genres.MyWorlds) == 0) || Auth.CreatorName == Auth.DefaultCreatorName)
+                {
+                    creatorName = null;
+                }
+                Debug.WriteLine(creatorName);
+
                 pagingOpCount += 1;
 
 
@@ -366,7 +389,8 @@ namespace Boku.Common
                     sortDir = sortDir,
                     range = "all",
                     keywords = keywords,
-                    creator = creator
+                    creator = creator,
+                    creatorName = creatorName
                 };
                 KoduService.Search(args, (object results) => {
                     //4scoy NOTE in case of fail (results==null) we still pass
