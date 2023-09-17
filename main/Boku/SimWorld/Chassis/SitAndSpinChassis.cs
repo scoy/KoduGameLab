@@ -54,6 +54,7 @@ namespace Boku.SimWorld.Chassis
             // like it should need doing but collisions can change the height 
             // when we don't want it changed.
             movement.Altitude = MyMath.Lerp(movement.Altitude, EditHeight + Terrain.GetTerrainAndPathHeight(movement.Position), 0.1f * 30.0f * secs);
+            Debug.Assert(!float.IsNaN(movement.Altitude));
 
             Moving = false;
         }   // end of PreCollisionTestUpdate()

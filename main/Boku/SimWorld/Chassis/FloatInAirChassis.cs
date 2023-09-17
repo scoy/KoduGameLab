@@ -260,6 +260,7 @@ namespace Boku.SimWorld.Chassis
                 }
                 terrainHeight += EditHeight;
                 movement.Altitude = terrainHeight;
+                Debug.Assert(!float.IsNaN(movement.Altitude));
             }
 
         }   // end of PreCollisionTestUpdate()

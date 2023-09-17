@@ -181,6 +181,7 @@ namespace Boku.Scenes.InGame.MouseEditTools
                 menuActor.HeightOffset = value - menuActor.DefaultEditHeight;
                 //menuActor.Movement.Altitude = menuActor.ReScale * menuActor.GetPreferredAltitude();
                 menuActor.Movement.Altitude = menuActor.GetPreferredAltitude();
+                Debug.Assert(!float.IsNaN(menuActor.Movement.Altitude));
             }
             else
             {

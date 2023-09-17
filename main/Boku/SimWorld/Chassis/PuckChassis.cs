@@ -248,11 +248,13 @@ namespace Boku.SimWorld.Chassis
 
                 float t = Math.Min(0.2f * 30.0f * MovementSpeedModifier * secs, 1.0f);
                 movement.Altitude = MyMath.Lerp(movement.Altitude, heightGoal, t);
+                Debug.Assert(!float.IsNaN(movement.Altitude));
 
                 // Ensure we don't go under ground.
                 if (movement.Altitude < baseAltitude)
                 {
                     movement.Altitude = baseAltitude;
+                    Debug.Assert(!float.IsNaN(movement.Altitude));
                 }
             }
 

@@ -121,7 +121,11 @@ namespace Boku.Common
         public Vector3 Position
         {
             get { return localMatrix.Translation; }
-            set { localMatrix.Translation = value; }
+            set 
+            {
+                Debug.Assert(!float.IsNaN(value.X));
+                localMatrix.Translation = value; 
+            }
         }
 
         /// <summary>
@@ -130,7 +134,11 @@ namespace Boku.Common
         public float Altitude
         {
             get { return localMatrix.M43; }
-            set { localMatrix.M43 = value; }
+            set 
+            {
+                Debug.Assert(!float.IsNaN(value));
+                localMatrix.M43 = value; 
+            }
         }
 
         /// <summary>
@@ -139,7 +147,7 @@ namespace Boku.Common
         /// Note that setting the localMatrix will also reset the value of rotationZ
         /// but there is some error accumulation which can happen causing a static
         /// object to rotate to a fixed orientation.  So, if you already know the
-        /// Z roation because you just used it to create the local matrix you should
+        /// Z rotation because you just used it to create the local matrix you should
         /// use SetLocalMatrixAndRotation() instead and pass both values.
         /// </summary>
         public Matrix LocalMatrix
@@ -149,6 +157,7 @@ namespace Boku.Common
             set 
             {
                 localMatrix = value;
+                Debug.Assert(!float.IsNaN(value.M43)); 
 
                 // Need to extract Z rotation and force into 0..2pi range.
                 /*
@@ -200,6 +209,8 @@ namespace Boku.Common
         /// <param name="rotationZ"></param>
         public void SetLocalMatrixAndRotation(Matrix local, float rotationZ)
         {
+            Debug.Assert(!float.IsNaN(local.M43));
+
             this.localMatrix = local;
             this.rotationZ = rotationZ;
         }

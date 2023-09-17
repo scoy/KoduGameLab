@@ -82,20 +82,27 @@ namespace Boku.Programming
 
                         if (targetActor != null)
                         {
-                            Vector3 fromTarget = actorPos - targetActor.Movement.Position;
+                            Vector3 fromTarget = actorPos - target.Position;
                             float dist = fromTarget.Length();
                             // Normalize fromTarget then divide again by dist.  This gives us a linear
                             // falloff of strength based on distance so that a target that is twice as 
                             // close will have twice the weight on the flee direction.
-                            dir += fromTarget / dist / dist;
+                            if (dist > 0)
+                            {
+                                dir += fromTarget / dist / dist;
+                            }
                         }
                     }
 
                     bool apply = reflex.ModifyHeading(gameActor, Modifier.ReferenceFrames.World, ref dir);
+                    Debug.Assert(!float.IsNaN(dir.X));
 
                     if (apply)
                     {
-                        dir.Normalize();
+                        if (dir.LengthSquared() > 0.00001f)
+                        {
+                            dir.Normalize();
+                        }
                         actionSet.AddAction(Action.AllocVelocityAction(reflex, dir, autoTurn: true));
                     }
                 }   // end else if falloff

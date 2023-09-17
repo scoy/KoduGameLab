@@ -413,12 +413,22 @@ namespace Boku.Programming
     /// </summary>
     public class VelocityAction : BaseAction
     {
-        public Vector3 Velocity;
+        Vector3 velocity;
         public bool AutoTurn;   // Should we also generated a Z axis rotation?  For example:
                                 // WHEN Gamepad LeftStick DO Move => Autoturn should be true so hover looks right
                                 //      but turning can still be overridden by an explicit turn command.
                                 // WHEN Gamepad LeftStick DO Move Left/Right => AutoTurn should be false since we're strafing.
                                 //      Note: Currently don't have Left/Right or Strafe commands so this is a bit forward looking.
+
+        public Vector3 Velocity
+        {
+            get { return velocity; }
+            set
+            {
+                Debug.Assert(!float.IsNaN(value.X));
+                velocity = value;
+            }
+        }
 
         public VelocityAction()
         {

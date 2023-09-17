@@ -139,7 +139,9 @@ namespace Boku.Base
             public bool Update(Movement movement, Vector3 botPosition, float topHeight, float rescale, bool hasFacingDirection, ref FeelerData data)
             {
                 data.position = OffsetPosition(movement, botPosition, topHeight, rescale, hasFacingDirection);
+                Debug.Assert(!float.IsNaN(data.position.X));
                 data.altitude = Terrain.GetTerrainAndPathHeight(data.position, ref matInfo);
+                Debug.Assert(!float.IsNaN(data.altitude));
 
                 // If there is no terrain, put the altitude way down there.
                 // This stops bots from sometimes sticking at z==0 as they fall.
@@ -171,6 +173,9 @@ namespace Boku.Base
                 //{
                 //    return false;
                 //}
+
+                Debug.Assert(!float.IsNaN(data.prevAltitude));
+                Debug.Assert(!float.IsNaN(data.prevPosition.X));
 
                 return true;
             }   // end of CurbFeeler Update()

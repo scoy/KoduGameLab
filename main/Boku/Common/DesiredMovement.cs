@@ -79,7 +79,14 @@ namespace Boku.Common
         public Vector3? DesiredVelocity
         {
             get { return desiredVelocity; }
-            protected set { desiredVelocity = value; }
+            protected set
+            {
+                if (value.HasValue)
+                {
+                    Debug.Assert(!float.IsNaN(value.Value.X));
+                }
+                desiredVelocity = value; 
+            }
         }
 
         /// <summary>

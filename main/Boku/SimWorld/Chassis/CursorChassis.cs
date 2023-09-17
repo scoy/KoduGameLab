@@ -57,6 +57,7 @@ namespace Boku.SimWorld.Chassis
             /// cursor winds up on top of everything, including any elevated paths.
             Vector3 queryPos = new Vector3(movement.Position.X, movement.Position.Y, float.MaxValue);
             movement.Altitude = EditHeight + Terrain.GetTerrainAndPathHeight(queryPos);
+            Debug.Assert(!float.IsNaN(movement.Altitude));
 
             if (followSlope)
             {

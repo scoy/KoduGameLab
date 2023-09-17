@@ -231,6 +231,7 @@ namespace Boku.SimWorld.Chassis
             {
                 // We're not active but we still want to be able to have our height adjusted.
                 movement.Altitude = Terrain.GetTerrainAndPathHeight(Top(movement.Position)) + EditHeight;
+                Debug.Assert(!float.IsNaN(movement.Altitude));
             }
 
         }   // end of DynamicPropChassis PreCollisionTestUpdate()
@@ -347,6 +348,7 @@ namespace Boku.SimWorld.Chassis
                     //movement.Altitude += dZ * dt;
                     // FOrce all the way up.  Add a bit of cushion too.
                     movement.Altitude = newHeight + 0.0001f;
+                    Debug.Assert(!float.IsNaN(movement.Altitude));
                 }
 
             }

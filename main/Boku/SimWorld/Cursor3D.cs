@@ -667,6 +667,7 @@ namespace Boku
                     new Vector3(movement.Position.X,
                                 movement.Position.Y,
                                 float.MaxValue));
+                Debug.Assert(!float.IsNaN(movement.Altitude));
             }
         }
         /// <summary>

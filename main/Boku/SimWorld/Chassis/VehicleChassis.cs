@@ -128,6 +128,7 @@ namespace Boku.SimWorld.Chassis
         public override void PreCollisionTestUpdate(GameThing thing)
         {
             Movement movement = thing.Movement;
+            Debug.Assert(!float.IsNaN(movement.Velocity.X));
             DesiredMovement desiredMovement = thing.DesiredMovement;
 
             GameActor.State state = thing.CurrentState;
@@ -152,10 +153,12 @@ namespace Boku.SimWorld.Chassis
                         {
                             // This version doesn't clamp movement to only work forward and backward.
                             ApplyDesiredMovementWhenFalling(movement, desiredMovement);
+                            Debug.Assert(!float.IsNaN(movement.Velocity.X));
                         }
                         else
                         {
                             ApplyDesiredMovement(movement, desiredMovement);
+                            Debug.Assert(!float.IsNaN(movement.Velocity.X));
                         }
 
                         // Are we waiting to land?
@@ -214,6 +217,7 @@ namespace Boku.SimWorld.Chassis
                             if (Time.GameTimeTotalSeconds > jumpStartTime + preJumpDelay)
                             {
                                 movement.Velocity += new Vector3(0, 0, effectiveJumpStrength);
+                                Debug.Assert(!float.IsNaN(movement.Velocity.X));
                                 jumping = false;
                                 landing = true;
                             }
@@ -223,9 +227,11 @@ namespace Boku.SimWorld.Chassis
 
                         // Apply drag to velocity.
                         ApplyFriction(movement, desiredMovement, applyVertical: false);
+                        Debug.Assert(!float.IsNaN(movement.Velocity.X));
 
                         // Apply external force.
                         movement.Velocity += desiredMovement.ExternalForce.GetValueOrDefault() / thing.Mass * secs;
+                        Debug.Assert(!float.IsNaN(movement.Velocity.X));
 
                         // Move due to velocity.
                         movement.Position += movement.Velocity * secs;

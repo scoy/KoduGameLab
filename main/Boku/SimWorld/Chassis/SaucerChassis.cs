@@ -193,6 +193,7 @@ namespace Boku.SimWorld.Chassis
             }
 
             movement.Altitude = MyMath.Lerp(movement.Altitude, altitudeGoal, 0.1f * 30.0f * secs);
+            Debug.Assert(!float.IsNaN(movement.Altitude));
 
             // Apply this rotation to the actor.  This rotation just makes the character
             // spin.  It has no effect on the heading or facing direction.
@@ -216,6 +217,7 @@ namespace Boku.SimWorld.Chassis
             if (movement.Altitude < terrainHeight)
             {
                 movement.Altitude = 2.0f * terrainHeight - movement.Altitude;
+                Debug.Assert(!float.IsNaN(movement.Altitude));
             }
         }
 

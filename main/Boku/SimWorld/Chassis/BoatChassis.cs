@@ -221,6 +221,7 @@ namespace Boku.SimWorld.Chassis
                         }
                         else
                         {
+                            Debug.Assert(!float.IsNaN(z));
                             movement.Altitude = z;
                             // Zero out vertical velocity.
                             movement.Velocity *= new Vector3(1, 1, 0);
@@ -252,6 +253,7 @@ namespace Boku.SimWorld.Chassis
                     {
                         // Pop up to level ground.
                         movement.Altitude = terrainHeight;
+                        Debug.Assert(!float.IsNaN(movement.Altitude));
                     }
 
                     surfaceNormal = Terrain.GetNormal(movement.Position);

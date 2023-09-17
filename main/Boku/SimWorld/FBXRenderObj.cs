@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 using Microsoft.Xna.Framework;
@@ -72,6 +73,7 @@ namespace Boku.SimWorld
                             translation.Z = terrainHeight;
                             local.Translation = translation;
                             parent.Movement.Altitude = translation.Z;
+                            Debug.Assert(!float.IsNaN(parent.Movement.Altitude));
                         }
                     }
                     local = Matrix.CreateScale(parentActor.SquashScale) * local;
