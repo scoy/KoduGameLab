@@ -8062,6 +8062,11 @@ namespace Boku.Base
                 }
             }
 
+            if (Camouflaged)
+            {
+                bSensible = false;
+            }
+
             return bSensible;
         }
 

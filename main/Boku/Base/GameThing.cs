@@ -809,7 +809,7 @@ namespace Boku.Base
         /// </summary>
         public virtual bool CanBeSensed()
         {
-            return true;
+            return !Camouflaged;
         }
 
         /// <summary>
