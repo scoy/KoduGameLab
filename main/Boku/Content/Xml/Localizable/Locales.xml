@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Locales>
   <Locale>
+    <Language>Ukrainian</Language>
+    <Directory>UK</Directory>
+    <Native>Українська</Native>
+    <LastUpdated>4/26/2019 11:11:11</LastUpdated>
+  </Locale>
+
+  <Locale>
     <Language>Arabic</Language>
     <Directory>AR</Directory>
     <Native>عربي</Native>

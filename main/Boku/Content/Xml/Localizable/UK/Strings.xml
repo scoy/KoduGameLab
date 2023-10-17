@@ -1,0 +1,943 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <foo>The foo string</foo>
+
+<actorNames>
+    <balloon>Кулька</balloon>
+    <bigYucca1>Дерево 1</bigYucca1>
+    <bigYucca2>Дерево 2</bigYucca2>
+    <boku>Kodu</boku>
+    <bullet>Набої</bullet>
+    <cloud>Хмара</cloud>
+    <castle>Замок</castle>
+    <coin>Монета</coin>
+    <cycle>Велосипед</cycle>
+    <soccerBall>М'яч</soccerBall>
+    <daisy>Маргарита</daisy>
+    <drum>Барабан</drum>
+    <factory>Фабрика</factory>
+    <floatBot>Корабель</floatBot>
+    <flower>Квітка</flower>
+    <flyFish>Летюча риба</flyFish>
+    <fruit>Яблуко</fruit>
+    <heart>Серце</heart>
+    <hut>Хижина</hut>
+    <iceBerg>Льодовик</iceBerg>
+    <jet>Літак</jet>
+    <light>Світло</light>
+    <mine>Руда</mine>
+    <missile>Ракета</missile>
+    <popsy>Popsy</popsy>
+    <puck>Шайба</puck>
+    <pushPad>Тисніть Пад</pushPad>
+    <rock>Скала</rock>
+    <rockLowValue>Ігнітова</rockLowValue>
+    <rockHighValue>Відкладна</rockHighValue>
+    <rockLowValueUnknown>Невідома (Ігнітова)</rockLowValueUnknown>
+    <rockHighValueUnknown>Невідома (Відкладна)</rockHighValueUnknown>
+    <rockUnknown>Невідома скала</rockUnknown>
+    <saucer>Летюча чашка</saucer>
+    <sputnik>Супутник</sputnik>
+    <star>Зірка</star>
+    <stick>Паличка</stick>
+    <sub>Підводний човен</sub>
+    <swimFish>Риба</swimFish>
+    <turtle>Черепаха</turtle>
+    <terraCannon>Гармата</terraCannon>
+    <vlogster>Влогер</vlogster>
+    <wayPoint>Траса</wayPoint>
+    <windBlimp>Повітряний корабель</windBlimp>
+    <wisp>Багряниця</wisp>
+    <pipe>Труба</pipe>
+    <pipestraight>Пряма труба</pipestraight>
+    <pipecross>Перехрестя труб</pipecross>
+    <pipecorner>Кутова труба</pipecorner>
+    <yucca1>Дерево</yucca1>
+    <yucca2>Дерево</yucca2>
+    <yucca3>Дерево</yucca3>
+    <pathGeneric>Звичайний</pathGeneric>
+    <pathRoad>Дорога</pathRoad>
+    <pathWall>Стіна</pathWall>
+    <pathVeggie>Рослинність</pathVeggie>
+    <rover>Лунохід</rover>
+    <clam>Молюск</clam>
+    <lilypad>Лілія</lilypad>
+    <seagrass>Морська трава</seagrass>
+    <octopus>Восьминіг</octopus>
+    <starfish>Морська зірка</starfish>
+    <fan>Вентилятор</fan>
+    <inkjet>Чорнильний облако</inkjet>
+</actorNames>
+
+
+  <colorNames>
+    <white>Білий</white>
+    <black>Чорний</black>
+    <grey>Сірий</grey>
+    <red>Червоний</red>
+    <green>Зелений</green>
+    <blue>Синій</blue>
+    <orange>Оранжевий</orange>
+    <yellow>Жовтий</yellow>
+    <purple>Фіолетовий</purple>
+    <pink>Розовий</pink>
+    <brown>Коричневий</brown>
+  </colorNames>
+
+  <tutorial>
+    <continue>Продовжити</continue>
+    <back>Назад</back>
+    <exitTutorial>Покинути навчання</exitTutorial>
+  </tutorial>
+
+  <auth>
+    <signInTitle>Ввійти</signInTitle>
+    <signOutTitle>Вийти</signOutTitle>
+    <newUserTitle>Додати нового творця</newUserTitle>
+    
+    <creator>Творець</creator>
+    <currentlySignedInAs>Поточний творець : </currentlySignedInAs>
+    <pin>Код</pin>
+    <pinError>Неправильний Код</pinError>
+    <pinTooShort>Too short, must be 4 digits.</pinTooShort>
+    <pinTooSimple>Too simple.</pinTooSimple>
+
+    <keepSignedIn>Залишати творця.</keepSignedIn>
+
+    <ok>ОК</ok>
+    <cancel>Відмінити</cancel>
+    <continue>Продовжити</continue>
+    <signOut>Вийти</signOut>
+
+    <helpText>Welcome to the Kodu sign in page.  This dialog allows you to create a new account or sign in to an existing one.
+
+To create a new account, pick a Creator name and a Pin number.  The Creator name will show up on the worlds that you create.  This will allow you to find your worlds both in Kodu and on the Kodu community web site.  For your online safety choose a Creator name that is just your first name or better yet, a nickname.  Do not use your last name, email address or any other information that could identify you online since this name will be visible if you choose to upload worlds to the Kodu community site.
+
+The Pin number should be 4 digits.  This acts as your private password.  Simple patterns like 1111 or 1234 will not be accepted.
+
+Once you have created an account you can use the same Creator name and Pin to sign in.
+
+You may choose to not create an account.  In that case, just click 'OK' and you will be signed in to the Guest account.
+
+At any time, if you want to create a new account you can do so by picking a new Creator name and Pin.
+</helpText>
+
+    <helpTextShort>For your online safety choose a Creator name that is just your first name or better yet, a nickname.  Do not use your last name, email address or any other information that could identify you online.</helpTextShort>
+  </auth>
+  
+  <mainMenu>
+    <mainMenu></mainMenu>
+    <resume>ПРОДОВЖИТИ</resume>
+    <new>НОВИЙ СВІТ</new>
+    <play>ЗАВАНТАЖИТИ СВІТ</play>
+    <import>ВІДКРИТИ З РОБОЧОГО ЧТОЛУ</import>
+    <importWorldsCommitButtonText>Завантажити Світ(и)</importWorldsCommitButtonText>
+    <learning>НАВЧАННЯ</learning>
+    <community>СПІЛЬНОТА</community>
+    <share>ПОДІЛИТИСЬ</share>
+    <options>НАЛАШТУВАННЯ</options>
+    <help>ДОПОМОГА</help>
+    <exit>ПОКИНУТИ КОДУ</exit>
+    <storageWarn>Please reinsert the Memory Unit.  Press A when ready to continue.</storageWarn>
+    <storageAction> Продовжити</storageAction>
+    <storageFailed>
+      There has been a failure in the underlying memory storage.
+      No data has been lost.
+      Please restart Kodu.
+    </storageFailed>
+    <storageFailedAction>Покинути Коду</storageFailedAction>
+    <corruptStorageMessage>The storage device you have chosen appears to be either broken or corrupt.  Please choose another.</corruptStorageMessage>
+    <userChoseNoStorageMessage>Kodu requires a storage device to run.  Please choose one.</userChoseNoStorageMessage>
+    <prevSessionCrashedMessage>It looks like Kodu crashed.  Would you like to try and recover your world?</prevSessionCrashedMessage>
+    <webSignOutMessage0>You are currently signed in as </webSignOutMessage0>
+    <webSignOutMessage1>.  Would you like to sign out?</webSignOutMessage1>
+    <newWebSite>Hey!  We have a new web site where you can share your worlds.  Click here to check it out.</newWebSite>
+    <continueToMain>Click anywhere else to continue to the Main Menu.</continueToMain>
+    <more>більше!</more>
+    <less>менше</less>
+    <news>Новини</news>
+    <readMoreHere>Читай більше тут!</readMoreHere>
+    <paused>Коду зупинений. Розширь екран, щоб продовжити.</paused>
+  </mainMenu>
+
+  <programming>
+    <page>Сторінка</page>
+    <defaultSayString></defaultSayString>
+    <back>Назад</back>
+    <save>Зберегти</save>
+    <fullScreen>Повний екран</fullScreen>
+    <thoughtBalloonSequential>Thought Balloon, pick line sequentially</thoughtBalloonSequential>
+    <thoughtBalloonRandom>Thought Balloon, pick line randomly</thoughtBalloonRandom>
+
+    <triggerAtBeginning>Match as soon as I hear.</triggerAtBeginning>
+    <triggerAtEnd>Match after I've heard.</triggerAtEnd>
+    
+    <titleXbox>Програмування</titleXbox>
+    <sayStringPromptXbox>Ввести текст</sayStringPromptXbox>
+
+    <when>КОЛИ</when>
+    <do>РОБИ</do>
+
+    <help>Допомога</help>
+    <cutTile>Вирізати Карточку</cutTile>
+    <copyTile>Копіювати Карточку</copyTile>
+    <pasteTile>Вставити Карточку</pasteTile>
+    <cutRow>Вирізати Рядок</cutRow>
+    <copyRow>Копіювати Рядок</copyRow>
+    <pasteRow>Вставити Рядок</pasteRow>
+    <cutPage>Вирізати Сторінку</cutPage>
+    <copyPage>Копіювати Сторінку</copyPage>
+    <pastePage>Вставити Сторінку</pastePage>
+  </programming>
+
+  <miniHub>
+    <minihub>Головне меню</minihub>
+    <emptyLevel>Новий світ</emptyLevel>
+    <unlock>Розблокувати повну гру</unlock>
+    <reset>Грати в світ</reset>
+    <edit>Редагувати світ</edit>
+    <save>Зберегти мій світ</save>
+    <share>Поділитися моїм світом</share>
+    <load>Завантажити світ</load>
+    <sharing>Поділитися з друзями</sharing>
+    <publish>Поділитися зі спільнотою</publish>
+    <print>Друкувати код для рівня</print>
+    <options>Налаштування</options>
+    <quit>Вийти в головне меню</quit>
+
+
+    <shareSuccessMessage>Your world has been posted.  View it at KoduGameLab.com or by browsing "My Worlds" on the Community screen.</shareSuccessMessage>
+    <noCommunityMessage>The Community site is not available at the moment.  Please try again later.</noCommunityMessage>
+    <noSharingMessage>Sharing is not available at the moment.</noSharingMessage>
+    <oldBuildMessage>A new build of Kodu is available.  Please upgrade before accessing the Community site.</oldBuildMessage>
+    <newBuildMessage>A new build of Kodu is available.  Please exit and update to the current version.</newBuildMessage>
+
+    <signedInMessage>Sharing will post to KoduGameLab.com.  You are signed in as: </signedInMessage>
+    <signedOutMessage>Sharing will post to KoduGameLab.com.  You aren’t signed in. Do you want to sign in?</signedOutMessage>
+    <signInFailedMessage>Sign in failed.</signInFailedMessage>
+
+    <signedOutLikeCommentMessage>Liking or commenting will post to KoduGameLab.com.  You must be signed in.</signedOutLikeCommentMessage>
+
+  </miniHub>
+
+  <toolBar>
+    <home>Головне меню</home>
+    <runGame>Грати в гру</runGame>
+    <cameraMove>Розташування та обертання камери</cameraMove>
+    <objectEdit>Додавання, редагування та програмування об'єкта</objectEdit>
+    <paths>Додавання та редагування шляхів</paths>
+    <terrainPaint>Розфарбовування матеріалу місцевості</terrainPaint>
+    <terrainRaiseLower>Підняття та зниження місцевості</terrainRaiseLower>
+    <terrainSmoothLevel>Згладжування та вирівнювання місцевості</terrainSmoothLevel>
+    <terrainSpikeyHilly>Нерівності місцевості</terrainSpikeyHilly>
+    <waterRaiseLower>Додавання, підняття або зниження води</waterRaiseLower>
+    <deleteObjects>Видалити об'єкти</deleteObjects>
+    <worldTweak>Зміна налаштувань світу</worldTweak>
+  </toolBar>
+
+  <mouseEdit>
+    <addObject>Додати об'єкт</addObject>
+    <worldTweak>Змінити налаштування світу</worldTweak>
+    <paste>Вставити</paste>
+    <empty>пусто</empty>
+
+    <rename>Перейменувати</rename>
+    <program>Програмувати</program>
+    <objectTweak>Змінити налаштування об'єкта</objectTweak>
+    <cut>Вирізати</cut>
+    <copy>Копіювати</copy>
+    <size>Змінити розмір</size>
+    <rotate>Повернути</rotate>
+    <height>Змінити висоту</height>
+
+    <sizeValue>Розмір</sizeValue>
+    <rotationValue>Поворот</rotationValue>
+    <heightValue>Висота</heightValue>
+
+    <addNodePlain>Додати рівний шлях</addNodePlain>
+    <addNodeRoad>Додати дорогу</addNodeRoad>
+    <addNodeWall>Додати стіну</addNodeWall>
+    <addNodeFlora>Додати рослинність</addNodeFlora>
+
+    <addMore>Додати більше вузлів</addMore>
+    <type>Змінити тип</type>
+    <delete>Видалити</delete>
+    <directions>Змінити напрямок</directions>
+    <split>Розділити</split>
+
+  </mouseEdit>
+
+  <shareHub>
+    <appName>Kodu Game Lab</appName>
+    <appPrefix>Kodu</appPrefix>
+    <startSharing>УВІЙТИ В КІМНАТУ ДЛЯ ПОШИРЕННЯ</startSharing>
+    <withYourHomies>(Спочатку запросіть друзів нижче)</withYourHomies>
+    <cmdInvite>ЗАПРОСИТИ</cmdInvite>
+    <cmdJoin>ПРИЙНЯТИ ЗАПРОШЕННЯ</cmdJoin>
+    <cmdStart>ПОЧАТИ</cmdStart>
+    <statusJoined>ПРИЄДНАНО</statusJoined>
+    <statusJoining>ПРИЄДНАННЯ</statusJoining>
+    <statusJoinable>ВВІЙТИ!</statusJoinable>
+    <statusInvited>ЗАПРОШЕНО</statusInvited>
+    <statusSharing>ДІЛИМОСЯ</statusSharing>
+    <statusOffline>офлайн</statusOffline>
+    <presenceSharing>Поділитися</presenceSharing>
+    <presenceInvitedYou>Запрошує вас</presenceInvitedYou>
+    <presenceAtShareHub>В кімнаті ділення</presenceAtShareHub>
+    <presenceConnectedToYou>Підключений до вас</presenceConnectedToYou>
+    <messageOpeningSharingRoom>Вхід в кімнату спільноти, будь ласка, зачекайте...</messageOpeningSharingRoom>
+    <messageOpeningInviteGuide>Відкриваємо вікно для запрошення, будь ласка, зачекайте...</messageOpeningInviteGuide>
+
+    <invite>Запросіть своїх друзів для поширення з вами (або приєднайтесь до існуючої сесії)</invite>
+    <friend>друг</friend>
+    <friends>друзі</friends>
+    <invited>запрошено</invited>
+    <start>Коли будете готові, натисніть "ПОЧАТИ" &lt;start&gt;, щоб запустити вашу сесію поширення.</start>
+  </shareHub>
+
+  <loadLevelMenu>
+    <localTitle>ЛОКАЛЬНО</localTitle>
+    <sharingTitle>ДІЛЕННЯ</sharingTitle>
+    <communityTitle>СПІЛЬНОТА</communityTitle>
+
+    <noMatch>Немає світів, які відповідають вашому запиту</noMatch>
+    <noLevels>Світи не знайдено</noLevels>
+    <searching>Пошук...</searching>
+    <waitingForOthers>Очікування інших...</waitingForOthers>
+    <yourHost>Ваш господар:</yourHost>
+    <gamerCountFmt>Ділимося з {0} гравцями</gamerCountFmt>
+
+    <myWorldsTab>Мої світи</myWorldsTab>
+    <starterWorldsTab>Світи для початківців</starterWorldsTab>
+    <downloadsTab>Завантаження</downloadsTab>
+    <missionsTab>Місії</missionsTab>
+
+    <deleteWorld>Видалити світ</deleteWorld>
+    <oldSortBy>Сортувати за </oldSortBy>
+    <world>Світ</world>
+    <oldCreator>Творець</oldCreator>
+    <date>Дата</date>
+    <worldCount> Світ</worldCount>
+    <worldsCount> Світи</worldsCount>
+    <separator>|</separator>
+
+    <title>НАЗВА</title>
+    <tags>Теги</tags>
+    <creator>ТВОРЕЦЬ</creator>
+    <description>ОПИС</description>
+    <rating>РЕЙТИНГ</rating>
+    <vote>ГОЛОСУВАТИ</vote>
+    <share>Поділитися</share>
+    <unshare>Припинити ділення</unshare>
+    <editTags>Редагувати теги</editTags>
+    <sendTo>Надіслати до &gt;</sendTo>
+    <delete>Видалити</delete>
+    <like>Подобається</like>
+    <comments>Коментарі</comments>
+    <signInToComment>Увійдіть, щоб залишити коментар</signInToComment>
+    <addAComment>Додати коментар</addAComment>
+    <noComments>Будьте першим, хто залишить коментар!</noComments>
+    <commentBy>Коментар від</commentBy>
+    <signedInAs>Ввійшов як</signedInAs>
+    <sortBy>Сортувати за:</sortBy>
+    <showOnly>Показати:</showOnly>
+    <authoredBy>від</authoredBy>
+    <actions>Дії</actions>
+    <playLevel>Грати</playLevel>
+    <editLevel>Редагувати</editLevel>
+    <export>Експорт</export>
+    <exportDialogTitle>Куди б ви хотіли експортувати ваш файл?</exportDialogTitle>
+    <exportMultiDialogTitle>Куди б ви хотіли експортувати ваш файл (увесь приєднаний рівень включено)?</exportMultiDialogTitle>
+    <exportPackageString>[Пакунок]</exportPackageString>
+    <videoOut>Відеовихід</videoOut>
+    <download>Завантажити</download>
+    <downloads>Завантаження</downloads>
+    <attach>Прикріпити</attach>
+    <back>Назад</back>
+    <scroll>ПЕРЕМОТАТИ Л/П</scroll>
+    <moreLikeThis>БІЛЬШ СХОЖЕ НА ЦЕ</moreLikeThis>
+    <previousPage><![CDATA[< Сторінка]]></previousPage>
+    <nextPage><![CDATA[Сторінка >]]></nextPage>
+    <thumbsUp>Подобається &lt;HeartIcon&gt;</thumbsUp>
+    <thumbsDown>Не подобається &lt;BrokenHeartIcon&gt;</thumbsDown>
+    <reportAbuse>Поскаржитися&lt;ReportAbuseIcon&gt;</reportAbuse>
+    <unReportAbuse>Скасувати прапорець &lt;ReportAbuseGreyIcon&gt;</unReportAbuse>
+    <viewOnSocl>Переглянути на Socl</viewOnSocl>
+    <viewOnKoduGameLab>Переглянути на KoduGameLab</viewOnKoduGameLab>
+
+    <tag>Тег</tag>
+    <puzzle>Пазл</puzzle>
+    <adventure>Пригода</adventure>
+    <other>Інше</other>
+
+    <showSharing>Друзі</showSharing>
+    <showMyWorlds>Мої Світи</showMyWorlds>
+    <showDownloads>Завантаження</showDownloads>
+    <showLessons>Уроки</showLessons>
+    <showSamples>Приклади</showSamples>
+    <showStarterWorlds>Початкові світи</showStarterWorlds>
+    <showAll>Всі</showAll>
+
+    <sortDate>Дата</sortDate>
+    <sortCreator>Творець</sortCreator>
+    <sortTitle>Назва</sortTitle>
+    <sortRating>Рейтинг</sortRating>
+    <sortRank>Ранг</sortRank>
+
+    <sharingCloseSessionConfirmMessage>Закрити кімнату для спільного використання? Усі користувачі будуть видалені.</sharingCloseSessionConfirmMessage>
+    <sharingLeaveSessionConfirmMessage>Покинути кімнату для спільного використання? Усі незавершені завантаження будуть скасовані.</sharingLeaveSessionConfirmMessage>
+    <sharingSessionEndedMessageFmt>Кімнату для спільного використання закрито. {0}.</sharingSessionEndedMessageFmt>
+
+    <loadingLevelMessage>Завантаження світу, будь ласка, зачекайте...</loadingLevelMessage>
+    <deletingLevelMessage>Видалення світу, будь ласка, зачекайте...</deletingLevelMessage>
+    <exportingLevelMessage>Експорт світу, будь ласка, зачекайте...</exportingLevelMessage>
+
+    <levelNotFirstMessage>На цей рівень посилаються інші рівні. Бажаєте завантажити перший рівень в ланцюжку?</levelNotFirstMessage>
+    <levelLinksBrokenMessage>Цей рівень є частиною ланцюжка, який містить розірвані посилання - деякі рівні можуть не посилатися належним чином.</levelLinksBrokenMessage>
+    <levelChainTooLongMessage>Цей рівень вже є частиною занадто довгого ланцюжка посилань. Ви не можете додавати ще рівні до ланцюжка без попереднього видалення деяких рівнів.</levelChainTooLongMessage>
+    <levelChainHasCycleMessage>Ви не можете створити циклічні посилання на рівні. Будь ласка, посилайтесь на рівень, який ще не є частиною цього ланцюжка.</levelChainHasCycleMessage>
+    <targetAlreadyLinkedMessage>На цей рівень вже є посилання. Якщо ви продовжите, попереднє посилання буде видалено.</targetAlreadyLinkedMessage>
+    <preserveLinksMessage>Виявлено нову назву або версію.
+    Бажаєте зберегти посилання на інші рівні?
+    Вибір "Ні" видалить всі посилання на цей рівень та з нього.</preserveLinksMessage>
+    <brokenLevelExportMessage>Цей рівень містить розірвані посилання. Будь ласка, відредагуйте рівень та оновіть або видаліть посилання перед експортом.</brokenLevelExportMessage>
+    <brokenLevelShareMessage>Цей рівень містить розірвані посилання. Будь ласка, відредагуйте рівень та оновіть або видаліть посилання перед спільним використанням.</brokenLevelShareMessage>
+    <confirmLinkedDownloadMessage>На цей рівень були додані посилання на інші рівні. Всі приєднані рівні були завантажені.</confirmLinkedDownloadMessage>
+    <confirmLinkedShareMessage>На цей рівень були додані посилання на інші рівні. При спільному використанні будуть спільно використані всі приєднані рівні. Продовжити?</confirmLinkedShareMessage>
+
+    <sendToAll>Надіслати всім</sendToAll>
+
+    <updateAvailableMessageFmt>Доступно оновлення для Kodu Game Lab! Для спільного використання з {0} вам потрібно вийти та знову завантажити Kodu.</updateAvailableMessageFmt>
+    </loadLevelMenu>
+
+    <inGame>
+    <saveRequiredBeforeLink>Цей рівень містить незбережені зміни. Збережіть їх зараз і продовжите?</saveRequiredBeforeLink>
+    <nextLevelNotFound>Був виконаний блок "Наступний рівень", але властивість наступного рівня для цього світу відсутня або некоректна. Будь ласка, оновіть посилання або спробуйте завантажити рівень ще раз.</nextLevelNotFound>
+    <previousLevelNotFound>Був виконаний блок "Попередній рівень", але цей рівень не має посилання з іншого рівня (або це посилання некоректне). Будь ласка, оновіть посилання або спробуйте завантажити рівень ще раз.</previousLevelNotFound>
+    </inGame>
+
+    <inGamePickLevelMenu>
+    <title>Вибрати світ</title>
+    <attach>Прикріпити</attach>
+    </inGamePickLevelMenu>
+
+    <networkSessionEndReason>
+    <clientSignedOut>Ви вийшли з системи</clientSignedOut>
+    <hostEndedSession>Господар завершив сеанс</hostEndedSession>
+    <removedByHost>Господар вас видалив</removedByHost>
+    <disconnected>Відключено</disconnected>
+    </networkSessionEndReason>
+
+    <community>
+    <newsTab>Новини</newsTab>
+    <page>Спільнота:</page>
+    <pageFormat>Спільнота: Сторінка {0} із {1}</pageFormat>
+    <downloadWorld>Завантажити світ</downloadWorld>
+    <downloadSuccessMessage>Вибраний світ був скопійований у вашу область завантажень.</downloadSuccessMessage>
+    <playLevel>Грати зараз</playLevel>
+    <backToCommunity>Продовжити перегляд</backToCommunity>
+    </community>
+
+    <tools>
+      <sampleTool>Зразок</sampleTool>
+      <paintMaterialTool>Змінити матеріал</paintMaterialTool>
+      <heightMapTool>Підняти/Опустити</heightMapTool>
+      <deleteTool>Видалити матеріал</deleteTool>
+      <noiseTool>Шероховатість/Згладжування</noiseTool>
+      <hillTool>Пагорб</hillTool>
+      <minMaxTool>Рівень</minMaxTool>
+      <levelTool>Рівень</levelTool>
+      <addTool>Матеріал</addTool>
+      <waterAdd>Вода</waterAdd>
+      <roadTool>Рівень шляху</roadTool>
+      <delObjTool>Видалити об'єкти</delObjTool>
+      <tooManyLights>Вибачте, ви не можете додати ще одне світло. У вас може бути лише 8 світлових джерел у світі.</tooManyLights>
+      <balloonText>
+          &lt;y&gt; Програма
+          &lt;a&gt; Підняти</balloonText>
+      <balloonTextMouse>
+          &lt;rightmouse&gt; Програма
+          &lt;leftmouse&gt; Перетягнути</balloonTextMouse>
+      <balloonTextTouch>
+          &lt;rotate&gt; Обернути
+          &lt;pinch&gt; Масштабувати</balloonTextTouch>
+  </tools>
+  
+  <editWorldParams>
+      <changeHistoryTitle>Історія змін</changeHistoryTitle>
+      <viewHistory>Переглянути</viewHistory>
+      <clearHistory>Видалити всі</clearHistory>
+      <noHistory>Для цього світу немає історії змін.</noHistory>
+  
+      <glassWallsCheckbox>Скляні стіни</glassWallsCheckbox>
+      <cameraMode>Режим камери</cameraMode>
+      <cameraModeFixedPosition>Фіксована позиція</cameraModeFixedPosition>
+      <cameraModeFixedOffset>Фіксоване зміщення</cameraModeFixedOffset>
+      <cameraModeFree>Вільний</cameraModeFree>
+      <startingCameraCheckbox>Початкова камера</startingCameraCheckbox>
+      <setCamera>Встановити камеру</setCamera>
+      <cameraSpringStrength>Сила пружини камери</cameraSpringStrength>
+      <showCompassCheckbox>Показувати компас</showCompassCheckbox>
+      <showResourceMeterCheckbox>Показувати вимірювач ресурсів</showResourceMeterCheckbox>
+      <enableResourceLimitingCheckbox>Увімкнути обмеження ресурсів</enableResourceLimitingCheckbox>
+      <waveHeight>Висота хвиль</waveHeight>
+      <waterStrength>Сила води</waterStrength>
+      <skyPictureList>Небо</skyPictureList>
+      <lightRigPictureList>Освітлення</lightRigPictureList>
+      <windMin>Мінімальний бриз</windMin>
+      <windMax>Максимальний бриз</windMax>
+  
+      <preGame>Почати гру з:</preGame>
+      <nothing>Нічого</nothing>
+      <countdown>Зворотний відлік</countdown>
+      <countdownWithDesc>Опис зі зворотним відліком</countdownWithDesc>
+      <levelTitle>Назва світу</levelTitle>
+      <levelDesc>Опис світу</levelDesc>
+  
+      <debugPathFollow>Налагодження слідування за шляхом</debugPathFollow>
+      <debugDisplayCollisions>Налагодження відображення даних про зіткнення</debugDisplayCollisions>
+      <debugDisplayLinesOfPerception>Налагодження відображення ліній видимості та звуку</debugDisplayLinesOfPerception>
+      <debugDisplayCurrentPage>Налагодження поточної сторінки програмування</debugDisplayCurrentPage>
+      <foleyVolume>Гучність ефектів</foleyVolume>
+      <musicVolume>Гучність музики</musicVolume>
+  
+      <scoreVisibility>Видимість балів: </scoreVisibility>
+      <scorePersistence>Постійність балів: </scorePersistence>
+      <loudLabel>Голосно позначено</loudLabel>
+      <loud>Голосно</loud>
+      <quietLabel>Тихо позначено</quietLabel>
+      <quiet>Тихо</quiet>
+      <on>Увімкнено</on>
+      <off>Вимкнено</off>
+  
+      <guiButtonVisibility>Видимість кнопок інтерфейсу: </guiButtonVisibility>
+      <labeledButton>З підписом</labeledButton>
+      <solidButton>Без підпису</solidButton>
+  
+      <showVirtualController>Показати віртуальний контролер</showVirtualController>
+  
+      <nextLevel>Наступний рівень</nextLevel>
+      <noLevelSelected>Рівень не вибрано</noLevelSelected>
+      <clearNextLevel>Очистити</clearNextLevel>
+  </editWorldParams>  
+
+  <skyGradientNames>
+    <grassAndSky>1</grassAndSky>
+    <space>2</space>
+    <rampBW>3</rampBW>
+    <pink>4</pink>
+    <venus>5</venus>
+    <sunset>6</sunset>
+    <mars>7</mars>
+    <blues>8</blues>
+    <mars2>9</mars2>
+    <twilight>10</twilight>
+    <G1>11</G1>
+    <G2>12</G2>
+    <G3>13</G3>
+    <G4>14</G4>
+    <G5>15</G5>
+    <G6>16</G6>
+    <G7>17</G7>
+    <G8>18</G8>
+    <G9>19</G9>
+    <G10>20</G10>
+    <G11>21</G11>
+</skyGradientNames>
+
+<lightRigNames>
+    <day>День</day>
+    <night>Ніч</night>
+    <space>Космос</space>
+    <dream>Мрія</dream>
+    <venus>Венера</venus>
+    <mars>Марс</mars>
+    <dark>Темно</dark>
+    <realdark>Дуже темно</realdark>
+</lightRigNames>
+
+<editObjectParams>
+    <help>Допомога</help>
+    <ok>ОК</ok>
+    <back>Назад</back>
+    <moreInfo>Натисніть &lt;y&gt; для отримання додаткової інформації.</moreInfo>
+    <helmet>Шолом</helmet>
+    <pushRange>Діапазон тиску</pushRange>
+    <pushStrength>Сила тиску</pushStrength>
+    <renameTitle>Перейменувати цього персонажа</renameTitle>
+    <rename>Перейменувати</rename>
+    <lightrange>Діапазон світла</lightrange>
+    <immobile>Нерухомий</immobile>
+    <invulnerable>Неуразливий</invulnerable>
+    <creatable>Можливий для створення</creatable>
+    <maxCreated>Максимально створених</maxCreated>
+    <mute>Вимкнути звук</mute>
+    <stayAboveWater>Залишатися над водою</stayAboveWater>
+    <loudness>Гучність</loudness>
+    <hearing>Слух</hearing>
+    <nearByDistance>Дистанція близько</nearByDistance>
+    <farAwayDistance>Дистанція далеко</farAwayDistance>
+    <showSensors>Показати сенсори</showSensors>
+    <showHitPoints>Показати очки життя</showHitPoints>
+    <maxHitPoints>Максимальні очки життя</maxHitPoints>
+    <camouflaged>Камуфляж</camouflaged>
+    <kickStrength>Сила удару</kickStrength>
+    <kickRate>Швидкість удару</kickRate>
+    <reScale>Масштаб</reScale>
+    <holdDistance>Відстань утримання</holdDistance>
+    <movementSpeedMultiplier>Множник швидкості вперед</movementSpeedMultiplier>
+    <turningSpeedMultiplier>Множник швидкості повороту</turningSpeedMultiplier>
+    <linearAccelerationMultiplier>Множник прискорення вперед</linearAccelerationMultiplier>
+    <turningAccelerationMultiplier>Множник прискорення повороту</turningAccelerationMultiplier>
+    <verticalSpeedMultiplier>Множник швидкості вертикального руху</verticalSpeedMultiplier>
+    <verticalAccelerationMultiplier>Множник прискорення вертикального руху</verticalAccelerationMultiplier>
+    <bounciness>Пружність</bounciness>
+    <friction>Тертя</friction>
+    <memoryLifetime>Тривалість пам'яті</memoryLifetime>
+
+    <blipDamage>Пошкодження бліпу</blipDamage>
+    <blipReloadTime>Час перезавантаження бліпу</blipReloadTime>
+    <blipSpeed>Швидкість бліпу</blipSpeed>
+    <blipRange>Діапазон бліпу</blipRange>
+    <blipsInAir>Кількість бліпів у повітрі</blipsInAir>
+
+    <missileDamage>Пошкодження ракети</missileDamage>
+    <missileReloadTime>Час перезавантаження ракети</missileReloadTime>
+    <missileSpeed>Швидкість ракети</missileSpeed>
+    <missileRange>Діапазон ракети</missileRange>
+    <missilesInAir>Кількість ракет у повітрі</missilesInAir>
+    <missileTrails>Дим від ракети</missileTrails>
+
+    <shieldEffects>Ефекти захисту</shieldEffects>
+    <invisible>Невидимий</invisible>
+    <ignored>Прозорий</ignored>
+
+    <glowAmt>Яскравість свічення</glowAmt>
+    <glowLights>Яскравість світла свічення</glowLights>
+    <glowEmission>Свічення самого себе</glowEmission>
+    <displayLOS>Лінії зіткнень для бар'єрів</displayLOS>
+    <displayLOP>Лінії видимості та звуку</displayLOP>
+    <displayCurrentPage>Показати поточну сторінку програмування</displayCurrentPage>
+
+    <cameraFollow>Режим слідування камери</cameraFollow>
+    <cameraFollowUserControlled>Тільки при керуванні користувачем</cameraFollowUserControlled>
+    <cameraFollowAlways>Завжди</cameraFollowAlways>
+    <cameraFollowNever>Ніколи</cameraFollowNever>
+</editObjectParams>
+
+<optionsParams>
+  <options>Опції</options>
+  <showToolTips>Показувати підказки</showToolTips>
+  <showHints>Показувати підказки</showHints>
+  <restoreDisabledHints>Відновити вимкнені підказки</restoreDisabledHints>
+  <showFramerate>Показувати кадри на секунду</showFramerate>
+  <modalToolMenu>Зробити меню інструментів геймпада модальним</modalToolMenu>
+  <helpLevel>Рівень довідки</helpLevel>
+  <lowHelp>Немає</lowHelp>
+  <midHelp>Деякі</midHelp>
+  <highHelp>Усі</highHelp>
+  <language>Мова</language>
+  <invertYAxis>
+    Інвертувати вісь Y для вгору/вниз:
+  </invertYAxis>
+  <invertXAxis>
+    Інвертувати вісь X для повороту бота:
+  </invertXAxis>
+  <invertCamY>
+    Інвертувати вісь Y для кута камери:
+  </invertCamY>
+  <invertCamX>
+    Інвертувати вісь X для повороту камери:
+  </invertCamX>
+  <overscan>Перехідний екран%</overscan>
+  <terrainSpeed>Швидкість редагування терену</terrainSpeed>
+  <uiVolume>Гучність інтерфейсу</uiVolume>
+  <foleyVolume>Гучність звукових ефектів</foleyVolume>
+  <musicVolume>Гучність музики</musicVolume>
+  <acceptSentLevels>Обмін: Приймати відправлені світи</acceptSentLevels>
+  <autoReshareLevels>Обмін: Автоматично відправляти світи</autoReshareLevels>
+  <autoDownloadFavoriteLevels>Обмін: Автоматично завантажувати улюблені</autoDownloadFavoriteLevels>
+  <checkForUpdates>Перевіряти оновлення при запуску</checkForUpdates>
+  <sendInstrumentation>Збирати інформацію про використання</sendInstrumentation>
+  <viewCodeOfConduct>Кодекс поведінки</viewCodeOfConduct>
+  <viewPrivacyStatement>Заява про конфіденційність і файли cookie</viewPrivacyStatement>
+  <viewEULA>Ліцензійна угода з кінцевим користувачем</viewEULA>
+  <viewButtonLabel>Перегляд</viewButtonLabel>
+  <showIntroVideo>Показати відео при наступному запуску</showIntroVideo>
+  <persistWebLogin>Запам'ятовувати вхід на веб-сайт</persistWebLogin>
+  <showTutorialDebug>Показувати інформацію для відладки уроку.</showTutorialDebug>
+  <changeLanguageMessage>Зміна мови потребує виходу та перезапуску Kodu. Ви хочете вийти з Kodu?</changeLanguageMessage>
+  <noContinue>Ні, продовжити</noContinue>
+  <yesQuitKodu>Так, вийти з Kodu</yesQuitKodu>
+</optionsParams>
+
+<titleScreen>
+  <challengeMessage>Додано нові завдання до вашого каталогу завантажень.</challengeMessage>
+</titleScreen>
+
+<gameOver>
+  <edit>Редагувати цей світ</edit>
+  <browse>Головне меню</browse>
+  <restart>Перезапустити світ</restart>
+  <team>Команда</team>
+</gameOver>
+
+<textDialog>
+  <newNamePrompt>Введіть нову назву світу:</newNamePrompt>
+  <saveChangesPrompt>Зберегти зміни?</saveChangesPrompt>
+  <deletePrompt>Видалити цей світ?</deletePrompt>
+  <deleteLinkedPrompt>Цей світ пов'язаний з іншими рівнями. Його видалення розірветься ці зв'язки. Продовжити?</deleteLinkedPrompt>
+  <linkedLevelExport>Цей світ пов'язаний з іншими рівнями. Всі пов'язані рівні буде експортовано.</linkedLevelExport>
+  <levelExported>Рівень експортовано в: </levelExported>
+  <logonPrompt>Введіть своє ім'я користувача. Воно буде використовуватися як ім'я "Створювача" для рівнів, які ви будуєте.</logonPrompt>
+  <reportAbusePrompt>Ви хочете повідомити про образливий рівень?</reportAbusePrompt>
+  <save>Зберегти</save>
+  <back>Назад</back>
+  <ok>ОК</ok>
+  <continue>Продовжити</continue>
+  <accept>Прийняти</accept>
+  <cancel>Скасувати</cancel>
+  <discard>Відкинути</discard>
+  <delete>Видалити</delete>
+  <quitKodu>Вийти з Kodu</quitKodu>
+  <resume>Продовжити</resume>
+  <upload>Завантажити</upload>
+  <uploadAnonymous>Анонімно</uploadAnonymous>
+  <signIn>Увійти</signIn>
+  <signOut>Вийти</signOut>
+  <changeUser>Змінити користувача</changeUser>
+  <yes>Так</yes>
+  <no>Ні</no>
+</textDialog>
+
+<microbitPatternEditor>
+  <brightness>Яскравість</brightness>
+  <duration>Тривалість</duration>
+  <toggleLED>Перемикач LED</toggleLED>
+</microbitPatternEditor>
+
+<microbitNeedsDriverDlg>
+  <title>BBC micro:bit потребує драйвер</title>
+  <message>Нам потрібно встановити драйвер, щоб Kodu міг спілкуватися з вашим BBC micro:bit. Натисніть кнопку Встановити, щоб почати. Натисніть посилання нижче для отримання додаткової інформації.</message>
+  <linkLabel>Kodu та BBC micro:bit - Посібник з першого запуску</linkLabel>
+  <cancelLabel>Скасувати</cancelLabel>
+  <installLabel>Встановити</installLabel>
+</microbitNeedsDriverDlg>
+
+  <helpCard>
+    <back>Back</back>
+    <examples>Examples</examples>
+    <insert>Insert Example</insert>
+    <noDescription><![CDATA[Press <a> to add a tile.]]></noDescription>
+    <noLabel>Blank</noLabel>
+    <create>Create an Example Character</create>
+    <choose>Choose</choose>
+    <noExamples>There are no examples for this object.</noExamples>
+  </helpCard>
+
+  <toolTips>
+    <insert>Insert</insert>
+    <examples>Examples</examples>
+    <change>Change</change>
+    <add>Add</add>
+    <remove>Remove</remove>
+    <group>group</group>
+    <groupDesc><![CDATA[Press <a> for more...]]></groupDesc>
+
+    <pageHandleLabel>page handle</pageHandleLabel>
+    <pageHandleDesc><![CDATA[Your program can have up to twelve pages.  Use the SWITCH action to change pages.]]></pageHandleDesc>
+    <rowHandleLabel>row handle</rowHandleLabel>
+    <rowHandleDesc><![CDATA[Use <lt> to cut and <rt> to paste rows.  The numbering indicates the priority of the rules.]]></rowHandleDesc>
+  </toolTips>
+
+  <saveLevelDialog>
+    <change>Change</change>
+    <save>Save</save>
+    <cancel>Cancel</cancel>
+    <quickSave>Save</quickSave>
+    <name>Name : </name>
+    <creator>Creator : </creator>
+    <description>Description : </description>
+    <version>v</version>
+    <tags>Tags :</tags>
+    <noTags>None</noTags>
+
+    <overwriteWarning>Warning: you are about to overwrite an existing file.</overwriteWarning>
+    <overwrite>Save</overwrite>
+    <back>Back</back>
+    <incrementVersion>Increment &amp; Save</incrementVersion>
+
+    <titleXbox>Save World</titleXbox>
+    <namePromptXbox>Enter a new name for your world.</namePromptXbox>
+    <creatorPromptXbox>Enter creator name for your world.</creatorPromptXbox>
+    <descriptionPromptXbox>Enter a description for your world.</descriptionPromptXbox>
+    <descriptionPromptPC>Click here and enter a description for your world with the keyboard</descriptionPromptPC>
+
+    <safetyWarning>For your online safety do not use your name, email address, or any web addresses in the world name or description.</safetyWarning>
+  </saveLevelDialog>
+
+  <gamePadInputDialog>
+    <noControllerMoron>You must have at least one controller plugged in to play Kodu. Please plug in a controller.</noControllerMoron>
+    <noControllerAction> Continue</noControllerAction>
+    <unPluggedMoron>A controller has come unplugged. Press A button when ready to continue.</unPluggedMoron>
+    <unPluggedAction> Continue</unPluggedAction>
+  </gamePadInputDialog>
+
+  <newerVersionDialog>
+    <text>One or more of the levels you have imported were created with a newer version of Kodu.  You will not be able to see them until you upgrade.</text>
+    <action> Continue</action>
+  </newerVersionDialog>
+
+  <undoStack>
+    <undo>Undo</undo>
+    <redo>Redo</redo>
+  </undoStack>
+
+  <toast>
+    <yButtonMore>More</yButtonMore>
+
+    <continue>Continue</continue>
+    <dismiss>Do not show again</dismiss>
+
+    <!--
+      The *Toast strings are the short version which is displayed in the toast pop-up.
+      The *Modal strings are the longer strings displayed in the modal help dialog.
+    -->
+
+    <resourceMeterToast>Too much stuff!</resourceMeterToast>
+    <resourceMeterModal>
+      The thermometer gage on the right side of the screen is showing you that you've almost used up all the resources of the world.  This can cause a low frame rate making the animation look chunky.
+      Both the terrain in the world and the characters in the world use up resources so reducing either of them will help your game's performance.
+    </resourceMeterModal>
+
+    <fullResourceToast>Maximum resource limit reached.</fullResourceToast>
+    <fullResourceModal>
+      The rude buzzing sound and the thermometer gage on the right side of the screen are showing you that you've used up all the resources available to the world.
+      At this point you are not allowed to add any more terrain or characters to your game.
+      Both the terrain in the world and the characters in the world use up resources so reducing either of them will help your game's performance.
+    </fullResourceModal>
+
+    <noControllerToast>This level requires a controller to play.</noControllerToast>
+    <noControllerModal>
+      This level appears to require a gamepad controller in order to play.
+      We are not detecting one in your system.
+      You can still play the game but you will probably have to modify the programming to allow for keyboard control.
+    </noControllerModal>
+
+    <quietMainMenuToast>Try selecting 'Load World'</quietMainMenuToast>
+    <quietMainMenuModal>
+      Welcome.  If you are a new user you may want to start by selecting 'Load World'.
+      This will let you load and play an already built level.
+    </quietMainMenuModal>
+
+    <waterTerrainToast>Water flows.</waterTerrainToast>
+    <waterTerrainModal>
+      When you add water to the world, it will flow out to fill as much space as possible.
+      If you want to contain the water you need to use the terrain editing tools to raise the land surrounding the area you want filled with water.
+
+      "Empty your mind, be formless, shapeless - like water. Now you put water into a cup, it becomes the cup, you put water into a bottle, it becomes the bottle, you put it in a teapot, it becomes the teapot. Now water can flow or it can crash. Be water, my friend."
+      Bruce Lee
+    </waterTerrainModal>
+
+    <waterNoTerrainToast>Water must go over terrain.</waterNoTerrainToast>
+    <waterNoTerrainModal>Water can only be added on top of terrain.  Either add some land or move the cursor over existing land before adding water.</waterNoTerrainModal>
+
+    <noTerrainToRaiseToast>First add terrain with the Ground Brush &lt;terrainpaint&gt;.</noTerrainToRaiseToast>
+    <noTerrainToRaiseModal>
+      Before you can raise hills you need to add terrain with the Ground Brush &lt;terrainpaint&gt;.
+    </noTerrainToRaiseModal>
+    
+    <gamepadNoFilterToast>You programmed using a gamepad without specifying any buttons or sticks to check.</gamepadNoFilterToast>
+    <gamepadNoFilterModal>
+      When programming your character to respond to the gamepad you also need to specify which stick or button to test for.
+      For instance:
+      When <![CDATA[<gamepad><leftstick>]]> Do Move
+      When <![CDATA[<gamepad><abutton>]]> Do Shoot
+    </gamepadNoFilterModal>
+
+    <switchNoTargetToast>You programmed a switch without telling what page to switch to.</switchNoTargetToast>
+    <switchNoTargetModal>
+      When using the Switch &lt;actuator.switchtask&gt; tile you also need to tell the system what page to switch to.
+      
+      For example: &lt;actuator.switchtask&gt; &lt;modifier.taskb&gt;
+    </switchNoTargetModal>
+
+    <microbitNeedsResetHintToast>Flashing your BBC micro:bit, please wait...</microbitNeedsResetHintToast>
+    
+  </toast>
+
+  <error>
+    <xna2required>Kodu requires XNA version 3.0 in order to run.  Please install the update and try again.</xna2required>
+    <outOfDiskSpace>Error saving, you may be out of disk space.  Please clear some disk space before restarting Kodu.</outOfDiskSpace>
+  </error>
+
+  <warning>
+    <noncomplianttouch_title>Windows 8 Compliance</noncomplianttouch_title>
+    <noncomplianttouch>The detected touch device is not Windows 8 compliant and may not be able to accurately recognize all Kodu touch gestures.
+
+Please use a compliant device or revert to other input methods if your device is not responding to touch gestures correctly.</noncomplianttouch>
+  </warning>
+  
+
+  <terrainProcess>
+    <pack>Optimizing Data - Please Wait</pack>
+    <unpack>Unpacking Data - Please Wait</unpack>
+  </terrainProcess>
+
+  <genres>
+    <all>All</all>
+    <action>Action</action>
+    <adventure>Adventure</adventure>
+    <puzzle>Puzzle</puzzle>
+    <racing>Racing</racing>
+    <rpg>RPG</rpg>
+    <shooter>Shooter</shooter>
+    <sports>Sports</sports>
+    <strategy>Strategy</strategy>
+    <multiplayer>Multiplayer</multiplayer>
+    <favorite>Favorite</favorite>
+    <keyboard>Keyboard/Mouse</keyboard>
+    <controller>Xbox Controller</controller>
+    <touch>Touch</touch>
+
+    <lessons>Lessons</lessons>
+    <sampleWorlds>Sample Worlds</sampleWorlds>
+    <starterWorlds>Starter Worlds</starterWorlds>
+    <finishedWorlds>Finished</finishedWorlds>
+
+    <builtInWorlds>Built-In Worlds</builtInWorlds>
+    <myWorlds>My Worlds</myWorlds>
+    <downloads>Downloads</downloads>
+  </genres>
+
+  <shareFeedEvent>
+    <isJoiningFmt>{0} is joining.</isJoiningFmt>
+    <hasJoinedFmt>{0} has joined.</hasJoinedFmt>
+    <olderVersionHasJoinedFmt>{0} has joined using an older version of Kodu and cannot share with you.</olderVersionHasJoinedFmt>
+    <hasLeftFmt>{0} has left.</hasLeftFmt>
+    <isDownloadingFmt>{0} is downloading '{1}' from {2}.</isDownloadingFmt>
+    <finishedDownloadingFmt>{0} finished downloading '{1}'.</finishedDownloadingFmt>
+    <invitedFmt>{0} is invited.</invitedFmt>
+    <noOneInvited>No friends have been invited. Press &lt;B&gt; to invite your friends.</noOneInvited>
+    <startedSharingFmt>{0} started sharing '{1}'.</startedSharingFmt>
+    <stoppedSharingFmt>{0} stopped sharing '{1}'.</stoppedSharingFmt>
+    <hostEntered>Host has joined.</hostEntered>
+    <waitingForHost>Waiting for host to join.</waitingForHost>
+    <levelSentToMeFmt>{0} sent you '{1}'.</levelSentToMeFmt>
+    <levelSendAcceptedFmt>You queued '{0}' for download by {1}.</levelSendAcceptedFmt>
+    <levelSendRejectedFmt>{1} already has '{0}'.</levelSendRejectedFmt>
+    <updateAvailableFmt>A Kodu update is available! Re-download Kodu to share with {0}.</updateAvailableFmt>
+  </shareFeedEvent>
+  <Update>
+    <FormTitle>Kodu Update Available</FormTitle>
+    <UpdateMessage>A new version of ^Kodu Game Lab^ is available!</UpdateMessage>
+    <ReleaseNotesMessage>For more details please see the ^release notes^</ReleaseNotesMessage>
+    <CurrentVersion>Current Version</CurrentVersion>
+    <LatestVersion>Latest Version</LatestVersion>
+    <UpdateButtonText>Update Now</UpdateButtonText>
+    <IgnoreButtonText>Ignore This Update</IgnoreButtonText>
+    <RemindButtonText>Remind Me Later</RemindButtonText>
+  </Update>
+
+</Strings>
