@@ -1,0 +1,2178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+ <XmlOverlayData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <overlay>
+     <id>MiniHub</id>
+     <a>Вибрати</a>
+     <back>Відновити</back>
+     <bottom>Натисніть &lt;start&gt;, щоб повернутися</bottom>
+
+     <keyMouse>
+       [Enter] Вибрати
+     </keyMouse>
+     <keyMouseBottom>Натисніть [home], щоб повернутися.</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>MouseEditBase</id>
+
+     <keyMouse></keyMouse>
+     <keyMouseBottom>Редагування миші</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditHome</id>
+
+     <keyMouse></keyMouse>
+     <keyMouseBottom>Головне меню</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditPlay</id>
+
+     <keyMouse></keyMouse>
+     <keyMouseBottom>Грати</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditCameraMove</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перемістити поверхню
+       &lt;rightmouse&gt; Переміщення камери
+       &lt;middlemouse&gt; Крутити, щоб наблизити
+       [Tab] Шукати наступний персонаж
+
+     </keyMouse>
+     <keyMouseBottom>Переміщує камеру</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditEditObject</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Додати/вибрати об'єкт
+       &lt;rightmouse&gt; Параметри
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Tab] Шукати наступний персонаж
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Об'єкт: Додає або редагує персонажі або об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditEditObjectFocus</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягнути об'єкт
+       &lt;rightmouse&gt; Параметри
+       [leftarrow][rightarrow] Змінити колір
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Tab] Шукати наступний персонаж
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Об'єкт: Додає або редагує персонажі або об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditEditObjectFocusTree</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягнути об'єкт
+       &lt;rightmouse&gt; Параметри
+       [leftarrow][rightarrow] Змінити колір
+       [uparrow][downarrow] Змінити тип дерева
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Об'єкт: Додає або редагує персонажі або об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditPaths</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягніть вузол або ребро
+       &lt;rightmouse&gt; Параметри
+       [Shift] Дія - на весь шлях
+
+       HelpLevelMid
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Шлях: Додає або редагує шляхи</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditPathsFocusNode</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягнути вузол
+       &lt;rightmouse&gt; Параметри
+       [Shift] Дія - на весь шлях
+       [leftarrow][rightarrow] Змінити колір
+       [uparrow][downarrow] Змінити стиль шляху
+
+       HelpLevelMid
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Шлях: Додає або редагує шляхи</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditPathsFocusEdge</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягнути ребро
+       &lt;rightmouse&gt; Параметри
+       [Shift] Дія - на весь шлях
+       [leftarrow][rightarrow] Змінити колір
+
+       HelpLevelMid
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Шлях: Додає або редагує шляхи</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditPathsFocusPath</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Перетягнути шлях
+       &lt;rightmouse&gt; Параметри
+       [Shift] Дія - на весь шлях
+       [leftarrow][rightarrow] Змінити колір
+
+       HelpLevelMid
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Шлях: Додає або редагує шляхи</keyMouseBottom>
+   </overlay>
+
+
+   <overlay>
+     <id>MouseEditTerrainPaint</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Фарбувати і додати матеріал
+       [Shift] + &lt;leftmouse&gt; Фарбувати по землі
+       [Ctrl] + &lt;leftmouse&gt; Додати землю
+       &lt;rightmouse&gt; Видалити
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+
+       HelpLevelMid
+       [Alt] Вибрати матеріал із території
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Пензель для землі: Малює, додає або видаляє землю</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditTerrainPaintMagicBrush</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Малювати або додати матеріал
+       [Shift] + &lt;leftmouse&gt; Малювати поверх
+       [Ctrl] + &lt;leftmouse&gt; Додати нове
+       &lt;rightmouse&gt; Видалити
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+       [uparrow] Стиль: кубічний
+       [downarrow] Стиль: гладкий
+
+       HelpLevelMid
+       [Alt] Вибрати матеріал цієї території
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Пензель для землі: Малює, додає або видаляє землю</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditTerrainRaiseLower</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Підняти територію
+       &lt;middlemouse&gt; Згладити територію
+       &lt;rightmouse&gt; Зменшити територію
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Вгору/Вниз: Створює пагорби та долини</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditTerrainSmoothLevel</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Згладити
+       &lt;middlemouse&gt; Згладити територію
+       &lt;rightmouse&gt; Зробити рівний
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Згладжування: Робить землю гладкішою або навіть рівною</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditTerrainSpikeyHilly</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Зробити піки
+       &lt;middlemouse&gt; Згладити територію
+       &lt;rightmouse&gt; Зробити пагорби
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Нерівності: Створює вершини або горбисту місцевість</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditWaterRaiseLower</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Підняти рівень води
+       &lt;middlemouse&gt; Змінити колір води
+       &lt;rightmouse&gt; Зменшити рівень води
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Вода: Створює, видаляє воду та хвилі на воді</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditDeleteObjects</id>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Видалити
+       &lt;rightmouse&gt; Нічого, рухатися далі
+
+       [leftarrow][rightarrow] Змінити розмір пензля
+
+       HelpLevelMid
+       [F3] Показувати сітку
+       [Space] Перемістити камеру
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Видалення: Цей пензель видаляє об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>MouseEditWorldTweak</id>
+
+     <keyMouse>
+       Змінити Параметри світу
+
+       HelpLevelMid
+       [Home] Головне меню
+       [Esc] Запустити
+     </keyMouse>
+     <keyMouseBottom>Параметри: Змінює параметри світу</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>MouseEditSlider</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити значення
+       [Esc] Прийняти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>ToolMenu</id>
+     <!-- Placeholder, should not be seen.  -->
+     <back>Грати</back>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder>Відсунути</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+     <id>ToolMenuRunSim</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Грати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Грати</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       HelpLevelMid
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Грати</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuHomeMenu</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Головне меню</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Головне меню</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       HelpLevelMid
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Грати</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuObjectEdit</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Об'єкт: Додає або редагує персонажі або об'єкти</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Об'єкт: Додає або редагує персонажі або об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuDeleteObjects</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Видалення: Цей пензель видаляє об'єкти</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Видалення: Цей пензель видаляє об'єкти</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuTerrainSmoothLevel</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Згладжування: Робить землю гладкішою або навіть рівною</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Згладжування: Робить землю гладкішою або навіть рівною</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuTerrainMaterial</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Пензель для землі: Малює, додає або видаляє землю</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Пензель для землі: Малює, додає або видаляє землю</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuTerrainSpikeyHilly</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Нерівності: Створює піки або горбисту місцевість</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Нерівності: Створює вершини або горбисту місцевість</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuTerrainUpDown</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Вгору/Вниз: Створює пагорби та долини</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Вгору/Вниз: Створює пагорби та долини</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuTerrainWater</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Вода: Створює, видаляє воду та хвилі на воді</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Вода: Створює, видаляє воду та хвилі на воді</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>ToolMenuWorldSettings</id>
+     <back>Грати</back>
+     <start>Головне меню</start>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <leftStick mid = "false">Перемістити курсор</leftStick>
+     <rightStick mid = "false">Керувати камерою</rightStick>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+     <leftShoulder mid = "false">Зменшити</leftShoulder>
+     <rightShoulder mid = "false">Наблизити</rightShoulder>
+     <bottom>Змінити параметри світу</bottom>
+
+     <keyMouse>
+       [Esc] Запустити
+       [Home] Головне меню
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+     </keyMouse>
+     <keyMouseBottom>Змінити параметри світу</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>BrushPickerSquare</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Квадратний пензель</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Квадратний пензель</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerSquareLinear</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Довга пряма кисть</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Довга пряма кисть</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerHardRound</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Пензель з жорстким закругленням</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Пензель із жорстким закругленням</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMediumRound</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Пензель із закругленням середньої м'якості</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Пензель із закругленням середньої м'якості</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerSoftRound</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>М'яка кисть</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>М'яка кисть</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerHardRoundLinear</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Довга кисть зі слабким закругленням</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Довга кисть із слабким закругленням</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMediumRoundLinear</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Довга кисть із середнім закругленням</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Довга кисть із середнім закругленням</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerSoftRoundLinear</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Довга кисть із сильним закругленням</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Довга кисть із сильним закругленням</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMottled</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Мармуровий пензель</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Мармуровий пензель</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMottledLinear</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Довга мармурова кисть</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Linear mottled brush</keyMouseBottom>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMagic</id>
+     <y>Вибрати та перейти до вибору матеріалів</y>
+     <b>Скасування</b>
+     <a>Виберіть пензель</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Чарівна кисть</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+     <keyMouseBottom>Чарівна кисть</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>CameraSetMode</id>
+     <a>Прийняти</a>
+     <bottom>Перемістіть камеру куди хочете, потім натисніть &lt;Ф&gt;</bottom>
+
+     <keyMouse>
+       [Enter] Вибрати
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+     </keyMouse>
+     <keyMouseBottom>Перемістіть камеру куди хочете, потім натисніть [Enter]</keyMouseBottom>
+   </overlay>
+
+   <!--Object edit permutations-->
+   <overlay>
+     <!-- Nothing selected, nothing moused, something in the clipboard-->
+     <id>ObjectEdit</id>
+     <y></y>
+     <x></x>
+     <b>Меню Інструменти</b>
+     <a>Додати</a>
+
+     <leftTrigger ghosted = "true">Вирізати</leftTrigger>
+     <rightTrigger ghosted = "false">Вставити</rightTrigger>
+
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Alt]+&lt;leftmouse&gt; Вставити
+       [Space]+&lt;leftmouse&gt; Додати
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <!-- Nothing selected, nothing moused, nothing в clipboard-->
+     <id>ObjectEditEmptyClipboard</id>
+     <y></y>
+     <x></x>
+     <b>Меню Інструменти</b>
+     <a>Додати</a>
+
+     <leftTrigger ghosted = "true">Вирізати</leftTrigger>
+     <rightTrigger ghosted = "true">Вставити</rightTrigger>
+
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Space]+&lt;leftmouse&gt; Додати
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <!-- Something selected (picked up, red), nothing moused.
+    Selected thing isn't progrаmmable. This never happens any more, since everything except the cursor
+    and waypoints (handled elsewhere) is progrаmmable.
+    -->
+     <id>ObjectEditSelected</id>
+     <y></y>
+     <x>Установки</x>
+     <a>Поставити тут</a>
+     <leftTrigger>Вирізати</leftTrigger>
+     <rightTrigger>Клонувати</rightTrigger>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <dpadVertical>Перемістити вгору/вниз</dpadVertical>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+     <!-- Хтось selected (picked up, red), nothing moused.  Selected thing is a gameactor.-->
+     <id>ObjectEditSelectedProgrammable</id>
+     <y>Програма</y>
+     <x>Установки</x>
+     <a>Поставити тут</a>
+     <leftTrigger>Вирізати</leftTrigger>
+     <rightTrigger>Клонувати</rightTrigger>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <dpadVertical>Перемістити вгору/вниз</dpadVertical>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+      <!-- Something cursored (not picked up, blue), nothing moused. Cursored thing is not a gameactor.
+    This isn't useful anymore, since everything is programmable except the cursor and
+    waypoints (handled elsewhere)
+    -->
+	
+     <id>ObjectEditFocus</id>
+     <y></y>
+     <x>Установки</x>
+     <b>Меню Інструменти</b>
+     <a>Вибрати</a>
+     <leftTrigger>Вирізати</leftTrigger>
+     <rightTrigger>Клонувати</rightTrigger>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <dpadVertical>Змінити розмір</dpadVertical>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <!-- GameActor cursored (не кинувся вгору, blue), nothing moused.-->
+     <id>ObjectEditFocusProgrammable</id>
+     <y>Програма</y>
+     <x>Установки</x>
+     <b>Інструменти</b>
+     <a>Вибрати</a>
+     <leftTrigger>Вирізати</leftTrigger>
+     <rightTrigger>Клонувати</rightTrigger>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <dpadVertical>Змінити розмір</dpadVertical>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+
+   <!--And one for the trees-->
+   <overlay>
+     <!--A Tree is cursored (not picked up), nothing highlighted.-->
+     <id>TreeEditFocusProgrammable</id>
+     <y>Програма</y>
+     <x>Установки</x>
+     <b>Інструменти</b>
+     <a>Вибрати</a>
+     <leftTrigger>Вирізати</leftTrigger>
+     <rightTrigger>Клонувати</rightTrigger>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>ObjectEditMouseOver</id>
+
+     <keyMouse>
+       [Y] Програма
+       [X] Установки
+       [leftarrow][rightarrow] Змінити колір
+       [uparrow][downarrow] Змінити розмір
+
+       &lt;leftmouse&gt; Перетягнути
+       [Shift]+&lt;leftmouse&gt; Підняти/опустити
+       [Shift]+&lt;rightmouse&gt; Повернути
+
+       [Space]+&lt;leftmouse&gt; Додати
+       [Alt]+&lt;leftmouse&gt; Клонувати
+       [Ctrl]+&lt;leftmouse&gt; Вирізати
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>TreeEditMouseOver</id>
+
+     <keyMouse>
+       [Y] Програма
+       [X] Установки
+       [leftarrow][rightarrow] Змінити колір
+       [uparrow][downarrow] Змінити розмір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Перетягнути
+       [Shift]+&lt;leftmouse&gt; Підняти/опустити
+       [Shift]+&lt;rightmouse&gt; Повернути
+
+       [Space]+&lt;leftmouse&gt; Додати
+       [Alt]+&lt;leftmouse&gt; Клонувати
+       [Ctrl]+&lt;leftmouse&gt; Вирізати
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <!--End of the object edit permutations-->
+
+   <overlay>
+     <id>ObjectTweak</id>
+     <y></y>
+     <x></x>
+     <b>Інструменти</b>
+     <a></a>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>ObjectTweakFocus</id>
+     <y></y>
+     <x></x>
+     <b>Інструменти</b>
+     <a>Установки tweak</a>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>ObjectTweakFocusProgrammable</id>
+     <y>Програма</y>
+     <x></x>
+     <b>Інструменти </b>
+     <a>Установки tweak</a>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+     <id>TextDisplay</id>
+     <a>Продовжити</a>
+   </overlay>
+
+   <overlay>
+     <id>ScrollableTextDisplay</id>
+     <a>Продовжити</a>
+     <leftStick>Прокрутити текст</leftStick>
+   </overlay>
+
+   <overlay>
+     <id>PieSelectorProgrammingNoSelection</id>
+     <b>Скасування</b>
+     <leftStick>Вибрати картку</leftStick>
+   </overlay>
+   <overlay>
+     <id>PieSelectorProgramming</id>
+     <a>Додати картку</a>
+     <b>Скасування</b>
+     <y>Допомога</y>
+     <leftStick>Вибрати елемент</leftStick>
+   </overlay>
+   <overlay>
+     <id>PieSelectorAddItemNoSelection</id>
+     <b>Скасування</b>
+     <leftStick>Вибрати елемент</leftStick>
+   </overlay>
+   <overlay>
+     <id>PieSelectorAddItem</id>
+     <a>Додати вибране</a>
+     <b>Скасування</b>
+     <y>Допомога</y>
+     <leftStick>Вибрати елемент</leftStick>
+   </overlay>
+   <overlay>
+     <id>HelpCardProgramming</id>
+   </overlay>
+   <overlay>
+     <id>HelpCardAddItem</id>
+   </overlay>
+
+   <overlay>
+     <id>ToolBox</id>
+     <!-- Placeholder, should not be seen.  -->
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+     <id>BasePicker</id>
+     <!-- Placeholder, should not be seen.  -->
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>BrushPicker</id>
+     <y></y>
+     <x></x>
+
+     <b>Скасування</b>
+     <a>Прийняти</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Вибрати пензель</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>BrushPickerMaterial</id>
+     <!-- Placeholder, should not be seen.  -->
+     <y>Вибрати та перейти до вибору матеріалу</y>
+     <x></x>
+
+     <b>Скасування</b>
+     <a>Прийняти</a>
+     <leftTrigger>Попередній пензель</leftTrigger>
+     <rightTrigger>Наступний пензель</rightTrigger>
+     <bottom>Вибрати пензель</bottom>
+
+     <keyMouse>
+       [Y] Вибрати та перейти до вибору матеріалу
+       [leftarrow][rightarrow] Змінити пензель
+       [Enter] Вибрати пензель
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>MaterialPicker</id>
+     <y>Вибрати матеріал під пензлем</y>
+     <x>Вибрати та перейти до вибору пензля</x>
+     <b>Скасування</b>
+     <a>Прийняти</a>
+     <dpadUp>Стиль: Кубічний</dpadUp>
+     <dpadDown>Стиль: Гладкий</dpadDown>
+     <leftTrigger>Попередній матеріал</leftTrigger>
+     <rightTrigger>Наступний матеріал</rightTrigger>
+     <bottom>Вибрати матеріал</bottom>
+
+     <keyMouse>
+       [X] Вибрати та перейти до вибору пензля
+       [leftarrow][rightarrow] Змінити матеріал
+       [uparrow] Стиль: Кубічний
+       [downarrow] Стиль: Гладкий
+       [Enter] Вибрати матеріал
+       &lt;leftmouse&gt; Вибрати матеріал під курсором
+       [Alt] + &lt;leftmouse&gt; Вибрати матеріал зі світу
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>MaterialFilterPicker</id>
+     <y>Вибрати матеріал під ботом</y>
+     <x></x>
+     <b>Скасування</b>
+     <a>Прийняти</a>
+     <leftTrigger>Попередній матеріал</leftTrigger>
+     <rightTrigger>Наступний матеріал</rightTrigger>
+     <bottom>Вибрати матеріал</bottom>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити матеріал
+       [Enter] Вибрати матеріал
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>WaterPicker</id>
+     <y>Вибрати воду під курсором</y>
+     <x></x>
+     <leftTrigger>Попередня вода</leftTrigger>
+     <rightTrigger>Наступна вода</rightTrigger>
+
+     <b>Скасування</b>
+     <a>Прийняти</a>
+     <bottom>Вибрати тип води</bottom>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити тип води
+       [Enter] Вибрати тип води
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>HeightMapTool</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Згладити</a>
+     <leftTrigger>Опустити</leftTrigger>
+     <rightTrigger>Підняти</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Нижче
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Вище
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>HeightMapToolStart</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Пропустити</b>
+     <a>Згладити</a>
+     <leftTrigger>Опустити землю</leftTrigger>
+     <rightTrigger>Підняти землю</rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Нижче
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Вище
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Пропустити лінію
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>HeightMapToolGoing</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Згладити</a>
+     <leftTrigger>Опустити землю</leftTrigger>
+     <rightTrigger>Підняти землю</rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Нижче
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Вище
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>AddTool</id>
+     <y>Вибір матеріалу</y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Змінити колір землі</a>
+     <leftTrigger>Стерти землю</leftTrigger>
+     <rightTrigger>Додати землю</rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Y] Вибір матеріалу
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Видалити землю
+       [Alt]+&lt;leftmouse&gt; Змінити колір землі
+       [Space]+&lt;leftmouse&gt; Додати землю
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>AddToolMagicBrush</id>
+     <y>Вибір матеріалу</y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Змінити колір землі</a>
+     <leftTrigger>Стерти землю</leftTrigger>
+     <rightTrigger ghosted = "true">Додати землю</rightTrigger>
+
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <dpadUp>Стиль: Кубічний</dpadUp>
+     <dpadDown>Стиль: Гладкий</dpadDown>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Y] Вибір матеріалу
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+       [uparrow] Стиль: Кубічний
+       [downarrow] Стиль: Гладкий
+
+       [Ctrl]+&lt;leftmouse&gt; Видалити землю
+       [Alt]+&lt;leftmouse&gt; Змінити колір землі
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+
+   </overlay>
+   <overlay>
+     <id>AddToolStart</id>
+     <y>Вибір матеріалу</y>
+     <x>Вибір пензля</x>
+     <b>Пропустити</b>
+     <a>Змінити матеріал</a>
+     <leftTrigger>Стерти</leftTrigger>
+     <rightTrigger>Додати</rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Y] Вибір матеріалу
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Видалити землю
+       [Alt]+&lt;leftmouse&gt; Змінити колір землі
+       [Space]+&lt;leftmouse&gt; Додати землю
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Пропустити лінію
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>AddToolGoing</id>
+     <y>Вибір матеріалу</y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Змінити матеріал</a>
+     <leftTrigger>Стерти</leftTrigger>
+     <rightTrigger>Додати</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля </dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Y] Вибір матеріалу
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Видалити землю
+       [Alt]+&lt;leftmouse&gt; Змінити колір землі
+       [Space]+&lt;leftmouse&gt; Додати землю
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>NoiseTool</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Згладити</a>
+     <leftTrigger>Нерівності</leftTrigger>
+     <rightTrigger>Пагорби</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Горбистий
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Шпилястий
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>NoiseToolStart</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Пропустити</b>
+     <a>Згладити</a>
+     <leftTrigger>Нерівності</leftTrigger>
+     <rightTrigger>Пагорби</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Горбистий
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Шпилястий
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Skip Line
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>NoiseToolGoing</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Згладити</a>
+     <leftTrigger>Нерівності</leftTrigger>
+     <rightTrigger>Пагорби</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Горбистий
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Шпилястий
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>LevelTool</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a></a>
+     <leftTrigger>Згладити</leftTrigger>
+     <rightTrigger>Рівне</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Alt]+&lt;leftmouse&gt; Гладкий
+       [Space]+&lt;leftmouse&gt; Рівний
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>LevelToolStart</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <a>Замостити швидко</a>
+     <leftTrigger>Згладити</leftTrigger>
+     <rightTrigger>Замостити повільно</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Гладко
+       [Alt]+&lt;leftmouse&gt; Замостити швидко
+       [Space]+&lt;leftmouse&gt; Замостити повільно
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Пропустити лінію
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>LevelToolGoing</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Done</b>
+     <a>Замостити швидко</a>
+     <leftTrigger>Згладити</leftTrigger>
+     <rightTrigger>Замостити повільно</rightTrigger>
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Гладко
+       [Alt]+&lt;leftmouse&gt; Замостити швидко
+       [Space]+&lt;leftmouse&gt; Замостити повільно
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>WaterAdd</id>
+     <y>Вибрати тип води</y>
+     <x></x>
+     <b>Інструменти</b>
+     <a>Встановити тип води</a>
+     <leftTrigger>Зменшити воду</leftTrigger>
+     <rightTrigger>Підняти воду</rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal></dpadHorizontal>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [Y] Вибрати тип води
+
+       [Ctrl]+&lt;leftmouse&gt; Зменшити воду
+       [Alt]+&lt;leftmouse&gt; Встановити тип води
+       [Space]+&lt;leftmouse&gt; Підняти воду
+
+       &lt;leftmouse&gt; Перемістити курсор
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>DelObjTool</id>
+     <y></y>
+     <x>Вибір пензля</x>
+     <b>Інструменти</b>
+     <leftTrigger>Видалити об'єкти</leftTrigger>
+     <rightTrigger>Видалити об'єкти</rightTrigger>
+     <rightTrigger></rightTrigger>
+
+     <dpadVertical></dpadVertical>
+     <dpadHorizontal>Розмір пензля</dpadHorizontal>
+     <leftStick>Перемістити пензель</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+
+     <keyMouse>
+       [X] Вибір пензля
+       [leftarrow][rightarrow] Розмір пензля
+
+       [Ctrl]+&lt;leftmouse&gt; Видалити
+       [Space]+&lt;leftmouse&gt; Видалити
+
+       &lt;leftmouse&gt; Перемістити камеру
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>EditWayPointNode</id>
+     <y>Додати сайти</y>
+     <x>Виділити весь шлях</x>
+     <b>Зроблено</b>
+     <a>Вибрати</a>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити вузол</leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointEdge</id>
+     <y>Змінити напрямок</y>
+     <x>Виділити весь шлях</x>
+     <b>Зроблено</b>
+     <a>Вибрати</a>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити ребро</leftTrigger>
+     <rightTrigger>Розділити ребро</rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointPath</id>
+     <y>Змінити напрямок</y>
+     <x>Вибрати вузол/ребро</x>
+     <b>Зроблено</b>
+     <a>Вибрати</a>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити шлях</leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointMoveNode</id>
+     <y></y>
+     <x>Вибрати весь шлях</x>
+     <b>Зроблено</b>
+     <a>Покласти вниз</a>
+     <dpadVertical>Змінити висоту</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити вузол</leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointMoveEdge</id>
+     <y>Змінити напрямок</y>
+     <x>Вибрати весь шлях</x>
+     <b>Зроблено</b>
+     <a>Покласти вниз</a>
+     <dpadVertical>Змінити висоту</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити ребро</leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointMovePath</id>
+     <y>Змінити напрямок</y>
+     <x></x>
+     <b>Зроблено</b>
+     <a>Покласти вниз</a>
+     <dpadVertical>Змінити висоту</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger>Видалити шлях</leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointAddNode</id>
+     <y>Додати вузол і закінчити</y>
+     <x></x>
+     <b>Зроблено</b>
+     <a>Додати вузол</a>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger></leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Перемістити курсор</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointEndAddNode</id>
+     <y></y>
+     <x></x>
+     <b>Зроблено</b>
+     <a></a>
+     <dpadVertical>Змінити тип</dpadVertical>
+     <dpadHorizontal>Змінити колір</dpadHorizontal>
+     <leftTrigger></leftTrigger>
+     <rightTrigger></rightTrigger>
+     <leftStick>Нова позиція</leftStick>
+     <rightStick>Керувати камерою</rightStick>
+     <leftShoulder>Зменшити</leftShoulder>
+     <rightShoulder>Наблизити</rightShoulder>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>EditWayPointNodeFree</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити колір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Перетягнути вузол
+       [Shift]+&lt;leftmouse&gt; Підняти/опустити вузол
+       [X] Whole Path Mode
+
+       [Space]+&lt;leftmouse&gt; Додати вузли
+       [Ctrl]+&lt;leftmouse&gt; Видалити вузол
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>EditWayPointEdgeFree</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити колір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Перетягнути ребро
+       [Shift]+&lt;leftmouse&gt; Підняти/опустити ребро
+       [X] Режим Весь шлях
+
+       [Space]+&lt;leftmouse&gt; Роз'єднати ребро
+       [Ctrl]+&lt;leftmouse&gt; Видалити ребро
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>EditWayPointPathFree</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити колір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Перетягнути шлях
+       [Shift]+&lt;leftmouse&gt; Підняти/опустити шлях
+       [X] Режим Вузол/ребро
+
+       [Space]+&lt;leftmouse&gt; Додати вузол
+       [Ctrl]+&lt;leftmouse&gt; Видалити шлях
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Інструменти
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>EditWayPointAddFree</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити колір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Додати вузол та продовжити
+       [Alt]+&lt;leftmouse&gt; Додати вузол і закінчити
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Закінчити з додаванням
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>EditWayPointEndFree</id>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити колір
+       [Tab] Змінити тип
+
+       &lt;leftmouse&gt; Закінчити з додаванням
+
+       &lt;rightmouse&gt; Переміщення камери
+       [PgUp][PgDn] Близько/далеко
+
+       [Esc] Закінчити з додаванням
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>RunSimulation</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom mid = "false">Натисніть<![CDATA[<back>]]>для редагування.</bottom>
+
+     <keyMouseBottom>Натисніть [Esc] для редагування.</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>RunSimulationPreGame</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom mid = "false">Натисніть<![CDATA[<a>]]>, щоб продовжити.</bottom>
+
+     <keyMouseBottom>Натисніть [Enter], щоб продовжити.</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>PauseGame</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Відновити</a>
+     <bottom>Гра припинена, натисніть<![CDATA[<a>]]>to resume.</bottom>
+
+     <keyMouse>
+       [pause] Відновити
+     </keyMouse>
+
+     <keyMouseBottom>Гра припинена, натисніть [pause], щоб відновити.</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>Programming</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom></bottom>
+   </overlay>
+
+   <overlay>
+     <id>PageHandleFullPasteBuffer</id>
+     <y>Друк коду</y>
+     <x></x>
+     <b>Закрити</b>
+     <a></a>
+     <leftTrigger>Вирізати сторінку</leftTrigger>
+     <rightTrigger>Вставити сторінку</rightTrigger>
+     <bottom></bottom>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Переключити сторінку
+       [Delete]Вирізати сторінку
+       [Insert] Вставити сторінку
+       [Esc] Назад
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>PageHandleEmptyPasteBuffer</id>
+     <y>Друк коду</y>
+     <x>Копіювати сторінку</x>
+     <b>Закрити</b>
+     <a></a>
+     <leftTrigger>Вирізати сторінку</leftTrigger>
+     <rightTrigger ghosted = "true">Вставити сторінку</rightTrigger>
+     <bottom></bottom>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Переключити сторінку
+       [Delete]Вирізати сторінку
+       [Esc] Назад
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>RowHandleFullPasteBuffer</id>
+     <y>Друк коду</y>
+     <x>Копіювати рядок</x>
+     <b>Закрити</b>
+     <a>Перемістити рядок</a>
+     <leftTrigger>Вирізати рядок</leftTrigger>
+     <rightTrigger>Вставити рядок</rightTrigger>
+     <bottom></bottom>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Вибрати рядок
+       &lt;rightmouse&gt; Вирізати рядок
+       [Enter] Вибрати рядок
+       [Tab] Наступна  сторінка
+       [Shift][Tab] Попередня  сторінка
+       [Delete]Вирізати рядок
+       [Insert] Вставити рядок
+       [Esc] Назад
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>RowHandleEmptyPasteBuffer</id>
+     <y>Друк коду</y>
+     <x>Копіювати рядок</x>
+     <b>Закрити</b>
+     <a>Перемістити рядок</a>
+     <leftTrigger>Вирізати рядок</leftTrigger>
+     <rightTrigger ghosted = "true">Вставити рядок</rightTrigger>
+     <bottom></bottom>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Вибрати рядок
+       &lt;rightmouse&gt; Вирізати рядок
+       [Enter] Вибрати рядок
+       [Tab] Наступна  сторінка
+       [Shift][Tab] Попередня  сторінка
+       [Delete]Вирізати рядок
+       [Esc] Назад
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>RowMove</id>
+     <y>Допомога</y>
+     <x></x>
+     <b>Закрити</b>
+     <leftStick>Змінити пріоритет рядків</leftStick>
+     <a>Помістити рядок тут</a>
+     <bottom></bottom>
+
+     <keyMouse>
+       [uparrow] Вгору
+       [downarrow] Вниз
+       [rightarrow] Зсунути блок
+       [leftarrow] Скасувати зсув
+       [Enter] Помістити сюди
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>Tile</id>
+     <y>Допомога</y>
+     <x>Видалити картку</x>
+     <b>Закрити</b>
+     <a>Змінити картку</a>
+     <leftTrigger>Видалити картку</leftTrigger>
+     <bottom></bottom>
+
+     <keyMouse>
+       &lt;leftmouse&gt; Додати/змінити картку
+       &lt;rightmouse&gt; Видалити картку
+       [Enter] Додати/змінити картку
+       [Tab] Наступна  сторінка
+       [Shift][Tab] Попередня  сторінка
+       [Delete]Видалити картку
+       [Esc] Повернення
+       [Ctrl-P] Друк коду
+     </keyMouse>
+   </overlay>
+
+   <overlay>
+     <id>TopLevelPaletteEditWorldParameters</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom>Редагувати параметри світу</bottom>
+   </overlay>
+   <overlay>
+     <id>TopLevelPaletteEditObjectParameters</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom>Редагувати параметри об'єкта</bottom>
+   </overlay>
+   <overlay>
+     <id>EditWorldParameters</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Вибрати</a>
+     <bottom>Параметри світу</bottom>
+   </overlay>
+   <overlay>
+     <id>EditObjectParameters</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <bottom>Параметри персонажа</bottom>
+   </overlay>
+   <overlay>
+     <id>UIGridCheckbox</id>
+     <y></y>
+     <x></x>
+     <b>Вихід</b>
+     <a>Змінити</a>
+     <dpadVertical>Переключити властивість</dpadVertical>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>UIGridSlider</id>
+     <y></y>
+     <x></x>
+     <b>Вихід</b>
+     <a></a>
+     <dpadHorizontal>Змінити місцями Праве/Ліве</dpadHorizontal>
+     <dpadVertical>Switch Property</dpadVertical>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>UIGridPictureList</id>
+     <y></y>
+     <x></x>
+     <b>Вихід</b>
+     <a></a>
+     <dpadHorizontal>Змінити місцями Праве/Ліве</dpadHorizontal>
+     <dpadVertical>Переключити властивість</dpadVertical>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>UIGridTextList</id>
+     <y></y>
+     <x></x>
+     <b>Вихід</b>
+     <a>Вибрати наступний параметр</a>
+     <dpadVertical>Переключити властивість</dpadVertical>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>PreGame</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a></a>
+     <dpadHorizontal></dpadHorizontal>
+     <dpadVertical></dpadVertical>
+     <bottom></bottom>
+   </overlay>
+   <overlay>
+     <id>PreGameDescription</id>
+     <y></y>
+     <x></x>
+     <b></b>
+     <a>Почати гру</a>
+     <dpadHorizontal></dpadHorizontal>
+     <dpadVertical></dpadVertical>
+     <bottom>Натисніть &lt;а&gt;, щоб розпочати гру</bottom>
+
+     <keyMouse>
+       [Enter] Почати гру
+     </keyMouse>
+     <keyMouseBottom>Натисніть [Enter], щоб розпочати гру</keyMouseBottom>
+   </overlay>
+
+   <overlay>
+     <id>ModularMenu</id>
+     <a>Вибрати</a>
+     <leftStick>Змінити вибір</leftStick>
+   </overlay>
+   <overlay>
+     <id>ModularPictureList</id>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити установки
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularCameraMode</id>
+     <dpadHorizontal>Змінити вибір</dpadHorizontal>
+
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити камеру
+       [X] Встановити камеру
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularCheckbox</id>
+     <a>Змінити</a>
+     <keyMouse>
+       [Enter] Змінити
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularSlider</id>
+     <dpadHorizontal>Змінити значення</dpadHorizontal>
+     <keyMouse>
+       [leftarrow][rightarrow] Змінити значення
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularRadioBox</id>
+     <a>Змінити</a>
+     <keyMouse>
+       [Enter] Змінити вибір
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularCheckboxList</id>
+     <a>Змінити</a>
+     <b>Зроблено</b>
+     <keyMouse>
+       [uparrow][downarrow] Вибрати тег
+       [Enter] Змінити тег
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+   <overlay>
+     <id>ModularButtonElement</id>
+     <a>Дивитись історію змін</a>
+     <x>Видалити історію змін</x>
+     <keyMouse>
+       [A] Перегляд історії змін
+       [X] Видалити історію змін
+       [Esc] Назад
+     </keyMouse>
+   </overlay>
+
+ </XmlOverlayData>

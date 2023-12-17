@@ -1,0 +1,1102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CrumbList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+   <Crumbs>
+
+    <!--  To HomeMenu, yes you can get here from anywhere -->
+    <Crumb>
+      <curModes>
+        <mode>InGame</mode>
+
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MouseEditObjectFocus</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+         <mode>MouseWorldSettings</mode>
+
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+
+         <mode>GamepadEditObject</mode>
+         <mode>GamepadTerrainSmoothLevel</mode>
+         <mode>GamepadTerrainPaint</mode>
+         <mode>GamepadTerrainSpikeyHilly</mode>
+         <mode>GamepadTerrainUpDown</mode>
+         <mode>GamepadWater</mode>
+         <mode>GamepadDeleteObjects</mode>
+         <mode>GamepadWorldSettings</mode>
+
+         <mode>MaterialPicker</mode>
+         <mode>BrushPicker</mode>
+         <mode>WaterPicker</mode>
+         <mode>AddItem</mode>
+         <mode>AddItemHelp</mode>
+         <mode>ObjectTweak</mode>
+
+       </curModes>
+       <targetMode>HomeMenu</targetMode>
+       <gamepadText>Натисніть &lt;start&gt; для переходу до Основного меню.</gamepadText>
+       <mouseText>Виберіть [esc], щоб перейти до Головного меню .</mouseText>
+     </Crumb>
+
+
+
+     <!-- From InGame -->
+     <Crumb>
+       <curModes>
+         <mode>InGame</mode>
+       </curModes>
+       <targetMode>MouseCameraMove</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для переходу до режиму редагування</gamepadText>
+       <mouseText>Натисніть [esc], щоб перейти в режим редагування.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>InGame</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для переходу до режиму редагування</gamepadText>
+       <mouseText>Натисніть [esc], щоб перейти в режим редагування.</mouseText>
+     </Crumb>
+
+     <!-- From MainMenu -->
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText>Виберіть ВІДНОВИТИ та натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть ВІДНОВИТИ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>LoadLevelMenu</targetMode>
+       <gamepadText>Виберіть ЗАВАНТАЖИТИ СВІТ і натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть на ЗАВАНТАЖИТИ СВІТ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>CommunityMenu</targetMode>
+       <gamepadText>Виберіть ДРУЗІ та натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть ДРУЗІ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>OptionsMenu</targetMode>
+       <gamepadText>Виберіть ПАРАМЕТРИ і натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть на ПАРАМЕТРИ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>HelpScreens</targetMode>
+       <gamepadText>Виберіть ДОВІДКА та натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть ДОВІДКА.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MainMenu</mode>
+       </curModes>
+       <targetMode>SharingHub</targetMode>
+       <gamepadText>Виберіть ПОДІЛИТИСЯ і натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть на ПОДІЛИТИСЯ.</mouseText>
+     </Crumb>
+
+     <!-- From SharingHub -->
+     <Crumb>
+       <curModes>
+         <mode>SharingHub</mode>
+       </curModes>
+       <targetMode>SharingSession</targetMode>
+       <gamepadText>Натисніть &lt;start&gt; для переходу до сесії спільного використання.</gamepadText>
+       <mouseText>Натисніть &lt;enter&gt; або клацніть на відкритих дверях для входу до сесії спільного використання.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>SharingHub</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>Натисніть &lt;esc&gt; для повернення до Основного меню</mouseText>
+     </Crumb>
+
+     <!-- From SharingSession -->
+     <Crumb>
+       <curModes>
+         <mode>SharingSession</mode>
+       </curModes>
+<targetMode>SharingHub</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для виходу із сесії спільного використання.</gamepadText>
+       <mouseText>Натисніть &lt;esc&gt; для виходу із сесії спільного використання.</mouseText>
+     </Crumb>
+
+     <!-- From OptionsMenu -->
+     <Crumb>
+       <curModes>
+         <mode>OptionsMenu</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>Натисніть [esc] або клацніть поза меню, щоб повернутися до Основного меню.</mouseText>
+     </Crumb>
+
+     <!-- From HelpScreens -->
+     <Crumb>
+       <curModes>
+         <mode>HelpScreens</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+     </Crumb>
+
+     <!-- From LoadLevelMenu -->
+     <Crumb>
+       <curModes>
+         <mode>LoadLevelMenu</mode>
+       </curModes>
+       <targetMode>Unknown</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>
+         Click on green arrows to scroll, click on game tile to choose game.
+         Use [leftarrow][rightarrow] to scroll, press [enter] to choose game.
+       </mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>LoadLevelMenu</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>LoadLevelMenu</mode>
+       </curModes>
+       <targetMode>HomeMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Головного меню.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до Головного меню.</mouseText>
+     </Crumb>
+
+     <!-- From CommunityMenu -->
+     <Crumb>
+       <curModes>
+         <mode>CommunityMenu</mode>
+       </curModes>
+       <targetMode>Unknown</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>
+         Натисніть на зелені стрілки для прокручування, натисніть на плитку гри, щоб вибрати гру.
+         Використовуйте [leftarrow][rightarrow] для прокручування, натисніть [enter], щоб вибрати гру.
+       </mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>CommunityMenu</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+     </Crumb>
+
+    <!--  ToolMenu from any tool to every other. Gamepad only.  -->
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+      <!-- 
+      Note: even though this will actually take us to ToolMenuRunSim we give InGame
+      as the target mode to it seems shorter than going through the HomeMenu.
+      -->
+       <targetMode>InGame</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору Грати&lt;play&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору Редагувати об'єкти&lt;ObjectEdit&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+    <!-- Lead user through EditObjectFocus to get to Programming -->
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuEditObject</mode>
+       </curModes>
+       <targetMode>GamepadEditObjectFocus</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; для програмування об'єктів.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <!-- Lead user through EditObject to get to Programming -->
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+<targetMode>Programming</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору Редагувати об'єкт&lt;ObjectEdit&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainSmoothLevel</targetMode>
+       <gamepadText>Використовуйте ці тригери вибору інструменту Згладжування землі &lt;terrainsmoothlevel&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainPaint</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору Створення землі &lt;terrainpaint&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainSpikeyHilly</targetMode>
+       <gamepadText>Використовуйте ці тригери вибору інструменту Пагорби та піки &lt;terrainspikeyhilly&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainUpDown</targetMode>
+       <gamepadText>Використовуйте ці тригери вибору Пагорби та нерівності &lt;terrainUpDown&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuWater</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору інструменту Вода &lt;water&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuDeleteObjects</targetMode>
+       <gamepadText>За допомогою цих тригерів виберіть Видалити об'єкт &lt;deleteobjects&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+         <mode>ToolMenuHomeMenu</mode>
+         <mode>ToolMenuEditObject</mode>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+         <mode>ToolMenuTerrainPaint</mode>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+         <mode>ToolMenuTerrainUpDown</mode>
+         <mode>ToolMenuWater</mode>
+         <mode>ToolMenuDeleteObjects</mode>
+       </curModes>
+       <targetMode>ToolMenuWorldSettings</targetMode>
+       <gamepadText>Використовуйте ці тригери для вибору Параметри світу &lt;worldsettings&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+    <!--  GamePad Tools, from any tool back to the ToolBar -->
+
+     <Crumb>
+       <curModes>
+         <mode>GamepadEditObject</mode>
+         <mode>GamepadTerrainSmoothLevel</mode>
+         <mode>GamepadTerrainPaint</mode>
+         <mode>GamepadTerrainSpikeyHilly</mode>
+         <mode>GamepadTerrainUpDown</mode>
+         <mode>GamepadWater</mode>
+         <mode>GamepadDeleteObjects</mode>
+       </curModes>
+<targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для переходу до меню Інструменти.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>GamepadWorldSettings</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для виходу.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+    <!--  Gamepad tools, from toolbar to actual tool  -->
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuRunSim</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; для запуску гри.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuEditObject</mode>
+       </curModes>
+       <targetMode>GamepadEditObject</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб додати, програмувати або редагувати об'єкт.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuTerrainSmoothLevel</mode>
+       </curModes>
+       <targetMode>GamepadTerrainSmoothLevel</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; для зміни території.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuTerrainPaint</mode>
+       </curModes>
+       <targetMode>GamepadTerrainPaint</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб додати або розфарбувати територію.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuTerrainSpikeyHilly</mode>
+       </curModes>
+       <targetMode>GamepadTerrainSpikeyHilly</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; для зміни території.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuEditObject</mode>
+       </curModes>
+       <targetMode>GamepadEditObject</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб додати, програмувати або редагувати об'єкт.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuTerrainUpDown</mode>
+       </curModes>
+       <targetMode>GamepadTerrainUpDown</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб підняти або опустити територію.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuWater</mode>
+       </curModes>
+       <targetMode>GamepadWater</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб додати або змінити воду.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuDeleteObjects</mode>
+       </curModes>
+       <targetMode>GamepadDeleteObjects</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; для використання Видалити об'єкт &lt;deleteobjects&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>ToolMenuWorldSettings</mode>
+       </curModes>
+       <targetMode>GamepadWorldSettings</targetMode>
+       <gamepadText>Натисніть &lt;a&gt; щоб змінити Параметри світу &lt;worldsettings&gt;</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+    
+    <!-- From gamepad tools back to tool menu -->
+     <Crumb>
+       <curModes>
+         <mode>GamepadEditObject</mode>
+         <mode>GamepadEditObjectFocus</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadTerrainPaint</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainPaint</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadTerrainUpDown</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainUpDown</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadTerrainSmoothLevel</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainSmoothLevel</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadTerrainSpikeyHilly</mode>
+       </curModes>
+       <targetMode>ToolMenuTerrainSpikeyHilly</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadWater</mode>
+       </curModes>
+       <targetMode>ToolMenuWater</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+<mode>GamepadDeleteObjects</mode>
+       </curModes>
+       <targetMode>ToolMenuDeleteObjects</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+      <!-- Shortcut mode to fool the system into thinking that this is the fast way to get into run mode. -->
+       <curModes>
+         <mode>GamepadEditObject</mode>
+         <mode>GamepadEditObjectFocus</mode>
+         <mode>GamepadTerrainPaint</mode>
+         <mode>GamepadTerrainUpDown</mode>
+         <mode>GamepadTerrainSmoothLevel</mode>
+         <mode>GamepadTerrainSpikeyHilly</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+    <!--  Mouse Tools, from every tool to every other tool -->
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MousePlay</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Грати &lt;play&gt; для запуску гри.</mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Грати &lt;play&gt; для запуску гри.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseHome</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Головне меню &lt;homemenu&gt;</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>HomeMenu</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на Головне меню &lt;homemenu&gt;</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseCameraMove</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Перемістити камеру &lt;cameramove&gt;</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseEditObject</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на інструменті Об'єкт &lt;ObjectEdit&gt; у меню нижче, щоб додати або програмувати об'єкт.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MousePaths</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на інструменті Шляхи &lt;paths&gt; щоб додати або редагувати шлях. </mouseText>
+     </Crumb>
+
+     <Crumb>
+<curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseTerrainPaint</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на інструменті Територія &lt;terrainpaint&gt; для додавання та розфарбування землі.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseTerrainUpDown</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на інструменті Пагорби та долини &lt;terrainUpDown&gt; для зміни вашої землі.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseTerrainSmoothLevel</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на Згладжування землі&lt;terrainsmoothlevel&gt; щоб змінити землю.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseTerrainSpikeyHilly</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на Вершини та пагорби &lt;terrainspikeyhilly&gt; щоб змінити вашу землю.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseWater</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть на Вода &lt;water&gt; щоб додати або змінити воду.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+       </curModes>
+       <targetMode>MouseDeleteObjects</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Видалити об'єкт &lt;deleteobjects&gt; щоб швидко видалити об'єкти з вашого світу.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseCameraMove</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MousePaths</mode>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseWater</mode>
+         <mode>MouseDeleteObjects</mode>
+       </curModes>
+       <targetMode>MouseWorldSettings</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Клацніть Параметри світу&lt;worldsettings&gt;.</mouseText>
+     </Crumb>
+
+     <!-- Into pickers -->
+
+     <Crumb>
+       <curModes>
+         <mode>MouseTerrainPaint</mode>
+         <mode>GamepadTerrainPaint</mode>
+       </curModes>
+       <targetMode>MaterialPicker</targetMode>
+       <gamepadText>Натисніть &lt;y&gt; для вибору нового матеріалу.</gamepadText>
+       <mouseText>Клацніть на піктограмі вибору матеріалу &lt;materialtype&gt;, поверх піктограми інструмента, щоб вибрати новий матеріал. </mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseTerrainPaint</mode>
+         <mode>MouseTerrainUpDown</mode>
+         <mode>MouseTerrainSmoothLevel</mode>
+         <mode>MouseTerrainSpikeyHilly</mode>
+         <mode>MouseDeleteObjects</mode>
+
+         <mode>GamepadTerrainPaint</mode>
+         <mode>GamepadTerrainUpDown</mode>
+         <mode>GamepadTerrainSmoothLevel</mode>
+         <mode>GamepadTerrainSpikeyHilly</mode>
+         <mode>GamepadDeleteObjects</mode>
+       </curModes>
+       <targetMode>BrushPicker</targetMode>
+       <gamepadText>Натисніть &lt;x&gt; для вибору нового пензля.</gamepadText>
+<mouseText>Клацніть на значку вибору пензля&lt;brushtype&gt;, поверх значка інструмента.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseWater</mode>
+         <mode>GamepadWater</mode>
+       </curModes>
+       <targetMode>WaterPicker</targetMode>
+       <gamepadText>Натисніть &lt;y&gt; щоб вибрати новий колір води.</gamepadText>
+       <mouseText>Клацніть на значку вибору типу води &lt;watertype&gt;, поверх значка Вода, щоб вибрати колір води. </mouseText>
+     </Crumb>
+
+     <!-- Out of pickers -->
+
+     <Crumb>
+       <curModes>
+         <mode>MaterialPicker</mode>
+       </curModes>
+       <targetMode>MouseTerrainPaint</targetMode>
+       <gamepadText>Використовуйте тригери для вибору матеріалу та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>WaterPicker</mode>
+       </curModes>
+       <targetMode>MouseWater</targetMode>
+       <gamepadText>Використовуйте тригери для вибору води та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Виберіть [leftarrow][rightarrow] для вибору води, натисніть [enter] або клацніть для підтвердження.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>BrushPicker</mode>
+       </curModes>
+       <targetMode>MouseTerrainPaint</targetMode>
+       <gamepadText>Використовуйте тригери для вибору пензля та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MaterialPicker</mode>
+       </curModes>
+       <targetMode>GamepadTerrainPaint</targetMode>
+       <gamepadText>Використовуйте тригери для вибору матеріалу та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>WaterPicker</mode>
+       </curModes>
+       <targetMode>GamepadWater</targetMode>
+       <gamepadText>Використовуйте тригери для вибору води та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Використовуйте [leftarrow][rightarrow] to choose water, натисніть [enter] або натисніть для підтвердження.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>BrushPicker</mode>
+       </curModes>
+       <targetMode>GamepadTerrainPaint</targetMode>
+       <gamepadText>Використовуйте тригери для вибору пензля та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+       <mouseText>Використовуйте [leftarrow][rightarrow] для вибору пензля, натисніть [enter] або натисніть для підтвердження.</mouseText>
+     </Crumb>
+	 <Crumb>
+       <curModes>
+         <mode>ObjectTweak</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Натисніть &lt;b&gt; щоб вийти.</gamepadText>
+       <mouseText>Натисніть [esc] або клацніть поза меню.</mouseText>
+     </Crumb>
+
+     <!-- From HomeMenu -->
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>MainMenu</targetMode>
+       <gamepadText>Виберіть Основне меню.</gamepadText>
+       <mouseText>Клацніть на Основному меню.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText>Виберіть Перезапустити світ.</gamepadText>
+       <mouseText>Клацніть Перезапустити світ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>ToolMenuEditObject</targetMode>
+       <gamepadText>Виберіть Редагувати світ.</gamepadText>
+       <mouseText>Клацніть на Редагувати світ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>MouseCameraMove</targetMode>
+       <gamepadText>Виберіть Редагувати світ.</gamepadText>
+       <mouseText>Клацніть на Редагувати світ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>LoadLevelMenu</targetMode>
+       <gamepadText>Виберіть Завантажити світ.</gamepadText>
+       <mouseText>Клацніть Завантажити світ.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>HomeMenu</mode>
+       </curModes>
+       <targetMode>SharingHub</targetMode>
+       <gamepadText>Виберіть Поділитися з друзями.</gamepadText>
+       <mouseText>Клацніть Поділитися з друзями.</mouseText>
+     </Crumb>
+
+     <!-- Into Add Item -->
+     <Crumb>
+       <curModes>
+         <mode>GamepadEditObject</mode>
+         <mode>GamepadEditObjectFocus</mode>
+         <mode>MouseEditObject</mode>
+         <mode>MouseEditObjectFocus</mode>
+       </curModes>
+       <targetMode>AddItem</targetMode>
+       <gamepadText>Помістіть курсор туди, де потрібно додати новий об'єкт, і натисніть &lt;a&gt;.</gamepadText>
+       <mouseText>Клацніть лівою кнопкою миші &lt;leftmouse&gt; у будь-якому місці на території, щоб додати об'єкт.</mouseText>
+     </Crumb>
+
+     <!-- From mouse world settings -->
+     <Crumb>
+       <curModes>
+         <mode>MouseWorldSettings</mode>
+       </curModes>
+       <targetMode>MouseCameraMove</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до меню Інструменти.</mouseText>
+     </Crumb>
+
+     <!-- To and From Programming -->
+     <Crumb>
+       <curModes>
+         <mode>ProgrammingHelp</mode>
+       </curModes>
+       <targetMode>Programming</targetMode>
+       <gamepadText>Натисніть &lt;B&gt; щоб повернутися.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>GamepadEditObject</mode>
+       </curModes>
+       <targetMode>GamepadEditObjectFocus</targetMode>
+       <gamepadText>Перемістіть курсор до персонажа.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>GamepadEditObjectFocus</mode>
+       </curModes>
+       <targetMode>GamepadEditObject</targetMode>
+       <gamepadText>Помістіть курси на будь-яке порожнє місце.</gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>MouseEditObject</mode>
+         <mode>MouseEditObjectFocus</mode>
+         <mode>GamepadEditObjectFocus</mode>
+       </curModes>
+       <targetMode>Programming</targetMode>
+       <gamepadText>Натисніть &lt;Y&gt; щоб почати програмувати.</gamepadText>
+       <mouseText>Клацніть правою кнопкою миші та виберіть Програма.</mouseText>
+     </Crumb>
+
+     <Crumb>
+       <curModes>
+         <mode>Programming</mode>
+       </curModes>
+       <targetMode>MouseEditObject</targetMode>
+       <gamepadText>Натисніть &lt;B&gt; щоб повернутися до меню Редагування.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до меню редагування.</mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>Programming</mode>
+       </curModes>
+       <targetMode>GamepadEditObject</targetMode>
+       <gamepadText>Натисніть &lt;B&gt; щоб повернутися до меню Редагування.</gamepadText>
+       <mouseText>Натисніть [esc], щоб повернутися до меню Редагування.</mouseText>
+     </Crumb>
+
+
+     <!-- Transitions that don't make sense -->
+     <Crumb>
+       <curModes>
+         <mode>MouseHome</mode>
+       </curModes>
+       <targetMode>HomeMenu</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+     <Crumb>
+       <curModes>
+         <mode>MousePlay</mode>
+       </curModes>
+       <targetMode>InGame</targetMode>
+       <gamepadText></gamepadText>
+       <mouseText></mouseText>
+     </Crumb>
+
+
+   </Crumbs>
+</CrumbList>

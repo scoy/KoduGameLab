@@ -1,0 +1,3034 @@
+﻿<?xml version="1.0"?>
+ <Help xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <programmingExamples>
+
+     <ExamplePage>
+       <description>Коли я бачу яблуко, рухатися до нього.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.towardclosest</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я торкаюся яблука, з'їсти його.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.bumpers</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.eat</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу пурпурове яблуко, уникати його.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.purple</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.avoidall</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я чую Kodu, рухатися до нього.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.ears</upid>
+             <upid>filter.bokubot</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.towardclosest</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я маю яблуко, з'їсти його.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.got</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.eat</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я торкаюся червоного яблука, з'їсти його.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.bumpers</upid>
+             <upid>filter.fruit</upid>
+             <upid>filter.red</upid>
+             <upid>actuator.eat</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я наберу 100 очок, гра виграна.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.scored</upid>
+             <upid>filter.100points</upid>
+             <upid>actuator.victory</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли у мене виявиться 0 очок, закінчити гру.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.health</upid>
+             <upid>filter.000point</upid>
+             <upid>actuator.gameover</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я підібраний аеростатом, пофарбувати мене в червоний колір</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.held</upid>
+             <upid>filter.windblimp</upid>
+             <upid>actuator.color</upid>
+             <upid>modifier.red</upid>
+             <upid>modifier.me</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+    
+     <ExamplePage>
+       <description>Коли гравець 1 натискає кнопку А, стріляти рожевою ракетою прямо</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.player1</upid>
+             <upid>filter.abutton</upid>
+             <upid>actuator.shoot</upid>
+             <upid>modifier.pink</upid>
+             <upid>modifier.up</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я перебуваю на території заданого типу, додати моєму життю 10 очок.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.terrain</upid>
+             <upid>filter.terrain</upid>
+             <upid>actuator.heal</upid>
+             <upid>modifier.010points</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я не бачу Kodu, закінчити гру</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.countnone</upid>
+             <upid>filter.bokubot</upid>
+             <upid>actuator.gameover</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу щось, уникати цього.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.anything</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.avoidall</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я перебуваю на воді заданого типу, стрибнути 1 раз.  Тільки деякі персонажі можуть стрибати.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.water</upid>
+             <upid>filter.water</upid>
+             <upid>actuator.jump</upid>
+             <upid>modifier.once</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу сердитого пушпеда, уникати його.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.expressangry</upid>
+             <upid>filter.pushpad</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.avoidall</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли яблуко поруч, рухатися до нього</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.closeby</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.towardclosest</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу багато мін, рухатися геть!</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.countmany</upid>
+             <upid>filter.mine</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.awayfromall</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>У якийсь момент між 0 і 5 секунд, запустити камінь</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.timer</upid>
+             <upid>filter.random</upid>
+             <upid>filter.05seconds</upid>
+             <upid>actuator.launch</upid>
+             <upid>modifier.objectrock</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>У якийсь момент між 5 та 10 секундами, запустити монету</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.timer</upid>
+             <upid>filter.05seconds</upid>
+             <upid>filter.random</upid>
+             <upid>filter.05seconds</upid>
+             <upid>actuator.launch</upid>
+             <upid>modifier.objectcoin</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Якщо мій рахунок більше 20 очок, гра виграна</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.scored</upid>
+             <upid>filter.scoreabove</upid>
+             <upid>filter.020points</upid>
+             <upid>actuator.victory</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу Kodu поруч, сказати щось.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.bokubot</upid>
+             <upid>filter.closeby</upid>
+             <upid>actuator.say</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я нічого не бачу, висловити смуток.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.countnone</upid>
+             <upid>actuator.express</upid>
+             <upid>modifier.expresssad</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу Kodu, висловити радість.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.bokubot</upid>
+             <upid>actuator.express</upid>
+             <upid>modifier.expresshappy</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу хмару, рухатися швидко по колу</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.cloud</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.circle</upid>
+             <upid>modifier.turnright</upid>
+             <upid>modifier.quickly</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я не бачу Kodu, сяяти червоним.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.bokubot</upid>
+             <upid>filter.countnone</upid>
+             <upid>actuator.glow</upid>
+             <upid>modifier.red</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+    
+     <ExamplePage>
+       <description>Кожні 10 секунд створювати камінь.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.timer</upid>
+             <upid>filter.10seconds</upid>
+             <upid>actuator.make</upid>
+             <upid>modifier.objectrock</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Завжди видавати звук.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.always</upid>
+             <upid>actuator.sound</upid>
+             <upid>modifier.mu_ambinetmodd</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Завжди закритим.  Працює лише для деяких персонажів</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.always</upid>
+             <upid>actuator.close</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Завжди бути відкритим.  Працює лише для деяких персонажів</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.always</upid>
+             <upid>actuator.open</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я бачу сердитого Kodu, перестати видавати звуки.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.eyes</upid>
+             <upid>filter.bokubot</upid>
+             <upid>filter.expressangry</upid>
+             <upid>actuator.stopsound</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я отримаю зірку, перейдіть на сторінку 2.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.got</upid>
+             <upid>filter.star</upid>
+             <upid>actuator.switchtask</upid>
+             <upid>modifier.taskb</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли мій постріл наздожене будь-якого бота, приголомшити його.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.anybot</upid>
+             <upid>actuator.zap</upid>
+             <upid>modifier.it</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли мій постріл наздожене Плазму, надіслати її в нокаут</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.wisp</upid>
+             <upid>actuator.pop</upid>
+             <upid>modifier.it</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли мій постріл вразить міну, підірвати її.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.mine</upid>
+             <upid>actuator.boom</upid>
+             <upid>modifier.it</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли мій постріл вразить міну, вона зникає.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.sputnik</upid>
+             <upid>actuator.vanish</upid>
+             <upid>modifier.it</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я торкнуся яблука, взяти його.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.bumpers</upid>
+             <upid>filter.fruit</upid>
+             <upid>actuator.grab</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я перебуваю над територією певного типу, упустити все, що є в мене в руках.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.terrain</upid>
+             <upid>filter.terrain</upid>
+             <upid>actuator.drop</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я торкаюся чогось, віддати йому те, що я несу в руках.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.bumpers</upid>
+             <upid>filter.anything</upid>
+             <upid>actuator.give</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли моє здоров'я (життя) дорівнює нулю, почати гру заново.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.health</upid>
+             <upid>filter.000point</upid>
+             <upid>actuator.restart</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли мій постріл вразить корабель, відняти очко.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.floatbot</upid>
+             <upid>actuator.unscore</upid>
+             <upid>modifier.001point</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснута кнопка А, камера починає слідувати за мною.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.abutton</upid>
+             <upid>actuator.camera.followme</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснуто кнопку В, камера ігнорує мене.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.bbutton</upid>
+             <upid>actuator.camera.ignoreme</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснута кнопка Х, камера показує світ очима першого персонажа</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.xbutton</upid>
+             <upid>actuator.camera.firstperson</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли лівий джойстик рухається, летіти вгору чи вниз.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.leftstick</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.moveupdown</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли лівий джойстик рухається, повертається праворуч або ліворуч</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.leftstick</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.moveleftright</upid>
+             <upid>modifier.turnright</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли моя ракета наздогнала жовтого Kodu, зменшити його здоров'я на 5 очок.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.yellow</upid>
+             <upid>filter.boku</upid>
+             <upid>actuator.damage</upid>
+             <upid>modifier.it</upid>
+             <upid>modifier.005points</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли правий джойстик рухається, переміщається північ чи південь.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.rightstick</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.constraint.northsouth</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли правий джойстик рухається, рухатиметься на захід або схід.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.rightstick</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.constraint.eastwest</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли кнопка Y натиснута, рухатись на північ.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.ybutton</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.north</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснута кнопка B, рухатись на Схід</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.bbutton</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.east</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснута кнопка А, рухатись на південь.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.abutton</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.south</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснута кнопка Х, рухатись на захід.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.xbutton</upid>
+             <upid>actuator.movement</upid>
+             <upid>modifier.west</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснутий лівий тригер, рухатися вперед повільно.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.lefttrigger_analog</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.forward</upid>
+             <upid>modifier.slowly</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли натиснути правий тригер, рухатися вперед швидко.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.righttrigger_analog</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.forward</upid>
+             <upid>modifier.quickly</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я чую звук стадіону, запустити серце високо у повітря з великою силою.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.ears</upid>
+             <upid>filter.environ.arena.any</upid>
+             <upid>actuator.launch</upid>
+             <upid>modifier.strongly</upid>
+             <upid>modifier.angle.high</upid>
+             <upid>modifier.objectheart</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли зброя потрапить до зеленого Kodu, додати 5 балів до червоного рахунку.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.missilehit</upid>
+             <upid>filter.green</upid>
+             <upid>filter.boku</upid>
+             <upid>actuator.score</upid>
+             <upid>modifier.red</upid>
+             <upid>modifier.005points</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Вистрілити зброєю один раз.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>actuator.shoot</upid>
+             <upid>modifier.once</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Носитися по світу, причому швидко.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>actuator.movement</upid>
+             <upid>selector.wander</upid>
+             <upid>modifier.quickly</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли я натрапляю на камінь, додати 1 бал синій команді.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.bumpers</upid>
+             <upid>filter.rock</upid>
+             <upid>actuator.score</upid>
+             <upid>modifier.001point</upid>
+             <upid>modifier.blue</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Коли рухається лівий джойстик, перемістити мій персонаж.</description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.gamepad</upid>
+             <upid>filter.leftstick</upid>
+             <upid>actuator.movement</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+     <ExamplePage>
+       <description>Мандрує світом.  </description>
+       <reflexes>
+         <reflex>
+           <upids>
+             <upid>sensor.always</upid>
+             <upid>actuator.movement</upid>
+             <upid>selector.wander</upid>
+           </upids>
+         </reflex>
+       </reflexes>
+     </ExamplePage>
+
+   </programmingExamples>
+
+
+
+   <actorHelp>
+     <item>
+       <key>
+         <string>BokuBot</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Kodu не дуже квапливий, а також йому важко підніматися на круті пагорби.
+           </description>
+           <upid>filter.boku</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити Kodu, який шукає і їсть яблука.
+               </description>
+               <tileUpid>filter.fruit</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це опис сторінки. Не використовується в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.bumpers</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.eat</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити Kodu, яким ви можете керувати.  Лівий джойстик керує рухом.  Кнопка A змушує Kodu стрибати.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.jump</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити Kodu, який рухається червоними шляхами.
+               </description>
+               <tileUpid>selector.followwaypoints</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.followwaypoints</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити Kodu, який використовує різні сторінки для різних манер поведінки.  Натисніть кнопку A, щоб переключитися між червоним і синім сяйвом.
+               </description>
+               <tileUpid>actuator.switchtask</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>Сяяти червоним.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskb</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>Сяяти синім.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.blue</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taska</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+    <!-- ====================  CLAM ==========================-->
+    <item>
+      <key>
+        <string>Clam</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <upid>filter.clam</upid>
+          <description>
+            Молюск - це персонаж, який може відкривати і закривати.
+          </description>
+
+          <programs>
+            <!-- Enter the example program here -->
+            <ExampleProgram>
+              <description>Створіть молюск, який відкривається та закривається.</description>
+              <tileUpid>actuator.open</tileUpid>
+              <pages>
+
+                <ExamplePage>
+                  <description>Відкрити і закрити</description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.abutton</upid>
+                        <upid>actuator.open</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.bbutton</upid>
+                        <upid>actuator.close</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+
+              </pages>
+            </ExampleProgram>
+          </programs>
+          
+        </ActorHelp>
+      </value>
+    </item>
+
+    <!-- ====================  StarFish ==========================-->
+    <item>
+      <key>
+        <string>Starfish</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <upid>filter.starfish</upid>
+          <description>Морські зірки живуть на суші або у воді.</description>
+
+          <programs>
+          </programs>
+
+        </ActorHelp>
+      </value>
+    </item>
+    
+    
+    <!-- ====================  LillyPad Single ==========================-->
+    <item>
+      <key>
+        <string>LilypadSingle</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.lilypadsingle</upid>
+          <description>На лілії весело стрибати.</description>
+
+          <programs>
+          </programs>
+
+        </ActorHelp>
+      </value>
+    </item>
+
+
+    <!-- ====================  LillyPad ==========================-->
+    <item>
+      <key>
+        <string>Lilypad</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.lilypad</upid>
+          <description>Група лілій.</description>
+          <programs>
+          </programs>
+
+        </ActorHelp>
+      </value>
+    </item>
+    
+    <!-- ====================  SeaGrass Single==========================-->
+    <item>
+      <key>
+        <string>SeagrassSingle</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <upid>filter.seagrasssingle</upid>
+          <description>Морська трава гойдаються під впливом вітру чи течії води.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <!-- ====================  Sea Grass ==========================-->
+    <item>
+      <key>
+        <string>Seagrass</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.seagrass</upid>
+          <description>Куча морської трави.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+    
+    <!-- ====================  Pipes ==========================-->
+    <item>
+      <key>
+        <string>PipeStraight</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.pipeStraight</upid>
+          <description>Пряма ділянка труби, яка може з’єднуватися з іншими трубами.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>PipeCorner</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.pipeCorner</upid>
+          <description>L-подібна частина труби, яку можна з’єднати з іншими трубами.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>PipeCross</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.pipeCross</upid>
+          <description>Поперечний переріз труби, який можна з’єднати з іншими трубами.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <!-- ====================  InkJet ==========================-->
+    <item>
+      <key>
+        <string>InkJet</string>
+      </key>
+      <value>
+        <ActorHelp>
+
+          <upid>filter.inkjet</upid>
+          <description>Чорнильна чорна хмара, яку можна використовувати, щоб затемнити речі.</description>
+
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    
+    <item>
+      <key>
+        <string>TerraCannon</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+            Гармата велика і повільна, але дуже потужна.
+          </description>
+          <upid>filter.terracannon</upid>
+          <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити Гармату, яка знаходить та їсть яблука.
+               </description>
+               <tileUpid>filter.fruit</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.bumpers</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.eat</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити гармату, яку можна рухати.  Лівий джойстик контролює рух.  Кнопка змушує гармату стрибати.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.jump</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити гармату, яка рухається червоними шляхами.
+               </description>
+               <tileUpid>selector.followwaypoints</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.followwaypoints</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити гармату, яка використовує перемикання між сторінками, щоб міняти поведінку.  Натисніть кнопку А для перемикання між синім та червоним сяйвами.
+               </description>
+               <tileUpid>actuator.switchtask</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>Сяяти червоним.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskb</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>Сяяти синім.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.blue</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taska</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>FlyFish</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Летюча риба плаває і повертає швидко – чудовий герой для раптових дій!
+           </description>
+           <upid>filter.flyfish</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити летючу рибу, яка знаходить та їсть яблука.
+               </description>
+               <tileUpid>filter.fruit</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.bumpers</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.eat</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити летючу рибу, якою ви можете керувати.  Лівий джойстик керує рухом
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити летючу рибу, яка рухається червоними шляхами.
+               </description>
+               <tileUpid>selector.followwaypoints</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.followwaypoints</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити летючу рибу, яка використовує різні сторінки, щоб переключатися між різними поведінками.  Натисніть кнопку А для перемикання між синім та червоним сяйвом
+               </description>
+               <tileUpid>actuator.switchtask</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>Сяяти червоним.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskb</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>Сяяти синім.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.blue</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taska</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Jet</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Літак зазвичай літає паралельно до землі, але ви можете змусити його змінювати висоту.
+           </description>
+           <upid>filter.jet</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити літак, який знаходить та їсть яблука.
+               </description>
+               <tileUpid>filter.fruit</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.bumpers</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.eat</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити літак, яким ви можете керувати.  Лівий джойстик керує рухом
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити літак, який літає зеленими шляхами.
+               </description>
+               <tileUpid>selector.followwaypoints</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.followwaypoints</upid>
+                         <upid>modifier.green</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+<ExampleProgram>
+               <description>
+                 Створити літак, який використовує різні сторінки, щоб переключатися між різними поведінками.  Натисніть кнопку А для перемикання між синім та червоним сяйвом
+               </description>
+               <tileUpid>actuator.switchtask</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>Сяяти червоним</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskb</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>Сяяти синім.</description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.glow</upid>
+                         <upid>modifier.blue</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taska</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>FloatBot</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Корабель може плавати по воді, але не може рухатися по суші.
+           </description>
+           <upid>filter.floatbot</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити корабель, яким ви можете керувати.  Лівий джойстик керує рухом.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити корабель, який плаває навколо та створює яблука кожні 10 секунд.
+               </description>
+               <tileUpid>selector.wander</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <reflex>
+                         <upids>
+                           <upid>actuator.movement</upid>
+                           <upid>selector.wander</upid>
+                         </upids>
+                       </reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.timer</upid>
+                         <upid>filter.10seconds</upid>
+                         <upid>actuator.make</upid>
+                         <upid>modifier.objectfruit</upid>
+                         <upid>modifier.red</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>FastBot</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Байкер швидко рухається, може підійматися на круті пагорби і може стрибати.
+           </description>
+           <upid>filter.fastbot</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити байкер, який керується користувачем.  Лівий джойстик керує рухом.  Кнопка А змушує Мобіко стрибати.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.jump</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>StickBoy</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Стік не переміщається, але може ховатися під землю, коли його закривають, він стає невразливим.
+           </description>
+           <upid>filter.stick</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити стік, який керується користувачем.  Кнопки Y та A відкривають та закривають стік.  Кнопка B стріляє ракетою.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.ybutton</upid>
+                         <upid>actuator.open</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.close</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.bbutton</upid>
+                         <upid>actuator.shoot</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>SubBot</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Підводний човен найкраще працює під водою.
+           </description>
+           <upid>filter.subbot</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити підводний човен, керований користувачем.  Лівий джойстик керує рухом.  Кнопки Y та A регулюють спливання та занурення.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.ybutton</upid>
+                         <upid>actuator.watersurface</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.waterdive</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+        <string>Fan</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Вентилятори можна запрограмувати на відштовхування або втягування предметів.
+          </description>
+          <upid>filter.fan</upid>
+          <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити світло, яке шукає літаючі тарілки і слідує за ними.
+               </description>
+               <tileUpid>selector.towardclosest</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.saucer</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>Octopus</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+            Окто - слизький персонаж, який любить море.
+          </description>
+          <upid>filter.octopus</upid>
+          <programs>
+            
+            <!-- Enter the example program here -->
+            <ExampleProgram>
+              <description>Створіть восьминога, який зможе замаскувати себе та повернутися до нормального стану.</description>
+              <tileUpid>actuator.camouflage</tileUpid>
+              <pages>
+                <ExamplePage>
+                  <description>Сторінка 1</description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.abutton</upid>
+                        <upid>actuator.camouflage</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.bbutton</upid>
+                        <upid>actuator.uncamouflage</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+              </pages>
+            </ExampleProgram>
+
+            <ExampleProgram>
+              <description>Створіть восьминога, який стріляє чорнилом.</description>
+              <tileUpid>filter.inkjet</tileUpid>
+              <pages>
+                <ExamplePage>
+                  <description>Створення чорнила</description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.xbutton</upid>
+                        <upid>actuator.launch</upid>
+                        <upid>modifier.angle.low</upid>
+                        <upid>modifier.strongly</upid>
+                        <upid>modifier.objectinkjet</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+              </pages>
+            </ExampleProgram>
+
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>Light</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Світло рухається швидко і може освітити світ.
+          </description>
+          <upid>filter.light</upid>
+          <programs>
+
+            <ExampleProgram>
+              <description>
+		Створіть світло, яке шукає тарілку та слідує за ними.
+              </description>
+              <tileUpid>selector.towardclosest</tileUpid>
+              <pages>
+                <ExamplePage>
+                  <description>
+		    Це опис сторінки. Не використовується в ActorHelp, але використовується в довідці з програмування.
+                  </description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.eyes</upid>
+                        <upid>filter.saucer</upid>
+                        <upid>actuator.movement</upid>
+                        <upid>selector.towardclosest</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>actuator.movement</upid>
+                        <upid>selector.wander</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+              </pages>
+            </ExampleProgram>
+
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+	<item>
+	   <key>
+         <string>Wisp</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Плазма швидко рухається і залишає за собою сліди, що світяться.
+           </description>
+           <upid>filter.wisp</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити плазму, яка шукає інші плазми і слідує за ними.
+               </description>
+               <tileUpid>selector.towardclosest</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.wisp</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Saucer</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Літаюча тарілка - найшвидше і найшвидше.  Може змінювати напрямки руху моментально.
+           </description>
+           <upid>filter.saucer</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити тарілку, яка вистачає та рухає яблука.  У цьому прикладі використовується кілька сторінок.
+               </description>
+               <tileUpid>actuator.grab</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.eyes</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.towardclosest</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.scan</upid>
+                         <upid>filter.fruit</upid>
+                         <upid>actuator.grab</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.got</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskb</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.timer</upid>
+                         <upid>filter.05seconds</upid>
+                         <upid>actuator.drop</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.got</upid>
+                         <upid>filter.countnone</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taskc</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.timer</upid>
+                         <upid>filter.05seconds</upid>
+                         <upid>actuator.switchtask</upid>
+                         <upid>modifier.taska</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>actuator.movement</upid>
+                         <upid>selector.wander</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+               </pages>
+             </ExampleProgram>
+
+             <ExampleProgram>
+               <description>
+                 Створити тарілку, якою ви можете керувати.  Лівий джойстик керує рухом, правий – стріляє.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.rightstick</upid>
+                         <upid>actuator.shoot</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>WindBlimp</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Аеростат повільно літає.
+           </description>
+           <upid>filter.windblimp</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити аеростат, яким ви керуєте.  Лівий джойстик керує рухом.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>BalloonBot</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Повітряна куля повільно літає в повітрі та оглядає околиці.  Що робить його добрим суддею в іграх.
+           </description>
+           <upid>filter.balloonbot</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити кулю, якою ви керуєте.  Лівий джойстик керує рухом.  Кнопки Y та A направляють його вгору та вниз.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.ybutton</upid>
+                         <upid>actuator.airrise</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.airdrop</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Puck</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Шайба – чудовий персонаж для швидких ігор, так як  вона літає по окрузі без тертя і може відскакувати від інших об'єктів без втрати швидкості.
+           </description>
+           <upid>filter.puck</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>PushPad</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Пушпед – великий та сильний.
+           </description>
+           <upid>filter.pushpad</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Turtle</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Черепаха може літати у повітрі та може ховатися у своєму панцирі за допомогою команд Відкрити та Закрити.  Коли черепаха закрита, вона невразлива для атак.
+           </description>
+           <upid>filter.turtle</upid>
+           <programs>
+
+             <ExampleProgram>
+               <description>
+                 Створити черепаху, якою ви можете керувати.  Лівий джойстик керує рухом.  Кнопка A змушує черепаху ховатись у панцир, а кнопка Y – вилізти з нього.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.ybutton</upid>
+                         <upid>actuator.open</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.abutton</upid>
+                         <upid>actuator.close</upid>
+                       </upids>
+                     </reflex>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.gamepad</upid>
+                         <upid>filter.leftstick</upid>
+                         <upid>actuator.movement</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>SwimFish</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Риба найкраще почувається у воді.  На суші їй погано.
+           </description>
+           <upid>filter.swimfish</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Cloud</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Хмара додана на честь погоди в Редмонді, де розташований Microsoft (там завжди дощ).
+           </description>
+           <upid>filter.cloud</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Mine</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             У мінералу є шипи, які можуть висуватись або згортатися.  Використовуйте дію Відкрити, щоб показати шипи, та Закрити, щоб їх прибрати.
+           </description>
+           <upid>filter.mine</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Drum</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Коли інші персонажі стрибають на батуті, їх підкидає в повітря.
+           </description>
+           <upid>filter.drum</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Sputnik</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Супутник складає гарну компанію літаючій тарілці.
+           </description>
+           <upid>filter.sputnik</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>BigYucca1</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Дерева також можна запрограмувати.
+           </description>
+           <upid>filter.bigyucca1</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Yucca1</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Дерева також можна запрограмувати.
+           </description>
+           <upid>filter.yucca1</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+    
+     <item>
+       <key>
+         <string>Yucca3</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Дерева також можна запрограмувати.
+           </description>
+           <upid>filter.yucca3</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+    
+     <item>
+       <key>
+         <string>Yucca2</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Дерева також можна запрограмувати.
+           </description>
+           <upid>filter.yucca2</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Fruit</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Яблуко – смачне, і його чудово запускати у повітря.
+           </description>
+           <upid>filter.fruit</upid>
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>IceBerg</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Льодовики плавають у будь-якій воді.
+          </description>
+          <upid>filter.iceBerg</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Rock</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Камені можна програмувати, як й інші об'єкти.
+           </description>
+           <upid>filter.rock</upid>
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>RockLowValue</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Вулканічні породи можна запрограмувати реагувати на дії, які може виконати лише марсохід.
+          </description>
+          <upid>filter.rockLowValue</upid>
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>RockHighValue</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Осадові породи можна запрограмувати реагувати на дії, які може виконувати лише марсохід.
+          </description>
+          <upid>filter.rockHighValue</upid>
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>RockLowValueUnknown</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Невідомий камінь, який під час сканування Марсоходом виявився вулканічним.
+          </description>
+          <upid>filter.rockLowValueUnknown</upid>
+          <programs>
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+    <item>
+      <key>
+        <string>RockHighValueUnknown</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+	    Невідомий камінь, який під час сканування Марсоходом виявився осадовим.
+          </description>
+          <upid>filter.rockHighValueUnknown</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Star</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Зірки можна програмувати, як і інші об'єкти.
+           </description>
+           <upid>filter.star</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Coin</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Монети просто необхідні у будь-якій аркадній грі.
+           </description>
+           <upid>filter.coin</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>SoccerBall</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Запрограмуйте його, або просто пніть.  Це ж м'яч!
+           </description>
+           <upid>filter.soccerball</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Castle</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Замок майже рухається.
+           </description>
+           <upid>filter.castle</upid>
+           <programs>
+             <ExampleProgram>
+               <description>
+                 Створити замок, що вибухає, якщо щось у нього врізалося.
+               </description>
+               <tileUpid>sensor.gamepad</tileUpid>
+               <pages>
+                 <ExamplePage>
+                   <description>
+                     Це є сторінка опису.  Немає в ActorHelp, але використовується в довідці з програмування.
+                   </description>
+                   <reflexes>
+                     <reflex>
+                       <upids>
+                         <upid>sensor.bumpers</upid>
+                         <upid>filter.anything</upid>
+                         <upid>actuator.boom</upid>
+                         <upid>modifier.me</upid>
+                       </upids>
+                     </reflex>
+                   </reflexes>
+                 </ExamplePage>
+               </pages>
+             </ExampleProgram>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Heart</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Вони відмінно підходять для збільшення життя та здоров'я.
+           </description>
+           <upid>filter.heart</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Bullet</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Відмінно підходять для комплекту амуніції.
+           </description>
+           <upid>filter.bullet</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Factory</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Завод створює неповторний ландшафт у грі.
+           </description>
+           <upid>filter.factory</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>Hut</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Хатина створює неповторний ландшафт у грі.
+           </description>
+           <upid>filter.hut</upid>
+           <programs>
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>WayPoint</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Шляхи дуже гнучкі. Ви можете використовувати їх, щоб визначити шлях, яким слідуватиме бот. Зазвичай шляхи невидимі, але їх можна перетворити на дороги чи стіни, змінивши тип шляху. Програмуючи бота слідувати шляху, ви можете додатково вказати йому, якого кольору буде шлях. Колір шляху можна змінити так само, як і колір ботів. У "Параметрах світу" ви можете поставити прапорець "Налагодити слідування шляху", щоб відобразити зазвичай невидимі шляхи під час роботи у вашому світі.
+           </description>
+           <upid>selector.followwaypoints</upid>
+           <programs>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>PathGeneric</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Шляхи дуже гнучкі. Ви можете використовувати їх, щоб визначити шлях, яким слідуватиме бот. Зазвичай шляхи невидимі, але їх можна перетворити на дороги чи стіни, змінивши тип шляху. Програмуючи бота слідувати шляху, ви можете додатково вказати йому, якого кольору буде шлях. Колір шляху можна змінити так само, як і колір ботів. У "Параметрах світу" ви можете поставити прапорець "Налагодити слідування шляху", щоб відобразити зазвичай невидимі шляхи під час роботи у вашому світі.
+           </description>
+           <upid>filter.pathplain</upid>
+           <programs>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>PathVeggie</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Шляхи із флорою дозволяють вам посадити квіти у вашому світі.
+           </description>
+           <upid>filter.pathflora</upid>
+           <programs>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>PathRoad</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Цей тип шляху дозволяє створювати дороги.
+           </description>
+           <upid>filter.pathroad</upid>
+           <programs>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+     <item>
+       <key>
+         <string>PathWall</string>
+       </key>
+       <value>
+         <ActorHelp>
+           <description>
+             Ці шляхи дозволяють створювати стіни.  Піднімаючи або опускаючи вузол, ви керуєте висотою стіни.
+</description>
+           <upid>filter.pathwall</upid>
+           <programs>
+
+           </programs>
+         </ActorHelp>
+       </value>
+     </item>
+
+    <item>
+      <key>
+        <string>Rover</string>
+      </key>
+      <value>
+        <ActorHelp>
+          <description>
+            Марсохід, який може виконувати спеціальні дії (промінь, сканування, огляд, фото) на типах марсіанських каменів.
+          </description>
+          <upid>filter.rover</upid>
+          <programs>
+
+            <ExampleProgram>
+              <description>
+                Основні елементи керування рухом і відображення кнопок для повнофункціонального Rover.
+              </description>
+              <tileUpid>sensor.scanned</tileUpid>
+              <pages>
+                <ExamplePage>
+                  <description>
+                    Це опис сторінки. Не використовується в ActorHelp, але використовується в довідці з програмування.
+                  </description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.ybutton</upid>
+                        <upid>actuator.picture</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.bbutton</upid>
+                        <upid>actuator.beam</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.xbutton</upid>
+                        <upid>actuator.inspect</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.abutton</upid>
+                        <upid>actuator.scan</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.gamepad</upid>
+                        <upid>filter.leftstick</upid>
+                        <upid>actuator.movement</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+              </pages>
+            </ExampleProgram>
+			
+			<ExampleProgram>
+              <description>
+                Створіть марсохід, який знаходить і сканує невідомі камені.
+              </description>
+              <tileUpid>sensor.scanned</tileUpid>
+              <pages>
+                <ExamplePage>
+                  <description>
+                   Це опис сторінки. Не використовується в ActorHelp, але використовується в довідці з програмування.
+                  </description>
+                  <reflexes>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.eyes</upid>
+                        <upid>filter.rockUnknown</upid>
+                        <upid>actuator.movement</upid>
+                        <upid>selector.towardclosest</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>sensor.bumpers</upid>
+						<upid>filter.rockUnknown</upid>
+                        <upid>actuator.scan</upid>
+                      </upids>
+                    </reflex>
+                    <reflex>
+                      <upids>
+                        <upid>actuator.movement</upid>
+                        <upid>selector.wander</upid>
+                      </upids>
+                    </reflex>
+                  </reflexes>
+                </ExamplePage>
+              </pages>
+            </ExampleProgram>
+
+          </programs>
+        </ActorHelp>
+      </value>
+    </item>
+
+
+  </actorHelp>
+ </Help>

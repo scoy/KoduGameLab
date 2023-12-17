@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CrumbList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <Crumbs>
+
+    <!--  To HomeMenu, yes you can get here from anywhere -->
+<Crumb id="HomeMenu0">
+<gamepadText>Натисніть &lt;start&gt; для переходу до Основного меню.</gamepadText>
+<mouseText>Виберіть [esc], щоб перейти до Головного меню .</mouseText>
+</Crumb>
+
+
+
+<!-- From InGame -->
+<Crumb id="MouseCameraMove0">
+<gamepadText>Натисніть &lt;back&gt; для переходу до режиму редагування</gamepadText>
+<mouseText>Натисніть [esc], щоб перейти в режим редагування.</mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuEditObject0">
+<gamepadText>Натисніть &lt;back&gt; для переходу до режиму редагування</gamepadText>
+<mouseText>Натисніть [esc], щоб перейти в режим редагування.</mouseText>
+</Crumb>
+
+<!-- From MainMenu -->
+<Crumb id="InGame0">
+<gamepadText>Виберіть ВІДНОВИТИ та натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть ВІДНОВИТИ.</mouseText>
+</Crumb>
+
+<Crumb id="LoadLevelMenu0">
+<gamepadText>Виберіть ЗАВАНТАЖИТИ СВІТ і натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть на ЗАВАНТАЖИТИ СВІТ.</mouseText>
+</Crumb>
+
+<Crumb id="CommunityMenu0">
+<gamepadText>Виберіть ДРУЗІ та натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть ДРУЗІ.</mouseText>
+</Crumb>
+
+<Crumb id="OptionsMenu0">
+<gamepadText>Виберіть ПАРАМЕТРИ і натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть на ПАРАМЕТРИ.</mouseText>
+</Crumb>
+
+<Crumb id="HelpScreens0">
+<gamepadText>Виберіть ДОВІДКА та натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть ДОВІДКА.</mouseText>
+</Crumb>
+
+<Crumb id="SharingHub0">
+<gamepadText>Виберіть ПОДІЛИТИСЯ і натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть на ПОДІЛИТИСЯ.</mouseText>
+</Crumb>
+
+<!-- From SharingHub -->
+<Crumb id="SharingSession0">
+<gamepadText>Натисніть &lt;start&gt; для переходу до сесії спільного використання.</gamepadText>
+<mouseText>Натисніть &lt;enter&gt; або клацніть на відкритих дверях для входу до сесії спільного використання.</mouseText>
+</Crumb>
+
+<Crumb id="MainMenu0">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>Натисніть &lt;esc&gt; для повернення до Основного меню</mouseText>
+</Crumb>
+
+<!-- From SharingSession -->
+<Crumb id="SharingHub1">
+<gamepadText>Натисніть &lt;back&gt; для виходу із сесії спільного використання.</gamepadText>
+<mouseText>Натисніть &lt;esc&gt; для виходу із сесії спільного використання.</mouseText>
+</Crumb>
+
+<!-- From OptionsMenu -->
+<Crumb id="MainMenu1">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>Натисніть [esc] або клацніть поза меню, щоб повернутися до Основного меню.</mouseText>
+</Crumb>
+
+<!-- From HelpScreens -->
+<Crumb id="MainMenu2">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+</Crumb>
+
+<!-- From LoadLevelMenu -->
+<Crumb id="Unknown0">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>
+Натисніть на зелені стрілки для прокручування, натисніть на плитку гри, щоб вибрати гру.
+Використовуйте [leftarrow][rightarrow] для прокручування, натисніть [enter], щоб вибрати гру.
+</mouseText>
+</Crumb>
+
+<Crumb id="MainMenu3">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+</Crumb>
+
+<Crumb id="HomeMenu1">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Головного меню.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до Головного меню.</mouseText>
+</Crumb>
+
+<!-- From CommunityMenu -->
+<Crumb id="Unknown1">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>
+Натисніть на зелені стрілки для прокручування, натисніть на плитку гри, щоб вибрати гру.
+Використовуйте [leftarrow][rightarrow] для прокручування, натисніть [enter], щоб вибрати гру.
+</mouseText>
+</Crumb>
+
+<Crumb id="MainMenu4">
+<gamepadText>Натисніть &lt;b&gt; для повернення до Основного меню.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до Основного меню.</mouseText>
+</Crumb>
+
+<!--  ToolMenu from any tool to every other. Gamepad only.  -->
+
+<Crumb id="InGame1">
+<gamepadText>Використовуйте ці тригери для вибору Грати&lt;play&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuEditObject1">
+<gamepadText>Використовуйте ці тригери для вибору Редагувати об'єкти&lt;ObjectEdit&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<!--  Lead user through EditObjectFocus to get to Programming -->
+<Crumb id="GamepadEditObjectFocus0">
+<gamepadText>Натисніть &lt;a&gt; для програмування об'єктів.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<!-- Lead user through EditObject to get to Programming -->
+<Crumb id="Programming0">
+<gamepadText>Використовуйте ці тригери для вибору Редагувати об'єкт&lt;ObjectEdit&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuTerrainSmoothLevel0">
+<gamepadText>Використовуйте ці тригери вибору інструменту Згладжування землі &lt;terrainsmoothlevel&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuTerrainPaint0">
+<gamepadText>Використовуйте ці тригери для вибору Створення землі &lt;terrainpaint&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuTerrainSpikeyHilly0">
+<gamepadText>Використовуйте ці тригери вибору інструменту Пагорби та піки &lt;terrainspikeyhilly&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuTerrainUpDown0">
+<gamepadText>Використовуйте ці тригери вибору Пагорби та нерівності &lt;terrainUpDown&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuWater0">
+<gamepadText>Використовуйте ці тригери для вибору інструменту Вода &lt;water&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuDeleteObjects0">
+<gamepadText>За допомогою цих тригерів виберіть Видалити об'єкт &lt;deleteobjects&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuWorldSettings0">
+<gamepadText>Використовуйте ці тригери для вибору Параметри світу &lt;worldsettings&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+    <!--  GamePad Tools, from any tool back to the ToolBar -->
+
+<Crumb id="ToolMenuEditObject2">
+<gamepadText>Натисніть &lt;back&gt; для переходу до меню Інструменти.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuEditObject3">
+<gamepadText>Натисніть &lt;back&gt; для виходу.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+    <!--  Gamepad tools, from toolbar to actual tool  -->
+
+<Crumb id="InGame2">
+<gamepadText>Натисніть &lt;a&gt; для запуску гри.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadEditObject0">
+<gamepadText>Натисніть &lt;a&gt; щоб додати, програмувати або редагувати об'єкт.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainSmoothLevel0">
+<gamepadText>Натисніть &lt;a&gt; для зміни території.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainPaint0">
+<gamepadText>Натисніть &lt;a&gt; щоб додати або розфарбувати територію.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainSpikeyHilly0">
+<gamepadText>Натисніть &lt;a&gt; для зміни території.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadEditObject1">
+<gamepadText>Натисніть &lt;a&gt; щоб додати, програмувати або редагувати об'єкт.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainUpDown0">
+<gamepadText>Натисніть &lt;a&gt; щоб підняти або опустити територію.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadWater0">
+<gamepadText>Натисніть &lt;a&gt; щоб додати або змінити воду.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadDeleteObjects0">
+<gamepadText>Натисніть &lt;a&gt; для використання Видалити об'єкт &lt;deleteobjects&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="GamepadWorldSettings0">
+<gamepadText>Натисніть &lt;a&gt; щоб змінити Параметри світу &lt;worldsettings&gt;</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+ 
+    <!-- From gamepad tools back to tool menu -->
+<Crumb id="ToolMenuEditObject4">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuTerrainPaint1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuTerrainUpDown1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuTerrainSmoothLevel1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuTerrainSpikeyHilly1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuWater1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="ToolMenuDeleteObjects1">
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="InGame3">
+      <!-- Shortcut mode to fool the system into thinking that this is the fast way to get into run mode. -->
+<gamepadText>Натисніть &lt;back&gt; для повернення до меню Інструменти</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+    <!--  Mouse Tools, from every tool to every other tool -->
+
+<Crumb id="MousePlay0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Грати &lt;play&gt; для запуску гри.</mouseText>
+</Crumb>
+<Crumb id="InGame4">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Грати &lt;play&gt; для запуску гри.</mouseText>
+</Crumb>
+
+<Crumb id="MouseHome0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Головне меню &lt;homemenu&gt;</mouseText>
+</Crumb>
+
+<Crumb id="HomeMenu3">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Головне меню &lt;homemenu&gt;</mouseText>
+</Crumb>
+
+<Crumb id="MouseCameraMove1">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Перемістити камеру &lt;cameramove&gt;</mouseText>
+</Crumb>
+
+<Crumb id="MouseEditObject0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на інструменті Об'єкт &lt;ObjectEdit&gt; у меню нижче, щоб додати або програмувати об'єкт.</mouseText>
+</Crumb>
+
+<Crumb id="MousePaths0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на інструменті Шляхи &lt;paths&gt; щоб додати або редагувати шлях. </mouseText>
+</Crumb>
+
+<Crumb id="MouseTerrainPaint0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на інструменті Територія &lt;terrainpaint&gt; для додавання та розфарбування землі.</mouseText>
+</Crumb>
+
+<Crumb id="MouseTerrainUpDown0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на інструменті Пагорби та долини &lt;terrainUpDown&gt; для зміни вашої землі.</mouseText>
+</Crumb>
+
+<Crumb id="MouseTerrainSmoothLevel0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на Згладжування землі&lt;terrainsmoothlevel&gt; щоб змінити землю.</mouseText>
+</Crumb>
+
+<Crumb id="MouseTerrainSpikeyHilly0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть на Піки та пагорби &lt;terrainspikeyhilly&gt; щоб змінити вашу землю.</mouseText>
+</Crumb>
+
+<Crumb id="MouseWater0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Вода &lt;water&gt; щоб додати або змінити воду.</mouseText>
+</Crumb>
+
+<Crumb id="MouseDeleteObjects0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Видалити об'єкт &lt;deleteobjects&gt; щоб швидко видалити об'єкти з вашого світу.</mouseText>
+</Crumb>
+
+<Crumb id="MouseWorldSettings0">
+<gamepadText></gamepadText>
+<mouseText>Клацніть Параметри світу &lt;worldsettings&gt;.</mouseText>
+</Crumb>
+
+    <!--  Into pickers  -->
+
+<Crumb id="MaterialPicker0">
+<gamepadText>Натисніть &lt;y&gt; для вибору нового матеріалу.</gamepadText>
+<mouseText>Клацніть на піктограмі вибору матеріалу &lt;materialtype&gt;, поверх піктограми інструмента, щоб вибрати новий матеріал. </mouseText>
+</Crumb>
+
+<Crumb id="BrushPicker0">
+<gamepadText>Натисніть &lt;x&gt; для вибору нового пензля.</gamepadText>
+<mouseText>Клацніть на значку вибору пензля &lt;brushtype&gt;, поверх значка інструмента.</mouseText>
+</Crumb>
+
+<Crumb id="WaterPicker0">
+<gamepadText>Натисніть &lt;y&gt; щоб вибрати новий колір води.</gamepadText>
+<mouseText>Клацніть на значку вибору типу води &lt;watertype&gt;, поверх значка Вода, щоб вибрати колір води. </mouseText>
+</Crumb>
+
+<!-- Out of pickers -->
+
+<Crumb id="MouseTerrainPaint1">
+<gamepadText>Використовуйте тригери для вибору матеріалу та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+</Crumb>
+
+<Crumb id="MouseWater1">
+<gamepadText>Використовуйте тригери для вибору води та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Виберіть [leftarrow][rightarrow] для вибору води, натисніть [enter] або клацніть для підтвердження.</mouseText>
+</Crumb>
+
+<Crumb id="MouseTerrainPaint2">
+<gamepadText>Використовуйте тригери для вибору пензля та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainPaint1">
+<gamepadText>Використовуйте тригери для вибору матеріалу та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Використовуйте [leftarrow][rightarrow] для вибору матеріалу, натисніть [enter] або клацніть для підтвердження.</mouseText>
+</Crumb>
+
+<Crumb id="GamepadWater1">
+<gamepadText>Використовуйте тригери для вибору води та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Використовуйте [leftarrow][rightarrow] to choose water, натисніть [enter] або натисніть для підтвердження.</mouseText>
+</Crumb>
+
+<Crumb id="GamepadTerrainPaint2">
+<gamepadText>Використовуйте тригери для вибору пензля та натисніть &lt;a&gt; для підтвердження.</gamepadText>
+<mouseText>Використовуйте [leftarrow][rightarrow] для вибору пензля, натисніть [enter] або натисніть для підтвердження.</mouseText>
+</Crumb>
+
+
+
+<Crumb id="ToolMenuEditObject5">
+<gamepadText>Натисніть &lt;b&gt; щоб вийти.</gamepadText>
+<mouseText>Натисніть [esc] або клацніть поза меню.</mouseText>
+</Crumb>
+
+<!-- From HomeMenu -->
+
+<Crumb id="MainMenu5">
+<gamepadText>Виберіть Основне меню.</gamepadText>
+<mouseText>Клацніть на Основному меню.</mouseText>
+</Crumb>
+
+<Crumb id="InGame6">
+<gamepadText>Виберіть Перезапустити світ.</gamepadText>
+<mouseText>Клацніть Перезапустити світ.</mouseText>
+</Crumb>
+
+<Crumb id="ToolMenuEditObject6">
+<gamepadText>Виберіть Редагувати світ.</gamepadText>
+<mouseText>Клацніть на Редагувати світ.</mouseText>
+</Crumb>
+
+<Crumb id="MouseCameraMove2">
+<gamepadText>Виберіть Редагувати світ.</gamepadText>
+<mouseText>Клацніть на Редагувати світ.</mouseText>
+</Crumb>
+
+<Crumb id="LoadLevelMenu1">
+<gamepadText>Виберіть Завантажити світ.</gamepadText>
+<mouseText>Клацніть Завантажити світ.</mouseText>
+</Crumb>
+
+<Crumb id="SharingHub2">
+<gamepadText>Виберіть Поділитися з друзями.</gamepadText>
+<mouseText>Клацніть Поділитися з друзями.</mouseText>
+</Crumb>
+
+<!-- Into Add Item -->
+<Crumb id="AddItem0">
+<gamepadText>Помістіть курсор туди, де ви хочете додати новий об'єкт, і натисніть &lt;a&gt;.</gamepadText>
+<mouseText>Клацніть лівою кнопкою миші &lt;leftmouse&gt; у будь-якому місці на території, щоб додати об'єкт.</mouseText>
+</Crumb>
+
+<!-- From mouse world settings -->
+<Crumb id="MouseCameraMove3">
+<gamepadText></gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до меню Інструменти.</mouseText>
+</Crumb>
+
+<!-- To and From Programming -->
+<Crumb id="Programming1">
+<gamepadText>Натисніть &lt;b&gt; щоб повернутися.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися.</mouseText>
+</Crumb>
+
+<Crumb id="GamepadEditObjectFocus1">
+<gamepadText>Перемістіть курсор до персонажа.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="GamepadEditObject2">
+<gamepadText>Помістіть курси на будь-яке порожнє місце.</gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+<Crumb id="Programming2">
+<gamepadText>Натисніть &lt;y&gt; щоб почати програмувати.</gamepadText>
+<mouseText>Клацніть правою кнопкою миші та виберіть Програма.</mouseText>
+</Crumb>
+
+<Crumb id="MouseEditObject2">
+<gamepadText>Натисніть &lt;b&gt; щоб повернутися до меню Редагування.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до меню редагування.</mouseText>
+</Crumb>
+<Crumb id="GamepadEditObject3">
+<gamepadText>Натисніть &lt;b&gt; щоб повернутися до меню Редагування.</gamepadText>
+<mouseText>Натисніть [esc], щоб повернутися до меню Редагування.</mouseText>
+</Crumb>
+
+
+<!-- Transitions that don't make sense -->
+<Crumb id="HomeMenu5">
+<gamepadText></gamepadText>
+<mouseText></mouseText>
+</Crumb>
+<Crumb id="InGame7">
+<gamepadText></gamepadText>
+<mouseText></mouseText>
+</Crumb>
+
+
+</Crumbs>
+</CrumbList>

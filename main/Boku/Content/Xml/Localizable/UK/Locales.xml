@@ -1,17 +1,12 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Locales>
-  <Locale>
-    <Language>Ukrainian</Language>
-    <Directory>UK</Directory>
-    <Native>Українська</Native>
-    <LastUpdated>12/16/2023 11:11:11</LastUpdated>
-  </Locale>
   <Locale>
     <Language>Arabic</Language>
     <Directory>AR</Directory>
     <Native>عربي</Native>
     <LastUpdated>4/26/2019 11:11:11</LastUpdated>
   </Locale>
+
   <Locale>
     <Language>Czech</Language>
     <Directory>CS</Directory>
@@ -155,5 +150,11 @@
     <Directory>VN</Directory>
     <Native>Tiếng Việt</Native>
     <LastUpdated>4/29/2019 11:11:11</LastUpdated>
+  </Locale>
+  <Locale>
+    <Language>Ukrainian</Language>
+    <Directory>UK</Directory>
+    <Native>Українська</Native>
+    <LastUpdated>30/10/2023 11:11:11</LastUpdated>
   </Locale>
 </Locales>
